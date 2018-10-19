@@ -1,9 +1,20 @@
 import React from 'react';
+import Can from '../Can';
 
 const HelpPage = () => (
-    <div>
-        This is from my help page.
-    </div>
+    <Can
+        role={user.role}
+        perform="posts:delete"
+        yes={() => (
+          <div>
+            <h1>Dashboard</h1>
+            <Logout />
+            <Profile />
+            <PostsList />
+          </div>
+        )}
+        no={() => <Redirect to="/" />}
+      />
 );
 
 export default HelpPage;

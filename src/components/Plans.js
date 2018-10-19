@@ -3,8 +3,15 @@ import ContactForm from './ContactForm';
 import {connect} from 'react-redux';
 import {sendContactForm} from '../actions/contact';
 import {NavLink} from 'react-router-dom';
+import Can from '../Can';
+import { Redirect } from "react-router-dom";
+import auth0 from '../Auth';
 
 const PlansPage = (props) => (
+    <Can
+        role={auth0.getRole}
+        perform="admin:home"
+        yes={() => (
     <div>
         <table>
             <thead>
@@ -153,6 +160,10 @@ const PlansPage = (props) => (
             }}/>
         </div>
     </div>
+    
+)}
+no={() => <Redirect to="/" />}
+/>
 );
 
 const mapStateToProps = (state) => {

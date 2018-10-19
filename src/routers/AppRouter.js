@@ -18,7 +18,7 @@ const AppRouter = () => (
             <Switch>
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage}/>
-                <Route path="/plans" component={PlansPage}/>
+                <SecuredRoute path="/plans" component={PlansPage}/>
                 <Route path="/login" component={LoginPage}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
