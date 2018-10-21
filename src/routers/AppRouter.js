@@ -11,6 +11,7 @@ import NotFoundPage from '../components/NotFound';
 import SecuredRoute from '../SecuredRoute/SecuredRoute';
 import Callback from '../Callback';
 import Registration from '../components/Registration';
+import AdminHome from '../components/AdminHome';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -24,6 +25,7 @@ const AppRouter = () => (
                 <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
+                <Route exact path='/admin/home' component={AdminHome}/>
                 <Route component={NotFoundPage}/>
             </Switch>
             <Footer/>
