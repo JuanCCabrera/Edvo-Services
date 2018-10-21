@@ -10,6 +10,7 @@ import HelpPage from '../components/Help';
 import NotFoundPage from '../components/NotFound';
 import SecuredRoute from '../SecuredRoute/SecuredRoute';
 import Callback from '../Callback';
+import Registration from '../components/Registration';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const AppRouter = () => (
                 <Route path="/about" component={AboutPage}/>
                 <Route path="/plans" component={PlansPage}/>
                 <Route path="/login" component={LoginPage}/>
+                <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
                 <Route component={NotFoundPage}/>
