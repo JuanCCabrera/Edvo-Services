@@ -310,7 +310,7 @@ export default class RegistrationForm extends React.Component{
 
     //Submit
 
-    submit = (e) => {
+    onSubmit = (e) => {
         e.preventDefault();
         //TO-DO Dispatch action to send data to database
     }
@@ -319,6 +319,7 @@ export default class RegistrationForm extends React.Component{
     render(){
         return(
             <div>
+            <form onSubmit={this.onSubmit}>
                 {this.state.currPage == 1 && <div>
                     <h2> General Information </h2>
                     <br/>
@@ -512,8 +513,9 @@ export default class RegistrationForm extends React.Component{
                     <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> Instruction Alignment <br/>
 
                     <br/>
-                    <button onClick={this.toPageThree}>Back</button> <button onClick={this.submit}>Submit</button>
+                    <button onClick={this.toPageThree}>Back</button> <button onClick={this.onSubmit}>Submit</button>
                 </div>}
+                </form>
             </div>
         );
     }

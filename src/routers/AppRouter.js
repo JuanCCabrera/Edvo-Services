@@ -12,6 +12,10 @@ import SecuredRoute from '../SecuredRoute/SecuredRoute';
 import Callback from '../Callback';
 import Registration from '../components/Registration';
 import AdminHome from '../components/AdminHome';
+import AdminProfileForm from '../components/AdminProfileForm';
+import AdminProfile from '../components/AdminProfile';
+import AppUsers from '../components/AppUsers';
+import AppSchools from '../components/AppSchools';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -25,7 +29,10 @@ const AppRouter = () => (
                 <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
-                <Route exact path='/admin/home' component={AdminHome}/>
+                <Route path='/admin/home' component={AdminHome}/>
+                <Route exact path='/admin/settings/info' component={AdminProfileForm}/>
+                <Route exact path='/admin/settings/users' component={AppUsers}/>
+                <Route exact path='/admin/settings/schools' component={AppSchools}/>
                 <Route component={NotFoundPage}/>
             </Switch>
             <Footer/>
