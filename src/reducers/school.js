@@ -1,11 +1,11 @@
-const userReducerDefaultState = [];
+const schoolReducerDefaultState = [];
 
-const userReducer = (state = userReducerDefaultState, action) => {
+const schoolReducer = (state = schoolReducerDefaultState, action) => {
     switch (action.type) {
-        case 'ADD_USER':
+        case 'ADD_SCHOOL':
             //Add new user to user list
             return [...state, action.user];
-        case 'REMOVE_USER':
+        case 'REMOVE_SCHOOL':
             return state.filter(({id}) => id !== action.id);
         default:
             return [...state];
@@ -18,7 +18,6 @@ export default userReducer;
 users: {
         id: '',
         name: '',
-        lastName: '',
         email: '',
         weeklyReco : false,
         categories: []

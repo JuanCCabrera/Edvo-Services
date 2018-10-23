@@ -4,6 +4,7 @@ export const addUser = (
         id = '',
         name = '',
         lastName = '',
+        email= '',
         weeklyReco = false,
         categories = []
     } = {}) => ({
@@ -12,6 +13,7 @@ export const addUser = (
             id,
             name,
             lastName,
+            email,
             weeklyReco,
             categories
         }

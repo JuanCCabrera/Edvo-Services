@@ -5,16 +5,17 @@ import {removeUser} from '../actions/user';
 
 const UserListItem = (props) => (
     <div>
-        <h3>{props.user.name + ' ' + props.user.lastName}</h3>
-        <button onClick={() => {
-            props.dispatch(removeUser({id: props.user.id}));
-        }}>Remove</button>
+        <h4>{props.user.name + ' ' + props.user.lastName}</h4>
+        <h5>Email: {props.user.email}</h5>
         <h6>Has weekly recommendation: {props.user.weeklyReco ? 'Yes' : 'No'}</h6>
         <h6>Categories: {' '}
         {props.user.categories.map((category) => {
-            return (<span key={uuid()}>{category + ' '}</span>)
+            return (<p key={uuid()}>{category + ' '}</p>)
         })}
         </h6>
+        <button onClick={() => {
+            props.dispatch(removeUser({id: props.user.id}));
+        }}>Remove</button>
     </div>
 );
 

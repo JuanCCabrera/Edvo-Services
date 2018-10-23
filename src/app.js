@@ -13,8 +13,8 @@ import {addUser} from './actions/user';
 
 const store = configureStore();
 
-store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', weeklyReco: false, categories: ['Tech', 'Potato']}));
-store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Rodriguez', weeklyReco: true, categories: ['Tech', 'Instro']}));
+store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', email: 'pablo.picasso@upr.edu', weeklyReco: false, categories: ['Tech', 'Potato']}));
+store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Rodriguez', email: 'daniel.rodriguez44@upr.edu', weeklyReco: true, categories: ['Tech', 'Instro']}));
 
 class App extends React.Component{
     async componentDidMount() {
