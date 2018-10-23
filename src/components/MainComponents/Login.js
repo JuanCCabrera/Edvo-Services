@@ -2,9 +2,9 @@ import React from 'react';
 import ContactForm from './ContactForm';
 import LoginForm from './LoginForm';
 import {connect} from 'react-redux';
-import {sendContactForm} from '../actions/contact';
-import { sendLogin } from '../actions/login';
-import auth0Client from '../Auth';
+import {sendContactForm} from '../../actions/contact';
+import { sendLogin } from '../../actions/login';
+import auth0Client from '../../Auth';
 import axios from 'axios';
 
 const signOut = (props) => {

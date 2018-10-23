@@ -2,17 +2,17 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import AdminButtonList from './AdminButtonList';
+import AdminButtonList from './AdminComponents/AdminButtonList';
 
-export default class AdminProfileForm extends React.Component{
+export default class BasicInfoProfileForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            name: '',
-            lastName: '',
-            dateOfBirth: moment(),
+            name: props.info ? props.info.name : '',
+            lastName: props.info ? props.info.lastName : '',
+            dateOfBirth: props.info ? props.info.dateOfBirth : moment(),
             calendarFocused: false,
-            gender: 'male'
+            gender: props.info ? props.info.gender : 'male'
         };
     }
 
@@ -44,11 +44,15 @@ export default class AdminProfileForm extends React.Component{
     changePassword = (e) => {
         e.preventDefault();
         console.log('change password');
+
+        //TO-DO Modify password and update in database
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         console.log('submitted');
+
+        //TO-DO Modify user data in database
     }
 
     render(){

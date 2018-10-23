@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactForm from './ContactForm';
 import {connect} from 'react-redux';
-import {sendContactForm} from '../actions/contact';
+import {sendContactForm} from '../../actions/contact';
 import {NavLink} from 'react-router-dom';
 
 const PlansPage = (props) => (

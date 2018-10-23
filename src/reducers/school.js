@@ -4,7 +4,7 @@ const schoolReducer = (state = schoolReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_SCHOOL':
             //Add new user to user list
-            return [...state, action.user];
+            return [...state, action.school];
         case 'REMOVE_SCHOOL':
             return state.filter(({id}) => id !== action.id);
         default:
@@ -12,15 +12,15 @@ const schoolReducer = (state = schoolReducerDefaultState, action) => {
     };
 }
 
-export default userReducer;
+export default schoolReducer;
 
 /*
-users: {
+school: {
         id: '',
         name: '',
-        email: '',
-        weeklyReco : false,
-        categories: []
+        location: '',
+        type : '',
+        numAccounts: 0
     }
 */
 

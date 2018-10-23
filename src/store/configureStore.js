@@ -3,6 +3,7 @@ import languageReducer from '../reducers/language';
 import contactReducer from '../reducers/contact';
 import loginReducer from '../reducers/login';
 import userReducer from '../reducers/user';
+import schoolReducer from '../reducers/school';
 
 //Store creation
 
@@ -13,6 +14,7 @@ export default () => {
             contact: contactReducer,
             login:  loginReducer,
             users: userReducer,
+            schools: schoolReducer
         })
     );
 
