@@ -6,7 +6,6 @@ import MainPage from '../components/MainComponents/Main';
 import AboutPage from '../components/MainComponents/About';
 import LoginPage from '../components/MainComponents/Login';
 import PlansPage from '../components/MainComponents/Plans';
-import HelpPage from '../components/Help';
 import NotFoundPage from '../components/MainComponents/NotFound';
 import SecuredRoute from '../SecuredRoute/SecuredRoute';
 import Callback from '../Callback';
@@ -16,12 +15,13 @@ import MentorHome from '../components/MentorComponents/MentorHome';
 import MentorProfile from '../components/MentorComponents/MentorProfile';
 
 import AdminHome from '../components/AdminComponents/AdminHome';
-import BasicInfoProfileForm from '../components/BasicInfoProfileForm';
 import AppUsers from '../components/AdminComponents/AppUsers';
 import AppSchools from '../components/AdminComponents/AppSchools';
 import CreateUserForm from '../components/AdminComponents/CreateUserForm';
 import CreateInstitutionForm from '../components/AdminComponents/CreateInstitutionForm';
 import AdminProfile from '../components/AdminComponents/AdminProfile';
+
+import RecommendationsControl from '../components/RecommendationComponents/RecommendationsControl';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -44,12 +44,18 @@ const AppRouter = () => (
                 {
                     //Administrator
                 }
-                <Route path='/admin/home' component={AdminHome}/>
                 <Route exact path='/admin/settings/info' component={AdminProfile}/>
                 <Route exact path='/admin/settings/users' component={AppUsers}/>
                 <Route exact path='/admin/settings/users/add' component={CreateUserForm}/>
                 <Route exact path='/admin/settings/schools' component={AppSchools}/>
                 <Route exact path='/admin/settings/schools/add' component={CreateInstitutionForm}/>
+                <Route path='/admin/home' component={AdminHome}/>
+
+                {
+                    //Recommendations
+                }
+                <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
+
                 <Route component={NotFoundPage}/>
             </Switch>
             <Footer/>

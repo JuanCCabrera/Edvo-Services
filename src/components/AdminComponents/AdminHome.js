@@ -20,7 +20,7 @@ const AdminHome = (props) => (
             </div>}
         </NavLink>
 
-        <NavLink to="/" activeClassName="is-active" exact={true}>
+        <NavLink to="/recommendations" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
                 <h2>Manage</h2>

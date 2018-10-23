@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 const MentorHome = (props) => (
     <div>
         <div>
-        <NavLink to="/" activeClassName="is-active" exact={true}>
+        <NavLink to="/recommendations/assign" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
                 <h2>Manage</h2>
