@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 const AdminHome = (props) => (
     <div>
         <div>
-        <NavLink to="/" activeClassName="is-active" exact={true}>
+        <NavLink to="/admin/settings/info" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
                 <h2>Platform</h2>

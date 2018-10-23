@@ -13,7 +13,7 @@ import Callback from '../Callback';
 import Registration from '../components/MainComponents/Registration';
 
 import MentorHome from '../components/MentorComponents/MentorHome';
-
+import MentorProfile from '../components/MentorComponents/MentorProfile';
 
 import AdminHome from '../components/AdminComponents/AdminHome';
 import BasicInfoProfileForm from '../components/BasicInfoProfileForm';
@@ -21,6 +21,7 @@ import AppUsers from '../components/AdminComponents/AppUsers';
 import AppSchools from '../components/AdminComponents/AppSchools';
 import CreateUserForm from '../components/AdminComponents/CreateUserForm';
 import CreateInstitutionForm from '../components/AdminComponents/CreateInstitutionForm';
+import AdminProfile from '../components/AdminComponents/AdminProfile';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -39,11 +40,12 @@ const AppRouter = () => (
                     //Mentor
                 }
                 <Route path='/mentor/home' component={MentorHome}/>
+                <Route path='/mentor/settings' component={MentorProfile}/>
                 {
                     //Administrator
                 }
                 <Route path='/admin/home' component={AdminHome}/>
-                <Route exact path='/admin/settings/info' component={BasicInfoProfileForm}/>
+                <Route exact path='/admin/settings/info' component={AdminProfile}/>
                 <Route exact path='/admin/settings/users' component={AppUsers}/>
                 <Route exact path='/admin/settings/users/add' component={CreateUserForm}/>
                 <Route exact path='/admin/settings/schools' component={AppSchools}/>
