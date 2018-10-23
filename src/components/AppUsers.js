@@ -1,11 +1,12 @@
 import React from 'react';
 import AdminButtonList from './AdminButtonList';
+import UserList from './UserList';
 
-const AppUsers = (props) => (
-    <div>
-        <AdminButtonList/>
-        <h1>AppUsers</h1>
-    </div>
-);
+ const AppUsers = (props) => (
+        <div>
+            <AdminButtonList/>
+            <UserList/>
+        </div>
+ );
 
-export default AppUsers;
+ export default AppUsers;

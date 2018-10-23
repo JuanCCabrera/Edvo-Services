@@ -25,25 +25,28 @@ const reset = () => {
 
 const LoginPage = (props) => (
     <div>
-        {
-        !auth0Client.isAuthenticated() &&
-        <button onClick={auth0Client.signIn}>Sign In</button>
-      }
-      {
-        auth0Client.isAuthenticated() &&
-        <div>
-          <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-          <button onClick={() => {signOut(props)}}>Sign Out</button>
-          <button onClick={() => {reset()}}>Reset Password</button>
-        </div>
-      }
+        
         <h1>Learn. Teach. Repeat</h1>
-        <div>
+        
+        {/*<div>
             <LoginForm
             onSubmit={(login_info) => {
             props.dispatch(sendLogin(login_info));
             }}/>
-        </div>
+        </div>*/}
+
+        {
+            !auth0Client.isAuthenticated() &&
+            <button onClick={auth0Client.signIn}>Sign In</button>
+          }
+          {
+            auth0Client.isAuthenticated() &&
+            <div>
+              <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
+              <button onClick={() => {signOut(props)}}>Sign Out</button>
+              <button onClick={() => {reset()}}>Reset Password</button>
+            </div>
+          }
 
         <div>
             <span>MATERIALS_IMG</span>

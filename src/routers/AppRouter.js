@@ -13,7 +13,6 @@ import Callback from '../Callback';
 import Registration from '../components/Registration';
 import AdminHome from '../components/AdminHome';
 import AdminProfileForm from '../components/AdminProfileForm';
-import AdminProfile from '../components/AdminProfile';
 import AppUsers from '../components/AppUsers';
 import AppSchools from '../components/AppSchools';
 

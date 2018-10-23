@@ -86,8 +86,8 @@ const PlansPage = (props) => (
                         <p> {props.lang === 'English' ? 'Get a detailed, graphical report of the professional development metrics of your institution' : 'Obtenga detalladas métricas en reportes o gráficas sobre el desarrollo profesional de su institución'}</p>
                     </th>
                     <td></td>
-                    <td>CHECKMARK_IMG</td>
                     <td></td>
+                    <td>CHECKMARK_IMG</td>
                 </tr>
 
                 <tr>
@@ -96,8 +96,8 @@ const PlansPage = (props) => (
                         <p> {props.lang === 'English' ? 'Administration\'s vision taken into consideration' : 'La visión de la administración es tomada en consideración'}</p>
                     </th>
                     <td></td>
-                    <td>CHECKMARK_IMG</td>
                     <td></td>
+                    <td>CHECKMARK_IMG</td>
                 </tr>
 
                 <tr>

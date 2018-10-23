@@ -2,6 +2,7 @@ import { createStore, combineReducers } from 'redux';
 import languageReducer from '../reducers/language';
 import contactReducer from '../reducers/contact';
 import loginReducer from '../reducers/login';
+import userReducer from '../reducers/user';
 
 //Store creation
 
@@ -10,7 +11,8 @@ export default () => {
         combineReducers({
             language: languageReducer, 
             contact: contactReducer,
-            login:  loginReducer
+            login:  loginReducer,
+            users: userReducer,
         })
     );
 
