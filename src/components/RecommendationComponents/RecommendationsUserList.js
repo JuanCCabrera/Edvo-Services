@@ -6,7 +6,6 @@ class RecommendationsUserList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            chosenUser: '',
             pages: 1}
     }
 
