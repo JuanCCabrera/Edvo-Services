@@ -48,7 +48,8 @@ export default class RegistrationForm extends React.Component{
 
              timeEmployed: moment(),
              employedCalendarFocused: false,
-             preferredLanguage: 'spanish',
+             spanish: false,
+             english: false,
              teachingStrategies: false,
              updatedMaterial: false,
              timeManagement: false,
@@ -259,14 +260,19 @@ export default class RegistrationForm extends React.Component{
         this.setState(() => ({employedCalendarFocused: focused}));
     };
 
-    onPreferredLanguageChange = (e) => {
-        const preferredLanguage = e.target.value;
-        this.setState(() => ({preferredLanguage}));
+    onSpanishChange = (e) => {
+        const spanish = this.state.spanish;
+        this.setState(() => ({spanish: !spanish}));
+    }
+
+    onEnglishChange = (e) => {
+        const english = this.state.english;
+        this.setState(() => ({english: !english}));
     }
 
     onTeachingStrategiesChange = (e) => {
         const teachingStrategies = this.state.teachingStrategies;
-        this.setState(() => ({teachingStrategies: !teachingStrategies}))
+        this.setState(() => ({teachingStrategies: !teachingStrategies}));
     }
 
     onUpdatedMaterialChange = (e) => {
@@ -499,10 +505,10 @@ export default class RegistrationForm extends React.Component{
                         />
 
                     <br/>
-                    <label>Preferred Language:</label>
+                    <label>Known Languages:</label>
                     <br/>
-                    <input type="radio" name="preflang" value= "spanish" checked={this.state.preferredLanguage === 'spanish'} onChange = {this.onPreferredLanguageChange}/> Spanish<br/>
-                    <input type="radio" name="preflang" value= "english" checked={this.state.preferredLanguage === 'english'} onChange = {this.onPreferredLanguageChange}/> English <br/>
+                    <input type="checkbox" name="preflang" value= "spanish" checked={this.state.spanish === true} onChange = {this.onSpanishChange}/> Spanish<br/>
+                    <input type="checkbox" name="preflang" value= "english" checked={this.state.english === true} onChange = {this.onEnglishChange}/> English <br/>
                     
                     <br/>
                     <label>Challenges:</label>
