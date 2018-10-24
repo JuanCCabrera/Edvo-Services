@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import RecommendationsUserListItem from './RecommendationsUserListItem';
-import uuid from 'uuid';
 
 class RecommendationsUserList extends React.Component{
     constructor(props){

@@ -22,6 +22,7 @@ import CreateInstitutionForm from '../components/AdminComponents/CreateInstituti
 import AdminProfile from '../components/AdminComponents/AdminProfile';
 
 import RecommendationsControl from '../components/RecommendationComponents/RecommendationsControl';
+import NewRecommendation from '../components/RecommendationComponents/NewRecommendation';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -55,6 +56,7 @@ const AppRouter = () => (
                     //Recommendations
                 }
                 <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
+                <Route exact path='/recommendations/create' component={NewRecommendation}/>
 
                 <Route component={NotFoundPage}/>
             </Switch>

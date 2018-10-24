@@ -15,7 +15,7 @@ const userReducer = (state = userReducerDefaultState, action) => {
 export default userReducer;
 
 /*
-users: {
+user: {
         id: '',
         name: '',
         lastName: '',

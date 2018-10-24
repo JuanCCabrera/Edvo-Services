@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import { runInThisContext } from 'vm';
 
 export default class RegistrationForm extends React.Component{
     constructor(props){
@@ -343,7 +342,7 @@ export default class RegistrationForm extends React.Component{
                     <label>Last Name:</label>
                     <input type = "text" placeholder = "Last Name" value = {this.state.lastName} onChange = {this.onLastNameChange}/>
     
-                    <br/>
+                    <br/>   
                     <label>Gender:</label>
                     <br/>
                         <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> Male<br/>
