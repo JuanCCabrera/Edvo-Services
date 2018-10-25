@@ -23,6 +23,8 @@ import AdminProfile from '../components/AdminComponents/AdminProfile';
 
 import RecommendationsControl from '../components/RecommendationComponents/RecommendationsControl';
 import NewRecommendation from '../components/RecommendationComponents/NewRecommendation';
+import ManageRecommendations from '../components/RecommendationComponents/ManageRecommendations';
+import EditRecommendation from '../components/RecommendationComponents/EditRecommendation';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -57,6 +59,8 @@ const AppRouter = () => (
                 }
                 <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
                 <Route exact path='/recommendations/create' component={NewRecommendation}/>
+                <Route exact path='/recommendations/manage' component={ManageRecommendations}/>
+                <Route path="/recommendations/edit/:id" component={EditRecommendation}/>
 
                 <Route component={NotFoundPage}/>
             </Switch>

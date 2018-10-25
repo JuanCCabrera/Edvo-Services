@@ -8,44 +8,44 @@ class CreateRecommendationForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            title: '',
-            multimedia: '',
-            header: '',
-            description: '',
+            title: props.reco ? props.reco.title : '',
+            multimedia: props.reco ? props.reco.multimedia : '',
+            header: props.reco ? props.reco.header : '',
+            description: props.reco ? props.reco.description : '',
 
-            teachingStrategies: false,
-            updatedMaterial: false,
-            timeManagement: false,
-            technologyIntegration: false,
-            instructionAlignment: false,
+            teachingStrategies: props.reco ? props.reco.teachingStrategies : false,
+            updatedMaterial: props.reco ? props.reco.updatedMaterial : false,
+            timeManagement: props.reco ? props.reco.timeManagement : false,
+            technologyIntegration: props.reco ? props.reco.technologyIntegration : false,
+            instructionAlignment: props.reco ? props.reco.instructionAlignment : false,
 
-            moodle: false,
-            googleClassroom: false,
-            emailResource: false,
-            books: false,
-            socialMedia: false,
-            projector: false,
-            computer: false,
-            tablet: false,
-            stylus: false,
-            internet: false,
-            smartboard: false,
-            smartpencil: false,
-            speakers: false,
+            moodle: props.reco ? props.reco.moodle : false,
+            googleClassroom: props.reco ? props.reco.googleClassroom : false,
+            emailResource: props.reco ? props.reco.emailResource : false,
+            books: props.reco ? props.reco.books : false,
+            socialMedia: props.reco ? props.reco.socialMedia : false,
+            projector: props.reco ? props.reco.projector : false,
+            computer: props.reco ? props.reco.computer : false,
+            tablet: props.reco ? props.reco.tablet : false,
+            stylus: props.reco ? props.reco.stylus : false,
+            internet: props.reco ? props.reco.internet : false,
+            smartboard: props.reco ? props.reco.smartboard : false,
+            smartpencil: props.reco ? props.reco.smartpencil : false,
+            speakers: props.reco ? props.reco.speakers : false,
             
-            topics: [''],
-            location: '',
-            subject: '',
-            language: 'spanish',
-            type: '',
-            schoolType: 'public',
-            format: 'classroom',
-            level: 'first',
-            size: 'small',
+            topics: props.reco ? props.reco.topics : [''],
+            location: props.reco ? props.reco.location : '',
+            subject: props.reco ? props.reco.subject : '',
+            language: props.reco ? props.reco.language : 'spanish',
+            type: props.reco ? props.reco.type : 'event',
+            schoolType: props.reco ? props.reco.schoolType : 'public',
+            format: props.reco ? props.reco.format : 'classroom',
+            level: props.reco ? props.reco.level : 'first',
+            size: props.reco ? props.reco.size : 'small',
 
-            question: '',
-            choices: [''],
-            correctOption: 0
+            question: props.reco ? props.reco.question : '',
+            choices: props.reco ? props.reco.choices : [''],
+            correctOption: props.reco ? props.reco.correctOption : 0
        };
     }
     //Change Handlers
@@ -269,14 +269,14 @@ class CreateRecommendationForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        //TO-DO Dispatch action to send data to database
+        //TO-DO: Add error checking
+        this.props.onSubmit(this.state);
     }
 
     render(){
         return(
             <div>
             <form onSubmit={this.onSubmit}>
-                <h2> Create Recommendation </h2>
                 <br/>
 
                 <label>Title:</label>
