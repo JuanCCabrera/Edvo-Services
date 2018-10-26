@@ -17,8 +17,8 @@ class App extends React.Component{
             await auth0Client.silentAuth();
             this.forceUpdate();
         }catch(err){
-            if(err.error === 'unauthorized')
-                console.log(err.error);
+            if(err.error === 'login_required') return;
+            console.log(err.error);
         }
     }
 
