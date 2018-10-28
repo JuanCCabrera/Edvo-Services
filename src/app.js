@@ -11,7 +11,8 @@ import auth0Client from './Auth';
 import uuid from 'uuid';
 import {addUser} from './actions/user';
 import {addSchool} from './actions/school';
-import {createRecommendation, createTestRecommendation} from './actions/recommendations';
+import {createTestRecommendation} from './actions/recommendations';
+import { createTestQuestion } from './actions/question';
 
 const store = configureStore();
 
@@ -21,7 +22,8 @@ store.dispatch(addSchool({id: uuid(), name: 'Colegio San Palomita', location: 'E
 store.dispatch(addSchool({id: uuid(), name: 'Colegio Santo Potato', location: 'Al lao\' del McDonald\'s', type: 'Public', numAccounts: 20}));
 store.dispatch(createTestRecommendation({id: uuid(), title: 'Compound Interest', header: 'Test data', multimedia: 'none', description: '#1'}));
 store.dispatch(createTestRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2'}));
-
+store.dispatch(createTestQuestion({question: 'Where is the dog?', askedDate: '2018-10-28 06:20:25', subject: 'Can\'t find the dog.', userId: uuid()}));
+store.dispatch(createTestQuestion({question: 'What is an emu?', askedDate: '2018-10-27 12:24:24', subject: 'Doubts about animals.', userId: uuid()}));
 
 class App extends React.Component{
     async componentDidMount() {

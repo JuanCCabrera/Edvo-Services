@@ -6,6 +6,7 @@ import userReducer from '../reducers/user';
 import schoolReducer from '../reducers/school';
 import assignRecommendationReducer from '../reducers/assignRecommendation';
 import recommendationsReducer from '../reducers/recommendations';
+import questionsReducer from '../reducers/question';
 
 //Store creation
 
@@ -18,7 +19,8 @@ export default () => {
             users: userReducer,
             schools: schoolReducer,
             assignRecommendation: assignRecommendationReducer,
-            recommendations: recommendationsReducer
+            recommendations: recommendationsReducer,
+            questions: questionsReducer
         })
     );
 

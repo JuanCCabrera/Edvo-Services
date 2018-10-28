@@ -20,7 +20,7 @@ const MentorHome = (props) => (
             </div>}
         </NavLink>
 
-        <NavLink to="/" activeClassName="is-active" exact={true}>
+        <NavLink to="/staff/questions" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
                 <h2>Answer</h2>

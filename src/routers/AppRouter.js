@@ -26,6 +26,9 @@ import NewRecommendation from '../components/RecommendationComponents/NewRecomme
 import ManageRecommendations from '../components/RecommendationComponents/ManageRecommendations';
 import EditRecommendation from '../components/RecommendationComponents/EditRecommendation';
 
+import ManageQuestions from '../components/QuestionComponents/ManageQuestions';
+import AnswerQuestionForm from '../components/QuestionComponents/AnswerQuestionForm';
+
 const AppRouter = () => (
     <BrowserRouter>
         <div>
@@ -55,12 +58,18 @@ const AppRouter = () => (
                 <Route path='/admin/home' component={AdminHome}/>
 
                 {
-                    //Recommendations
+                    //Staff Recommendations
                 }
                 <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
                 <Route exact path='/recommendations/create' component={NewRecommendation}/>
                 <Route exact path='/recommendations/manage' component={ManageRecommendations}/>
                 <Route path="/recommendations/edit/:id" component={EditRecommendation}/>
+
+                {
+                    //Staff Questions
+                }
+                <Route exact path='/staff/questions' component={ManageQuestions}/>
+                <Route path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
 
                 <Route component={NotFoundPage}/>
             </Switch>
