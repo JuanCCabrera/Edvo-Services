@@ -8,7 +8,8 @@ class AnswerQuestionForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            answer: ''
+            answer: '',
+            answerError: ''
         };
     }
 
@@ -21,8 +22,13 @@ class AnswerQuestionForm extends React.Component {
     onSubmit = (e) => {
         //TO-DO Add error checks
         e.preventDefault();
-        this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
-        this.props.history.push('/staff/questions');
+        if(!this.state.answer){
+            this.setState(() => ({answerError: 'Please fill the Answer field.'}));
+        }else{
+            this.setState(() => ({answerError: ''}));
+            this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
+            this.props.history.push('/staff/questions');
+        }
     }
 
     render(){
@@ -34,6 +40,8 @@ class AnswerQuestionForm extends React.Component {
                         {this.props.question.question}
                     <h3> Answer </h3>
                         <textarea type="text" value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
+                        <br/>
+                        {this.state.answerError}
                         <br/>
                         <button onClick={this.onSubmit}>Answer</button>
                 </form>
