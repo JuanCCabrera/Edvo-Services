@@ -10,10 +10,7 @@ const PendingQuestionsListItem = (props) => (
         <button onClick={() => {
             props.dispatch(removeQuestion({askedDate: props.question.askedDate, userId: props.question.userId}));
         }}>Remove</button>
-
-        {/*}
-            <Link to={`/recommendations/edit/${props.reco.id}`}><button>Edit</button></Link>
-        */}
+        <Link to={`/staff/questions/${props.question.askedDate}/${props.question.userId}`}><button>Answer</button></Link>
     </div>
 );
 
