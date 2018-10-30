@@ -2,7 +2,7 @@ const questionReducerDefaultState = [];
 
 const questionsReducer = (state = questionReducerDefaultState, action) => {
     switch(action.type){
-        case 'CREATE_TEST_QUESTION':
+        case 'LOAD_QUESTION':
             return [...state, action.question_item];
         case 'CREATE_QUESTION':
             return [...state];

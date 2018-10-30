@@ -11,6 +11,8 @@ import SecuredRoute from '../SecuredRoute/SecuredRoute';
 import Callback from '../Callback';
 import Registration from '../components/MainComponents/Registration';
 
+import TeacherProfile from '../components/TeacherComponents/TeacherProfile';
+
 import MentorHome from '../components/MentorComponents/MentorHome';
 import MentorProfile from '../components/MentorComponents/MentorProfile';
 
@@ -28,6 +30,8 @@ import EditRecommendation from '../components/RecommendationComponents/EditRecom
 
 import ManageQuestions from '../components/QuestionComponents/ManageQuestions';
 import AnswerQuestionForm from '../components/QuestionComponents/AnswerQuestionForm';
+import Classes from '../components/TeacherComponents/Classes';
+import Plan from '../components/TeacherComponents/Plan';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -41,6 +45,13 @@ const AppRouter = () => (
                 <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
+
+                {
+                    //Teacher
+                }
+                <Route path='/teacher/settings/info' component={TeacherProfile}/>
+                <Route path='/teacher/settings/classes' component={Classes}/>
+                <Route path='/teacher/settings/plans' component={Plan}/>
 
                 {
                     //Mentor

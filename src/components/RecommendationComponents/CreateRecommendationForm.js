@@ -44,8 +44,8 @@ class CreateRecommendationForm extends React.Component{
             size: props.reco ? props.reco.size : 'small',
 
             question: props.reco ? props.reco.question : '',
-            choices: props.reco ? props.reco.choices : [''],
-            correctOption: props.reco ? props.reco.correctOption : 0
+            choices: props.reco ? props.reco.choices : ['', ''],
+            correctOption: props.reco ? props.reco.correctOption : -1
        };
     }
     //Change Handlers
@@ -125,14 +125,9 @@ class CreateRecommendationForm extends React.Component{
         }
     }
 
-    setCorrectOption = (e,correctChoiceText) => {
+    setCorrectOption = (choiceIndex) => (e) => {
         e.preventDefault();
-        for(i = 0; i < this.state.choices.length; i++){
-            if(correctChoiceText === this.state.choices[i]){
-                this.setState(() => ({correctOption: i}));
-                break;
-            }
-        };
+        this.setState(() => ({correctOption: choiceIndex}));
     }
 
     onChoiceChange = i => e => {
@@ -143,12 +138,13 @@ class CreateRecommendationForm extends React.Component{
 
     deleteChoice = i => e => {
         e.preventDefault();
-        if(this.state.choices.length > 1){
+        if(this.state.choices.length > 2){
             let choices = [
                 ...this.state.choices.slice(0,i),
                 ...this.state.choices.slice(i+1)
             ];
             this.setState(() => ({choices}));
+            this.setState(() => ({correctOption: -1}));
         }
     }
 
@@ -310,10 +306,11 @@ class CreateRecommendationForm extends React.Component{
                         onChange={this.onChoiceChange(index)}
                         />
                         <button onClick={this.deleteChoice(index)}>X</button>
+                        <button onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>Correct Answer</button>
                     </span>
                 ))}
                 <br/>
-                <button onClick={this.addChoice}>Add New Option</button>
+                <button onClick={this.addChoice} disabled={this.state.choices.length === 4}>Add New Option</button>
 
                 <br/>
                 <label>Categories:</label>
@@ -384,7 +381,7 @@ class CreateRecommendationForm extends React.Component{
                     </span>
                 ))}
                 <br/>
-                <button onClick={this.addTopic}>Add New Topic</button>
+                <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>Add New Topic</button>
 
                 <br/>
                 <label>Resources</label>

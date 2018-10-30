@@ -86,7 +86,7 @@ export const createRecommendation = (
     }
 }
 
-export const createTestRecommendation = (
+export const loadRecommendation = (
     {
     id = '',
     title = '',
@@ -129,7 +129,7 @@ export const createTestRecommendation = (
     correctOption = 0
 } = {}) => {
     return {
-        type: 'CREATE_TEST_RECOMMENDATION',
+        type: 'LOAD_RECOMMENDATION',
         recommendation: {
                 id,
                 title,

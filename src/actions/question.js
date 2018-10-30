@@ -1,4 +1,4 @@
-export const createTestQuestion = (
+export const loadQuestion = (
     {
         question = '',
         askedDate = '',
@@ -6,7 +6,7 @@ export const createTestQuestion = (
         userId = ''
     } = {}) => {
         return {
-            type: 'CREATE_TEST_QUESTION',
+            type: 'LOAD_QUESITON',
             question_item: {
                 question,
                 askedDate,

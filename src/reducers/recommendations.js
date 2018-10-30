@@ -2,7 +2,7 @@ const recommendationsReducerDefaultState = [];
 
 const recommendationsReducer = (state = recommendationsReducerDefaultState, action) => {
     switch(action.type){
-        case 'CREATE_TEST_RECOMMENDATION':
+        case 'LOAD_RECOMMENDATION':
             return [...state, action.recommendation];
         case 'CREATE_RECOMMENDATION':
             return [...state];

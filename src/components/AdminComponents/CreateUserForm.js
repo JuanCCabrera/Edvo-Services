@@ -156,9 +156,8 @@ export default class CreateUserForm extends React.Component{
                         <br/>
                         <label>Institution ID:</label>
                         <input type="text" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
-        
                         <br/>
-                        <Link to="/admin/settings/users"><button>View User List</button></Link>
+                        <br/>
                         <button onClick={this.onSubmit}>Create</button>
                     </div>
 

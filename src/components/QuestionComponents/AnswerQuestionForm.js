@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { answerQuestion } from '../../actions/question';
 import QuestionButtonList from './QuestionButtonList';
-import {NavLink} from 'react-router-dom';
 
 class AnswerQuestionForm extends React.Component {
     constructor(props){

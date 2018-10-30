@@ -22,8 +22,8 @@ export default class RegistrationForm extends React.Component{
              subject: '',
              format: 'classroom',
              language: 'spanish',
-             level: 'first',
-             size: 'small',
+             level: 'Kindergarden - 3rd grade',
+             size: '1 - 10',
              topicsTaught: [''],
              pageTwoError: '',
 
@@ -159,7 +159,7 @@ export default class RegistrationForm extends React.Component{
 
     addTopic = (e) => {
         e.preventDefault();
-        if(this.state.topicsTaught.length < 2){
+        if(this.state.topicsTaught.length < 3){
             let topics = this.state.topicsTaught.concat(['']);
             this.setState(() => ({topicsTaught: topics}));
         }
@@ -408,22 +408,21 @@ export default class RegistrationForm extends React.Component{
                     <br/>
                     <label>Level:</label>
                     <br/>
-                    <input type="radio" name="level" value= "first" checked={this.state.level === 'first'} onChange = {this.onLevelChange}/> Kindergarden - 3rd grade<br/>
-                    <input type="radio" name="level" value= "second" checked={this.state.level === 'second'} onChange = {this.onLevelChange}/> 4th - 6th grade<br/>
-                    <input type="radio" name="level" value= "third" checked={this.state.level === 'third'} onChange = {this.onLevelChange}/> 7th - 8th grade <br/>
-                    <input type="radio" name="level" value= "fourth" checked={this.state.level === 'fourth'} onChange = {this.onLevelChange}/> 9th - 12th grade<br/>
-                    <input type="radio" name="level" value= "fifth" checked={this.state.level === 'fifth'} onChange = {this.onLevelChange}/> University / College<br/>
-                    <input type="radio" name="level" value= "other" checked={this.state.level === 'other'} onChange = {this.onLevelChange}/> Other <br/>
+                    <input type="radio" name="level" value= "Kindergarden - 3rd grade" checked={this.state.level === 'Kindergarden - 3rd grade'} onChange = {this.onLevelChange}/> Kindergarden - 3rd grade<br/>
+                    <input type="radio" name="level" value= "4th - 6th grade" checked={this.state.level === '4th - 6th grade'} onChange = {this.onLevelChange}/> 4th - 6th grade<br/>
+                    <input type="radio" name="level" value= "7th - 8th grade" checked={this.state.level === '7th - 8th grade'} onChange = {this.onLevelChange}/> 7th - 8th grade <br/>
+                    <input type="radio" name="level" value= "9th - 12th grade" checked={this.state.level === '9th - 12th grade'} onChange = {this.onLevelChange}/> 9th - 12th grade<br/>
+                    <input type="radio" name="level" value= "University / College" checked={this.state.level === 'University / College'} onChange = {this.onLevelChange}/> University / College<br/>
 
                     <br/>
                     <label>Group Size</label>
                     <br/>
-                    <input type="radio" name="size" value= "small" checked={this.state.size === 'small'} onChange = {this.onSizeChange}/> 1 - 10<br/>
-                    <input type="radio" name="size" value= "medium" checked={this.state.size === 'medium'} onChange = {this.onSizeChange}/> 11 - 20<br/>
-                    <input type="radio" name="size" value= "large" checked={this.state.size === 'large'} onChange = {this.onSizeChange}/> 21 - 30 <br/>
-                    <input type="radio" name="size" value= "xlarge" checked={this.state.size === 'xlarge'} onChange = {this.onSizeChange}/> 31+<br/>
+                    <input type="radio" name="size" value= "1 - 10" checked={this.state.size === '1 - 10'} onChange = {this.onSizeChange}/> 1 - 10<br/>
+                    <input type="radio" name="size" value= "11 - 20" checked={this.state.size === '11 - 20'} onChange = {this.onSizeChange}/> 11 - 20<br/>
+                    <input type="radio" name="size" value= "21 - 30" checked={this.state.size === '21 - 30'} onChange = {this.onSizeChange}/> 21 - 30 <br/>
+                    <input type="radio" name="size" value= "31+" checked={this.state.size === '31+'} onChange = {this.onSizeChange}/> 31+<br/>
                     
-                    <label>Topics Taught (Max: 2):</label>
+                    <label>Topics Taught (Max: 3):</label>
                     {this.state.topicsTaught.map((topic, index) => (
                         <span key={index}>
                             <br/>
@@ -437,7 +436,7 @@ export default class RegistrationForm extends React.Component{
                         </span>
                     ))}
                     <br/>
-                    <button onClick={this.addTopic}>Add New Topic</button>
+                    <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>Add New Topic</button>
 
                     <br/>
                     <button onClick={this.toPageOne}>Back</button> <button onClick={this.toPageThree}>Next</button>

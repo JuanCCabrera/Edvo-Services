@@ -72,7 +72,6 @@ export default class CreateInstitutionForm extends React.Component{
                     
                         <br/>
                         <br/>
-                        <Link to="/admin/settings/schools"><button>View Institution List</button></Link>
                         <button onClick={this.onSubmit}>Create</button>
                     </div>
 
