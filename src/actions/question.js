@@ -6,7 +6,7 @@ export const loadQuestion = (
         userId = ''
     } = {}) => {
         return {
-            type: 'LOAD_QUESITON',
+            type: 'LOAD_QUESTION',
             question_item: {
                 question,
                 askedDate,

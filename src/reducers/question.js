@@ -9,7 +9,6 @@ const questionsReducer = (state = questionReducerDefaultState, action) => {
         case 'REMOVE_QUESTION':
             return state.filter(({askedDate,userId}) => askedDate !== action.id && userId !== action.userId);
         case 'ANSWER_QUESTION':
-            console.log('ANSWER_QUESTION');
             return [...state];
         default: 
             return [...state]

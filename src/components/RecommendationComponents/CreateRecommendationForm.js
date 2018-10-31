@@ -1,8 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 
 class CreateRecommendationForm extends React.Component{
     constructor(props){
