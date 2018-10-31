@@ -7,7 +7,8 @@ class RecommendationsUserList extends React.Component{
     constructor(props){
         super(props);
         this.pageSlice = 1;
-        this.itemsPerPage = 5;
+        this.itemsPerPage = 3;
+        this.currentPage = 1;
         this.state = {
             activePage: 1,
             displayedUsers: []
@@ -16,14 +17,24 @@ class RecommendationsUserList extends React.Component{
 
     componentWillMount(){
         this.pageSlice = Math.ceil(this.props.users.length/this.itemsPerPage);
+        this.currentPage = 1;
         const initialPageUsers = this.props.users.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedUsers: initialPageUsers});
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.users !== this.props.users){
+            if(this.state.displayedUsers.length === 1 && this.currentPage !== 1){
+                this.handlePageChange(this.currentPage-1);
+            }else{
+                this.handlePageChange(this.currentPage);
+            }
+        }
+    }
+
     handlePageChange = (pageNumber) => {
-        console.log(pageNumber);
-        console.log(this.props.users.length);
         const startIndex = (pageNumber-1)*this.itemsPerPage;
+        this.currentPage = pageNumber;
         let endIndex = (pageNumber)*this.itemsPerPage;
         if(((pageNumber)*this.itemsPerPage) > this.props.users.length){
             endIndex = this.props.users.length;

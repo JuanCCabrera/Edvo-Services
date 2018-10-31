@@ -1,7 +1,6 @@
 import React from 'react';
 import uuid from 'uuid';
 import {connect} from 'react-redux';
-import {removeUser} from '../actions/user';
 
 const UserListItem = (props) => (
     <div>
@@ -13,9 +12,7 @@ const UserListItem = (props) => (
             return (<p key={uuid()}>{category + ' '}</p>)
         })}
         </h6>
-        <button onClick={() => {
-            props.dispatch(removeUser({id: props.user.id}));
-        }}>Remove</button>
+        <button onClick={props.userRemoval}>Remove</button>
     </div>
 );
 
