@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class ContactForm extends React.Component{
+class ContactForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -30,7 +31,7 @@ export default class ContactForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         if(!this.state.name || !this.state.email || !this.state.message){
-            this.setState(() => ({contactError: 'Please fill the blank fields'})); 
+            this.setState(() => ({contactError: 'Please fill all blank fields'})); 
         }else{
             this.setState(() => ({contactError: ''}));
             this.props.onSubmit({
@@ -43,8 +44,8 @@ export default class ContactForm extends React.Component{
     render(){
         return(
             <div>
-                <h5>Want to know more?</h5>
-                <h5>Contact Us</h5>
+                {this.props.lang === 'English' ? <h5>Want to know more?</h5> : <h5>Desea conocer más?</h5>}
+                {this.props.lang === 'English' ? <h5>Contact Us</h5> : <h5>Contáctenos</h5>}
                 {this.state.contactError && <p>{this.state.contactError}</p>}
                 <form onSubmit = {this.onSubmit}>
                     <input
@@ -65,12 +66,20 @@ export default class ContactForm extends React.Component{
                     value = {this.state.message}
                     onChange = {this.onMessageChange}/>
 
-                    <button>Send</button>
+                    <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Send' : 'Enviar'}</button>
                 </form>
-                <span>info@edvotech.com</span>
-                <span>Tel: 787-375-7094</span>
-                <span>1250 Ave. Juan Ponce de León Ste. 400 San Juan, PR 00907</span>
+                <p>Email: info@edvotech.com</p>
+                <p>Tel: 787-375-7094</p>
+                <p>{this.props.lang === 'English' ? 'Address' : 'Dirección Postal'}: 1250 Ave. Juan Ponce de León Ste. 400 San Juan, PR 00907</p>
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+} 
+
+export default connect(mapStateToProps)(ContactForm);

@@ -8,7 +8,7 @@ const loginReducerDefaultState = {
 const loginReducer = (state = loginReducerDefaultState, action) => {
     switch (action.type) {
         case 'SEND_LOGIN_FORM':
-            //SEND EMAIL
+            //TO-DO: SEND EMAIL
             return {...action.login};
         default:
             return state;

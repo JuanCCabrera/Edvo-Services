@@ -4,8 +4,9 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import AdminButtonList from './AdminButtonList';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class CreateUserForm extends React.Component{
+class CreateUserForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -95,30 +96,30 @@ export default class CreateUserForm extends React.Component{
                 <div>
                     <form onSubmit={this.onSubmit}>
                     <div>
-                        <h2> Create New User </h2>
+                        <h2> {props.lang === 'English' ? 'Create New User' : 'Crear Nuevo Usuario'} </h2>
                         <br/>
 
                         <label>Email:</label>
                         <input type="text" placeholder = "Email" value = {this.state.email} onChange={this.onEmailChange}/>
         
                         <br/>
-                        <label>Password:</label>
+                        <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
                         <input type="password" placeholder = "Password" value = {this.state.password} onChange={this.onPasswordChange}/>
         
                         <br/>
-                        <label>Confirm Password:</label>
+                        <label>{this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'}:</label>
                         <input type="password" placeholder = "Confirm Password" value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange}/>
 
                         <br/>
-                        <label>Name:</label>
+                        <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                         <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
                     
                         <br/>
-                        <label>Last Name:</label>
+                        <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                         <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}/>
 
                         <br/>
-                        <label>Date of Birth:</label>
+                        <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
                         <SingleDatePicker
                         date={this.state.dateOfBirth}
@@ -130,35 +131,36 @@ export default class CreateUserForm extends React.Component{
                         />
                         
                         <br/>
-                        <label>Gender:</label>
+                        <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                         <br/>
-                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> Male<br/>
-                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> Female<br/>
-                        <input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> Other <br/>
-                    
+                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}<br/>
+                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Female' : 'Femenino'}<br/>
+                        {
+                            //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> Other <br/>
+                        }
                         <br/>
-                        <label>Level of Education:</label>
+                        <label>{this.props.lang === 'English' ? 'Level of Education' : 'Nivel de Educación'}:</label>
                         <br/>
-                        <input type="radio" name="levelOfEdu" value= "AS" checked={this.state.levelOfEdu === 'AS'} onChange = {this.onLOEChange}/> Associate Degree<br/>
-                        <input type="radio" name="levelOfEdu" value= "BSD" checked={this.state.levelOfEdu === 'BSD'} onChange = {this.onLOEChange}/> Bachelor's Degree<br/>
-                        <input type="radio" name="levelOfEdu" value= "MSD" checked={this.state.levelOfEdu === 'MSD'} onChange = {this.onLOEChange}/> Master's Degree<br/>
-                        <input type="radio" name="levelOfEdu" value= "PHD" checked={this.state.levelOfEdu === 'PHD'} onChange = {this.onLOEChange}/> Doctor of Philosophy<br/>
-                        <input type="radio" name="levelOfEdu" value= "EDD" checked={this.state.levelOfEdu === 'EDD'} onChange = {this.onLOEChange}/> Doctor of Education<br/>
-                        <input type="radio" name="levelOfEdu" value= "NA" checked={this.state.levelOfEdu === 'NA'} onChange = {this.onLOEChange}/> None<br/>
+                        <input type="radio" name="levelOfEdu" value= "AS" checked={this.state.levelOfEdu === 'AS'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Associate\'s Degree' : 'Grado Asociado'}<br/>
+                        <input type="radio" name="levelOfEdu" value= "BSD" checked={this.state.levelOfEdu === 'BSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Bachellor\'s Degree' : 'Bachillerato'}<br/>
+                        <input type="radio" name="levelOfEdu" value= "MSD" checked={this.state.levelOfEdu === 'MSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Master\'s Degree' : 'Maestría'}<br/>
+                        <input type="radio" name="levelOfEdu" value= "PHD" checked={this.state.levelOfEdu === 'PHD'} onChange = {this.onLOEChange}/>{this.props.lang === 'English' ? 'Doctor of Philosophy' : 'Doctor en Filosofía'}<br/>
+                        <input type="radio" name="levelOfEdu" value= "EDD" checked={this.state.levelOfEdu === 'EDD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Doctor of Education' : 'Doctor en Educación'}<br/>
+                        <input type="radio" name="levelOfEdu" value= "NA" checked={this.state.levelOfEdu === 'NA'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'None' : 'Ninguna'}<br/>
                      
                         <br/>
-                        <label>User Type:</label>
+                        <label>{this.props.lang === 'English' ? 'User Type' : 'Tipo de Usuario'}:</label>
                         <br/>
-                        <input type="radio" name="type" value= "school" checked={this.state.type === 'school'} onChange = {this.onTypeChange}/> School<br/>
+                        <input type="radio" name="type" value= "school" checked={this.state.type === 'school'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'School' : 'Escuela'}<br/>
                         <input type="radio" name="type" value= "mentor" checked={this.state.type === 'mentor'} onChange = {this.onTypeChange}/> Mentor<br/>
-                        <input type="radio" name="type" value= "admin" checked={this.state.type === 'admin'} onChange = {this.onTypeChange}/> Admin<br/>
+                        <input type="radio" name="type" value= "admin" checked={this.state.type === 'admin'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Admin' : 'Administrador'}<br/>
                         
                         <br/>
-                        <label>Institution ID:</label>
+                        <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                         <input type="text" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
                         <br/>
                         <br/>
-                        <button onClick={this.onSubmit}>Create</button>
+                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Create' : 'Crear'}</button>
                     </div>
 
                     </form>
@@ -167,4 +169,11 @@ export default class CreateUserForm extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+export default connect(mapStateToProps)(CreateUserForm);
 

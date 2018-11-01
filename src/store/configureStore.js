@@ -8,6 +8,7 @@ import assignRecommendationReducer from '../reducers/assignRecommendation';
 import recommendationsReducer from '../reducers/recommendations';
 import questionsReducer from '../reducers/question';
 import classesReducer from '../reducers/classes';
+import planReducer from '../reducers/plan';
 
 //Store creation
 
@@ -22,7 +23,8 @@ export default () => {
             assignRecommendation: assignRecommendationReducer,
             recommendations: recommendationsReducer,
             questions: questionsReducer,
-            classes: classesReducer
+            classes: classesReducer,
+            plan: planReducer
         })
     );
 

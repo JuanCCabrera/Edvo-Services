@@ -21,11 +21,9 @@ class ManageRecommendationsList extends React.Component{
         this.currentPage = 1;
         const displayedRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedRecommendations: displayedRecommendations});
-        console.log('mounting');
     }
 
     componentDidUpdate(prevProps){
-        console.log('updating');
         if(prevProps.recommendation !== this.props.recommendation){
             if(this.state.displayedRecommendations.length === 1 && this.currentPage !== 1){
                 this.handlePageChange(this.currentPage-1);

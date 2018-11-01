@@ -61,7 +61,7 @@ class PendingQuestionsList extends React.Component {
                     />
                 }
                 {(this.props.questions.length === 0) &&
-                    <p>There are no registered users in the system.</p>
+                    <p>There are currently no questions pending answers.</p>
                 }
             </div>
         );

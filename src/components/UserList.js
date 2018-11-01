@@ -64,7 +64,7 @@ class UserList extends React.Component{
                     />
                 }
                 {(this.props.users.length === 0) &&
-                    <p>There are no registered users in the system.</p>
+                    <p>There are no registered users to manage.</p>
                 }
             </div>
         )

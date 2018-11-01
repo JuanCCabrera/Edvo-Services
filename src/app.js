@@ -14,6 +14,7 @@ import {addSchool} from './actions/school';
 import {loadRecommendation} from './actions/recommendations';
 import { loadQuestion } from './actions/question';
 import { loadClass } from './actions/classes';
+import { loadPlan } from './actions/plan';
 
 const store = configureStore();
 
@@ -45,6 +46,9 @@ store.dispatch(loadQuestion({question: '???', askedDate: '2018-10-27 12:24:24', 
 
 store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'Calculus I', format: 'Classroom', language: 'Spanish', level: 'University/College', groupSize: '1 - 10', topicA: 'Diff Equations', topicB: '2D Integrals'}));
 store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History I', format: 'Online', language: 'English', level: '7th - 8th grade', groupSize: '11 - 20', topicA: 'World War 1', topicB: 'World War 2'}));
+
+store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
+
 class App extends React.Component{
     async componentDidMount() {
         try{

@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
  const AppUsers = (props) => (
         <div>
             <AdminButtonList/>
-            <Link to='/admin/settings/users/add'><button>Create New User</button></Link>
+            <Link to='/admin/settings/users/add'><button>{props.lang === 'English' ? 'Create New User' : 'Crear Nuevo Usuario'}</button></Link>
             <UserList/>
         </div>
  );

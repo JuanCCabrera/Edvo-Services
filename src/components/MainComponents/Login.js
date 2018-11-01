@@ -37,14 +37,14 @@ const LoginPage = (props) => (
 
         {
             !auth0Client.isAuthenticated() &&
-            <button onClick={auth0Client.signIn}>Sign In</button>
+            <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Registrarse'}</button>
           }
           {
             auth0Client.isAuthenticated() &&
             <div>
               <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-              <button onClick={() => {signOut(props)}}>Sign Out</button>
-              <button onClick={() => {reset()}}>Reset Password</button>
+              <button onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
+              <button onClick={() => {reset()}}>{props.lang === 'English' ? 'Reset Password' : 'Restablecer Contraseña'}</button>
             </div>
           }
 
