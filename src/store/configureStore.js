@@ -10,6 +10,7 @@ import questionsReducer from '../reducers/question';
 import classesReducer from '../reducers/classes';
 import planReducer from '../reducers/plan';
 import teacherMetricsReducer from '../reducers/teacherMetrics';
+import askQuestionReducer from '../reducers/askQuestion';
 
 //Store creation
 
@@ -26,7 +27,8 @@ export default () => {
             questions: questionsReducer,
             classes: classesReducer,
             plan: planReducer,
-            teacherMetrics: teacherMetricsReducer
+            teacherMetrics: teacherMetricsReducer,
+            askQuestion: askQuestionReducer
         })
     );
 

@@ -15,6 +15,8 @@ import {loadRecommendation} from './actions/recommendations';
 import { loadQuestion } from './actions/question';
 import { loadClass } from './actions/classes';
 import { loadPlan } from './actions/plan';
+import {loadTeacherDaysInPlatform, loadTeacherRecentRecommendation} from './actions/teacherMetrics';
+import {loadTeacherTopRecommendation} from './actions/teacherMetrics';
 
 const store = configureStore();
 
@@ -42,12 +44,21 @@ store.dispatch(loadQuestion({question: 'What is an emu?', askedDate: '2018-10-27
 store.dispatch(loadQuestion({question: 'How can I integrate technolgy into the classroom?', askedDate: '2018-10-28 06:20:25', subject: 'Technology Integration Question', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'Hi there! How do I use the recommendations page?', askedDate: '2018-10-27 12:24:24', subject: 'Recommendation Page Question', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'What kind of technology should I use in class?', askedDate: '2018-10-28 06:20:25', subject: 'Types of Tech for Classrooms', userId: uuid()}));
-store.dispatch(loadQuestion({question: '???', askedDate: '2018-10-27 12:24:24', subject: 'Best way to get students to listen in class', userId: uuid()}));
+store.dispatch(loadQuestion({question: 'What should I do?', askedDate: '2018-10-27 12:24:24', subject: 'Best way to get students to listen in class', userId: uuid()}));
 
 store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'Calculus I', format: 'Classroom', language: 'Spanish', level: 'University/College', groupSize: '1 - 10', topicA: 'Diff Equations', topicB: '2D Integrals'}));
 store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History I', format: 'Online', language: 'English', level: '7th - 8th grade', groupSize: '11 - 20', topicA: 'World War 1', topicB: 'World War 2'}));
 
 store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
+
+store.dispatch(loadTeacherDaysInPlatform({daysInPlatform: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+
+store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
 
 class App extends React.Component{
     async componentDidMount() {

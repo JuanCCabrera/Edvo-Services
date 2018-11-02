@@ -1,6 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import TopRecommendationsList from './TopRecommendationsList';
+import RecentRecommendationsList from './RecentRecommendationsList';
+import AskQuestionForm from './AskQuestionForm';
+import { sendAskedQuestion } from '../../actions/askQuestion';
 
 const TeacherHome = (props) => (
     <div>
@@ -10,42 +14,103 @@ const TeacherHome = (props) => (
         {props.lang === 'English' ? 
         <div>
             <h2>Days in Platform</h2>
+            <h2>{props.teacherMetrics.daysInPlatform}</h2>
         </div>
         : 
         <div>
             <h2>Días en Plataforma</h2>
+            <h2>{props.teacherMetrics.daysInPlatform}</h2>
         </div>}
 
-        <NavLink to="/recommendations/assign" activeClassName="is-active" exact={true}>
+        <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
-                <h2>Manage</h2>
-                <span>BOOK_IMG</span>
-                <h2>Recommendations</h2>
+                <h2>Recommendations Read</h2>
+                {
+                    //NUMBER OF RECOMMENDATIONS READ
+                }
             </div>
             : 
             <div>
-                <h2>Manejar</h2>
-                <span>BOOK_IMG</span>
-                <h2>Recomendaciones</h2>
+                <h2>Recomendaciones Leídas</h2>
+                {
+                    //NUMBER OF RECOMMENDATIONS READ
+                }
             </div>}
         </NavLink>
 
-        <NavLink to="/staff/questions" activeClassName="is-active" exact={true}>
+        <NavLink to="/teacher/questions" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
-                <h2>Answer</h2>
-                <span>QUESTION_MARK_IMG</span>
-                <h2>Questions</h2>
+                <h2>Questions Asked</h2>
+                {
+                    //NUMBER OF QUESTIONS ASKED
+                }
+                <h2></h2>
             </div>
             : 
             <div>
-                <h2>Contestar</h2>
-                <span>QUESTION_MARK_IMG</span>
-                <h2>Preguntas</h2>
+                <h2>Preguntas Hechas</h2>
+                {
+                    //NUMBER OF RECOMMENDATIONS READ
+                }
             </div>}
         </NavLink>
-            
+
+        <div>
+            {props.lang === 'English' ? 
+                <div> 
+                    <h3>
+                        Most Recent Recommendations
+                    </h3>
+                </div>
+                :
+                <div>
+                    <h3>
+                        Recomendaciones Más Recientes
+                    </h3>
+                </div>
+            }
+            <RecentRecommendationsList/>
+        </div>
+
+        <div>
+            {props.lang === 'English' ? 
+                <div> 
+                    <h3>
+                        Top Rated Recommendations
+                    </h3>
+                </div>
+                :
+                <div>
+                    <h3>
+                        Recomendaciones Altamente Clasificadas
+                    </h3>
+                </div>
+            }
+            <TopRecommendationsList/>
+        </div>
+
+        <div>
+            {props.lang === 'English' ? 
+                <div> 
+                    <h3>
+                        Ask a Question
+                    </h3>
+                </div>
+                :
+                <div>
+                    <h3>
+                        Envíe una Pregunta
+                    </h3>
+                </div>
+            }
+            <AskQuestionForm 
+            onSubmit={(question) => {
+                props.dispatch(sendAskedQuestion(question));
+            }}/>
+        </div>
+
         </div>
     </div>
 );

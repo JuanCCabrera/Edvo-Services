@@ -6,11 +6,23 @@ const teacherMetricsReducerDefaultState = {
 
 const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action) => {
     switch(action.type){
-        case 'LOAD_TEACHER_METRICS':
+        case 'LOAD_TEACHER_DAYS_IN_PLATFORM':
             return {
                 daysInPlatform: action.daysInPlatform,
-                topRecommendations: action.topRecommendations,
-                mostRecentrecommendations: action.mostRecentrecommendations
+                topRecommendations: [...state.topRecommendations],
+                mostRecentrecommendations: [...state.mostRecentrecommendations]
+            }
+        case 'LOAD_TEACHER_TOP_RECOMMENDATION':
+            return {
+                daysInPlatform: state.daysInPlatform,
+                topRecommendations: [...state.topRecommendations, action.topRecommendation],
+                mostRecentrecommendations: [...state.mostRecentrecommendations]
+            }
+        case 'LOAD_TEACHER_RECENT_RECOMMENDATION':
+            return{
+                daysInPlatform: state.daysInPlatform,
+                topRecommendations: [...state.topRecommendations],
+                mostRecentrecommendations: [...state.mostRecentrecommendations, action.mostRecentrecommendation]
             }
         default: 
             return {...state}

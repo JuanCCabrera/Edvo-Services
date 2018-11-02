@@ -33,6 +33,8 @@ import EditRecommendation from '../components/RecommendationComponents/EditRecom
 
 import ManageQuestions from '../components/QuestionComponents/ManageQuestions';
 import AnswerQuestionForm from '../components/QuestionComponents/AnswerQuestionForm';
+import TeacherRecommendations from '../components/TeacherComponents/TeacherRecommendations';
+import TeacherQuestions from '../components/TeacherComponents/TeacherQuestions';
 
 
 const AppRouter = () => (
@@ -55,6 +57,8 @@ const AppRouter = () => (
                 <Route path='/teacher/settings/info' component={TeacherProfile}/>
                 <Route path='/teacher/settings/classes' component={Classes}/>
                 <Route path='/teacher/settings/plans' component={Plan}/>
+                <Route path='/teacher/recommendations' component={TeacherRecommendations}/>
+                <Route path='/teacher/questions' component={TeacherQuestions}/>
 
                 {
                     //Mentor
