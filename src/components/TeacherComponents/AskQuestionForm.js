@@ -50,6 +50,7 @@ class AskQuestionForm extends React.Component{
                     onChange = {this.onBodyChange}
                     />
                     <br/>
+                    <p>{this.state.askQuestionError}</p>
                     <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</button>
                 </form>
              </div>

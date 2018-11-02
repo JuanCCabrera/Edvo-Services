@@ -17,6 +17,8 @@ import { loadClass } from './actions/classes';
 import { loadPlan } from './actions/plan';
 import {loadTeacherDaysInPlatform, loadTeacherRecentRecommendation} from './actions/teacherMetrics';
 import {loadTeacherTopRecommendation} from './actions/teacherMetrics';
+import {loadTeacherRecommendation} from './actions/teacherRecommendations';
+import {loadTeacherQuestion} from './actions/teacherQuestions';
 
 const store = configureStore();
 
@@ -52,13 +54,22 @@ store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History
 store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
 
 store.dispatch(loadTeacherDaysInPlatform({daysInPlatform: 5}));
-store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
-store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
-store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '2018-10-28', rating: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-17', rating: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '2018-10-30', rating: 5}));
 
-store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
-store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
-store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '10-10-2018', rating: 5}));
+store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '2018-10-30', rating: 5}));
+store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-29', rating: 5}));
+store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '2018-10-13', rating: 5}));
+
+store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '2018-10-27', read: false, rating: 5}));
+store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-26', read: true, rating: 5}));
+store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '2018-10-25', read: true, rating: 5}));
+store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Analyzing Class Attendance', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze class attendance using this video!', multimedia: 'multimediaLink', date: '2018-10-24', read: false, rating: 5}));
+store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Why Give Quizzes?', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze the option to give quizzes by using this video!', multimedia: 'multimediaLink', date: '2018-10-10', read: true, rating: 5}));
+
+store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-11', rate: 1, favorite: false, read: false}));
+store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10', subject: 'Updated Material', question: 'How can I update material for my class?', answer: 'Just do it!', answerDate: '2018-10-11', rate: 1, favorite: false, read: true}));
 
 class App extends React.Component{
     async componentDidMount() {

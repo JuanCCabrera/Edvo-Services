@@ -8,7 +8,7 @@ const PendingQuestionsListItem = (props) => (
         <h4>{props.question.subject}</h4>
         <h5>{props.question.question}</h5>
         <button onClick={() => {
-            props.dispatch(removeQuestion({askedDate: props.question.askedDate, userId: props.question.userId}));
+            props.dispatch(removeQuestion({questionID: props.question.questionID, askedDate: props.question.askedDate, userId: props.question.userId}));
         }}>{props.lang === 'English' ? 'Remove' : 'Remover'}</button>
         <Link to={`/staff/questions/${props.question.askedDate}/${props.question.userId}`}><button>{props.lang === 'English' ? 'Answer' : 'Responder'}</button></Link>
     </div>

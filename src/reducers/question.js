@@ -7,7 +7,8 @@ const questionsReducer = (state = questionReducerDefaultState, action) => {
         case 'CREATE_QUESTION':
             return [...state];
         case 'REMOVE_QUESTION':
-            return state.filter(({askedDate,userId}) => askedDate !== action.id && userId !== action.userId);
+            //TO-DO: SPEAK TO TAMARA ABOUT THIS!!!!!******
+            return state.filter(({questionID, askedDate,userId}) => questionID !== action.questionID);
         case 'ANSWER_QUESTION':
             return [...state];
         default: 
@@ -19,6 +20,7 @@ export default questionsReducer;
 
 /*
     question_item: {
+        questionID: '',
         question: '',
         askedDate: '',
         subject: '',

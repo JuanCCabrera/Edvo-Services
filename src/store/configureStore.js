@@ -11,6 +11,8 @@ import classesReducer from '../reducers/classes';
 import planReducer from '../reducers/plan';
 import teacherMetricsReducer from '../reducers/teacherMetrics';
 import askQuestionReducer from '../reducers/askQuestion';
+import teacherRecommendationsReducer from '../reducers/teacherRecommendations';
+import teacherQuestionsReducer from '../reducers/teacherQuestion';
 
 //Store creation
 
@@ -28,7 +30,9 @@ export default () => {
             classes: classesReducer,
             plan: planReducer,
             teacherMetrics: teacherMetricsReducer,
-            askQuestion: askQuestionReducer
+            askQuestion: askQuestionReducer,
+            teacherRecommendations: teacherRecommendationsReducer,
+            teacherQuestions: teacherQuestionsReducer
         })
     );
 
