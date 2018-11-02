@@ -47,7 +47,7 @@ class RecommendationsList extends React.Component{
     render(){
         return(
             <div>
-                <h3>Recommendations</h3>
+                <h3>{this.props.lang === 'English' ? 'Recomendations' : 'Recomendaciones'}</h3>
                 {this.state.displayedRecommendations.map((reco) => {
                     return <RecommendationListItem key={reco.id} reco={reco} selectedRecommendation={this.props.assigned.recoID}/>
                 })}
@@ -61,12 +61,17 @@ class RecommendationsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
-                {(this.props.recommendation.length === 0) &&
+                {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
                     <div>
                         <p>There are no available recommendations for assignment. Please create a new recommendation to assign.</p>
                         <Link to='/recommendations/create'><button>Create New Recommendation</button></Link>
                     </div>
-                }
+                    :
+                    <div>
+                        <p>No hay recomendaciones disponibles para asignar. Si desea asignar una recomendación al usuario seleccionado, cree una recomendación nueva para asignar.</p>
+                        <Link to='/recommendations/create'><button>Crear Nueva Recomendación</button></Link>
+                    </div>
+                )}
             </div>
         )
     }
@@ -75,7 +80,8 @@ class RecommendationsList extends React.Component{
 const mapStateToProps = (state) => {
     return{
         recommendation: state.recommendations,
-        assigned: state.assignRecommendation
+        assigned: state.assignRecommendation,
+        lang: state.language.lang
     }
 }
 

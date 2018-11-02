@@ -96,7 +96,7 @@ class CreateUserForm extends React.Component{
                 <div>
                     <form onSubmit={this.onSubmit}>
                     <div>
-                        <h2> {props.lang === 'English' ? 'Create New User' : 'Crear Nuevo Usuario'} </h2>
+                        <h2> {this.props.lang === 'English' ? 'Create New User' : 'Crear Nuevo Usuario'} </h2>
                         <br/>
 
                         <label>Email:</label>

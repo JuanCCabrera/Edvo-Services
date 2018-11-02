@@ -8,8 +8,13 @@ const RecommendationListItem = (props) => (
         <h5>{props.reco.header}</h5>
         <button onClick={() => {
             props.dispatch(selectRecommendation({recoID: props.reco.id}));
-        }}>Select</button>
+        }}>{props.lang === 'English' ? 'Select' : 'Seleccionar'}</button>
     </div>
 );
 
-export default connect()(RecommendationListItem);
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+export default connect(mapStateToProps)(RecommendationListItem);

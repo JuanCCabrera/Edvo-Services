@@ -9,11 +9,17 @@ const PendingQuestionsListItem = (props) => (
         <h5>{props.question.question}</h5>
         <button onClick={() => {
             props.dispatch(removeQuestion({askedDate: props.question.askedDate, userId: props.question.userId}));
-        }}>Remove</button>
-        <Link to={`/staff/questions/${props.question.askedDate}/${props.question.userId}`}><button>Answer</button></Link>
+        }}>{props.lang === 'English' ? 'Remove' : 'Remover'}</button>
+        <Link to={`/staff/questions/${props.question.askedDate}/${props.question.userId}`}><button>{props.lang === 'English' ? 'Answer' : 'Responder'}</button></Link>
     </div>
 );
 
-export default connect()(PendingQuestionsListItem);
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(PendingQuestionsListItem);
 
 

@@ -46,7 +46,7 @@ class RecommendationsUserList extends React.Component{
     render(){
         return(
             <div>
-                <h3>Users</h3>
+                <h3>{this.props.lang === 'English' ? 'Users' : 'Usuarios'}</h3>
                 {this.state.displayedUsers.map((user) => {
                     return <RecommendationsUserListItem key={user.id} user={user} selectedUser={this.props.assigned.userID}/>
                 })}
@@ -59,9 +59,11 @@ class RecommendationsUserList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
-                {(this.props.users.length === 0) &&
+                {(this.props.users.length === 0) && (this.props.lang === 'English' ?
                     <p>There are no registered users in the system.</p>
-                }
+                    :
+                    <p>No hay usuarios registrados en el sistema.</p>
+                )}
             </div>
         )
     }
@@ -70,7 +72,8 @@ class RecommendationsUserList extends React.Component{
 const mapStateToProps = (state) => {
     return{
         users: state.users,
-        assigned: state.assignRecommendation
+        assigned: state.assignRecommendation,
+        lang: state.language.lang
     }
 }
 

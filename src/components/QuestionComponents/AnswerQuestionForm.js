@@ -35,14 +35,14 @@ class AnswerQuestionForm extends React.Component {
             <div>
                 <form onSubmit={this.onSubmit}>
                     <QuestionButtonList/>
-                    <h3> Question </h3>
+                    <h3> {this.props.lang === 'English' ? 'Question' : 'Pregunta'} </h3>
                         {this.props.question.question}
-                    <h3> Answer </h3>
+                    <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
                         <textarea type="text" value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
                         <br/>
                         {this.state.answerError}
                         <br/>
-                        <button onClick={this.onSubmit}>Answer</button>
+                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Answer' : 'Responder'}</button>
                 </form>
             </div>
         );
@@ -54,7 +54,8 @@ const mapStateToProps = (state, props) => {
     return{
         question: state.questions.find((question) => {
             return ((question.askedDate == props.match.params.askedDate) && (question.userId === props.match.params.userId));
-        })
+        }),
+        lang: state.language.lang
     };
 };
 

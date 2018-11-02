@@ -47,7 +47,7 @@ class ManageRecommendationsList extends React.Component{
     render(){
         return(
             <div>
-                <h3>Recommendations</h3>
+                <h3>{this.props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</h3>
                 {this.state.displayedRecommendations.map((reco) => {
                     return <ManageRecommendationsListItem key={reco.id} reco={reco}/>
                 })}
@@ -62,10 +62,15 @@ class ManageRecommendationsList extends React.Component{
                     />
                 }
                 {(this.props.recommendation.length === 0) &&
+                    (this.props.lang === 'English' ?
                     <div>
                         <p>There are no available recommendations to manage.</p>
                         <Link to='/recommendations/create'><button>Create New Recommendation</button></Link>
-                    </div>
+                    </div> : 
+                    <div>
+                        <p>No hay recomendaciones disponibles para administrar.</p>
+                        <Link to='/recommendations/create'><button>Crear Nueva Recomendación</button></Link>
+                    </div>)
                 }
             </div>
         )
@@ -75,7 +80,8 @@ class ManageRecommendationsList extends React.Component{
 const mapStateToProps = (state) => {
     return{
         recommendation: state.recommendations,
-        assigned: state.assignRecommendation
+        assigned: state.assignRecommendation,
+        lang: state.language.lang
     }
 }
 

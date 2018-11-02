@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 const EditRecommendation = (props) => (
     <div>
         <RecommendationButtonList/>
-        <h2> Edit Recommendation </h2>
+        <h2> {props.lang === 'English' ? 'Edit Recommendation' : 'Modificar Recomendación'} </h2>
         <CreateRecommendationForm 
         reco={props.recommendation}
         onSubmit={(recommendation) => {
@@ -21,7 +21,8 @@ const mapStateToProps = (state, props) => {
     return{
         recommendation: state.recommendations.find((reco) => {
             return reco.id === props.match.params.id;
-        })
+        }),
+        lang: state.language.lang
     };
 };
 

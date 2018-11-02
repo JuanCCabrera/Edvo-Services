@@ -52,20 +52,20 @@ class CreateInstitutionForm extends React.Component{
                 <div>
                     <form onSubmit={this.onSubmit}>
                     <div>
-                        <h2>{props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}</h2>
-                        <label>{props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
+                        <h2>{this.props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}</h2>
+                        <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                         <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
 
                         <br/>
-                        <label>{props.lang === 'English' ? 'Location' : 'Localización'}:</label>
+                        <label>{this.props.lang === 'English' ? 'Location' : 'Localización'}:</label>
                         <input type="text" placeholder = "Location" value = {this.state.location} onChange={this.onLocationChange}/>
         
                         <br/>
-                        <label>{props.lang === 'English' ? 'School Type' : 'Tipo de Escuela'}:</label>
+                        <label>{this.props.lang === 'English' ? 'School Type' : 'Tipo de Escuela'}:</label>
                         <br/>
-                        <input type="radio" name="type" value= "public" checked={this.state.type === 'public'} onChange = {this.onTypeChange}/> {props.lang === 'English' ? 'Public' : 'Pública'} {' '}
-                        <input type="radio" name="type" value= "private" checked={this.state.type === 'private'} onChange = {this.onTypeChange}/> {props.lang === 'English' ? 'Private' : 'Privada'} {' '}
-                        <input type="radio" name="type" value= "independent" checked={this.state.type === 'independent'} onChange = {this.onTypeChange}/> {props.lang === 'English' ? 'Independent' : 'Independiente'} {' '}
+                        <input type="radio" name="type" value= "public" checked={this.state.type === 'public'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Pública'} {' '}
+                        <input type="radio" name="type" value= "private" checked={this.state.type === 'private'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privada'} {' '}
+                        <input type="radio" name="type" value= "independent" checked={this.state.type === 'independent'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'} {' '}
                     
                         <br/>
                         <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>

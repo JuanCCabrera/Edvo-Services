@@ -47,7 +47,7 @@ class PendingQuestionsList extends React.Component {
     render(){
         return (
             <div>
-                <h3>Pending Questions</h3>
+                <h3>{this.props.lang === 'English' ? 'Pending Questions' : 'Preguntas Pendientes'}</h3>
                 {this.state.displayedQuestions.map((question) => {
                     return <PendingQuestionsListItem key={uuid()} question={question}/>
                 })}
@@ -61,7 +61,14 @@ class PendingQuestionsList extends React.Component {
                     />
                 }
                 {(this.props.questions.length === 0) &&
-                    <p>There are currently no questions pending answers.</p>
+                    this.props.lang === 'English' ? 
+                    <div>
+                        <p>There are currently no questions pending answers.</p>
+                    </div> : 
+                    <div>
+                        <p>Actualmente no hay preguntas con respuestas pendientes.</p>
+                    </div>}
+                    
                 }
             </div>
         );
@@ -70,7 +77,8 @@ class PendingQuestionsList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        questions: state.questions
+        questions: state.questions,
+        lang: state.language.lang
     }
 };
 

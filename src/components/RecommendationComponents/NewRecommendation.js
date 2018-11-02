@@ -7,11 +7,16 @@ import {connect} from 'react-redux';
 const NewRecommendation = (props) => (
     <div>
         <RecommendationButtonList/>
-        <h2> Create Recommendation </h2>
+        <h2> {props.lang === 'English' ? 'Create Recommendation' : 'Crear Recomendación'} </h2>
         <CreateRecommendationForm onSubmit={(recommendation) => {
             props.dispatch(createRecommendation(recommendation));
         }}/>
     </div>
 );
 
-export default connect()(NewRecommendation);
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+export default connect(mapStateToProps)(NewRecommendation);

@@ -10,15 +10,21 @@ const RecommendationsUserListItem = (props) => (
         {
             //<h6>Has weekly recommendation: {props.user.weeklyReco ? 'Yes' : 'No'}</h6>
         }
-        <h6>Categories: {' '}
+        <h6>{props.lang === 'English' ? 'Categories' : 'Categorías'}: {' '}
         {props.user.categories.map((category) => {
             return (<span key={uuid()}>{category + ' '}</span>)
         })}
         </h6>
         <button onClick={() => {
             props.dispatch(selectUser({userID: props.user.id}));
-        }}>Select</button>
+        }}>{props.lang === 'English' ? 'Select' : 'Seleccionar'}</button>
     </div>
 );
 
-export default connect()(RecommendationsUserListItem);
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(RecommendationsUserListItem);

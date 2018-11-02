@@ -46,7 +46,7 @@ class SchoolList extends React.Component{
     render(){
         return(
             <div>
-                <h3>Institutions</h3>
+                <h3>{this.props.lang === 'English' ? 'Institutions' : 'Instituciones'}</h3>
                 {this.state.displayedSchools.map((school) => {
                     return <SchoolListItem key={school.id} school={school}/>
                 })}
@@ -60,10 +60,15 @@ class SchoolList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
-                {(this.props.schools.length === 0) &&
+                {(this.props.schools.length === 0) && (this.props.lang === 'English' ?
                     <div>
                         <p>There are no registered institutions to manage.</p>
                     </div>
+                    :
+                    <div>
+                        <p>No hay instituciones registradas para administrar.</p>
+                    </div>
+                )
                 }
             </div>
         )
@@ -72,7 +77,8 @@ class SchoolList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        schools: state.schools
+        schools: state.schools,
+        lang: state.language.lang
     }
 }
 

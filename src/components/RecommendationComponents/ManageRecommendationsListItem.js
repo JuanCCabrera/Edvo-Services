@@ -9,10 +9,16 @@ const ManageRecommendationsListItem = (props) => (
         <h5>{props.reco.header}</h5>
         <button onClick={() => {
             props.dispatch(removeRecommendation({id: props.reco.id}));
-        }}>Remove</button>
+        }}>{props.lang === 'English' ? 'Remove' : 'Remover'}</button>
 
-        <Link to={`/recommendations/edit/${props.reco.id}`}><button>Edit</button></Link>
+        <Link to={`/recommendations/edit/${props.reco.id}`}><button>{props.lang === 'English' ? 'Edit' : 'Modificar'}</button></Link>
     </div>
 );
 
-export default connect()(ManageRecommendationsListItem);
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(ManageRecommendationsListItem);

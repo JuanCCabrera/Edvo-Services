@@ -18,16 +18,17 @@ import {connect} from 'react-redux';
             <div>
                 <button disabled={!props.assigned.userID && !props.assigned.recoID} onClick={() => {
                     props.dispatch(clearSelection());
-                }}>Clear Selection</button>
+                }}>{props.lang === 'English' ? 'Clear Selection' : 'Deshacer Selección'}</button>
                 <button disabled={!props.assigned.userID || !props.assigned.recoID} onClick={() => {
                     props.dispatch(assignRecommendation());
-                }}>Assign Recommendation</button>  
+                }}>{props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'}</button>  
             </div>
         </div>
  );
 
 const mapStateToProps = (state) => ({
-    assigned: state.assignRecommendation
+    assigned: state.assignRecommendation,
+    lang: state.language.lang
 });
 
  export default connect(mapStateToProps)(AssignRecommendations);

@@ -47,7 +47,7 @@ class UserList extends React.Component{
     render(){
         return(
             <div>
-                <h3>Users</h3>
+                <h3>{this.props.lang === 'English' ? 'Users' : 'Usuarios'}</h3>
                 {this.state.displayedUsers.map((user) => {
                     return <UserListItem key={user.id} user={user} 
                     userRemoval={() => {
@@ -63,8 +63,11 @@ class UserList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
-                {(this.props.users.length === 0) &&
+                {(this.props.users.length === 0) && (this.props.lang === 'English' ?
                     <p>There are no registered users to manage.</p>
+                    :
+                    <p>No hay usuarios registrados para administrar.</p>
+                )
                 }
             </div>
         )
@@ -73,7 +76,8 @@ class UserList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        users: state.users
+        users: state.users,
+        lang: state.language.lang
     }
 }
 
