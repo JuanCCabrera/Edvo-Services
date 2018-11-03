@@ -1,5 +1,3 @@
-import uuid from 'uuid';
-
 export const loadQuestion = (
     {
         question = '',
@@ -10,7 +8,6 @@ export const loadQuestion = (
         return {
             type: 'LOAD_QUESTION',
             question_item: {
-                questionID: uuid(),
                 question,
                 askedDate,
                 subject,
@@ -29,7 +26,6 @@ export const createQuestion = (
         return {
             type: 'CREATE_QUESTION',
             question_item: {
-                questionID: uuid(),
                 question,
                 askedDate,
                 subject,
@@ -38,19 +34,17 @@ export const createQuestion = (
         }
 };
 
-export const removeQuestion = ({questionID, askedDate, userId} = {}) => {
+export const removeQuestion = ({askedDate, userId} = {}) => {
     return {
         type: 'REMOVE_QUESTION',
-        questionID: questionID,
         askedDate: askedDate,
         userId: userId
     }
 };
 
-export const answerQuestion = ({questionID, askedDate, userId, answer} = {}) => {
+export const answerQuestion = ({askedDate, userId, answer} = {}) => {
     return{
         type: 'ANSWER_QUESTION',
-        questionID: questionID,
         askedDate: askedDate,
         userId: userId,
         answer: answer
