@@ -115,8 +115,8 @@ const TeacherHome = (props) => (
 const mapStateToProps = (state) => {
     return {
         teacherMetrics: state.teacherMetrics,
-        teacherRecommendations: state.teacherRecommendations,
-        teacherQuestions: state.teacherQuestions,
+        teacherRecommendations: state.teacherRecommendations.recommendations,
+        teacherQuestions: state.teacherQuestions.teacherQuestions,
         lang: state.language.lang
     };
 };
