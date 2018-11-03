@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
 import {connect} from 'react-redux';
+import { rateQuestion } from '../../actions/teacherQuestions';
+import StarRatingComponent from 'react-star-rating-component';
 
 const QuestionModal = (props) => (
     <Modal
@@ -12,6 +14,14 @@ const QuestionModal = (props) => (
         <h3>{props.question.question}</h3>
         <p>{props.question.answer}</p>
         <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.question.askedDate}</h4>
+        <h4>{props.lang === 'English' ? 'Rate: ': 'Clasificar: '}</h4>
+        <StarRatingComponent
+            name="rate"
+            starCount={5}
+            value={props.question.rate}
+            onStarClick={(nextValue, prevValue, name) => {props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))}}
+        />
+        <br/>
         <button onClick = {props.clearSelectedQuestion}>{props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
     </Modal>
 );

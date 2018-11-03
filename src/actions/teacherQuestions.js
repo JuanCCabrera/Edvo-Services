@@ -50,3 +50,11 @@ export const selectQuestion = (
 
 export const clearSelectedQuestion = () => ({type:'CLEAR_SELECTED_QUESTION'});
 
+export const rateQuestion = ({askedDate = '', rate = 0} = {}) => (
+    {
+        type:'RATE_QUESTION',
+        askedDate: askedDate,
+        rate: rate
+});
+
+

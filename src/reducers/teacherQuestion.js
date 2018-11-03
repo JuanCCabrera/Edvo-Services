@@ -38,6 +38,19 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
                     read: false
                 }
             }
+        case 'RATE_QUESTION':
+            return{
+                teacherQuestions: state.teacherQuestions.map((question) => {
+                    if(question.askedDate === action.askedDate){
+                        question.rate = action.rate;
+                    }
+                    return question;
+                }),
+                selectedQuestion: {
+                    ...state.selectedQuestion,
+                    rate: action.rate
+                }
+            }
         default: 
             return {...state}
     }

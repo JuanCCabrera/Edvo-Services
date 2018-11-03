@@ -80,5 +80,12 @@ export const selectRecommendation = (
 
 export const clearSelectedRecommendation = () => ({type: 'CLEAR_SELECTED_RECOMMENDATION'});
 
+export const rateRecommendation = ({recoID = '', rate = 0} = {}) => (
+    {
+        type:'RATE_RECOMMENDATION',
+        recoID: recoID,
+        rate: rate
+});
+
 
 

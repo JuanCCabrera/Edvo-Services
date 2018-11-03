@@ -50,6 +50,25 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
                     rate: 0
                 }
             }
+        case 'RATE_RECOMMENDATION':
+            return{
+                recommendations: state.recommendations.map((reco) => {
+                    if(reco.recoID === action.recoID){
+                        reco.rate = action.rate;
+                    }
+                    return reco;
+                }),
+                favoriteRecommendations: state.favoriteRecommendations.map((reco) => {
+                    if(reco.recoID === action.recoID){
+                        reco.rate = action.rate;
+                    }
+                    return reco;
+                }),
+                selectedRecommendation: {
+                    ...state.selectedRecommendation,
+                    rate: action.rate
+                }
+            }
         default: 
             return {...state}
     }
