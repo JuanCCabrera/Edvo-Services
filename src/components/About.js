@@ -2,8 +2,15 @@ import React from 'react';
 import ContactForm from './ContactForm';
 import {connect} from 'react-redux';
 import {sendContactForm} from '../actions/contact';
+import Can from '../Can';
+import { Redirect } from "react-router-dom";
+import auth0Client from '../Auth';
 
 const AboutPage = (props) => (
+    <Can
+    role={auth0Client.getRole}
+    perform="school:home"
+    yes={() => (
     <div>
         <div>
             {props.lang === 'English' ? 
@@ -94,7 +101,11 @@ const AboutPage = (props) => (
             }}/>
         </div>
     </div>
-);
+    )}
+    no={() => <Redirect to="/" />}
+    />
+    );
+
 
 const mapStateToProps = (state) => {
     return {

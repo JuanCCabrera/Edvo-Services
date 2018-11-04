@@ -11,6 +11,11 @@ import SecuredRoute from '../SecuredRoute/SecuredRoute';
 import Callback from '../Callback';
 import Registration from '../components/MainComponents/Registration';
 
+import Classes from '../components/TeacherComponents/Classes';
+import Plan from '../components/TeacherComponents/Plan';
+import TeacherHome from '../components/TeacherComponents/TeacherHome';
+import TeacherProfile from '../components/TeacherComponents/TeacherProfile';
+
 import MentorHome from '../components/MentorComponents/MentorHome';
 import MentorProfile from '../components/MentorComponents/MentorProfile';
 
@@ -23,32 +28,45 @@ import AdminProfile from '../components/AdminComponents/AdminProfile';
 
 import RecommendationsControl from '../components/RecommendationComponents/RecommendationsControl';
 import NewRecommendation from '../components/RecommendationComponents/NewRecommendation';
+import ManageRecommendations from '../components/RecommendationComponents/ManageRecommendations';
+import EditRecommendation from '../components/RecommendationComponents/EditRecommendation';
+
+import ManageQuestions from '../components/QuestionComponents/ManageQuestions';
+import AnswerQuestionForm from '../components/QuestionComponents/AnswerQuestionForm';
+import TeacherRecommendations from '../components/TeacherComponents/TeacherRecommendations';
+import TeacherQuestions from '../components/TeacherComponents/TeacherQuestions';
+
 
 const AppRouter = () => (
     <BrowserRouter>
         <div>
             <Header/>
             <Switch>
-                {
-                    //http requests done: register
-                }
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage}/>
-                <Route path="/plans" component={PlansPage}/>
+                <SecuredRoute path="/plans" component={PlansPage}/>
                 <Route path="/login" component={LoginPage}/>
                 <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
 
                 {
+                    //Teacher
+                }
+                <Route path='/teacher/home' component={TeacherHome}/>
+                <Route path='/teacher/settings/info' component={TeacherProfile}/>
+                <Route path='/teacher/settings/classes' component={Classes}/>
+                <Route path='/teacher/settings/plans' component={Plan}/>
+                <Route path='/teacher/recommendations' component={TeacherRecommendations}/>
+                <Route path='/teacher/questions' component={TeacherQuestions}/>
+
+                {
                     //Mentor
-                    //http requests done: info
                 }
                 <Route path='/mentor/home' component={MentorHome}/>
                 <Route path='/mentor/settings' component={MentorProfile}/>
                 {
                     //Administrator
-                    //http requests done: info, users, schools
                 }
                 <Route exact path='/admin/settings/info' component={AdminProfile}/>
                 <Route exact path='/admin/settings/users' component={AppUsers}/>
@@ -58,11 +76,18 @@ const AppRouter = () => (
                 <Route path='/admin/home' component={AdminHome}/>
 
                 {
-                    //Recommendations
-                    //http requests done: create
+                    //Staff Recommendations
                 }
                 <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
                 <Route exact path='/recommendations/create' component={NewRecommendation}/>
+                <Route exact path='/recommendations/manage' component={ManageRecommendations}/>
+                <Route path="/recommendations/edit/:id" component={EditRecommendation}/>
+
+                {
+                    //Staff Questions
+                }
+                <Route exact path='/staff/questions' component={ManageQuestions}/>
+                <Route path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
 
                 <Route component={NotFoundPage}/>
             </Switch>

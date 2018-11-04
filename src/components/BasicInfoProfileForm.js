@@ -2,11 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import {connect} from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../Auth';
-import {withRouter} from 'react-router-dom';
 
-//Import user email
 const reset = () => {
     console.log("RESETTING");
     axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
@@ -18,7 +17,7 @@ const reset = () => {
     {headers: { 'content-type': 'application/json' }});
   };
 
-export default class BasicInfoProfileForm extends React.Component{
+class BasicInfoProfileForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -31,6 +30,7 @@ export default class BasicInfoProfileForm extends React.Component{
     }
 
     componentWillMount(){
+        //send this to action
         axios.get('http://localhost:8081/info')
         .then(response => {
             this.setState({   
@@ -69,7 +69,9 @@ export default class BasicInfoProfileForm extends React.Component{
 
     changePassword = (e) => {
         e.preventDefault();
-        reset();
+        console.log('change password');
+
+        //TO-DO Modify password and update in database
     }
 
     onSubmit = (e) => {
@@ -79,11 +81,11 @@ export default class BasicInfoProfileForm extends React.Component{
             lastname: this.state.lastName,
             dob: this.state.dateOfBirth,
             gender: this.state.gender
-        }).then((response)=>{
-            console.log("EMAIL: ",auth0Client.getProfile().email);
-            if(response.status == 201)
-                this.context.history.push('/admin/home');
-        });
+        })
+        // .then((response)=>{
+        //     if(response.status == 201)
+        //         //this.context.history.push('/admin/home');
+        // });
     }
 
     render(){
@@ -92,15 +94,15 @@ export default class BasicInfoProfileForm extends React.Component{
                 <div>
                     <form onSubmit={this.onSubmit}>
                     <div>
-                        <label>Name:</label>
+                        <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                         <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
                     
                         <br/>
-                        <label>Last Name:</label>
+                        <label>{this.props.lang === 'English' ? 'Last Name' : 'Apelido'}:</label>
                         <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}/>
 
                         <br/>
-                        <label>Date of Birth:</label>
+                        <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
                         <SingleDatePicker
                         date={this.state.dateOfBirth}
@@ -112,14 +114,15 @@ export default class BasicInfoProfileForm extends React.Component{
                         />
                         
                         <br/>
-                        <label>Gender:</label>
+                        <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                         <br/>
-                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> Male<br/>
-                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> Female<br/>
-                        <input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> Other <br/>
-                    
-                        <button onClick={this.changePassword}>Change Password</button>
-                        <button onClick={this.onSubmit}>Save</button>
+                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}<br/>
+                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Female' : 'Femenino'}<br/>
+                        {
+                            //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Gender' : 'Género'} <br/>
+                        }
+                        <button onClick={this.changePassword}>{this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} </button>
+                        <button onClick={this.onSubmit}>{this.props.lang === 'English ' ? 'Save' : 'Guardar'}</button>
                     </div>
 
                     </form>
@@ -128,3 +131,11 @@ export default class BasicInfoProfileForm extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(BasicInfoProfileForm);

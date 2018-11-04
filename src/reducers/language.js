@@ -5,7 +5,6 @@ const languageReducerDefaultState = {
 const languageReducer = (state = languageReducerDefaultState, action) => {
     switch(action.type){
         case 'SWAP_LANGUAGE':
-            console.log(state.lang);
             if(state.lang === 'Spanish'){
                 return{
                     lang: 'English'

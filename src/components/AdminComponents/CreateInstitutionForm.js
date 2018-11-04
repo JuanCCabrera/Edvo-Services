@@ -2,10 +2,10 @@ import React from 'react';
 import 'react-dates/lib/css/_datepicker.css';
 import AdminButtonList from './AdminButtonList';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom';
 
-export default class CreateInstitutionForm extends React.Component{
+class CreateInstitutionForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -59,29 +59,28 @@ export default class CreateInstitutionForm extends React.Component{
                 <div>
                     <form onSubmit={this.onSubmit}>
                     <div>
-                        <h2> Create New Institution </h2>
-                        <label>Name:</label>
+                        <h2>{this.props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}</h2>
+                        <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                         <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
 
                         <br/>
-                        <label>Location:</label>
+                        <label>{this.props.lang === 'English' ? 'Location' : 'Localización'}:</label>
                         <input type="text" placeholder = "Location" value = {this.state.location} onChange={this.onLocationChange}/>
         
                         <br/>
-                        <label>School Type:</label>
+                        <label>{this.props.lang === 'English' ? 'School Type' : 'Tipo de Escuela'}:</label>
                         <br/>
-                        <input type="radio" name="type" value= "public" checked={this.state.type === 'public'} onChange = {this.onTypeChange}/> Public {' '}
-                        <input type="radio" name="type" value= "private" checked={this.state.type === 'private'} onChange = {this.onTypeChange}/> Private {' '}
-                        <input type="radio" name="type" value= "independent" checked={this.state.type === 'independent'} onChange = {this.onTypeChange}/> Independent {' '}
+                        <input type="radio" name="type" value= "public" checked={this.state.type === 'public'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Pública'} {' '}
+                        <input type="radio" name="type" value= "private" checked={this.state.type === 'private'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privada'} {' '}
+                        <input type="radio" name="type" value= "independent" checked={this.state.type === 'independent'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'} {' '}
                     
                         <br/>
-                        <label>Institution ID:</label>
+                        <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                         <input type="text" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
                     
                         <br/>
                         <br/>
-                        <Link to="/admin/settings/schools"><button>View Institution List</button></Link>
-                        <button onClick={this.onSubmit}>Create</button>
+                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Create' : 'Crear'}</button>
                     </div>
 
                     </form>
@@ -90,4 +89,12 @@ export default class CreateInstitutionForm extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(CreateInstitutionForm);
 

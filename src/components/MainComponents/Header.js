@@ -14,9 +14,6 @@ const Header = (props) => (
         <NavLink to="/plans" activeClassName="is-active">
             {props.lang === 'English' ? 'Plans' : 'Ofertas'} 
         </NavLink>
-        <NavLink to="/admin/home" activeClassName="is-active">
-            {props.lang === 'English' ? 'Settings' : 'Configuracion'} 
-        </NavLink>
         <a href="https://medium.com/@EdvoTech" target='_blank'>Blog</a>
 
         <span onClick={() => {

@@ -1,4 +1,4 @@
-//Contact Action Generators
+//Login Action Generators
 
 export const sendLogin = (
     {

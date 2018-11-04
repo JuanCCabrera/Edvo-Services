@@ -7,15 +7,17 @@ import { sendLogin } from '../actions/login';
 import auth0Client from '../Auth';
 import axios from 'axios';
 
-const signOut = () => {
+const signOut = (props) => {
     auth0Client.signOut();
+    console.log("HISOTRY: ", props.history);
     props.history.replace('/');
   };
 
-const reset = () => {
+  const reset = () => {
+    console.log("RESETTING");
     axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
       client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      email: auth0Client.getEmail,
+      email: auth0Client.getProfile().email,
       connection: 'Username-Password-Authentication' ,
       json: true
     },
@@ -31,10 +33,8 @@ const LoginPage = (props) => (
       {
         auth0Client.isAuthenticated() &&
         <div>
-          <label className="mr-2 text-black">{auth0Client.getProfile().name}</label>          
-          <label className="mr-2 text-white">{auth0Client.getRole}</label>        
-          <label className="mr-2 text-white">PATH: {auth0Client.getRedirectRoute}</label>
-          <button onClick={() => {signOut()}}>Sign Out</button>
+          <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
+          <button onClick={() => {signOut(props)}}>Sign Out</button>
           <button onClick={() => {reset()}}>Reset Password</button>
         </div>
       }

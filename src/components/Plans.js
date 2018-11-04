@@ -10,7 +10,7 @@ import auth0 from '../Auth';
 const PlansPage = (props) => (
     <Can
         role={auth0.getRole}
-        perform="admin:home"
+        perform="teacher:home"
         yes={() => (
     <div>
         <table>
