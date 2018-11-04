@@ -24,3 +24,37 @@ export const loadTeacherQuestion = (
         }
 });
 
+export const selectQuestion = (
+    {
+        askedDate =  '',
+        subject = '',
+        question = '',
+        answer = '',
+        answerDate = '',
+        rate = 0,
+        favorite = false,
+        read = false,
+    } = {}) => ({
+        type: 'SELECT_QUESTION',
+        selectedQuestion: {
+            askedDate,
+            subject,
+            question,
+            answer,
+            answerDate,
+            rate,
+            favorite,
+            read
+        }
+});
+
+export const clearSelectedQuestion = () => ({type:'CLEAR_SELECTED_QUESTION'});
+
+export const rateQuestion = ({askedDate = '', rate = 0} = {}) => (
+    {
+        type:'RATE_QUESTION',
+        askedDate: askedDate,
+        rate: rate
+});
+
+

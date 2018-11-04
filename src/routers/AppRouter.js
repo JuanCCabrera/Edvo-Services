@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
 import Header from '../components/MainComponents/Header';
 import Footer from '../components/MainComponents/Footer';
@@ -36,11 +37,19 @@ import AnswerQuestionForm from '../components/QuestionComponents/AnswerQuestionF
 import TeacherRecommendations from '../components/TeacherComponents/TeacherRecommendations';
 import TeacherQuestions from '../components/TeacherComponents/TeacherQuestions';
 
+import RecommendationModal from '../components/TeacherComponents/RecommendationModal';
+import { clearSelectedRecommendation } from '../actions/teacherRecommendations';
 
-const AppRouter = () => (
+import QuestionModal from '../components/TeacherComponents/QuestionModal';
+import {clearSelectedQuestion} from '../actions/teacherQuestions';
+
+
+const AppRouter = (props) => (
     <BrowserRouter>
         <div>
             <Header/>
+            <RecommendationModal clearSelectedRecommendation={() => props.dispatch(clearSelectedRecommendation())}/>
+            <QuestionModal clearSelectedQuestion={() => props.dispatch(clearSelectedQuestion())}/>
             <Switch>
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage}/>
@@ -96,4 +105,4 @@ const AppRouter = () => (
     </BrowserRouter>
 );
 
-export default AppRouter;
+export default connect()(AppRouter);

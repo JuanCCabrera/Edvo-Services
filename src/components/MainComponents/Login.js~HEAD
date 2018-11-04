@@ -2,9 +2,9 @@ import React from 'react';
 import ContactForm from './ContactForm';
 import LoginForm from './LoginForm';
 import {connect} from 'react-redux';
-import {sendContactForm} from '../actions/contact';
-import { sendLogin } from '../actions/login';
-import auth0Client from '../Auth';
+import {sendContactForm} from '../../actions/contact';
+import { sendLogin } from '../../actions/login';
+import auth0Client from '../../Auth';
 import axios from 'axios';
 
 const signOut = (props) => {
@@ -26,25 +26,28 @@ const signOut = (props) => {
 
 const LoginPage = (props) => (
     <div>
-        {
-        !auth0Client.isAuthenticated() &&
-        <button onClick={auth0Client.signIn}>Sign In</button>
-      }
-      {
-        auth0Client.isAuthenticated() &&
-        <div>
-          <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-          <button onClick={() => {signOut(props)}}>Sign Out</button>
-          <button onClick={() => {reset()}}>Reset Password</button>
-        </div>
-      }
+        
         <h1>Learn. Teach. Repeat</h1>
-        <div>
+        
+        {/*<div>
             <LoginForm
             onSubmit={(login_info) => {
             props.dispatch(sendLogin(login_info));
             }}/>
-        </div>
+        </div>*/}
+
+        {
+            !auth0Client.isAuthenticated() &&
+            <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Registrarse'}</button>
+          }
+          {
+            auth0Client.isAuthenticated() &&
+            <div>
+              <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
+              <button onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
+              <button onClick={() => {reset()}}>{props.lang === 'English' ? 'Reset Password' : 'Restablecer Contraseña'}</button>
+            </div>
+          }
 
         <div>
             <span>MATERIALS_IMG</span>

@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import TopRecommendationsListItem from './TopRecommendationsListItem';
+import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
 
 const TopRecommendationsList = (props) => (
     <div>
         {props.recommendation.map((reco) => {
-            return <TopRecommendationsListItem key={reco.recoID} reco={reco}/>
+            return <TeacherRecommendationsListItem key={reco.recoID} reco={reco}/>
         })}
 
         {(props.recommendation.length === 0) && (props.lang === 'English' ?
