@@ -24,7 +24,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
             }
         case 'LOAD_TEACHER_FAVORITE_RECOMMENDATION':
             return{
-                recommendations: [...state.recommendations],
+                recommendations: [...state.recommendations, action.favoriteRecommendation],
                 favoriteRecommendations: [...state.favoriteRecommendations, action.favoriteRecommendation],
                 selectedRecommendation: state.selectedRecommendation
             }

@@ -3,7 +3,7 @@ export const selectUser = (
     {
         userID = ''
     } = {}) => ({
-        type: 'SELECT_USER',
+        type: 'SELECT_USER_TO_ASSIGN',
         userID: userID
 });
 
@@ -11,7 +11,7 @@ export const selectUser = (
 export const selectRecommendation = ({
         recoID = ''
     } = {}) => ({
-        type: 'SELECT_RECOMMENDATION',
+        type: 'SELECT_RECOMMENDATION_TO_ASSIGN',
         recoID: recoID
 });
 

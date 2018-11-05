@@ -61,14 +61,13 @@ class PendingQuestionsList extends React.Component {
                     />
                 }
                 {(this.props.questions.length === 0) &&
-                    this.props.lang === 'English' ? 
+                    (this.props.lang === 'English' ? 
                     <div>
                         <p>There are currently no questions pending answers.</p>
                     </div> : 
                     <div>
                         <p>Actualmente no hay preguntas con respuestas pendientes.</p>
-                    </div>}
-                    
+                    </div>)
                 }
             </div>
         );
