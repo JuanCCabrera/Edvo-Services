@@ -1,14 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-
-const TeacherRecommendations = (props) => (
-    <div>
-        TEACHER RECOMMENDATIONS
-    </div>
-);
-
-export default TeacherRecommendations;
-=======
 import {connect} from 'react-redux';
 import TeacherRecommendationsList from './TeacherRecommendationsList';
 import FavoriteRecommendationsList from './FavoriteRecommendationsList';
@@ -35,4 +25,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(TeacherRecommendations);
->>>>>>> origin/JCCFrontEnd

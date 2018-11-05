@@ -1,14 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-
-const TeacherQuestions = (props) => (
-    <div>
-        TEACHER QUESTIONS
-    </div>
-);
-
-export default TeacherQuestions;
-=======
 import {connect} from 'react-redux';
 import TeacherQuestionsList from './TeacherQuestionsList';
 import FavoriteTeacherQuestionsList from './FavoriteTeacherQuestionsList';
@@ -30,4 +20,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(TeacherQuestions);
->>>>>>> origin/JCCFrontEnd

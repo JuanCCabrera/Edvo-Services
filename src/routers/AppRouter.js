@@ -43,6 +43,9 @@ import { clearSelectedRecommendation } from '../actions/teacherRecommendations';
 import QuestionModal from '../components/TeacherComponents/QuestionModal';
 import {clearSelectedQuestion} from '../actions/teacherQuestions';
 
+import ManageQuizzes from '../components/QuizComponents/ManageQuizzes';
+import AnswerQuizForm from '../components/QuizComponents/AnswerQuizForm';
+
 
 const AppRouter = (props) => (
     <BrowserRouter>
@@ -97,6 +100,11 @@ const AppRouter = (props) => (
                 }
                 <Route exact path='/staff/questions' component={ManageQuestions}/>
                 <Route path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
+                {
+                    //Teacher Quizzes
+                }
+                <Route exact path='/teacher/quizzes' component={ManageQuizzes}/>
+                <Route path="/teacher/quizzes/:quizID" component={AnswerQuizForm}/>
 
                 <Route component={NotFoundPage}/>
             </Switch>

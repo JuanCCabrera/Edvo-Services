@@ -19,6 +19,7 @@ import {loadTeacherDaysInPlatform, loadTeacherRecentRecommendation} from './acti
 import {loadTeacherTopRecommendation} from './actions/teacherMetrics';
 import {loadTeacherRecommendation, loadTeacherFavoriteRecommendation} from './actions/teacherRecommendations';
 import {loadTeacherQuestion} from './actions/teacherQuestions';
+import { createQuiz } from './actions/quiz';
 
 const store = configureStore();
 
@@ -70,6 +71,11 @@ store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:24', subject: '
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 1, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:29', rate: 1, favorite: true, read: true}));
+
+
+
+store.dispatch(createQuiz({quizID: 'yuhuu', quizDate: '2018-10-27 12:24:24', items:[['1','Primera Pregunta', ['1', '2']], ['2','Segunda Pregunta', ['3', '4']] ] }));
+store.dispatch(createQuiz({quizID: 'yahoo', quizDate: '2018-10-27 12:24:24', items:[['1', 'Cuarta Pregunta', ['56', '21']], ['2', 'Quinta Pregunta', ['33', '47']] ] }));
 
 class App extends React.Component{
     async componentDidMount() {

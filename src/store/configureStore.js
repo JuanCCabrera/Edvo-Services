@@ -13,6 +13,7 @@ import teacherMetricsReducer from '../reducers/teacherMetrics';
 import askQuestionReducer from '../reducers/askQuestion';
 import teacherRecommendationsReducer from '../reducers/teacherRecommendations';
 import teacherQuestionsReducer from '../reducers/teacherQuestion';
+import quizzesReducer from '../reducers/quiz';
 
 //Store creation
 
@@ -32,7 +33,8 @@ export default () => {
             teacherMetrics: teacherMetricsReducer,
             askQuestion: askQuestionReducer,
             teacherRecommendations: teacherRecommendationsReducer,
-            teacherQuestions: teacherQuestionsReducer
+            teacherQuestions: teacherQuestionsReducer,
+            quizzes: quizzesReducer
         })
     );
 
