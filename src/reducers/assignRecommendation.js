@@ -5,9 +5,9 @@ const assignRecommendationReducerDefaultState = {
 
 const assignRecommendationReducer = (state = assignRecommendationReducerDefaultState, action) => {
     switch (action.type) {
-        case 'SELECT_USER':
+        case 'SELECT_USER_TO_ASSIGN':
             return {...state, userID: action.userID};
-        case 'SELECT_RECOMMENDATION':
+        case 'SELECT_RECOMMENDATION_TO_ASSIGN':
             return {...state, recoID: action.recoID};
         case 'CLEAR_RECOMMENDATION_SELECTION':
             return {userID: '', recoID: ''};
