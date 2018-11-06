@@ -160,5 +160,77 @@ router.post('/settings/institutions/add', (req,res,next)=> {
   });
 });
 
+/* Remove user */
+router.post('/settings/users/remove', (req,res,next)=> {
+  const user = [];
+  const resultsexist = [];
+  const tokenstripe = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+      removeid: req.body.userIDToRemove
+    };
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is admin
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // user exists and is of type admin
+      
+        //SQL Query > select data
+        const query = client.query('SELECT * FROM users WHERE userid = $1', [data.removeid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+        user.push(row);
+        });
+        query.on('end', () => {
+          done();
+          if(user.length === 1){
+            //SQL Query > update data
+            const query2 = client.query('UPDATE subscription SET status = $1 WHERE userid= $2 returning token', ['cancelled', data.removeid,]);
+             //stream results back one row at a time
+            query2.on('row', (row) => {
+              tokenstripe.push(row);
+              });
+            query2.on('end', () => {
+              done();
+              console.log("token: ", tokenstripe[0].token);//delete this after debug (this is the token variable holder)
+              //-------------------------EDIT HERE----------------------------
+              //REMOVE STRIPE Charging
+
+              return res.status(201).json({statusCode: 201, success: true});
+            });
+          }else{
+            return res.status(402).json({statusCode: 402,
+              body:{
+                message: 'The user to be deleted doesn\'t exist in database. Inputs where not received as expected.',
+              },
+              isBase64Encoded: false,});
+          }
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records or is not type admin. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+
 
 module.exports = router;
