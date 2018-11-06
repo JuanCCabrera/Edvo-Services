@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PendingQuestionsListItem from './PendingQuestionsListItem';
 import uuid from 'uuid';
 import Pagination from 'react-js-pagination';
+import axios from 'axios';
+import { loadQuestion } from '../../actions/question';
 
 class PendingQuestionsList extends React.Component {
     constructor(props){
@@ -15,8 +17,16 @@ class PendingQuestionsList extends React.Component {
             displayedQuestions: []
         }
     }
+    
+    componentWillMount(){        
+        axios.get('http://localhost:8081/staff/questions')
+        .then(response => {
+            response.data.forEach(element => {
+                this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askedDate, 
+                subject: element.subject, userId: element.userId}));
+            });
+        });
 
-    componentWillMount(){
         this.pageSlice = Math.ceil(this.props.questions.length/this.itemsPerPage);
         this.currentPage = 1;
         const displayedQuestions = this.props.questions.slice(0,this.itemsPerPage);

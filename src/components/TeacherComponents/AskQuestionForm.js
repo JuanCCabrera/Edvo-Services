@@ -27,10 +27,13 @@ class AskQuestionForm extends React.Component{
             this.setState(() => ({askQuestionError: 'Please fill all blank fields'})); 
         }else{
             this.setState(() => ({askQuestionError: ''}));
-            this.props.onSubmit({
-                subject: this.state.subject,
-                body: this.state.body,
-            });
+            axios.post('http://localhost:8081/teacher/ask', {
+            subject: this.state.subject,
+            body: this.state.body
+    }).then((response)=>{
+        if(response.status == 200)
+            this.props.history.push('/admin/settings/users');
+    });
         }
     }
     render(){

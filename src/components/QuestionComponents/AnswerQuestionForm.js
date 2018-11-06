@@ -25,8 +25,14 @@ class AnswerQuestionForm extends React.Component {
             this.setState(() => ({answerError: 'Please fill the Answer field.'}));
         }else{
             this.setState(() => ({answerError: ''}));
-            this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
-            this.props.history.push('/staff/questions');
+            axios.post('http://localhost:8081/question/answer', {
+                askedDate: this.state.askedDate,
+                answer: this.state.answer,
+                userID: this.state.userID
+            }).then((response)=>{
+                if(response.status == 200)
+                this.props.history.push('/staff/questions');
+            });
         }
     }
 

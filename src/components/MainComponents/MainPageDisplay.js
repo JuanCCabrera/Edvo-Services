@@ -2,18 +2,22 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import ThreeImageList from './ThreeImageList'
+import './Main.css';
 
 const MainPageDisplay = (props) => (
-    <div>
+    <div className="Main">
         {props.lang === 'English' ? 
-        <div>
-            <h1>EDUCATION EVOLVED</h1>
+        <div className="text-center">
+            <h1>EDUCATION</h1> 
+            <h2>EVOLVED</h2>
             <h4>Join the community of educators who are</h4>
             <h4>evolving education</h4>
         </div> : <div>
             <h1>EDUCATION EVOLVED</h1>
+            <div className="container subtitle">
             <h4>Únete a la comunidad de educadores</h4>
             <h4>que esta revolucionando la educación</h4>
+            </div>
         </div>
         }
         <div>

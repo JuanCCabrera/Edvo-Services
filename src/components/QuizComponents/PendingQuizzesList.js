@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PendingQuizzesListItem from './PendingQuizzesListItem';
 import uuid from 'uuid';
+import axios from 'axios';
 
 class PendingQuizzesList extends React.Component {
     constructor(props){
@@ -10,6 +11,15 @@ class PendingQuizzesList extends React.Component {
             page: 1
         }
         console.log("PROPS IN PENDEINGQUIZ: ", props);
+    }
+
+    componentWillMount(){        
+        axios.get('http://localhost:8081/teacher/quizzes')
+        .then(response => {
+            response.data.forEach(element => {
+                this.props.dispatch(createQuiz({quizID: element.quizID, quizDate: element.quizDate, items: element.questions}));
+            });
+        });
     }
 
     render(){

@@ -53,16 +53,14 @@ store.dispatch(loadTeacherTopRecommendation({recoID: uuid(), title: 'Seeking Hel
 store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '2018-10-27 06:20:19', rating: 5}));
 store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-26 06:20:20', rating: 5}));
 store.dispatch(loadTeacherRecentRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '2018-10-25 06:20:21', rating: 5}));
-const recoOneID = uuid();
-const recoTwoID = uuid();
-const recoThreeID = uuid();
+
 
 store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Analyzing Class Attendance', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze class attendance using this video!', multimedia: '', date: '2018-10-24 06:20:22', read: false, rating: 5}));
 store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Why Give Quizzes?', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze the option to give quizzes by using this video!', multimedia: 'https://www.youtube.com/embed/tgbNymZ7vqY', date: '2018-10-10 06:20:23', read: true, rating: 5}));
 
-store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoOneID, title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: '', date: '2018-10-27 06:20:19', read: false, rating: 5}));
-store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoTwoID, title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: '', date: '2018-10-26 06:20:20', read: true, rating: 5}));
-store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoThreeID, title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: '', date: '2018-10-25 06:20:21', read: true, rating: 5}));
+store.dispatch(loadTeacherFavoriteRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: '', date: '2018-10-27 06:20:19', read: false, rating: 5}));
+store.dispatch(loadTeacherFavoriteRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: '', date: '2018-10-26 06:20:20', read: true, rating: 5}));
+store.dispatch(loadTeacherFavoriteRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: '', date: '2018-10-25 06:20:21', read: true, rating: 5}));
 
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:25', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:25', rate: 1, favorite: true, read: false}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:24', subject: 'Updated Material', question: 'How can I update material for my class?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:26', rate: 1, favorite: false, read: true}));

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
+import { loadTeacherRecommendation } from '../../actions/teacherRecommendations';
 
 class TeacherRecommendationsList extends React.Component{
     constructor(props){
@@ -16,11 +17,25 @@ class TeacherRecommendationsList extends React.Component{
     }
 
     componentWillMount(){
+        axios.get('http://localhost:8081/teacher/recommendations')
+        .then(response => {
+            response.data.forEach(element => {            
+                this.props.dispatch(loadTeacherRecommendation({recoID: element.data.recoID, title: element.data.title, 
+                header: element.data.header, location: element.data.location, 
+                description: element.data.description, 
+                multimedia: element.data.multimedia, date: element.data.date, read: element.data.read, rating: element.data.rating}));
+
+                if(element.data.favorite)
+                    this.props.dispatch(loadTeacherFavoriteRecommendation({recoID: element.data.recoID, title: element.data.title, 
+                        header: element.data.header, location: element.data.location, 
+                        description: element.data.description, 
+                        multimedia: element.data.multimedia, date: element.data.date, read: element.data.read, rating: element.data.rating}));
+        });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedRecommendations: initialPageRecommendations});
-    }
+    })}
 
     componentDidUpdate(prevProps){
         if(prevProps.recommendation !== this.props.recommendation){

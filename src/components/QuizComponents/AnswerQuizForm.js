@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { answerQuiz } from '../../actions/quiz';
 import QuizButtonList from './QuizButtonList';
 import uuid from 'uuid';
+import axios from 'axios';
 
 class AnswerQuizForm extends React.Component {
     constructor(props){
@@ -17,19 +18,17 @@ class AnswerQuizForm extends React.Component {
         const newAnswers = this.state.answers;
         newAnswers[e.target.name] = e.target.value;
         this.setState({answers: newAnswers });
-        console.log("STATE NOW: ", this.state.answers);
+        console.log(this.state.answers);
     }
 
     onSubmit = (e) => {
         //TO-DO Add error checks
         e.preventDefault();
-        if(!this.state.answer){
-            this.setState(() => ({answerError: 'Please fill the Answer field.'}));
-        }else{
-            this.setState(() => ({answerError: ''}));
-            this.props.dispatch(answerQuiz({askedDate: this.props.quiz.quizDate, userId: this.props.quiz.quizID, answer: this.state.answer}));
-            this.props.history.push('/staff/quizzes');
-        }
+        axios.post('http://localhost:8081/quiz/answer', {
+            answers: this.state.answers,
+            quizID: this.state.quizID
+        });
+        this.props.history.push('/teacher/quizzes');
     }
 
     render(){
@@ -43,13 +42,13 @@ class AnswerQuizForm extends React.Component {
                         this.props.quiz.items.map(element => {
                             return ( <h3 key= {uuid()}>{element[1]} 
                             <select name={element[0]} onChange={this.onAnswerChange} value={this.state.answers[element[0]]} required>
-                                <option  disabled selected value=''></option>
+                                <option  disabled selected></option>
                             {element[2].map(answer =>{
                                 return(<option key={uuid()} value={answer}>{answer}</option>)
                             })}
                             </select></h3> )
                     })}
-                    <button onClick={this.onSubmit}>Answer</button>
+                    <button type="submit" onClick={this.onSubmit}>Answer</button>
                 </form>
             </div>
         );
