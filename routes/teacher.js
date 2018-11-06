@@ -424,4 +424,102 @@ router.post('/settings/classes/add', (req,res,next)=> {
     });
 });
 
+/* Remove classes*/ 
+router.delete('/settings/classes/remove', (req,res,next)=> {
+  const classes = [];
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+      classid: req.body.classInfoID
+    };
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, "teacher"]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // user exists and is of type teacher
+        //SQL Query > select data
+        const query = client.query('SELECT * FROM class_info WHERE userid = $1', [data.userid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+        classes.push(row);
+        });
+        query.on('end', () => {
+          done();
+          if(classes.length > 1){//if user has more than one class proceed
+            //SQL Query > delete data
+            client.query('DELETE FROM class_info WHERE userid= $1 AND classinfoid = $2', [data.userid, data.classid,]);
+            return res.status(201).json({statusCode: 201, success: true});
+          }else{
+            return res.status(402).json({statusCode: 402,
+              body:{
+                message: 'User does not have more than one class. Invalid deleting.',
+              },
+              isBase64Encoded: false,});
+          }
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records or is not type teacher. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+
+/* Get basic info*/
+router.get('/settings/info', (req,res,next)=> {
+  const info = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+    };
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      info.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (info.length === 1){ // user exists
+        return res.status(201).json({statusCode: 201, success: true, info});
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+
+
 module.exports = router;

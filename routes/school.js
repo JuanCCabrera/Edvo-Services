@@ -60,5 +60,41 @@ router.post('/settings/info', (req,res,next)=> {
     });
 });
 
+/* Get basic info*/
+router.get('/settings/info', (req,res,next)=> {
+  const info = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+    };
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      info.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (info.length === 1){ // user exists
+        return res.status(201).json({statusCode: 201, success: true, info});
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
 
 module.exports = router;
