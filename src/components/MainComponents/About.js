@@ -1,11 +1,12 @@
 import React from 'react';
+import Parallax from 'parallax-js';
 import ContactForm from './ContactForm';
 import {connect} from 'react-redux';
 import {sendContactForm} from '../../actions/contact';
 
 const AboutPage = (props) => (
     <div>
-        <div>
+        <div className="text-center">
             {props.lang === 'English' ? 
             <div>
                 <h1>Who we are</h1>
