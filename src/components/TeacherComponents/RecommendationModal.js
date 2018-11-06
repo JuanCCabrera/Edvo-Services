@@ -11,14 +11,16 @@ const RecommendationModal = (props) => (
     contentLabel="Recommendation"
     >
         <h2>{props.recommendation.title}</h2>
-        <h3>{props.recommendation.header}</h3>
-        {
-            //TO-DO: INSERT VIDEO CONTENT props.recommendation.multimedia
-        }
-        <p>{props.recommendation.description}</p>
-        <h4>{props.recommendation.location}</h4>
-        <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.recommendation.date}</h4>
-        <h4>{props.lang === 'English' ? 'Rate: ': 'Clasificar: '}</h4>
+        <div>
+            <h3>{props.recommendation.header}</h3>
+            {
+                //TO-DO: INSERT VIDEO CONTENT props.recommendation.multimedia
+            }
+            <p>{props.recommendation.description}</p>
+            <h4>{props.recommendation.location}</h4>
+            <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.recommendation.date}</h4>
+            <h4>{props.lang === 'English' ? 'Rate: ': 'Clasificar: '}</h4>
+        </div>
         <StarRatingComponent
             name="rate"
             starCount={5}

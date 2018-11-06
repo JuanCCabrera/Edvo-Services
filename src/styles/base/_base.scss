@@ -3,7 +3,7 @@ html{
 }
 
 body {
-    background: white;
+    background-color: #ffffff;
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
 }
@@ -18,4 +18,8 @@ button:disabled{
 
 .is-active {
     font-weight: bold;
+}
+
+.med-size {
+    font-size: 2.9rem
 }
