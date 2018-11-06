@@ -36,17 +36,17 @@ const Header = (props) => (
                     </NavLink>
                 </li>
             </ul>
-            <ul className="nav navbar-nav navbar-right">
+            <ul className="nav navbar-nav navbar-right font-weight-bold">
             <li>
-                <div onClick={() => {
+                <div style={{padding: '15px 20px 15px 20px'}} onClick={() => {
                         props.dispatch(swapLanguage());
                     }}>
                     {props.lang === 'English' ? 'Spanish' : 'English'} 
                 </div>
             </li>
             <li>
-                <div>
-                    <h1 className="logo med-size text-white">edvo</h1>
+                <div className="logo med-size text-white" style={{marginTop: '0.5rem', marginRight: '2.0rem'}}>
+                    <p>edvo</p>
                 </div>
             </li>
             </ul>
