@@ -56,7 +56,7 @@ const AppRouter = (props) => (
             <Switch>
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage}/>
-                <SecuredRoute path="/plans" component={PlansPage}/>
+                <Route path="/plans" component={PlansPage}/>
                 <Route path="/login" component={LoginPage}/>
                 <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>

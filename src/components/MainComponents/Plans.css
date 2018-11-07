@@ -1,0 +1,54 @@
+.No-Border-Top{
+    border-top:0;
+}
+.Absolute-Package{
+    border-left: 2px solid #854dff; 
+    border-right: 2px solid #854dff; 
+    border-top: 2px solid #854dff; 
+    border-bottom: 2px solid #854dff;
+}
+.Edvo-Background-Color{
+    background-color: #854dff;
+}
+.Font-10-Px{
+    font-size: 10px;
+}
+.Subscribe {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.Subscribe {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #FFFFFF;
+}
+
+.Subscribe:hover {
+    background-color: white;
+    color: black;
+}
+.Promo td:last-child {
+        border-left: 2px solid #854dff;
+        border-right: 2px solid #854dff;
+        border-bottom: 2px solid #854dff;
+    }
+.ml-5{
+    margin-left: 5rem;
+}
+.mt-3{
+    margin-top: 2rem;
+}
+.Body-Background{
+    background: #061551;
+}
