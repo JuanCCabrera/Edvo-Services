@@ -752,6 +752,7 @@ router.post('/recommendations/assign', (req,res,next)=> {
       recomid : req.body.recomid,
       usersAssign : req.body.usersToAssign
     };
+  //verify inputs are valid
   if(data.userid == null || data.recomid == null || data.usersAssign == null){
     return res.status(403).json({statusCode: 403,
       body:{
@@ -790,15 +791,15 @@ router.post('/recommendations/assign', (req,res,next)=> {
     query.on('end', () => {
       done();
       if (results.length === 1){ // user exists and is of type admin
-        //SQL Query > select recommendation
-        const query1 = client.query('SELECT * FROM recommendations WHERE recomid = $1',[data.recomid,]);
+        //SQL Query > select recommendation active
+        const query1 = client.query('SELECT * FROM recommendations WHERE recomid = $1 AND active = $2',[data.recomid, true,]);
         //stream results back one row at a time
         query1.on('row', (row) => {
           resultsexist.push(row);
         });
         query1.on('end', () => {
           done();
-          if(resultsexist.length === 1){ //recommendation exists
+          if(resultsexist.length === 1){ //recommendation exists and is active
             for(var i=0; i<length ; i++){
               //SQL Query > Insert into edu_recommendation
               client.query('INSERT into edu_recommendations (recomid, userid, date, read, favorite) values ($1 ,$2, $3, $4, $5)',[data.recomid, usersjson[i].userid, todaysDate, false, false]);
@@ -823,5 +824,131 @@ router.post('/recommendations/assign', (req,res,next)=> {
     });
   });
 });
+
+/* ANSWER question */
+router.post('/questions/answer', (req,res,next)=> {
+  const results = [];
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+      askeddate : req.body.askeddate,
+      teacherid : req.body.teacherid,
+      answer : req.body.answer
+    };
+  //verify inputs are valid
+  if(data.userid == null || data.askeddate == null || data.teacherid == null || data.answer == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is of type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type admin
+        //SQL Query > select question
+        const query1 = client.query('SELECT * FROM questions WHERE userid = $1 AND askeddate = $2',[data.teacherid, data.askeddate,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          resultsexist.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          if(resultsexist.length === 1){ //question exists
+            //SQL Query > update question with answer
+            client.query('UPDATE questions SET answer = $1, answerdate = $2, mentorid = $3 WHERE userid=$4 AND askeddate = $5',[data.answer, todaysDate, data.userid, data.teacherid, data.askeddate,]);
+            return res.status(201).json({statusCode: 201, success: true});
+          }else{
+            return res.status(402).json({statusCode: 402,
+              body:{
+                message: 'Question doesn\'t exist in records. Inputs were not received as expected.',
+              },
+              isBase64Encoded: false,});
+            }
+          });
+      }else// user doesn't exist in record or isnt of type admin, send error statuscode
+      {
+        return res.status(401).json({statusCode: 401,
+          body:{
+            message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+/*Unanswered Questions list */
+router.get('/staff/questions', (req,res,next)=> {
+  const results = [];
+  const questions = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, //change to req.query.userid for testing
+    };
+  //verify inputs are valid
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is of type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type admin
+        //SQL Query > select question
+        const query1 = client.query('SELECT question, askeddate, subject, userid FROM questions WHERE answer is null ORDER BY askeddate');
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          questions.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, success: true, questions});
+        });
+      }else// user doesn't exist in record or isnt of type admin, send error statuscode
+      {
+        return res.status(401).json({statusCode: 401,
+          body:{
+            message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+
+
 
 module.exports = router;

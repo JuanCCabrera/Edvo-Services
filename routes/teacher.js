@@ -16,6 +16,14 @@ router.post('/questions/ask', (req,res,next)=> {
         subject: req.body.subject,
         question: req.body.question
       };
+    //verify inputs
+    if(data.userid == null || data.subject == null || data.question == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -67,6 +75,14 @@ router.get('/questions', (req,res,next)=> {
     const data = {
         userid: req.body.userid, 
       };
+    //verify inputs
+    if(data.userid == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -125,6 +141,15 @@ router.post('/questions/read', (req,res,next)=> {
         userid: req.body.userid,
         askeddate: req.body.askeddate,
       };
+
+    //verify inputs
+    if(data.userid == null || data.askeddate == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -179,6 +204,14 @@ router.post('/questions/rate', (req,res,next)=> {
       askeddate: req.body.askeddate,
       rate: req.body.rate
     };
+  //verify inputs
+  if(data.userid == null || data.askeddate == null || data.rate == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -231,6 +264,14 @@ router.post('/recommendations/read', (req,res,next)=> {
         userid: req.body.userid,
         recomid: req.body.recomid,
       };
+    //verify inputs
+    if(data.userid == null || data.recomid == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -276,6 +317,14 @@ router.post('/recommendations/rate', (req,res,next)=> {
       recomid: req.body.recomid,
       rate: req.body.rate
     };
+  //verify inputs
+  if(data.userid == null || data.recomid == null || data.rate == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -324,6 +373,14 @@ router.post('/settings/info', (req,res,next)=> {
         gender: req.body.gender,
         dob: req.body.dob
       };
+    //verify inputs
+    if(data.userid == null || data.name == null || data.lastname == null || data.gender == null || data.dob == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     //verify no input is empty
     if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
       return res.status(403).json({statusCode: 403,
@@ -387,9 +444,17 @@ router.post('/settings/classes/add', (req,res,next)=> {
         level: req.body.level,
         groupsize: req.body.groupsize,
         topica: req.body.topica.toLowerCase(),
-        topicb: req.body.topicb.toLowerCase(),
-        topicc: req.body.topicc.toLowerCase()
+        topicb: req.body.topicb,
+        topicc: req.body.topicc
       };
+    //verify inputs
+    if(data.userid == null || data.subject == null || data.format == null || data.language == null || data.level == null || data.groupsize == null || data.topica == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -441,6 +506,14 @@ router.delete('/settings/classes/remove', (req,res,next)=> {
       userid: req.body.userid, 
       classid: req.body.classInfoID
     };
+ //verify inputs
+ if(data.userid == null || data.classid == null){
+  return res.status(403).json({statusCode: 403,
+    body:{
+      message: 'Inputs were not received as expected.',
+    },
+    isBase64Encoded: false,});
+}
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -490,6 +563,60 @@ router.delete('/settings/classes/remove', (req,res,next)=> {
   });
 });
 
+/* GET classes to modify */
+router.get('/settings/classes', (req,res,next)=> {
+  const classes = [];
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,  //change to req.query.userid for testing
+    };
+  //verify inputs
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'teacher']);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // user exists and is of type teacher
+        //SQL Query > select data
+        const query = client.query('SELECT * FROM class_info WHERE userid = $1', [data.userid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+        classes.push(row);
+        });
+        query.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, success: true, classes});
+        });
+      }else
+      {c
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records or is not type teacher. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
 
 /* Get basic info*/
 router.get('/settings/info', (req,res,next)=> {
@@ -498,6 +625,14 @@ router.get('/settings/info', (req,res,next)=> {
   const data = {
       userid: req.body.userid, 
     };
+  //verify inputs
+  if(data.userid == null ){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -528,6 +663,70 @@ router.get('/settings/info', (req,res,next)=> {
   });
 });
 
+/* View recommendations list */
+router.get('/recommendations', (req,res,next)=> {
+  const results = [];
+  const recommendations = [];
+  const favoriterecommendations = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,  //change to req.query.userid for testing
+    };
+  //verify inputs
+  if(data.userid == null ){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is teacher
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher']);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type teacher
+        //SQL query > select all recomendations
+        const query1 = client.query('with teacher_recom as (SELECT er.recomid, userid, date, rate, favorite, read, location FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid=$1), recom_body as (SELECT rb.recomid, title, multimedia, header, description FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN teacher_recom ORDER BY date DESC',[data.userid,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          recommendations.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          //SQL query > select favorite recommendation
+          const query2 = client.query('with teacher_recom as (SELECT er.recomid, userid, date, rate, favorite, read, location FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid=$1 AND favorite = $2), recom_body as (SELECT rb.recomid, title, multimedia, header, description FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN teacher_recom ORDER BY date DESC',[data.userid, true]);
+          //stream results back one row at a time
+          query2.on('row', (row) => {
+            favoriterecommendations.push(row);
+          });
+          query2.on('end', () => {
+            done();
+          return res.status(201).json({statusCode: 201, success: true, recommendations, favoriterecommendations});
+          });
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
 
 
 module.exports = router;

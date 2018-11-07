@@ -75,6 +75,14 @@ router.get('/settings/info', (req,res,next)=> {
   const data = {
       userid: req.body.userid, 
     };
+   //verify inputs
+   if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error

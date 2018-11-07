@@ -25,15 +25,15 @@ router.post('/', (req,res,next)=> {
       teachersince: req.body.teachersince,
       education: req.body.education,
       english: req.body.english,
-      spanish: req.body.spanish,
+      spanish: req.body.spanish, 
       strategies: req.body.strategies, 
       material: req.body.material, 
       timemanagement: req.body.timemanagement, 
       tech: req.body.tech, 
       instructions: req.body.instructions,
-      schoolname: req.body.schoolname,
-      location: req.body.location,
-      schooltype: req.body.schooltype,
+      schoolname: req.body.schoolname, 
+      location: req.body.location, 
+      schooltype: req.body.schooltype,  
       moodle: req.body.moodle, 
       googleclassroom: req.body.googleclassroom, 
       emails: req.body.emails, 
@@ -50,8 +50,28 @@ router.post('/', (req,res,next)=> {
       speakers: req.body.speakers,
       classes: req.body.classes
     };
+    if(data.userid == null || data.usertype == null || data.name == null || data.lastname ==null || data.gender == null 
+      || data.email == null || data.password == null || data.dob == null || data.policies == null || data.teachersince == null
+      || data.education == null || data.spanish == null || data.english == null || data.schooltype == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
+      ||data.instructions == null ||data.moodle == null || data.googleclassroom == null || data.emails == null || data.books == null || data.applications == null || data.socialmedia == null || data.projector == null 
+      || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.classes == null || data.schoolname == null || data.location == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     var classesjson = data.classes
     var length = classesjson.length;
+    for(var i=0; i<length; i++){
+      if(classesjson[i].subject == null || classesjson[i].format == null || classesjson[i].language== null || classesjson[i].level== null || classesjson[i].groupsize== null || classesjson[i].topica== null){
+        return res.status(403).json({statusCode: 403,
+          body:{
+            message: 'Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error

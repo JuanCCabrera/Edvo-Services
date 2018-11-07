@@ -18,6 +18,14 @@ router.post('/', (req,res,next)=> {
       couponid: req.body.couponid, 
       token: req.body.token,
     };
+  //verify inputs
+  if(data.userid == null || data.plan == null || data.couponid == null || data.token == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
