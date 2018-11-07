@@ -33,7 +33,7 @@ router.post('/questions/ask', (req,res,next)=> {
       });
       query2.on('end', () => {
         done();
-        if (resultsexist.length === 1){ //if user exists and is teacher type
+        if (resultsexist.length === 1){ //user exists and is teacher type
         
           //SQL Query > insert data
           client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDate, data.userid, data.subject, data.question, false, false,]);
@@ -324,6 +324,14 @@ router.post('/settings/info', (req,res,next)=> {
         gender: req.body.gender,
         dob: req.body.dob
       };
+    //verify no input is empty
+    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -512,7 +520,7 @@ router.get('/settings/info', (req,res,next)=> {
       {
         return res.status(401).json({statusCode: 401,
             body:{
-              message: 'User does not exists in records. Inputs where not received as expected.',
+              message: 'User does not exists in records. Inputs were not received as expected.',
             },
             isBase64Encoded: false,});
       }

@@ -18,6 +18,14 @@ router.post('/settings/info', (req,res,next)=> {
         gender: req.body.gender,
         dob: req.body.dob
       };
+    //verify no input is empty
+    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
     // get a postgres client from the connection pool
     pg.connect(connectionString, (err, client, done)=> {
       //handle connection error
@@ -52,7 +60,7 @@ router.post('/settings/info', (req,res,next)=> {
         {
           return res.status(401).json({statusCode: 401,
               body:{
-                message: 'User does not exists in records. Inputs where not received as expected.',
+                message: 'User does not exists in records. Inputs were not received as expected.',
               },
               isBase64Encoded: false,});
         }
@@ -89,7 +97,7 @@ router.get('/settings/info', (req,res,next)=> {
       {
         return res.status(401).json({statusCode: 401,
             body:{
-              message: 'User does not exists in records. Inputs where not received as expected.',
+              message: 'User does not exists in records. Inputs were not received as expected.',
             },
             isBase64Encoded: false,});
       }

@@ -98,7 +98,7 @@ router.post('/', (req,res,next)=> {
       {
         return res.status(401).json({statusCode: 401,
           body:{
-            message: 'Userid and/or email already exists in records. Inputs where not received as expected.',
+            message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
           },
           isBase64Encoded: false,});
       }
