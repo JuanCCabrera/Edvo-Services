@@ -7,7 +7,7 @@ class AskQuestionForm extends React.Component{
         this.state = {
             subject: '',
             body: '',
-            askQuestionError: '' 
+            askQuestionError: false
         };
     }
 
@@ -24,7 +24,7 @@ class AskQuestionForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         if(!this.state.subject || !this.state.body){
-            this.setState(() => ({askQuestionError: 'Please fill all blank fields'})); 
+            this.setState(() => ({askQuestionError: true})); 
         }else{
             this.setState(() => ({askQuestionError: ''}));
             axios.post('http://localhost:8081/teacher/ask', {
@@ -34,6 +34,12 @@ class AskQuestionForm extends React.Component{
         if(response.status == 200)
             this.props.history.push('/admin/settings/users');
     });
+            this.setState(() => ({askQuestionError: false}));
+            this.props.onSubmit({
+                subject: this.state.subject,
+                body: this.state.body,
+            });
+            this.props.history.push('/teacher/home');
         }
     }
     render(){
@@ -53,7 +59,11 @@ class AskQuestionForm extends React.Component{
                     onChange = {this.onBodyChange}
                     />
                     <br/>
-                    <p>{this.state.askQuestionError}</p>
+                    {this.state.askQuestionError === true && 
+                        <div className="text-danger">
+                            {this.props.lang === 'English' ? <p>Please fill all empty fields before sending a question.</p> : <p>Por favor, llene todos los espacios vacios antes de enviar una pregunta.</p>}
+                        </div>
+                    }
                     <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</button>
                 </form>
              </div>

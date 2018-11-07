@@ -57,4 +57,18 @@ export const rateQuestion = ({askedDate = '', rate = 0} = {}) => (
         rate: rate
 });
 
+export const addFavoriteQuestion = ({askedDate = ''} = {}) => (
+    {
+        type:'ADD_FAVORITE_QUESTION',
+        askedDate: askedDate
+});
+
+export const removeFavoriteQuestion = ({askedDate = ''} = {}) => (
+    {
+        type: 'REMOVE_FAVORITE_QUESTION',
+        askedDate: askedDate
+});
+
+
+
 

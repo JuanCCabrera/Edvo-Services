@@ -12,7 +12,8 @@ class CreateInstitutionForm extends React.Component{
             name: '',
             location: '', 
             type: 'public',
-            institutionID: ''
+            institutionID: '',
+            createInstitutionError: false
         };
     }
 
@@ -47,6 +48,13 @@ class CreateInstitutionForm extends React.Component{
         if(response.status == 200)
         this.props.history.push('/admin/settings/schools');
     });
+        if(!this.state.name || !this.state.location){
+            this.setState(() => ({createInstitutionError : true})); 
+        }else{
+            this.setState(() => ({createInstitutionError: false}));
+            this.props.history.push('/admin/settings/schools');
+        }
+        //TO-DO Add new school to database
     }
 
     render(){
@@ -80,6 +88,12 @@ class CreateInstitutionForm extends React.Component{
                     
                         <br/>
                         <br/>
+
+                        {this.state.createInstitutionError === true && 
+                            <div className="text-danger">
+                                {this.props.lang === 'English' ? <p>Please fill all the blank fields before submitting a new institution.</p> : <p>Por favor, llene todos los espacios restantes antes de guardar la institución nueva.</p>}
+                            </div>
+                        }
                         <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Create' : 'Crear'}</button>
                     </div>
 

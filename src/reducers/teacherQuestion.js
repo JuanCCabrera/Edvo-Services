@@ -51,6 +51,32 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
                     rate: action.rate
                 }
             }
+        case 'ADD_FAVORITE_QUESTION':
+            return{
+                teacherQuestions: state.teacherQuestions.map((question) => {
+                    if(question.askedDate === action.askedDate){
+                        question.favorite = true;
+                    }
+                    return question;
+                }),
+                selectedQuestion: {
+                    ...state.selectedQuestion,
+                    favorite: true
+                }
+            }
+        case 'REMOVE_FAVORITE_QUESTION':
+            return{
+                teacherQuestions: state.teacherQuestions.map((question) => {
+                    if(question.askedDate === action.askedDate){
+                        question.favorite = false;
+                    }
+                    return question;
+                }),
+                selectedQuestion: {
+                    ...state.selectedQuestion,
+                    favorite: false
+                }
+            }
         default: 
             return {...state}
     }

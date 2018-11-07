@@ -45,7 +45,7 @@ const Header = (props) => (
                 </div>
             </li>
             <li>
-                <div className="logo med-size text-white" style={{marginTop: '0.5rem', marginRight: '2.0rem'}}>
+                <div className="logo med-size text-white" style={{marginTop: '0.5rem', marginRight: '20.0rem'}}>
                     <p>edvo</p>
                 </div>
             </li>
