@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import {connect} from 'react-redux';
-import { rateQuestion } from '../../actions/teacherQuestions';
+import { rateQuestion, addFavoriteQuestion, removeFavoriteQuestion } from '../../actions/teacherQuestions';
 import StarRatingComponent from 'react-star-rating-component';
 
 const QuestionModal = (props) => (
@@ -10,7 +10,33 @@ const QuestionModal = (props) => (
     onRequestClose = {props.clearSelectedQuestion}
     contentLabel="Question"
     >
-        <h2>{props.question.subject}</h2>
+    <div className="container">
+        <div className="row">
+            <div className="col-lg-10">
+                <h2>{props.question.subject}</h2>
+            </div>
+            <div className="col-lg-1">
+            <h3>{props.lang === 'English' ? 'Favorite' : 'Favorita'}: </h3>
+            </div>
+            <div className="col-lg-1">
+                <StarRatingComponent
+                    name="favorite"
+                    starCount={1}
+                    value={props.isFavorite}
+                    onStarClick={(nextValue, prevValue, name) => {
+                        if(prevValue === 0){
+                            //Add to favorites list 
+                            props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
+                        }else{
+                            //Remove from favorites list through filter
+                            props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
+                        }
+                    }}
+                />
+            
+            </div>
+        </div>
+    </div>
         <h3>{props.question.question}</h3>
         <p>{props.question.answer}</p>
         <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.question.askedDate}</h4>
@@ -27,8 +53,15 @@ const QuestionModal = (props) => (
 );
 
 const mapStateToProps = (state) => {
+    let val = 0;
+    if(state.teacherQuestions.selectedQuestion){
+        if(state.teacherQuestions.selectedQuestion.favorite === true){
+            val = 1;
+        }
+    }
     return {
         question: state.teacherQuestions.selectedQuestion,
+        isFavorite: val,
         lang: state.language.lang,
     }
 }

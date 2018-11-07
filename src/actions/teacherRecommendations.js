@@ -62,7 +62,7 @@ export const selectRecommendation = (
         multimedia = '',
         date = '',
         read = false,
-        rate = 0
+        rate = 0,
     } = {}) => ({
         type: 'SELECT_RECOMMENDATION',
         selectedRecommendation:{
@@ -85,6 +85,40 @@ export const rateRecommendation = ({recoID = '', rate = 0} = {}) => (
         type:'RATE_RECOMMENDATION',
         recoID: recoID,
         rate: rate
+});
+
+export const addFavoriteRecommendation = (
+    {
+        recoID =  '',
+        title = '',
+        header = '',
+        location = '',
+        description = '',
+        multimedia = '',
+        date = '',
+        read = false,
+        rate = 0
+    } = {}) => ({
+        type: 'ADD_FAVORITE_RECOMMENDATION',
+        favoriteRecommendation: {
+            recoID,
+            title,
+            header,
+            location,
+            description,
+            multimedia,
+            date,
+            read,
+            rate
+        }
+});
+
+export const removeFavoriteRecommendation = (
+    {
+        recoID = ''
+    } = {}) => ({
+        type: 'REMOVE_FAVORITE_RECOMMENDATION',
+        recoID: recoID
 });
 
 

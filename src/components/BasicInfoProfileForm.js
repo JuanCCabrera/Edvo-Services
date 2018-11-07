@@ -12,7 +12,8 @@ class BasicInfoProfileForm extends React.Component{
             lastName: props.info ? props.info.lastName : '',
             dateOfBirth: props.info ? props.info.dateOfBirth : moment(),
             calendarFocused: false,
-            gender: props.info ? props.info.gender : 'male'
+            gender: props.info ? props.info.gender : 'male',
+            formIncompleteError: false
         };
     }
 
@@ -51,8 +52,14 @@ class BasicInfoProfileForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         console.log('submitted');
+        if(this.state.name === '' || this.state.lastName === ''){
+            this.setState(() => ({formIncompleteError: true}));
+        }else{
+            this.setState(() => ({formIncompleteError: false}));
+        }
 
         //TO-DO Modify user data in database
+        //TO-DO Display existing user data in text fields by default
     }
 
     render(){
@@ -88,7 +95,13 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Gender' : 'Género'} <br/>
                         }
+
                         <button onClick={this.changePassword}>{this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} </button>
+
+                        {this.state.formIncompleteError === true && 
+                        <div className="text-danger">
+                            {this.props.lang === 'English' ? <p>Please fill all fields before saving.</p> : <p>Por favor, llene todos los espacios antes de guardar la información.</p>}
+                        </div>}
                         <button onClick={this.onSubmit}>{this.props.lang === 'English ' ? 'Save' : 'Guardar'}</button>
                     </div>
 
