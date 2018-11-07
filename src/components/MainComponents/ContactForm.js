@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './Main.css';
+import Circle from '../../styles/components/prevStyles/images/circle.png';
 
 class ContactForm extends React.Component{
     constructor(props){
@@ -43,35 +45,58 @@ class ContactForm extends React.Component{
     }
     render(){
         return(
-            <div>
-                {this.props.lang === 'English' ? <h5>Want to know more?</h5> : <h5>Desea conocer más?</h5>}
-                {this.props.lang === 'English' ? <h5>Contact Us</h5> : <h5>Contáctenos</h5>}
-                {this.state.contactError && <p>{this.state.contactError}</p>}
-                <form onSubmit = {this.onSubmit}>
-                    <input
-                    type = "text"
-                    placeholder = "Name"
-                    value = {this.state.name}
-                    onChange = {this.onNameChange}/>
-
-                    <input
-                    type = "text"
-                    placeholder = "Email"
-                    value = {this.state.email}
-                    onChange = {this.onEmailChange}/>
-                    <br/>
-                    <input
-                    type = "text"
-                    placeholder = "Message"
-                    value = {this.state.message}
-                    onChange = {this.onMessageChange}/>
-
-                    <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Send' : 'Enviar'}</button>
-                </form>
-                <p>Email: info@edvotech.com</p>
-                <p>Tel: 787-375-7094</p>
-                <p>{this.props.lang === 'English' ? 'Address' : 'Dirección Postal'}: 1250 Ave. Juan Ponce de León Ste. 400 San Juan, PR 00907</p>
+<div>
+   <div className="Parallax-Image Contact">
+      <div className="Contact-Content">
+         <div className="row">
+            <div className="col-md-4 col-md-offset-3">
+               <h5 className="Want Contact-Font">
+               {this.props.lang === 'English' ? 
+                  <span>Want to know more?</span>
+                  : 
+                  <span>¿Desea conocer más?</span>
+                  }
+               </h5>
+               {this.props.lang === 'English' ? 
+               <h5 className="Contact-Font">Contact Us</h5>
+               : 
+               <h5 className="Contact-Font">Contáctenos</h5>
+               }
             </div>
+         </div>
+         <form onSubmit={this.onSubmit}>
+            <div className="row justify-content-center">
+               <div className="col-md-offset-3 col-md-3">
+                  <div className="form-group">
+                     <input id="form_name" type="text" name="name" className="form-control" placeholder="Name"
+                        required="required" data-error="Firstname is required."/>
+                     <div className="help-block with-errors"></div>
+                  </div>
+               </div>
+               <div className="col-md-3">
+                  <div className="form-group">
+                     <input id="form_email" type="email" name="email" className="form-control" placeholder="Email"
+                        required="required" data-error="Valid email is required."/>
+                     <div className="help-block with-errors"></div>
+                  </div>
+               </div>
+            </div>
+            <div className="row justify-content-center">
+               <div className="col-md-offset-3 col-md-6">
+                  <div className="form-group">
+                     <textarea id="form_message" name="message" className="form-control" placeholder="Message" rows="4"
+                        required="required" data-error="Please,leave us a message."></textarea>
+                     <div className="help-block with-errors"></div>
+                  </div>
+               </div>
+               <div className="col-md-offset-3 container col-md-6">
+                  <input type="submit" className="Contact-Btn" value="Send"/>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
         );
     }
 }

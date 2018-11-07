@@ -7,10 +7,6 @@ import Can from "../../Can";
 import auth0 from '../../Auth';
 
 const PlansPage = (props) => (
-    <Can
-    role={auth0.role}
-    perform="dashboard-page:visit"
-    yes={() => (
     <div>
         <table>
             <thead>
@@ -159,9 +155,6 @@ const PlansPage = (props) => (
             }}/>
         </div>
     </div>
-        )}
-        no={() => <Redirect to="/" />}
-      />
 );
 
 const mapStateToProps = (state) => {

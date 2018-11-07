@@ -7,12 +7,10 @@ import {sendContactForm} from '../../actions/contact';
 const MainPage = (props) => (
     <div>
         <MainPageDisplay/>
-        <div>
             <ContactForm
             onSubmit={(contact) => {
                 props.dispatch(sendContactForm(contact));
             }}/>
-        </div>
     </div>
 );
 
