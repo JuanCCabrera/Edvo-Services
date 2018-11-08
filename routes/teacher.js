@@ -6,6 +6,106 @@ const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
 
 
+/*teachers homepage */
+router.get('/home', (req, res, next) => {
+  const results = [];
+  const resultsexist = [];
+  const logs = [];
+  var daysInPlatforms = 0;
+  var questionsasked = 0;
+  const recomCount = [];
+  var recommendationsRead = 0;
+  const topRecommendations = [];
+  const recentRecommendations = [];
+  //grab data from http request
+  const data = {
+      userid: req.query.userid, //change to req.query.userid for testing
+    };
+  //verify inputs
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403, success: false,
+        message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+
+    //verify if user exists in database records and is teacher type
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ //user exists and is teacher type
+        //SQL QUERY > aggregate count of questionsasked
+        const query1 = client.query('Select count(question) as questionsasked from questions where userid = $1', [data.userid,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          results.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          questionsasked = results[0].questionsasked;
+          //SQL QUERY > aggregate count of recommendations read
+          const query2 = client.query('SELECT count(recomid) as readrecom FROM edu_recommendations WHERE userid = $1 and read = $2', [data.userid, true]);
+          //stream results back one row at a time
+          query2.on('row', (row) => {
+            recomCount.push(row);
+          });
+          query2.on('end', () => {
+            done();
+            recommendationsRead = recomCount[0].readrecom;
+            //SQL QUERY > get recent recommendations
+            const query3 = client.query('with teacher_recom as (SELECT er.recomid, date, rate, favorite, read, location  FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid=$1), recom_body as (SELECT rb.recomid, title, multimedia, header, description FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN teacher_recom ORDER BY date DESC LIMIT 3', [data.userid,]);
+            //stream results back one row at a time
+            query3.on('row', (row) => {
+              recentRecommendations.push(row);
+            });
+            query3.on('end', () => {
+              done();
+              //SQL QUERY > get top recommendations
+              const query4 = client.query('with teacher_recom as (SELECT er.recomid, date, rate, favorite, read, location  FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid=$1 AND rate is not null), recom_body as (SELECT rb.recomid, title, multimedia, header, description FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN teacher_recom ORDER BY rate DESC, date DESC LIMIT 3', [data.userid,]);
+              //stream results back one row at a time
+              query4.on('row', (row) => {
+                topRecommendations.push(row);
+              });
+              query4.on('end', () => {
+                done();
+                //SQL Query > select different login dates
+                const query5 = client.query('SELECT distinct date FROM log_record WHERE userid = $1 GROUP BY date', [data.userid,]);
+                //stream results back one row at a time
+                query5.on('row', (row) => {
+                  logs.push(row);
+                });
+                query5.on('end', () => {
+                  done();
+                  daysInPlatforms = logs.length;
+                  return res.status(201).json({statusCode: 201, success: true, daysInPlatforms, questionsasked, recommendationsRead, recentRecommendations, topRecommendations});
+                });
+              });
+            });
+          });
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User is not of type teacher.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
 /*Ask a question */
 router.post('/questions/ask', (req,res,next)=> {
     const results = [];
@@ -727,6 +827,7 @@ router.get('/recommendations', (req,res,next)=> {
     });
   });
 });
+
 
 
 module.exports = router;
