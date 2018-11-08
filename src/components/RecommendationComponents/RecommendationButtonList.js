@@ -7,7 +7,7 @@ const RecommendationButtonList = (props) => (
         <br/>
         <Link to={"/recommendations/assign"}>{props.lang === 'English' ? 'Assign' : 'Asignar'}</Link>
         <br/>
-        <Link to={"/recommendations/create"}>{props.lang === 'English' ? 'Create' : 'Crear'}</Link>
+        <Link to={"/recommendations/create"} {...props}>{props.lang === 'English' ? 'Create' : 'Crear'}</Link>
         <br/>
         <Link to={"/recommendations/manage"}>{props.lang === 'English' ? 'Manage' : 'Administrar'}</Link>
     </div>

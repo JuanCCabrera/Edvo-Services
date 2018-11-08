@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class CreateRecommendationForm extends React.Component{
     constructor(props){
@@ -262,9 +264,60 @@ class CreateRecommendationForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        //TO-DO: Add error checking
-        this.props.onSubmit(this.state);
-    }
+        console.log("TOKEN: ",auth0Client.getIdToken());
+        axios.post('http://localhost:3000/admin/recommendations/create', {
+            usertype: 'admin',
+            title: this.state.title,
+            multimedia: this.state.multimedia,
+            header: this.state.header,
+            description: this.state.description,
+
+            strategies: this.state.teachingStrategies,
+            material: this.state.updatedMaterial,
+            timemanagement: this.state.timeManagement,
+            tech: this.state.technologyIntegration,
+            instructions: this.state.instructionAlignment,
+
+            moodle: this.state.moodle,
+            google: this.state.googleClassroom,
+            emails: this.state.emailResource,
+            books: this.state.books,
+            socialmedia: this.state.socialMedia,
+            projector: this.state.projector,
+            computer: this.state.computer,
+            tablet: this.state.tablet,
+            stylus: this.state.stylus,
+            internet: this.state.internet,
+            smartboard: this.state.smartboard,
+            smartpencil: this.state.smartpencil,
+            speakers: this.state.speakers,
+            
+            topics: this.state.topics,
+            location: this.state.location,
+            subject: this.state.subject,
+            spanish: true, 
+            english: true,
+            type: this.state.type,
+            schooltype: this.state.schoolType,
+            format: this.state.format,
+            level: this.state.level,
+            size: this.state.size,
+
+            question: this.state.question,
+            choices: this.state.choices,
+            correctoption: this.state.correctOption
+        },
+            {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
+            .then(response =>{
+                console.log("PROPS1: ",this.state.props);
+                this.state.props.history.replace('/teacher/home');
+            })
+            .catch(error =>{
+                console.log("ERROR IN CREATE RECOM: ", error);
+                this.state.props.history.replace('/');
+            });
+        }
 
     render(){
         return(

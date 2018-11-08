@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
 import { loadTeacherRecommendation } from '../../actions/teacherRecommendations';
+import axios from 'axios';
 
 class TeacherRecommendationsList extends React.Component{
     constructor(props){

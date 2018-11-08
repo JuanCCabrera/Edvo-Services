@@ -42,7 +42,7 @@ class Auth {
   }
 
   getIdToken() {
-    return this.idToken;
+    return localStorage.getItem('idToken');
   }
 
   handleAuthentication() {
@@ -59,18 +59,20 @@ class Auth {
   }
 
   isAuthenticated() {
-    return new Date().getTime() < this.expiresAt;
+    return new Date().getTime() < localStorage.getItem('expiresAt');
   }
 
   setSession(authResult, step) {
-    this.idToken = authResult.idToken;
+    if(localStorage.getItem('idToken') == null)
+      localStorage.setItem('idToken',authResult.idToken);
     this.profile = authResult.idTokenPayload;
     this.getEmail = authResult.idTokenPayload.email;
     this.getRole = authResult.idTokenPayload["https://edvo-test/role"];  
     //this.getEmail =   
     console.log("EL ROL:::: ",authResult.idTokenPayload["https://edvo-test/role"]);
+    console.log("ID PAYLOAD: ",authResult.idToken);
     // set the time that the id token will expire at
-    this.expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
+    localStorage.setItem('expiresAt', authResult.expiresIn * 1000 + new Date().getTime());
   }
 
   signIn() {

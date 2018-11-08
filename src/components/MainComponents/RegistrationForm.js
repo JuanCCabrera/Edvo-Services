@@ -3,11 +3,15 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import { Redirect, BrowserRouter, Route } from 'react-router-dom';
 
 class RegistrationForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            props: props,
              email: '',
              password: '',
              confirmPassword: '',
@@ -318,8 +322,71 @@ class RegistrationForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        //TO-DO Dispatch action to send data to database
-    }
+        axios.post('http://localhost:3000/register', {
+                usertype: 'teacher',
+                name: this.state.name,
+                lastname: this.state.lastName,
+                gender: this.state.gender,
+                email: this.state.email,
+                password: this.state.password,
+                dob: this.state.dateOfBirth,
+                policies: true,
+                teachersince: this.state.timeEmployed,
+                education: this.state.levelOfEdu,
+                english: true,
+                spanish: true,
+                strategies: this.state.teachingStrategies,
+                material: this.state.updatedMaterial,
+                timemanagement: this.state.timeManagement,
+                tech: this.state.technologyIntegration,
+                instructions: this.state.instructionAlignment,
+                schoolname: this.state.schoolName,
+                location: this.state.location,
+                schooltype: this.state.schoolType,
+                moodle: this.state.moodle,
+                googleclassroom: this.state.googleClassroom,
+                emails: this.state.emailResource,
+                books: this.state.books,
+                applications: true,
+                socialmedia: this.state.socialMedia,
+                projector: this.state.projector,
+                computer: this.state.computer,
+                tablet: this.state.tablet,
+                stylus: this.state.stylus,
+                internet: this.state.internet,
+                smartboard: this.state.smartboard,
+                smartpencil: this.state.smartpencil,
+                speakers: this.state.speakers,
+
+                subject: this.state.subject,
+                format: this.state.format,
+                language: 'spanish',
+                level: this.state.level,
+                groupsize: this.state.size,
+                topics: this.state.topicsTaught,
+                pageTwoError: this.state.pageTwoError,
+                level: this.state.level,
+                schoolLocation: this.state.schoolLocation,
+                institutionID: this.state.institutionID,
+                pageThreeError: this.state.pageThreeError,
+
+                employedCalendarFocused: this.state.employedCalendarFocused,
+                preferredLanguage: this.state.preferredLanguage,
+                pageFourError: this.state.pageFourError,
+
+                globalError: this.state.globalError,
+
+                currPage: this.state.currPage
+            },
+            {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+            .then(response =>{
+                console.log("PROPS1: ",this.state.props);
+                this.state.props.history.replace('/teacher/home');
+            })
+            .catch(error =>{
+                this.state.props.history.replace('/');
+            });
+        }
 
     //render
     render(){

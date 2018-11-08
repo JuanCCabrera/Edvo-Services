@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 const Registration = (props) => (
     <div>
-        <RegistrationForm/>
+        <RegistrationForm {...props}/>
 
         <ContactForm/>
     </div>

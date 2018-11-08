@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
 import auth0Client from './Auth';
 import 'babel-polyfill';
+import axios from 'axios';
 
 class Callback extends Component {
 
@@ -10,11 +11,22 @@ class Callback extends Component {
         try{
             await auth0Client.handleAuthentication();
         }catch(err){
-            console.log("ERROR ON LOGIN : ", err.errorDescription);
             auth0Client.signOut();
-            console.log("I SIGNED OUT?");
             route = '/login';
         }
+        await axios.get('http://localhost:3000/register/user',  {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+          }).then(response =>{
+            route = '/teacher/home';
+          })
+          .catch(error => {
+            if(error.response.status == 403)
+                route = '/register';
+            else{
+                auth0Client.signIn();
+            }
+
+          });
         this.props.history.replace(route);
     }
 

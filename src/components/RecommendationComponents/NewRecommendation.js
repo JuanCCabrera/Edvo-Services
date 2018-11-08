@@ -8,7 +8,7 @@ const NewRecommendation = (props) => (
     <div>
         <RecommendationButtonList/>
         <h2> {props.lang === 'English' ? 'Create Recommendation' : 'Crear Recomendación'} </h2>
-        <CreateRecommendationForm onSubmit={(recommendation) => {
+        <CreateRecommendationForm {...props} onSubmit={(recommendation) => {
             props.dispatch(createRecommendation(recommendation));
         }}/>
     </div>
