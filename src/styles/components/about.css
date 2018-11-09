@@ -1,0 +1,98 @@
+.about__title{
+    color: white;
+    background-color:#854dff;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 550;
+    font-size: 4.5rem;
+
+}
+
+.about__body{
+    background-color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.8rem;
+}
+
+.about__subtitle{
+    color: #5933AA;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.about__subtitle__2{
+    color: #5933AA;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 150%;
+}
+
+.row__margin{
+    margin-top: 4rem;
+    margin-bottom: 9rem;
+}
+
+.mid__row__margin{
+    margin-bottom: 8rem;
+}
+
+.about__low{
+    background-color: rgba(199, 219, 247, 0.337);
+    color: white;
+    font-size: 150%;
+    font-weight: 550;
+    padding-top: 3rem;
+    padding-bottom: 7rem;
+}
+
+.about__others__say{
+    padding-top: 3rem;
+}
+
+.about__low__options{
+    background-color: rgba(199, 219, 247, 0.337);
+    padding-bottom: 50px;
+}
+
+.about__sub__text{
+    color: #605E5E;
+    font-weight: 100;
+}
+
+.about__sub__text__bold{
+    font-weight: 700;
+}
+
+.Feature-Img {
+    max-width: 400px;
+    max-height: 200px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background-color: black;
+    padding-bottom: 1px;
+}
+
+.Feature-Img__endi{
+    max-width: 400px;
+    max-height: 200px;
+    padding-bottom: 32px;
+}
+
+.Feature-Img__her__campus{
+    max-width: 400px;
+    max-height: 200px;
+    padding-bottom: 2rem;
+}
+
+.Feature-Img__mc{
+    max-width: 400px;
+    max-height: 140px;
+    margin-bottom: 11px;
+}
+
+.break{
+	width:5%;
+    background-color: white;
+    font-weight: bold;
+}
