@@ -5,6 +5,7 @@ import Pagination from 'react-js-pagination';
 import {addUser, removeUser} from '../actions/user';
 import axios from 'axios';
 import uuid from 'uuid';
+import getVisibleUsers from '../selectors/users';
 
 class UserList extends React.Component{
     constructor(props){
@@ -43,6 +44,10 @@ class UserList extends React.Component{
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.userFilters !== this.props.userFilters){
+            this.handlePageChange(1);
         }
     }
 
@@ -89,7 +94,8 @@ class UserList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        users: state.users,
+        users: getVisibleUsers(state.users,state.userFilters),
+        userFilters: state.userFilters,
         lang: state.language.lang
     }
 }

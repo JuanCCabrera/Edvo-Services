@@ -6,6 +6,7 @@ import axios from 'axios';
 import {addSchool} from '../actions/school';
 import uuid from 'uuid';
 
+import getVisibleSchools from '../selectors/schools';
 
 class SchoolList extends React.Component{
     constructor(props){
@@ -46,6 +47,10 @@ class SchoolList extends React.Component{
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.filters !== this.props.filters){
+            this.handlePageChange(1);
         }
     }
 
@@ -94,7 +99,8 @@ class SchoolList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        schools: state.schools,
+        schools: getVisibleSchools(state.schools, state.schoolFilters),
+        filters: state.schoolFilters,
         lang: state.language.lang
     }
 }

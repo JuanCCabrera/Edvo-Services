@@ -14,7 +14,7 @@ const AboutPage = (props) => (
                 <p>¿Quiénes somos?</p>
             </div>
             }
-            
+            <i className="far fa-circle text-white text-bold"></i>
             <hr className="break"/>
         </div>
 

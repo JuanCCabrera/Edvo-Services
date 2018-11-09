@@ -3,16 +3,20 @@ import RecommendationsUserList from './RecommendationsUserList';
 import RecommendationList from './RecommendationList';
 import { clearSelection, assignRecommendation } from '../../actions/assignRecommendations';
 import {connect} from 'react-redux';
+import UserFilters from '../Filters/UserFilters';
+import RecommendationsFilters from '../Filters/RecommendationsFilters';
 
  const AssignRecommendations = (props) => (
         <div>
             {
                 //User List
             }
+            <UserFilters/>
             <RecommendationsUserList/>
             {
                 //Recommendations List
             }
+            <RecommendationsFilters/>
             <RecommendationList/>
 
             <div>

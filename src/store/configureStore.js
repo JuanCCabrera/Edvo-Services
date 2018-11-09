@@ -15,6 +15,12 @@ import teacherRecommendationsReducer from '../reducers/teacherRecommendations';
 import teacherQuestionsReducer from '../reducers/teacherQuestion';
 import quizzesReducer from '../reducers/quiz';
 
+import userFiltersReducer from '../reducers/filterReducers/userFilters';
+import teacherQuestionsFiltersReducer from '../reducers/filterReducers/teacherQuestionsFilter';
+import questionsFiltersReducer from '../reducers/filterReducers/questionsFilters';
+import recommendationsFiltersReducer from '../reducers/filterReducers/recommendationsFilters';
+import teacherRecommendationsFiltersReducer from '../reducers/filterReducers/teacherRecommendationsFilters';
+import schoolsFiltersReducer from '../reducers/filterReducers/schoolFilters';
 //Store creation
 
 export default () => {
@@ -34,7 +40,13 @@ export default () => {
             askQuestion: askQuestionReducer,
             teacherRecommendations: teacherRecommendationsReducer,
             teacherQuestions: teacherQuestionsReducer,
-            quizzes: quizzesReducer
+            quizzes: quizzesReducer,
+            userFilters: userFiltersReducer,
+            teacherQuestionsFilters: teacherQuestionsFiltersReducer,
+            questionsFilters: questionsFiltersReducer,
+            recommendationsFilters: recommendationsFiltersReducer,
+            teacherRecommendationsFilters: teacherRecommendationsFiltersReducer,
+            schoolFilters: schoolsFiltersReducer
         })
     );
 
