@@ -17,6 +17,10 @@ select {
   font-family: inherit;
 }
 
+.back__black{
+  background-color: black;
+}
+
 a,
 button,
 input,

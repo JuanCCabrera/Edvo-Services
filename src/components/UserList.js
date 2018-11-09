@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import UserListItem from './UserListItem';
 import Pagination from 'react-js-pagination';
 import {removeUser} from '../actions/user';
+import getVisibleUsers from '../selectors/users';
 
 class UserList extends React.Component{
     constructor(props){
@@ -30,6 +31,10 @@ class UserList extends React.Component{
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.userFilters !== this.props.userFilters){
+            this.handlePageChange(1);
         }
     }
 
@@ -76,7 +81,8 @@ class UserList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        users: state.users,
+        users: getVisibleUsers(state.users,state.userFilters),
+        userFilters: state.userFilters,
         lang: state.language.lang
     }
 }

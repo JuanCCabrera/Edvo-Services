@@ -2,10 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import TeacherQuestionsList from './TeacherQuestionsList';
 import FavoriteTeacherQuestionsList from './FavoriteTeacherQuestionsList';
+import TeacherQuestionFilters from '../Filters/TeacherQuestionFilters';
 
 const TeacherQuestions = (props) => (
     <div>
         <h2>{props.lang === 'English' ? 'Questions' : 'Preguntas'}</h2>
+        <TeacherQuestionFilters/>
         <TeacherQuestionsList/>
 
         <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>

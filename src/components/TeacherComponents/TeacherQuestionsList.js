@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 import uuid from 'uuid';
 import TeacherQuestionListItem from './TeacherQuestionListItem';
+import getVisibleTeacherQuestions from '../../selectors/teacherQuestions';
 
 class TeacherQuestionsList extends React.Component{
     constructor(props){
@@ -30,6 +31,11 @@ class TeacherQuestionsList extends React.Component{
                 this.handlePageChange(this.currentPage);
             }
         }
+
+        if(prevProps.filters !== this.props.filters){
+            this.handlePageChange(1);
+        }
+        
     }
 
     handlePageChange = (pageNumber) => {
@@ -75,7 +81,8 @@ class TeacherQuestionsList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        question: state.teacherQuestions.teacherQuestions,
+        question: getVisibleTeacherQuestions(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters),
+        filters: state.teacherQuestionsFilters,
         lang: state.language.lang
     }
 }

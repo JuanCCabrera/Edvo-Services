@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PendingQuestionsListItem from './PendingQuestionsListItem';
 import uuid from 'uuid';
 import Pagination from 'react-js-pagination';
+import getVisibleQuestions from '../../selectors/questions';
 
 class PendingQuestionsList extends React.Component {
     constructor(props){
@@ -30,6 +31,10 @@ class PendingQuestionsList extends React.Component {
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.filters !== this.props.filters){
+            this.handlePageChange(1);
         }
     }
 
@@ -63,10 +68,10 @@ class PendingQuestionsList extends React.Component {
                 {(this.props.questions.length === 0) &&
                     (this.props.lang === 'English' ? 
                     <div>
-                        <p>There are currently no questions pending answers.</p>
+                        <p>There are no questions pending answers.</p>
                     </div> : 
                     <div>
-                        <p>Actualmente no hay preguntas con respuestas pendientes.</p>
+                        <p>No hay preguntas con respuestas pendientes.</p>
                     </div>)
                 }
             </div>
@@ -76,7 +81,8 @@ class PendingQuestionsList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        questions: state.questions,
+        questions: getVisibleQuestions(state.questions, state.questionsFilters),
+        filters: state.questionsFilters,
         lang: state.language.lang
     }
 };
