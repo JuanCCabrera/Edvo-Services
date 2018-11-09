@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
+import getVisibleTeacherRecommendations from '../../selectors/teacherRecommendations';
 
 class TeacherRecommendationsList extends React.Component{
     constructor(props){
@@ -29,6 +30,10 @@ class TeacherRecommendationsList extends React.Component{
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.filters !== this.props.filters){
+            this.handlePageChange(1);
         }
     }
 
@@ -75,7 +80,8 @@ class TeacherRecommendationsList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        recommendation: state.teacherRecommendations.recommendations,
+        recommendation: getVisibleTeacherRecommendations(state.teacherRecommendations.recommendations, state.teacherRecommendationsFilters),
+        filters: state.teacherRecommendationsFilters,
         lang: state.language.lang
     }
 }

@@ -1,5 +1,3 @@
-//SET_TEXT_FILTER
-
 export const setTeacherQuestionsTextFilter = (text = '') => ({
     type: 'SET_TEACHER_QUESTIONS_TEXT_FILTER',
     text: text

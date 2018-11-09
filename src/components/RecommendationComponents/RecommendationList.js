@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import RecommendationListItem from './RecommendationListItem';
 import Pagination from 'react-js-pagination';
 import {Link} from 'react-router-dom';
+import getVisibleRecommendations from '../../selectors/recommendations';
 
 class RecommendationsList extends React.Component{
     constructor(props){
@@ -30,6 +31,10 @@ class RecommendationsList extends React.Component{
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.filters !== this.props.filters){
+            this.handlePageChange(1);
         }
     }
 
@@ -79,7 +84,8 @@ class RecommendationsList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        recommendation: state.recommendations,
+        recommendation: getVisibleRecommendations(state.recommendations, state.recommendationsFilters),
+        filters: state.recommendationsFilters,
         assigned: state.assignRecommendation,
         lang: state.language.lang
     }
