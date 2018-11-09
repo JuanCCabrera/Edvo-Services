@@ -1,3 +1,15 @@
+@font-face {
+    font-family: LuloCleanOneBold;
+    src: url(http://localhost:8080/static/fonts/LuloCleanOneBold.ttf);
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(http://localhost:8080/static/fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+    font-family: Pacifico;
+    src: url(http://localhost:8080/static/fonts/Pacifico-Regular.ttf);
+}
 .Main {
     position: relative;
     display: block;

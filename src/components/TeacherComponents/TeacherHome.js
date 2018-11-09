@@ -102,10 +102,7 @@ const TeacherHome = (props) => (
                     </h3>
                 </div>
             }
-            <AskQuestionForm 
-            onSubmit={(question) => {
-                props.dispatch(sendAskedQuestion(question));
-            }}/>
+            <AskQuestionForm />
         </div>
 
         </div>

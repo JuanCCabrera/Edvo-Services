@@ -32,15 +32,23 @@ class BasicInfoProfileForm extends React.Component{
 
     componentWillMount(){
         //send this to action
-        axios.get('http://localhost:8081/info')
-        .then(response => {
-            this.setState({   
-            name: response.data.name,
-            lastName: response.data.lastname,
-            gender: response.data.gender,
-            dob: response.data.dateOfBirth
-            });
+        axios.get('http://localhost:3000/school/settings/info',
+        {
+        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+    })
+        .catch(error=>{
+            console.log("ERROR: ", error);
         })
+        .then(response => {
+            console.log("DOB: ", response.data.info[0].dob);
+            this.setState({   
+            name: response.data.info[0].name,
+            lastName: response.data.info[0].lastname,
+            gender: response.data.info[0].gender,
+            dateOfBirth: moment(response.data.info[0].dob)
+        });
+        })
+        console.log("TOKEN BASIC: ", auth0Client.getIdToken());
     }
 
     onNameChange = (e) => {

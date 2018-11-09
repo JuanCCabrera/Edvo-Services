@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class AskQuestionForm extends React.Component{
     constructor(props){
@@ -7,6 +9,7 @@ class AskQuestionForm extends React.Component{
         this.state = {
             subject: '',
             body: '',
+            success: false,
             askQuestionError: false
         };
     }
@@ -24,22 +27,17 @@ class AskQuestionForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         if(!this.state.subject || !this.state.body){
-            this.setState(() => ({askQuestionError: true})); 
+            this.setState(() => ({askQuestionError: true, success: false})); 
         }else{
             this.setState(() => ({askQuestionError: ''}));
-            axios.post('http://localhost:8081/teacher/ask', {
+            axios.post('http://localhost:3000/teacher/questions/ask', {
             subject: this.state.subject,
-            body: this.state.body
-    }).then((response)=>{
-        if(response.status == 200)
-            this.props.history.push('/admin/settings/users');
+            question: this.state.body
+    },{headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+    .then((response)=>{
+        if(response.status == 201)
+            this.setState(() => ({success: true, subject: '', body: ''}));
     });
-            this.setState(() => ({askQuestionError: false}));
-            this.props.onSubmit({
-                subject: this.state.subject,
-                body: this.state.body,
-            });
-            this.props.history.push('/teacher/home');
         }
     }
     render(){
@@ -62,6 +60,10 @@ class AskQuestionForm extends React.Component{
                     {this.state.askQuestionError === true && 
                         <div className="text-danger">
                             {this.props.lang === 'English' ? <p>Please fill all empty fields before sending a question.</p> : <p>Por favor, llene todos los espacios vacios antes de enviar una pregunta.</p>}
+                        </div>
+                    }{this.state.success === true && 
+                        <div className="text-danger">
+                            {this.props.lang === 'English' ? <p>Your question was submitted successfully</p> : <p>Su pregunta ha sido enviada exitosamente.</p>}
                         </div>
                     }
                     <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</button>

@@ -44,10 +44,12 @@ const MainPageDisplay = (props) => (
             <hr className="Break"/>
             {props.lang === 'English' ? 
             <div className="Mission">
+            <i className="far fa-circle"></i>
                 <h2>We make the process of teaching easier.</h2>
                 <h4>By providing the first professional development platform for edcuators,</h4>
                 <h4>we enable them to innovate, work efficiently and effectively.</h4>
             </div> : <div className="Mission">
+                <i className="far fa-circle"></i>
                 <h2>Hacemos el proceso de enseñanza más fácil</h2>
                 <h4>Al proveer la primera plataforma de desarrollo personal para educadores,</h4>
                 <h4>permitimos que innoven y trabajen más efectiva y eficientemente.</h4>

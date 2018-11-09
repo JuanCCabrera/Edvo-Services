@@ -43,7 +43,6 @@ const LoginPage = (props) => (
           {
             auth0Client.isAuthenticated() &&
             <div>
-              <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
               <button onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
               <button onClick={() => {reset()}}>{props.lang === 'English' ? 'Reset Password' : 'Restablecer Contraseña'}</button>
             </div>
