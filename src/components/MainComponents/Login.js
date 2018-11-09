@@ -6,6 +6,7 @@ import {sendContactForm} from '../../actions/contact';
 import { sendLogin } from '../../actions/login';
 import auth0Client from '../../Auth';
 import axios from 'axios';
+import './Login.css';
 
 const signOut = (props) => {
     auth0Client.signOut();
@@ -26,16 +27,10 @@ const signOut = (props) => {
 
 const LoginPage = (props) => (
     <div>
-        
-        <h1>Learn. Teach. Repeat</h1>
-        
-        {/*<div>
-            <LoginForm
-            onSubmit={(login_info) => {
-            props.dispatch(sendLogin(login_info));
-            }}/>
-        </div>*/}
-
+        <div className="Edvo-Shadow">
+        <h1 className="text-center">Learn. Teach. Repeat</h1>
+        <div className="container row">
+<div className="Login text-center col-md-offset-5 col-lg-3">
         {
             !auth0Client.isAuthenticated() &&
             <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Registrarse'}</button>
@@ -47,10 +42,10 @@ const LoginPage = (props) => (
               <button onClick={() => {reset()}}>{props.lang === 'English' ? 'Reset Password' : 'Restablecer Contraseña'}</button>
             </div>
           }
-
-        <div>
-            <span>MATERIALS_IMG</span>
+          </div>
+        <div className="text-center col-md-offset-1 container-fluid col-lg-3 login-signup">
             <div>
+            <img className="text-center Materials-Img-S" src="http://localhost:8080/static/images/materials.png" />
                 {props.lang === 'English' ? 
                 <div>
                     <h6>Join the community of schools</h6>
@@ -68,7 +63,8 @@ const LoginPage = (props) => (
                 }
             </div>
         </div>
-
+</div>
+</div>
         <div>
             <ContactForm
             onSubmit={(contact) => {

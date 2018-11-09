@@ -10,6 +10,35 @@
     font-family: Pacifico;
     src: url(http://localhost:8080/static/fonts/Pacifico-Regular.ttf);
 }
+ul {
+	list-style: none;
+  }
+.Join {
+    text-align: center;
+	font-size: 1.5vw;
+	font-family: Montserrat;
+    color: white;
+}
+
+.Join .btn {
+	position: relative;
+	margin-top: 1%;
+	background-color: #854dff;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 60px;
+	border: 1px solid #854dff;
+	cursor: pointer;
+	border-radius: 30px;
+	z-index: 2;
+}
+
+.Join .btn:hover {
+	background-color: #FFFFFF;
+	color: #854dff;
+	border: 1px solid #FFFFFF;
+}
 .Main {
     position: relative;
     display: block;
@@ -98,7 +127,7 @@
 	font-family: Montserrat;
 }
 
-.Join {
+/* .Join {
     text-align: center;
 	position: relative;
 	margin-top: 1%;
@@ -115,7 +144,7 @@
 	background-color: #FFFFFF;
 	color: #854dff;
 	border: 1px solid #FFFFFF;
-}
+} */
 .Subtitle>h1 {
 	font-size: 4vw;
 	font-family: Pacifico;

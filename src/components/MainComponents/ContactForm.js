@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Main.css';
-import Circle from '../../styles/components/prevStyles/images/circle.png';
 
 class ContactForm extends React.Component{
     constructor(props){

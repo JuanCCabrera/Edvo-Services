@@ -11,7 +11,7 @@ const MainPageDisplay = (props) => (
         <div className="container Title">
             <h1>EDUCATION</h1> 
             <h1>EVOLVED</h1>
-            <div className="container subtitle">
+            <div className="container Join">
             <h4>Join the community of educators who are</h4>
             <h4>evolving education</h4>
             <div>
@@ -24,12 +24,12 @@ const MainPageDisplay = (props) => (
         <div className="container Title">
             <h1>EDUCATION</h1>
             <h1>EVOLVED</h1>
-            <div className="container subtitle">
+            <div className="container Join">
             <h4>Únete a la comunidad de educadores</h4>
             <h4>que esta revolucionando la educación</h4>
             <div>
-            <NavLink to="/login" activeClassName="is-active" exact>
-                <button className="Join btn mb-5 mt-5">{props.lang === 'English' ? 'JOIN' : 'ÚNETE'}</button>
+            <NavLink to="/login" activeClassName="is-active Join" exact>
+                <button className="btn mb-5 mt-5">{props.lang === 'English' ? 'JOIN' : 'ÚNETE'}</button>
             </NavLink>
             </div>
             </div>
@@ -44,12 +44,10 @@ const MainPageDisplay = (props) => (
             <hr className="Break"/>
             {props.lang === 'English' ? 
             <div className="Mission">
-            <i className="far fa-circle"></i>
                 <h2>We make the process of teaching easier.</h2>
                 <h4>By providing the first professional development platform for edcuators,</h4>
                 <h4>we enable them to innovate, work efficiently and effectively.</h4>
             </div> : <div className="Mission">
-                <i className="far fa-circle"></i>
                 <h2>Hacemos el proceso de enseñanza más fácil</h2>
                 <h4>Al proveer la primera plataforma de desarrollo personal para educadores,</h4>
                 <h4>permitimos que innoven y trabajen más efectiva y eficientemente.</h4>

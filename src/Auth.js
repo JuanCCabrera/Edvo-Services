@@ -85,6 +85,8 @@ class Auth {
       returnTo: 'http://localhost:8080',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
     });
+    localStorage.removeItem('idToken');
+    localStorage.removeItem('expiresAt');
   }
 
   silentAuth() {

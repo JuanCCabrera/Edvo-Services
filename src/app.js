@@ -16,7 +16,6 @@ import {addUser} from './actions/user';
 import {addSchool} from './actions/school';
 import {loadRecommendation} from './actions/recommendations';
 import { loadQuestion } from './actions/question';
-import { loadClass } from './actions/classes';
 import { loadPlan } from './actions/plan';
 import {loadTeacherDaysInPlatform, loadTeacherRecentRecommendation} from './actions/teacherMetrics';
 import {loadTeacherTopRecommendation} from './actions/teacherMetrics';
@@ -41,9 +40,6 @@ store.dispatch(loadQuestion({question: 'How can I integrate technolgy into the c
 store.dispatch(loadQuestion({question: 'Hi there! How do I use the recommendations page?', askedDate: '2018-10-27 12:24:14', subject: 'Recommendation Page Question', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'What kind of technology should I use in class?', askedDate: '2018-10-28 06:20:23', subject: 'Types of Tech for Classrooms', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'What should I do?', askedDate: '2018-10-27 12:24:04', subject: 'Best way to get students to listen in class', userId: uuid()}));
-
-store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'Calculus I', format: 'Classroom', language: 'Spanish', level: 'University/College', groupSize: '1 - 10', topicA: 'Diff Equations', topicB: '2D Integrals'}));
-store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History I', format: 'Online', language: 'English', level: '7th - 8th grade', groupSize: '11 - 20', topicA: 'World War 1', topicB: 'World War 2'}));
 
 store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
 
