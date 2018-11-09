@@ -6,7 +6,10 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 550;
     font-size: 4.5rem;
+}
 
+.far{
+    font-size: 30%;
 }
 
 .about__body{
@@ -47,7 +50,8 @@
 }
 
 .about__others__say{
-    padding-top: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .about__low__options{

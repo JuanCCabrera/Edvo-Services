@@ -14,6 +14,7 @@ const AboutPage = (props) => (
                 <p>¿Quiénes somos?</p>
             </div>
             }
+            
             <hr className="break"/>
         </div>
 
