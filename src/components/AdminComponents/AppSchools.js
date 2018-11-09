@@ -3,11 +3,13 @@ import AdminButtonList from './AdminButtonList';
 import SchoolList from '../SchoolList';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import InstitutionFilters from '../Filters/InstitutionFilters';
 
 const AppSchools = (props) => (
     <div>
         <AdminButtonList/>
         <Link to='/admin/settings/schools/add'><button>{props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}</button></Link>
+        <InstitutionFilters/>
         <SchoolList/>
     </div>
 );

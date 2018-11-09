@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import SchoolListItem from './SchoolListItem';
 import Pagination from 'react-js-pagination';
+import getVisibleSchools from '../selectors/schools';
 
 class SchoolList extends React.Component{
     constructor(props){
@@ -29,6 +30,10 @@ class SchoolList extends React.Component{
             }else{
                 this.handlePageChange(this.currentPage);
             }
+        }
+
+        if(prevProps.filters !== this.props.filters){
+            this.handlePageChange(1);
         }
     }
 
@@ -77,7 +82,8 @@ class SchoolList extends React.Component{
 
 const mapStateToProps = (state) => {
     return{
-        schools: state.schools,
+        schools: getVisibleSchools(state.schools, state.schoolFilters),
+        filters: state.schoolFilters,
         lang: state.language.lang
     }
 }
