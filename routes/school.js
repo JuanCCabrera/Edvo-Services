@@ -113,4 +113,54 @@ router.get('/settings/info', (req,res,next)=> {
   });
 });
 
+
+/* GET HOME PAGE*/
+router.get('/home', (req,res,next)=> {
+  const validuser = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+    };
+   //verify inputs
+   if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and type school
+    const query = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'school',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      validuser.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (validuser.length === 1){ // user exists and is school type
+        
+        //edit here---------------
+        //--------- add home page aggregates
+        return res.status(201).json({statusCode: 201, success: true, validuser});
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'User does not exists in records or is not of type school. Inputs were not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+
 module.exports = router;

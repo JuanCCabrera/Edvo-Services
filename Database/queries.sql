@@ -99,7 +99,7 @@ recom_target as (Select rt.recomid, startegies, material, timemanagement, tech, 
 SELECT * FROM recom_body tr NATURAL INNER JOIN recom_target NATURAL INNER JOIN teacher_recom ORDER BY date DESC;
 
 #get recent recommendations by user ordered by date
- with teacher_recom as (SELECT er.recomid, userid, date, rate, favorite, read, location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active  FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid='test1'),
+with teacher_recom as (SELECT er.recomid, userid, date, rate, favorite, read, location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active  FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid='test1'),
 recom_body as (SELECT rb.recomid, title, multimedia, header, description, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid),
 recom_target as (Select rt.recomid, startegies, material, timemanagement, tech, instructions, topica,topicb,topicc FROM recommendation_target rt INNER JOIN recommendation_topics ON rt.recomid = recommendation_topics.recomid)
 SELECT * FROM recom_body tr NATURAL INNER JOIN recom_target NATURAL INNER JOIN teacher_recom ORDER BY date DESC;
@@ -124,4 +124,12 @@ UPDATE questions SET read=true WHERE userid = userID AND askeddate = askeddate A
 
 #rate questions answered
 UPDATE questions SET rate=5 WHERE userid = 'test1' AND askeddate = '2018-10-28 12:55:54' AND answer is not null;
+
+#get users with no recomendations
+with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, email, er.recomid, date, rate, favorite, read  FROM edu_recommendations er RIGHT JOIN users ON er.userid = users.userid WHERE usertype = 'teacher'),
+needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, userid FROM user_info)
+SELECT * FROM userlist NATURAL INNER JOIN needsOfUSer WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL '7 days'))
+
+
+
 

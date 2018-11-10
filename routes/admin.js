@@ -1059,6 +1059,75 @@ router.get('/recommendations/users', (req,res,next)=> {
   });
 });
 
+/* Create a single user of type admin, mentor, school*/
+router.post('/settings/users/add', (req,res,next)=> {
+  const user = [];
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,
+      userToCreateid : req.body.userToCreateid,
+      usertype: req.body.usertype,
+      institutionid : req.body.institutionid,
+      name: req.body.name, 
+      lastname: req.body.lastname, 
+      gender: req.body.gender,
+      email: req.body.email,
+      password: req.body.password,
+      dob: req.body.dob,
+      membersince: todaysDate,
+      policies: req.body.policies,
+    };
+    if(data.userid == null || data.userToCreateid == null || data.usertype == null || data.name == null || data.lastname ==null || data.gender == null 
+      || data.email == null || data.dob == null || data.policies == null){
+      return res.status(403).json({statusCode: 403,
+        body:{
+          message: 'Inputs were not received as expected.',
+        },
+        isBase64Encoded: false,});
+    }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if userid or email exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1 OR email = $2', [data.userToCreateid, data.email,]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length  === 0){ //if userid or email doesnt exist proceed to create user
+      
+        //SQL Query > insert user table data
+        client.query('insert into users(userid, institutionid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [data.userToCreateid, data.institutionid, data.usertype, data.name, data.lastname, data.gender, data.email, data.password, data.dob, data.membersince, data.policies]);
+        //SQL Query > select data of a single user
+        const query =  client.query('SELECT * FROM users WHERE userid = $1', [data.userToCreateid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+          user.push(row);
+        });
+        query.on('end', () => {
+          done();
+          //return res.json(results);
+          return res.status(201).json({statusCode: 201, user});
+        });
+      }else//if user does exist in record send error statuscode
+      {
+        return res.status(401).json({statusCode: 401,
+          body:{
+            message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
 
 
 

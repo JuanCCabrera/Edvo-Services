@@ -51,7 +51,7 @@ router.post('/', (req,res,next)=> {
       classes: req.body.classes
     };
     if(data.userid == null || data.usertype == null || data.name == null || data.lastname ==null || data.gender == null 
-      || data.email == null || data.password == null || data.dob == null || data.policies == null || data.teachersince == null
+      || data.email == null || data.dob == null || data.policies == null || data.teachersince == null
       || data.education == null || data.spanish == null || data.english == null || data.schooltype == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
       ||data.instructions == null ||data.moodle == null || data.googleclassroom == null || data.emails == null || data.books == null || data.applications == null || data.socialmedia == null || data.projector == null 
       || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.classes == null || data.schoolname == null || data.location == null){
