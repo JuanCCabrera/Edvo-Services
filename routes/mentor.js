@@ -75,13 +75,13 @@ router.get('/settings/info', (req,res,next)=> {
   const data = {
       userid: req.body.userid, 
     };
-    if(data.userid == null){
-      return res.status(403).json({statusCode: 403,
-        body:{
-          message: 'Inputs were not received as expected.',
-        },
-        isBase64Encoded: false,});
-    }
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -155,7 +155,6 @@ router.post('/recommendations/create', (req,res,next)=> {
       format : req.body.format,
       groupsize : req.body.groupSize,
       level : req.body.level,
-      active : req.body.active,
       question : req.body.question,
       choices : req.body.choices
     };
@@ -165,7 +164,7 @@ router.post('/recommendations/create', (req,res,next)=> {
     ||data.instructions == null ||data.moodle == null || data.google == null || data.emails == null || data.books == null || data.apps == null || data.socialmedia == null || data.projector == null 
     || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.topica == null
     || data.subject == null || data.type == null || data.spanish == null || data.english == null || data.schooltype == null || data.format == null ||data.groupsize == null || data.level == null 
-    || data.active == null || data.question == null || data.choices == null){
+    || data.question == null || data.choices == null){
     return res.status(403).json({statusCode: 403,
       body:{
         message: 'Inputs were not received as expected.',
@@ -206,7 +205,7 @@ router.post('/recommendations/create', (req,res,next)=> {
       if (resultsexist.length  === 1){ //user exists and is of type mentor
       
         //SQL Query > insert recommendation into table recommendations
-        const query1 = client.query('INSERT into recommendations (location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING recomid', [data.location, data.subject, data.spanish, data.english, data.type, data.schooltype, data.format, data.groupsize, data.level, data.userid, data.active,]);
+        const query1 = client.query('INSERT into recommendations (location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING recomid', [data.location, data.subject, data.spanish, data.english, data.type, data.schooltype, data.format, data.groupsize, data.level, data.userid, true,]);
         //stream results back one row at a time
         query1.on('row', (row) => {
           recomidresult.push(row);
@@ -625,6 +624,61 @@ router.get('/staff/questions', (req,res,next)=> {
         query1.on('end', () => {
           done();
           return res.status(201).json({statusCode: 201, success: true, questions});
+        });
+      }else// user doesn't exist in record or isnt of type mentor, send error statuscode
+      {
+        return res.status(401).json({statusCode: 401,
+          body:{
+            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+//GET recommendations created by mentor
+router.get('/recommendations', (req,res,next)=> {
+  const results = [];
+  const recommendations = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, //change to req.query.userid for testing
+    };
+  //verify inputs are valid
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is of type mentor
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type mentor
+        //SQL Query > select recommendations written by mentor
+        const query1 = client.query('with teacher_recom as (SELECT recomid, location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active FROM recommendations WHERE mentorid= $1), recom_body as (SELECT rb.recomid, title, multimedia, header, description, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid), recom_target as (Select rt.recomid, strategies, material, timemanagement, tech, instructions, topica,topicb,topicc FROM recommendation_target rt INNER JOIN recommendation_topics ON rt.recomid = recommendation_topics.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN recom_target NATURAL INNER JOIN teacher_recom;', [data.userid,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          recommendations.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, success: true, recommendations});
         });
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {

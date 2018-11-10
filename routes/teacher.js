@@ -17,9 +17,10 @@ router.get('/home', (req, res, next) => {
   var recommendationsRead = 0;
   const topRecommendations = [];
   const recentRecommendations = [];
+  const status = [];
   //grab data from http request
   const data = {
-      userid: req.query.userid, //change to req.query.userid for testing
+      userid: req.body.userid, //change to req.query.userid for testing
     };
   //verify inputs
   if(data.userid == null){
@@ -88,7 +89,16 @@ router.get('/home', (req, res, next) => {
                 query5.on('end', () => {
                   done();
                   daysInPlatforms = logs.length;
-                  return res.status(201).json({statusCode: 201, success: true, daysInPlatforms, questionsasked, recommendationsRead, recentRecommendations, topRecommendations});
+                  //SQL Query > select subscription status
+                  const query6 = client.query('SELECT status FROM subscription WHERE userid = $1 ', [data.userid,]);
+                  //stream results back one row at a time
+                  query6.on('row', (row) => {
+                    status.push(row);
+                  });
+                  query6.on('end', () => {
+                    done();
+                    return res.status(201).json({statusCode: 201, success: true, daysInPlatforms, questionsasked, recommendationsRead, recentRecommendations, topRecommendations, status});
+                  });
                 });
               });
             });
@@ -110,6 +120,7 @@ router.get('/home', (req, res, next) => {
 router.post('/questions/ask', (req,res,next)=> {
     const results = [];
     const resultsexist = [];
+    const subscription = [];
     //grab data from http request
     const data = {
         userid: req.body.userid,
@@ -142,18 +153,36 @@ router.post('/questions/ask', (req,res,next)=> {
       query2.on('end', () => {
         done();
         if (resultsexist.length === 1){ //user exists and is teacher type
-        
-          //SQL Query > insert data
-          client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDate, data.userid, data.subject, data.question, false, false,]);
-          //SQL Query > select data
-          const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDate]);
+          //add verify active subscription
+          //SQL QUEry > get subsciption status
+          const query = client.query('SELECT * FROM subscription WHERE userid= $1', [data.userid,]);
           //stream results back one row at a time
           query.on('row', (row) => {
-          results.push(row);
+            subscription.push(row);
           });
           query.on('end', () => {
-          done();
-          return res.status(201).json({statusCode: 201, success: true, results});
+            done();
+            if(subscription[0].status == 'active'){
+              //SQL Query > insert data
+              client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDate, data.userid, data.subject, data.question, false, false,]);
+              //SQL Query > select data
+              const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDate]);
+              //stream results back one row at a time
+              query.on('row', (row) => {
+              results.push(row);
+              });
+              query.on('end', () => {
+              done();
+              return res.status(201).json({statusCode: 201, success: true, results});
+              });
+          }
+          else{
+            return res.status(402).json({statusCode: 402,
+              body:{
+                message: 'User doesn\'t have a subscription active.',
+              },
+              isBase64Encoded: false,});
+          }
           });
         }else
         {
@@ -460,6 +489,57 @@ router.post('/recommendations/rate', (req,res,next)=> {
   });
 });
 
+/* Favorite recommendation*/  
+router.post('/recommendations/favorite', (req,res,next)=> {
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,
+      recomid: req.body.recomid,
+      favorite: req.body.favorite
+    };
+  //verify inputs
+  if(data.userid == null || data.recomid == null || data.favorite == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+
+    //verify if recommendation exists in database records
+    const query2 = client.query('SELECT * FROM edu_recommendations WHERE recomid = $1 AND userid= $2', [data.recomid, data.userid]);
+    //stream results back one row at a time
+    query2.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query2.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // recommendation exist and is of specified user
+      
+        //SQL Query > update read data
+        client.query('UPDATE edu_recommendations SET favorite=$1 WHERE recomid = $2 and userid = $3', [data.favorite, data.recomid, data.userid,]);
+        
+        return res.status(201).json({statusCode: 201, success: true});
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'Invalid recommendation. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
 
 /* Modify user basic info */
 router.post('/settings/info', (req,res,next)=> {
@@ -473,20 +553,10 @@ router.post('/settings/info', (req,res,next)=> {
         gender: req.body.gender,
         dob: req.body.dob
       };
-    //verify inputs
-    if(data.userid == null || data.name == null || data.lastname == null || data.gender == null || data.dob == null){
-      return res.status(403).json({statusCode: 403,
-        body:{
-          message: 'Inputs were not received as expected.',
-        },
-        isBase64Encoded: false,});
-    }
     //verify no input is empty
     if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
       return res.status(403).json({statusCode: 403,
-        body:{
           message: 'Inputs were not received as expected.',
-        },
         isBase64Encoded: false,});
     }
     // get a postgres client from the connection pool
@@ -826,6 +896,132 @@ router.get('/recommendations', (req,res,next)=> {
       }
     });
   });
+});
+
+/*GET to MODIFY PLAN*/
+router.get('/settings/plans', (req,res,next)=> {
+  const results = [];
+  const subscription = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,  //change to req.query.userid for testing
+    };
+  //verify inputs
+  if(data.userid == null ){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is teacher
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher']);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type teacher
+        //SQL query > select all recomendations
+        const query1 = client.query('SELECT * FROM subscription WHERE userid = $1',[data.userid,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          subscription.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          if(subscription.length == 1)
+            return res.status(201).json({statusCode: 201, success: true, subscription});
+          else
+          {
+            return res.status(402).json({statusCode: 402, success: false, message: 'User has never subscribed.'});
+          }
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+/*MODIFY PLAN*/
+router.post('/settings/plans', (req,res,next)=> {
+  const results = [];
+  const subscription = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+      action: req.body.action //solo puede ser active o suspended
+    };
+  //verify inputs
+  if(data.userid == null || data.action == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  if(data.action == 'active' || data.action == 'suspended')
+  {
+    // get a postgres client from the connection pool
+    pg.connect(connectionString, (err, client, done)=> {
+      //handle connection error
+      if(err){
+        done();
+        console.log(err);
+        return res.status(500).json({statusCode: 500, success: false, data: err});
+      }
+      //verify if user exists in database records and is teacher
+      const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher']);
+      //stream results back one row at a time
+      query.on('row', (row) => {
+        results.push(row);
+      });
+      query.on('end', () => {
+        done();
+        if (results.length === 1){ // user exists and is of type teacher
+          //SQL query > select all recomendations
+          const query1 = client.query('UPDATE subscription SET status = $1 WHERE userid = $2 returning *',[data.action, data.userid,]);
+          //stream results back one row at a time
+          query1.on('row', (row) => {
+            subscription.push(row);
+          });
+          query1.on('end', () => {
+            done();
+            if(subscription.length == 1)
+              return res.status(201).json({statusCode: 201, success: true, subscription});
+            else
+            {
+              return res.status(402).json({statusCode: 402, success: false, message: 'Update failed.'});
+            }
+          });
+        }else
+        {
+          return res.status(401).json({statusCode: 401,
+              message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+              isBase64Encoded: false,});
+        }
+      });
+    });
+  }else{
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
 });
 
 
