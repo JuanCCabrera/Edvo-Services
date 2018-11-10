@@ -284,12 +284,16 @@ class CreateRecommendationForm extends React.Component{
                 <input type = "text" placeholder = "Description" value = {this.state.description} onChange = {this.onDescriptionChange}/>
 
                 <br/>
+                <label>{this.props.lang === 'English' ? 'Location' : 'Localización'}:</label>
+                <input type = "text" placeholder = "Location" value = {this.state.location} onChange = {this.onLocationChange}/>
+
+                <br/>
                 <label>{this.props.lang === 'English' ? 'Insert Video or Image Link' : 'Inserte Enlace de Vídeo o Imagen'}:</label>
                 <input type="text" placeholder = "Multimedia" value = {this.state.multimedia} onChange={this.onMultimediaChange}/>
 
                 <br/>
                 <label>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </label>
-                <input type="text" placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange}/>
+                <input type="text" disabled={this.props.isEdit} placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange}/>
 
                 <br/>
                 <label>{this.props.lang === 'English' ? 'Options' : 'Opciones'} (Max: 4):</label>
@@ -300,14 +304,15 @@ class CreateRecommendationForm extends React.Component{
                         type = "text"
                         placeholder = "Choice"
                         value={choice}
+                        disabled={this.props.isEdit}
                         onChange={this.onChoiceChange(index)}
                         />
-                        <button onClick={this.deleteChoice(index)}>X</button>
-                        <button onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>{this.props.lang === 'English' ? 'Correct Answer' : 'Contestación Correcta'}</button>
+                        <button disabled={this.props.isEdit} onClick={this.deleteChoice(index)}>X</button>
+                        <button disabled={this.props.isEdit} onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>{this.props.lang === 'English' ? 'Correct Answer' : 'Contestación Correcta'}</button>
                     </span>
                 ))}
                 <br/>
-                <button onClick={this.addChoice} disabled={this.state.choices.length === 4}>{this.props.lang === 'English' ? 'Add New Option' : 'Añadir Nueva Opción'}</button>
+                <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>{this.props.lang === 'English' ? 'Add New Option' : 'Añadir Nueva Opción'}</button>
                 {
                     //<button onClick={() => this.setState(() => ({correctOption: -1}))}>{this.props.lang === 'English' ? 'Clear Selection of Correct Answer' : 'Deshacer Seleccion de Contestacion Correcta'}</button>
                 }
@@ -412,7 +417,8 @@ class CreateRecommendationForm extends React.Component{
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+    
     return {
         lang: state.language.lang
     }

@@ -19,7 +19,10 @@ import questionsFiltersReducer from '../reducers/filterReducers/questionsFilters
 import recommendationsFiltersReducer from '../reducers/filterReducers/recommendationsFilters';
 import teacherRecommendationsFiltersReducer from '../reducers/filterReducers/teacherRecommendationsFilters';
 import schoolsFiltersReducer from '../reducers/filterReducers/schoolFilters';
+
 //Store creation
+
+//Create central controller based on all reducers located in the /src/reducers folder. 
 
 export default () => {
     const store = createStore(
@@ -47,7 +50,7 @@ export default () => {
         })
     );
 
-    return store;
+    return store; //Return store with all reducer functionality. 
 };
 
 

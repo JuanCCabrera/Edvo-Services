@@ -1,5 +1,9 @@
 //Ask Question Action Generators
 
+/**
+ * sendAskedQuestion - Generates object with basic question information (subject and body). 
+ * @param {*} param0 - Object containing the questions subject and body. 
+ */
 export const sendAskedQuestion = (
     {
         subject = '',

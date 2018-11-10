@@ -1,3 +1,15 @@
+/**
+ * getVisibleRecommendations - Returns a list of recommendations which only include the text input in their title, header, description, location, subject or associated school type. 
+ * The list will also only contain recommendations which fall into the selected filtering category. 
+ * Categories: 
+ * Technolgy Integration
+ * Updated Material
+ * Teaching Strategies
+ * Instructional Alignment
+ * Time Management
+ * @param {*} recommendations - Full list of recommendations available in Assign Recommendations and Manage Recommendations pages. 
+ * @param {*} param1 - Text filter input and recommendation category selection from Recommendations Filters
+ */
 const getVisibleRecommendations = (recommendations, {text, category}) => {
     return recommendations.filter((reco) => {
         const titleMatch = reco.title.toLowerCase().includes(text.toLowerCase());

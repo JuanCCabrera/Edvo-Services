@@ -18,19 +18,19 @@ class RecommendationsFilters extends React.Component{
                         <select onChange={(e) => {
                             this.props.dispatch(setRecommendationsCategory(e.target.value));
                         }}>
-                                <option className="btn-primary" value="" disabled="disabled">Choose Category</option>
+                                <option className="btn-primary" value="" disabled="disabled">{this.props.lang === 'English' ? 'Choose Category' : 'Seleccionar Categorías'}</option>
 
-                                <option value="all">All</option>
+                                <option value="all">{this.props.lang === 'English' ? 'All' : 'Todas'}</option>
 
-                                <option value="Technology Integration">Technology Integration</option>
+                                <option value="Technology Integration">{this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnología'}</option>
 
-                                <option value="Updated Material">Updated Material</option>
+                                <option value="Updated Material">{this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado' }</option>
 
-                                <option value="Time Management">Time Management</option>
+                                <option value="Time Management">{this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}</option>
 
-                                <option value="Teaching Strategies">Teaching Strategies</option>
+                                <option value="Teaching Strategies">{this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Educación'}</option>
 
-                                <option value="Instructional Alignment">Instructional Alignment</option>
+                                <option value="Instructional Alignment">{this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'}</option>
                         </select>
                 </div>
             </div>
@@ -40,7 +40,8 @@ class RecommendationsFilters extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        filter: state.recommendationsFilters
+        filter: state.recommendationsFilters,
+        lang: state.language.lang
     };
 };
 

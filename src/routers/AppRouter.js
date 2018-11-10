@@ -43,14 +43,34 @@ import { clearSelectedRecommendation } from '../actions/teacherRecommendations';
 import QuestionModal from '../components/TeacherComponents/QuestionModal';
 import {clearSelectedQuestion} from '../actions/teacherQuestions';
 
-
+/**
+ * AppRouter - Main routing component of the application. Contains a header element, two modals which 
+ * are invisible unless a recommendation or question is selected, a footer, and a set of conditionally rendered pages.
+ * Each page is rendered depending on the URL (route) being accessed. 
+ * @param {*} props - Default component properties
+ */
 const AppRouter = (props) => (
     <BrowserRouter>
         <div>
+        {
+            //Header (Navigation Bar)
+        }
             <Header/>
+        {
+            //Recommendation Modal (hidden until a recommendation is selected)
+        }
             <RecommendationModal clearSelectedRecommendation={() => props.dispatch(clearSelectedRecommendation())}/>
+        {
+            //Question Modal (hidden until a question is selected)
+        }
             <QuestionModal clearSelectedQuestion={() => props.dispatch(clearSelectedQuestion())}/>
+        {
+            //Switch component. Displays ONLY the component related to the specified route path (must match the page URL). 
+        }
             <Switch>
+                {
+                    //Main Page components and Registration component
+                }
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage}/>
                 <Route path="/plans" component={PlansPage}/>
@@ -60,7 +80,7 @@ const AppRouter = (props) => (
                 <Route exact path='/callback' component={MainPage}/>
 
                 {
-                    //Teacher
+                    //Teacher Components
                 }
                 <Route path='/teacher/home' component={TeacherHome}/>
                 <Route path='/teacher/settings/info' component={TeacherProfile}/>
@@ -70,12 +90,12 @@ const AppRouter = (props) => (
                 <Route path='/teacher/questions' component={TeacherQuestions}/>
 
                 {
-                    //Mentor
+                    //Mentor Components
                 }
                 <Route path='/mentor/home' component={MentorHome}/>
                 <Route path='/mentor/settings' component={MentorProfile}/>
                 {
-                    //Administrator
+                    //Administrator Components
                 }
                 <Route exact path='/admin/settings/info' component={AdminProfile}/>
                 <Route exact path='/admin/settings/users' component={AppUsers}/>
@@ -85,7 +105,7 @@ const AppRouter = (props) => (
                 <Route path='/admin/home' component={AdminHome}/>
 
                 {
-                    //Staff Recommendations
+                    //Staff Recommendations Components
                 }
                 <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
                 <Route exact path='/recommendations/create' component={NewRecommendation}/>
@@ -93,13 +113,19 @@ const AppRouter = (props) => (
                 <Route path="/recommendations/edit/:id" component={EditRecommendation}/>
 
                 {
-                    //Staff Questions
+                    //Staff Questions Components
                 }
                 <Route exact path='/staff/questions' component={ManageQuestions}/>
                 <Route path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
 
+                {
+                    //Route Not Found Page
+                }
                 <Route component={NotFoundPage}/>
             </Switch>
+            {
+                //Page Footer
+            }
             <Footer/>
         </div>
     </BrowserRouter>

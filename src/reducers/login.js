@@ -1,3 +1,7 @@
+
+//Kept as legacy code in case Auth0 service removes support. 
+
+//Reducer default state
 const loginReducerDefaultState = {
     login: {
         email: '',
@@ -8,7 +12,6 @@ const loginReducerDefaultState = {
 const loginReducer = (state = loginReducerDefaultState, action) => {
     switch (action.type) {
         case 'SEND_LOGIN_FORM':
-            //TO-DO: SEND EMAIL
             return {...action.login};
         default:
             return state;

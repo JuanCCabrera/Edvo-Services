@@ -20,7 +20,8 @@ class InstitutionFilters extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        filter: state.schoolFilters
+        filter: state.schoolFilters,
+        lang: state.language.lang
     };
 };
 

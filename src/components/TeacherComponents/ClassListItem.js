@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { removeClass } from '../../actions/classes';
 
 const ClassListItem = (props) => (
     <div>
@@ -14,18 +15,20 @@ const ClassListItem = (props) => (
             {props.class.topicB !== '' && <li>{props.class.topicB}</li>}
             {props.class.topicC !== '' && <li>{props.class.topicC}</li>}
         </ol>
+        <button disabled={props.classes.length === 1} onClick={() => {props.dispatch(removeClass({classInfoId: props.class.classInfoId}))}}>Remove</button>
     </div>
 );
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,props) => {
     return {
+        classes: state.classes,
         lang: state.language.lang
     }
 }
 
 export default connect(mapStateToProps)(ClassListItem);
 
-/*
+/* Class Object Contents
     class: {
         userId: '',
         classInfoId: '',

@@ -18,13 +18,13 @@ class UserFilters extends React.Component{
                         <select onChange={(e) => {
                             this.props.dispatch(setWeeklyCheck(e.target.value));
                         }}>
-                                <option className="btn-primary" value="" disabled="disabled">Please Select a Filter</option>
+                                <option className="btn-primary" value="" disabled="disabled">{this.props.lang === 'English' ? 'Select a Status' : 'Selecciona un Estatus'}</option>
 
-                                <option value="all">All</option>
+                                <option value="all">{this.props.lang === 'English' ? 'All' : 'Todos'}</option>
 
-                                <option value="assigned">Have Weekly Recommendation</option>
+                                <option value="assigned">{this.props.lang === 'English' ? 'Have Weekly Recommendation' : 'Recibieron Recomendación Semanal'}</option>
 
-                                <option value="not_assigned">Do Not Have Weekly Recommendation</option>
+                                <option value="not_assigned">{this.props.lang === 'English' ? 'Do Not Have Weekly Recommendation' : 'No Recibieron Recomendación Semanal'}</option>
                         </select>
                 </div>
             </div>
@@ -34,7 +34,8 @@ class UserFilters extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        userFilters: state.userFilters
+        userFilters: state.userFilters,
+        lang: state.language.lang
     };
 };
 

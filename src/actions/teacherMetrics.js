@@ -1,4 +1,9 @@
-//Load Teacher Metrics
+//Teacher Metrics Action Generators
+
+/**
+ * loadTeacherDaysInPlatform - Generates an object indicating to the central controller that the number of days specified must be displayed in the Teacher Home page. 
+ * @param {*} param0 - Object containing the number of days a teacher has logged in to the platform.
+ */
 export const loadTeacherDaysInPlatform = ({daysInPlatform = 0} = {}) => {
     return{
         type: 'LOAD_TEACHER_DAYS_IN_PLATFORM',
@@ -6,6 +11,11 @@ export const loadTeacherDaysInPlatform = ({daysInPlatform = 0} = {}) => {
     }
 }
 
+/**
+ * loadTeacherTopRecommendation - Generates an object indicating to the central controller to load a recommendation to the Top Recommendations List. 
+ * @param {*} param0 - Object containing information relating to the recommendations which have been most highly rated by a teacher.
+ * The object must contain the ID of the recommendation and its title, header, location, description, multimedia template, date of assignment, and rating. 
+ */
 export const loadTeacherTopRecommendation = ({
     recoID = '',
     title = '',
@@ -31,6 +41,11 @@ export const loadTeacherTopRecommendation = ({
     }
 }
 
+/**
+ * loadTeacherRecentRecommendation - Generates an object indicating to the central controller to load a recommendation to the Recent Recommendations List. 
+ * @param {*} param0 - Object containing information relating to the recommendations which have been most recently assigned to a teacher.
+ * The object must contain the ID of the recommendation and its title, header, location, description, multimedia template, date of assignment, and rating. 
+ */
 export const loadTeacherRecentRecommendation = ({
     recoID = '',
     title = '',

@@ -9,7 +9,7 @@ class PendingQuestionsList extends React.Component {
     constructor(props){
         super(props);
         this.pageSlice = 1;
-        this.itemsPerPage = 3;
+        this.itemsPerPage = 5;
         this.currentPage = 1;
         this.state = {
             activePage: 1,

@@ -8,9 +8,6 @@ class RegistrationForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-             email: '',
-             password: '',
-             confirmPassword: '',
              name: '',
              lastName: '',
              gender: 'male',
@@ -58,6 +55,9 @@ class RegistrationForm extends React.Component{
              instructionAlignment: false,
              pageFourError: '',
 
+             termsOfUse: false,
+             privacyPolicy: false,
+
              globalError: '',
 
             currPage: 1
@@ -65,21 +65,6 @@ class RegistrationForm extends React.Component{
     }
 
     //Change Handlers
-
-    onEmailChange = (e) => {
-        const email = e.target.value;
-        this.setState(() => ({email}));
-    }
-
-    onPasswordChange = (e) => {
-        const password = e.target.value;
-        this.setState(() => ({password}));
-    }
-
-    onConfirmPasswordChange = (e) => {
-        const confirmPassword = e.target.value;
-        this.setState(() => ({confirmPassword}));
-    }
 
     onNameChange = (e) => {
         const name = e.target.value;
@@ -188,7 +173,7 @@ class RegistrationForm extends React.Component{
 
     onMoodleChange = (e) => {
         const moodle = this.state.moodle;
-        this.setState(() => ({moodle: !moodle}))
+        this.setState(() => ({moodle: !moodle}));
     }
 
     onGoogleClassroomChange = (e) => {
@@ -296,7 +281,18 @@ class RegistrationForm extends React.Component{
         this.setState(() => ({instructionAlignment: !instructionAlignment}));
     }
 
-    //Page Change
+    onTermsChange = (e) => {
+        const termsOfUse = this.state.termsOfUse;
+        this.setState(() => ({termsOfUse: !termsOfUse}));
+    }
+
+    onPrivacyChange = (e) => {
+        const privacyPolicy = this.state.privacyPolicy;
+        this.setState(() => ({privacyPolicy: !privacyPolicy}));
+    }
+
+    //Page Change functions.
+    //Once used, each one will take the user to a specific page (currPage). These are accessed by buttons on the bottom of the Registration page. 
 
     toPageOne = (e) => {
         this.setState(() => ({currPage: 1}));
@@ -317,7 +313,7 @@ class RegistrationForm extends React.Component{
     //Submit
 
     onSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //prevent default action
         //TO-DO Dispatch action to send data to database
     }
 
@@ -329,19 +325,7 @@ class RegistrationForm extends React.Component{
                 {this.state.currPage == 1 && <div>
                     <h2> General Information </h2>
                     <br/>
-
-                    <label>Email:</label>
-                    <input type="text" placeholder = "Email" value = {this.state.email} onChange={this.onEmailChange}/>
-    
-                    <br/>
-                    <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
-                    <input type="password" placeholder = "Password" value = {this.state.password} onChange={this.onPasswordChange}/>
-    
-                    <br/>
-                    <label>{this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'}:</label>
-                    <input type="password" placeholder = "Confirm Password" value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange}/>
-    
-                    <br/>
+                    
                     <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                     <input type = "text" placeholder = "Name" value = {this.state.name} onChange = {this.onNameChange}/>
     
@@ -521,7 +505,7 @@ class RegistrationForm extends React.Component{
                     <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'} <br/>
                     <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} <br/>
 
-                    <br/>
+                    
                     <button onClick={this.toPageThree}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.onSubmit}>Submit</button>
                 </div>}
                 </form>

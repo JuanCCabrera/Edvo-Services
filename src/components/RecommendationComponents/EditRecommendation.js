@@ -10,6 +10,7 @@ const EditRecommendation = (props) => (
         <h2> {props.lang === 'English' ? 'Edit Recommendation' : 'Modificar Recomendación'} </h2>
         <CreateRecommendationForm 
         reco={props.recommendation}
+        isEdit={true}
         onSubmit={(recommendation) => {
             props.dispatch(editRecommendation(props.recommendation.id, recommendation));
             props.history.push('/recommendations/manage');

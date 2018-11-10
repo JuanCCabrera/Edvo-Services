@@ -1,3 +1,9 @@
+//Recommendations Action Generators
+
+/**
+ * createRecommendation - Generates an object indicating to the central controller to create a new recommendation using the input data obtained from the Create Recommendation Form. 
+ * @param {*} param0 - Object containing a slew of fields which identify a recommendation, including the ID of said recommendation obtained form the database. 
+ */
 export const createRecommendation = (
     {
     id = '',
@@ -86,6 +92,10 @@ export const createRecommendation = (
     }
 }
 
+/**
+ * loadRecommendation - Generates an object indicating to the central controller to store the input recommendation data in the local data storage so it may be viewed in the Assign Recommendations and Manage Recommendations pages. 
+ * @param {*} param0 - Object containing all of the information related to a recommendation as seen in the Create Recommendation Form. 
+ */
 export const loadRecommendation = (
     {
     id = '',
@@ -174,12 +184,22 @@ export const loadRecommendation = (
     }
 }
 
+/**
+ * removeRecommendation - Generates an object indicating to the central controller to remove a recommendation with a specified ID. 
+ * @param {*} param0 - Object containing the ID of a recommendation. 
+ */
 export const removeRecommendation = ({id} = {}) => {
     return {
         type: 'REMOVE_RECOMMENDATION',
         id: id
     }
 }
+
+/**
+ * editRecommendation - Generates an object indicating to the central controller that a recommendation's data has been edited and that it has been updated in the database. 
+ * @param {*} id - ID of a recommendation
+ * @param {*} updates - Object containing all updates made to a recommendation upon editing. All fields of the object must match those that exist in the createRecommendation action. 
+ */
 
 export const editRecommendation = (id, updates) => ({
     type: 'EDIT_RECOMMENDATION',
