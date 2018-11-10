@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setTeacherRecommendationsTextFilter, setTeacherRecommendationsSortingFilter, setTeacherRecommendationsReadFilter} from '../../actions/filterActions/teacherRecommendationsFilters';
 
+/**
+ * Filter group which allows the teacher recommendations to be filtered by text and read status, and allows them to be sorted by date or rating. 
+ */
 class TeacherRecommendationsFilters extends React.Component{
     constructor(props){
         super(props);
@@ -10,11 +13,17 @@ class TeacherRecommendationsFilters extends React.Component{
     render() {
         return (
             <div className="form-group">
+                {
+                    //Text filter input field
+                }
                 <input className="form-control" type="text" value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setTeacherRecommendationsTextFilter(e.target.value));
                 }}/>
 
                 <div className="btn btn-default">
+                        {
+                            //Recommendations sorting type dropdown list (Date or Rating)
+                        }
                         <select onChange={(e) => {
                             this.props.dispatch(setTeacherRecommendationsSortingFilter(e.target.value));
                         }}>
@@ -27,6 +36,9 @@ class TeacherRecommendationsFilters extends React.Component{
                 </div>
 
                 <div className="btn btn-default">
+                        {
+                            //Recommendations read status filtering dropdown list (all, read, not read)
+                        }
                         <select onChange={(e) => {
                             this.props.dispatch(setTeacherRecommendationsReadFilter(e.target.value));
                         }}>
@@ -44,6 +56,7 @@ class TeacherRecommendationsFilters extends React.Component{
     }
 }
 
+//Map teacher recommendations filters data and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
         filter: state.teacherRecommendationsFilters,
@@ -51,4 +64,5 @@ const mapStateToProps = (state) => {
     };
 };
 
+//Connect component to controller
 export default connect(mapStateToProps)(TeacherRecommendationsFilters);

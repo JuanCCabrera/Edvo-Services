@@ -1,5 +1,7 @@
 import React from 'react';
 
+//NOT USED** Kept in case Auth0 service is discontinued. 
+
 export default class LoginForm extends React.Component{
     constructor(props){
         super(props);

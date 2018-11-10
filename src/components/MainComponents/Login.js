@@ -7,12 +7,19 @@ import { sendLogin } from '../../actions/login';
 import auth0Client from '../../Auth';
 import axios from 'axios';
 
+/**
+ * Signs user out from their account and moves him or her to the Main page. 
+ * @param {*} props - Default component properties
+ */
 const signOut = (props) => {
     auth0Client.signOut();
     console.log("HISOTRY: ", props.history);
     props.history.replace('/');
   };
 
+/**
+ * Attempt to acquire user authentication from database. 
+ */
 const reset = () => {
     axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
       client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
@@ -23,9 +30,17 @@ const reset = () => {
     {headers: { 'content-type': 'application/json' }});
   };
 
+/**
+ * The Login page contains buttons to login and register to the application through the Auth0 third-party client. 
+ * Additionally, it contains static text to motivate users to sign up to the service. 
+ * @param {*} props - Contains default properties and current language state
+ */
 const LoginPage = (props) => (
     <div>
         
+        {
+            //Page title
+        }
         <h1>Learn. Teach. Repeat</h1>
         
         {/*<div>
@@ -48,6 +63,10 @@ const LoginPage = (props) => (
             </div>
           }
 
+        {
+            //Static text
+            //"Join us" section
+        }
         <div>
             <span>MATERIALS_IMG</span>
             <div>
@@ -69,6 +88,9 @@ const LoginPage = (props) => (
             </div>
         </div>
 
+        {
+            //Contact form
+        }
         <div>
             <ContactForm
             onSubmit={(contact) => {
@@ -78,10 +100,12 @@ const LoginPage = (props) => (
     </div>
 );
 
+//Map current language state to component properties.
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(LoginPage);

@@ -2,9 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
+/**
+ * Generate a home page for Administrators with three links (Administrator Settings, Assign Recommendations, Pending Questions).
+ * @param {*} props - Component properties
+ */
 const AdminHome = (props) => (
     <div>
         <div>
+        {
+            //Link to Administrator Settings page
+        }
         <NavLink to="/admin/settings/info" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -20,6 +27,9 @@ const AdminHome = (props) => (
             </div>}
         </NavLink>
 
+        {
+            //Link to Assign Recommendations page
+        }
         <NavLink to="/recommendations/assign" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -35,6 +45,9 @@ const AdminHome = (props) => (
             </div>}
         </NavLink>
 
+        {
+            //Link to Pending Questions page
+        }
         <NavLink to="/staff/questions" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -54,9 +67,11 @@ const AdminHome = (props) => (
     </div>
 );
 
+//Map current language state to component properties
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     };
 };
+//Connect component to controller
 export default connect(mapStateToProps)(AdminHome);

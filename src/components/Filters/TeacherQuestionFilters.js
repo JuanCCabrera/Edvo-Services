@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setTeacherQuestionsTextFilter, setTeacherQuestionsSorting, setTeacherQuestionsReadFilter} from '../../actions/filterActions/teacherQuestionsFilters';
 
+/**
+ * Filter group which allows teacher questions to be filtered by input text and read status, and allows sorting by date or rating. 
+ */
 class TeacherQuestionFilters extends React.Component{
     constructor(props){
         super(props);
@@ -10,11 +13,17 @@ class TeacherQuestionFilters extends React.Component{
     render() {
         return (
             <div className="form-group">
+                {
+                    //Text filter input field
+                }
                 <input className="form-control" type="text" value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setTeacherQuestionsTextFilter(e.target.value));
                 }}/>
 
                 <div className="btn btn-default">
+                        {
+                            //Questions sorting type dropdown list (Date or Rating)
+                        }
                         <select onChange={(e) => {
                             this.props.dispatch(setTeacherQuestionsSorting(e.target.value));
                         }}>
@@ -27,6 +36,9 @@ class TeacherQuestionFilters extends React.Component{
                 </div>
 
                 <div className="btn btn-default">
+                        {
+                            //Questions read status filtering dropdown list (all, read, or not read)
+                        }
                         <select onChange={(e) => {
                             this.props.dispatch(setTeacherQuestionsReadFilter(e.target.value));
                         }}>
@@ -44,6 +56,7 @@ class TeacherQuestionFilters extends React.Component{
     }
 }
 
+//Map teacher questions filters data and current language state to component. 
 const mapStateToProps = (state) => {
     return {
         filter: state.teacherQuestionsFilters,
@@ -51,4 +64,5 @@ const mapStateToProps = (state) => {
     };
 };
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(TeacherQuestionFilters);

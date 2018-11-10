@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setRecommendationsTextFilter, setRecommendationsCategory} from '../../actions/filterActions/RecommendationsFilters';
 
+/**
+ * Filter group which allows recommendations to be filtered by text and category. 
+ */
 class RecommendationsFilters extends React.Component{
     constructor(props){
         super(props);
@@ -10,11 +13,17 @@ class RecommendationsFilters extends React.Component{
     render() {
         return (
             <div className="form-group">
+                {
+                    //Text filter input field
+                }
                 <input className="form-control" type="text" value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setRecommendationsTextFilter(e.target.value));
                 }}/>
 
                 <div className="btn btn-default">
+                        {
+                            //Category filter dropdown list
+                        }
                         <select onChange={(e) => {
                             this.props.dispatch(setRecommendationsCategory(e.target.value));
                         }}>
@@ -38,6 +47,7 @@ class RecommendationsFilters extends React.Component{
     }
 }
 
+//Map recommendations filters data and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
         filter: state.recommendationsFilters,
@@ -45,4 +55,5 @@ const mapStateToProps = (state) => {
     };
 };
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(RecommendationsFilters);

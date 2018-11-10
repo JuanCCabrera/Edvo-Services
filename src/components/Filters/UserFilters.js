@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setUserTextFilter, setWeeklyCheck } from '../../actions/filterActions/userFilters';
 
+/**
+ * Filter group which allows users to be filtered by text or their recommendation assignment status.
+ */
 class UserFilters extends React.Component{
     constructor(props){
         super(props);
@@ -10,11 +13,17 @@ class UserFilters extends React.Component{
     render() {
         return (
             <div className="form-group">
+                {
+                    //Text filter input field
+                }
                 <input className="form-control" type="text" value ={this.props.userFilters.text} onChange={(e) => {
                     this.props.dispatch(setUserTextFilter(e.target.value));
                 }}/>
 
                 <div className="btn btn-default">
+                        {
+                            //Recommendation status filtering dropdown list
+                        }
                         <select onChange={(e) => {
                             this.props.dispatch(setWeeklyCheck(e.target.value));
                         }}>
@@ -32,6 +41,7 @@ class UserFilters extends React.Component{
     }
 }
 
+//Map user filters data and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
         userFilters: state.userFilters,
@@ -39,4 +49,5 @@ const mapStateToProps = (state) => {
     };
 };
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(UserFilters);

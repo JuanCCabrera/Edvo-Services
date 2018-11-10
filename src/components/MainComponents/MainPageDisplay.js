@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import ThreeImageList from './ThreeImageList'
 
+/**
+ * This is the body of the Main page, which includes general information about Edvo Tech as pseudo-static text. 
+ * @param {*} props - Contains default properties and the current language state. 
+ */
 const MainPageDisplay = (props) => (
     <div>
         {props.lang === 'English' ? 
