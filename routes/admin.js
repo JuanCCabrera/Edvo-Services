@@ -972,7 +972,7 @@ router.get('/recommendations', (req,res,next)=> {
       console.log(err);
       return res.status(500).json({statusCode: 500, success: false, data: err});
     }
-    //verify if user exists in database records and is of type mentor
+    //verify if user exists in database records and is of type admin
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
     //stream results back one row at a time
     query.on('row', (row) => {
@@ -980,8 +980,8 @@ router.get('/recommendations', (req,res,next)=> {
     });
     query.on('end', () => {
       done();
-      if (results.length === 1){ // user exists and is of type mentor
-        //SQL Query > select recommendations written by mentor
+      if (results.length === 1){ // user exists and is of type admin
+        //SQL Query > select recommendations written by admin
         const query1 = client.query('with teacher_recom as (SELECT recomid, location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active FROM recommendations), recom_body as (SELECT rb.recomid, title, multimedia, header, description, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid), recom_target as (Select rt.recomid, strategies, material, timemanagement, tech, instructions, topica,topicb,topicc FROM recommendation_target rt INNER JOIN recommendation_topics ON rt.recomid = recommendation_topics.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN recom_target NATURAL INNER JOIN teacher_recom;');
         //stream results back one row at a time
         query1.on('row', (row) => {
@@ -991,7 +991,7 @@ router.get('/recommendations', (req,res,next)=> {
           done();
           return res.status(201).json({statusCode: 201, success: true, recommendations});
         });
-      }else// user doesn't exist in record or isnt of type mentor, send error statuscode
+      }else// user doesn't exist in record or isnt of type admin, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
           body:{
@@ -1002,6 +1002,65 @@ router.get('/recommendations', (req,res,next)=> {
     });
   });
 });
+
+//GET users to assign recomendation
+//this users must have not been assigned a recomendation in the last 7 days
+router.get('/recommendations/users', (req,res,next)=> {
+  const results = [];
+  const users = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, //change to req.query.userid for testing
+    };
+  //verify inputs are valid
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is of type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type admin
+        //SQL Query > select users with no recommendation in last 7 days
+        const query1 = client.query('with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, email, er.recomid, date, rate, favorite, read  FROM edu_recommendations er RIGHT JOIN users ON er.userid = users.userid WHERE usertype = $1), needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, userid FROM user_info) SELECT * FROM userlist NATURAL INNER JOIN needsOfUSer WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL \'7 DAYS\' ))', ['teacher',]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          users.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, success: true, users});
+        });
+      }else// user doesn't exist in record or isnt of type admin, send error statuscode
+      {
+        return res.status(401).json({statusCode: 401,
+          body:{
+            message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+
+
 
 
 module.exports = router;
