@@ -30,7 +30,8 @@ const LoginPage = (props) => (
         <div className="Edvo-Shadow">
         <h1 className="text-center">Learn. Teach. Repeat</h1>
         <div className="container row">
-<div className="Login text-center col-md-offset-5 col-lg-3">
+<div className="Login container-fluid text-center col-md-offset-5 col-lg-3">
+
         {
             !auth0Client.isAuthenticated() &&
             <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Registrarse'}</button>
@@ -38,14 +39,14 @@ const LoginPage = (props) => (
           {
             auth0Client.isAuthenticated() &&
             <div>
-              <button onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
-              <button onClick={() => {reset()}}>{props.lang === 'English' ? 'Reset Password' : 'Restablecer Contraseña'}</button>
+              <button className="SignUp-Button" onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
             </div>
           }
+          <p className="text-bold">{localStorage.getItem('loginError')}</p> 
           </div>
-        <div className="text-center col-md-offset-1 container-fluid col-lg-3 login-signup">
+        <div className="Register text-center col-md-offset-1 container-fluid col-lg-3">
             <div>
-            <img className="text-center Materials-Img-S" src="http://localhost:8080/static/images/materials.png" />
+            <img className="Materials-Img-S" src="http://localhost:8080/static/images/materials.png" />
                 {props.lang === 'English' ? 
                 <div>
                     <h6>Join the community of schools</h6>
@@ -61,6 +62,13 @@ const LoginPage = (props) => (
                     <h6>sobre enseñanza y aprendizaje.</h6>
                 </div>
                 }
+                
+          {
+            auth0Client.isAuthenticated() &&
+            <div>
+              <button className="SignUp-Button" onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
+            </div>
+          }
             </div>
         </div>
 </div>

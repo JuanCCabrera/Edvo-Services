@@ -4,8 +4,10 @@
 .Login{
     border: 2px solid lightgray;
     border-radius: 3px;
-    padding: 70px;
     margin-bottom: 5%;
+    margin-top: 5%;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
 .Login > form > h2{ 
@@ -38,6 +40,7 @@
 }
 .Edvo-Shadow{    
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.19);
+    align-content: center;
 }
 
 .Materials-Img-S{
@@ -46,4 +49,22 @@
     width: 60%;
     min-width: 200px;
     min-height: 75px;
+}
+.SignUp-Button{
+    background-color: #713c8f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 40px;
+    cursor: pointer;
+    border: 1px solid #713c8f;
+    border-radius: 2px;
+    align-content: center;
+}
+.Register{
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    margin-bottom: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }

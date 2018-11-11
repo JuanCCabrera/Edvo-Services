@@ -3,8 +3,15 @@ import RecommendationButtonList from './RecommendationButtonList';
 import CreateRecommendationForm from './CreateRecommendationForm';
 import { editRecommendation } from '../../actions/recommendations';
 import {connect} from 'react-redux';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
+import {Redirect} from 'react-router-dom';
 
 const EditRecommendation = (props) => (
+    <Can
+    role={auth0Client.getRole()}
+    perform="admin:recommendations-modify"
+    yes={() => (
     <div>
         <RecommendationButtonList/>
         <h2> {props.lang === 'English' ? 'Edit Recommendation' : 'Modificar Recomendación'} </h2>
@@ -15,6 +22,9 @@ const EditRecommendation = (props) => (
             props.history.push('/recommendations/manage');
         }}/>
     </div>
+                         )}
+                         no={() => <Redirect to="/" />}
+                       />
 );
 
 const mapStateToProps = (state, props) => {

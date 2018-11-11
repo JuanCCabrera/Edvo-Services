@@ -381,7 +381,7 @@ class RegistrationForm extends React.Component{
             {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
             .then(response =>{
                 console.log("PROPS1: ",this.state.props);
-                this.state.props.history.replace('/teacher/home');
+                this.state.props.history.replace('/teacher/settings/plans');
             })
             .catch(error =>{
                 this.state.props.history.replace('/');

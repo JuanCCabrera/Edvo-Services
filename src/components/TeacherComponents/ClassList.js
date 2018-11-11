@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ClassListItem from './ClassListItem';
-import { loadClass } from '../../actions/classes';
+import { unloadClasses,loadClass } from '../../actions/classes';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 
@@ -11,7 +11,7 @@ class ClassList extends React.Component{
         this.state = {
             pages: 1}
     }
-    componentWillMount(){
+    componentDidMount(){
         axios.get('http://localhost:3000/teacher/settings/classes',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -27,6 +27,9 @@ class ClassList extends React.Component{
         .catch(error =>{
             console.log("ERROR CLASSES: ", error);
         })
+    }
+    componentWillUnmount(){
+        this.props.dispatch(unloadClasses());
     }
 
     render(){

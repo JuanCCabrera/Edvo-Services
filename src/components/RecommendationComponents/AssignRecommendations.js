@@ -5,8 +5,15 @@ import { clearSelection, assignRecommendation } from '../../actions/assignRecomm
 import {connect} from 'react-redux';
 import UserFilters from '../Filters/UserFilters';
 import RecommendationsFilters from '../Filters/RecommendationsFilters';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
+import {Redirect} from 'react-router-dom';
 
  const AssignRecommendations = (props) => (
+    <Can
+    role={auth0Client.getRole()}
+    perform="admin:recommendations-assign"
+    yes={() => (
         <div>
             {
                 //User List
@@ -28,6 +35,9 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
                 }}>{props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'}</button>  
             </div>
         </div>
+                             )}
+                             no={() => <Redirect to="/" />}
+                           />
  );
 
 const mapStateToProps = (state) => ({

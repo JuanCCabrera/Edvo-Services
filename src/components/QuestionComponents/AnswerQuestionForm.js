@@ -4,6 +4,9 @@ import { answerQuestion } from '../../actions/question';
 import QuestionButtonList from './QuestionButtonList';
 import { loadTeacherQuestion } from '../../actions/teacherQuestions';
 import moment from 'moment';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
+import {Redirect} from 'react-router-dom';
 
 class AnswerQuestionForm extends React.Component {
     constructor(props){
@@ -43,6 +46,10 @@ class AnswerQuestionForm extends React.Component {
 
     render(){
         return (
+            <Can
+            role={auth0Client.getRole()}
+            perform="admin:questions-answer"
+            yes={() => (
             <div>
                 <form onSubmit={this.onSubmit}>
                     <QuestionButtonList/>
@@ -61,6 +68,9 @@ class AnswerQuestionForm extends React.Component {
                         <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Answer' : 'Responder'}</button>
                 </form>
             </div>
+                             )}
+                             no={() => <Redirect to="/" />}
+                           />
         );
     }
 

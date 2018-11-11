@@ -30,7 +30,7 @@ class Auth {
     return localStorage.getItem('route');
   }
   getRole(){
-    return this.getRole;
+    return localStorage.getItem('role');
   }
 
   getEmail(){
@@ -67,7 +67,7 @@ class Auth {
       localStorage.setItem('idToken',authResult.idToken);
     this.profile = authResult.idTokenPayload;
     this.getEmail = authResult.idTokenPayload.email;
-    this.getRole = authResult.idTokenPayload["https://edvo-test/role"];  
+    localStorage.setItem('role',authResult.idTokenPayload["https://edvo-test/role"]);  
     //this.getEmail =   
     console.log("EL ROL:::: ",authResult.idTokenPayload["https://edvo-test/role"]);
     console.log("ID PAYLOAD: ",authResult.idToken);
@@ -85,8 +85,7 @@ class Auth {
       returnTo: 'http://localhost:8080',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
     });
-    localStorage.removeItem('idToken');
-    localStorage.removeItem('expiresAt');
+    localStorage.clear();
   }
 
   silentAuth() {

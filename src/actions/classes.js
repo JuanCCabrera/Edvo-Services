@@ -34,3 +34,9 @@ export const removeClass = ({classInfoId} = {}) => {
         classInfoId: classInfoId
     }
 };
+
+export const unloadClasses = () => {
+    return {
+        type: 'UNLOAD_CLASSES'
+    }
+};

@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import Can from '../../Can';
+import {Redirect} from 'react-router-dom';
 
 class CreateRecommendationForm extends React.Component{
     constructor(props){
@@ -321,6 +323,10 @@ class CreateRecommendationForm extends React.Component{
 
     render(){
         return(
+            <Can
+            role={auth0Client.getRole()}
+            perform="admin:recommendations-add"
+            yes={() => (
             <div>
             <form onSubmit={this.onSubmit}>
                 <br/>
@@ -461,6 +467,9 @@ class CreateRecommendationForm extends React.Component{
                 <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Submit' : 'Enviar'}</button>
             </form>
             </div>
+                                 )}
+                                 no={() => <Redirect to="/" />}
+                               />
         );
     }
 }

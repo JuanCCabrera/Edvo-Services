@@ -1,12 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 import TopRecommendationsList from './TopRecommendationsList';
 import RecentRecommendationsList from './RecentRecommendationsList';
 import AskQuestionForm from './AskQuestionForm';
 import { sendAskedQuestion } from '../../actions/askQuestion';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
 
 const TeacherHome = (props) => (
+    <Can
+        role={auth0Client.getRole()}
+        perform="teacher:home"
+        yes={() => (
     <div>
         <div>
         <h1>{props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
@@ -107,6 +113,9 @@ const TeacherHome = (props) => (
 
         </div>
     </div>
+     )}
+     no={() => <Redirect to="/" />}
+   />
 );
 
 const mapStateToProps = (state) => {

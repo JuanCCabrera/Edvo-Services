@@ -46,6 +46,8 @@ import {clearSelectedQuestion} from '../actions/teacherQuestions';
 import ManageQuizzes from '../components/QuizComponents/ManageQuizzes';
 import AnswerQuizForm from '../components/QuizComponents/AnswerQuizForm';
 
+import Stripe from '../components/TeacherComponents/Stripe';
+
 
 const AppRouter = (props) => (
     <BrowserRouter>
@@ -68,6 +70,7 @@ const AppRouter = (props) => (
                 <Route path='/teacher/home' component={TeacherHome}/>
                 <Route path='/teacher/settings/info' component={TeacherProfile}/>
                 <Route path='/teacher/settings/classes' component={Classes}/>
+                <Route path='/teacher/settings/plans/payment' exact component={Stripe} />
                 <Route path='/teacher/settings/plans' component={Plan}/>
                 <Route path='/teacher/recommendations' component={TeacherRecommendations}/>
                 <Route path='/teacher/questions' component={TeacherQuestions}/>

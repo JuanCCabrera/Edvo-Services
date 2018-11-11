@@ -1,8 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
 
 const AdminHome = (props) => (
+    <Can
+    role={auth0Client.getRole()}
+    perform="admin:home"
+    yes={() => (
     <div>
         <div>
         <NavLink to="/admin/settings/info" activeClassName="is-active" exact={true}>
@@ -52,6 +58,9 @@ const AdminHome = (props) => (
             
         </div>
     </div>
+                     )}
+                     no={() => <Redirect to="/" />}
+                   />
 );
 
 const mapStateToProps = (state) => {

@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TeacherButtonList from './TeacherButtonList';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
+import {Redirect} from 'react-router-dom';
 
 class Plans extends React.Component{
     constructor(props){
@@ -41,6 +44,10 @@ class Plans extends React.Component{
 
     render(){
         return(
+            <Can
+            role={auth0Client.getRole()}
+            perform="teacher:settings"
+            yes={() => (
             <div>
                 <TeacherButtonList/>
                 {this.props.lang === 'English' ? <h3>Plan</h3> : <h3>Planes</h3>}
@@ -55,6 +62,9 @@ class Plans extends React.Component{
                 <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>
                 <br/>
             </div>
+                             )}
+                             no={() => <Redirect to="/" />}
+                           />
         )
     }
 }

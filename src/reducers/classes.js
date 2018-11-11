@@ -6,6 +6,8 @@ const classesReducer = (state = classesReducerDefaultState, action) => {
             return [...state, action.class];
         case 'REMOVE_CLASS':
             return state.filter(({classInfoId}) => classInfoId !== action.classInfoId);
+        case 'UNLOAD_CLASSES':
+            return []
         default: 
             return [...state]
     }

@@ -9,10 +9,12 @@ const rules = {
     static: [
       "mentor:home",
       "mentor:settings",
-      "mentor:recommendations-add",
-      "mentor:recommendations-assign",
-      "mentor:questions-view",
-      "mentor:questions-answer"
+      "admin-recommendations-manage",
+      "admin:recommendations-add",
+      "admin:recommendations-assign",
+      "admin:recommendations-modify",
+      "admin:questions-manage",
+      "admin:questions-answer",
     ]
   },
   teacher: {
@@ -28,9 +30,11 @@ const rules = {
     static: [
       "admin:home",
       "admin:settings",
+      "admin-recommendations-manage",
       "admin:recommendations-add",
       "admin:recommendations-assign",
-      "admin:questions-view",
+      "admin:recommendations-modify",
+      "admin:questions-manage",
       "admin:questions-answer",
       "admin-users"
     ]
