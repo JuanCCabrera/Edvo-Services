@@ -87,6 +87,7 @@ router.post('/', (req,res,next)=> {
                 else{
                   //SQL Query > insert user subscription into subscription table with active status
                   client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
+                  
                   //SQL Query > insert into coupon table
                   client.query('insert into coupons_used (couponid, userid, dateused) values ($1, $2, $3)', [data.couponid, data.userid, todaysDate,]);
                   return res.status(201).json({statusCode: 201, success: true});

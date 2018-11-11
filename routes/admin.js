@@ -189,6 +189,7 @@ router.delete('/settings/institutions/remove', (req,res,next)=> {
   const institution = [];
   const users = [];
   const resultsexist = [];
+  const tokensforstripe = [];
   //grab data from http request
   const data = {
       userid: req.body.userid, 
@@ -210,41 +211,57 @@ router.delete('/settings/institutions/remove', (req,res,next)=> {
       console.log(err);
       return res.status(500).json({statusCode: 500, success: false, data: err});
     }
-    //verify if user exists in database records
-    const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+    //verify if user exists in database records and type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
     //stream results back one row at a time
-    query1.on('row', (row) => {
+    query.on('row', (row) => {
       resultsexist.push(row);
     });
-    query1.on('end', () => {
+    query.on('end', () => {
       done();
       if (resultsexist.length === 1){ // user exists and is of type admin
         //SQL Query > select data
-        const query = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid,]);
+        const query1 = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid,]);
         //stream results back one row at a time
-        query.on('row', (row) => {
+        query1.on('row', (row) => {
           institution.push(row);
         });
-        query.on('end', () => {
+        query1.on('end', () => {
           done();
           if(institution.length === 1){ //institutionid exists
-            //SQL Query > update institutionid in users
-            const query2 = client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 returning *', [data.institutionid,]);
+            //SQL QUERY > get tokens for subscriptions to be suspended
+            const query2 = client.query('SELECT token FROM subscription WHERE userid IN (select userid from users where institutionid= $1)', [data.institutionid,]);
+            //crear lista de token para delete
             //stream results back one row at a time
             query2.on('row', (row) => {
-              users.push(row);
+              tokensforstripe.push(row);
             });
             query2.on('end', () => {
               done();
-              
-              
-              for(var i=0; i < users.length ; i++){
-              //SQL QUERY > update subscriptions
-              client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', users[i].userid,]);
-              }
-              //SQL Query > delete data
-              client.query('DELETE FROM institution WHERE institutionid = $1',[data.institutionid,]); 
-              return res.status(201).json({statusCode: 201, success: true});
+              //INSERT STRIPE CODE HERE 
+
+
+              //------------------------
+              console.log("this is the token 1 by one: ", tokensforstripe); //lista de tokens para suspend hacer for loop llamandolo tokensforstripe[i].token
+
+
+              //SQL Query > update institutionid in users
+              const query3 = client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 returning *', [data.institutionid,]);
+              //stream results back one row at a time
+              query3.on('row', (row) => {
+                users.push(row);
+              });
+              query3.on('end', () => {
+                done();
+
+                for(var i=0; i < users.length ; i++){
+                  //SQL QUERY > update subscriptions
+                  client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', users[i].userid,]);
+                }
+                //SQL Query > delete data
+                client.query('DELETE FROM institution WHERE institutionid = $1',[data.institutionid,]); 
+                return res.status(201).json({statusCode: 201, success: true});
+              });
             });
           }else{
             return res.status(402).json({statusCode: 402,
@@ -319,6 +336,7 @@ router.post('/settings/users/remove', (req,res,next)=> {
               });
             query2.on('end', () => {
               done();
+              
               console.log("token: ", tokenstripe[0].token);//delete this after debug (this is the token variable holder)
               //-------------------------EDIT HERE----------------------------
               //REMOVE STRIPE Charging
@@ -1129,6 +1147,60 @@ router.post('/settings/users/add', (req,res,next)=> {
   });
 });
 
+//GET all users to remove TEACHER
+router.get('/settings/users', (req,res,next)=> {
+  const results = [];
+  const users = [];
+  //grab data from http request
+  const data = {
+      userid: req.query.userid, //change to req.query.userid for testing
+    };
+  //verify inputs are valid
+  if(data.userid == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+    //verify if user exists in database records and is of type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1){ // user exists and is of type admin
+        //SQL Query > select all users
+        const query1 = client.query('SELECT * FROM users WHERE usertype = $1 AND institutionid is null', ['teacher',]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          users.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, success: true, users});
+        });
+      }else// user doesn't exist in record or isnt of type admin, send error statuscode
+      {
+        return res.status(401).json({statusCode: 401,
+          body:{
+            message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
+          },
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
 
 
 
