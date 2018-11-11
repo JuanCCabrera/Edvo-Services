@@ -146,8 +146,9 @@ router.get('/home', (req,res,next)=> {
     query.on('end', () => {
       done();
       if (validuser.length === 1){ // user exists and is school type
-        
+
         //edit here---------------
+        
         //--------- add home page aggregates
         return res.status(201).json({statusCode: 201, success: true, validuser});
       }else

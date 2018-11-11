@@ -541,6 +541,59 @@ router.post('/recommendations/favorite', (req,res,next)=> {
   });
 });
 
+
+/* Favorite question*/  
+router.post('/questions/favorite', (req,res,next)=> {
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,
+      askeddate: req.body.askeddate,
+      favorite: req.body.favorite
+    };
+  //verify inputs
+  if(data.userid == null || data.askeddate == null || data.favorite == null){
+    return res.status(403).json({statusCode: 403,
+      body:{
+        message: 'Inputs were not received as expected.',
+      },
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, success: false, data: err});
+    }
+
+    //verify if question exists in database records
+    const query2 = client.query('SELECT * FROM questions WHERE askeddate = $1 AND userid= $2', [data.askeddate, data.userid]);
+    //stream results back one row at a time
+    query2.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query2.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // question exist and is of specified user
+      
+        //SQL Query > update favorite data
+        client.query('UPDATE questions SET favorite=$1 WHERE askeddate = $2 and userid = $3', [data.favorite, data.askeddate, data.userid,]);
+        
+        return res.status(201).json({statusCode: 201, success: true});
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            body:{
+              message: 'Invalid question. Inputs where not received as expected.',
+            },
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
 /* Modify user basic info */
 router.post('/settings/info', (req,res,next)=> {
     const info = [];

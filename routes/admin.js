@@ -1153,7 +1153,7 @@ router.get('/settings/users', (req,res,next)=> {
   const users = [];
   //grab data from http request
   const data = {
-      userid: req.query.userid, //change to req.query.userid for testing
+      userid: req.body.userid, //change to req.query.userid for testing
     };
   //verify inputs are valid
   if(data.userid == null){
