@@ -73,7 +73,7 @@ router.get('/home', (req, res, next) => {
             query3.on('end', () => {
               done();
               //SQL QUERY > get top recommendations
-              const query4 = client.query('with teacher_recom as (SELECT er.recomid, date, rate, favorite, read, location  FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid=$1 AND rate is not null), recom_body as (SELECT rb.recomid, title, multimedia, header, description FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN teacher_recom ORDER BY rate DESC, date DESC LIMIT 3', [data.userid,]);
+              const query4 = client.query('with teacher_recom as (SELECT er.recomid, date, rate, favorite, read, location  FROM edu_recommendations er LEFT JOIN recommendations ON er.recomid = recommendations.recomid WHERE userid=$1), recom_body as (SELECT rb.recomid, title, multimedia, header, description FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid) SELECT * FROM recom_body tr NATURAL INNER JOIN teacher_recom ORDER BY rate DESC nulls last, date DESC LIMIT 3', [data.userid,]);
               //stream results back one row at a time
               query4.on('row', (row) => {
                 topRecommendations.push(row);
