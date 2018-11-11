@@ -7,6 +7,8 @@ const schoolReducer = (state = schoolReducerDefaultState, action) => {
             return [...state, action.school];
         case 'REMOVE_SCHOOL':
             return state.filter(({id}) => id !== action.id);
+        case 'UNLOAD_INSTITUTIONS':
+            return [];
         default:
             return [...state];
     };

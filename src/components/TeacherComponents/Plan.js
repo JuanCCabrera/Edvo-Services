@@ -4,6 +4,8 @@ import TeacherButtonList from './TeacherButtonList';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
+import {loadPlan} from '../../actions/plan';
 
 class Plans extends React.Component{
     constructor(props){
@@ -11,8 +13,23 @@ class Plans extends React.Component{
         this.state = {
             coupon: '',
             couponValid: false,
-            couponError: ''
+            couponShow: false,
+            couponError: '',
+            status: ''
         }
+    }
+    componentWillMount(){
+        axios.get('http://localhost:3000/teacher/settings/plans',
+        {
+        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+    })
+        .catch(error=>{
+            this.setState({couponShow: false, status});
+        })
+        .then(response => {
+
+            console.log("PLANS RESPONSE: ", response);
+        });
     }
 
     onCouponChange = (e) => {
@@ -28,6 +45,11 @@ class Plans extends React.Component{
     applyCoupon = (e) => {
         e.preventDefault();
         //TO-DO ADD ACTION TO APPLY COUPON CODE
+    }
+
+    subscribeToPlan = (e) => {
+        e.preventDefault();
+        this.props.history.replace('/teacher/settings/plans/payment');
     }
 
     resubscribeToPlan = (e) => {
@@ -52,10 +74,12 @@ class Plans extends React.Component{
                 <TeacherButtonList/>
                 {this.props.lang === 'English' ? <h3>Plan</h3> : <h3>Planes</h3>}
                 {this.props.lang === 'English' ? <h4>Name: {this.props.plan.name} Package</h4> : <h4>Nombre: Paquete {this.props.plan.name}</h4>}
-                {this.props.plan.status === 'active' && this.props.lang === 'English' && <button onClick={this.cancelPlan}>Cancel Plan</button>}
-                {this.props.plan.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.cancelPlan}>Cancelar Plan</button>}
-                {this.props.plan.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.resubscribeToPlan}>Resubscribe</button>}
-                {this.props.plan.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.resubscribeToPlan}>Resubscribirse</button>}
+                {this.state.status === 'active' && this.props.lang === 'English' && <button onClick={this.cancelPlan}>Cancel Plan</button>}
+                {this.state.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.cancelPlan}>Cancelar Plan</button>}
+                {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.resubscribeToPlan}>Resubscribe</button>}
+                {this.state.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.resubscribeToPlan}>Resubscribirse</button>}
+                {this.state.status === '' && this.props.lang === 'English' && <button onClick={this.subscribeToPlan}>Suscribirse</button>}
+                {this.state.status === '' && this.props.lang === 'Spanish' && <button onClick={this.subscribeToPlan}>Subscribe</button>}
                 <br/>
                 {this.props.lang === 'English' ? <h3>Coupon Code:</h3>: <h3>Código de Cupón</h3>}
                 <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>

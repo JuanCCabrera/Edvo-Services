@@ -4,6 +4,7 @@ import AdminButtonList from './AdminButtonList';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class CreateInstitutionForm extends React.Component{
     constructor(props){
@@ -11,12 +12,17 @@ class CreateInstitutionForm extends React.Component{
         this.state={
             name: '',
             location: '', 
+            numAccounts: '',
             type: 'public',
             institutionID: '',
             createInstitutionError: false
         };
     }
 
+    onNumberChange = (e) => {
+        const numAccounts = e.target.value;
+        this.setState(() => ({numAccounts}));
+    }
     onNameChange = (e) => {
         const name = e.target.value;
         this.setState(() => ({name}));
@@ -39,11 +45,14 @@ class CreateInstitutionForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8081/school/add', {
+        axios.post('http://localhost:3000/admin/settings/institutions/add', {
         name: this.state.name,
         location: this.state.location,
-        type: this.state.type,
-        institutionID: this.state.institutionID,
+        schooltype: this.state.type,
+        institutionid: this.state.institutionID,
+        accounts: this.state.numAccounts
+    }, {
+        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     }).then((response)=>{
         if(response.status == 200)
         this.props.history.push('/admin/settings/schools');
@@ -85,6 +94,11 @@ class CreateInstitutionForm extends React.Component{
                         <br/>
                         <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                         <input type="text" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+                    
+                        <br/>
+
+                        <label>{this.props.lang === 'English' ? 'Number of accounts' : 'Numero de cuentas'}:</label>
+                        <input type="text" placeholder = "#" value = {this.state.numAccounts} onChange={this.onNumberChange}/>
                     
                         <br/>
                         <br/>

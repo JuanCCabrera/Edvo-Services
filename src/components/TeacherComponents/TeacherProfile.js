@@ -12,7 +12,7 @@ import {Redirect} from 'react-router-dom';
     yes={() => (
         <div>
             <TeacherButtonList/>
-            <BasicInfoProfileForm/>
+            <BasicInfoProfileForm {...props}/>
         </div>
                  )}
                  no={() => <Redirect to="/" />}

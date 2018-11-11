@@ -7,20 +7,32 @@ class CheckoutForm extends Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = {complete: false};
+        this.state = {complete: false, coupon: ''};
         this.submit = this.submit.bind(this);
       }
       onButtonClick = (e) => {
         e.preventDefault();
         this.props.history.replace('/teacher/home')
     }
+    onCouponChange = (e) => {
+      e.preventDefault();
+      const couponCode = e.target.value;
+      if(couponCode.length < 8){
+          this.setState(() => ({coupon: couponCode, couponValid: false, couponError: ''}));
+      }else{
+          this.setState(() => ({coupon: couponCode, couponValid: true, couponError: ''}));
+      }
+  }
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: auth0Client.getProfile().name});
-    console.log("TOKEN IS: ", token.id);
-    let response = await axios.post('http://localhost:3000/teacher/pay',
+    console.log("TOKEN IS: ", token);
+    console.log("ID TOKEN IN CHECKOUT: ", auth0Client.getIdToken());
+    await axios.post('http://localhost:3000/plans/',
         {
-            token: token.id
+            token: token.id,
+            plan: 'edvo-basic',
+            couponid: this.state.coupon
         },
         {
           headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
@@ -46,7 +58,7 @@ class CheckoutForm extends Component {
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <input name="coupon" placeholder="Coupon Code" />
+        <input name="coupon" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange} />
         <button onClick={this.submit}>Send</button>
       </div>
     );

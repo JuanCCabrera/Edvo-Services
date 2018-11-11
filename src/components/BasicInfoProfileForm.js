@@ -21,6 +21,7 @@ class BasicInfoProfileForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
+            props: props,
             name: props.info ? props.info.name : '',
             lastName: props.info ? props.info.lastName : '',
             dateOfBirth: props.info ? props.info.dateOfBirth : moment(),
@@ -32,7 +33,7 @@ class BasicInfoProfileForm extends React.Component{
 
     componentWillMount(){
         //send this to action
-        axios.get('http://localhost:3000/school/settings/info',
+        axios.get('http://localhost:3000/admin/settings/info',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
@@ -85,16 +86,18 @@ class BasicInfoProfileForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8081/info', {
+        axios.post('http://localhost:3000/admin/settings/info', {
             name: this.state.name,
             lastname: this.state.lastName,
             dob: this.state.dateOfBirth,
             gender: this.state.gender
-        })
-        // .then((response)=>{
-        //     if(response.status == 201)
-        //         //this.context.history.push('/admin/home');
-        // });
+        },
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+        .then((response)=>{
+            if(response.status == 201)
+                this.state.props.history.push('/admin/home');
+        });
         console.log('submitted');
         if(this.state.name === '' || this.state.lastName === ''){
             this.setState(() => ({formIncompleteError: true}));

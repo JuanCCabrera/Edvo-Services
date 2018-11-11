@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import SchoolListItem from './SchoolListItem';
 import Pagination from 'react-js-pagination';
 import axios from 'axios';
-import {addSchool} from '../actions/school';
+import {addSchool, unloadInstitutions} from '../actions/school';
 import uuid from 'uuid';
+import auth0Client from '../Auth';
 
 import getVisibleSchools from '../selectors/schools';
 
@@ -23,10 +24,12 @@ class SchoolList extends React.Component{
     componentWillMount(){
         //Change UUID for InsitutionID when DB connection is made
         //send to action
-        axios.get('http://localhost:8081/schools')
+        axios.get('http://localhost:3000/admin/settings/institutions',{
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
-            response.data.forEach(element => {
-                this.props.dispatch(addSchool({id: uuid(), name: element.name , 
+            console.log("REPSONSE: ", response);
+            response.data.institutions.forEach(element => {
+                this.props.dispatch(addSchool({id: element.institutionid, name: element.name , 
                     location: element.location, type: element.type, 
                     numAccounts: element.num}));
             });
@@ -38,6 +41,10 @@ class SchoolList extends React.Component{
         this.currentPage = 1;
         const initialPageUsers = this.props.schools.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedSchools: initialPageUsers});
+    }
+
+    componentWillUnmount(){
+        this.props.dispatch(unloadInstitutions());
     }
 
     componentDidUpdate(prevProps){

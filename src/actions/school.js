@@ -23,4 +23,9 @@ export const removeSchool = ({id} = {}) => ({
     id: id
 });
 
+export const unloadInstitutions = () => {
+    return {
+        type: 'UNLOAD_INSTITUTIONS'
+    }
+};
 
