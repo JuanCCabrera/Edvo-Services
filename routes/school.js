@@ -117,6 +117,11 @@ router.get('/settings/info', (req,res,next)=> {
 /* GET HOME PAGE*/
 router.get('/home', (req,res,next)=> {
   const validuser = [];
+  const teachersdays = [];
+  const averageQuestionsRate = [];
+  const averageRecommendationsRate = [];
+  const toptargets = [];
+  const toptargetsordered = [];
   //grab data from http request
   const data = {
       userid: req.body.userid, 
@@ -146,11 +151,60 @@ router.get('/home', (req,res,next)=> {
     query.on('end', () => {
       done();
       if (validuser.length === 1){ // user exists and is school type
-
-        //edit here---------------
-        
-        //--------- add home page aggregates
-        return res.status(201).json({statusCode: 201, success: true, validuser});
+        //SQL Query > get number of days teachers have logged in to platform
+        const query1 = client.query('SELECT count(distinct date) as teachersdays FROM log_record WHERE userid in (SELECT userid FROM users WHERE institutionid = $1)', [validuser[0].institutionid,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          teachersdays.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          //SQL Query > get average questions rate
+          const query2 = client.query('SELECT ROUND(AVG(rate::smallint), 1) as averagequestionsrate FROM questions WHERE userid in (SELECT userid FROM users WHERE institutionid = $1)', [validuser[0].institutionid,]);
+          //stream results back one row at a time
+          query2.on('row', (row) => {
+            averageQuestionsRate.push(row);
+          });
+          query2.on('end', () => {
+            done();
+            
+            //SQL Query > get average recommendations rate
+            const query3 = client.query('SELECT ROUND(AVG(rate::smallint), 1) as averagerecommendationsrate FROM edu_recommendations WHERE userid in (SELECT userid FROM users WHERE institutionid = $1)', [validuser[0].institutionid,]);
+            //stream results back one row at a time
+            query3.on('row', (row) => {
+              averageRecommendationsRate.push(row);
+            });
+            query3.on('end', () => {
+              done();
+              //SQL Query > get count of true targets counts for teachers
+              const query4 = client.query('with mat as (SELECT count(material) as materialtrue FROM user_info WHERE userid in (SELECT userid FROM users WHERE institutionid = $1) AND material = true), tech as (SELECT count(tech) as techtrue FROM user_info WHERE userid in (SELECT userid FROM users WHERE institutionid = $2) AND tech = true), strat as (SELECT count(strategies) as strategiestrue FROM user_info WHERE userid in (SELECT userid FROM users WHERE institutionid = $3) AND strategies = true), tim as (SELECT count(timemanagement) as timemanagementtrue FROM user_info WHERE userid in (SELECT userid FROM users WHERE institutionid = $4) AND timemanagement = true), ins as (SELECT count(instructions) as instructionstrue FROM user_info WHERE userid in (SELECT userid FROM users WHERE institutionid = $5) AND instructions = true) SELECT * FROM mat natural inner join tech natural inner join strat natural inner join tim natural inner join ins', [validuser[0].institutionid, validuser[0].institutionid, validuser[0].institutionid, validuser[0].institutionid, validuser[0].institutionid,]);
+              //stream results back one row at a time
+              query4.on('row', (row) => {
+                toptargets.push(row);
+              });
+              query4.on('end', () => {
+                done();
+                //SQL Query > get ordered top targets on temporary table
+                client.query('CREATE TEMP TABLE toptargets(name varchar(30),value bigint)');
+                client.query('INSERT into toptargets values (\'Updated Material\', $1)', [toptargets[0].materialtrue,]);
+                client.query('INSERT into toptargets values (\'Technology Integration\', $1)', [toptargets[0].techtrue,]);
+                client.query('INSERT into toptargets values (\'Teaching Strategies\', $1)', [toptargets[0].strategiestrue,]);
+                client.query('INSERT into toptargets values (\'Time Management\', $1)', [toptargets[0].timemanagementtrue,]);
+                client.query('INSERT into toptargets values (\'Instruction Alignment\', $1)', [toptargets[0].instructionstrue,]);
+                const query5 = client.query('SELECT * FROM toptargets ORDER BY value DESC LIMIT 3');
+                client.query('DROP TABLE toptargets');
+                //stream results back one row at a time
+                query5.on('row', (row) => {
+                  toptargetsordered.push(row);
+                });
+                query5.on('end', () => {
+                  done();
+                  return res.status(201).json({statusCode: 201, success: true, teachersdays: teachersdays[0].teachersdays, averageQuestionsRate: averageQuestionsRate[0].averagequestionsrate, averageRecommendationsRate: averageRecommendationsRate[0].averagerecommendationsrate, toptargetsordered});
+                });
+              });
+            });
+          });
+        });
       }else
       {
         return res.status(401).json({statusCode: 401,

@@ -163,6 +163,7 @@ router.post('/settings/institutions/add', (req,res,next)=> {
           if(institution.length === 0){
             //SQL Query > insert data
             client.query('INSERT into institution (institutionid, name, location, schooltype, accounts, accountsused) values ($1, $2, $3, $4, $5, $6)', [data.institutionid, data.name, data.location, data.schooltype, data.accounts, 0]); 
+            client.query('INSERT into coupons (couponid, name) values ($1, $2)', [data.institutionid, data.name,]);
             return res.status(201).json({statusCode: 201, success: true});
           }else{
             return res.status(402).json({statusCode: 402,
