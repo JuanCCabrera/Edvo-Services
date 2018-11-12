@@ -27,7 +27,7 @@ class Plans extends React.Component{
             this.setState({couponShow: false, status});
         })
         .then(response => {
-
+            this.setState({status: response.data.subscription[0].status});
             console.log("PLANS RESPONSE: ", response);
         });
     }
@@ -81,9 +81,9 @@ class Plans extends React.Component{
                 {this.state.status === '' && this.props.lang === 'English' && <button onClick={this.subscribeToPlan}>Suscribirse</button>}
                 {this.state.status === '' && this.props.lang === 'Spanish' && <button onClick={this.subscribeToPlan}>Subscribe</button>}
                 <br/>
-                {this.props.lang === 'English' ? <h3>Coupon Code:</h3>: <h3>Código de Cupón</h3>}
-                <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
-                <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>
+                {this.state.status === 'active' && this.props.lang === 'English' && <h3>Coupon Code:</h3>}
+                {this.state.status === 'active' && <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>}
+                {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>}
                 <br/>
             </div>
                              )}

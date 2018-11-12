@@ -6,20 +6,49 @@ const teacherMetricsReducerDefaultState = {
 
 const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action) => {
     switch(action.type){
+        case 'RESET':
+        return {
+            recommendationsRead: null,
+            questionsAsked: null,
+            daysInPlatform: null,
+            topRecommendations: [],
+            mostRecentrecommendations: []
+        }
         case 'LOAD_TEACHER_DAYS_IN_PLATFORM':
             return {
+                recommendationsRead: action.recommendationsRead,
+                questionsAsked: action.questionsAsked,
+                daysInPlatform: action.daysInPlatform,
+                topRecommendations: [...state.topRecommendations],
+                mostRecentrecommendations: [...state.mostRecentrecommendations]
+            }
+        case 'LOAD_TEACHER_QUESTIONS_ASKED':
+            return {
+                recommendationsRead: action.recommendationsRead,
+                questionsAsked: action.questionsAsked,
+                daysInPlatform: action.daysInPlatform,
+                topRecommendations: [...state.topRecommendations],
+                mostRecentrecommendations: [...state.mostRecentrecommendations]
+            }
+        case 'LOAD_TEACHER_RECOMMENDATIONS_READ':
+            return {
+                recommendationsRead: action.recommendationsRead,
+                questionsAsked: action.questionsAsked,
                 daysInPlatform: action.daysInPlatform,
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
             }
         case 'LOAD_TEACHER_TOP_RECOMMENDATION':
             return {
+                recommendationsRead: action.recommendationsRead,
+                questionsAsked: action.questionsAsked,
                 daysInPlatform: state.daysInPlatform,
                 topRecommendations: [...state.topRecommendations, action.topRecommendation],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
             }
         case 'LOAD_TEACHER_RECENT_RECOMMENDATION':
             return{
+                questionsAsked: action.questionsAsked,
                 daysInPlatform: state.daysInPlatform,
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations, action.mostRecentrecommendation]

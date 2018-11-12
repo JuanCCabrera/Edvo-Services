@@ -24,10 +24,7 @@ class AnswerQuizForm extends React.Component {
     onSubmit = (e) => {
         //TO-DO Add error checks
         e.preventDefault();
-        axios.post('http://localhost:8081/quiz/answer', {
-            answers: this.state.answers,
-            quizID: this.state.quizID
-        });
+        console.log("ANSWERS", this.state.answers);
         this.props.history.push('/teacher/quizzes');
     }
 

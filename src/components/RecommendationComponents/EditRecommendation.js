@@ -13,6 +13,8 @@ const EditRecommendation = (props) => (
     perform="admin:recommendations-modify"
     yes={() => (
     <div>
+        
+    {console.log("PROPS EDIT:L ", props)}
         <RecommendationButtonList/>
         <h2> {props.lang === 'English' ? 'Edit Recommendation' : 'Modificar Recomendación'} </h2>
         <CreateRecommendationForm 

@@ -4,10 +4,14 @@ import ManageRecommendationsListItem from './ManageRecommendationsListItem';
 import Pagination from 'react-js-pagination';
 import {Link} from 'react-router-dom';
 import getVisibleRecommendations from '../../selectors/recommendations';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import { loadRecommendation, unloadRecommendations } from '../../actions/recommendations';
 
 class ManageRecommendationsList extends React.Component{
     constructor(props){
         super(props);
+        this.props = props;
         this.pageSlice = 1;
         this.itemsPerPage = 3;
         this.currentPage = 1;
@@ -16,8 +20,21 @@ class ManageRecommendationsList extends React.Component{
             displayedRecommendations: []
         }
     }
-
+    componentWillUnmount(){
+        this.props.dispatch(unloadRecommendations());
+    }
     componentWillMount(){
+        axios.get('http://localhost:3000/admin/recommendations',{
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+        .then(response => {
+            console.log("REPSONSE RECOM:L ", response);
+            response.data.recommendations.forEach(element => {
+                //Change id for userID when DB connection is ready
+                this.props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
+                    header: element.header, multimedia: element.multimedia, 
+                    description: element.description}));
+            });
+        });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const displayedRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);

@@ -37,7 +37,7 @@ class CheckoutForm extends Component {
         {
           headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
           .catch(error => {
-            console.log("STRiPE ERROR: ", error);
+            console.log("STRiPE ERROR: ", error.response.status);
           })
           .then(response =>{
             console.log("STRIPE RESPONSE: ",response);

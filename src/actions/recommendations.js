@@ -227,3 +227,10 @@ export const editRecommendation = (id, updates) => ({
     id: id,
     updates: updates
 });
+
+export const unloadRecommendations = () => {
+    return {
+        type: 'UNLOAD_RECOMMENDATIONS'
+    }
+};
+

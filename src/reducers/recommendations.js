@@ -4,6 +4,8 @@ const recommendationsReducer = (state = recommendationsReducerDefaultState, acti
     switch(action.type){
         case 'LOAD_RECOMMENDATION':
             return [...state, action.recommendation];
+        case 'UNLOAD_RECOMMENDATIONS':
+            return [];
         case 'CREATE_RECOMMENDATION':
             return [...state];
         case 'REMOVE_RECOMMENDATION':

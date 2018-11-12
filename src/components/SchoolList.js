@@ -31,7 +31,7 @@ class SchoolList extends React.Component{
             response.data.institutions.forEach(element => {
                 this.props.dispatch(addSchool({id: element.institutionid, name: element.name , 
                     location: element.location, type: element.type, 
-                    numAccounts: element.num}));
+                    numAccounts: element.accounts}));
             });
                 
             

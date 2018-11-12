@@ -1,4 +1,11 @@
 //Load Teacher Metrics
+
+export const reset = () => {
+    return{
+        type: 'RESET'
+    }
+}
+
 export const loadTeacherDaysInPlatform = ({daysInPlatform = 0} = {}) => {
     return{
         type: 'LOAD_TEACHER_DAYS_IN_PLATFORM',
@@ -6,6 +13,19 @@ export const loadTeacherDaysInPlatform = ({daysInPlatform = 0} = {}) => {
     }
 }
 
+export const loadTeacherQuestionsAsked = ({questionsAsked = 0} = {}) => {
+    return{
+        type: 'LOAD_TEACHER_QUESTIONS_ASKED',
+        questionsAsked: questionsAsked
+    }
+}
+
+export const loadTeacherRecommendationsRead = ({recommendationsRead = 0} = {}) => {
+    return{
+        type: 'LOAD_TEACHER_RECOMMENDATIONS_READ',
+        recommendationsRead: recommendationsRead
+    }
+}
 export const loadTeacherTopRecommendation = ({
     recoID = '',
     title = '',

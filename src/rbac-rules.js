@@ -9,7 +9,7 @@ const rules = {
     static: [
       "mentor:home",
       "mentor:settings",
-      "admin-recommendations-manage",
+      "admin:recommendations-manage",
       "admin:recommendations-add",
       "admin:recommendations-assign",
       "admin:recommendations-modify",
@@ -30,7 +30,7 @@ const rules = {
     static: [
       "admin:home",
       "admin:settings",
-      "admin-recommendations-manage",
+      "admin:recommendations-manage",
       "admin:recommendations-add",
       "admin:recommendations-assign",
       "admin:recommendations-modify",

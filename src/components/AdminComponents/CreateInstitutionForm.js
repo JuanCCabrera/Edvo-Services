@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-dates/lib/css/_datepicker.css';
 import AdminButtonList from './AdminButtonList';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
@@ -55,13 +55,13 @@ class CreateInstitutionForm extends React.Component{
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     }).then((response)=>{
         if(response.status == 200)
-        this.props.history.push('/admin/settings/schools');
+        <Redirect to='/admin/settings/schools' />
     });
         if(!this.state.name || !this.state.location){
             this.setState(() => ({createInstitutionError : true})); 
         }else{
             this.setState(() => ({createInstitutionError: false}));
-            this.props.history.push('/admin/settings/schools');
+            <Redirect to='/admin/settings/schools' />
         }
         //TO-DO Add new school to database
     }

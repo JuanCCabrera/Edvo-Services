@@ -6,6 +6,7 @@ import {addUser, removeUser} from '../actions/user';
 import axios from 'axios';
 import uuid from 'uuid';
 import getVisibleUsers from '../selectors/users';
+import auth0Client from '../Auth';
 
 class UserList extends React.Component{
     constructor(props){
@@ -20,11 +21,12 @@ class UserList extends React.Component{
     }
 
     componentWillMount(){
-        axios.get('http://localhost:8081/users')
+        axios.get('http://localhost:3000/admin/settings/users',{
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
-            response.data.forEach(element => {
+            response.data.users.forEach(element => {
                 //Change id for userID when DB connection is ready
-                this.props.dispatch(addUser({id: uuid(), name: element.name,
+                this.props.dispatch(addUser({id: element.userid, name: element.name,
                     email: element.email, lastname: element.lastname, 
                     weeklyReco: element.weeklyReco, 
                     categories: element.categories}));
