@@ -21,9 +21,7 @@ router.post('/settings/info', (req,res,next)=> {
     //verify no input is empty
     if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
       return res.status(403).json({statusCode: 403,
-        body:{
           message: 'Inputs were not received as expected.',
-        },
         isBase64Encoded: false,});
     }
     // get a postgres client from the connection pool
@@ -32,7 +30,7 @@ router.post('/settings/info', (req,res,next)=> {
       if(err){
         done();
         console.log(err);
-        return res.status(500).json({statusCode: 500, success: false, data: err});
+        return res.status(500).json({statusCode: 500, data: err});
       }
       //verify if user exists in database records
       const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
@@ -47,21 +45,19 @@ router.post('/settings/info', (req,res,next)=> {
           //SQL Query > update data
           client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
           //SQL Query > select data
-          const query = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+          const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
           //stream results back one row at a time
           query.on('row', (row) => {
           info.push(row);
           });
           query.on('end', () => {
             done();
-            return res.status(201).json({statusCode: 201, success: true, info});
+            return res.status(201).json({statusCode: 201, info});
           });
         }else
         {
           return res.status(401).json({statusCode: 401,
-              body:{
-                message: 'User does not exists in records. Inputs were not received as expected.',
-              },
+              message: 'User does not exists in records. Inputs were not received as expected.',
               isBase64Encoded: false,});
         }
       });
@@ -78,9 +74,7 @@ router.get('/settings/info', (req,res,next)=> {
    //verify inputs
    if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -89,10 +83,10 @@ router.get('/settings/info', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records
-    const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+    const query1 = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
     //stream results back one row at a time
     query1.on('row', (row) => {
       info.push(row);
@@ -100,13 +94,11 @@ router.get('/settings/info', (req,res,next)=> {
     query1.on('end', () => {
       done();
       if (info.length === 1){ // user exists
-        return res.status(201).json({statusCode: 201, success: true, info});
+        return res.status(200).json({statusCode: 200 , info: info[0]});
       }else
       {
         return res.status(401).json({statusCode: 401,
-            body:{
               message: 'User does not exists in records. Inputs were not received as expected.',
-            },
             isBase64Encoded: false,});
       }
     });
@@ -129,9 +121,7 @@ router.get('/home', (req,res,next)=> {
    //verify inputs
    if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -140,7 +130,7 @@ router.get('/home', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and type school
     const query = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'school',]);
@@ -185,7 +175,7 @@ router.get('/home', (req,res,next)=> {
               query4.on('end', () => {
                 done();
                 //SQL Query > get ordered top targets on temporary table
-                client.query('CREATE TEMP TABLE toptargets(name varchar(30),value bigint)');
+                client.query('CREATE TEMP TABLE toptargets(target varchar(30),value bigint)');
                 client.query('INSERT into toptargets values (\'Updated Material\', $1)', [toptargets[0].materialtrue,]);
                 client.query('INSERT into toptargets values (\'Technology Integration\', $1)', [toptargets[0].techtrue,]);
                 client.query('INSERT into toptargets values (\'Teaching Strategies\', $1)', [toptargets[0].strategiestrue,]);
@@ -199,7 +189,7 @@ router.get('/home', (req,res,next)=> {
                 });
                 query5.on('end', () => {
                   done();
-                  return res.status(201).json({statusCode: 201, success: true, teachersdays: teachersdays[0].teachersdays, averageQuestionsRate: averageQuestionsRate[0].averagequestionsrate, averageRecommendationsRate: averageRecommendationsRate[0].averagerecommendationsrate, toptargetsordered});
+                  return res.status(200).json({statusCode: 200, teachersdays: teachersdays[0].teachersdays, averageQuestionsRate: averageQuestionsRate[0].averagequestionsrate, averageRecommendationsRate: averageRecommendationsRate[0].averagerecommendationsrate, toptargetsordered});
                 });
               });
             });
@@ -208,9 +198,7 @@ router.get('/home', (req,res,next)=> {
       }else
       {
         return res.status(401).json({statusCode: 401,
-            body:{
               message: 'User does not exists in records or is not of type school. Inputs were not received as expected.',
-            },
             isBase64Encoded: false,});
       }
     });

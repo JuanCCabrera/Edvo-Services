@@ -16,27 +16,27 @@ router.post('/contact',(req, res, next) =>{
   //grab data from http request
   const data = {
     email: req.body.email, 
-    message: req.body.message
+    message: req.body.message,
+    name: req.body.name
   };
   //verify inputs are valid
   if(data.email == null || data.message == null){
-    return res.status(403).json({statusCode: 403,
-      message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+    return res.status(401).json({statusCode: 401,
+      message: 'Inputs were not received as expected.',});
   }
   //create email
   sendmail({
       from: data.email,
       to: 'info@edvotech.com', //change to jahannie's edvo email
       subject: 'Contact Us | Deseo saber mas de EDVO',
-      html: data.message,
+      html: 'Name: '+ data.name + '<br> <br>'+ data.message,
     }, function(err, reply) {
       if(err){
       console.log(err && err.stack);
-      return res.status(402).json({statusCode : 402, success: false, message: "Email failed to send."});
+      return res.status(403).json({statusCode : 403, message: "Email failed to send."});
       }
       else{
-      return res.status(200).json({statusCode : 200, success: true, message: "Email sent succesfully."});
+      return res.status(200).json({statusCode : 200, message: "Email sent succesfully."});
       }
   });
 });
@@ -52,9 +52,7 @@ router.post('/log', (req,res,next)=> {
   //verify inputs
   if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -63,7 +61,7 @@ router.post('/log', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, message: err});
     }
     //verify if user exists in database records
     const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
@@ -77,13 +75,11 @@ router.post('/log', (req,res,next)=> {
       
         //SQL Query > insert log data
         client.query('INSERT into log_record (userid, date) values ($1, $2)', [data.userid, todaysDate,]);
-        return res.status(201).json({statusCode: 201, success: true});
+        return res.status(201).json({statusCode: 201});
       }else
       {
         return res.status(401).json({statusCode: 401,
-            body:{
               message: 'User does not exists in records. Inputs where not received as expected.',
-            },
             isBase64Encoded: false,});
       }
     });

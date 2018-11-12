@@ -19,11 +19,9 @@ router.post('/', (req,res,next)=> {
       token: req.body.token,
     };
   //verify inputs
-  if(data.userid == null || data.plan == null || data.couponid == null || data.token == null){
+  if(data.userid == null || data.plan == null || data.token == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -32,7 +30,7 @@ router.post('/', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, mesage: err});
     }
     //verify if userid exists in database records
     const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid, ]);
@@ -75,12 +73,10 @@ router.post('/', (req,res,next)=> {
                     //SQL Query > update accounts used
                     client.query('UPDATE institution SET accountsused = $1 WHERE institutionid = $2', [accountsupdated, data.couponid,]);
               
-                    return res.status(201).json({statusCode: 201, success: true});
+                    return res.status(201).json({statusCode: 201});
                   }else{ //no accounts avilable for that institution
-                    return res.status(402).json({statusCode: 402, success: false,
-                      body:{
-                        message: 'Institution has no accounts available for subscription.',
-                      },
+                    return res.status(402).json({statusCode: 402,
+                      message: 'Institution has no accounts available for subscription.',
                       isBase64Encoded: false,});
                   }
                 }
@@ -90,29 +86,25 @@ router.post('/', (req,res,next)=> {
                   
                   //SQL Query > insert into coupon table
                   client.query('insert into coupons_used (couponid, userid, dateused) values ($1, $2, $3)', [data.couponid, data.userid, todaysDate,]);
-                  return res.status(201).json({statusCode: 201, success: true});
+                  return res.status(201).json({statusCode: 201});
                 }
               });
             }else{ //no coupon is used
               //SQL Query > insert user subscription into subscription table with active status
               client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
-              return res.status(201).json({statusCode: 201, success: true});
+              return res.status(201).json({statusCode: 201});
             }
           }else// user has a subscription send error statuscode
           {
-            return res.status(403).json({statusCode: 403, success: false,
-              body:{
-                message: 'Userid already has a subscription.',
-              },
+            return res.status(402).json({statusCode: 402,
+              message: 'Userid already has a subscription.',
               isBase64Encoded: false,});
           }
         });
       }else//user does not exist in record send error statuscode
       {
-        return res.status(401).json({statusCode: 401, success: false,
-          body:{
-            message: 'User does not exist in database.',
-          },
+        return res.status(401).json({statusCode: 401, 
+          message: 'User does not exist in database.',
           isBase64Encoded: false,});
       }
     });

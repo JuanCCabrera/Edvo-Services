@@ -8,7 +8,7 @@ const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''
 
 /* Create a single user with user_info, class_info and school_info*/
 router.post('/', (req,res,next)=> {
-  const results = [];
+  const user = [];
   const resultsexist = [];
   //grab data from http request
   const data = {
@@ -48,29 +48,27 @@ router.post('/', (req,res,next)=> {
       smartboard: req.body.smartboard, 
       smartpencil: req.body.smartpencil, 
       speakers: req.body.speakers,
-      classes: req.body.classes
+      class: req.body.class
     };
+    console.log("this is the input: ", data);
     if(data.userid == null || data.usertype == null || data.name == null || data.lastname ==null || data.gender == null 
       || data.email == null || data.dob == null || data.policies == null || data.teachersince == null
       || data.education == null || data.spanish == null || data.english == null || data.schooltype == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
       ||data.instructions == null ||data.moodle == null || data.googleclassroom == null || data.emails == null || data.books == null || data.applications == null || data.socialmedia == null || data.projector == null 
-      || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.classes == null || data.schoolname == null || data.location == null){
+      || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.class == null || data.schoolname == null || data.location == null){
       return res.status(403).json({statusCode: 403,
-        body:{
           message: 'Inputs were not received as expected.',
-        },
-        isBase64Encoded: false,});
-    }
-    var classesjson = data.classes
-    var length = classesjson.length;
-    for(var i=0; i<length; i++){
-      if(classesjson[i].subject == null || classesjson[i].format == null || classesjson[i].language== null || classesjson[i].level== null || classesjson[i].groupsize== null || classesjson[i].topica== null){
-        return res.status(403).json({statusCode: 403,
-          body:{
-            message: 'Inputs were not received as expected.',
-          },
           isBase64Encoded: false,});
-      }
+    }
+    console.log("data variable: ", data.class);
+
+    var classesjson = data.class
+    console.log("classjson: ", classesjson );
+    if(classesjson.subject == null || classesjson.format == null || classesjson.language== null 
+      || classesjson.level== null || classesjson.groupsize== null || classesjson.topica== null){
+      return res.status(403).json({statusCode: 403,
+        message: 'Inputs were not received as expected.',
+        isBase64Encoded: false,});
     }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
@@ -78,7 +76,7 @@ router.post('/', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, message: err});
     }
     //verify if userid or email exists in database records
     const query2 = client.query('SELECT * FROM users WHERE userid = $1 OR email = $2', [data.userid, data.email,]);
@@ -93,33 +91,31 @@ router.post('/', (req,res,next)=> {
         //SQL Query > insert user table data
         client.query('insert into users(userid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, data.usertype, data.name, data.lastname, data.gender, data.email, data.password, data.dob, data.membersince, data.policies]);
         
-        // //SQL Query > insert user_info table data
+        //SQL Query > insert user_info table data
         client.query('insert into user_info(userid, teachersince, education, english, spanish, strategies, material, timemanagement, tech, instructions) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, data.teachersince, data.education, data.english, data.spanish, data.strategies, data.material, data.timemanagement, data.tech, data.instructions]);
         
-        // //SQL Query > insert school_info table data
+        //SQL Query > insert school_info table data
         client.query('insert into school_info(userid, name, location, schooltype, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)', [data.userid, data.schoolname, data.location, data.schooltype, data.moodle, data.googleclassroom, data.emails, data.books, data.applications, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers]);
         
-        for(var i=0; i<length; i++){
-            client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, classesjson[i].subject.toLowerCase(), classesjson[i].format, classesjson[i].language, classesjson[i].level, classesjson[i].groupsize, classesjson[i].topica.toLowerCase(), classesjson[i].topicb.toLowerCase(), classesjson[i].topicc.toLowerCase()]);
-        }
+        //SQL Query > insert class_info table data
+        client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, classesjson.subject.toLowerCase(), classesjson.format, classesjson.language, classesjson.level, classesjson.groupsize, classesjson.topica.toLowerCase(), classesjson.topicb, classesjson.topicc]);
+        
         
         //SQL Query > select data of a single user
         const query =  client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
         //stream results back one row at a time
         query.on('row', (row) => {
-          results.push(row);
+          user.push(row);
         });
         query.on('end', () => {
           done();
           //return res.json(results);
-          return res.status(201).json({statusCode: 201, body:{results}});
+          return res.status(201).json({statusCode: 201, user});
         });
       }else//if user does exist in record send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
-          },
+          message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });

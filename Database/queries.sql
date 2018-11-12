@@ -130,6 +130,22 @@ with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, 
 needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, userid FROM user_info)
 SELECT * FROM userlist NATURAL INNER JOIN needsOfUSer WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL '7 days'))
 
+#get active recommendations info
+with recom as (SELECT recomid, location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active  FROM recommendations WHERE active=true),
+recom_body as (SELECT rb.recomid, title, multimedia, header, description, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid),
+recom_target as (Select rt.recomid, strategies, material, timemanagement, tech, instructions, topica,topicb,topicc FROM recommendation_target rt INNER JOIN recommendation_topics ON rt.recomid = recommendation_topics.recomid)
+SELECT * FROM recom_body tr NATURAL INNER JOIN recom_target NATURAL INNER JOIN recom;
+
+#get recommendatios for a user 
+with recomlist as (with recom as (SELECT recomid, location, subject, spanish, english, type, schooltype, format, groupsize, level, mentorid, active  FROM recommendations WHERE active=true),
+recom_body as (SELECT rb.recomid, title, multimedia, header, description, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM recommendation_body rb INNER JOIN recommendation_req ON rb.recomid = recommendation_req.recomid),
+recom_target as (Select rt.recomid, strategies, material, timemanagement, tech, instructions, topica,topicb,topicc FROM recommendation_target rt INNER JOIN recommendation_topics ON rt.recomid = recommendation_topics.recomid)
+SELECT * FROM recom_body tr NATURAL INNER JOIN recom_target NATURAL INNER JOIN recom),
+unassignedlist as (SELECT * from recomlist WHERE recomid NOT IN (SELECT recomid from edu_recommendations WHERE userid = 'test12')),
+recomlisttarget as (SELECT ui.strategies, ui.material, ui.timemanagement, ui.tech, ui.instructions, recomid, userid FROM user_info as ui, recommendation_target WHERE ui.strategies =true OR ui.material= true OR ui.timemanagement = true OR ui.tech=true OR ui.instructions = true),
+unassignedtargeted as (SELECT * from unassignedlist WHERE recomid IN (SELECT recomid FROM recomlisttarget WHERE userid = 'test12')),
+targ as (SELECT si.moodle, si.googleclassroom, si.emails, si.books, si.applications, si.socialmedia, si.projector, si.computer, si.tablet, si.stylus, si.internet, si.smartboard, si.smartpencil, si.speakers , r.recomid, userid FROM school_info as si left join recommendation_req as r ON  si.moodle = r.moodle AND si.googleclassroom= r.googleclassroom AND si.emails=r.emails AND si.books =r.books AND si.applications = r.applications AND si.socialmedia = r.socialmedia AND si.projector=r.projector AND si.computer= r.computer AND si.tablet = r.tablet AND si.stylus=r.stylus AND si.internet = r.internet AND si.smartboard=r.smartboard AND si.smartpencil=r.smartpencil AND si.speakers=r.speakers WHERE recomid is NOT null)
+select userid, a.recomid,a.strategies, a.material, a.timemanagement, a.tech, a.instructions, a.title, a.multimedia, a.header, a.description, a.topica, a.topicb, a.topicc, a.location, a.subject, a.spanish, a.english, a.type, a.schooltype, a.format, a.groupsize, a.level, targ.moodle, targ.googleclassroom, targ.emails, targ.books, targ.applications, targ.socialmedia, targ.projector, targ.computer, targ.tablet, targ.stylus, targ.internet, targ.smartboard, targ.smartpencil, targ.speakers FROM unassignedtargeted as a inner join targ ON targ.recomid = a.recomid
 
 
 

@@ -21,9 +21,7 @@ router.post('/settings/info', (req,res,next)=> {
     //verify no input is empty
     if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
       return res.status(403).json({statusCode: 403,
-        body:{
-          message: 'Inputs were not received as expected.',
-        },
+        message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
     // get a postgres client from the connection pool
@@ -32,7 +30,7 @@ router.post('/settings/info', (req,res,next)=> {
       if(err){
         done();
         console.log(err);
-        return res.status(500).json({statusCode: 500, success: false, data: err});
+        return res.status(500).json({statusCode: 500, data: err});
       }
       //verify if user exists in database records
       const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
@@ -47,21 +45,19 @@ router.post('/settings/info', (req,res,next)=> {
           //SQL Query > update data
           client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
           //SQL Query > select data
-          const query = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+          const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
           //stream results back one row at a time
           query.on('row', (row) => {
           info.push(row);
           });
           query.on('end', () => {
             done();
-            return res.status(201).json({statusCode: 201, success: true, info});
+            return res.status(201).json({statusCode: 201, info});
           });
         }else
         {
           return res.status(401).json({statusCode: 401,
-              body:{
                 message: 'User does not exists in records. Inputs were not received as expected.',
-              },
               isBase64Encoded: false,});
         }
       });
@@ -75,11 +71,10 @@ router.get('/settings/info', (req,res,next)=> {
   const data = {
       userid: req.body.userid, 
     };
+    //verify inputs 
   if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -88,10 +83,10 @@ router.get('/settings/info', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records
-    const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+    const query1 = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
     //stream results back one row at a time
     query1.on('row', (row) => {
       info.push(row);
@@ -99,13 +94,11 @@ router.get('/settings/info', (req,res,next)=> {
     query1.on('end', () => {
       done();
       if (info.length === 1){ // user exists
-        return res.status(201).json({statusCode: 201, success: true, info});
+        return res.status(200).json({statusCode: 200 , info: info[0]});
       }else
       {
         return res.status(401).json({statusCode: 401,
-            body:{
               message: 'User does not exists in records. Inputs were not received as expected.',
-            },
             isBase64Encoded: false,});
       }
     });
@@ -166,9 +159,7 @@ router.post('/recommendations/create', (req,res,next)=> {
     || data.subject == null || data.type == null || data.spanish == null || data.english == null || data.schooltype == null || data.format == null ||data.groupsize == null || data.level == null 
     || data.question == null || data.choices == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   
@@ -179,9 +170,7 @@ router.post('/recommendations/create', (req,res,next)=> {
   for(var i=0; i<length ; i++){
     if(choicejson[i].choice == null || choicejson[i].correctanswer == null){
       return res.status(403).json({statusCode: 403,
-        body:{
-          message: 'Inputs were not received as expected.',
-        },
+        message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
   }
@@ -192,7 +181,7 @@ router.post('/recommendations/create', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if mentorid exists in database records and is of type menotr
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -233,15 +222,13 @@ router.post('/recommendations/create', (req,res,next)=> {
             for(var i=0; i<length; i++){
               client.query('INSERT into quiz_question_choice (quizquestionid, choice, correctanswer) values ($1, $2, $3)', [qqid, choicejson[i].choice, choicejson[i].correctanswer,]);
             }
-            return res.status(201).json({statusCode: 201, success: true});
+            return res.status(201).json({statusCode: 201});
           });
         });
       }else//if user doesn't exist in record or isnt of type mentor send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -301,9 +288,7 @@ router.post('/recommendations/modify', (req,res,next)=> {
     || data.subject == null || data.type == null || data.spanish == null || data.english == null || data.schooltype == null || data.format == null ||data.groupsize == null || data.level == null 
     || data.active == null ){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -312,7 +297,7 @@ router.post('/recommendations/modify', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if mentorid exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -343,21 +328,17 @@ router.post('/recommendations/modify', (req,res,next)=> {
             //SQL query > UPDATE into recommendation_req
             client.query('UPDATE recommendation_req SET moodle = $1, googleclassroom= $2, emails = $3, books=$4, applications=$5, socialmedia=$6, projector=$7, computer=$8, tablet=$9, stylus= $10, internet= $11, smartboard= $12, smartpencil= $13, speakers=$14 WHERE recomid=$15', [data.moodle, data.google, data.emails, data.books, data.apps, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers, data.recomid,]);
             
-            return res.status(201).json({statusCode: 201, success: true});
+            return res.status(201).json({statusCode: 201});
           }else{
             return res.status(402).json({statusCode: 402,
-              body:{
-                message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
-              },
+              message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
               isBase64Encoded: false,});
           }
         });
       }else//if user doesn't exist in record or isnt of type mentor send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -376,9 +357,7 @@ router.post('/recommendations/remove', (req,res,next)=> {
     };
   if(data.userid == null || data.recomid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -387,7 +366,7 @@ router.post('/recommendations/remove', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -410,21 +389,17 @@ router.post('/recommendations/remove', (req,res,next)=> {
             //SQL Query > UPDATE recommendation into table recommendations
             client.query('UPDATE recommendations SET active = $1 WHERE recomid =$2', [false, data.recomid]);
             
-            return res.status(201).json({statusCode: 201, success: true});
+            return res.status(200).json({statusCode: 200});
           }else{
             return res.status(402).json({statusCode: 402,
-              body:{
-                message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
-              },
+              message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
               isBase64Encoded: false,});
           }
         });
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -435,32 +410,30 @@ router.post('/recommendations/remove', (req,res,next)=> {
 router.post('/recommendations/assign', (req,res,next)=> {
   const results = [];
   const resultsexist = [];
+  const uservalid = [];
   //grab data from http request
   const data = {
       userid: req.body.userid, 
       recomid : req.body.recomid,
       usersAssign : req.body.usersToAssign
     };
+  //verify inputs are valid
   if(data.userid == null || data.recomid == null || data.usersAssign == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
-  var usersjson = data.usersAssign;
-  var length = usersjson.length;
+  // var usersjson = data.usersAssign;
+  // var length = usersjson.length;
   
-  //verify all choices have both parameters
-  for(var i=0; i<length ; i++){
-    if(usersjson[i].userid == null){
-      return res.status(403).json({statusCode: 403,
-        body:{
-          message: 'Inputs for userid to assign recommendation were not received as expected.',
-        },
-        isBase64Encoded: false,});
-    }
-  }
+  // //verify all choices have both parameters
+  // for(var i=0; i<length ; i++){
+  //   if(usersjson[i].userid == null){
+  //     return res.status(403).json({statusCode: 403,
+  //         message: 'Inputs for userid to assign recommendation were not received as expected.',
+  //       isBase64Encoded: false,});
+  //   }
+  // }
 
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
@@ -468,7 +441,7 @@ router.post('/recommendations/assign', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -479,34 +452,46 @@ router.post('/recommendations/assign', (req,res,next)=> {
     query.on('end', () => {
       done();
       if (results.length === 1){ // user exists and is of type mentor
-        //SQL Query > select recommendation active
-        const query1 = client.query('SELECT * FROM recommendations WHERE recomid = $1 and active =$2',[data.recomid, true,]);
+        //verify if user exists in database records and is of type teacher
+        const query2 = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.usersAssign, 'teacher',]);
         //stream results back one row at a time
-        query1.on('row', (row) => {
-          resultsexist.push(row);
+        query2.on('row', (row) => {
+          uservalid.push(row);
         });
-        query1.on('end', () => {
+        query2.on('end', () => {
           done();
-          if(resultsexist.length === 1){ //recommendation exists and is active
-            for(var i=0; i<length ; i++){
-              //SQL Query > Insert into edu_recommendation
-              client.query('INSERT into edu_recommendations (recomid, userid, date, read, favorite) values ($1 ,$2, $3, $4, $5)',[data.recomid, usersjson[i].userid, todaysDate, false, false]);
+          console
+          if (uservalid.length === 1){ // user exists and is of type teacher
+
+            //SQL Query > select recommendation active
+            const query1 = client.query('SELECT * FROM recommendations WHERE recomid = $1 AND active = $2',[data.recomid, true,]);
+            //stream results back one row at a time
+            query1.on('row', (row) => {
+              resultsexist.push(row);
+            });
+            query1.on('end', () => {
+              done();
+              if(resultsexist.length === 1){ //recommendation exists and is active
+                  //SQL Query > Insert into edu_recommendation
+                  client.query('INSERT into edu_recommendations (recomid, userid, date, read, favorite) values ($1 ,$2, $3, $4, $5)',[data.recomid, data.usersAssign, todaysDate, false, false]);
+                return res.status(201).json({statusCode: 201});
+              }else{
+                return res.status(403).json({statusCode: 403,
+                  message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
+                  isBase64Encoded: false,});
               }
-            return res.status(201).json({statusCode: 201, success: true});
-          }else{
-            return res.status(402).json({statusCode: 402,
-              body:{
-                message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
-              },
+            });
+          }else{//user to asign isnt teacher or doesnt exist
+            return res.status(401).json({statusCode: 401,
+              message: 'User to assign doesn\'t exist in records or is not teacher type. Inputs were not received as expected.',
               isBase64Encoded: false,});
-            }
-          });
+          }
+        });
+
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -528,9 +513,7 @@ router.post('/questions/answer', (req,res,next)=> {
   //verify inputs are valid
   if(data.userid == null || data.askeddate == null || data.teacherid == null || data.answer == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -539,7 +522,7 @@ router.post('/questions/answer', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -561,21 +544,17 @@ router.post('/questions/answer', (req,res,next)=> {
           if(resultsexist.length === 1){ //question exists
             //SQL Query > update question with answer
             client.query('UPDATE questions SET answer = $1, answerdate = $2, mentorid = $3 WHERE userid=$4 AND askeddate = $5',[data.answer, todaysDate, data.userid, data.teacherid, data.askeddate,]);
-            return res.status(201).json({statusCode: 201, success: true});
+            return res.status(201).json({statusCode: 201});
           }else{
             return res.status(402).json({statusCode: 402,
-              body:{
                 message: 'Question doesn\'t exist in records. Inputs were not received as expected.',
-              },
               isBase64Encoded: false,});
             }
           });
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -593,9 +572,7 @@ router.get('/staff/questions', (req,res,next)=> {
   //verify inputs are valid
   if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -604,7 +581,7 @@ router.get('/staff/questions', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -623,14 +600,12 @@ router.get('/staff/questions', (req,res,next)=> {
         });
         query1.on('end', () => {
           done();
-          return res.status(201).json({statusCode: 201, success: true, questions});
+          return res.status(200).json({statusCode: 200, questions});
         });
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -648,9 +623,7 @@ router.get('/recommendations', (req,res,next)=> {
   //verify inputs are valid
   if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -659,7 +632,7 @@ router.get('/recommendations', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -678,14 +651,12 @@ router.get('/recommendations', (req,res,next)=> {
         });
         query1.on('end', () => {
           done();
-          return res.status(201).json({statusCode: 201, success: true, recommendations});
+          return res.status(200).json({statusCode: 200, recommendations});
         });
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -704,9 +675,7 @@ router.get('/recommendations/users', (req,res,next)=> {
   //verify inputs are valid
   if(data.userid == null){
     return res.status(403).json({statusCode: 403,
-      body:{
-        message: 'Inputs were not received as expected.',
-      },
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -715,7 +684,7 @@ router.get('/recommendations/users', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -734,14 +703,12 @@ router.get('/recommendations/users', (req,res,next)=> {
         });
         query1.on('end', () => {
           done();
-          return res.status(201).json({statusCode: 201, success: true, users});
+          return res.status(200).json({statusCode: 200, users});
         });
       }else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
         return res.status(401).json({statusCode: 401,
-          body:{
-            message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
-          },
+          message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
           isBase64Encoded: false,});
       }
     });
@@ -761,7 +728,7 @@ router.get('/user/recommendations', (req,res,next)=> {
   //verify inputs are valid
   if(data.userid == null || data.userToAssign== null){
     return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected.',
+      message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -770,7 +737,7 @@ router.get('/user/recommendations', (req,res,next)=> {
     if(err){
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, success: false, data: err});
+      return res.status(500).json({statusCode: 500, data: err});
     }
     //verify if user exists in database records and is of type mentor
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'mentor',]);
@@ -799,7 +766,7 @@ router.get('/user/recommendations', (req,res,next)=> {
             });
             query2.on('end', () => {
               done();
-              return res.status(201).json({statusCode: 201, success: true, recommendations});
+              return res.status(200).json({statusCode: 200, recommendations});
             });
           }else{
             return res.status(401).json({statusCode: 401,
