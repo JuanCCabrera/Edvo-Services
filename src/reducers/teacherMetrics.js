@@ -34,6 +34,23 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations, action.mostRecentrecommendation]
             }
+        //Change rating of recommendations in teacher metrics
+        case 'RATE_TOP_AND_MOST_RATED':
+            return{
+                daysInPlatform: state.daysInPlatform,
+                topRecommendations: state.topRecommendations.map((reco) => {
+                    if(reco.recoID === action.recoID){
+                        reco.rate = action.rate;
+                    }
+                    return reco;
+                }),
+                mostRecentrecommendations: state.mostRecentrecommendations.map((reco) => {
+                    if(reco.recoID === action.recoID){
+                        reco.rate = action.rate;
+                    }
+                    return reco;
+                })
+            }
         //Return existing state by default
         default: 
             return {...state}
@@ -52,7 +69,7 @@ Default states of top and most recent recommendations
         description: '',
         multimedia: '',
         date: '',
-        rating: 0
+        rate: 0
 
     recentRecommendation:
         recoID: '',
@@ -62,5 +79,5 @@ Default states of top and most recent recommendations
         description: '',
         multimedia: '',
         date: '',
-        rating: 0
+        rate: 0
 */

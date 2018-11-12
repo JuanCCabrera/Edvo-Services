@@ -24,7 +24,7 @@ export const loadTeacherTopRecommendation = ({
     description = '',
     multimedia = '',
     date = '',
-    rating = 0,
+    rate = 0,
 } = {}) => {
     return{
         type: 'LOAD_TEACHER_TOP_RECOMMENDATION',
@@ -36,7 +36,7 @@ export const loadTeacherTopRecommendation = ({
             description: description,
             multimedia: multimedia,
             date: date,
-            rating: rating
+            rate: rate
         }
     }
 }
@@ -54,7 +54,7 @@ export const loadTeacherRecentRecommendation = ({
     description = '',
     multimedia = '',
     date = '',
-    rating = 0
+    rate = 0
 } = {}) => { 
     return{
         type: 'LOAD_TEACHER_RECENT_RECOMMENDATION',
@@ -66,7 +66,22 @@ export const loadTeacherRecentRecommendation = ({
             description: description,
             multimedia: multimedia,
             date: date,
-            rating: rating
+            rate: rate
         }
+    }
+}
+
+/**
+ * Generates object which describes a recommendation ID an a new rating associated to it. 
+ * @param {*} param0 - Recommendation ID and rating
+ */
+export const rateTopAndMostRecent = ({
+    recoID = '',
+    rate = 0
+} = {}) => {
+    return{
+        type: 'RATE_TOP_AND_MOST_RATED',
+        recoID: recoID,
+        rate: rate
     }
 }

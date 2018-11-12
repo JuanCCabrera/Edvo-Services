@@ -5,6 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import {rateRecommendation} from '../../actions/teacherRecommendations';
 import {addFavoriteRecommendation} from '../../actions/teacherRecommendations';
 import {removeFavoriteRecommendation} from '../../actions/teacherRecommendations';
+import {rateTopAndMostRecent} from '../../actions/teacherMetrics';
 
 /**
  * Modal displayed when a recommendation is selected. The modal displays information about the recommendation including the recommendation's
@@ -90,7 +91,10 @@ class RecommendationModal extends React.Component{
             name="rate"
             starCount={5}
             value={this.props.recommendation.rate}
-            onStarClick={(nextValue, prevValue, name) => {this.props.dispatch(rateRecommendation({recoID: this.props.recommendation.recoID, rate: nextValue}))}}
+            onStarClick={(nextValue, prevValue, name) => {
+                this.props.dispatch(rateRecommendation({recoID: this.props.recommendation.recoID, rate: nextValue}));
+                this.props.dispatch(rateTopAndMostRecent({recoID: this.props.recommendation.recoID, rate: nextValue}));
+            }}
         />
 
         <br/>
