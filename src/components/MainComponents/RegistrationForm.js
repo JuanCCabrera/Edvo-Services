@@ -4,9 +4,17 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { connect } from 'react-redux';
 
+/**
+ * The Registration form is used to generate the full profile information for a user of the Teacher type. 
+ * It is only accessible by logged in users which have NOT completed this form previously. 
+ */
 class RegistrationForm extends React.Component{
     constructor(props){
         super(props);
+        //Input fields which are required: name, last name, gender, date of birth, level of education, location,
+        //class subject, class format, class language, class level, class group size, class topics, 
+        //school name, school location, school type, time since first employment, known languages, 
+        //accepting terms of use and accepting privacy policy
         this.state = {
              name: '',
              lastName: '',
@@ -64,74 +72,86 @@ class RegistrationForm extends React.Component{
         };
     }
 
-    //Change Handlers
-
+    //Change name in local state
     onNameChange = (e) => {
         const name = e.target.value;
         this.setState(() => ({name}));
     }
 
+    //Change last name in local state
     onLastNameChange = (e) => {
         const lastName = e.target.value;
         this.setState(() => ({lastName}));
     }
 
+    //Change gender in local state
     onGenderChange = (e) => {
         const gender = e.target.value;
         this.setState(() => ({gender}));
     }
 
+    //Change date in local state
     onDateChange = (dateOfBirth) => {
         if(dateOfBirth){
             this.setState(() => ({dateOfBirth}));
         }
     };
 
+    //Change calendarFocused in local state
     onFocusChange = ({focused}) => {
         this.setState(() => ({calendarFocused: focused}));
     };
 
+    //Change level of education in local state
     onLOEChange = (e) => {
         const levelOfEdu = e.target.value;
         this.setState(() => ({levelOfEdu}));
     }
 
+    //Change location in local state
     onLocationChange = (e) => {
         const location = e.target.value;
         this.setState(() => ({location}));
     }
 
+    //Change class subject in local state
     onSubjectChange = (e) => {
         const subject = e.target.value;
         this.setState(() => ({subject}));
     }
 
+    //Change class format in local state
     onFormatChange = (e) => {
         const format = e.target.value;
         this.setState(() => ({format}));
     }
 
+    //Change class language in local state
     onLanguageChange = (e) => {
         const language = e.target.value;
         this.setState(() => ({language}));
     }
 
+    //Change class level in local state
     onLevelChange = (e) => {
         const level = e.target.value;
         this.setState(() => ({level}));
     }
 
+    //Change class group size in local state
     onSizeChange = (e) => {
         const size = e.target.value;
         this.setState(() => ({size}));
     }
 
+    //Change topics in local state
     onTopicChange = i => e => {
         let topics = [...this.state.topicsTaught]
         topics[i] = e.target.value;
         this.setState(() => ({topicsTaught: topics}));
     }
 
+    //Delete topic from topics array in local state
     deleteTopic = i => e => {
         e.preventDefault();
         if(this.state.topicsTaught.length > 1){
@@ -143,6 +163,7 @@ class RegistrationForm extends React.Component{
         }
     }
 
+    //Add topic to topics array in local state
     addTopic = (e) => {
         e.preventDefault();
         if(this.state.topicsTaught.length < 3){
@@ -151,141 +172,169 @@ class RegistrationForm extends React.Component{
         }
     }
 
+    //Change school name in local state
     onSchoolNameChange = (e) => {
         const schoolName = e.target.value;
         this.setState(() => ({schoolName}));
     }
 
+    //Change school location in local state
     onSchoolLocationChange = (e) => {
         const schoolLocation = e.target.value;
         this.setState(() => ({schoolLocation}));
     }
 
+    //Change school type in local state
     onSchoolTypeChange = (e) => {
         const schoolType = e.target.value;
         this.setState(() => ({schoolType}));
     }
 
+    //Change institution ID in local state
     onInstitutionIDChange = (e) => {
         const institutionID = e.target.value;
         this.setState(() => ({institutionID}));
     }
 
+    //Change moodle boolean in local state
     onMoodleChange = (e) => {
         const moodle = this.state.moodle;
         this.setState(() => ({moodle: !moodle}));
     }
 
+    //Change google classroom boolean in local state
     onGoogleClassroomChange = (e) => {
         const googleClassroom = this.state.googleClassroom;
         this.setState(() => ({googleClassroom: !googleClassroom}));
     }
 
+    //Change email resource boolean in local state
     onEmailResourceChange = (e) => {
         const emailResource = this.state.emailResource;
         this.setState(() => ({emailResource: !emailResource}));
     }
 
+    //Change books resource boolean in local state
     onBooksChange = (e) => {
         const books = this.state.books;
         this.setState(() => ({books: !books}));
     }
 
+    //Change social media boolean in local state
     onSocialMediaChange = (e) => {
         const socialMedia = this.state.socialMedia;
         this.setState(() => ({socialMedia: !socialMedia}));
     }
 
+    //Change projector boolean in local state
     onProjectorChange = (e) => {
         const projector = this.state.projector;
         this.setState(() => ({projector: !projector}));
     }
 
+    //Change computer boolean in local state
     onComputerChange = (e) => {
         const computer = this.state.computer;
         this.setState(() => ({computer: !computer}));
     }
 
+    //Change tablet boolean in local state
     onTabletChange = (e) => {
         const tablet = this.state.tablet;
         this.setState(() => ({tablet: !tablet}));
     }
 
+    //Change stylus boolean in local state
     onStylusChange = (e) => {
         const stylus = this.state.stylus;
         this.setState(() => ({stylus: !stylus}));
     }
 
+    //Change internet boolean in local state
     onInternetChange = (e) => {
         const internet = this.state.internet;
         this.setState(() => ({internet: !internet}));
     }
 
+    //Change smart board boolean in local state
     onSmartBoardChange = (e) => {
         const smartboard = this.state.smartboard;
         this.setState(() => ({smartboard: !smartboard}));
     }
 
+    //Change smart pencil boolean in local state
     onSmartPencilChange = (e) => {
         const smartpencil = this.state.smartpencil;
         this.setState(() => ({smartpencil: !smartpencil}));
     }
 
+    //Change speakers boolean in local state
     onSpeakersChange = (e) => {
         const speakers = this.state.speakers;
         this.setState(() => ({speakers: !speakers}));
     }
 
+    //Change employed date in local state
     onEmployedDateChange = (timeEmployed) => {
         if(timeEmployed){
             this.setState(() => ({timeEmployed}));
         }
     };
 
+    //Change employedCalendarFocused in local state
     onEmployedFocusChange = ({focused}) => {
         this.setState(() => ({employedCalendarFocused: focused}));
     };
 
+    //Change spanish boolean in local state
     onSpanishChange = (e) => {
         const spanish = this.state.spanish;
         this.setState(() => ({spanish: !spanish}));
     }
 
+    //Change english boolean in local state
     onEnglishChange = (e) => {
         const english = this.state.english;
         this.setState(() => ({english: !english}));
     }
 
+    //Change teaching strategies boolean in local state
     onTeachingStrategiesChange = (e) => {
         const teachingStrategies = this.state.teachingStrategies;
         this.setState(() => ({teachingStrategies: !teachingStrategies}));
     }
 
+    //Change updated material boolean in local state
     onUpdatedMaterialChange = (e) => {
         const updatedMaterial = this.state.updatedMaterial;
         this.setState(() => ({updatedMaterial: !updatedMaterial}));
     }
 
+    //Change time management boolean in local state
     onTimeManagementChange = (e) => {
         const timeManagement = this.state.timeManagement;
         this.setState(() => ({timeManagement: !timeManagement}));
     }
 
+    //Change technology integration boolean in local state
     onTechnologyIntegrationChange = (e) => {
         const technologyIntegration = this.state.technologyIntegration;
         this.setState(() => ({technologyIntegration: !technologyIntegration}));
     }
 
+    //Change instructional alignment boolean in local state
     onInstructionAlignmentChange = (e) => {
         const instructionAlignment = this.state.instructionAlignment;
         this.setState(() => ({instructionAlignment: !instructionAlignment}));
     }
 
+    //Change terms of use boolean in local state
     onTermsChange = (e) => {
         const termsOfUse = this.state.termsOfUse;
         this.setState(() => ({termsOfUse: !termsOfUse}));
     }
 
+    //Change privacy policy boolean in local state
     onPrivacyChange = (e) => {
         const privacyPolicy = this.state.privacyPolicy;
         this.setState(() => ({privacyPolicy: !privacyPolicy}));
@@ -310,30 +359,41 @@ class RegistrationForm extends React.Component{
         this.setState(() => ({currPage: 4}));
     }
 
-    //Submit
+    //Submit registration information
 
     onSubmit = (e) => {
         e.preventDefault(); //prevent default action
+        console.log(this.state);
         //TO-DO Dispatch action to send data to database
     }
 
-    //render
     render(){
         return(
             <div>
             <form onSubmit={this.onSubmit}>
+            {
+                //Page one
+            }
                 {this.state.currPage == 1 && <div>
                     <h2> General Information </h2>
                     <br/>
-                    
+                    {
+                        //Name input field
+                    }
                     <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                     <input type = "text" placeholder = "Name" value = {this.state.name} onChange = {this.onNameChange}/>
     
                     <br/>
+                    {
+                        //Last name input field
+                    }
                     <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                     <input type = "text" placeholder = "Last Name" value = {this.state.lastName} onChange = {this.onLastNameChange}/>
     
-                    <br/>   
+                    <br/> 
+                    {
+                        //Gender radio selector
+                    }  
                     <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                     <br/>
                         <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}<br/>
@@ -343,6 +403,9 @@ class RegistrationForm extends React.Component{
                     }
 
                     <br/>
+                    {
+                        //Date of birth selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
                         <SingleDatePicker
@@ -355,6 +418,9 @@ class RegistrationForm extends React.Component{
                         />
     
                     <br/>
+                    {
+                        //Level of education radio selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Level of Education' : 'Nivel de Educación'}:</label>
                     <br/>
                     <input type="radio" name="levelOfEdu" value= "AS" checked={this.state.levelOfEdu === 'AS'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Associate\'s Degree' : 'Grado Asociado'}<br/>
@@ -365,21 +431,36 @@ class RegistrationForm extends React.Component{
                     <input type="radio" name="levelOfEdu" value= "NA" checked={this.state.levelOfEdu === 'NA'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'None' : 'Ninguna'}<br/>
 
                     <br/>
+                    {
+                        //Location of employment input field
+                    }
                     <label>{this.props.lang === 'English' ? 'Location of Employment' : 'Localización de Empleo'}:</label>
                         <input type="text" placeholder="Location" value={this.state.location} onChange={this.onLocationChange}/>
     
                 <br/>
+                {
+                    //Button to change page to page 2
+                }
                 <button onClick={this.toPageTwo}>{this.props.lang === 'English' ? 'Next' : 'Continuar'}</button>
                 </div>}
 
                 <br/>
+                {
+                    //Page two
+                }
                 {this.state.currPage == 2 && <div>
                     <h2> {this.props.lang === 'English' ? 'Class Information' : 'Información de Clase'} </h2>
                     <br/>
+                    {
+                        //Class subject input field
+                    }
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'}:</label>
                     <input type="text" placeholder="Subject" value={this.state.subject} onChange={this.onSubjectChange}/>
 
                     <br/>
+                    {
+                        //Class format radio selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato de Clase'}:</label>
                     <br/>
                     <input type="radio" name="format" value= "classroom" checked={this.state.format === 'classroom'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Classroom' : 'Salón de Clases'}<br/>
@@ -387,12 +468,18 @@ class RegistrationForm extends React.Component{
                     <input type="radio" name="format" value= "online" checked={this.state.format === 'online'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Online' : 'En Línea'} <br/>
                 
                     <br/>
+                    {
+                        //Class language radio seelctor
+                    }
                     <label>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}:</label>
                     <br/>
                     <input type="radio" name="lang" value= "spanish" checked={this.state.language === 'spanish'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}<br/>
                     <input type="radio" name="lang" value= "english" checked={this.state.language === 'english'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'}<br/>
                     
                     <br/>
+                    {
+                        //Class level radio selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Level' : 'Nivel'}:</label>
                     <br/>
                     <input type="radio" name="level" value= "Kindergarden - 3rd grade" checked={this.state.level === 'Kindergarden - 3rd grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'Kindergarden - 3rd grade' : 'Kindergarden - 3er grado'}<br/>
@@ -402,6 +489,9 @@ class RegistrationForm extends React.Component{
                     <input type="radio" name="level" value= "University / College" checked={this.state.level === 'University / College'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'University/College' : 'Universidad/Colegio'}<br/>
 
                     <br/>
+                    {
+                        //Class size radio selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}</label>
                     <br/>
                     <input type="radio" name="size" value= "1 - 10" checked={this.state.size === '1 - 10'} onChange = {this.onSizeChange}/> 1 - 10<br/>
@@ -409,41 +499,74 @@ class RegistrationForm extends React.Component{
                     <input type="radio" name="size" value= "21 - 30" checked={this.state.size === '21 - 30'} onChange = {this.onSizeChange}/> 21 - 30 <br/>
                     <input type="radio" name="size" value= "31+" checked={this.state.size === '31+'} onChange = {this.onSizeChange}/> 31+<br/>
                     
+                    {
+                        //Topics taught input field 
+                    }
                     <label>{this.props.lang === 'English' ? 'Topics Taught' : 'Tópicos de Clase'} (Max: 3):</label>
+                    {
+                        //Mapping to generate a field for each topics in the topics array. 
+                    }
                     {this.state.topicsTaught.map((topic, index) => (
                         <span key={index}>
                             <br/>
+                            {
+                                //Input field generated per each topic in the topics array. 
+                            }
                             <input
                             type = "text"
                             placeholder = "Topic"
                             value={topic}
                             onChange={this.onTopicChange(index)}
                             />
+                            {
+                                //Button to delete the topic (Minimum of 1). 
+                            }
                             <button onClick={this.deleteTopic(index)}>X</button>
                         </span>
                     ))}
                     <br/>
+                    {
+                        //Button to add a new topic field to the topics array. (Maximum of 3). 
+                    }
                     <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>{this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tópico Nuevo'}</button>
 
                     <br/>
+                    {
+                        //Buttons to move to the previous and next pages
+                    }
                     <button onClick={this.toPageOne}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.toPageThree}>{this.props.lang === 'English' ? 'Next' : 'Continuar'}</button>
                 </div>}
 
+                {
+                    //Page three
+                }
                 {this.state.currPage == 3 && <div>
                     <h2>{this.props.lang === 'English' ? 'School Information' : 'Información de Escuela'}</h2>
                     <br/>
+                    {
+                        //School name input field
+                    }
                     <label>{this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'}:</label>
                     <input type="text" placeholder="School Name" value={this.state.schoolName} onChange={this.onSchoolNameChange}/>
 
                     <br/>
+                    {
+                        //School location input field
+                    }
                     <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de Escuela'}:</label>
                     <input type="text" placeholder="School Location" value={this.state.schoolLocation} onChange={this.onSchoolLocationChange}/>
 
                     <br/>
+                    {
+                        //Institution ID input field
+                    }
                     <label>{this.props.lang === 'English' ? 'Institution ID (Optional)' : 'Identificación de institución (Opcional)'}:</label>
                     <input type="text" placeholder="Institution ID" value={this.state.institutionID} onChange={this.onInstitutionIDChange}/>
 
                     <br/>
+                    {
+                        //School system radio selector
+                    }
                     <label>{this.props.lang === 'English' ? 'School System' : 'Sistema Educativo'}:</label>
                     <br/>
                     <input type="radio" name="system" value= "public" checked={this.state.schoolType === 'public'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Público'}<br/>
@@ -451,6 +574,9 @@ class RegistrationForm extends React.Component{
                     <input type="radio" name="system" value= "independent" checked={this.state.schoolType === 'independent'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'} <br/>
                     
                     <br/>
+                    {
+                        //Resources owned checkboxes
+                    }
                     <label>{this.props.lang === 'English' ? 'What resources do you use in your school?' : '¿Qué recursos utiliza en su escuela?'}</label>
                     <br/>
                     <input type="checkbox" name="resource" checked={this.state.moodle === true} onChange={this.onMoodleChange}/> Moodle <br/>
@@ -460,6 +586,9 @@ class RegistrationForm extends React.Component{
                     <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} <br/>
                     
                     <br/>
+                    {
+                        //Accessible resources checkboxes
+                    }
                     <label>{this.props.lang === 'English' ? 'Which resources do you have access to?' : '¿A cuáles de estos recursos tiene acceso en su escuela?'}</label>
                     <br/>
                     <input type="checkbox" name="resource" checked={this.state.projector === true} onChange={this.onProjectorChange}/> {this.props.lang === 'English' ? 'Projector' : 'Proyector'} <br/>
@@ -472,13 +601,22 @@ class RegistrationForm extends React.Component{
                     <input type="checkbox" name="resource" checked={this.state.speakers === true} onChange={this.onSpeakersChange}/> {this.props.lang === 'English' ? 'Speakers' : 'Bocinas'} <br/>
 
                     <br/>
+                    {
+                        //Buttons to go to the previous and next pages. 
+                    }
                     <button onClick={this.toPageTwo}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.toPageFour}>{this.props.lang === 'English' ? 'Next' : 'Continuar'}</button>
                 </div>}
 
+                {
+                    //Page four
+                }
                 {this.state.currPage == 4 && <div>
                     <h2>{this.props.lang === 'English' ? 'Profile' : 'Perfil'}</h2>
                     <br/>
 
+                    {
+                        //Date selector for employment date input field. 
+                    }
                     <label>{this.props.lang === 'English' ? 'Employed Since' : 'Empleado Desde'}:</label>
                     <br/>
                     <SingleDatePicker
@@ -491,12 +629,18 @@ class RegistrationForm extends React.Component{
                         />
 
                     <br/>
+                    {
+                        //Known languages checkbox selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Known Languages' : 'Lenguajes Conocidos'}:</label>
                     <br/>
                     <input type="checkbox" name="preflang" value= "spanish" checked={this.state.spanish === true} onChange = {this.onSpanishChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}<br/>
                     <input type="checkbox" name="preflang" value= "english" checked={this.state.english === true} onChange = {this.onEnglishChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'} <br/>
                     
                     <br/>
+                    {
+                        //Challenges checkbox selector
+                    }
                     <label>{this.props.lang === 'English' ? 'Challenges' : 'Retos'}:</label>
                     <br/>
                     <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'} <br/>
@@ -505,7 +649,9 @@ class RegistrationForm extends React.Component{
                     <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'} <br/>
                     <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} <br/>
 
-                    
+                    {
+                        //Buttons to return to the previous page and to submit the registration form. 
+                    }
                     <button onClick={this.toPageThree}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.onSubmit}>Submit</button>
                 </div>}
                 </form>
@@ -514,9 +660,12 @@ class RegistrationForm extends React.Component{
     }
 }
 
+//Maps the current language state to the component's properties. 
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 }
+
+//Connect component to the controller
 export default connect(mapStateToProps)(RegistrationForm);

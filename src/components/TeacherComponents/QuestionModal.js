@@ -4,6 +4,11 @@ import {connect} from 'react-redux';
 import { rateQuestion, addFavoriteQuestion, removeFavoriteQuestion } from '../../actions/teacherQuestions';
 import StarRatingComponent from 'react-star-rating-component';
 
+/**
+ * Modal displayed when a question is selected. The modal displays information about the question including the question's
+ * subject, favorite status, quesiton body, answer, date when it was asked, and rating.  
+ * @param {*} props - Default properties, current language state, selected question information and teacher question filtering data.
+ */
 const QuestionModal = (props) => (
     <Modal
     isOpen = {props.question.subject !== ''}
@@ -12,13 +17,19 @@ const QuestionModal = (props) => (
     >
     <div className="container">
         <div className="row">
-            <div className="col-lg-10">
+        {
+            //Quesiton subject
+        }
+            <div className="col-sm-10">
                 <h2>{props.question.subject}</h2>
             </div>
-            <div className="col-lg-1">
-            <h3>{props.lang === 'English' ? 'Favorite' : 'Favorita'}: </h3>
+            {
+                //Favoriting star
+            }
+            <div className="col-sm-1">
+                <h3>{props.lang === 'English' ? 'Favorite' : 'Favorita'}: </h3>
             </div>
-            <div className="col-lg-1">
+            <div className="col-sm-1">
                 <StarRatingComponent
                     name="favorite"
                     starCount={1}
@@ -37,9 +48,21 @@ const QuestionModal = (props) => (
             </div>
         </div>
     </div>
+    {
+        //Quesiton body
+    }
         <h3>{props.question.question}</h3>
+    {
+        //Question answer
+    }
         <p>{props.question.answer}</p>
+    {
+        //Date in which the question was asked
+    }
         <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.question.askedDate}</h4>
+    {
+        //Question rating
+    }
         <h4>{props.lang === 'English' ? 'Rate: ': 'Clasificar: '}</h4>
         <StarRatingComponent
             name="rate"
@@ -48,10 +71,14 @@ const QuestionModal = (props) => (
             onStarClick={(nextValue, prevValue, name) => {props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))}}
         />
         <br/>
+        {
+            //Button to close the question modal. 
+        }
         <button onClick = {props.clearSelectedQuestion}>{props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
     </Modal>
 );
 
+//Map selected question information, value represeting the question's favorite status and the current language state to the component properties. 
 const mapStateToProps = (state) => {
     let val = 0;
     if(state.teacherQuestions.selectedQuestion){
@@ -65,4 +92,5 @@ const mapStateToProps = (state) => {
         lang: state.language.lang,
     }
 }
+//Connect component to the controller. 
 export default connect(mapStateToProps)(QuestionModal);

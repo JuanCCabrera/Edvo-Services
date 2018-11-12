@@ -8,7 +8,7 @@ const classesReducerDefaultState = [];
  */
 const classesReducer = (state = classesReducerDefaultState, action) => {
     switch(action.type){
-        //Log class
+        //Log class to display in the Classes List
         case 'LOAD_CLASS':
             return [...state, action.class];
         //Remove class from list of classes

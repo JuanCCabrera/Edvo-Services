@@ -46,9 +46,9 @@ class TeacherRecommendationsFilters extends React.Component{
 
                                 <option value="all">{this.props.lang === 'English' ? 'All' : 'Todas'}</option>
 
-                                <option value="read">{this.props.lang === 'English' ? 'Read' : 'Leidas'}</option>
+                                <option value="read">{this.props.lang === 'English' ? 'Read' : 'Leídas'}</option>
 
-                                <option value="not_read">{this.props.lang === 'English' ? 'Unread' : 'No Leidas'}</option>
+                                <option value="not_read">{this.props.lang === 'English' ? 'Unread' : 'No Leídas'}</option>
                         </select>
                 </div>
             </div>

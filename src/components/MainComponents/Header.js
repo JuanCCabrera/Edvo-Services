@@ -60,7 +60,7 @@ const Header = (props) => (
                 <div style={{padding: '15px 20px 15px 20px'}} onClick={() => {
                         props.dispatch(swapLanguage());
                     }}>
-                    {props.lang === 'English' ? 'Spanish' : 'English'} 
+                    {props.lang === 'English' ? 'Español' : 'English'} 
                 </div>
             </li>
             {

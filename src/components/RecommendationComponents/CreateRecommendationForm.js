@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+/**
+ * Form used to create a new recommendation which can then be assigned to a user of the Teacher type. 
+ */
 class CreateRecommendationForm extends React.Component{
     constructor(props){
         super(props);

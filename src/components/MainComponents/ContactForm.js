@@ -38,6 +38,7 @@ class ContactForm extends React.Component{
     //Submit contact form
     onSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state);
         if(!this.state.name || !this.state.email || !this.state.message){   //Generate error if there are missing fields
             this.setState(() => ({contactError: 'Please fill all blank fields'})); 
         }else{  //Otherwise, submit form information
@@ -85,7 +86,7 @@ class ContactForm extends React.Component{
                         //Message input field
                     }
                     <input
-                    type = "text"
+                    type = "textarea"
                     placeholder = "Message"
                     value = {this.state.message}
                     onChange = {this.onMessageChange}/>

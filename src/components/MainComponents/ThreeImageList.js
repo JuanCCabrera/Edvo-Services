@@ -1,5 +1,8 @@
 import React from 'react';
 
+{
+    //List of three images. Each image corresponds to an Edvo Tech sponsor. 
+}
 const ThreeImageList = () => (
     <div>
         <span>P18_IMG</span>

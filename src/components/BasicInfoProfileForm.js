@@ -62,7 +62,7 @@ class BasicInfoProfileForm extends React.Component{
     //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted');
+        console.log(this.state);
         if(this.state.name === '' || this.state.lastName === ''){
             this.setState(() => ({formIncompleteError: true}));
         }else{
@@ -138,7 +138,7 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //Submit button
                         }
-                        <button onClick={this.onSubmit}>{this.props.lang === 'English ' ? 'Save' : 'Guardar'}</button>
+                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Save' : 'Guardar'}</button>
                     </div>
 
                     </form>

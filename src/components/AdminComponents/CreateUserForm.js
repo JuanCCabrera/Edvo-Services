@@ -210,7 +210,7 @@ class CreateUserForm extends React.Component{
                             //Institution ID input field
                         }
                         <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
-                        <input type="text" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+                        <input type="text" disabled={this.state.type !== 'school'} placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
                         <br/>
                         <br/>
                         {

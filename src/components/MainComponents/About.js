@@ -106,25 +106,25 @@ const AboutPage = (props) => (
                     <div className="col-sm-3 about__low__options">
                     <img src="http://localhost:8080/static/images/logo_endi.png" className="Feature-Img__endi" />
                         <br/>
-                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/delrumunadelasalumnasmasinnovadorasdelmundo-2418375' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/delrumunadelasalumnasmasinnovadorasdelmundo-2418375' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
 
                     <div className="col-sm-3 about__low__options">
                         <img src="http://localhost:8080/static/images/logo_pre18.png" className="Feature-Img" />
                         <br/>
-                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/pre18arrancaracon40empresasboricuas-2405093' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/pre18arrancaracon40empresasboricuas-2405093' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
 
                     <div className="col-sm-3 about__low__options">
                         <img src="http://localhost:8080/static/images/logo_her_campus.png" className="Feature-Img__her__campus" />
                         <br/>
-                        <a href='https://www.hercampus.com/school/uprm/purpose-behind-edvo' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.hercampus.com/school/uprm/purpose-behind-edvo' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
 
                     <div className="col-sm-3 about__low__options">
                         <img src="http://localhost:8080/static/images/logo_mc.png" className="Feature-Img__mc" />
                         <br/>
-                        <a href='https://www.metro.pr/pr/noticias/2018/04/12/estudiante-de-mayaguez-recibe-premio-de-mejor-idea-del-futuro.html' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.metro.pr/pr/noticias/2018/04/12/estudiante-de-mayaguez-recibe-premio-de-mejor-idea-del-futuro.html' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
                 </div>
             </div>

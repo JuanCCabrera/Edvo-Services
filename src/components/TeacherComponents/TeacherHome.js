@@ -6,11 +6,23 @@ import RecentRecommendationsList from './RecentRecommendationsList';
 import AskQuestionForm from './AskQuestionForm';
 import { sendAskedQuestion } from '../../actions/askQuestion';
 
+/**
+ * The Teacher Home page contains a value indicating the number of days the Teacher has spent on the platform, the number of recommendations
+ * the teacher has read, the number of questions the teacher has asked, a list of the teacher's top rated recommendations, a list of the teacher's
+ * most recently assigned recommendations and a form for the teacher to ask questions. 
+ * @param {*} props - Default properties, teacher metrics, teacher recommendations list, teacher questions list, and current language state. 
+ */
 const TeacherHome = (props) => (
     <div>
         <div>
+        {
+            //Page title
+        }
         <h1>{props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
 
+        {
+            //Days in platform
+        }
         <div>
             {props.lang === 'English' ? 
             <div>
@@ -25,6 +37,9 @@ const TeacherHome = (props) => (
             <h2>{props.teacherMetrics.daysInPlatform}</h2>
         </div>
 
+        {
+            //Number of recommendations read (Acts as link to Teacher Recommendations page)
+        }
         <div>
             <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true}>
                 {props.lang === 'English' ? 
@@ -41,6 +56,9 @@ const TeacherHome = (props) => (
             </NavLink>
         </div>
 
+        {
+            //Number of questions asked (Acts as link to Teacher Questions page)
+        }
         <NavLink to="/teacher/questions" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -54,6 +72,9 @@ const TeacherHome = (props) => (
             </div>}
         </NavLink>
 
+        {
+            //Recent Recommendations List
+        }
         <div>
             {props.lang === 'English' ? 
                 <div> 
@@ -71,6 +92,9 @@ const TeacherHome = (props) => (
             <RecentRecommendationsList/>
         </div>
 
+        {
+            //Top Rated Recommendations List
+        }
         <div>
             {props.lang === 'English' ? 
                 <div> 
@@ -88,6 +112,9 @@ const TeacherHome = (props) => (
             <TopRecommendationsList/>
         </div>
 
+        {
+            //Ask Question Form
+        }
         <div>
             {props.lang === 'English' ? 
                 <div> 
@@ -112,6 +139,7 @@ const TeacherHome = (props) => (
     </div>
 );
 
+//Map teacher metrics, teacher recommendations, teacher questions, and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
         teacherMetrics: state.teacherMetrics,
@@ -120,4 +148,5 @@ const mapStateToProps = (state) => {
         lang: state.language.lang
     };
 };
+//Connect componet to controller.
 export default connect(mapStateToProps)(TeacherHome);

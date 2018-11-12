@@ -9,6 +9,9 @@ import ThreeImageList from './ThreeImageList'
  */
 const MainPageDisplay = (props) => (
     <div>
+        {
+            //Page Header "Education Evolve"
+        }
         {props.lang === 'English' ? 
         <div>
             <h1>EDUCATION EVOLVED</h1>
@@ -20,12 +23,19 @@ const MainPageDisplay = (props) => (
             <h4>que esta revolucionando la educación</h4>
         </div>
         }
+
+        {
+            //Navigation button to Login page.
+        }
         <div>
             <NavLink to="/login" activeClassName="is-active" exact={true}>
                 <button>{props.lang === 'English' ? 'JOIN' : 'ÚNETE'}</button>
             </NavLink>
         </div>
 
+        {
+            //Static text description
+        }
         <div>
             <p>EDVO_LOGO_IMG</p>
             {props.lang === 'English' ? 
@@ -41,6 +51,9 @@ const MainPageDisplay = (props) => (
             }
         </div>
 
+        {
+            //Static text description "DESIGN" section
+        }
         <div>
             <div>
                 <span>FLOWER_IMG</span>
@@ -55,6 +68,9 @@ const MainPageDisplay = (props) => (
                 }
             </div>
 
+            {
+                //Static text description "MANAGEMENT" section
+            }
             <div>
                 <span>CIRCLE_IMG</span>
                 {props.lang === 'English' ? 
@@ -67,7 +83,10 @@ const MainPageDisplay = (props) => (
                 </div>
                 }
             </div>
-
+            
+            {
+                //Static text description "TOOLS" section
+            }
             <div>
                 <span>CROSS_IMG</span>
                 {props.lang === 'English' ? 
@@ -83,6 +102,9 @@ const MainPageDisplay = (props) => (
             
         </div>
 
+        {
+            //"How does it work" section
+        }
         <div>
             {props.lang === 'English' ? 
             <div>
@@ -93,6 +115,9 @@ const MainPageDisplay = (props) => (
             }
         </div>
 
+        {
+            //Steps to join the application 
+        }
         <div> 
             <div>
                 {props.lang === 'English' ? 
@@ -154,10 +179,12 @@ const MainPageDisplay = (props) => (
     </div>
 );
 
+//Map current language state to the component properties. 
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to the controller. 
 export default connect(mapStateToProps)(MainPageDisplay);

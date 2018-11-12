@@ -42,13 +42,13 @@ class TeacherQuestionFilters extends React.Component{
                         <select onChange={(e) => {
                             this.props.dispatch(setTeacherQuestionsReadFilter(e.target.value));
                         }}>
-                                <option className="btn-primary" value="all" disabled="disabled">{this.props.lang === 'English' ? 'Choose a Recommendation Type' : 'Escoja un Tipo de Recomendación'} </option>
+                                <option className="btn-primary" value="all" disabled="disabled">{this.props.lang === 'English' ? 'Choose a Question Type' : 'Escoja un Tipo de Pregunta'} </option>
 
                                 <option value="all">{this.props.lang === 'English' ? 'All' : 'Todas'}</option>
 
-                                <option value="read">{this.props.lang === 'English' ? 'Read' : 'Leidas'}</option>
+                                <option value="read">{this.props.lang === 'English' ? 'Read' : 'Leídas'}</option>
 
-                                <option value="not_read">{this.props.lang === 'English' ? 'Unread' : 'No Leidas'}</option>
+                                <option value="not_read">{this.props.lang === 'English' ? 'Unread' : 'No Leídas'}</option>
                         </select>
                 </div>
             </div>
