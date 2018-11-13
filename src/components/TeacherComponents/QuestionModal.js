@@ -55,7 +55,8 @@ const QuestionModal = (props) => (
     {
         //Question answer
     }
-        <p>{props.question.answer}</p>
+        {props.question.answer !== '' ? <p>{props.question.answer}</p> : 
+        <p>{props.lang === 'English' ? 'This question has not been answered.' : 'Esta pregunta no se ha contestado.'}</p>}
     {
         //Date in which the question was asked
     }

@@ -20,8 +20,15 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
             {
                 //Recommendations List with filters
             }
-            <RecommendationsFilters/>
-            <RecommendationList/>
+            {props.assigned.userID !== '' ? 
+                <div>
+                    <RecommendationsFilters/>
+                    <RecommendationList/>
+                </div> :
+                <div>
+                    <p>{props.lang === 'English' ? 'Please select a user.' : 'Por favor escoja un usuario.'}</p>
+                </div>
+            }
 
             <div>
                 {
