@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import Can from '../../Can';
+import {Redirect} from 'react-router-dom';
 
 class CheckoutForm extends Component {
     constructor(props) {
@@ -48,6 +50,7 @@ class CheckoutForm extends Component {
   render() {
     if (this.state.complete){
      return (
+
        <div>
      <h1>Subscription complete Complete</h1>
      <button onClick={this.onButtonClick}>OK</button>
@@ -55,12 +58,19 @@ class CheckoutForm extends Component {
     );
     }
     return (
+      <Can
+      role={auth0Client.getRole()}
+      perform="teacher:settings"
+      yes={() => (
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
         <input name="coupon" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange} />
         <button onClick={this.submit}>Send</button>
       </div>
+                                   )}
+                                   no={() => <Redirect to="/" />}
+                                 />
     );
   }
 }

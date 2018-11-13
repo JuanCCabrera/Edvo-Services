@@ -269,7 +269,7 @@ class CreateRecommendationForm extends React.Component{
         e.preventDefault();
         console.log("TOKEN: ",auth0Client.getIdToken());
         axios.post('http://localhost:3000/admin/recommendations/create', {
-            usertype: 'admin',
+            usertype: auth0Client.getRole(),
             title: this.state.title,
             multimedia: this.state.multimedia,
             header: this.state.header,

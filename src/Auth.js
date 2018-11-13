@@ -67,10 +67,9 @@ class Auth {
       localStorage.setItem('idToken',authResult.idToken);
     this.profile = {email: authResult.idTokenPayload.email, name: authResult.idTokenPayload.name};
     console.log("THIS PROFILE: ", this.profile);
-    this.getEmail = authResult.idTokenPayload.email;
-    localStorage.setItem('role',authResult.idTokenPayload["https://edvo-test/role"]);  
+    this.getEmail = authResult.idTokenPayload.email;  
     //this.getEmail =   
-    console.log("EL ROL:::: ",authResult.idTokenPayload["https://edvo-test/role"]);
+    console.log("EL ROL:::: ",localStorage.getItem('role'));
     console.log("ID PAYLOAD: ",authResult.idToken);
     // set the time that the id token will expire at
     localStorage.setItem('expiresAt', authResult.expiresIn * 1000 + new Date().getTime());

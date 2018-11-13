@@ -23,7 +23,7 @@ class Callback extends Component {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{                
                 localStorage.setItem('role',response.data.body.user[0].usertype);
-                route = '/'+response.data.body.user[0].usertype+'/home';
+                route = '/'+localStorage.getItem('role')+'/home';
             })
             .catch(error => {
                 console.log("ERROR CALLBACK REQ: ", error);

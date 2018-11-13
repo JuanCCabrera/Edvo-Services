@@ -32,6 +32,7 @@ class BasicInfoProfileForm extends React.Component{
     }
 
     componentWillMount(){
+        console.log("WE HAVE EMAIL: ",auth0Client.getIdToken());
         //send this to action
         axios.get('http://localhost:3000/admin/settings/info',
         {
@@ -79,7 +80,7 @@ class BasicInfoProfileForm extends React.Component{
 
     changePassword = (e) => {
         e.preventDefault();
-        console.log('change password');
+        reset();
 
         //TO-DO Modify password and update in database
     }

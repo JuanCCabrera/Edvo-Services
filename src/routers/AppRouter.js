@@ -20,6 +20,9 @@ import TeacherProfile from '../components/TeacherComponents/TeacherProfile';
 import MentorHome from '../components/MentorComponents/MentorHome';
 import MentorProfile from '../components/MentorComponents/MentorProfile';
 
+import SchoolHome from '../components/SchoolComponents/SchoolHome';
+import SchoolProfile from '../components/SchoolComponents/SchoolProfile';
+
 import AdminHome from '../components/AdminComponents/AdminHome';
 import AppUsers from '../components/AdminComponents/AppUsers';
 import AppSchools from '../components/AdminComponents/AppSchools';
@@ -79,7 +82,13 @@ const AppRouter = (props) => (
                     //Mentor
                 }
                 <SecuredRoute path='/mentor/home' component={MentorHome}/>
-                <SecuredRoute path='/mentor/settings' component={MentorProfile}/>
+                <SecuredRoute path='/mentor/settings' component={MentorProfile}/> 
+                
+                {
+                    //School
+                }
+                <SecuredRoute path='/school/home' component={SchoolHome}/>
+                <SecuredRoute path='/school/settings' component={SchoolProfile}/>
                 {
                     //Administrator
                 }
