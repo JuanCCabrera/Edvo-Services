@@ -5,7 +5,8 @@ import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
 const TopRecommendationsList = (props) => (
     <div>
         {props.recommendation.map((reco) => {
-            return <TeacherRecommendationsListItem key={reco.recoID} reco={reco}/>
+            console.log("SENDING PROPS OF RECO: ", reco)
+            return <TeacherRecommendationsListItem key={reco.recoID} rating={reco.rating} reco={reco}/>
         })}
 
         {(props.recommendation.length === 0) && (props.lang === 'English' ?

@@ -21,8 +21,9 @@ class Callback extends Component {
         if(email){
             await axios.get('http://localhost:3000/register/user',  {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-            }).then(response =>{
-                route = '/teacher/home';
+            }).then(response =>{                
+                localStorage.setItem('role',response.data.body.user[0].usertype);
+                route = '/'+response.data.body.user[0].usertype+'/home';
             })
             .catch(error => {
                 console.log("ERROR CALLBACK REQ: ", error);

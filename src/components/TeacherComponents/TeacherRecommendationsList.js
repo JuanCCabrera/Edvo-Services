@@ -4,6 +4,7 @@ import Pagination from 'react-js-pagination';
 import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
 import { loadTeacherRecommendation } from '../../actions/teacherRecommendations';
 import axios from 'axios';
+import auth0Client from '../../Auth';
 import getVisibleTeacherRecommendations from '../../selectors/teacherRecommendations';
 
 class TeacherRecommendationsList extends React.Component{
@@ -19,20 +20,25 @@ class TeacherRecommendationsList extends React.Component{
     }
 
     componentWillMount(){
-        // axios.get('http://localhost:8081/teacher/recommendations')
-        // .then(response => {
-        //     response.data.forEach(element => {            
-        //         this.props.dispatch(loadTeacherRecommendation({recoID: element.data.recoID, title: element.data.title, 
-        //         header: element.data.header, location: element.data.location, 
-        //         description: element.data.description, 
-        //         multimedia: element.data.multimedia, date: element.data.date, read: element.data.read, rating: element.data.rating}));
+        axios.get('http://localhost:3000/teacher/recommendations',
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        })
+        .then(response => {
+            response.data.recommendations.forEach(element => {  
+                console.log("RECOM RESPONSE: ", element.rate);        
+                console.log("ACTION OUTPUT: ",this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, 
+                header: element.header, location: element.location, 
+                description: element.description, 
+                multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate})));
 
-        //         if(element.data.favorite)
-        //             this.props.dispatch(loadTeacherFavoriteRecommendation({recoID: element.data.recoID, title: element.data.title, 
-        //                 header: element.data.header, location: element.data.location, 
-        //                 description: element.data.description, 
-        //                 multimedia: element.data.multimedia, date: element.data.date, read: element.data.read, rating: element.data.rating}));
-        // });
+                if(element.data.favorite)
+                    this.props.dispatch(loadTeacherFavoriteRecommendation({recoID: element.recomid, title: element.title, 
+                        header: element.header, location: element.location, 
+                        description: element.description, 
+                        multimedia: element.multimedia, date: element.date, read: element.read, rating: element.rate}));
+        });
+    });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);

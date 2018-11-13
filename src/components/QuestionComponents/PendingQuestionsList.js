@@ -6,6 +6,7 @@ import Pagination from 'react-js-pagination';
 import axios from 'axios';
 import { loadQuestion } from '../../actions/question';
 import getVisibleQuestions from '../../selectors/questions';
+import auth0Client from '../../Auth';
 
 class PendingQuestionsList extends React.Component {
     constructor(props){
@@ -20,11 +21,13 @@ class PendingQuestionsList extends React.Component {
     }
     
     componentWillMount(){        
-        axios.get('http://localhost:8081/staff/questions')
+        axios.get('http://localhost:3000/admin/staff/questions',
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
-            response.data.forEach(element => {
-                this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askedDate, 
-                subject: element.subject, userId: element.userId}));
+            response.data.questions.forEach(element => {
+                this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askeddate, 
+                subject: element.subject, userId: element.userid}));
             });
         });
 

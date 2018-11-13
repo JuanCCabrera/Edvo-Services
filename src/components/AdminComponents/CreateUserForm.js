@@ -6,6 +6,7 @@ import AdminButtonList from './AdminButtonList';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class CreateUserForm extends React.Component{
     constructor(props){
@@ -82,20 +83,23 @@ class CreateUserForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8081/user/add', {
+        axios.post('http://localhost:3000/admin/settings/users/add', {
             email: this.state.email,
             password: this.state.password, 
             confirmPassword: this.state.confirmPassword,
             name: this.state.name,
-            lastName: this.state.lastName,
-            dateOfBirth: this.state.dateOfBirth,
+            lastname: this.state.lastName,
+            dob: this.state.dateOfBirth,
             calendarFocused: this.state.calendarFocused,
             gender: this.state.gender,
             levelOfEdu: this.state.levelOfEdu,
-            type: this.state.type,
-            institutionID: this.state.institutionID
-    }).then((response)=>{
-        if(response.status == 200)
+            usertype: this.state.type,
+            institutionid: this.state.institutionID
+    },
+            {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+            }).then((response)=>{
+        if(response.status == 201)
             this.props.history.push('/admin/settings/users');
     });
     }

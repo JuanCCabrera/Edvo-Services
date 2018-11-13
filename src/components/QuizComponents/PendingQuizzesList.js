@@ -28,7 +28,7 @@ class PendingQuizzesList extends React.Component {
                 <h3>Pending Quizzes</h3>
                 {console.log("PROPS?: ", this.props) }
                 {this.props.quizzes.map((quiz) => {
-                    return <PendingQuizzesListItem key={uuid()} quiz={quiz}/>
+                    return <PendingQuizzesListItem key={quiz} quiz={quiz}/>
                 })}
             </div>
         );

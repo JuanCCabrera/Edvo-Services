@@ -34,7 +34,7 @@ const LoginPage = (props) => (
 
         {
             !auth0Client.isAuthenticated() &&
-            <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Registrarse'}</button>
+            <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Entrar'}</button>
           }
           {
             auth0Client.isAuthenticated() &&
@@ -64,9 +64,9 @@ const LoginPage = (props) => (
                 }
                 
           {
-            auth0Client.isAuthenticated() &&
+            !auth0Client.isAuthenticated() &&
             <div>
-              <button className="SignUp-Button" onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
+              <button className="SignUp-Button" onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Register' : 'Registrarse'}</button>
             </div>
           }
             </div>

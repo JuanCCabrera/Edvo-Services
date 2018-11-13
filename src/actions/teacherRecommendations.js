@@ -11,7 +11,8 @@ export const loadTeacherRecommendation = (
         date = '',
         read = false,
         rate = 0
-    } = {}) => ({
+    } = {}) => (
+        {
         type: 'LOAD_TEACHER_RECOMMENDATION',
         recommendation: {
             recoID,

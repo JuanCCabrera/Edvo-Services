@@ -7,13 +7,16 @@ import moment from 'moment';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
-
+import axios from 'axios';
 class AnswerQuestionForm extends React.Component {
     constructor(props){
         super(props);
+        console.log("PROPSIN ANSEWR: ", props);
         this.state = {
             answer: '',
-            answerError: false
+            answerError: false,
+            userID: props.question.userId,
+            askedDate: props.question.askedDate
         };
     }
 
@@ -30,11 +33,14 @@ class AnswerQuestionForm extends React.Component {
             this.setState(() => ({answerError: true}));
         }else{
             this.setState(() => ({answerError: ''}));
-            axios.post('http://localhost:8081/question/answer', {
-                askedDate: this.state.askedDate,
+            console.log("TEACHER ID TO ANSWER: ", this.state.userID);
+            axios.post('http://localhost:3000/admin/questions/answer', {
+                askeddate: moment(this.state.askedDate).format("YYYY-MM-DD HH:mm:ss"),
                 answer: this.state.answer,
-                userID: this.state.userID
-            }).then((response)=>{
+                teacherid: this.state.userID
+            },
+            {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }}).then((response)=>{
                 if(response.status == 200)
                 this.props.history.push('/staff/questions');
             });

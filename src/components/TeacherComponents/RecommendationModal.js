@@ -5,6 +5,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import {rateRecommendation} from '../../actions/teacherRecommendations';
 import {addFavoriteRecommendation} from '../../actions/teacherRecommendations';
 import {removeFavoriteRecommendation} from '../../actions/teacherRecommendations';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class RecommendationModal extends React.Component{
     constructor(props){
@@ -54,11 +56,20 @@ class RecommendationModal extends React.Component{
             <h4>{this.props.lang === 'English' ? 'Date: ' : 'Fecha: '}{this.props.recommendation.date}</h4>
             <h4>{this.props.lang === 'English' ? 'Rate: ': 'Clasificar: '}</h4>
         </div>
+        {console.log("RECOM RATE IS: ", this.props.recommendation.rate)}
         <StarRatingComponent
             name="rate"
             starCount={5}
             value={this.props.recommendation.rate}
-            onStarClick={(nextValue, prevValue, name) => {this.props.dispatch(rateRecommendation({recoID: this.props.recommendation.recoID, rate: nextValue}))}}
+            onStarClick={(nextValue, prevValue, name) => {
+                axios.post('http://localhost:3000/teacher/recommendations/rate',{
+                    recomid: this.props.recommendation.recoID,
+                    rate: nextValue
+                },{
+                    headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                }).then(response =>{
+                    this.props.dispatch(rateRecommendation({recoID: this.props.recommendation.recoID, rate: nextValue}));
+                })}}
         />
 
         <br/>

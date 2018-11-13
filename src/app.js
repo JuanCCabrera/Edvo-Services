@@ -22,35 +22,45 @@ import {loadTeacherTopRecommendation} from './actions/teacherMetrics';
 import {loadTeacherRecommendation, loadTeacherFavoriteRecommendation} from './actions/teacherRecommendations';
 import {loadTeacherQuestion} from './actions/teacherQuestions';
 import { createQuiz } from './actions/quiz';
+import moment from 'moment';
 
 const store = configureStore();
 
-store.dispatch(loadQuestion({question: 'Where is the dog?', askedDate: '2018-10-28 06:20:25', subject: 'Can\'t find the dog.', userId: uuid()}));
-store.dispatch(loadQuestion({question: 'What is an emu?', askedDate: '2018-10-27 12:24:24', subject: 'Doubts about animals.', userId: uuid()}));
-store.dispatch(loadQuestion({question: 'How can I integrate technolgy into the classroom?', askedDate: '2018-10-28 06:20:21', subject: 'Technology Integration Question', userId: uuid()}));
-store.dispatch(loadQuestion({question: 'Hi there! How do I use the recommendations page?', askedDate: '2018-10-27 12:24:14', subject: 'Recommendation Page Question', userId: uuid()}));
-store.dispatch(loadQuestion({question: 'What kind of technology should I use in class?', askedDate: '2018-10-28 06:20:23', subject: 'Types of Tech for Classrooms', userId: uuid()}));
-store.dispatch(loadQuestion({question: 'What should I do?', askedDate: '2018-10-27 12:24:04', subject: 'Best way to get students to listen in class', userId: uuid()}));
+// store.dispatch(loadQuestion({question: 'Where is the dog?', askedDate: '2018-10-28 06:20:25', subject: 'Can\'t find the dog.', userId: uuid()}));
+// store.dispatch(loadQuestion({question: 'What is an emu?', askedDate: '2018-10-27 12:24:24', subject: 'Doubts about animals.', userId: uuid()}));
+// store.dispatch(loadQuestion({question: 'How can I integrate technolgy into the classroom?', askedDate: '2018-10-28 06:20:21', subject: 'Technology Integration Question', userId: uuid()}));
+// store.dispatch(loadQuestion({question: 'Hi there! How do I use the recommendations page?', askedDate: '2018-10-27 12:24:14', subject: 'Recommendation Page Question', userId: uuid()}));
+// store.dispatch(loadQuestion({question: 'What kind of technology should I use in class?', askedDate: '2018-10-28 06:20:23', subject: 'Types of Tech for Classrooms', userId: uuid()}));
+// store.dispatch(loadQuestion({question: 'What should I do?', askedDate: '2018-10-27 12:24:04', subject: 'Best way to get students to listen in class', userId: uuid()}));
 
 
 
-// store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Analyzing Class Attendance', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze class attendance using this video!', multimedia: '', date: '2018-10-24 06:20:22', read: false, rating: 5}));
+// // store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Analyzing Class Attendance', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze class attendance using this video!', multimedia: '', date: '2018-10-24 06:20:22', read: false, rating: 5}));
 // store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Why Give Quizzes?', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze the option to give quizzes by using this video!', multimedia: 'https://www.youtube.com/embed/tgbNymZ7vqY', date: '2018-10-10 06:20:23', read: true, rating: 5}));
 
 // store.dispatch(loadTeacherFavoriteRecommendation({recoID: uuid(), title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: '', date: '2018-10-27 06:20:19', read: false, rating: 5}));
 // store.dispatch(loadTeacherFavoriteRecommendation({recoID: uuid(), title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: '', date: '2018-10-26 06:20:20', read: true, rating: 5}));
 // store.dispatch(loadTeacherFavoriteRecommendation({recoID: uuid(), title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: '', date: '2018-10-25 06:20:21', read: true, rating: 5}));
 
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:25', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:25', rate: 1, favorite: true, read: false}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:24', subject: 'Updated Material', question: 'How can I update material for my class?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:26', rate: 1, favorite: false, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 1, favorite: false, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:29', rate: 1, favorite: true, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:25', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:25', rate: 1, favorite: true, read: false}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:24', subject: 'Updated Material', question: 'How can I update material for my class?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:26', rate: 1, favorite: false, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 1, favorite: false, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:29', rate: 1, favorite: true, read: true}));
 
 
 
-store.dispatch(createQuiz({quizID: 'yuhuu', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', ['answer-'+uuid(), 'answer-'+uuid()]], ['question-'+uuid(),'Segunda Pregunta', ['answer-'+uuid(), 'answer-'+uuid()]] ] }));
-store.dispatch(createQuiz({quizID: 'yahoo', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(), 'Cuarta Pregunta', ['answer-'+uuid(), 'answer-'+uuid()]], ['question-'+uuid(), 'Quinta Pregunta', ['answer-'+uuid(), 'answer-'+uuid()]] ] }));
+store.dispatch(createQuiz({score: null, quizID: 'Quiz 1 May 2018', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Segunda Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Tercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Cuarta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Quinta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Sexta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Septima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Octava Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Novena Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Decima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Undecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Duodecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Decimotercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]]] }));
+store.dispatch(createQuiz({score: null, quizID: 'Quiz 2 June 2018', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Segunda Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Tercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Cuarta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Quinta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Sexta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Septima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Octava Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Novena Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Decima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Undecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Duodecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+['question-'+uuid(),'Decimotercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]]] }));
+
 
 class App extends React.Component{
     async componentDidMount() {

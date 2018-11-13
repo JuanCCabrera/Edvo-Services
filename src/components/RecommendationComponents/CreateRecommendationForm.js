@@ -9,6 +9,7 @@ class CreateRecommendationForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            props: props,
             title: props.reco ? props.reco.title : '',
             multimedia: props.reco ? props.reco.multimedia : '',
             header: props.reco ? props.reco.header : '',
@@ -295,7 +296,7 @@ class CreateRecommendationForm extends React.Component{
             speakers: this.state.speakers,
             
             topics: this.state.topics,
-            location: this.state.location,
+            location: '',
             subject: this.state.subject,
             spanish: true, 
             english: true,

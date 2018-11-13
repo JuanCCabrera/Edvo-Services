@@ -6,6 +6,8 @@ import RecentRecommendationsList from './RecentRecommendationsList';
 import AskQuestionForm from './AskQuestionForm';
 import { sendAskedQuestion } from '../../actions/askQuestion';
 import { reset,loadTeacherQuestionsAsked, loadTeacherRecentRecommendation, loadTeacherTopRecommendation, loadTeacherDaysInPlatform, loadTeacherRecommendationsRead } from '../../actions/teacherMetrics';
+
+import {loadTeacherRecommendation} from '../../actions/teacherRecommendations';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 import axios from 'axios';
@@ -38,12 +40,15 @@ class TeacherHome extends React.Component {
             this.setState({questionsAsked: response.data.questionsasked});
             response.data.recentRecommendations.forEach(element => {
             this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rating: element.rate}));
+            this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rating: element.rate}));
             });
             response.data.topRecommendations.forEach(element => {
-                this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rating: element.rate}));
+                this.props.dispatch(loadTeacherTopRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rating: element.rate}));
                 });
         })
         .catch(error =>{
+            console.log("TOEKN FOR HOME: ", auth0Client.getIdToken());
+            console.log("ERROR RE: ", error.response.status);
             console.log("ERROR TEACHER HOMEE: ", error);
         })
     }

@@ -4,6 +4,9 @@ import Pagination from 'react-js-pagination';
 import uuid from 'uuid';
 import TeacherQuestionListItem from './TeacherQuestionListItem';
 import getVisibleTeacherQuestions from '../../selectors/teacherQuestions';
+import { loadTeacherQuestion } from '../../actions/teacherQuestions';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class TeacherQuestionsList extends React.Component{
     constructor(props){
@@ -18,6 +21,16 @@ class TeacherQuestionsList extends React.Component{
     }
 
     componentWillMount(){
+        axios.get('http://localhost:3000/teacher/questions',
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
+        .then(response => {
+            response.data.questions.forEach(element => {
+                console.log("RATE QUESIONS FOR TEACHER: ", parse(element.rate));
+                this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 
+                subject: element.subject, userId: element.userid, answer: element.answer, rate: parse(element.rate)}));
+            });
+        });
         this.currentPage = 1;
         const initialPageQuestions = this.props.question.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedQuestions: initialPageQuestions});

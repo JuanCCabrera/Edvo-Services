@@ -9,7 +9,10 @@ class AnswerQuizForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            answers: {}
+            answers: {},
+            show: false,
+            quizDate: props.quizDate,
+            quizID: props.quizID
         };
     }
 
@@ -24,8 +27,8 @@ class AnswerQuizForm extends React.Component {
     onSubmit = (e) => {
         //TO-DO Add error checks
         e.preventDefault();
-        console.log("ANSWERS", this.state.answers);
         this.props.history.push('/teacher/quizzes');
+        
     }
 
     render(){
@@ -41,10 +44,11 @@ class AnswerQuizForm extends React.Component {
                             <select name={element[0]} onChange={this.onAnswerChange} value={this.state.answers[element[0]]} required>
                                 <option  disabled selected></option>
                             {element[2].map(answer =>{
-                                return(<option key={uuid()} value={answer}>{answer}</option>)
+                                return(<option key={uuid()} value={answer[0]}>{answer[1]}</option>)
                             })}
                             </select></h3> )
                     })}
+                     {this.state.show === true && <h3 className="text-capitalize text-danger">PLEASE ANSWER ALL</h3>}
                     <button type="submit" onClick={this.onSubmit}>Answer</button>
                 </form>
             </div>
