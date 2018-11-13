@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import {connect} from 'react-redux';
 
 /**
@@ -101,6 +101,8 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //Date of birth selector
                         }
+
+                    {/*
                         <SingleDatePicker
                         date={this.state.dateOfBirth}
                         onDateChange={this.onDateChange}
@@ -109,6 +111,13 @@ class BasicInfoProfileForm extends React.Component{
                         numberOfMonths={1}
                         isOutsideRange={day => (moment().diff(day) < 0)}
                         />
+                    */}
+
+                        <DatePicker
+                        selected={this.state.dateOfBirth}
+                        onChange={this.onDateChange}
+                        />
+
                         
                         <br/>
                         {

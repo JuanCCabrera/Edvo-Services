@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import { connect } from 'react-redux';
 
 /**
@@ -408,13 +408,21 @@ class RegistrationForm extends React.Component{
                     }
                     <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
+
+                        {/*
                         <SingleDatePicker
                         date={this.state.dateOfBirth}
                         onDateChange={this.onDateChange}
                         focused={this.state.calendarFocused}
                         onFocusChange={this.onFocusChange}
-                        numberOfMonths={1}
+                        numberOfMonths={3}
                         isOutsideRange={day => (moment().diff(day) < 0)}
+                        />
+                        */}
+
+                        <DatePicker
+                        selected={this.state.dateOfBirth}
+                        onChange={this.onDateChange}
                         />
     
                     <br/>
@@ -619,6 +627,7 @@ class RegistrationForm extends React.Component{
                     }
                     <label>{this.props.lang === 'English' ? 'Employed Since' : 'Empleado Desde'}:</label>
                     <br/>
+                    {/*
                     <SingleDatePicker
                         date={this.state.timeEmployed}
                         onDateChange={this.onEmployedDateChange}
@@ -627,6 +636,12 @@ class RegistrationForm extends React.Component{
                         numberOfMonths={1}
                         isOutsideRange={day => (moment().diff(day) < 0)}
                         />
+                    */}
+
+                    <DatePicker
+                    selected={this.state.timeEmployed}
+                    onChange={this.onEmployedDateChange}
+                    />
 
                     <br/>
                     {
@@ -649,6 +664,11 @@ class RegistrationForm extends React.Component{
                     <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'} <br/>
                     <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} <br/>
 
+                    <br/>
+
+                    <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="http://localhost:8080/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> <br/>
+                    <input type="checkbox" name="privacyPolicy" checked={this.state.privacyPolicy === true} onChange={this.onPrivacyChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto la '} <a href="http://localhost:8080/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a><br/>
+                    
                     {
                         //Buttons to return to the previous page and to submit the registration form. 
                     }
