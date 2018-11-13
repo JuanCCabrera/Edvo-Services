@@ -25,6 +25,7 @@ import {loadTeacherQuestion} from './actions/teacherQuestions';
 const store = configureStore();
 
 //Generating User Test Data
+/*
 store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', email: 'pablo.picasso@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
 store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Rodriguez', email: 'daniel.rodriguez44@upr.edu', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
 store.dispatch(addUser({id: uuid(), name: 'Arsalan', lastName: 'Leeway', email: 'ars.leway@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
@@ -90,7 +91,7 @@ store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:24', subject: '
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 4, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
-
+*/
 class App extends React.Component{
     //Check if login is required by the user
     async componentDidMount() {

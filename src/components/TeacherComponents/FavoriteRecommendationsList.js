@@ -83,11 +83,11 @@ class FavoriteRecommendationsList extends React.Component{
                 }
                 {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
                     <div>
-                        <p>There are no available favorite recommendations.</p>
+                        <p>There are no favorite recommendations available.</p>
                     </div>
                     :
                     <div>
-                        <p>No hay recomendaciones favorites disponibles.</p>
+                        <p>No hay recomendaciones favoritas disponibles.</p>
                     </div>
                 )}
             </div>

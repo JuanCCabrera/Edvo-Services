@@ -19,15 +19,26 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
             <RecommendationsUserList/>
             {
                 //Recommendations List with filters
+                //The list is only displayed if there are users registered in the system. 
             }
-            {props.assigned.userID !== '' ? 
-                <div>
-                    <RecommendationsFilters/>
-                    <RecommendationList/>
-                </div> :
-                <div>
-                    <p>{props.lang === 'English' ? 'Please select a user.' : 'Por favor escoja un usuario.'}</p>
-                </div>
+            {props.users.length !== 0 ? 
+            <div>
+                {props.assigned.userID !== '' ? 
+                    <div>
+                        <RecommendationsFilters/>
+                        <RecommendationList/>
+                    </div> :
+                    <div>
+                        <p>{props.lang === 'English' ? 'Please select a user.' : 'Por favor escoja un usuario.'}</p>
+                    </div>
+                }
+            </div>
+            :
+            <div>
+                {
+                    //Do not show instructions or recommendations list if there are no users in the system. 
+                }
+            </div>
             }
 
             <div>
@@ -49,6 +60,7 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
 
  //Map current language state and recommendation assignment data to component's properties. 
 const mapStateToProps = (state) => ({
+    users: state.users,
     assigned: state.assignRecommendation,
     lang: state.language.lang
 });

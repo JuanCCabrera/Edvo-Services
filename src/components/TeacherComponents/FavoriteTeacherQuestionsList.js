@@ -83,11 +83,11 @@ class FavoriteTeacherQuestionsList extends React.Component{
                 }
                 {(this.props.question.length === 0) && (this.props.lang === 'English' ?
                     <div>
-                        <p>There are no available questions.</p>
+                        <p>There are no favorite questions available.</p>
                     </div>
                     :
                     <div>
-                        <p>No hay preguntas disponibles.</p>
+                        <p>No hay preguntas favoritas disponibles.</p>
                     </div>
                 )}
             </div>
