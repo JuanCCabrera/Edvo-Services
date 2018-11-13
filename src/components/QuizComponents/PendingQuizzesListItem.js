@@ -4,8 +4,10 @@ import {Link} from 'react-router-dom';
 
 const PendingQuizzesListItem = (props) => (
     <div>
-        <h4>{props.quiz.quizID}</h4>
-        <Link to={`/teacher/quizzes/${props.quiz.quizID}`}><button>Answer</button></Link>
+        {console.log("QUIZ PROPS ITEM: ", props)}
+        <h2>{props.quiz.quizID}</h2>
+        {props.quiz.score == null && <Link to={`/teacher/quizzes/${props.quiz.quizID}`}><button>Answer</button></Link>}
+        {props.quiz.score != null && <p>{props.quiz.quizID} score was: {props.quiz.score}</p>}
     </div>
 );
 

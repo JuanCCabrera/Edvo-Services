@@ -26,9 +26,9 @@ class TeacherQuestionsList extends React.Component{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
             response.data.questions.forEach(element => {
-                console.log("RATE QUESIONS FOR TEACHER: ", parse(element.rate));
+                console.log("RATE QUESIONS FOR TEACHER: ", element);
                 this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 
-                subject: element.subject, userId: element.userid, answer: element.answer, rate: parse(element.rate)}));
+                subject: element.subject, userId: element.userid, answer: element.answer, rate: element.rate}));
             });
         });
         this.currentPage = 1;

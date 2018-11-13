@@ -8,7 +8,9 @@ import axios from 'axios';
 class AnswerQuizForm extends React.Component {
     constructor(props){
         super(props);
+        console.log("PROPS IN ANSWER QUIZ", props);
         this.state = {
+            props: props,
             answers: {},
             show: false,
             quizDate: props.quizDate,
@@ -25,8 +27,8 @@ class AnswerQuizForm extends React.Component {
     }
 
     onSubmit = (e) => {
-        //TO-DO Add error checks
         e.preventDefault();
+        console.log("QUIZ POST REQUEST: ", this.props.quiz.quizID, this.props.quiz.quizDate, this.state.answers);
         this.props.history.push('/teacher/quizzes');
         
     }

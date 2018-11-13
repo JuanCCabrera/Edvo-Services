@@ -1,8 +1,10 @@
+//Loads a quiz from the response
 export const createQuiz = (
     {
         number = '',
         quizID = '',
         quizDate = '',
+        score = 0,
         items = [
             number = '',
             question = '',
@@ -16,16 +18,8 @@ export const createQuiz = (
                 number,
                 quizID,
                 quizDate,
+                score,
                 items
             }
         }
 };
-
-export const answerQuestion = ({askedDate, userId, answer} = {}) => {
-    return{
-        type: 'ANSWER_QUESTION',
-        askedDate: askedDate,
-        userId: userId,
-        answer: answer
-    }
-}

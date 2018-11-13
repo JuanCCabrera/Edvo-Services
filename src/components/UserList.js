@@ -25,7 +25,7 @@ class UserList extends React.Component{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             response.data.users.forEach(element => {
-                //Change id for userID when DB connection is ready
+                console.log("NEW USER: ", element);
                 this.props.dispatch(addUser({id: element.userid, name: element.name,
                     email: element.email, lastname: element.lastname, 
                     weeklyReco: element.weeklyReco, 

@@ -65,7 +65,8 @@ class Auth {
   setSession(authResult, step) {
     if(localStorage.getItem('idToken') == null)
       localStorage.setItem('idToken',authResult.idToken);
-    this.profile = authResult.idTokenPayload;
+    this.profile = {email: authResult.idTokenPayload.email, name: authResult.idTokenPayload.name};
+    console.log("THIS PROFILE: ", this.profile);
     this.getEmail = authResult.idTokenPayload.email;
     localStorage.setItem('role',authResult.idTokenPayload["https://edvo-test/role"]);  
     //this.getEmail =   

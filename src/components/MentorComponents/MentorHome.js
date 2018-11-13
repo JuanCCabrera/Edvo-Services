@@ -1,8 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
 
 const MentorHome = (props) => (
+    <Can
+    role={auth0Client.getRole()}
+    perform="mentor:settings"
+    yes={() => (
     <div>
         <div>
         <NavLink to="/recommendations/assign" activeClassName="is-active" exact={true}>
@@ -37,6 +43,9 @@ const MentorHome = (props) => (
             
         </div>
     </div>
+                                     )}
+                                     no={() => <Redirect to="/" />}
+                                   />
 );
 
 const mapStateToProps = (state) => {

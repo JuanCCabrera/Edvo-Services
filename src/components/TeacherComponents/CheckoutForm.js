@@ -25,8 +25,7 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
-    let {token} = await this.props.stripe.createToken({name: auth0Client.getProfile().name});
-    console.log("TOKEN IS: ", token);
+    let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
     console.log("ID TOKEN IN CHECKOUT: ", auth0Client.getIdToken());
     await axios.post('http://localhost:3000/plans/',
         {
@@ -41,7 +40,8 @@ class CheckoutForm extends Component {
           })
           .then(response =>{
             console.log("STRIPE RESPONSE: ",response);
-            this.setState({complete: true});
+            if(response.status == 201)
+              this.setState({complete: true});
           });
   }
 

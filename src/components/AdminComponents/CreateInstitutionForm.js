@@ -5,6 +5,7 @@ import {Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import Can from '../../Can';
 
 class CreateInstitutionForm extends React.Component{
     constructor(props){
@@ -68,6 +69,10 @@ class CreateInstitutionForm extends React.Component{
 
     render(){
         return(
+            <Can
+            role={auth0Client.getRole()}
+            perform="admin:settings"
+            yes={() => (
             <div>
                 <div>
                     <AdminButtonList/>
@@ -114,6 +119,9 @@ class CreateInstitutionForm extends React.Component{
                     </form>
                 </div>
             </div>
+                                                     )}
+                                                     no={() => <Redirect to="/" />}
+                                                   />
         );
     }
 }
