@@ -113,9 +113,9 @@ router.post('/settings/institutions/add', (req,res,next)=> {
   const data = {
       userid: req.body.userid, 
       institutionid : req.body.institutionid,
-      name: req.body.name.toLowerCase(),
-      location: req.body.location.toLowerCase(),
-      schooltype: req.body.schooltype.toLowerCase(),
+      name: req.body.name,
+      location: req.body.location,
+      schooltype: req.body.schooltype,
       accounts: req.body.accounts
     };
   //verify no input is empty

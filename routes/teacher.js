@@ -107,7 +107,7 @@ router.get('/home', (req, res, next) => {
       }else
       {
         return res.status(401).json({statusCode: 401,
-            message: 'User is not of type teacher.',
+            message: 'User does not exist or is not of type teacher.',
             isBase64Encoded: false,});
       }
     });
@@ -211,7 +211,7 @@ router.get('/questions', (req,res,next)=> {
         return res.status(500).json({statusCode: 500, message: err});
       }
       //verify if user exists in database records
-      const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+      const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype=$2', [data.userid,'teacher']);
       //stream results back one row at a time
       query1.on('row', (row) => {
         resultsexist.push(row);
@@ -232,15 +232,15 @@ router.get('/questions', (req,res,next)=> {
                 return res.status(200).json({statusCode: 200, questions});
             }else
             {
-                return res.status(403).json({statusCode: 403,
-                    message: 'User does not have questions in records.',
-                    isBase64Encoded: false,});
+                return res.status(202).json({statusCode: 202,
+                    message: 'User does not have questions in records.'
+                    });
             }
           });
         }else
         {
           return res.status(401).json({statusCode: 401,
-                message: 'User does not exists in records. Inputs where not received as expected.',
+                message: 'User does not exists in records or is not of type teacher. Inputs where not received as expected.',
               isBase64Encoded: false,});
         }
       });

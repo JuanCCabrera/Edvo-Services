@@ -13,7 +13,6 @@ router.post('/', (req,res,next)=> {
   //grab data from http request
   const data = {
       userid: req.body.userid,
-      usertype: req.body.usertype,
       name: req.body.name, 
       lastname: req.body.lastname, 
       gender: req.body.gender,
@@ -51,7 +50,7 @@ router.post('/', (req,res,next)=> {
       class: req.body.class
     };
     console.log("this is the input: ", data);
-    if(data.userid == null || data.usertype == null || data.name == null || data.lastname ==null || data.gender == null 
+    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null 
       || data.email == null || data.dob == null || data.policies == null || data.teachersince == null
       || data.education == null || data.spanish == null || data.english == null || data.schooltype == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
       ||data.instructions == null ||data.moodle == null || data.googleclassroom == null || data.emails == null || data.books == null || data.applications == null || data.socialmedia == null || data.projector == null 
@@ -89,7 +88,7 @@ router.post('/', (req,res,next)=> {
       if (resultsexist.length  === 0){ //if userid or email doesnt exist proceed to create user
       
         //SQL Query > insert user table data
-        client.query('insert into users(userid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, data.usertype, data.name, data.lastname, data.gender, data.email, data.password, data.dob, data.membersince, data.policies]);
+        client.query('insert into users(userid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, 'teacher', data.name, data.lastname, data.gender, data.email, data.password, data.dob, data.membersince, data.policies]);
         
         //SQL Query > insert user_info table data
         client.query('insert into user_info(userid, teachersince, education, english, spanish, strategies, material, timemanagement, tech, instructions) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, data.teachersince, data.education, data.english, data.spanish, data.strategies, data.material, data.timemanagement, data.tech, data.instructions]);
