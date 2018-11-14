@@ -49,6 +49,7 @@ class CreateInstitutionForm extends React.Component{
         if(!this.state.name || !this.state.location){
             this.setState(() => ({createInstitutionError : true})); 
         }else{
+            console.log(this.state);
             this.setState(() => ({createInstitutionError: false}));
             this.props.history.push('/admin/settings/schools');
         }

@@ -52,6 +52,7 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
                     //Button to assign recommendation based on the selected user and recommendation. 
                 }
                 <button disabled={!props.assigned.userID || !props.assigned.recoID} onClick={() => {
+                    console.log(props.assigned);
                     props.dispatch(assignRecommendation());
                 }}>{props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'}</button>  
             </div>

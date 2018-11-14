@@ -39,8 +39,8 @@ export const createRecommendation = (
     type = 'event',
     schoolType = 'public',
     format = 'classroom',
-    level = 'first',
-    size = 'small',
+    level = 'Kindergarden - 3rd grade',
+    size = '1 - 10',
 
     question = '',
     choices = [''],
@@ -131,8 +131,8 @@ export const loadRecommendation = (
     type = 'event',
     schoolType = 'public',
     format = 'classroom',
-    level = 'first',
-    size = 'small',
+    level = 'Kindergarden - 3rd grade',
+    size = '1 - 10',
 
     question = '',
     choices = [''],

@@ -27,7 +27,7 @@ class UserFilters extends React.Component{
                         <select onChange={(e) => {
                             this.props.dispatch(setWeeklyCheck(e.target.value));
                         }}>
-                                <option className="btn-primary" value="" disabled="disabled">{this.props.lang === 'English' ? 'Select a Status' : 'Selecciona un Estatus'}</option>
+                                <option className="btn-primary" value="" disabled="disabled">{this.props.lang === 'English' ? 'Select a Status' : 'Selecciona un Estado'}</option>
 
                                 <option value="all">{this.props.lang === 'English' ? 'All' : 'Todos'}</option>
 

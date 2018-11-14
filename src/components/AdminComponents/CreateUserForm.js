@@ -25,7 +25,8 @@ class CreateUserForm extends React.Component{
             gender: 'male',
             levelOfEdu: 'AS',
             type: 'school',
-            institutionID: ''
+            institutionID: '',
+            creationError: false
         };
     }
 
@@ -98,8 +99,14 @@ class CreateUserForm extends React.Component{
     //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted');
+        console.log(this.state);
 
+        if(!this.state.email || !this.state.password || !this.state.confirmPassword || !this.state.name || !this.state.lastName || (this.state.type === 'school' && !this.state.institutionID)){
+            this.setState(() => ({creationError: true}));
+        }else{
+            this.setState(() => ({creationError: false}));
+            this.props.history.push('/admin/settings/users');
+        }
         //TO-DO Add new user to database
     }
 
@@ -222,6 +229,18 @@ class CreateUserForm extends React.Component{
                         <input type="text" disabled={this.state.type !== 'school'} placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
                         <br/>
                         <br/>
+
+                        {
+                            //Message displayed when trying to submit a new user without filling all the fields. 
+                        }
+                        {this.state.creationError}
+                        <br/>
+                        {this.state.creationError === true && 
+                            <div className="text-danger">
+                                {this.props.lang === 'English' ? <p>Please fill all blank fields.</p> : <p>Por favor, llene todos los espacios en blanco.</p>}
+                            </div>
+                        }
+
                         {
                             //Submit user information button
                         }
