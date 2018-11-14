@@ -20,6 +20,8 @@ import {loadTeacherDaysInPlatform, loadTeacherRecentRecommendation} from './acti
 import {loadTeacherTopRecommendation} from './actions/teacherMetrics';
 import {loadTeacherRecommendation, loadTeacherFavoriteRecommendation} from './actions/teacherRecommendations';
 import {loadTeacherQuestion} from './actions/teacherQuestions';
+import {loadProfile} from './actions/profile';
+import moment from 'moment';
 
 //Creating central controller
 const store = configureStore();
@@ -82,12 +84,12 @@ store.dispatch(loadTeacherRecentRecommendation({recoID: recoTwoID, title: 'Updat
 store.dispatch(loadTeacherRecentRecommendation({recoID: recoThreeID, title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '2018-10-25 06:20:21', rating: 5}));
 
 store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Analyzing Class Attendance', header: 'Test data', location: '', description: 'Learn more about how to analyze class attendance using this video!', multimedia: '', date: '2018-10-24 06:20:22', read: false, rating: 5}));
-store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Why Give Quizzes?', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze the option to give quizzes by using this video!', multimedia: 'https://www.youtube.com/embed/tgbNymZ7vqY', date: '2018-10-21 06:20:23', read: true, rating: 5}));
+store.dispatch(loadTeacherRecommendation({recoID: uuid(), title: 'Why Give Quizzes?', header: 'Test data', location: 'Test location', description: 'Learn more about how to analyze the option to give quizzes by using this video!', multimedia: 'https://www.youtube.com/embed/tgbNymZ7vqY', date: '2018-10-23 06:20:23', read: true, rating: 5}));
 
 //Generating Teacher Favorite Recommendations Test Data
-store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoOneID, title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: '', date: '2018-10-27 06:20:19', read: false, rating: 5}));
-store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoTwoID, title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: '', date: '2018-10-26 06:20:20', read: true, rating: 5}));
-store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoThreeID, title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: '', date: '2018-10-25 06:20:21', read: true, rating: 5}));
+store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoOneID, title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: '', date: '2018-10-22 06:20:19', read: false, rating: 5}));
+store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoTwoID, title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: '', date: '2018-10-21 06:20:20', read: true, rating: 5}));
+store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoThreeID, title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: '', date: '2018-10-20 06:20:21', read: true, rating: 5}));
 
 //Generating Teacher Questions Test Data (Includes Favorite Questions)
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 06:10:25', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:25', rate: 1, favorite: true, read: false}));
@@ -95,6 +97,9 @@ store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 07:30:24', subject: '
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-09 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-08 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 4, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-07 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
+
+//Generate Profile Test Data
+store.dispatch(loadProfile({name: 'Henry', lastName: 'Ford', dateOfBirth: moment(), gender: 'male'}));
 
 class App extends React.Component{
     //Check if login is required by the user

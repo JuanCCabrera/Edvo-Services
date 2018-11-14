@@ -19,6 +19,7 @@ import questionsFiltersReducer from '../reducers/filterReducers/questionsFilters
 import recommendationsFiltersReducer from '../reducers/filterReducers/recommendationsFilters';
 import teacherRecommendationsFiltersReducer from '../reducers/filterReducers/teacherRecommendationsFilters';
 import schoolsFiltersReducer from '../reducers/filterReducers/schoolFilters';
+import profileReducer from '../reducers/profile';
 
 //Store creation
 
@@ -46,7 +47,8 @@ export default () => {
             questionsFilters: questionsFiltersReducer,
             recommendationsFilters: recommendationsFiltersReducer,
             teacherRecommendationsFilters: teacherRecommendationsFiltersReducer,
-            schoolFilters: schoolsFiltersReducer
+            schoolFilters: schoolsFiltersReducer,
+            profile: profileReducer
         })
     );
 

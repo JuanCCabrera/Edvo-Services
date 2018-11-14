@@ -160,7 +160,8 @@ class BasicInfoProfileForm extends React.Component{
 //Map current language state to components properties. 
 const mapStateToProps = (state) => {
     return {
-        lang: state.language.lang
+        lang: state.language.lang,
+        info: state.profile
     }
 }
 
