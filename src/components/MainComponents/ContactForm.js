@@ -12,7 +12,7 @@ class ContactForm extends React.Component{
             name: '',
             email: '',
             message: '',
-            contactError: '' 
+            contactError: false 
         };
     }
 
@@ -38,11 +38,10 @@ class ContactForm extends React.Component{
     //Submit contact form
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         if(!this.state.name || !this.state.email || !this.state.message){   //Generate error if there are missing fields
-            this.setState(() => ({contactError: 'Please fill all blank fields'})); 
+            this.setState(() => ({contactError: true})); 
         }else{  //Otherwise, submit form information
-            this.setState(() => ({contactError: ''}));
+            this.setState(() => ({contactError: false}));
             this.props.onSubmit({
                 name: this.state.name,
                 email: this.state.email,
@@ -58,10 +57,13 @@ class ContactForm extends React.Component{
             }
                 {this.props.lang === 'English' ? <h5>Want to know more?</h5> : <h5>Desea conocer más?</h5>}
                 {this.props.lang === 'English' ? <h5>Contact Us</h5> : <h5>Contáctenos</h5>}
-            {
-                //Form error message
-            }
-                {this.state.contactError && <p>{this.state.contactError}</p>}
+                {
+                    //Error message displayed if there is a missing field
+                }
+                {this.state.contactError === true && 
+                <div className="text-danger">
+                    {this.props.lang === 'English' ? <p>Please fill all blank fields.</p> : <p>Por favor, llene todos los espacios en blanco.</p>}
+                </div>}
 
                 <form onSubmit = {this.onSubmit}>
                     {

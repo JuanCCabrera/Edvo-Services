@@ -73,7 +73,7 @@ class AskQuestionForm extends React.Component{
                     }
                     {this.state.askQuestionError === true && 
                         <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>Please fill all empty fields before sending a question.</p> : <p>Por favor, llene todos los espacios vacios antes de enviar una pregunta.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all fields before sending a question.</p> : <p>Por favor, llene todos los espacios en blanco antes de enviar una pregunta.</p>}
                         </div>
                     }
                     <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</button>

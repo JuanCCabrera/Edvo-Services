@@ -66,7 +66,9 @@ class RegistrationForm extends React.Component{
              termsOfUse: false,
              privacyPolicy: false,
 
-             globalError: '',
+             secError: false,
+
+             globalError: false,
 
             currPage: 1
         };
@@ -363,8 +365,16 @@ class RegistrationForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault(); //prevent default action
-        console.log(this.state);
-        //TO-DO Dispatch action to send data to database
+        //Display specific message if terms of use or privacy policy is not accepted.
+        if(!this.state.termsOfUse || !this.state.privacyPolicy){
+            this.setState(() => ({secError: true, globalError: false}));
+        }
+        //Display default error message if there are required fields left blank. 
+        else if(!this.state.name || !this.state.lastName || !this.state.location || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
+            this.setState(() => ({globalError: true, secError: false}));
+        }else{
+            this.setState(() => ({secError: false, globalError: false}));
+        }
     }
 
     render(){
@@ -668,6 +678,20 @@ class RegistrationForm extends React.Component{
 
                     <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="http://localhost:8080/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> <br/>
                     <input type="checkbox" name="privacyPolicy" checked={this.state.privacyPolicy === true} onChange={this.onPrivacyChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto la '} <a href="http://localhost:8080/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a><br/>
+                    {
+                        //Error message is displayed if the Terms of Use or Privacy Policy is not accepted when trying to submit the form. 
+                    }
+                    {this.state.secError === true && 
+                    <div className="text-danger">
+                        {this.props.lang === 'English' ? <p>You must accept the Terms of Use and Privacy Policy before completing your registration.</p> : <p>Debe aceptar los Términos de Uso y la Póliza de Privacidad antes de completar su registración.</p>}
+                    </div>}
+                    {
+                        //Error message is displayed if required fields are left blank. 
+                    }
+                    {this.state.globalError === true && 
+                    <div className="text-danger">
+                        {this.props.lang === 'English' ? <p>Please fill all fields before completing your registration.</p> : <p>Por favor, llene todos los espacios en blanco antes de completar su registración.</p>}
+                    </div>}
                     
                     {
                         //Buttons to return to the previous page and to submit the registration form. 
