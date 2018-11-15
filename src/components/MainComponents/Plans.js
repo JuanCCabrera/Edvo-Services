@@ -6,6 +6,12 @@ import {NavLink, Redirect} from 'react-router-dom';
 import Can from "../../Can";
 import auth0 from '../../Auth';
 import './Plans.css'
+
+/**
+ * Plans page displays a table containing information relating to three subscription plans available. 
+ * There are three subscription plans available: Standard, Premium and Absolute Packages. 
+ * @param {*} props - Contains default properties and current language state. 
+ */
 const PlansPage = (props) => (
     <div className="Body-Background">
     <div className="container pt-5 pb-5 text-left Body-Background">
@@ -131,6 +137,9 @@ const PlansPage = (props) => (
         </tbody>
     </table>
 
+        {
+            //Special details section
+        }
         <p>{props.lang === 'English' ? '* Package meant for purchase by educational institutions $59/month per educator.' : '* Oferta dirigida a instituciones educativas, $59/mes por educador.'}</p>
         <p>{props.lang === 'English' ? '** Expires on September 15, 2018.' : '** Expira 15 de Septiembre 2018.'}</p>
 
@@ -144,10 +153,12 @@ const PlansPage = (props) => (
     </div>
 );
 
+//Map current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(PlansPage);

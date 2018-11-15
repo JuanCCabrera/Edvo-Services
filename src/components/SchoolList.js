@@ -9,18 +9,23 @@ import auth0Client from '../Auth';
 
 import getVisibleSchools from '../selectors/schools';
 
+/**
+ * List of schools displayed in AppSchools page. 
+ */
 class SchoolList extends React.Component{
     constructor(props){
         super(props);
         this.pageSlice = 1;
-        this.itemsPerPage = 1;
-        this.currentPage = 1;
+        this.itemsPerPage = 5;  //Schools displayed per page
+        this.currentPage = 1;   //Current page
+        //State contains the page being viewed and the list of schools that is visible in that page. 
         this.state = {
             activePage: 1,
             displayedSchools: []
         }
     }
-
+    
+    //Configure state when component is about to be mounted. 
     componentWillMount(){
         //Change UUID for InsitutionID when DB connection is made
         //send to action
@@ -47,7 +52,9 @@ class SchoolList extends React.Component{
         this.props.dispatch(unloadInstitutions());
     }
 
+    //Update page when component updates. 
     componentDidUpdate(prevProps){
+        //Move to the previous page if there are no items remaining on the current page.
         if(prevProps.schools !== this.props.schools){
             if(this.state.displayedSchools.length === 1 && this.currentPage !== 1){
                 this.handlePageChange(this.currentPage-1);
@@ -56,31 +63,45 @@ class SchoolList extends React.Component{
             }
         }
 
+        //Move to first page if a filter is modified. 
         if(prevProps.filters !== this.props.filters){
             this.handlePageChange(1);
         }
     }
 
+    //Change pages and display new list of items on new page. 
     handlePageChange = (pageNumber) => {
         this.currentPage = pageNumber;
         const startIndex = (pageNumber-1)*this.itemsPerPage;
         let endIndex = (pageNumber)*this.itemsPerPage;
+        //Limit the amount of items shown on the last page depending on the length of the original item array. 
         if(((pageNumber)*this.itemsPerPage) > this.props.schools.length){
             endIndex = this.props.schools.length;
         }
+        //Slice original array to obtain list of items to display. 
         const displayedSchools = this.props.schools.slice(startIndex, endIndex);
+        //Modify local state
         this.setState(() => ({activePage: pageNumber, displayedSchools: displayedSchools}));
     };
 
     render(){
         return(
             <div>
+                {
+                    //Page title
+                }
                 <h3>{this.props.lang === 'English' ? 'Institutions' : 'Instituciones'}</h3>
+                {
+                    //List of schools
+                }
                 {this.state.displayedSchools.map((school) => {
                     return <SchoolListItem key={school.id} school={school}/>
                 })}
                 <br/>
 
+                {
+                    //Pagination component
+                }
                 {(this.props.schools.length !== 0) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -88,6 +109,9 @@ class SchoolList extends React.Component{
                     totalItemsCount={this.props.schools.length}
                     onChange={this.handlePageChange}
                     />
+                }
+                {
+                    //Message shown if there are no items on the list
                 }
                 {(this.props.schools.length === 0) && (this.props.lang === 'English' ?
                     <div>
@@ -104,6 +128,7 @@ class SchoolList extends React.Component{
     }
 }
 
+//Map filtered list of schools, school filter data and the current language state to the component properties. 
 const mapStateToProps = (state) => {
     return{
         schools: getVisibleSchools(state.schools, state.schoolFilters),
@@ -112,4 +137,5 @@ const mapStateToProps = (state) => {
     }
 }
 
+//Connect the component to the controller. 
 export default connect(mapStateToProps)(SchoolList);

@@ -5,6 +5,10 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 
+/**
+ * Teacher Settings (Profile) page layout.  
+ * @param {*} props - Default properties
+ */
  const TeacherProfile = (props) => (
     <Can
     role={auth0Client.getRole()}

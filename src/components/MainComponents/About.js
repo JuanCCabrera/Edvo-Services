@@ -4,8 +4,15 @@ import ContactForm from './ContactForm';
 import {connect} from 'react-redux';
 import {sendContactForm} from '../../actions/contact';
 
+/**
+ * About page of the application. This page gives a brief overview of Edvo Tech's mission as a company. 
+ * @param {*} props - Component properties which includes current language state. 
+ */
 const AboutPage = (props) => (
     <div>
+        {
+            //Page title
+        }
         <div className="text-center about__title">
             {props.lang === 'English' ? 
             <div>
@@ -18,6 +25,9 @@ const AboutPage = (props) => (
             <hr className="break"/>
         </div>
 
+        {
+            //"What we do" section
+        }
         <div className="container-fluid about__body">
             <div className="row row__margin">
                 <div>
@@ -36,6 +46,9 @@ const AboutPage = (props) => (
                     </div>
                 </div>
             </div>
+            {
+                //"Why we do it" section
+            }
             <div className="row mid__row__margin">
                 <div>
                     <div className="col-sm-3"/>
@@ -51,6 +64,10 @@ const AboutPage = (props) => (
                         }
                     </div>
 
+                    {
+                        //"How we do it" section
+                    }
+
                     <div className="col-sm-3 text-center">
                         {props.lang === 'English' ? 
                         <div>
@@ -65,6 +82,9 @@ const AboutPage = (props) => (
                     <div className="col-sm-3"/>
                 </div>
             </div>
+            {
+                //"What others say" section
+            }
             <div className="row about__low">
                 <div className="col-sm-4"/>
                 <div className="col-sm-4 text-center speech-bubble about__others__say">
@@ -78,34 +98,40 @@ const AboutPage = (props) => (
                 </div>
                 <div className="col-sm-4"/>
             </div>
+            {
+                //Links to articles which give additional information about Edvo Tech
+            }
             <div className="row">
                 <div className="text-center">
                     <div className="col-sm-3 about__low__options">
                     <img src="http://localhost:8080/static/images/logo_endi.png" className="Feature-Img__endi" />
                         <br/>
-                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/delrumunadelasalumnasmasinnovadorasdelmundo-2418375' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/delrumunadelasalumnasmasinnovadorasdelmundo-2418375' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
 
                     <div className="col-sm-3 about__low__options">
                         <img src="http://localhost:8080/static/images/logo_pre18.png" className="Feature-Img" />
                         <br/>
-                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/pre18arrancaracon40empresasboricuas-2405093' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.elnuevodia.com/negocios/empresas/nota/pre18arrancaracon40empresasboricuas-2405093' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
 
                     <div className="col-sm-3 about__low__options">
                         <img src="http://localhost:8080/static/images/logo_her_campus.png" className="Feature-Img__her__campus" />
                         <br/>
-                        <a href='https://www.hercampus.com/school/uprm/purpose-behind-edvo' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.hercampus.com/school/uprm/purpose-behind-edvo' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
 
                     <div className="col-sm-3 about__low__options">
                         <img src="http://localhost:8080/static/images/logo_mc.png" className="Feature-Img__mc" />
                         <br/>
-                        <a href='https://www.metro.pr/pr/noticias/2018/04/12/estudiante-de-mayaguez-recibe-premio-de-mejor-idea-del-futuro.html' target='_blank'> {props.lang === 'English' ? 'Read article>' : 'Leer>'} </a>
+                        <a href='https://www.metro.pr/pr/noticias/2018/04/12/estudiante-de-mayaguez-recibe-premio-de-mejor-idea-del-futuro.html' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>
                 </div>
             </div>
         </div>
+        {
+            //Contact Form
+        }
         <div>
             <ContactForm
             onSubmit={(contact) => {
@@ -115,10 +141,12 @@ const AboutPage = (props) => (
     </div>
 );
 
+//Map current language state to component properties
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to controller
 export default connect(mapStateToProps)(AboutPage);

@@ -4,6 +4,10 @@ import {NavLink} from 'react-router-dom';
 import ThreeImageList from './ThreeImageList'
 import './Main.css';
 
+/**
+ * This is the body of the Main page, which includes general information about Edvo Tech as pseudo-static text. 
+ * @param {*} props - Contains default properties and the current language state. 
+ */
 const MainPageDisplay = (props) => (
     <div className="Main">
     <div className="Parallax-Title">
@@ -35,6 +39,10 @@ const MainPageDisplay = (props) => (
             </div>
         </div>
         }
+
+        {
+            //Navigation button to Login page.
+        }
         <div>
         </div>
     </div>
@@ -55,6 +63,9 @@ const MainPageDisplay = (props) => (
             }
         </div>
 
+        {
+            //Static text description "DESIGN" section
+        }
         <div>
             <div className="container-fluid row text-center Tools">
                 {props.lang === 'English' ? 
@@ -117,6 +128,9 @@ const MainPageDisplay = (props) => (
             }
         </div>
 
+        {
+            //Steps to join the application 
+        }
         <div> 
             <div className="container-fluid row text-center">
                 {props.lang === 'English' ? 
@@ -187,10 +201,12 @@ const MainPageDisplay = (props) => (
     </div>
 );
 
+//Map current language state to the component properties. 
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to the controller. 
 export default connect(mapStateToProps)(MainPageDisplay);

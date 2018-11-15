@@ -1,8 +1,11 @@
 import React from 'react';
 import RegistrationForm from './RegistrationForm';
 import ContactForm from './ContactForm';
-import {connect} from 'react-redux';
 
+/**
+ * Registration page layout
+ * @param {*} props - Default properties
+ */
 const Registration = (props) => (
     <div>
         <RegistrationForm {...props}/>

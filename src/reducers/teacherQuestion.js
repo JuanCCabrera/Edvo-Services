@@ -1,3 +1,4 @@
+//Reducer default state
 const teacherQuestionsReducerDefaultState = {
     teacherQuestions: [],
     selectedQuestion: {
@@ -12,18 +13,27 @@ const teacherQuestionsReducerDefaultState = {
     }
 };
 
+/**
+ * teacherQuestionsReducer - Receives and logs information to display teacher questions in the Teacher Questions page and in the Question Modal.
+ * Also receives and logs question rating and favoriting information. 
+ * @param {*} state - Reducer state
+ * @param {*} action - Action received by dispatcher
+ */
 const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, action) => {
     switch(action.type){
+        //Log question to display in the Teacher Questions page
         case 'LOAD_TEACHER_QUESTION':
             return {
                 teacherQuestions: [...state.teacherQuestions, action.teacherQuestion],
                 selectedQuestion: state.selectedQuestion
             }
+        //Log question to display in the Question Modal
         case 'SELECT_QUESTION':
             return{
                 teacherQuestions: [...state.teacherQuestions],
                 selectedQuestion: action.selectedQuestion
             }
+        //Remove question to make Question Modal invisible
         case 'CLEAR_SELECTED_QUESTION':
             return{
                 teacherQuestions: [...state.teacherQuestions],
@@ -38,6 +48,7 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
                     read: false
                 }
             }
+        //Modify question rating and log it
         case 'RATE_QUESTION':
             return{
                 teacherQuestions: state.teacherQuestions.map((question) => {
@@ -51,6 +62,7 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
                     rate: action.rate
                 }
             }
+        //Modify question favorite status (mark as favorite), log it, and add question to the Favorite Questions List
         case 'ADD_FAVORITE_QUESTION':
             return{
                 teacherQuestions: state.teacherQuestions.map((question) => {
@@ -64,6 +76,7 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
                     favorite: true
                 }
             }
+        //Modify quesiton favorite status (unfavorite), log it, and remove question from the Favorite Questions List
         case 'REMOVE_FAVORITE_QUESTION':
             return{
                 teacherQuestions: state.teacherQuestions.map((question) => {
@@ -77,6 +90,7 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
                     favorite: false
                 }
             }
+        //Return existing state by default
         default: 
             return {...state}
     }

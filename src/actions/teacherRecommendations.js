@@ -1,5 +1,9 @@
 //Teacher Recommendations Action Generators
 
+/**
+ * loadTeacherRecommendation - Generates an object indicating to the central controller to load a recommendation to the Teacher Recommendations list. 
+ * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, multimedia template, date in which it was assigned, boolean indicating whether it has been read or not (read = true), and an associated rating
+ */
 export const loadTeacherRecommendation = (
     {
         recoID =  '',
@@ -27,6 +31,10 @@ export const loadTeacherRecommendation = (
         }
 });
 
+/**
+ * loadTeacherFavoriteRecommendation - Generates object indicating to the central controller to load a recommendation to the Favorite Teacher Recommendations List. 
+ * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, multimedia template, date in which it was assigned, boolean indicating whether it has been read or not (read = true), and an associated rating
+ */
 export const loadTeacherFavoriteRecommendation = (
     {
         recoID =  '',
@@ -53,6 +61,10 @@ export const loadTeacherFavoriteRecommendation = (
         }
 });
 
+/**
+ * selectRecommendation - Generates an object indicating to the central controller to select a recommendation and display its information on a Modal. 
+ * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, multimedia template, date in which it was assigned, boolean indicating whether it has been read or not (read = true), and an associated rating
+ */
 export const selectRecommendation = (
     {
         recoID =  '',
@@ -79,8 +91,15 @@ export const selectRecommendation = (
         }
 });
 
+/**
+ * clearSelectedRecommendation - Generates a command keyword to the central controller indicating that it must make the modal containing the selected recommendation information invisible. 
+ */
 export const clearSelectedRecommendation = () => ({type: 'CLEAR_SELECTED_RECOMMENDATION'});
 
+/**
+ * rateRecommendation - Generates an object indicating to the central controller that the rating of a recommendation has been changed. 
+ * @param {*} param0 - Object containing a recommendation's ID and associated rating
+ */
 export const rateRecommendation = ({recoID = '', rate = 0} = {}) => (
     {
         type:'RATE_RECOMMENDATION',
@@ -88,6 +107,10 @@ export const rateRecommendation = ({recoID = '', rate = 0} = {}) => (
         rate: rate
 });
 
+/**
+ * addFavoriteRecommendation - Generates object indicating to the central controller that a recommendation has been marked as a favorite and must be added to the Favorite Teacher Recommendations List. 
+ * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, multimedia template, date in which it was assigned, boolean indicating whether it has been read or not (read = true), and an associated rating
+ */
 export const addFavoriteRecommendation = (
     {
         recoID =  '',
@@ -114,6 +137,10 @@ export const addFavoriteRecommendation = (
         }
 });
 
+/**
+ * removeFavoriteRecommendation - Generates object indicating to the central controller that it must remove a recommendation from the Favorite Recommendations List. 
+ * @param {*} param0 - Object containing a recommendation's ID
+ */
 export const removeFavoriteRecommendation = (
     {
         recoID = ''

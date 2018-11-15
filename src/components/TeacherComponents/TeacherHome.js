@@ -6,11 +6,16 @@ import RecentRecommendationsList from './RecentRecommendationsList';
 import AskQuestionForm from './AskQuestionForm';
 import { sendAskedQuestion } from '../../actions/askQuestion';
 import { reset,loadTeacherQuestionsAsked, loadTeacherRecentRecommendation, loadTeacherTopRecommendation, loadTeacherDaysInPlatform, loadTeacherRecommendationsRead } from '../../actions/teacherMetrics';
-
 import {loadTeacherRecommendation} from '../../actions/teacherRecommendations';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 import axios from 'axios';
+/**
+ * The Teacher Home page contains a value indicating the number of days the Teacher has spent on the platform, the number of recommendations
+ * the teacher has read, the number of questions the teacher has asked, a list of the teacher's top rated recommendations, a list of the teacher's
+ * most recently assigned recommendations and a form for the teacher to ask questions. 
+ * @param {*} props - Default properties, teacher metrics, teacher recommendations list, teacher questions list, and current language state. 
+ */
 
 class TeacherHome extends React.Component {
     constructor(props){
@@ -58,10 +63,17 @@ class TeacherHome extends React.Component {
         role={auth0Client.getRole()}
         perform="teacher:home"
         yes={() => (
+
     <div>
         <div>
-        <h1>{this.state.props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
+        {
+            //Page title
+        }
+        <h1>{props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
 
+        {
+            //Days in platform
+        }
         <div>
             {this.state.props.lang === 'English' ? 
             <div>
@@ -76,6 +88,9 @@ class TeacherHome extends React.Component {
             <h2>{this.state.daysInPlatform}</h2>
         </div>
 
+        {
+            //Number of recommendations read (Acts as link to Teacher Recommendations page)
+        }
         <div>
             <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true}>
                 {this.state.props.lang === 'English' ? 
@@ -90,6 +105,9 @@ class TeacherHome extends React.Component {
             </NavLink>
         </div>
 
+        {
+            //Number of questions asked (Acts as link to Teacher Questions page)
+        }
         <NavLink to="/teacher/questions" activeClassName="is-active" exact={true}>
             {this.state.props.lang === 'English' ? 
             <div>
@@ -103,6 +121,9 @@ class TeacherHome extends React.Component {
             </div>}
         </NavLink>
 
+        {
+            //Recent Recommendations List
+        }
         <div>
             {this.state.props.lang === 'English' ? 
                 <div> 
@@ -120,6 +141,9 @@ class TeacherHome extends React.Component {
             <RecentRecommendationsList/>
         </div>
 
+        {
+            //Top Rated Recommendations List
+        }
         <div>
             {this.state.props.lang === 'English' ? 
                 <div> 
@@ -137,6 +161,9 @@ class TeacherHome extends React.Component {
             <TopRecommendationsList/>
         </div>
 
+        {
+            //Ask Question Form
+        }
         <div>
             {this.state.props.lang === 'English' ? 
                 <div> 
@@ -162,6 +189,7 @@ class TeacherHome extends React.Component {
     }
 }
 
+//Map teacher metrics, teacher recommendations, teacher questions, and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
         teacherMetrics: state.teacherMetrics,
@@ -171,4 +199,5 @@ const mapStateToProps = (state) => {
         daysInPlatform: state.daysInPlatform
     };
 };
+//Connect componet to controller.
 export default connect(mapStateToProps)(TeacherHome);

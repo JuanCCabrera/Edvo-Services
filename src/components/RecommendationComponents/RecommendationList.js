@@ -4,27 +4,48 @@ import RecommendationListItem from './RecommendationListItem';
 import Pagination from 'react-js-pagination';
 import {Link} from 'react-router-dom';
 import getVisibleRecommendations from '../../selectors/recommendations';
+import {loadRecommendation} from '../../actions/recommendations';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
+/**
+ * List of recommendations displayed in the Assign Recommendations and Manage Recommendations pages. 
+ */
 class RecommendationsList extends React.Component{
     constructor(props){
         super(props);
         this.pageSlice = 1;
-        this.itemsPerPage = 3;
-        this.currentPage = 1;
+        this.itemsPerPage = 5; //Number of recommendations on list
+        this.currentPage = 1;   //Current page
         this.state = {
             activePage: 1,
             displayedRecommendations: []
         }
     }
 
+    //Configure local state when component will mount. This involves selecting which recommendations will be displayed on the first page
+    //when the component loads. 
     componentWillMount(){
+        axios.get('http://localhost:3000/admin/recommendations',{
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+        .then(response => {
+            console.log("REPSONSE RECOM:L ", response);
+            response.data.recommendations.forEach(element => {
+                //Change id for userID when DB connection is ready
+                this.props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
+                    header: element.header, multimedia: element.multimedia, 
+                    description: element.description}));
+            });
+        });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedRecommendations: initialPageRecommendations});
     }
 
+    //Update page when the component updates
     componentDidUpdate(prevProps){
+        //If there are no more elements in the page, then go to the previous page. 
         if(prevProps.recommendation !== this.props.recommendation){
             if(this.state.displayedRecommendations.length === 1 && this.currentPage !== 1){
                 this.handlePageChange(this.currentPage-1);
@@ -33,31 +54,46 @@ class RecommendationsList extends React.Component{
             }
         }
 
+        //Change to first page whenever a filter is modified. 
         if(prevProps.filters !== this.props.filters){
             this.handlePageChange(1);
         }
     }
 
+    //Change pages and display new list of items on new page. 
     handlePageChange = (pageNumber) => {
         const startIndex = (pageNumber-1)*this.itemsPerPage;
         this.currentPage = pageNumber;
         let endIndex = (pageNumber)*this.itemsPerPage;
+        
+        //Limit amount of items displayed on last page based on length of the original array. 
         if(((pageNumber)*this.itemsPerPage) > this.props.recommendation.length){
             endIndex = this.props.recommendation.length;
         }
+        //Slice original array to obtain list of items to display
         const displayedRecommendations = this.props.recommendation.slice(startIndex, endIndex);
+        //Modify local state
         this.setState(() => ({activePage: pageNumber, displayedRecommendations: displayedRecommendations}));
     };
 
     render(){
         return(
             <div>
+            {
+                //Page title
+            }
                 <h3>{this.props.lang === 'English' ? 'Recomendations' : 'Recomendaciones'}</h3>
+            {
+                //Recommendations List
+            }
                 {this.state.displayedRecommendations.map((reco) => {
                     return <RecommendationListItem key={reco.id} reco={reco} selectedRecommendation={this.props.assigned.recoID}/>
                 })}
                 <br/>
 
+            {
+                //Pagination component
+            }
                 {(this.props.recommendation.length !== 0) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -66,6 +102,9 @@ class RecommendationsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+            {
+                //Message displayed when there are no elements in the Recommendations page. It includes a link to create a new recommendation. 
+            }
                 {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
                     <div>
                         <p>There are no available recommendations for assignment. Please create a new recommendation to assign.</p>
@@ -82,6 +121,7 @@ class RecommendationsList extends React.Component{
     }
 }
 
+//Map filtered recommendations, recommendations filters data, recommendaiton assignment data and the current language state to the component's properties. 
 const mapStateToProps = (state) => {
     return{
         recommendation: getVisibleRecommendations(state.recommendations, state.recommendationsFilters),
@@ -91,4 +131,5 @@ const mapStateToProps = (state) => {
     }
 }
 
+//Connect component to the controller. 
 export default connect(mapStateToProps)(RecommendationsList);

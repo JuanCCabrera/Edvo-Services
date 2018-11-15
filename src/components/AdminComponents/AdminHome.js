@@ -4,6 +4,10 @@ import {NavLink, Redirect} from 'react-router-dom';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 
+/**
+ * Generate a home page for Administrators with three links (Administrator Settings, Assign Recommendations, Pending Questions).
+ * @param {*} props - Component properties
+ */
 const AdminHome = (props) => (
     <Can
     role={auth0Client.getRole()}
@@ -11,6 +15,9 @@ const AdminHome = (props) => (
     yes={() => (
     <div>
         <div>
+        {
+            //Link to Administrator Settings page
+        }
         <NavLink to="/admin/settings/info" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -26,6 +33,9 @@ const AdminHome = (props) => (
             </div>}
         </NavLink>
 
+        {
+            //Link to Assign Recommendations page
+        }
         <NavLink to="/recommendations/assign" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -41,6 +51,9 @@ const AdminHome = (props) => (
             </div>}
         </NavLink>
 
+        {
+            //Link to Pending Questions page
+        }
         <NavLink to="/staff/questions" activeClassName="is-active" exact={true}>
             {props.lang === 'English' ? 
             <div>
@@ -63,9 +76,11 @@ const AdminHome = (props) => (
                    />
 );
 
+//Map current language state to component properties
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     };
 };
+//Connect component to controller
 export default connect(mapStateToProps)(AdminHome);

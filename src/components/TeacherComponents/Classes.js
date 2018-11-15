@@ -5,6 +5,10 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 
+/**
+ * Classes page layout. 
+ * @param {*} props - Default properties
+ */
 const Classes = (props) => (
     <Can
     role={auth0Client.getRole()}

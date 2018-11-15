@@ -52,13 +52,34 @@ import AnswerQuizForm from '../components/QuizComponents/AnswerQuizForm';
 import Stripe from '../components/TeacherComponents/Stripe';
 
 
+/**
+ * AppRouter - Main routing component of the application. Contains a header element, two modals which 
+ * are invisible unless a recommendation or question is selected, a footer, and a set of conditionally rendered pages.
+ * Each page is rendered depending on the URL (route) being accessed. 
+ * @param {*} props - Default component properties
+ */
 const AppRouter = (props) => (
     <BrowserRouter>
         <div>
+        {
+            //Header (Navigation Bar)
+        }
             <Header/>
+        {
+            //Recommendation Modal (hidden until a recommendation is selected)
+        }
             <RecommendationModal clearSelectedRecommendation={() => props.dispatch(clearSelectedRecommendation())}/>
+        {
+            //Question Modal (hidden until a question is selected)
+        }
             <QuestionModal clearSelectedQuestion={() => props.dispatch(clearSelectedQuestion())}/>
+        {
+            //Switch component. Displays ONLY the component related to the specified route path (must match the page URL). 
+        }
             <Switch>
+                {
+                    //Main Page components and Registration component
+                }
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage}/>
                 <Route path="/plans" component={PlansPage}/>
@@ -68,7 +89,7 @@ const AppRouter = (props) => (
                 <Route exact path='/callback' component={MainPage}/>
 
                 {
-                    //Teacher
+                    //Teacher Components
                 }
                 <SecuredRoute path='/teacher/home' component={TeacherHome}/>
                 <SecuredRoute path='/teacher/settings/info' component={TeacherProfile}/>
@@ -79,7 +100,7 @@ const AppRouter = (props) => (
                 <SecuredRoute path='/teacher/questions' component={TeacherQuestions}/>
 
                 {
-                    //Mentor
+                    //Mentor Components
                 }
                 <SecuredRoute path='/mentor/home' component={MentorHome}/>
                 <SecuredRoute path='/mentor/settings' component={MentorProfile}/> 
@@ -90,7 +111,7 @@ const AppRouter = (props) => (
                 <SecuredRoute path='/school/home' component={SchoolHome}/>
                 <SecuredRoute path='/school/settings' component={SchoolProfile}/>
                 {
-                    //Administrator
+                    //Administrator Components
                 }
                 <SecuredRoute exact path='/admin/settings/info' component={AdminProfile}/>
                 <SecuredRoute exact path='/admin/settings/users' component={AppUsers}/>
@@ -100,7 +121,7 @@ const AppRouter = (props) => (
                 <SecuredRoute path='/admin/home' component={AdminHome}/>
 
                 {
-                    //Staff Recommendations
+                    //Staff Recommendations Components
                 }
                 <SecuredRoute exact path='/recommendations/assign' component={RecommendationsControl}/>
                 <SecuredRoute exact path='/recommendations/create' component={NewRecommendation}/>
@@ -108,7 +129,7 @@ const AppRouter = (props) => (
                 <SecuredRoute path="/recommendations/edit/:id" component={EditRecommendation}/>
 
                 {
-                    //Staff Questions
+                    //Staff Questions Components
                 }
                 <SecuredRoute exact path='/staff/questions' component={ManageQuestions}/>
                 <SecuredRoute path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
@@ -118,8 +139,14 @@ const AppRouter = (props) => (
                 <SecuredRoute exact path='/teacher/quizzes' component={ManageQuizzes}/>
                 <SecuredRoute path="/teacher/quizzes/:quizID" component={AnswerQuizForm}/>
 
+                {
+                    //Route Not Found Page
+                }
                 <Route component={NotFoundPage}/>
             </Switch>
+            {
+                //Page Footer
+            }
             <Footer/>
         </div>
     </BrowserRouter>

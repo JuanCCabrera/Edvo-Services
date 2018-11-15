@@ -5,11 +5,12 @@ import { unloadClasses,loadClass } from '../../actions/classes';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 
+/**
+ * Class List contains the list of classes which a user registered through his or her registration form. 
+ */
 class ClassList extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            pages: 1}
     }
     componentDidMount(){
         axios.get('http://localhost:3000/teacher/settings/classes',
@@ -35,7 +36,13 @@ class ClassList extends React.Component{
     render(){
         return(
             <div>
+            {
+                //Page title
+            }
                 <h3>{this.props.lang === 'English' ? 'Classes' : 'Clases'}</h3>
+            {
+                //Display class list items
+            }
                 {this.props.classes.map((class_info) => {
                     return <ClassListItem key={class_info.classInfoId} class={class_info}/>
                 })}
@@ -45,6 +52,7 @@ class ClassList extends React.Component{
     }
 }
 
+//Map list of loaded classes and current language state to the component properties. 
 const mapStateToProps = (state) => {
     return{
         classes: state.classes,
@@ -52,4 +60,5 @@ const mapStateToProps = (state) => {
     }
 }
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(ClassList);

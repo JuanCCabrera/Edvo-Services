@@ -2,39 +2,47 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Main.css';
 
+/**
+ * Form used so a user may send his or her doubts to Edvo Tech's staff. 
+ */
 class ContactForm extends React.Component{
     constructor(props){
         super(props);
+        //The form must include a user's name, email and a message. 
         this.state = {
             name: '',
             email: '',
             message: '',
-            contactError: '' 
+            contactError: false 
         };
     }
 
+    //Change name in local state. 
     onNameChange = (e) => {
         const name = e.target.value;
         this.setState(() => ({name}));
     }
 
+    //Change email in local state
     onEmailChange = (e) => {
         const email = e.target.value;
         this.setState(() => ({email}));
     }
 
+    //Change message in local state
     onMessageChange = (e) => {
         const message = e.target.value;
         this.setState(() => ({message}));
     }
 
 
+    //Submit contact form
     onSubmit = (e) => {
         e.preventDefault();
-        if(!this.state.name || !this.state.email || !this.state.message){
-            this.setState(() => ({contactError: 'Please fill all blank fields'})); 
-        }else{
-            this.setState(() => ({contactError: ''}));
+        if(!this.state.name || !this.state.email || !this.state.message){   //Generate error if there are missing fields
+            this.setState(() => ({contactError: true})); 
+        }else{  //Otherwise, submit form information
+            this.setState(() => ({contactError: false}));
             this.props.onSubmit({
                 name: this.state.name,
                 email: this.state.email,
@@ -100,10 +108,12 @@ class ContactForm extends React.Component{
     }
 }
 
+//Map current language to component properties
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to controller
 export default connect(mapStateToProps)(ContactForm);

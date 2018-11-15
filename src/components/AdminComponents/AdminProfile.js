@@ -4,7 +4,9 @@ import BasicInfoProfileForm from '../BasicInfoProfileForm';
 import {Redirect} from 'react-router-dom';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
-
+/**
+ * Layout for Administrator Profile page.  
+ */
  const AdminProfile = (props) => (
     <Can
     role={auth0Client.getRole()}

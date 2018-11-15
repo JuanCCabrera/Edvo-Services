@@ -6,6 +6,10 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 
+/**
+ * Manage Questions page layout. 
+ * @param {*} props - Default properties
+ */
 const ManageQuestions = (props) => (
     <Can
     role={auth0Client.getRole()}

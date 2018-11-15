@@ -5,6 +5,10 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 
+/**
+ * Mentor profile page layout. 
+ * @param {*} props - Default properties 
+ */
  const MentorProfile = (props) => (
     <Can
     role={auth0Client.getRole()}

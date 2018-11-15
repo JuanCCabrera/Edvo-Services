@@ -1,3 +1,4 @@
+//Reducer default state
 const teacherRecommendationsReducerDefaultState = {
     recommendations: [],
     favoriteRecommendations: [],
@@ -15,20 +16,29 @@ const teacherRecommendationsReducerDefaultState = {
     }
 };
 
+/**
+ * teacherRecommendationsReducer - Receives and logs recommendation information to display in the Teacher Recommendations page and on the Recommendation Modal. 
+ * Also logs information relating to recommendation ratings and favorite recommendations. 
+ * @param {*} state - Reducer state
+ * @param {*} action - Action received from dispatcher
+ */
 const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefaultState, action) => {
     switch(action.type){
+        //Log recommendation to display in the Teacher Recommendations page. 
         case 'LOAD_TEACHER_RECOMMENDATION':
             return {
                 recommendations: [...state.recommendations, action.recommendation],
                 favoriteRecommendations: [...state.favoriteRecommendations],
                 selectedRecommendation: state.selectedRecommendation
             }
+        //Log recommendation to display in both the Teacher Recommendations List and the Favorite Recommendations List.
         case 'LOAD_TEACHER_FAVORITE_RECOMMENDATION':
             return{
                 recommendations: [...state.recommendations, action.favoriteRecommendation],
                 favoriteRecommendations: [...state.favoriteRecommendations, action.favoriteRecommendation],
                 selectedRecommendation: state.selectedRecommendation
             }
+        //Log recommendation to display in the Recommendation Modal.
         case 'SELECT_RECOMMENDATION':
             return{
                 recommendations: [...state.recommendations],
@@ -52,6 +62,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
                     })
                 }
         }
+        //Clear recommendation log to make Recommendation Modal invisible.
         case 'CLEAR_SELECTED_RECOMMENDATION':
             return{
                 recommendations: [...state.recommendations],
@@ -69,6 +80,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
                     isFavorite: undefined
                 }
             }
+        //Modify recommendation rating and log it.
         case 'RATE_RECOMMENDATION':
             return{
                 recommendations: state.recommendations.map((reco) => {
@@ -88,6 +100,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
                     rate: action.rate
                 }
             }
+        //Modify recommendation favorite status (mark as favorite), log it, and add recommendation to the Favorite Recommendations List. 
         case 'ADD_FAVORITE_RECOMMENDATION':
         const newFavorites = [...state.favoriteRecommendations, action.favoriteRecommendation];
             return{
@@ -104,6 +117,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
                     })
                 }
             }
+        //Modify recommendation favorite status (unfavorite), log it, and remove recommendation from the Favorite Recommendations List. 
         case 'REMOVE_FAVORITE_RECOMMENDATION':
             return{
                 recommendations: [...state.recommendations],
@@ -115,6 +129,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
                     isFavorite: undefined
                 }
             }
+        //Return existing state by default
         default: 
             return {...state}
     }
@@ -122,6 +137,7 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
 
 export default teacherRecommendationsReducer;
 
+//Recommendation Object Model
 /*
 {
 recommendation: {

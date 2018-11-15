@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import {connect} from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../Auth';
+import {loadProfile} from '../actions/profile';
 
 const reset = () => {
     console.log("RESETTING");
@@ -17,9 +18,13 @@ const reset = () => {
     {headers: { 'content-type': 'application/json' }});
   };
 
+/**
+ * Basic information profile form available in the settings page of every user type. It allows users to change their name, last name, gender, and date of birth as well as access means to change their password. 
+ */
 class BasicInfoProfileForm extends React.Component{
     constructor(props){
         super(props);
+        //The name, last name, date of birth and gender fields must be filled to submit the form. 
         this.state={
             props: props,
             name: props.info ? props.info.name : '',
@@ -42,42 +47,47 @@ class BasicInfoProfileForm extends React.Component{
             console.log("ERROR: ", error);
         })
         .then(response => {
-            console.log("DOB: ", response.data.info[0].dob);
-            this.setState({   
-            name: response.data.info[0].name,
-            lastName: response.data.info[0].lastname,
-            gender: response.data.info[0].gender,
-            dateOfBirth: moment(response.data.info[0].dob)
+            console.log("PROFILE REAL DATA1: ", response.data.info.name);
+            console.log("PROFILE REAL DATA2: ", response.data.info.lastname);
+            console.log("PROFILE REAL DATA3: ", response.data.info.dob);
+            console.log("PROFILE REAL DATA4: ", response.data.info.gender);
+            
+            this.props.dispatch(loadProfile({name: response.data.info.name, lastName: response.data.info.lastname,
+                 dateOfBirth: response.data.info.dob, gender: response.data.info.gender}));
         });
-        })
-        console.log("TOKEN BASIC: ", auth0Client.getIdToken());
     }
 
+    //Change name in local state
     onNameChange = (e) => {
         const name = e.target.value;
         this.setState(() => ({name}));
     }
 
+    //Change lastName in local state
     onLastNameChange = (e) => {
         const lastName = e.target.value;
         this.setState(() => ({lastName}));
     }
 
+    //Change gender in local state
     onGenderChange = (e) => {
         const gender = e.target.value;
         this.setState(() => ({gender}));
     }
 
+    //Change date of birth in local state
     onDateChange = (dateOfBirth) => {
         if(dateOfBirth){
             this.setState(() => ({dateOfBirth}));
         }
     };
 
+    //Change calendarFocused in local state
     onFocusChange = ({focused}) => {
         this.setState(() => ({calendarFocused: focused}));
     };
 
+    //Lead to change password page (Requires integration)
     changePassword = (e) => {
         e.preventDefault();
         reset();
@@ -85,6 +95,7 @@ class BasicInfoProfileForm extends React.Component{
         //TO-DO Modify password and update in database
     }
 
+    //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/admin/settings/info', {
@@ -100,6 +111,7 @@ class BasicInfoProfileForm extends React.Component{
                 this.state.props.history.push('/admin/home');
         });
         console.log('submitted');
+        console.log(this.state);
         if(this.state.name === '' || this.state.lastName === ''){
             this.setState(() => ({formIncompleteError: true}));
         }else{
@@ -116,16 +128,31 @@ class BasicInfoProfileForm extends React.Component{
                 <div>
                     <form onSubmit={this.onSubmit}>
                     <div>
+                        {
+                            //Name input field
+                        }
                         <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
+                        {console.log("PROFILE NAME: ", this.state)}
                         <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
                     
                         <br/>
+                        {
+                            //Last name input field
+                        }
                         <label>{this.props.lang === 'English' ? 'Last Name' : 'Apelido'}:</label>
                         <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}/>
 
                         <br/>
+                        {
+                            //Date of birth input field
+                        }
                         <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
+                        {
+                            //Date of birth selector
+                        }
+
+                    {/*
                         <SingleDatePicker
                         date={this.state.dateOfBirth}
                         onDateChange={this.onDateChange}
@@ -134,8 +161,18 @@ class BasicInfoProfileForm extends React.Component{
                         numberOfMonths={1}
                         isOutsideRange={day => (moment().diff(day) < 0)}
                         />
+                    */}
+
+                        <DatePicker
+                        selected={this.state.dateOfBirth}
+                        onChange={this.onDateChange}
+                        />
+
                         
                         <br/>
+                        {
+                            //Gender radio selector
+                        }
                         <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                         <br/>
                         <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}<br/>
@@ -144,13 +181,23 @@ class BasicInfoProfileForm extends React.Component{
                             //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Gender' : 'Género'} <br/>
                         }
 
+                        {
+                            //Change password button
+                        }
                         <button onClick={this.changePassword}>{this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} </button>
 
+                        {
+                            //Error message displayed if there is a missing field
+                        }
                         {this.state.formIncompleteError === true && 
                         <div className="text-danger">
                             {this.props.lang === 'English' ? <p>Please fill all fields before saving.</p> : <p>Por favor, llene todos los espacios antes de guardar la información.</p>}
                         </div>}
-                        <button onClick={this.onSubmit}>{this.props.lang === 'English ' ? 'Save' : 'Guardar'}</button>
+
+                        {
+                            //Submit button
+                        }
+                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Save' : 'Guardar'}</button>
                     </div>
 
                     </form>
@@ -160,10 +207,13 @@ class BasicInfoProfileForm extends React.Component{
     }
 }
 
+//Map current language state to components properties. 
 const mapStateToProps = (state) => {
     return {
-        lang: state.language.lang
+        lang: state.language.lang,
+        info: state.profile
     }
 }
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(BasicInfoProfileForm);

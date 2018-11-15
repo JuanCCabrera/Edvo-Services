@@ -8,6 +8,10 @@ import auth0Client from '../../Auth';
 import axios from 'axios';
 import './Login.css';
 
+/**
+ * Signs user out from their account and moves him or her to the Main page. 
+ * @param {*} props - Default component properties
+ */
 const signOut = (props) => {
     auth0Client.signOut();
     console.log("HISOTRY: ", props.history);
@@ -25,6 +29,11 @@ const signOut = (props) => {
     {headers: { 'content-type': 'application/json' }});
   };
 
+/**
+ * The Login page contains buttons to login and register to the application through the Auth0 third-party client. 
+ * Additionally, it contains static text to motivate users to sign up to the service. 
+ * @param {*} props - Contains default properties and current language state
+ */
 const LoginPage = (props) => (
     <div>
         <div className="Edvo-Shadow">
@@ -82,10 +91,12 @@ const LoginPage = (props) => (
     </div>
 );
 
+//Map current language state to component properties.
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 } 
 
+//Connect component to controller. 
 export default connect(mapStateToProps)(LoginPage);
