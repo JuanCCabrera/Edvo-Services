@@ -52,22 +52,27 @@ class AskQuestionForm extends React.Component{
                 {
                     //Subject input field
                 }
+                    <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: </p>
                     <input
+                    className="form-control"
                     type = "text"
-                    placeholder = "Subject"
+                    placeholder = {this.props.lang === 'English' ? 'Subject' : 'Tema'}
                     value = {this.state.subject}
                     onChange = {this.onSubjectChange}/>
                     <br/>
                 {
                     //Question body input field
                 }
-                    <input
-                    type = "textarea"
-                    placeholder = "Insert your question here."
+                    <p>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </p>
+                    <textarea
+                    className="form-control"
+                    type = "text"
+                    placeholder = {this.props.lang === 'English' ? 'Write your question here.' : 'Escriba su pregunta en este espacio.'}
+                    cols='41'
+                    rows='6'
                     value = {this.state.body}
                     onChange = {this.onBodyChange}
                     />
-                    <br/>
                     {
                         //Message displayed if an attempt is made to submit the form without filling all fields. 
                     }
@@ -76,7 +81,15 @@ class AskQuestionForm extends React.Component{
                             {this.props.lang === 'English' ? <p>Please fill all fields before sending a question.</p> : <p>Por favor, llene todos los espacios en blanco antes de enviar una pregunta.</p>}
                         </div>
                     }
-                    <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</button>
+                    
+                    <div className="container-fluid">
+                        <div className="row text-center">
+                            <div>
+                                <button className="btn btn-item send_button" onClick={this.onSubmit}>
+                                    <p>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</p></button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
              </div>
         );

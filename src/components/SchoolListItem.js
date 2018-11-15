@@ -17,29 +17,38 @@ import {removeSchool} from '../actions/school';
 */
 
 const SchoolListItem = (props) => (
-    <div>
+    <div className="item-card">
         {
             //School name
         }
-        <h4>{props.school.name}</h4>
+        <p className="item__body card-title">{props.school.name}</p>
         {
             //School location
         }
-        <h5>{props.lang === 'English' ? 'Location' : 'Localización'}: {props.school.location}</h5>
+        <p>{props.lang === 'English' ? 'Location' : 'Localización'}: {props.school.location}</p>
         {
             //School type
         }
-        <h5>{props.lang === 'English' ? 'Type' : 'Tipo'}: {props.school.type}</h5>
+        <p>{props.lang === 'English' ? 'Type' : 'Tipo'}: {props.school.type}</p>
         {
             //Number of accounts linked to the school
         }
-        <h5>{props.lang === 'English' ? 'Accounts Linked' : 'Cuentas Enlazadas'}: {props.school.numAccounts}</h5>
+        <p>{props.lang === 'English' ? 'Accounts Linked' : 'Cuentas Enlazadas'}: 
+            <div className="badge" style={{marginLeft: '1rem', backgroundColor: '#5933AA'}}>
+                {props.school.numAccounts}
+            </div>
+        </p>
+
         {
             //Button to remove school from list
         }
         <button onClick={() => {
             props.dispatch(removeSchool({id: props.school.id}));
-        }}>{props.lang === 'English' ? 'Remove' : 'Remover'}</button>
+        }}>
+            <div className="btn btn-item">
+                {props.lang === 'English' ? 'Remove' : 'Remover'}
+            </div>
+        </button>
     </div>
 );
 

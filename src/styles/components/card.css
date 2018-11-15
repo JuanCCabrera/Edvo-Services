@@ -1,0 +1,91 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.low_card_title_margin p{
+    margin-bottom: 3rem;
+}
+
+.card-title{
+    font-weight: normal;
+    font-size: 1.7rem;
+    color: #5933AA;
+    margin-bottom: 1rem;
+}
+
+.item-card {
+    /* Add shadows to create the "card" effect */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    min-height: 14rem;
+    margin: 1.5rem 1.0rem;
+    padding: 1.5rem 1.5rem;
+}
+
+.btn-item{
+    background-color: #5933AA;
+    color: white;
+    font-weight: normal;
+}
+
+.btn-item:enabled{
+    background-color: #5933AA;
+    color: white;
+    font-weight: normal;
+}
+
+.btn-item:hover{
+    color: #5933AA;
+    background-color: white;
+    font-weight: normal;
+    border: 1px solid #5933AA;
+}
+
+.item-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    width: 35rem;
+    margin: 1rem 1rem;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    padding-bottom: 3rem; 
+    min-height: 23rem;
+}
+
+.card_left_margin{
+    margin-left: 3.3rem;
+}
+
+.big-card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+}
+
+.withMargins{
+    margin: 15px 15px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}

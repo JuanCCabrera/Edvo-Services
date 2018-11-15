@@ -42,32 +42,45 @@ class AnswerQuestionForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <QuestionButtonList/>
-                    {
-                        //Question
-                    }
-                    <h3> {this.props.lang === 'English' ? 'Question' : 'Pregunta'} </h3>
-                        {this.props.question.question}
-                    {
-                        //Answer input field
-                    }
-                    <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
-                        <textarea type="text" value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
-                        <br/>
-                    {
-                        //Message displayed when trying to submit an answer without filling the answer input field. 
-                    }
-                        {this.state.answerError}
-                        <br/>
-                        {this.state.answerError === true && 
-                            <div className="text-danger">
-                                {this.props.lang === 'English' ? <p>Please fill the 'Answer' field before submitting an answer.</p> : <p>Por favor, llene el espacio de 'Respuesta' antes de guardar la respuesta.</p>}
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-2 text-center well">
+                            <QuestionButtonList/>
                             </div>
-                        }
-                        {
-                            //Button to submit an answer. 
-                        }
-                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Answer' : 'Responder'}</button>
+                            <div className="col-sm-1"/>
+                            <div className="col-sm-9 item__body">
+                            {
+                                //Question
+                            }
+                            <h3> {this.props.lang === 'English' ? 'Question' : 'Pregunta'} </h3>
+                                {this.props.question.question}
+                            {
+                                //Answer input field
+                            }
+                            <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
+                                <textarea type="text" rows='10' cols='90' required value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
+                                <br/>
+                            {
+                                //Message displayed when trying to submit an answer without filling the answer input field. 
+                            }
+                                {this.state.answerError}
+                                <br/>
+                                {this.state.answerError === true && 
+                                    <div className="text-danger">
+                                        {this.props.lang === 'English' ? <p>Please fill the 'Answer' field before submitting an answer.</p> : <p>Por favor, llene el campo de 'Respuesta' antes de guardar la respuesta.</p>}
+                                    </div>
+                                }
+                                {
+                                    //Button to submit an answer. 
+                                }
+                                <button onClick={this.onSubmit}>
+                                    <div className="btn btn-default">
+                                        {this.props.lang === 'English' ? 'Answer' : 'Responder'}
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         );

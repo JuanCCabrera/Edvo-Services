@@ -311,6 +311,7 @@ class CreateRecommendationForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state);
         //Set error message if there are any required fields which are not filled upon submission. 
         if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] ){
             this.setState(() => ({creationError: true}));

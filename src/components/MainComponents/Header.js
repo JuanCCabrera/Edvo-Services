@@ -9,15 +9,15 @@ import {swapLanguage} from '../../actions/language';
  * @param {*} props - Contains default properties and current language state. 
  */
 const Header = (props) => (
-    <div className = "navbar header">
-        <div className="container-fluid">
-            <ul className="nav navbar-nav font-weight-bold">
+    <div className = "header">
+        <div className="container-fluid topnav">
+            <ul className="row nav navbar-nav font-weight-bold">
                 {
                     //Link to main page
                 }
                 <li>
                     <NavLink to="/" activeClassName="is-active" exact={true}>
-                        {props.lang === 'English' ? 'Home' : 'Inicio'}
+                        <div className="text-white navbar__text">{props.lang === 'English' ? 'Home' : 'Inicio'}</div>
                     </NavLink> 
                 </li>
                 {
@@ -25,7 +25,7 @@ const Header = (props) => (
                 }
                 <li>
                     <NavLink to="/about" activeClassName="is-active">
-                        {props.lang === 'English' ? 'About' : 'Acerca De'} 
+                        <div className="text-white navbar__text">{props.lang === 'English' ? 'About' : 'Acerca De'} </div>
                     </NavLink>
                 </li>
                 {
@@ -33,22 +33,26 @@ const Header = (props) => (
                 }
                 <li>
                     <NavLink to="/plans" activeClassName="is-active">
-                        {props.lang === 'English' ? 'Plans' : 'Ofertas'} 
+                        <div className="text-white navbar__text">{props.lang === 'English' ? 'Plans' : 'Ofertas'}</div>
                     </NavLink>
                 </li>
                 {
                     //Link to Edvo Tech blog
                 }
                 <li>
-                    <a href="https://medium.com/@EdvoTech" target='_blank'>Blog</a>
+                    <a href="https://medium.com/@EdvoTech" target='_blank'>
+                        <div className="text-white navbar__text">
+                            Blog
+                        </div>
+                    </a>
                 </li>
 
                 {
                     //Link to Login page
                 }
                 <li>
-                    <NavLink to="/login" activeClassName="is-active">
-                        {props.lang === 'English' ? 'Login' : 'Entrar'} 
+                    <NavLink className="inactive" activeClassName="active" to="/login">
+                        <div className="text-white navbar__text"><p>{props.lang === 'English' ? 'Login' : 'Entrar'}</p> </div>
                     </NavLink>
                 </li>
             </ul>
@@ -57,7 +61,7 @@ const Header = (props) => (
                 //Swap language button
             }
             <li>
-                <div style={{padding: '15px 20px 15px 20px'}} onClick={() => {
+                <div className="clickable" style={{padding: '15px 20px 15px 20px'}} onClick={() => {
                         props.dispatch(swapLanguage());
                     }}>
                     {props.lang === 'English' ? 'Español' : 'English'} 
@@ -67,8 +71,12 @@ const Header = (props) => (
                 //Edvo Tech logo
             }
             <li>
-                <div className="logo med-size text-white" style={{marginTop: '0.5rem', marginRight: '20.0rem'}}>
-                    <p>edvo</p>
+                <div className="logo text-white" style={{marginTop: '0.5rem', marginRight: '10.0rem'}}>
+                    <NavLink activeClassName="is-active" to="/" style={{textDecoration: 'none', color: 'white', fontSize: '2.6rem'}}>
+                        <div>
+                            <p>edvo</p>
+                        </div>
+                    </NavLink>
                 </div>
             </li>
             </ul>

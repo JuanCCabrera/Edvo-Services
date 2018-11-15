@@ -1,0 +1,30 @@
+.item__body{
+    word-break: break-all;
+}
+
+.pending__title{
+    color: white;
+    background-color:#854dff;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 4.0rem;
+    border: 1rem hidden #854dff;
+    border-radius: 3rem;
+    margin: 2.7rem auto;
+}
+
+.pending__title__2{
+    color: white;
+    background-color:#5933AA;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    width: 90%;
+    font-size: 4.0rem;
+    border: 0.8rem outset #5933AA;
+    border-radius: 3rem;
+    margin: 2.7rem auto;
+}

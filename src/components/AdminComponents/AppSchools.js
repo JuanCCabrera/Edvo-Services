@@ -11,23 +11,58 @@ import InstitutionFilters from '../Filters/InstitutionFilters';
  * @param {*} props - Component properties
  */
 const AppSchools = (props) => (
-    <div>
-    {
-        //Links to traverse Administrator Settings
-    }
-        <AdminButtonList/>
-    {
-        //Link to Create Insitutions page
-    }
-        <Link to='/admin/settings/schools/add'><button>{props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}</button></Link>
-    {
-        //Institution filters
-    }
-        <InstitutionFilters/>
-    {
-        //List of all institutions(schools) registered in the system
-    }
-        <SchoolList/>
+    <div className="background-home">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-2 text-center well">
+                    {
+                        //Links to traverse Administrator Settings
+                    }
+                        <AdminButtonList/>
+                    
+                </div>
+                <div className="col-sm-1"/>
+                <div className="col-sm-9">
+                    
+                    {
+                        //Page title
+                    }
+                    <div className="text-center pending__title__2">
+                        <p>{props.lang === 'English' ? 'Institutions' : 'Instituciones'}</p>
+                        <hr className="break"/>
+                    </div>
+
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                {
+                                    //Institution filters
+                                }
+                                    <InstitutionFilters/>
+                            </div>
+                            <div className="col-sm-6">
+                                {
+                                    //Link to Create Insitition page
+                                }
+                                    <Link to='/admin/settings/schools/add'>
+                                        <button className="btn btn-item">
+                                            {props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'} 
+                                            <span style={{marginLeft: '1rem'}}>
+                                                <i className="fas fa-building"></i>
+                                            </span>
+                                        </button>
+                                    </Link>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        {
+                            //List of all institutions(schools) registered in the system
+                        }
+                            <SchoolList/>
+                </div>
+            </div>
+        </div>
     </div>
 );
 

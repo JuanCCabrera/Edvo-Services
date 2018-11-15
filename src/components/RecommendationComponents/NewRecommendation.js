@@ -9,21 +9,28 @@ import {connect} from 'react-redux';
  * @param {*} props - Default properties and current language state. 
  */
 const NewRecommendation = (props) => (
-    <div>
-    {
-        //Links to traverse the Recommendations Control page. 
-    }
-        <RecommendationButtonList/>
-    {
-        //Page title
-    }
-        <h2> {props.lang === 'English' ? 'Create Recommendation' : 'Crear Recomendación'} </h2>
-    {
-        //Form to create a new recommendation
-    }
-        <CreateRecommendationForm isEdit={false} onSubmit={(recommendation) => {
-            props.dispatch(createRecommendation(recommendation));
-        }}/>
+    <div className="container">
+        <div className="row">
+            <div className="col-sm-2 text-center well">
+                {
+                    //Links to traverse the Recommendations Control page. 
+                }
+                    <RecommendationButtonList/>
+            </div>
+            <div className="col-sm-1"/>
+            <div className="col-sm-9">
+                    {
+                        //Page title
+                    }
+                        <h2> {props.lang === 'English' ? 'Create Recommendation' : 'Crear Recomendación'} </h2>
+                    {
+                        //Form to create a new recommendation
+                    }
+                        <CreateRecommendationForm isEdit={false} onSubmit={(recommendation) => {
+                            props.dispatch(createRecommendation(recommendation));
+                        }}/>
+            </div>
+        </div>
     </div>
 );
 

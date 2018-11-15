@@ -62,7 +62,7 @@ class ContactForm extends React.Component{
                 }
                 {this.state.contactError === true && 
                 <div className="text-danger">
-                    {this.props.lang === 'English' ? <p>Please fill all blank fields.</p> : <p>Por favor, llene todos los espacios en blanco.</p>}
+                    {this.props.lang === 'English' ? <p>Please fill all blank fields.</p> : <p>Por favor, llene todos los campos.</p>}
                 </div>}
 
                 <form onSubmit = {this.onSubmit}>
@@ -87,8 +87,8 @@ class ContactForm extends React.Component{
                     {
                         //Message input field
                     }
-                    <input
-                    type = "textarea"
+                    <textarea
+                    type = "text"
                     placeholder = "Message"
                     value = {this.state.message}
                     onChange = {this.onMessageChange}/>

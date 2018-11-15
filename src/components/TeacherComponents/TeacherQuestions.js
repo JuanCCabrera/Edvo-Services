@@ -11,17 +11,17 @@ import TeacherQuestionFilters from '../Filters/TeacherQuestionFilters';
 const TeacherQuestions = (props) => (
     <div>
     {
+        //Teacher Favorites list. 
+    }
+        <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>
+        <FavoriteTeacherQuestionsList/>
+
+    {
         //Teacher Questions list and filters for the list. 
     }
         <h2>{props.lang === 'English' ? 'Questions' : 'Preguntas'}</h2>
         <TeacherQuestionFilters/>
         <TeacherQuestionsList/>
-
-    {
-        //Teacher Favorites list. 
-    }
-        <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>
-        <FavoriteTeacherQuestionsList/>
     </div>
 );
 

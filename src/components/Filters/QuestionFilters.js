@@ -12,13 +12,16 @@ class QuestionFilters extends React.Component{
     
     render() {
         return (
-            <div className="form-group">
+            <div className="form-group row">
                 {
                     //Filter text input
                 }
-                <input className="form-control" type="text" value ={this.props.filter.text} onChange={(e) => {
+                <div className="col-xs-12 col-sm-10 left-input-margin">
+                <input className="form-control" type="text" placeholder="Search" value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setQuestionsTextFilter(e.target.value));
                 }}/>
+                </div>
+                <div className="col-sm-2"/>
             </div>
         );
     }

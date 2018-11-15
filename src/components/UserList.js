@@ -65,10 +65,6 @@ class UserList extends React.Component{
         return(
             <div>
                 {
-                    //Page title
-                }
-                <h3>{this.props.lang === 'English' ? 'Users' : 'Usuarios'}</h3>
-                {
                     //List of Users
                 }
                 {this.state.displayedUsers.map((user) => {
@@ -81,7 +77,9 @@ class UserList extends React.Component{
                 {
                     //Pagination component
                 }
-                {(this.props.users.length !== 0) &&
+                <div className="text-center">
+                
+                {(this.props.users.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}
@@ -89,6 +87,7 @@ class UserList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
                 {
                     //Message displayed if there are no users in the list
                 }

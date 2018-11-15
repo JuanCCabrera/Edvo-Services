@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
+import HomeRecommendationsListItem from './HomeRecommendationsListItem';
 
 /**
  * The Top Recommendations list contains the three top-rated recommendations of a Teacher user. 
@@ -12,7 +12,7 @@ const TopRecommendationsList = (props) => (
         //Top Recommendations list items
     }
         {props.recommendation.map((reco) => {
-            return <TeacherRecommendationsListItem key={reco.recoID} reco={reco}/>
+            return <HomeRecommendationsListItem key={reco.recoID} reco={reco}/>
         })}
 
     {

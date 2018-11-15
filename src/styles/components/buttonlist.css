@@ -1,0 +1,32 @@
+.nav__button{
+    min-width: 10rem;
+    min-height: 7rem;
+    color: #5933AA;
+    background-color: white;
+    text-decoration: none;
+    border: 1px solid #5933AA;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.nav__button__text{ 
+    float:none;
+    display:inline-block;
+    vertical-align: middle;
+    margin-top: 1.1rem;
+}
+
+.nav__button:hover{
+    color: #5933AA;
+    border: 1px solid white;
+    text-decoration: none;
+}
+
+.well{
+    margin: 2.7rem auto;
+    min-width: 15rem;
+    background-color: rgba(199, 219, 247, 0.603);
+    padding-top: 0;
+    padding-bottom: 30px;
+
+}

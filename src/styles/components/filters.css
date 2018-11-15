@@ -1,0 +1,12 @@
+.btn-filter{
+    background-color:white;
+    border: 1px solid #ccc;
+}
+
+.btn-filter:disabled{
+    cursor: default;
+}
+
+.btn-filter:hover{
+    cursor: default;
+}

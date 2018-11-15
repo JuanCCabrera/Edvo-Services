@@ -8,10 +8,17 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
  * @param {*} props - Default properties
  */
 const ManageRecommendations = (props) => (
-    <div>
-        <RecommendationButtonList/>
-        <RecommendationsFilters/>
-        <ManageRecommendationsList/>
+    <div className = "container">
+        <div className="row">
+            <div className="col-sm-2 text-center well">
+                <RecommendationButtonList/>
+            </div>
+            <div className="col-sm-1"/>
+            <div className="col-sm-9 big-card">
+                <RecommendationsFilters/>
+                <ManageRecommendationsList/>
+            </div>
+        </div>
     </div>
 );
 

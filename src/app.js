@@ -54,7 +54,7 @@ store.dispatch(loadRecommendation({id: uuid(), title: 'A New Method for Teaching
 store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair Chance', header: 'Test data', multimedia: 'none', description: '#8'}));
 
 //Generating Admin/Mentor Questions Test Data
-store.dispatch(loadQuestion({question: 'They misbehave almost every day. They probably do not think I am a good leader. What should I do?', askedDate: '2018-10-28 06:20:25', subject: 'How can I make my students behave?', userId: uuid()}));
+store.dispatch(loadQuestion({question: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAThey misbehave almost every day. They probably do not think I am a good leader. What should I do?', askedDate: '2018-10-28 06:20:25', subject: 'How can I make my students behave?', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'I wish to study abroad to learn more about Spanish culture. Which location would work well to further my studies?', askedDate: '2018-10-27 12:24:24', subject: 'Where should I study abroad for more experience?', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'How can I integrate technolgy into the classroom?', askedDate: '2018-10-28 06:20:21', subject: 'Technology Integration Question', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'Hi there! How do I use the recommendations page?', askedDate: '2018-10-27 12:24:14', subject: 'Recommendation Page Question', userId: uuid()}));
@@ -75,7 +75,7 @@ const recoTwoID = uuid();
 const recoThreeID = uuid();
 
 store.dispatch(loadTeacherTopRecommendation({recoID: recoOneID, title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: 'Learn more about how to integrate technology using this video!', multimedia: 'multimediaLink', date: '2018-10-27 06:20:19', rating: 5}));
-store.dispatch(loadTeacherTopRecommendation({recoID: recoTwoID, title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-26 06:20:20', rating: 5}));
+store.dispatch(loadTeacherTopRecommendation({recoID: recoTwoID, title: 'Updating Old Material', header: 'asoihdogihs osihdgo soihg osihdg osoih soidhg sdoih soighsoihg sidhgoihs odigh soidh soihg osidhgoishdgo ishdogihs odihosidhgo isodihgoishdoig hsoidh gois hogih soigh osdih goish dogihso soighosidh gosih goishdogihs oighso dogh soihosihgosihdogh soi go sodghosidhgos dogh soidhgosinsdoinvoihwoi oih soi dgoihs doigh osidhgo sihg oish dgoihs ', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-26 06:20:20', rating: 5}));
 store.dispatch(loadTeacherTopRecommendation({recoID: recoThreeID, title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: 'multimediaLink', date: '2018-10-25 06:20:21', rating: 5}));
 
 //Generating Teacher Recommendations Test Data
@@ -100,6 +100,7 @@ store.dispatch(loadTeacherQuestion({askedDate: '2018-10-07 07:30:29', subject: '
 
 //Generate Profile Test Data
 store.dispatch(loadProfile({name: 'Henry', lastName: 'Ford', dateOfBirth: moment(), gender: 'male'}));
+store.dispatch(loadProfile({name: 'Eustance', lastName: 'Fiora', dateOfBirth: moment(), gender: 'male'}));
 
 class App extends React.Component{
     //Check if login is required by the user

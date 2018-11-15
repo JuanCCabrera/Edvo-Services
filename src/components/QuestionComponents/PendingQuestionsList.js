@@ -65,10 +65,6 @@ class PendingQuestionsList extends React.Component {
         return (
             <div>
             {
-                //Page title
-            }
-                <h3>{this.props.lang === 'English' ? 'Pending Questions' : 'Preguntas Pendientes'}</h3>
-            {
                 //Pending Questions List
             }
                 {this.state.displayedQuestions.map((question) => {

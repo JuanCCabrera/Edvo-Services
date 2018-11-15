@@ -108,7 +108,7 @@ class CreateInstitutionForm extends React.Component{
                         }
                         {this.state.createInstitutionError === true && 
                             <div className="text-danger">
-                                {this.props.lang === 'English' ? <p>Please fill all the blank fields before submitting a new institution.</p> : <p>Por favor, llene todos los espacios restantes antes de guardar la institución nueva.</p>}
+                                {this.props.lang === 'English' ? <p>Please fill all the blank fields before submitting a new institution.</p> : <p>Por favor, llene todos los campos antes de guardar la institución nueva.</p>}
                             </div>
                         }
                         {
