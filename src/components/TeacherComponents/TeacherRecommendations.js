@@ -9,20 +9,34 @@ import TeacherRecommendationsFilters from '../Filters/TeacherRecommendationsFilt
  * @param {*} props - Default properties and current language state. 
  */
 const TeacherRecommendations = (props) => (
-    <div>
-        {
-            //Favorite Recommendations list
-        }
-        <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>
-        <FavoriteRecommendationsList/>
+    <div className="background-home">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-4">
+                    {
+                        //Favorite Recommendations list
+                    }
+                    <div className="text-center pending__title__2">
+                        <p>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</p>
+                        <hr className="break"/>
+                    </div> 
+                    <FavoriteRecommendationsList/>
+                </div>
+                <div className="col-sm-1"/>
+                <div className="col-sm-7">
 
-        {
-            //Recommendations List and list filters
-        }
-        <h2>{props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</h2>
-        <TeacherRecommendationsFilters/>
-        <TeacherRecommendationsList/>
-
+                {
+                    //Recommendations List and list filters
+                }
+                <div className="text-center pending__title__2">
+                <p>{props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</p>
+                <hr className="break"/>
+                </div>
+                <TeacherRecommendationsFilters/>
+                <TeacherRecommendationsList/>
+                </div>
+            </div>
+        </div>
     </div>
 );
 

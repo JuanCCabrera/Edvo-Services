@@ -9,19 +9,33 @@ import TeacherQuestionFilters from '../Filters/TeacherQuestionFilters';
  * @param {*} props - Default properties and current language state. 
  */
 const TeacherQuestions = (props) => (
-    <div>
-    {
-        //Teacher Favorites list. 
-    }
-        <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>
-        <FavoriteTeacherQuestionsList/>
-
-    {
-        //Teacher Questions list and filters for the list. 
-    }
-        <h2>{props.lang === 'English' ? 'Questions' : 'Preguntas'}</h2>
-        <TeacherQuestionFilters/>
-        <TeacherQuestionsList/>
+    <div className="background-home">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-4">
+                    {
+                        //Teacher Favorites list. 
+                    }
+                    <div className="text-center pending__title__2">
+                    <p>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</p>
+                    <hr className="break"/>
+                    </div>
+                    <FavoriteTeacherQuestionsList/>
+                </div>
+                <div className="col-sm-1"/>
+                <div className="col-sm-7">
+                {
+                    //Teacher Questions list and filters for the list. 
+                }
+                    <div className="text-center pending__title__2 ">
+                        <p>{props.lang === 'English' ? 'Questions' : 'Preguntas'}</p>
+                        <hr className="break" style={{borderColor:'#5933AA'}}/>
+                    </div>
+                    <TeacherQuestionFilters/>
+                    <TeacherQuestionsList/>
+                </div>
+            </div>
+        </div>
     </div>
 );
 

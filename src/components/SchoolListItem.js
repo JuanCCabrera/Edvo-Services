@@ -33,11 +33,13 @@ const SchoolListItem = (props) => (
         {
             //Number of accounts linked to the school
         }
-        <p>{props.lang === 'English' ? 'Accounts Linked' : 'Cuentas Enlazadas'}: 
+        <span>{props.lang === 'English' ? 'Accounts Linked' : 'Cuentas Enlazadas'}: 
             <div className="badge" style={{marginLeft: '1rem', backgroundColor: '#5933AA'}}>
                 {props.school.numAccounts}
             </div>
-        </p>
+        </span>
+        <br/>
+        <br/>
 
         {
             //Button to remove school from list

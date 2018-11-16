@@ -13,8 +13,14 @@ class BasicInfoProfileForm extends React.Component{
         //The name, last name, date of birth and gender fields must be filled to submit the form. 
         this.state={
             name: props.info ? props.info.name : '',
+            nameError: '',
+
             lastName: props.info ? props.info.lastName : '',
+            lastNameError: '',
+
             dateOfBirth: props.info ? props.info.dateOfBirth : moment(),
+            dateOfBirthError: '',
+
             calendarFocused: false,
             gender: props.info ? props.info.gender : 'male',
             formIncompleteError: false
@@ -41,8 +47,17 @@ class BasicInfoProfileForm extends React.Component{
 
     //Change date of birth in local state
     onDateChange = (dateOfBirth) => {
-        if(dateOfBirth){
-            this.setState(() => ({dateOfBirth}));
+        var today=moment();
+        var difference = today.diff(dateOfBirth, 'years');
+        //Check if the selected date of birth falls between 18-90 years ago. 
+        if(dateOfBirth && (difference > 18 && difference < 90)){
+            this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
+        }else{
+            if(this.props.lang === 'English'){
+                this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+            }else{
+                this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+            }
         }
     };
 
@@ -59,11 +74,39 @@ class BasicInfoProfileForm extends React.Component{
         //TO-DO Modify password and update in database
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            //Change rendered error message if the language changes. 
+            if(this.props.lang === 'English'){
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'The name field must contain text.'}));
+                }
+                if(this.state.lastNameError){
+                    this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
+                }
+                if(this.state.dateOfBirthError){
+                    this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                }
+            }else{
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
+                }
+                if(this.state.lastNameError){
+                    this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'}))
+                }
+                if(this.state.dateOfBirthError){
+                    this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                }
+            }
+        }
+    }
+
     //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         if(this.state.name === '' || this.state.lastName === ''){
+            this.setState(() => ({formIncompleteError: true}));
+        }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError){
             this.setState(() => ({formIncompleteError: true}));
         }else{
             this.setState(() => ({formIncompleteError: false}));
@@ -91,24 +134,75 @@ class BasicInfoProfileForm extends React.Component{
                                 {
                                     //Name input field
                                 }
+                                <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                                <input type="text" placeholder="Name" className="form-control"  value={this.state.name} onChange={this.onNameChange}/>
-                            
+                                <input type="text" placeholder="Name" className="form-control" maxLength="100" onBlur={() => {
+                                    //Check if the name field only consists of spaces. 
+                                    if(this.state.name.match(/^\s+$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({nameError: 'The name field must contain text.'}));
+                                        }else{
+                                            this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'})); 
+                                        }
+                                    }else{
+                                        this.setState(() => ({nameError: ''}));
+                                    }
+                                }}
+                                value={this.state.name} onChange={this.onNameChange}/>
+                                
+                                {
+                                    //Name error
+                                }
+                                {this.state.nameError && 
+                                    <div>
+                                        <span className="text-danger"> 
+                                            {this.state.nameError}
+                                        </span>
+                                        <br/>
+                                    </div>}
                                 <br/>
+
+
                                 </div>
                                 <div className="col-sm-6">
                                 {
                                     //Last name input field
                                 }
+                                <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
-                                <input type="text" placeholder="Last Name" className="form-control" value={this.state.lastName} onChange={this.onLastNameChange}/>
+                                <input type="text" placeholder="Last Name" className="form-control" maxLength="100" onBlur={() => {
+                                    //Check if the last name field only consists of spaces. 
+                                    if(this.state.lastName.match(/^\s+$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
+                                        }else{
+                                            this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'})); 
+                                        }
+                                    }else{
+                                        this.setState(() => ({lastNameError: ''}));
+                                    }
+                                }}
+                                value={this.state.lastName} onChange={this.onLastNameChange}/>
 
+                                {
+                                    //Last name error
+                                }
+                                {this.state.lastNameError && 
+                                    <div>
+                                        <span className="text-danger"> 
+                                            {this.state.lastNameError}
+                                        </span>
+                                        <br/>
+                                    </div>}
                                 <br/>
+
+
                                 </div>
                             </div>
                         {
                             //Date of birth input field
                         }
+                        <span className="req">*</span>
                         <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
                         {
@@ -132,14 +226,22 @@ class BasicInfoProfileForm extends React.Component{
                         className="form-control" 
                         selected={this.state.dateOfBirth}
                         onChange={this.onDateChange}
+                        maxDate={moment()}
                         />
 
-                        
+                        {this.state.dateOfBirthError && 
+                            <div>
+                                <span className="text-danger"> 
+                                    {this.state.dateOfBirthError}
+                                </span>
+                                <br/>
+                            </div>}
                         <br/>
-                        <br/>
+
                         {
                             //Gender radio selector
                         }
+                        <span className="req">*</span>
                         <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                         <br/>
 
@@ -162,7 +264,7 @@ class BasicInfoProfileForm extends React.Component{
                         }
                         {this.state.formIncompleteError === true && 
                         <div className="text-danger" style={{marginTop: '2rem', marginBottom: '0'}}>
-                            {this.props.lang === 'English' ? <p>Please fill all fields before saving.</p> : <p>Por favor, llene todos los campos antes de guardar la información.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                         </div>}
 
                         <br/>

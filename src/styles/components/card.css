@@ -155,5 +155,9 @@ html, body {
     background-color: rgba(0, 0, 0, 0.096);
 }
 
+.front-card{
+    z-index: 9999;
+}
+
 
 

@@ -1,0 +1,55 @@
+.ReactModalPortal > div{
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay{
+    transition: opacity 200ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+.modal {
+    background: #464b5e;
+    color: white;
+    max-width: 30rem;
+    outline: none;
+    padding: 3.2rem;
+    text-align: center;
+}
+
+.modal-card{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    min-height: 14rem;
+    padding: 1.5rem 1.5rem;
+    outline: none;
+}
+
+.modal-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    
+}
+
+.modal__title{
+    margin: 0 0 2.7rem 0;
+}
+
+.modal__body {
+    margin: 0 0 3.2rem 0;
+    font-size: 2rem;
+    font-weight: 300;
+    word-break: break-all;
+}

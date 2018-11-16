@@ -348,11 +348,12 @@ class CreateRecommendationForm extends React.Component{
                     }
                     <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
                     <input type="text" maxLength="100" placeholder = "Title" onBlur={() => {
+                        //Check to see if title is only composed of spaces. 
                         if(this.state.title.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
-                                this.setState(() => ({titleError: 'The title must contain readable text.'}));
+                                this.setState(() => ({titleError: 'The title must contain text.'}));
                             }else{
-                                this.setState(() => ({titleError: 'El título debe contener texto legible. '})); 
+                                this.setState(() => ({titleError: 'El título debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({titleError: ''}));

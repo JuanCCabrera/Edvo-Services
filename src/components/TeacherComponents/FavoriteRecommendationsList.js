@@ -70,6 +70,7 @@ class FavoriteRecommendationsList extends React.Component{
                 {
                     //Pagination component
                 }
+                <div className="text-center">
                 {(this.props.recommendation.length > 3) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -78,6 +79,7 @@ class FavoriteRecommendationsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
                 {
                     //Display message if there are no recommendations in the list. 
                 }
