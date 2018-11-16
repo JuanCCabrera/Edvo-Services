@@ -46,21 +46,41 @@ import { selectRecommendation } from '../../actions/assignRecommendations';
     }
  */
 const RecommendationListItem = (props) => (
-    <div>
-        {
-            //Recommendation title
-        }
-        <h4>{props.reco.title} {props.reco.id === props.selectedRecommendation && '[X]'}</h4>
+        <div className="list-group-item">
+            <div className="row">
+                <div className="col-sm-10 card-title">
+                    {
+                        //Recommendation title
+                    }
+                    <p>
+                        {props.reco.title} 
+                    </p>
+                </div>
+                <div className="col-sm-2">
+                    <p>
+                        {props.reco.id === props.selectedRecommendation && 
+                        <div>
+                            <span style={{display: 'inline'}}><i class="fa fa-check-circle" style={{color: 'green'}} aria-hidden="true"></i></span>
+                        </div>}
+                    </p>
+                </div>
+            </div>
         {
             //Recommendation header
         }
-        <h5>{props.reco.header}</h5>
+        <div className="item__body">
+            <h5>{props.reco.header}</h5>
+        </div>
         {
             //Button to select a recommendation
         }
         <button onClick={() => {
             props.dispatch(selectRecommendation({recoID: props.reco.id}));
-        }}>{props.lang === 'English' ? 'Select' : 'Seleccionar'}</button>
+        }}>
+            <div className="btn btn-item">
+                {props.lang === 'English' ? 'Select' : 'Seleccionar'}
+            </div>
+        </button>
     </div>
 );
 

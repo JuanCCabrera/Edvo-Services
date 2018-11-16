@@ -11,52 +11,103 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
  * @param {*} props - Default properties, current language state and recommendation assignment information. 
  */
  const AssignRecommendations = (props) => (
+     <div>
+     <div className="row text-center" style={{margin: '2rem'}}>
+        <div className="col-sm-6">
+            {
+                //Button to clear selection for recommendation assignment. 
+            }
+            {(props.assigned.userID || props.assigned.recoID) && 
+                    <div>
+                    <button onClick={() => {
+                        props.dispatch(clearSelection());
+                    }}>
+                        <div className="btn btn-item">
+                        {props.lang === 'English' ? 'Clear Selection' : 'Deshacer Selección'}
+                        </div>
+                    </button>
+                    </div>
+            }
+        </div>
         <div>
             {
-                //User List with filters
+                //Button to assign recommendation based on the selected user and recommendation. 
             }
-            <UserFilters/>
-            <RecommendationsUserList/>
-            {
-                //Recommendations List with filters
-                //The list is only displayed if there are users registered in the system. 
+            {(props.assigned.userID && props.assigned.recoID) && 
+                <div>
+                    <button onClick={() => {
+                        console.log(props.assigned);
+                        props.dispatch(assignRecommendation());
+                    }}>
+                        <div className="btn btn-item">
+                            {props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'} 
+                            <i class="fa fa-arrow-right" aria-hidden="true" style={{marginLeft: '1rem'}}></i>
+                        </div>
+                    </button>  
+                </div>
             }
-            {props.users.length !== 0 ? 
-            <div>
-                {props.assigned.userID !== '' ? 
-                    <div>
-                        <RecommendationsFilters/>
-                        <RecommendationList/>
-                    </div> :
-                    <div>
-                        <p>{props.lang === 'English' ? 'Please select a user.' : 'Por favor escoja un usuario.'}</p>
+        </div>
+    </div>
+        <div className="row">
+            <div className="col-sm-6">
+                    
+                {
+                    //Page title 
+                }
+                <div className="big-card" style={{marginTop: '0.5rem'}}>
+                    <div className="form__title">
+                        <p>{props.lang === 'English' ? 'Users' : 'Usuarios'}</p>
+                        <hr className="break" style={{borderColor: '#5933AA'}}/>
                     </div>
-                }
+                    {
+                        //User List with filters
+                    }
+                    <UserFilters/>
+                    <div className="list-group">
+                        <RecommendationsUserList/>
+                    </div>
+                </div>
             </div>
-            :
-            <div>
+            <div className="col-sm-6">
                 {
-                    //Do not show instructions or recommendations list if there are no users in the system. 
+                    //Recommendations List with filters
+                    //The list is only displayed if there are users registered in the system. 
                 }
-            </div>
-            }
-
-            <div>
-                {
-                    //Button to clear selection for recommendation assignment. 
+                {props.users.length !== 0 ? 
+                <div>
+                    {props.assigned.userID !== '' ? 
+                        <div>
+                            
+                            {
+                                //Page title
+                            }
+                            
+                            <div className="big-card" style={{marginTop: '0.5rem'}}>
+                            <div className="form__title">
+                                <p>{props.lang === 'English' ? 'Recomendations' : 'Recomendaciones'}</p>
+                                <hr className="break" style={{borderColor: '#5933AA'}}/>
+                            </div>
+                                <RecommendationsFilters/>
+                                <div className="list-group">
+                                    <RecommendationList/>
+                                </div>
+                            </div>
+                        </div> :
+                        <div className="item-card text-center" style={{marginTop: '0.5rem', fontWeight: 'bold', color: '#5933AA', paddingBottom: '1rem', minHeight: '1rem'}}>
+                            <p>{props.lang === 'English' ? 'Please select a user.' : 'Por favor, escoja un usuario.'}</p>
+                        </div>
+                    }
+                </div>
+                :
+                <div>
+                    {
+                        //Do not show instructions or recommendations list if there are no users in the system. 
+                    }
+                </div>
                 }
-                <button disabled={!props.assigned.userID && !props.assigned.recoID} onClick={() => {
-                    props.dispatch(clearSelection());
-                }}>{props.lang === 'English' ? 'Clear Selection' : 'Deshacer Selección'}</button>
-                {
-                    //Button to assign recommendation based on the selected user and recommendation. 
-                }
-                <button disabled={!props.assigned.userID || !props.assigned.recoID} onClick={() => {
-                    console.log(props.assigned);
-                    props.dispatch(assignRecommendation());
-                }}>{props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'}</button>  
             </div>
         </div>
+    </div>
  );
 
  //Map current language state and recommendation assignment data to component's properties. 

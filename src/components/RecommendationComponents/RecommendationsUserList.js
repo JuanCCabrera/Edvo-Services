@@ -67,10 +67,6 @@ class RecommendationsUserList extends React.Component{
         return(
             <div>
             {
-                //Page title 
-            }
-                <h3>{this.props.lang === 'English' ? 'Users' : 'Usuarios'}</h3>
-            {
                 //List of filtereed users. 
 
             }
@@ -78,6 +74,7 @@ class RecommendationsUserList extends React.Component{
                     return <RecommendationsUserListItem key={user.id} user={user} selectedUser={this.props.assigned.userID}/>
                 })}
                 <br/>
+                <div className="text-center">
                 {
                    //Pagination component
                 }
@@ -89,6 +86,7 @@ class RecommendationsUserList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
                 {
                     //Text displayed if there are no users on the Users List. 
                 }

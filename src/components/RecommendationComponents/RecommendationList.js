@@ -66,17 +66,13 @@ class RecommendationsList extends React.Component{
         return(
             <div>
             {
-                //Page title
-            }
-                <h3>{this.props.lang === 'English' ? 'Recomendations' : 'Recomendaciones'}</h3>
-            {
                 //Recommendations List
             }
                 {this.state.displayedRecommendations.map((reco) => {
                     return <RecommendationListItem key={reco.id} reco={reco} selectedRecommendation={this.props.assigned.recoID}/>
                 })}
                 <br/>
-
+            <div className="text-center">
             {
                 //Pagination component
             }
@@ -88,6 +84,7 @@ class RecommendationsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+            </div>
             {
                 //Message displayed when there are no elements in the Recommendations page. It includes a link to create a new recommendation. 
             }

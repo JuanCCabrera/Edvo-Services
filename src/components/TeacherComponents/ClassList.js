@@ -16,14 +16,19 @@ class ClassList extends React.Component{
             {
                 //Page title
             }
-                <h3>{this.props.lang === 'English' ? 'Classes' : 'Clases'}</h3>
+                <div className="form__title text-center">
+                <p>{this.props.lang === 'English' ? 'Classes' : 'Clases'}</p>
+                <hr className="break" style={{borderColor: '#5933AA'}}/>
+                </div>
             {
                 //Display class list items
-            }
-                {this.props.classes.map((class_info) => {
-                    return <ClassListItem key={class_info.classInfoId} class={class_info}/>
-                })}
-                <br/>
+            }   
+            <div className="list-group">
+                    {this.props.classes.map((class_info) => {
+                        return <ClassListItem key={class_info.classInfoId} class={class_info}/>
+                    })}
+                    <br/>
+                    </div>
             </div>
         )
     }
