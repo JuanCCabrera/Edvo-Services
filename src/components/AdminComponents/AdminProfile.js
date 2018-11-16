@@ -13,8 +13,8 @@ import BasicInfoProfileForm from '../BasicInfoProfileForm';
                         <AdminButtonList/>
                     </div>
                     <div className="col-sm-1"/>
-                    <div className="col-sm-9">
-                    <BasicInfoProfileForm/>
+                    <div className="big-card col-sm-9">
+                        <BasicInfoProfileForm/>
                     </div>
                 </div>
             </div>

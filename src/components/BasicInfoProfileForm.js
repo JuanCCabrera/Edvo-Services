@@ -78,19 +78,26 @@ class BasicInfoProfileForm extends React.Component{
             <div>
                 <div>
                     <form onSubmit={this.onSubmit}>
-                    <div>
+                        <div>
+                            <div className="form__title">
+                            <p> 
+                                {this.props.lang === 'English' ? 'My Profile' : 'Mi Perfil'} 
+                            </p>
+                            
+                            <hr className="break" style={{borderColor: '#5933AA'}}/>
+                        </div>
                         {
                             //Name input field
                         }
                         <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                        <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
+                        <input type="text" placeholder="Name" className="form-control"  value={this.state.name} onChange={this.onNameChange}/>
                     
                         <br/>
                         {
                             //Last name input field
                         }
-                        <label>{this.props.lang === 'English' ? 'Last Name' : 'Apelido'}:</label>
-                        <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}/>
+                        <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
+                        <input type="text" placeholder="Last Name" className="form-control"  value={this.state.lastName} onChange={this.onLastNameChange}/>
 
                         <br/>
                         {
@@ -112,8 +119,11 @@ class BasicInfoProfileForm extends React.Component{
                         isOutsideRange={day => (moment().diff(day) < 0)}
                         />
                     */}
-
+                        
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
+                    <br/>
                         <DatePicker
+                        className="form-control" 
                         selected={this.state.dateOfBirth}
                         onChange={this.onDateChange}
                         />
@@ -125,29 +135,49 @@ class BasicInfoProfileForm extends React.Component{
                         }
                         <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                         <br/>
-                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}<br/>
-                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Female' : 'Femenino'}<br/>
+
+                        <label className="clickable radio__text">
+                            <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> 
+                            {this.props.lang === 'English' ? ' Male' : ' Masculino'}
+                        </label>
+
+                        <br/>
+                        <label className="clickable radio__text">
+                            <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Female' : 'Femenino'}<br/>
+                        </label>
                         {
+
                             //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Gender' : 'Género'} <br/>
                         }
-
-                        {
-                            //Change password button
-                        }
-                        <button onClick={this.changePassword}>{this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} </button>
 
                         {
                             //Error message displayed if there is a missing field
                         }
                         {this.state.formIncompleteError === true && 
-                        <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>Please fill all fields before saving.</p> : <p>Por favor, llene todos los espacios antes de guardar la información.</p>}
+                        <div className="text-danger" style={{marginTop: '2rem', marginBottom: '0'}}>
+                            {this.props.lang === 'English' ? <p>Please fill all fields before saving.</p> : <p>Por favor, llene todos los campos antes de guardar la información.</p>}
                         </div>}
+
+                        <br/>
+
+                        {
+                            //Change password button
+                        }
+                        
+                        <button onClick={this.changePassword}>
+                            <div className="btn btn-item" style={{marginTop: '2rem'}}>
+                                {this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} 
+                            </div>
+                        </button>
 
                         {
                             //Submit button
                         }
-                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Save' : 'Guardar'}</button>
+                        <button onClick={this.onSubmit}>
+                            <div className="btn btn-item" style={{marginTop: '2rem'}}>
+                                {this.props.lang === 'English' ? 'Save' : 'Guardar'}
+                            </div>
+                        </button>
                     </div>
 
                     </form>

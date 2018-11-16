@@ -1,0 +1,13 @@
+.radio__text{
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.form__title{
+    text-align: center;
+    font-size: 3rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #5933AA;
+}
