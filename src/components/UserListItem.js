@@ -15,32 +15,37 @@ import {connect} from 'react-redux';
         }
  */
 const UserListItem = (props) => (
-    <div>
+    <div className="item-card">
         {
             //User's full name
         }
-        <h4>{props.user.name + ' ' + props.user.lastName}</h4>
+        <p className="item__body card-title">{props.user.name + ' ' + props.user.lastName}</p>
         {
             //User's email
         }
-        <h5>Email: {props.user.email}</h5>
+        <p className="item__body">Email: {props.user.email}</p>
         {
             //User assignment status
         }
-        <h6>{props.lang === 'English' ? 'Has received weekly recommendation' : 'Ha recibido recomendación semanal'}: 
-        {props.lang === 'English' ? (props.user.weeklyReco ? ' Yes' : ' No') : (props.user.weeklyReco ? ' Si' : ' No')}</h6>
+        <p className="item__body">{props.lang === 'English' ? 'Has received weekly recommendation' : 'Ha recibido recomendación semanal'}: 
+        {props.lang === 'English' ? (props.user.weeklyReco ? ' Yes' : ' No') : (props.user.weeklyReco ? ' Si' : ' No')}</p>
         {
             //User challenges categories (as filled in registration)
         }
-        <h6>{props.lang === 'English' ? 'Categories' : 'Categorías'}: {' '}
+        <span className="item__body">{props.lang === 'English' ? 'Categories' : 'Categorías'}: {' '}
         {props.user.categories.map((category) => {
-            return (<p key={uuid()}>{category + ' '}</p>)
+            return (<span key={uuid()} className="badge" style={{marginLeft: '1rem', maginBottom: '0rem', backgroundColor: '#5933AA'}}>{category + ' '}</span>)
         })}
-        </h6>
+        </span>
+        <br/>
         {
             //User removal button
         }
-        <button onClick={props.userRemoval}>{props.lang === 'English' ? 'Remove' : 'Remover'}</button>
+        <button onClick={props.userRemoval}>
+            <div className="btn btn-item" style={{marginTop: '10px'}}>
+                {props.lang === 'English' ? 'Remove' : 'Remover'}
+            </div>
+        </button>
     </div>
 );
 

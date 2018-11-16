@@ -8,7 +8,7 @@ import {selectQuestion} from '../../actions/teacherQuestions';
  */
 const TeacherQuestionListItem = (props) => (
         //Open question modal if the question item is clicked. 
-        <div onClick={() => {props.dispatch(selectQuestion(props.question));}}>
+        <div className="clickable" onClick={() => {props.dispatch(selectQuestion(props.question));}}>
             {
                 //Question subject and date in which it was asked.
             }

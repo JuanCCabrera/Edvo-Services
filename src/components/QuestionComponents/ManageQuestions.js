@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import QuestionButtonList from './QuestionButtonList';
 import PendingQuestionsList from './PendingQuestionsList';
 import QuestionFilters from '../Filters/QuestionFilters';
@@ -19,10 +20,36 @@ const ManageQuestions = (props) => (
         <QuestionButtonList/>
         <QuestionFilters/>
         <PendingQuestionsList/>
+    <div className="background-home">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-2 text-center well">
+                    <QuestionButtonList/>
+                </div>
+                <div className="col-sm-1"/>
+                <div className="col-sm-9">
+                {
+                    //Page title
+                }
+                <div className="text-center pending__title__2">
+                    <p>{props.lang === 'English' ? 'Pending Questions' : 'Preguntas Pendientes'}</p>
+                    <hr className="break"/>
+                </div>
+                    <QuestionFilters/>
+                    <PendingQuestionsList/>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
         )}
         no={() => <Redirect to="/" />}
       />
 );
 
-export default ManageQuestions;
+const mapStatetoProps = (state) => {
+    return{
+        lang: state.language.lang
+    }
+}
+export default connect(mapStatetoProps)(ManageQuestions);

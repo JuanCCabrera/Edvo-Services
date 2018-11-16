@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import RecentRecommendationsListItem from './RecentRecommendationsListItem';
-import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
+import HomeRecommendationsListItem from './HomeRecommendationsListItem';
 
 /**
  * The Recent Recommendations List contains a list of the three most recently assign recommendations. 
@@ -13,7 +12,7 @@ const RecentRecommendationsList = (props) => (
         //Map most recent recommendations to the list
     }
         {props.recommendation.map((reco) => {
-            return <TeacherRecommendationsListItem key={reco.recoID} reco={reco}/>
+            return <HomeRecommendationsListItem key={reco.recoID} reco={reco}/>
         })}
 
     {

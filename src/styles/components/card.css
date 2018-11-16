@@ -1,0 +1,159 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.list-group-item{
+    transition: 0.2s;
+}
+
+.list-group-item:hover{
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+.low_card_title_margin p{
+    margin-bottom: 3rem;
+}
+
+.card-title{
+    font-weight: normal;
+    font-size: 1.7rem;
+    color: #5933AA;
+    margin-bottom: 1rem;
+}
+
+.big-card{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    margin-top: 2.7rem;
+    margin-bottom: 2.7rem;
+    padding: 2.7rem;
+    border-radius: 0.5rem;
+    
+}
+
+.big-card-link:hover{
+    background-color: lightgray;
+}
+
+
+.item-card {
+    /* Add shadows to create the "card" effect */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    min-height: 14rem;
+    margin: 1.5rem 1.0rem;
+    padding: 1.5rem 1.5rem;
+}
+
+.btn-item{
+    background-color: #5933AA;
+    color: white;
+    font-weight: normal;
+}
+
+.btn-item-margin{
+    margin-top: '2rem';
+}
+
+.btn-item:enabled{
+    background-color: #5933AA;
+    color: white;
+    font-weight: normal;
+}
+
+.btn-item:hover{
+    color: #5933AA;
+    background-color: white;
+    font-weight: normal;
+    border: 1px solid #5933AA;
+}
+
+.item-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    width: 35rem;
+    margin: 1rem 1rem;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    padding-bottom: 3rem; 
+    min-height: 23rem;
+}
+
+.card_left_margin{
+    margin-left: 3.3rem;
+}
+
+.withMargins{
+    margin: 15px 15px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+
+.big-card-admin-home{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    margin-top: 2.7rem;
+    margin-bottom: 2.7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2.7rem;
+    border-radius: 0.5rem;
+    width: 30%; 
+    min-width: 35rem;
+}
+
+.big-card-admin-home:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+.big-card-mentor-home{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    margin-top: 2.7rem;
+    margin-bottom: 2.7rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 2.7rem;
+    border-radius: 0.5rem;
+    min-width: 35rem;
+    width: 45%; 
+}
+
+.big-card-mentor-home:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+
+

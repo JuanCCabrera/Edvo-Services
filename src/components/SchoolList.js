@@ -88,10 +88,6 @@ class SchoolList extends React.Component{
         return(
             <div>
                 {
-                    //Page title
-                }
-                <h3>{this.props.lang === 'English' ? 'Institutions' : 'Instituciones'}</h3>
-                {
                     //List of schools
                 }
                 {this.state.displayedSchools.map((school) => {
@@ -102,7 +98,8 @@ class SchoolList extends React.Component{
                 {
                     //Pagination component
                 }
-                {(this.props.schools.length !== 0) &&
+                <div className="text-center">
+                {(this.props.schools.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}
@@ -110,6 +107,7 @@ class SchoolList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
                 {
                     //Message shown if there are no items on the list
                 }

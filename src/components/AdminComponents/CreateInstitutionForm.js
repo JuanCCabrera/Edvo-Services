@@ -83,70 +83,98 @@ class CreateInstitutionForm extends React.Component{
             role={auth0Client.getRole()}
             perform="admin:settings"
             yes={() => (
-            <div>
-                <div>
-                    {
-                        //List of links to traverse Administrator Settings page.
-                    }
-                    <AdminButtonList/>
-                </div>
-                    
-                <div>
-                    <form onSubmit={this.onSubmit}>
-                    <div>
-                        <h2>{this.props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}</h2>
-                        {
-                            //Name input field
-                        }
-                        <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                        <input type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
+            <div className="background-home">
+                <div className="container">
+                    <div className="row">
+                    <div className="col-sm-2 text-center well">
+                            {
+                                //List of links to traverse Administrator Settings page.
+                            }
+                            <AdminButtonList/>
+                        </div>
+                        <div className="col-sm-1"/>
+                            
+                        <div className="big-card col-sm-9">
+                            <form onSubmit={this.onSubmit}>
+                            <div>
+                                <div className="form__title">
+                                    <p>
+                                        {this.props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}
+                                    </p>
+                                    
+                                    <hr className="break" style={{borderColor: '#5933AA'}}/>
+                                </div>
+                                <br/>
+                                {
+                                    //Name input field
+                                }
+                                <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
+                                <br/>
+                                <input className="form-control" style={{width: '60%'}} type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
 
-                        <br/>
-                        {
-                            //Location input field
-                        }
-                        <label>{this.props.lang === 'English' ? 'Location' : 'Localización'}:</label>
-                        <input type="text" placeholder = "Location" value = {this.state.location} onChange={this.onLocationChange}/>
-        
-                        <br/>
-                        {
-                            //School type radio button selection
-                        }
-                        <label>{this.props.lang === 'English' ? 'School Type' : 'Tipo de Escuela'}:</label>
-                        <br/>
-                        <input type="radio" name="type" value= "public" checked={this.state.type === 'public'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Pública'} {' '}
-                        <input type="radio" name="type" value= "private" checked={this.state.type === 'private'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privada'} {' '}
-                        <input type="radio" name="type" value= "independent" checked={this.state.type === 'independent'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'} {' '}
-                    
-                        <br/>
-                        {
-                            //Institution ID input field
-                        }
-                        <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
-                        <input type="text" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
-                    
-                        <br/>
+                                <br/>
+                                {
+                                    //Location input field
+                                }
+                                <label>{this.props.lang === 'English' ? 'Location' : 'Localización'}:</label>
+                                <br/>
+                                <input type="text" className="form-control" placeholder = "Location" value = {this.state.location} onChange={this.onLocationChange}/>
 
-                        <label>{this.props.lang === 'English' ? 'Number of accounts' : 'Numero de cuentas'}:</label>
-                        <input type="text" placeholder = "#" value = {this.state.numAccounts} onChange={this.onNumberChange}/>
-                    
-                        <br/>
-                        <br/>
-                        {
-                            //Error displayed if input is missing from required (any) field. 
-                        }
-                        {this.state.createInstitutionError === true && 
-                            <div className="text-danger">
-                                {this.props.lang === 'English' ? <p>Please fill all the blank fields before submitting a new institution.</p> : <p>Por favor, llene todos los espacios restantes antes de guardar la institución nueva.</p>}
+                                <br/>
+                                {
+                                    //School type radio button selection
+                                }
+                                <label>{this.props.lang === 'English' ? 'School Type' : 'Tipo de Escuela'}:</label>
+                                <br/>
+
+                                <label className="clickable radio__text"> 
+                                    <input type="radio" name="type" value= "public" checked={this.state.type === 'public'} onChange = {this.onTypeChange}/> 
+                                    {this.props.lang === 'English' ? ' Public' : ' Pública'}
+                                </label>
+                                <br/>
+
+                                <label className="clickable radio__text">
+                                    <input type="radio" name="type" value= "private" checked={this.state.type === 'private'} onChange = {this.onTypeChange}/> 
+                                    {this.props.lang === 'English' ? ' Private' : ' Privada'}
+                                </label>
+                                <br/>
+
+                                <label className="clickable radio__text">
+                                    <input type="radio" name="type" value= "independent" checked={this.state.type === 'independent'} onChange = {this.onTypeChange}/> 
+                                    {this.props.lang === 'English' ? ' Independent' : ' Independiente'}
+                                </label>
+
+                                <br/>
+                                <br/>
+
+                                {
+                                    //Institution ID input field
+                                }
+                                <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
+                                <br/>
+                                <input type="text" style={{width: '50%'}} className="form-control" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+                            
+                                <br/>
+                                {
+                                    //Error displayed if input is missing from required (any) field. 
+                                }
+                                {this.state.createInstitutionError === true && 
+                                    <div className="text-danger" style={{marginBottom: '2.7rem'}}>
+                                        {this.props.lang === 'English' ? <p>Please fill all the blank fields before submitting a new institution.</p> : <p>Por favor, llene todos los campos antes de guardar la institución nueva.</p>}
+                                    </div>
+                                }
+                                {
+                                    //Submit form button
+                                }
+                                <button onClick={this.onSubmit}>
+                                    <div className="btn btn-item">
+                                        {this.props.lang === 'English' ? 'Create' : 'Crear'}
+                                    </div>
+                                </button>
                             </div>
-                        }
-                        {
-                            //Submit form button
-                        }
-                        <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Create' : 'Crear'}</button>
+                            </form>
+                        </div>
                     </div>
-
-                    </form>
                 </div>
             </div>
                                                      )}

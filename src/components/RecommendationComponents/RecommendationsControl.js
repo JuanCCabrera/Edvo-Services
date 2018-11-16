@@ -10,8 +10,7 @@ const RecommendationsControl = (props) => (
     
     <div className = "container">
         <div className="row">
-            <div className="col-sm-1"/>
-            <div className="col-sm-1 text-center">
+            <div className="col-sm-2 text-center well">
                 <RecommendationButtonList/>
             </div>
             <div className="col-sm-1"/>

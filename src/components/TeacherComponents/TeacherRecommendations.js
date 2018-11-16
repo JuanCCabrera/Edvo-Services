@@ -18,17 +18,18 @@ const TeacherRecommendations = (props) => (
     yes={() => (
     <div>
         {
+            //Favorite Recommendations list
+        }
+        <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>
+        <FavoriteRecommendationsList/>
+
+        {
             //Recommendations List and list filters
         }
         <h2>{props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</h2>
         <TeacherRecommendationsFilters/>
         <TeacherRecommendationsList/>
 
-        {
-            //Favorite Recommendations list
-        }
-        <h2>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</h2>
-        <FavoriteRecommendationsList/>
     </div>
          )}
          no={() => <Redirect to="/" />}

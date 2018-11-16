@@ -70,7 +70,7 @@ class FavoriteTeacherQuestionsList extends React.Component{
                 {
                     //Pagination component
                 }
-                {(this.props.question.length !== 0) &&
+                {(this.props.question.length > 3) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}

@@ -89,7 +89,7 @@ class TeacherQuestionsList extends React.Component{
                 {
                     //Pagination component
                 }
-                {(this.props.question.length !== 0) &&
+                {(this.props.question.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}

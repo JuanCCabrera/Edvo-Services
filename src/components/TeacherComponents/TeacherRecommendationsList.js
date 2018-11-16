@@ -90,15 +90,17 @@ class TeacherRecommendationsList extends React.Component{
             {
                 //Items of the Teacher Recommendations list. 
             }
-                {this.state.displayedRecommendations.map((reco) => {
-                    return <TeacherRecommendationsListItem key={reco.recoID} reco={reco}/>
-                })}
-                <br/>
+            <div className="list-group">
+                    {this.state.displayedRecommendations.map((reco) => {
+                        return <TeacherRecommendationsListItem key={reco.recoID} reco={reco}/>
+                    })}
+                    <br/>
+            </div>
 
             {
                 //Pagination component
             }
-                {(this.props.recommendation.length !== 0) &&
+                {(this.props.recommendation.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}

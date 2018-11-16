@@ -13,8 +13,10 @@ const AdminButtonList = (props) => (
             //Link to Administrator Settings page
         }
             <Link to={"/admin/settings/info"}>
-                <div className="btn btn-default">
-                    {props.lang === 'English' ? 'Account Information' : 'Información de Cuenta'} 
+                <div className="nav__button">
+                    <p className="nav__button__text">
+                        {props.lang === 'English' ? 'My Profile' : 'Mi Perfil'}
+                    </p> 
                 </div>
             </Link>
         <br/>
@@ -22,8 +24,10 @@ const AdminButtonList = (props) => (
             //Link to AppUsers page
         }
         <Link to={"/admin/settings/users"}>
-            <div className="btn btn-default">
-                {props.lang === 'English' ? 'Users' : 'Usuarios'}
+            <div className="nav__button">
+                <p className="nav__button__text">
+                    {props.lang === 'English' ? 'Users' : 'Usuarios'}
+                </p>
             </div>
         </Link>
         <br/>
@@ -31,8 +35,10 @@ const AdminButtonList = (props) => (
             //Link to AppSchools page
         }
         <Link to={"/admin/settings/schools"}>
-            <div className="btn btn-default">
-                {props.lang === 'English' ? 'Institutions' : 'Instituciones'}
+            <div className="nav__button">
+                <p className="nav__button__text">
+                    {props.lang === 'English' ? 'Institutions' : 'Instituciones'}
+                </p>
             </div>
         </Link>
     </div>

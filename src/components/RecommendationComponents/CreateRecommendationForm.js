@@ -316,6 +316,7 @@ class CreateRecommendationForm extends React.Component{
 
     onSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state);
         //Set error message if there are any required fields which are not filled upon submission. 
         if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] ){
             this.setState(() => ({creationError: true}));
@@ -386,217 +387,394 @@ class CreateRecommendationForm extends React.Component{
             perform="admin:recommendations-add"
             yes={() => (
             <div>
-            <form onSubmit={this.onSubmit}>
-                <br/>
+                <div>
+                <form onSubmit={this.onSubmit}>
+                    <br/>
 
-                {
-                    //Recommendation title input field
-                }
-                <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
-                <input type="text" placeholder = "Title" value = {this.state.title} onChange={this.onTitleChange}/>
+                    {
+                        //Recommendation title input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
+                    <input type="text" placeholder = "Title" className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange}/>
 
-                <br/>
-                {
-                    //Recommendation header input field
-                }
-                <label>{this.props.lang === 'English' ? 'Header' : 'Encabezamiento'}:</label>
-                <input type="text" placeholder = "Header" value = {this.state.header} onChange={this.onHeaderChange}/>
+                    <br/>
+                    {
+                        //Recommendation header input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Description' : 'Descripción'}:</label>
+                    <textarea type="text" rows="2" placeholder = "Description" className="form-control" value = {this.state.header} onChange={this.onHeaderChange}/>
 
-                <br/>
-                {
-                    //Recommendation description input field
-                }
-                <label>{this.props.lang === 'English' ? 'Description' : 'Descripción'}:</label>
-                <input type = "text" placeholder = "Description" value = {this.state.description} onChange = {this.onDescriptionChange}/>
+                    <br/>
+                    {
+                        //Recommendation description input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Content' : 'Contenido'}:</label>
+                    <textarea type = "text" rows="5" placeholder = "Content" className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange}/>
 
-                <br/>
-                {
-                    //Recommendation location input field
-                }
-                <label>{this.props.lang === 'English' ? 'Location (Optional)' : 'Localización (Opcional)'}:</label>
-                <input type = "text" placeholder = "Location" value = {this.state.location} onChange = {this.onLocationChange}/>
+                    <br/>
+                    {
+                        //Recommendation location input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Location (Optional)' : 'Localización (Opcional)'}:</label>
+                    <input type = "text" placeholder = "Location" className="form-control" value = {this.state.location} onChange = {this.onLocationChange}/>
 
-                <br/>
-                {
-                    //Multimedia input field
-                }
-                <label>{this.props.lang === 'English' ? 'Insert Video or Image Link (Optional)' : 'Inserte Enlace de Vídeo o Imagen (Opcional)'}:</label>
-                <input type="text" placeholder = "Multimedia" value = {this.state.multimedia} onChange={this.onMultimediaChange}/>
+                    <br/>
+                    {
+                        //Multimedia input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Insert Video or Image Link (Optional)' : 'Inserte Enlace de Vídeo o Imagen (Opcional)'}:</label>
+                    <input type="text" placeholder = "Multimedia" className="form-control" value = {this.state.multimedia} onChange={this.onMultimediaChange}/>
 
-                <br/>
-                {
-                    //Quiz question input field
-                }
-                <label>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </label>
-                <input type="text" disabled={this.props.isEdit} placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange}/>
+                    <br/>
+                    {
+                        //Quiz question input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </label>
+                    <input type="text" disabled={this.props.isEdit} className="form-control" placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange}/>
 
-                <br/>
-                {
-                    //Choices to answer quiz question
-                }
-                <label>{this.props.lang === 'English' ? 'Options' : 'Opciones'} (Max: 4):</label>
-                {this.state.choices.map((choice, index) => (
-                    <span key={index}>
-                        <br/>
-                        <input
-                        type = "text"
-                        placeholder = "Choice"
-                        value={choice}
-                        disabled={this.props.isEdit}
-                        onChange={this.onChoiceChange(index)}
-                        />
-                        <button disabled={this.props.isEdit} onClick={this.deleteChoice(index)}>X</button>
-                        <button disabled={this.props.isEdit} onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>{this.props.lang === 'English' ? 'Correct Answer' : 'Contestación Correcta'}</button>
-                    </span>
-                ))}
-                <br/>
-                {
-                    //Add Choice button
-                }
-                <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>{this.props.lang === 'English' ? 'Add New Option' : 'Añadir Nueva Opción'}</button>
-                {
-                    //<button onClick={() => this.setState(() => ({correctOption: -1}))}>{this.props.lang === 'English' ? 'Clear Selection of Correct Answer' : 'Deshacer Seleccion de Contestacion Correcta'}</button>
-                }
-                <br/>
-                {
-                    //Categories checkbox selector
-                }
-                <label>{this.props.lang === 'English' ? 'Categories' : 'Categorías'}:</label>
-                <br/>
-                <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} <br/>
-                
-                <br/>
-                {
-                    //Type radio button selector
-                }
-                <label>{this.props.lang === 'English' ? 'Type' : 'Tipo'}: </label>
-                <br/>
-                <input type="radio" name="type" value= "event" checked={this.state.type === 'event'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Event' : 'Evento'}
-                <input type="radio" name="type" value= "book" checked={this.state.type === 'book'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Book' : 'Libro'}
-                <input type="radio" name="type" value= "tour" checked={this.state.type === 'tour'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Tour' : 'Excursión'} 
-                <input type="radio" name="type" value= "concept" checked={this.state.type === 'concept'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Concept' : 'Concepto'} 
-                <input type="radio" name="type" value= "material" checked={this.state.type === 'material'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'New Material' : 'Material Nuevo'} 
+                    <br/>
+                    {
+                        //Choices to answer quiz question
+                    }
+                    <label>{this.props.lang === 'English' ? 'Options' : 'Opciones'} (Max: 4):</label>
+                    {this.state.choices.map((choice, index) => (
+                        <span key={index}>
+                            <br/>
+                            <input
+                            type = "text"
+                            placeholder = "Choice"
+                            className="form-control"
+                            style={{width: '50%', display: 'inline', marginRight: '1rem'}}
+                            value={choice}
+                            disabled={this.props.isEdit}
+                            onChange={this.onChoiceChange(index)}
+                            />
 
-                <br/>
-                {
-                    //Class subject input field
-                }
-                <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'} :</label>
-                <input type="text" placeholder="Subject" value={this.state.subject} onChange={this.onSubjectChange}/>
+                            <button disabled={this.props.isEdit} onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>
+                            <div className="btn btn-item">
+                                {this.props.lang === 'English' ? 'Mark As Correct Answer' : 'Marcar Como Contestación Correcta'}
+                            </div>
+                            </button>
 
-                <br/>
-                {
-                    //Class format radio button selector
-                }
-                <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato de Clase'} :</label>
-                <br/>
-                <input type="radio" name="format" value= "classroom" checked={this.state.format === 'classroom'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Classroom' : 'Salón de Clases'} 
-                <input type="radio" name="format" value= "blended" checked={this.state.format === 'blended'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Blended' : 'Mixto'}
-                <input type="radio" name="format" value= "online" checked={this.state.format === 'online'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Online' : 'En Línea'}
-                
-                <br/>
-                {
-                    //School system radio button selector
-                }
-                <label>{this.props.lang === 'English' ? 'School System' : 'Sistema Educativo'}:</label>
-                <br/>
-                <input type="radio" name="system" value= "public" checked={this.state.schoolType === 'public'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Público'}
-                <input type="radio" name="system" value= "private" checked={this.state.schoolType === 'private'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privado'}
-                <input type="radio" name="system" value= "independent" checked={this.state.schoolType === 'independent'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'}
-                                
-                <br/>
-                {
-                    //Level radio button selector
-                }
-                <label>{this.props.lang === 'English' ? 'Level' : 'Nivel'}:</label>
-                <br/>
-                <input type="radio" name="level" value= "Kindergarden - 3rd grade" checked={this.state.level === 'Kindergarden - 3rd grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'Kindergarden - 3rd grade' : 'Kindergarden - 3er grado'}<br/>
-                <input type="radio" name="level" value= "4th - 6th grade" checked={this.state.level === '4th - 6th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '4th - 6th grade' : '4to - 6to grado'}<br/>
-                <input type="radio" name="level" value= "7th - 8th grade" checked={this.state.level === '7th - 8th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '7th - 8th grade' : '7mo - 8vo grado'} <br/>
-                <input type="radio" name="level" value= "9th - 12th grade" checked={this.state.level === '9th - 12th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '9th - 12th grade' : '9no - 12mo grado'}<br/>
-                <input type="radio" name="level" value= "University / College" checked={this.state.level === 'University / College'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'University/College' : 'Universidad/Colegio'}<br/>
+                            {this.state.choices.length > 2 && <div style={{display: 'inline'}}>
+                            <button disabled={this.props.isEdit} onClick={this.deleteChoice(index)}>
+                                <span style={{fontSize: '2rem', marginBottom: '0', paddingBottom: '0'} }>
+                                    <i className="fa fa-window-close"></i>
+                                </span>
+                            </button>
+                            </div>
+                            }
+                        </span>
+                    ))}
+                    <br/>
+                    {
+                        //Add Choice button
+                    }
+                    <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Add New Option' : 'Añadir Nueva Opción'}
+                        </div>
+                    </button>
+                    <br/>
+                    {
+                        //<button onClick={() => this.setState(() => ({correctOption: -1}))}>{this.props.lang === 'English' ? 'Clear Selection of Correct Answer' : 'Deshacer Seleccion de Contestacion Correcta'}</button>
+                    }
+                    <br/>
+                    {
+                        //Categories checkbox selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'Categories' : 'Categorías'}:</label>
+                    <br/>
+                    <label className="clickable radio__text">
+                        <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                        <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                        <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} 
+                    </label>
+                    <br/>
+                    <br/>
+                    {
+                        //Type radio button selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'Type' : 'Tipo'}: </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="type" value= "event" checked={this.state.type === 'event'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Event' : 'Evento'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="type" value= "book" checked={this.state.type === 'book'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Book' : 'Libro'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="type" value= "tour" checked={this.state.type === 'tour'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Tour' : 'Excursión'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="type" value= "concept" checked={this.state.type === 'concept'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'Concept' : 'Concepto'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="type" value= "material" checked={this.state.type === 'material'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'New Material' : 'Material Nuevo'} 
+                    </label>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    {
+                        //Class subject input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'} :</label>
+                    <input type="text" placeholder="Subject" className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange}/>
 
-                <br/>
-                {
-                    //Group size radio button selector
-                }
-                <label>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}</label>
-                <br/>
-                <input type="radio" name="size" value= "1 - 10" checked={this.state.size === '1 - 10'} onChange = {this.onSizeChange}/> 1 - 10<br/>
-                <input type="radio" name="size" value= "11 - 20" checked={this.state.size === '11 - 20'} onChange = {this.onSizeChange}/> 11 - 20<br/>
-                <input type="radio" name="size" value= "21 - 30" checked={this.state.size === '21 - 30'} onChange = {this.onSizeChange}/> 21 - 30 <br/>
-                <input type="radio" name="size" value= "31+" checked={this.state.size === '31+'} onChange = {this.onSizeChange}/> 31+<br/>
-            
-                <br/>
-                {
-                    //Class topics input field
-                }
-                <label>{this.props.lang === 'English' ? 'Class Topics' : 'Tópicos de Clase'} (Max: 3):</label>
-                {this.state.topics.map((topic, index) => (
-                    <span key={index}>
-                        <br/>
-                        <input
-                        type = "text"
-                        placeholder = "Topic"
-                        value={topic}
-                        onChange={this.onTopicChange(index)}
-                        />
-                        <button onClick={this.deleteTopic(index)}>X</button>
-                    </span>
-                ))}
-                <br/>
-                {
-                    //Add New Topic button
-                }
-                <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>{this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tópico Nuevo'}</button>
+                    <br/>
+                    {
+                        //Class format radio button selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato de Clase'} :</label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="format" value= "classroom" checked={this.state.format === 'classroom'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Classroom' : 'Salón de Clases'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="format" value= "blended" checked={this.state.format === 'blended'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Blended' : 'Mixto'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="format" value= "online" checked={this.state.format === 'online'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Online' : 'En Línea'}
+                    </label>
+                    <br/>
+                    <br/>
+                    {
+                        //School system radio button selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'School System' : 'Sistema Educativo'}:</label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="system" value= "public" checked={this.state.schoolType === 'public'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Público'}
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="system" value= "private" checked={this.state.schoolType === 'private'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privado'}
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="system" value= "independent" checked={this.state.schoolType === 'independent'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'}
+                    </label>        
+                    <br/>
+                    <br/>
+                    {
+                        //Level radio button selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'Level' : 'Nivel'}:</label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "Kindergarden - 3rd grade" checked={this.state.level === 'Kindergarden - 3rd grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'Kindergarden - 3rd grade' : 'Kindergarden - 3er grado'}<br/>
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "4th - 6th grade" checked={this.state.level === '4th - 6th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '4th - 6th grade' : '4to - 6to grado'}<br/>
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "7th - 8th grade" checked={this.state.level === '7th - 8th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '7th - 8th grade' : '7mo - 8vo grado'} <br/>
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "9th - 12th grade" checked={this.state.level === '9th - 12th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '9th - 12th grade' : '9no - 12mo grado'}<br/>
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "University / College" checked={this.state.level === 'University / College'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'University/College' : 'Universidad/Colegio'}<br/>
+                    </label>
+                    <br/>
+                    <br/>
+                    {
+                        //Group size radio button selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}</label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "1 - 10" checked={this.state.size === '1 - 10'} onChange = {this.onSizeChange}/> 1 - 10<br/>
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "11 - 20" checked={this.state.size === '11 - 20'} onChange = {this.onSizeChange}/> 11 - 20<br/>
+                    </label>
+                    <br/>
 
-                <br/>
-                {
-                    //Resources checkbox input field
-                }
-                <label>{this.props.lang === 'English' ? 'Resources' : 'Recursos'}</label>
-                <br/>
-                <input type="checkbox" name="resource" checked={this.state.moodle === true} onChange={this.onMoodleChange}/> Moodle <br/>
-                <input type="checkbox" name="resource" checked={this.state.googleClassroom === true} onChange={this.onGoogleClassroomChange}/> Google Classroom <br/>
-                <input type="checkbox" name="resource" checked={this.state.emailResource === true} onChange={this.onEmailResourceChange}/> Emails <br/>
-                <input type="checkbox" name="resource" checked={this.state.books === true} onChange={this.onBooksChange}/> {this.props.lang === 'English' ? 'Books' : 'Libros'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.projector === true} onChange={this.onProjectorChange}/> {this.props.lang === 'English' ? 'Projector' : 'Proyector'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.computer === true} onChange={this.onComputerChange}/> {this.props.lang === 'English' ? 'Computer' : 'Computadora'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.tablet === true} onChange={this.onTabletChange}/> {this.props.lang === 'English' ? 'Tablet' : 'Tableta'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.stylus === true} onChange={this.onStylusChange}/> Stylus <br/>
-                <input type="checkbox" name="resource" checked={this.state.internet === true} onChange={this.onInternetChange}/> Internet <br/>
-                <input type="checkbox" name="resource" checked={this.state.smartboard === true} onChange={this.onSmartBoardChange}/> {this.props.lang === 'English' ? 'Smart Board' : 'Pizarra Inteligente'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.smartpencil === true} onChange={this.onSmartPencilChange}/> {this.props.lang === 'English' ? 'Smart Pencil' : 'Lápiz Inteligente'} <br/>
-                <input type="checkbox" name="resource" checked={this.state.speakers === true} onChange={this.onSpeakersChange}/> {this.props.lang === 'English' ? 'Speakers' : 'Bocinas'} <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "21 - 30" checked={this.state.size === '21 - 30'} onChange = {this.onSizeChange}/> 21 - 30 <br/>
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "31+" checked={this.state.size === '31+'} onChange = {this.onSizeChange}/> 31+<br/>
+                    </label>
+                    <br/>
+                    <br/>
+                    {
+                        //Class topics input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Class Topics' : 'Tópicos de Clase'} (Max: 3):</label>
+                    {this.state.topics.map((topic, index) => (
+                        <span key={index}>
+                            <br/>
+                            <input
+                            type = "text"
+                            className="form-control"
+                            style={{width: '50%', display: 'inline', marginRight: '1rem'}}
+                            placeholder = "Topic"
+                            value={topic}
+                            onChange={this.onTopicChange(index)}
+                            />
+                            {this.state.topics.length > 1 && <div style={{display: 'inline'}}>
+                            <button onClick={this.deleteTopic(index)}>
+                                <span>
+                                    <i className="fa fa-window-close"></i>
+                                </span>
+                            </button>
+                            </div>}
+                        </span>
+                    ))}
+                    <br/>
+                    {
+                        //Add New Topic button
+                    }
+                    <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tópico Nuevo'}
+                        </div>
+                    </button>
+                    <br/>
+                    <br/>
+                    {
+                        //Resources checkbox input field
+                    }
+                    <label>{this.props.lang === 'English' ? 'Resources' : 'Recursos'}</label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.moodle === true} onChange={this.onMoodleChange}/> Moodle
+                    </label>
+                    <br/>
 
-                <br/>
-                {
-                    //Language radio button selector
-                }
-                <label>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}:</label>
-                <br/>
-                <input type="radio" name="lang" value= "spanish" checked={this.state.language === 'spanish'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}<br/>
-                <input type="radio" name="lang" value= "english" checked={this.state.language === 'english'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'}<br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.googleClassroom === true} onChange={this.onGoogleClassroomChange}/> Google Classroom 
+                    </label>
+                    <br/>
+                    
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.emailResource === true} onChange={this.onEmailResourceChange}/> Emails 
+                    </label>
+                    <br/>
 
-                {
-                    //Error message displayed when field is submitted without having all required fields. 
-                }
-                {this.state.creationError === true && 
-                    <div className="text-danger">
-                        {this.props.lang === 'English' ? <p>Please fill all fields before saving the recommendation.</p> : <p>Por favor, llene todos los espacios en blanco antes de guardar la recomendación.</p>}
-                    </div>}
-                
-                <br/>
-                {
-                    //Submit button
-                }
-                <button onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Submit' : 'Enviar'}</button>
-            </form>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.books === true} onChange={this.onBooksChange}/> {this.props.lang === 'English' ? 'Books' : 'Libros'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.projector === true} onChange={this.onProjectorChange}/> {this.props.lang === 'English' ? 'Projector' : 'Proyector'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.computer === true} onChange={this.onComputerChange}/> {this.props.lang === 'English' ? 'Computer' : 'Computadora'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.tablet === true} onChange={this.onTabletChange}/> {this.props.lang === 'English' ? 'Tablet' : 'Tableta'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.stylus === true} onChange={this.onStylusChange}/> Stylus
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.internet === true} onChange={this.onInternetChange}/> Internet 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.smartboard === true} onChange={this.onSmartBoardChange}/> {this.props.lang === 'English' ? 'Smart Board' : 'Pizarra Inteligente'}
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.smartpencil === true} onChange={this.onSmartPencilChange}/> {this.props.lang === 'English' ? 'Smart Pencil' : 'Lápiz Inteligente'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.speakers === true} onChange={this.onSpeakersChange}/> {this.props.lang === 'English' ? 'Speakers' : 'Bocinas'} 
+                    </label>
+                    <br/>
+                    <br/>
+                    {
+                        //Language radio button selector
+                    }
+                    <label>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}:</label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="lang" value= "spanish" checked={this.state.language === 'spanish'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}<br/>
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="lang" value= "english" checked={this.state.language === 'english'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'}<br/>
+                    </label>
+                    <br/>
+                    <br/>
+                    {
+                        //Error message displayed when field is submitted without having all required fields. 
+                    }
+                    {this.state.creationError === true && 
+                        <div className="text-danger">
+                            {this.props.lang === 'English' ? <p>Please fill all nonoptional fields before saving the recommendation.</p> : <p>Por favor, llene todos los campos no-opcionales antes de guardar la recomendación.</p>}
+                        </div>}
+                    
+                    <br/>
+                    {
+                        //Submit button
+                    }
+                    <button onClick={this.onSubmit}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Submit' : 'Enviar'}
+                        </div>
+                    </button>
+                </form>
+                </div>
             </div>
                                  )}
                                  no={() => <Redirect to="/" />}

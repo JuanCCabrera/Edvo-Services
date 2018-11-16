@@ -758,7 +758,7 @@ class RegistrationForm extends React.Component{
                     }
                     {this.state.globalError === true && 
                     <div className="text-danger">
-                        {this.props.lang === 'English' ? <p>Please fill all fields before completing your registration.</p> : <p>Por favor, llene todos los espacios en blanco antes de completar su registración.</p>}
+                        {this.props.lang === 'English' ? <p>Please fill all fields before completing your registration.</p> : <p>Por favor, llene todos los campos antes de completar su registración.</p>}
                     </div>}
                     
                     {

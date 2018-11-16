@@ -9,7 +9,11 @@ import {connect} from 'react-redux';
 const QuestionButtonList = (props) => (
     <div>
         <br/>
-        <Link to={"/staff/questions"}>{props.lang === 'English' ? 'View Pending Questions' : 'Ver Preguntas Pendientes'}</Link>
+        <Link to={"/staff/questions"} style={{textDecoration: 'none'}}>
+            <div className="nav__button nav__button__text">
+                    {props.lang === 'English' ? 'View Pending Questions' : 'Ver Preguntas Pendientes'}
+            </div>
+        </Link>
     </div>
 );
 

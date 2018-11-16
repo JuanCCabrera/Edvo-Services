@@ -78,14 +78,14 @@ store.dispatch(addSchool({id: uuid(), name: 'Colegio San Alberto', location: 'Vi
 store.dispatch(addSchool({id: uuid(), name: 'Colegio San Tomas', location: 'Via Altra, IU-97, Paseos del Alma, Toa Alta, PR', type: 'Public', numAccounts: 2000}));
 
 //Generating Admin/Mentor Recommendations Test Data
-// store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Test data', multimedia: 'none', description: '#1', updatedMaterial: true}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'Integrating Technology', header: 'Test data', multimedia: 'none', description: '#4', technologyIntegration: true, updatedMaterial: true}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'All Aboard! Studying at Sea', header: 'Test data', multimedia: 'none', description: '#5', timeManagement: true}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'Finding Your Calling', header: 'Test data', multimedia: 'none', description: '#6'}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'A New Method for Teaching Online', header: 'Test data', multimedia: 'none', description: '#7', teachingStrategies: true}));
-// store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair Chance', header: 'Test data', multimedia: 'none', description: '#8'}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Test data', multimedia: 'none', description: '#1', updatedMaterial: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'Integrating Technology', header: 'Test data', multimedia: 'none', description: '#4', technologyIntegration: true, updatedMaterial: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'All Aboard! Studying at Sea', header: 'Test data', multimedia: 'none', description: '#5', timeManagement: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'Finding Your Calling', header: 'Test data', multimedia: 'none', description: '#6'}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'A New Method for Teaching Online', header: 'Test data', multimedia: 'none', description: '#7', teachingStrategies: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair Chance', header: 'Test data', multimedia: 'none', description: '#8'}));
 
 //Generating Admin/Mentor Questions Test Data
 // store.dispatch(loadQuestion({question: 'They misbehave almost every day. They probably do not think I am a good leader. What should I do?', askedDate: '2018-10-28 06:20:25', subject: 'How can I make my students behave?', userId: uuid()}));

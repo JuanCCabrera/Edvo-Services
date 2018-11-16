@@ -20,7 +20,6 @@ import axios from 'axios';
 class TeacherHome extends React.Component {
     constructor(props){
         super(props);
-        console.log("PROPS IN HOME: ",props);
         this.state = {
             daysInPlatform: '',
             recommendationsRead: '',
@@ -34,6 +33,7 @@ class TeacherHome extends React.Component {
         this.props.dispatch(unloadTeacherRecommendations());
     }
     componentWillMount(){
+        console.log("PROPS IN HOME THIS: ",this.props);
         console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
         axios.get('http://localhost:3000/teacher/home',
         {
@@ -66,122 +66,156 @@ class TeacherHome extends React.Component {
         yes={() => (
 
     <div>
-        <div>
-        {
-            //Page title
-        }
-        <h1>{this.props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
-
-        {
-            //Days in platform
-        }
-        <div>
-            {this.props.lang === 'English' ? 
-            <div>
-                <h2>Days in Platform</h2>
-                
+        <div className="background-home">
+            <div className="container text-center">
+                    {
+                        //Page title
+                    }
+                        <h1 className="home__title">
+                            {this.props.lang === 'English' ? 'My Dashboard' : 'Mi Tablero'}
+                            <hr className="break"/>
+                        </h1>
             </div>
-            : 
-            <div>
-                <h2>Días en Plataforma</h2>
-                
-            </div>}
-            <h2>{this.state.daysInPlatform}</h2>
-        </div>
+            <div className="container">
+                <div className="row text-center">
+                    <div className="col-sm-4 card card_left_margin">
+                            {
+                                //Days in platform
+                            }
+                            <div>
+                                {this.props.lang === 'English' ? 
+                                <div>
+                                    <h2>Days in Platform</h2>
+                                    
+                                </div>
+                                : 
+                                <div>
+                                    <h2>Días en Plataforma</h2>
+                                    
+                                </div>}
+                                <br/>
+                                <h1>{this.props.teacherMetrics.daysInPlatform}</h1>
+                            </div>
+                    </div>
+                    <div className="col-sm-4 card">
+                                    {
+                                        //Number of recommendations read (Acts as link to Teacher Recommendations page)
+                                    }
+                                    <div>
+                                        <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
+                                            {this.props.lang === 'English' ? 
+                                            <div>
+                                                <h2>Recommendations Read</h2>
+                                            </div>
+                                            : 
+                                            <div>
+                                                <h2>Recomendaciones Leídas</h2>
+                                            </div>}
+                                            <h1>{this.props.teacherRecommendations.filter((reco) => {
+                                                return reco.read === true;
+                                            }).length}</h1>
 
-        {
-            //Number of recommendations read (Acts as link to Teacher Recommendations page)
-        }
-        <div>
-            <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true}>
-                {this.props.lang === 'English' ? 
-                <div>
-                    <h2>Recommendations Read</h2>
+                                            <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
+                                        </NavLink>
+                                    </div>
+                    </div>
+                    <div className="col-sm-4 card">
+                                    {
+                                        //Number of questions asked (Acts as link to Teacher Questions page)
+                                    }
+                                    <NavLink to="/teacher/questions" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
+                                        {this.props.lang === 'English' ? 
+                                        <div>
+                                            <h2>Questions Asked</h2>
+                                            <br/>
+                                            <h1>{this.props.teacherQuestions.length}</h1>
+                                        </div>
+                                        : 
+                                        <div>
+                                            <h2>Preguntas Hechas</h2>
+                                            <br/>
+                                            <h1>{this.props.teacherQuestions.length}</h1>
+                                        </div>}
+                                        <button className="btn btn-item">{this.props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
+                                    </NavLink>
+                    </div>
                 </div>
-                : 
-                <div>
-                    <h2>Recomendaciones Leídas</h2>
-                </div>}
-                <h2>{this.state.recommendationsRead}</h2>
-            </NavLink>
-        </div>
+                <div className="row">
+                    <div className="col-sm-4 card card_left_margin low_card_title_margin">
 
-        {
-            //Number of questions asked (Acts as link to Teacher Questions page)
-        }
-        <NavLink to="/teacher/questions" activeClassName="is-active" exact={true}>
-            {this.props.lang === 'English' ? 
-            <div>
-                <h2>Questions Asked</h2>
-                <h2>{this.state.questionsAsked}</h2>
+                                    {
+                                        //Recent Recommendations List
+                                    }
+                                    <div>
+                                        {this.props.lang === 'English' ? 
+                                            <div className="text-center"> 
+                                                <h3 style={{marginBottom: '2rem'}}>
+                                                    My Most Recent Recommendations
+                                                </h3>
+                                            </div>
+                                            :
+                                            <div className="text-center">
+                                                <h3 style={{marginBottom: '0'}}>
+                                                    Mis Recomendaciones
+                                                </h3>
+                                                <h3 style={{marginTop: '0',marginBottom: '2rem'}}>
+                                                    Más Recientes
+                                                </h3>
+                                            </div>
+                                        }
+                                        <RecentRecommendationsList/>
+                                    </div>
+                    </div>
+                    <div className="col-sm-4 card">
+                                    {
+                                        //Top Rated Recommendations List
+                                    }
+                                    <div>
+                                        {this.props.lang === 'English' ? 
+                                            <div className="text-center"> 
+                                                <h3 style={{marginBottom: '2rem'}}>
+                                                    My Top-Rated Recommendations
+                                                </h3>
+                                            </div>
+                                            :
+                                            <div className="text-center">
+                                                <h3 style={{marginBottom: '0'}}>
+                                                    Mis Recomendaciones
+                                                </h3>
+                                                <h3 style={{marginTop: '0', marginBottom: '2rem'}}>
+                                                    Altamente Clasificadas
+                                                </h3>
+                                            </div>
+                                        }
+                                        <TopRecommendationsList/>
+                                    </div>
+                    </div>
+                    <div className="col-sm-4 card">
+                                    {
+                                        //Ask Question Form
+                                    }
+                                    <div>
+                                    {this.props.lang === 'English' ? 
+                                            <div className="text-center"> 
+                                                <h3 style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
+                                                    Ask a Question
+                                                </h3>
+                                            </div>
+                                            :
+                                            <div className="text-center">
+                                                <h3 style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
+                                                    Envíe una Pregunta
+                                                </h3>
+                                            </div>
+                                        }
+                                        <AskQuestionForm 
+                                        onSubmit={(question) => {
+                                            this.props.dispatch(sendAskedQuestion(question));
+                                        }}/>
+                                    </div>
+                    </div>
+                </div>                     
             </div>
-            : 
-            <div>
-                <h2>Preguntas Hechas</h2>
-                <h2>{this.state.questionsAsked}</h2>
-            </div>}
-        </NavLink>
-
-        {
-            //Recent Recommendations List
-        }
-        <div>
-            {this.props.lang === 'English' ? 
-                <div> 
-                    <h3>
-                        Most Recent Recommendations
-                    </h3>
-                </div>
-                :
-                <div>
-                    <h3>
-                        Recomendaciones Más Recientes
-                    </h3>
-                </div>
-            }
-            <RecentRecommendationsList/>
-        </div>
-
-        {
-            //Top Rated Recommendations List
-        }
-        <div>
-            {this.props.lang === 'English' ? 
-                <div> 
-                    <h3>
-                        Top Rated Recommendations
-                    </h3>
-                </div>
-                :
-                <div>
-                    <h3>
-                        Recomendaciones Altamente Clasificadas
-                    </h3>
-                </div>
-            }
-            <TopRecommendationsList/>
-        </div>
-
-        {
-            //Ask Question Form
-        }
-        <div>
-            {this.props.lang === 'English' ? 
-                <div> 
-                    <h3>
-                        Ask a Question
-                    </h3>
-                </div>
-                :
-                <div>
-                    <h3>
-                        Envíe una Pregunta
-                    </h3>
-                </div>
-            }
-            <AskQuestionForm />
-        </div>
-
         </div>
     </div>
      )}
