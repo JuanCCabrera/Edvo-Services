@@ -47,13 +47,9 @@ class BasicInfoProfileForm extends React.Component{
             console.log("ERROR: ", error);
         })
         .then(response => {
-            console.log("PROFILE REAL DATA1: ", response.data.info.name);
-            console.log("PROFILE REAL DATA2: ", response.data.info.lastname);
-            console.log("PROFILE REAL DATA3: ", response.data.info.dob);
-            console.log("PROFILE REAL DATA4: ", response.data.info.gender);
             
-            this.props.dispatch(loadProfile({name: response.data.info.name, lastName: response.data.info.lastname,
-                 dateOfBirth: response.data.info.dob, gender: response.data.info.gender}));
+            this.setState({name: response.data.info.name, lastName: response.data.info.lastname,
+                 dateOfBirth: moment(response.data.info.dob), gender: response.data.info.gender});
         });
     }
 

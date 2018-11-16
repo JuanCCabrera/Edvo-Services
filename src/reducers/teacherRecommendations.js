@@ -25,6 +25,12 @@ const teacherRecommendationsReducerDefaultState = {
 const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefaultState, action) => {
     switch(action.type){
         //Log recommendation to display in the Teacher Recommendations page. 
+        case 'UNLOAD_TEACHER_RECOMMENDATIONS':
+        return {
+            recommendations: [],
+            favoriteRecommendations: [],
+            selectedRecommendation: state.selectedRecommendation
+        }
         case 'LOAD_TEACHER_RECOMMENDATION':
             return {
                 recommendations: [...state.recommendations, action.recommendation],
@@ -34,7 +40,6 @@ const teacherRecommendationsReducer = (state = teacherRecommendationsReducerDefa
         //Log recommendation to display in both the Teacher Recommendations List and the Favorite Recommendations List.
         case 'LOAD_TEACHER_FAVORITE_RECOMMENDATION':
             return{
-                recommendations: [...state.recommendations, action.favoriteRecommendation],
                 favoriteRecommendations: [...state.favoriteRecommendations, action.favoriteRecommendation],
                 selectedRecommendation: state.selectedRecommendation
             }

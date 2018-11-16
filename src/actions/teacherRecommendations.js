@@ -150,4 +150,11 @@ export const removeFavoriteRecommendation = (
 });
 
 
+export const unloadTeacherRecommendations = () => {
+    return {
+        type: 'UNLOAD_TEACHER_RECOMMENDATIONS'
+    }
+};
+
+
 

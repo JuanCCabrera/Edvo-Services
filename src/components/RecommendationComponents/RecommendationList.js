@@ -4,7 +4,7 @@ import RecommendationListItem from './RecommendationListItem';
 import Pagination from 'react-js-pagination';
 import {Link} from 'react-router-dom';
 import getVisibleRecommendations from '../../selectors/recommendations';
-import {loadRecommendation} from '../../actions/recommendations';
+import {loadRecommendation, unloadRecommendations} from '../../actions/recommendations';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 
@@ -14,6 +14,7 @@ import auth0Client from '../../Auth';
 class RecommendationsList extends React.Component{
     constructor(props){
         super(props);
+        this.props = props;
         this.pageSlice = 1;
         this.itemsPerPage = 5; //Number of recommendations on list
         this.currentPage = 1;   //Current page
@@ -26,8 +27,15 @@ class RecommendationsList extends React.Component{
     //Configure local state when component will mount. This involves selecting which recommendations will be displayed on the first page
     //when the component loads. 
     componentWillMount(){
-        axios.get('http://localhost:3000/admin/recommendations',{
-            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+        console.log("MOUTING RECOMLIST WITH ID: ", this.props.assigned.userID);
+        axios.get('http://localhost:3000/admin/user/recommendations',{
+            
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
+            
+            params: {
+                userToAssign: this.props.assigned.userID
+              }
+          })
         .then(response => {
             console.log("REPSONSE RECOM:L ", response);
             response.data.recommendations.forEach(element => {
@@ -35,6 +43,9 @@ class RecommendationsList extends React.Component{
                 this.props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
                     header: element.header, multimedia: element.multimedia, 
                     description: element.description}));
+            })
+            .catch(error =>{
+                console.log("ERROR ASSINING: ", error);
             });
         });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
@@ -43,6 +54,9 @@ class RecommendationsList extends React.Component{
         this.setState({activePage: 1, displayedRecommendations: initialPageRecommendations});
     }
 
+    componentWillUnmount(){
+        this.props.dispatch(unloadRecommendations());
+    }
     //Update page when the component updates
     componentDidUpdate(prevProps){
         //If there are no more elements in the page, then go to the previous page. 

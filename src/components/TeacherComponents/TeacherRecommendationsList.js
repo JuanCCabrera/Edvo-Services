@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
-import { loadTeacherRecommendation } from '../../actions/teacherRecommendations';
+import { loadTeacherRecommendation, unloadTeacherRecommendations } from '../../actions/teacherRecommendations';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import getVisibleTeacherRecommendations from '../../selectors/teacherRecommendations';
@@ -22,8 +22,13 @@ class TeacherRecommendationsList extends React.Component{
         }
     }
 
+    componentWillUnmount(){
+        this.props.dispatch(unloadTeacherRecommendations());
+    }
+
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
+        console.log("LIST IS MOUNTED");
         axios.get('http://localhost:3000/teacher/recommendations',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -36,12 +41,7 @@ class TeacherRecommendationsList extends React.Component{
                 description: element.description, 
                 multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate})));
 
-                if(element.data.favorite)
-                    this.props.dispatch(loadTeacherFavoriteRecommendation({recoID: element.recomid, title: element.title, 
-                        header: element.header, location: element.location, 
-                        description: element.description, 
-                        multimedia: element.multimedia, date: element.date, read: element.read, rating: element.rate}));
-        });
+         });
     });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;

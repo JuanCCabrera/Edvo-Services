@@ -6,7 +6,7 @@ import RecentRecommendationsList from './RecentRecommendationsList';
 import AskQuestionForm from './AskQuestionForm';
 import { sendAskedQuestion } from '../../actions/askQuestion';
 import { reset,loadTeacherQuestionsAsked, loadTeacherRecentRecommendation, loadTeacherTopRecommendation, loadTeacherDaysInPlatform, loadTeacherRecommendationsRead } from '../../actions/teacherMetrics';
-import {loadTeacherRecommendation} from '../../actions/teacherRecommendations';
+import {loadTeacherRecommendation, unloadTeacherRecommendations} from '../../actions/teacherRecommendations';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 import axios from 'axios';
@@ -20,8 +20,8 @@ import axios from 'axios';
 class TeacherHome extends React.Component {
     constructor(props){
         super(props);
+        console.log("PROPS IN HOME: ",props);
         this.state = {
-            props: props,
             daysInPlatform: '',
             recommendationsRead: '',
             questionsAsked:'',
@@ -31,6 +31,7 @@ class TeacherHome extends React.Component {
     }
     componentWillUnmount(){
         this.props.dispatch(reset());
+        this.props.dispatch(unloadTeacherRecommendations());
     }
     componentWillMount(){
         console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
@@ -69,13 +70,13 @@ class TeacherHome extends React.Component {
         {
             //Page title
         }
-        <h1>{props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
+        <h1>{this.props.lang === 'English' ? 'Your Dashboard' : 'Su Tablero'}</h1>
 
         {
             //Days in platform
         }
         <div>
-            {this.state.props.lang === 'English' ? 
+            {this.props.lang === 'English' ? 
             <div>
                 <h2>Days in Platform</h2>
                 
@@ -93,7 +94,7 @@ class TeacherHome extends React.Component {
         }
         <div>
             <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true}>
-                {this.state.props.lang === 'English' ? 
+                {this.props.lang === 'English' ? 
                 <div>
                     <h2>Recommendations Read</h2>
                 </div>
@@ -109,7 +110,7 @@ class TeacherHome extends React.Component {
             //Number of questions asked (Acts as link to Teacher Questions page)
         }
         <NavLink to="/teacher/questions" activeClassName="is-active" exact={true}>
-            {this.state.props.lang === 'English' ? 
+            {this.props.lang === 'English' ? 
             <div>
                 <h2>Questions Asked</h2>
                 <h2>{this.state.questionsAsked}</h2>
@@ -125,7 +126,7 @@ class TeacherHome extends React.Component {
             //Recent Recommendations List
         }
         <div>
-            {this.state.props.lang === 'English' ? 
+            {this.props.lang === 'English' ? 
                 <div> 
                     <h3>
                         Most Recent Recommendations
@@ -145,7 +146,7 @@ class TeacherHome extends React.Component {
             //Top Rated Recommendations List
         }
         <div>
-            {this.state.props.lang === 'English' ? 
+            {this.props.lang === 'English' ? 
                 <div> 
                     <h3>
                         Top Rated Recommendations
@@ -165,7 +166,7 @@ class TeacherHome extends React.Component {
             //Ask Question Form
         }
         <div>
-            {this.state.props.lang === 'English' ? 
+            {this.props.lang === 'English' ? 
                 <div> 
                     <h3>
                         Ask a Question
