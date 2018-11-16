@@ -4,6 +4,14 @@ html, body {
     margin: 0;
 }
 
+.list-group-item{
+    transition: 0.2s;
+}
+
+.list-group-item:hover{
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
 .low_card_title_margin p{
     margin-bottom: 3rem;
 }
@@ -25,6 +33,10 @@ html, body {
     padding: 2.7rem;
     border-radius: 0.5rem;
     
+}
+
+.big-card-link:hover{
+    background-color: lightgray;
 }
 
 
@@ -99,3 +111,49 @@ html, body {
 .container {
     padding: 2px 16px;
 }
+
+.big-card-admin-home{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    margin-top: 2.7rem;
+    margin-bottom: 2.7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2.7rem;
+    border-radius: 0.5rem;
+    width: 30%; 
+    min-width: 35rem;
+}
+
+.big-card-admin-home:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+.big-card-mentor-home{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    margin-top: 2.7rem;
+    margin-bottom: 2.7rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 2.7rem;
+    border-radius: 0.5rem;
+    min-width: 35rem;
+    width: 45%; 
+}
+
+.big-card-mentor-home:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+
+

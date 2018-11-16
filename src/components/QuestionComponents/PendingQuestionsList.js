@@ -74,6 +74,7 @@ class PendingQuestionsList extends React.Component {
             {
                 //Pagination component
             }
+                <div className="text-center">
                 {(this.props.questions.length !== 0) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -82,6 +83,7 @@ class PendingQuestionsList extends React.Component {
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
             {
                 //If there are no elements in the Pending Questions list, then a message specifying this is shown. 
             }

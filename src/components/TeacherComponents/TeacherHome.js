@@ -98,13 +98,13 @@ const TeacherHome = (props) => (
                                         {props.lang === 'English' ? 
                                             <div className="text-center"> 
                                                 <h3 style={{marginBottom: '2rem'}}>
-                                                    Most Recent Recommendations
+                                                    My Most Recent Recommendations
                                                 </h3>
                                             </div>
                                             :
                                             <div className="text-center">
                                                 <h3 style={{marginBottom: '0'}}>
-                                                    Recomendaciones
+                                                    Mis Recomendaciones
                                                 </h3>
                                                 <h3 style={{marginTop: '0',marginBottom: '2rem'}}>
                                                     Más Recientes
@@ -122,13 +122,13 @@ const TeacherHome = (props) => (
                                         {props.lang === 'English' ? 
                                             <div className="text-center"> 
                                                 <h3 style={{marginBottom: '2rem'}}>
-                                                    Top-Rated Recommendations
+                                                    My Top-Rated Recommendations
                                                 </h3>
                                             </div>
                                             :
                                             <div className="text-center">
                                                 <h3 style={{marginBottom: '0'}}>
-                                                    Recomendaciones
+                                                    Mis Recomendaciones
                                                 </h3>
                                                 <h3 style={{marginTop: '0', marginBottom: '2rem'}}>
                                                     Altamente Clasificadas

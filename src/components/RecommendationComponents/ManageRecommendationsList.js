@@ -66,10 +66,6 @@ class ManageRecommendationsList extends React.Component{
         return(
             <div>
             {
-                //Page title
-            }
-                <h3>{this.props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</h3>
-            {
                 //Recommendations list
             }
                 {this.state.displayedRecommendations.map((reco) => {
@@ -80,6 +76,7 @@ class ManageRecommendationsList extends React.Component{
             {
                 //Pagination component
             }
+            <div className="text-center">
                 {(this.props.recommendation.length !== 0) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -88,6 +85,7 @@ class ManageRecommendationsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+            </div>
 
             {
                 //Message displayed if there are no recommendations in the Recommendations List. 

@@ -7,62 +7,75 @@ import {NavLink} from 'react-router-dom';
  * @param {*} props - Component properties
  */
 const AdminHome = (props) => (
-    <div>
-        <div>
-        {
-            //Link to Administrator Settings page
-        }
-        <NavLink to="/admin/settings/info" activeClassName="is-active" exact={true}>
-            {props.lang === 'English' ? 
-            <div>
-                <h2>Platform</h2>
-                <span>COG_IMG</span>
-                <h2>Settings</h2>
-            </div>
-            : 
-            <div>
-                <h2>Modificar</h2>
-                <span>COG_IMG</span>
-                <h2>Plataforma</h2>
-            </div>}
-        </NavLink>
+    <div className="background-home">
+        <div className="container">
+            <div className="row">
+            {
+                //Link to Administrator Settings page
+            }
+            <NavLink to="/admin/settings/info" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                <div className="col-xs-12 col-xl-4 big-card-admin-home text-center">
+                    
+                        {props.lang === 'English' ? 
+                        <div>
+                            <h2>Platform</h2>
+                            <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
+                            <h2>Settings</h2>
+                        </div>
+                        : 
+                        <div>
+                            <h2>Modificar</h2>
+                            <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
+                            <h2>Plataforma</h2>
+                        </div>}
+                </div>
+                
+                </NavLink>
+                {
+                    //Link to Assign Recommendations page
+                }
+                <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                 
+                    <div className="col-xs-12 col-xl-4 big-card-admin-home text-center">
+                
+                       {props.lang === 'English' ? 
+                        <div>
+                            <h2>Manage</h2>
+                            <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                            <h2>Recommendations</h2>
+                        </div>
+                        : 
+                        <div>
+                            <h2>Manejar</h2>
+                            <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                            <h2>Recomendaciones</h2>
+                        </div>}
+                    </div>
+                </NavLink>
 
-        {
-            //Link to Assign Recommendations page
-        }
-        <NavLink to="/recommendations/assign" activeClassName="is-active" exact={true}>
-            {props.lang === 'English' ? 
-            <div>
-                <h2>Manage</h2>
-                <span>BOOK_IMG</span>
-                <h2>Recommendations</h2>
+                {
+                    //Link to Pending Questions page
+                }
+                <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                    
+                    <div className="col-xs-12 col-xl-4 big-card-admin-home text-center">
+               
+                    {props.lang === 'English' ? 
+                        <div>
+                            <h2>Answer</h2>
+                            <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
+                            <h2>Questions</h2>
+                        </div>
+                        : 
+                        <div>
+                            <h2>Contestar</h2>
+                            <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
+                            <h2>Preguntas</h2>
+                        </div>}
+                    </div>
+                
+                </NavLink>
             </div>
-            : 
-            <div>
-                <h2>Manejar</h2>
-                <span>BOOK_IMG</span>
-                <h2>Recomendaciones</h2>
-            </div>}
-        </NavLink>
-
-        {
-            //Link to Pending Questions page
-        }
-        <NavLink to="/staff/questions" activeClassName="is-active" exact={true}>
-            {props.lang === 'English' ? 
-            <div>
-                <h2>Answer</h2>
-                <span>QUESTION_MARK_IMG</span>
-                <h2>Questions</h2>
-            </div>
-            : 
-            <div>
-                <h2>Contestar</h2>
-                <span>QUESTION_MARK_IMG</span>
-                <h2>Preguntas</h2>
-            </div>}
-        </NavLink>
-            
         </div>
     </div>
 );

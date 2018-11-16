@@ -48,25 +48,37 @@ import {Link} from 'react-router-dom';
 }
  */
 const ManageRecommendationsListItem = (props) => (
-    <div>
+    <div className="item-card">
     {
         //Recommendation title
     }
-        <h4>{props.reco.title}</h4>
+        <p className="item__body card-title">{props.reco.title}</p>
     {
         //Recommendation header
     }
-        <h5>{props.reco.header}</h5>
-    {
-        //Button to remove recommendation
-    }
-        <button onClick={() => {
-            props.dispatch(removeRecommendation({id: props.reco.id}));
-        }}>{props.lang === 'English' ? 'Remove' : 'Remover'}</button>
+        <p className="item__body">{props.reco.header}</p>
     {
         //Link to edit the recommendation item
     }
-        <Link to={`/recommendations/edit/${props.reco.id}`}><button>{props.lang === 'English' ? 'Edit' : 'Modificar'}</button></Link>
+        <Link to={`/recommendations/edit/${props.reco.id}`}>
+            <button>
+                <div className="btn btn-item">
+                    {props.lang === 'English' ? 'Edit' : 'Modificar'}
+                </div>
+            </button>
+        </Link>
+    {
+        //Button to remove recommendation
+    }
+        
+        <button onClick={() => {
+            props.dispatch(removeRecommendation({id: props.reco.id}));
+        }}>
+            <div className="btn btn-item">
+                {props.lang === 'English' ? 'Remove' : 'Remover'}
+            </div>
+        </button>
+    
     </div>
 );
 

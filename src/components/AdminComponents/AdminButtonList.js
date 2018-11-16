@@ -15,7 +15,7 @@ const AdminButtonList = (props) => (
             <Link to={"/admin/settings/info"}>
                 <div className="nav__button">
                     <p className="nav__button__text">
-                        {props.lang === 'English' ? 'Account Information' : 'Información de Cuenta'}
+                        {props.lang === 'English' ? 'My Profile' : 'Mi Perfil'}
                     </p> 
                 </div>
             </Link>

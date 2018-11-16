@@ -9,16 +9,17 @@ import {selectRecommendation} from '../../actions/teacherRecommendations';
 const HomeRecommendationsListItem = (props) => (
     //Open recommendation modal when recommendation item is selected. 
         <div className="list-group-item">
-        <div className="clickable" onClick={() => {props.dispatch(selectRecommendation(props.reco));}}>
-        {
-            //Recommendation title and date of assignment. 
-        }
-            <h4>{props.reco.title}</h4> <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.reco.date}</h5>
-        {
-            //Recommendation header
-        }
-            <h5>{props.reco.header}</h5>
-        </div>
+            <div className="clickable" onClick={() => {props.dispatch(selectRecommendation(props.reco));}}>
+            {
+                //Recommendation title and date of assignment. 
+            }
+                <h4>{props.reco.title}</h4> <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.reco.date}</h5>
+            {
+                //Recommendation header
+            }
+                <h5>{props.reco.header}</h5>
+                
+            </div>
         </div>
 );
 

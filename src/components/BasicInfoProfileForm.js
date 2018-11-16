@@ -86,20 +86,26 @@ class BasicInfoProfileForm extends React.Component{
                             
                             <hr className="break" style={{borderColor: '#5933AA'}}/>
                         </div>
-                        {
-                            //Name input field
-                        }
-                        <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                        <input type="text" placeholder="Name" className="form-control"  value={this.state.name} onChange={this.onNameChange}/>
-                    
-                        <br/>
-                        {
-                            //Last name input field
-                        }
-                        <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
-                        <input type="text" placeholder="Last Name" className="form-control"  value={this.state.lastName} onChange={this.onLastNameChange}/>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                {
+                                    //Name input field
+                                }
+                                <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
+                                <input type="text" placeholder="Name" className="form-control"  value={this.state.name} onChange={this.onNameChange}/>
+                            
+                                <br/>
+                                </div>
+                                <div className="col-sm-6">
+                                {
+                                    //Last name input field
+                                }
+                                <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
+                                <input type="text" placeholder="Last Name" className="form-control" value={this.state.lastName} onChange={this.onLastNameChange}/>
 
-                        <br/>
+                                <br/>
+                                </div>
+                            </div>
                         {
                             //Date of birth input field
                         }
@@ -129,6 +135,7 @@ class BasicInfoProfileForm extends React.Component{
                         />
 
                         
+                        <br/>
                         <br/>
                         {
                             //Gender radio selector
@@ -161,21 +168,21 @@ class BasicInfoProfileForm extends React.Component{
                         <br/>
 
                         {
+                            //Submit button
+                        }
+                        <button onClick={this.onSubmit}>
+                            <div className="btn btn-item" style={{marginTop: '2rem'}}>
+                                {this.props.lang === 'English' ? 'Save' : 'Guardar'}
+                            </div>
+                        </button>
+
+                        {
                             //Change password button
                         }
                         
                         <button onClick={this.changePassword}>
                             <div className="btn btn-item" style={{marginTop: '2rem'}}>
                                 {this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} 
-                            </div>
-                        </button>
-
-                        {
-                            //Submit button
-                        }
-                        <button onClick={this.onSubmit}>
-                            <div className="btn btn-item" style={{marginTop: '2rem'}}>
-                                {this.props.lang === 'English' ? 'Save' : 'Guardar'}
                             </div>
                         </button>
                     </div>

@@ -48,7 +48,7 @@ class AnswerQuestionForm extends React.Component {
                             <QuestionButtonList/>
                             </div>
                             <div className="col-sm-1"/>
-                            <div className="col-sm-9 item__body">
+                            <div className="col-sm-9 big-card item__body">
                             {
                                 //Question
                             }
@@ -58,15 +58,14 @@ class AnswerQuestionForm extends React.Component {
                                 //Answer input field
                             }
                             <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
-                                <textarea type="text" rows='10' cols='90' required value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
-                                <br/>
+                                <textarea type="text" rows='10' className="form-control" required value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
                             {
                                 //Message displayed when trying to submit an answer without filling the answer input field. 
                             }
                                 {this.state.answerError}
                                 <br/>
                                 {this.state.answerError === true && 
-                                    <div className="text-danger">
+                                    <div className="text-danger"  style={{marginBottom: '2.7rem'}}>
                                         {this.props.lang === 'English' ? <p>Please fill the 'Answer' field before submitting an answer.</p> : <p>Por favor, llene el campo de 'Respuesta' antes de guardar la respuesta.</p>}
                                     </div>
                                 }
@@ -74,7 +73,7 @@ class AnswerQuestionForm extends React.Component {
                                     //Button to submit an answer. 
                                 }
                                 <button onClick={this.onSubmit}>
-                                    <div className="btn btn-default">
+                                    <div className="btn btn-item">
                                         {this.props.lang === 'English' ? 'Answer' : 'Responder'}
                                     </div>
                                 </button>

@@ -13,14 +13,18 @@ class RecommendationsFilters extends React.Component{
     render() {
         return (
             <div className="form-group">
-                {
-                    //Text filter input field
-                }
-                <input className="form-control" type="text" placeholder="Search" value ={this.props.filter.text} onChange={(e) => {
-                    this.props.dispatch(setRecommendationsTextFilter(e.target.value));
-                }}/>
+                <div className="row">
+                    <div className="col-sm-10 left-input-margin">
+                        {
+                            //Text filter input field
+                        }
+                        <input className="form-control" type="text" placeholder="Search" value ={this.props.filter.text} onChange={(e) => {
+                            this.props.dispatch(setRecommendationsTextFilter(e.target.value));
+                        }}/>
+                    </div>
+                </div>
 
-                <div className="btn-group">
+                <div className="btn-group left-input-margin">
                     <span className="btn btn-filter" style={{marginBottom: '1rem'}}>
                                 <i className="fas fa-filter"></i>
                     </span>
@@ -31,7 +35,7 @@ class RecommendationsFilters extends React.Component{
                             <select onChange={(e) => {
                                 this.props.dispatch(setRecommendationsCategory(e.target.value));
                             }}>
-                                    <option className="btn-primary" value="" disabled="disabled">{this.props.lang === 'English' ? 'Choose Category' : 'Seleccionar Categorías'}</option>
+                                    <option className="btn-primary" value="" disabled="disabled">{this.props.lang === 'English' ? 'Choose a Category' : 'Seleccione una Categoría'}</option>
 
                                     <option value="all">{this.props.lang === 'English' ? 'All' : 'Todas'}</option>
 

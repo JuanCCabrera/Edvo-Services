@@ -34,7 +34,7 @@ const UserListItem = (props) => (
         }
         <span className="item__body">{props.lang === 'English' ? 'Categories' : 'Categorías'}: {' '}
         {props.user.categories.map((category) => {
-            return (<p key={uuid()} className="badge" style={{marginLeft: '1rem', backgroundColor: '#5933AA'}}>{category + ' '}</p>)
+            return (<span key={uuid()} className="badge" style={{marginLeft: '1rem', maginBottom: '0rem', backgroundColor: '#5933AA'}}>{category + ' '}</span>)
         })}
         </span>
         <br/>
@@ -42,7 +42,7 @@ const UserListItem = (props) => (
             //User removal button
         }
         <button onClick={props.userRemoval}>
-            <div className="btn btn-item">
+            <div className="btn btn-item" style={{marginTop: '10px'}}>
                 {props.lang === 'English' ? 'Remove' : 'Remover'}
             </div>
         </button>
