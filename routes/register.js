@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const val= require('./validate'); //validate inputs
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -49,22 +50,20 @@ router.post('/', (req,res,next)=> {
       speakers: req.body.speakers,
       class: req.body.class
     };
-    console.log("this is the input: ", data);
-    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null 
-      || data.email == null || data.dob == null || data.policies == null || data.teachersince == null
-      || data.education == null || data.spanish == null || data.english == null || data.schooltype == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
-      ||data.instructions == null ||data.moodle == null || data.googleclassroom == null || data.emails == null || data.books == null || data.applications == null || data.socialmedia == null || data.projector == null 
-      || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.class == null || data.schoolname == null || data.location == null){
+
+    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) 
+      || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies) || val.validateDate(data.teachersince)
+      || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
+      || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.applications) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
+      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || data.class == null || val.validateStrings(data.schoolname) || val.validateStringLocation(data.location)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
           isBase64Encoded: false,});
     }
-    console.log("data variable: ", data.class);
 
     var classesjson = data.class
-    console.log("classjson: ", classesjson );
-    if(classesjson.subject == null || classesjson.format == null || classesjson.language== null 
-      || classesjson.level== null || classesjson.groupsize== null || classesjson.topica== null){
+    if(val.validateStrings(classesjson.subject) || val.validateNoSpace(classesjson.format) || val.validateNoSpace(classesjson.language) 
+      || val.validateLevel(classesjson.level) || val.validateGroup(classesjson.groupsize) || val.validateStrings(classesjson.topica)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
