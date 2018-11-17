@@ -607,7 +607,7 @@ class CreateRecommendationForm extends React.Component{
                             </div>
 
                             {this.state.correctOption === index && <div style={{display: 'inline-block', marginLeft: '1rem'}}>
-                                <span style={{color: '#5933AA', width: '1rem'}}><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+                                <span style={{color: '#5933AA', width: '1rem'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
                             </div>}
 
                             </button>

@@ -16,43 +16,79 @@ import {removeSchool} from '../actions/school';
         }
 */
 
-const SchoolListItem = (props) => (
-    <div className="item-card">
-        {
-            //School name
+class SchoolListItem extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            toggleButton: false
         }
-        <p className="item__body card-title">{props.school.name}</p>
-        {
-            //School location
-        }
-        <p>{props.lang === 'English' ? 'Location' : 'Localización'}: {props.school.location}</p>
-        {
-            //School type
-        }
-        <p>{props.lang === 'English' ? 'Type' : 'Tipo'}: {props.school.type}</p>
-        {
-            //Number of accounts linked to the school
-        }
-        <span>{props.lang === 'English' ? 'Accounts Linked' : 'Cuentas Enlazadas'}: 
-            <div className="badge" style={{marginLeft: '1rem', backgroundColor: '#5933AA'}}>
-                {props.school.numAccounts}
-            </div>
-        </span>
-        <br/>
-        <br/>
+    }
+    
+    render(){
+        return (
+            <div className="item-card">
+                {
+                    //School name
+                }
+                <p className="item__body card-title">{this.props.school.name}</p>
+                {
+                    //School location
+                }
+                <p>{this.props.lang === 'English' ? 'Location' : 'Localización'}: {this.props.school.location}</p>
+                {
+                    //School type
+                }
+                <p>{this.props.lang === 'English' ? 'Type' : 'Tipo'}: {this.props.school.type}</p>
+                {
+                    //Number of accounts linked to the school
+                }
+                <span>{this.props.lang === 'English' ? 'Accounts Linked' : 'Cuentas Enlazadas'}: 
+                    <div className="badge" style={{marginLeft: '1rem', backgroundColor: '#5933AA'}}>
+                        {this.props.school.numAccounts}
+                    </div>
+                </span>
+                <br/>
 
-        {
-            //Button to remove school from list
-        }
-        <button onClick={() => {
-            props.dispatch(removeSchool({id: props.school.id}));
-        }}>
-            <div className="btn btn-item">
-                {props.lang === 'English' ? 'Remove' : 'Remover'}
+                {
+                    //Button to remove school from list
+                }
+                {this.state.toggleButton ? 
+                    <div>
+                        <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
+                            {this.props.lang === 'English' ? 'Are you sure you would like to remove this user?' : '¿Estás seguro de que quieres remover a este usuario?'}
+                        </div>
+                        <br/>
+                        <button onClick={() => {
+                            this.props.dispatch(removeSchool({id: this.props.school.id})); ; 
+                            this.setState(() => ({toggleButton: false}));
+                        }}>
+                        <div className="btn btn-item" style={{marginTop: '10px'}}>
+                                {this.props.lang === 'English' ? 'Yes' : 'Si'}
+                        </div>
+                        </button>
+
+                        <button onClick={() => {
+                            this.setState(() => ({toggleButton: false}));
+                        }}>
+                        <div className="btn btn-item" style={{marginTop: '10px'}}>
+                                {this.props.lang === 'English' ? 'No' : 'No'}
+                        </div>
+                        </button>
+                    </div>
+                    :
+                    <div>
+                    <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
+                        <div className="btn btn-item" style={{marginTop: '10px'}}>
+                            {this.props.lang === 'English' ? 'Remove' : 'Remover'}
+                        </div>
+                    </button>
+                    </div>
+                }
+        
             </div>
-        </button>
-    </div>
-);
+        );
+    }
+}
 
 //Map current language state to component properties.
 const mapStateToProps = (state) => {

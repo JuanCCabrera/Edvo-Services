@@ -42,7 +42,7 @@ class AnswerQuestionForm extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="background-home">
                 <form onSubmit={this.onSubmit}>
                     <div className="container">
                         <div className="row">
