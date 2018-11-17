@@ -24,7 +24,7 @@ class RegistrationForm extends React.Component{
              lastNameError: '',
 
              gender: 'male',
-             dateOfBirth: moment(),
+             dateOfBirth: moment().subtract('18',"years"),
              dateOfBirthError: '',
 
              calendarFocused: false,

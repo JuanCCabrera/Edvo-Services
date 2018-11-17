@@ -30,7 +30,7 @@ class CreateUserForm extends React.Component{
             lastName: '',
             lastNameError: '',
 
-            dateOfBirth: moment(),
+            dateOfBirth: moment().subtract('18',"years"),
             dateOfBirthError: '',
 
             calendarFocused: false,
