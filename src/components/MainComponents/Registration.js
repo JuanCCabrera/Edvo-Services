@@ -8,9 +8,12 @@ import ContactForm from './ContactForm';
  */
 const Registration = (props) => (
     <div>
-        <RegistrationForm/>
-
-        <ContactForm/>
+        <div className="background-home">
+            <RegistrationForm/>
+        </div>
+        <div>
+            <ContactForm/>
+        </div>
     </div>
 );
 

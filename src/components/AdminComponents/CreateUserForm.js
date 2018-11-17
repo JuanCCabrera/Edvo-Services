@@ -110,7 +110,7 @@ class CreateUserForm extends React.Component{
     //Change type in local state
     onTypeChange = (e) => {
         const type = e.target.value;
-        this.setState(() => ({type}));
+        this.setState(() => ({type, institutionID: '', institutionIDError: ''}));
     }
 
     //Change institutionID in local state
@@ -289,7 +289,7 @@ class CreateUserForm extends React.Component{
                                     <br/>
                                     <input type="text" className="form-control" maxLength="100" style={{width: '40%'}} placeholder = "Email" onBlur={() => {
                                         //Check if the email field matches the expected email address format. 
-                                        if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/)){
+                                        if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                                             if(this.props.lang === 'English'){
                                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
                                             }else{

@@ -13,7 +13,10 @@ class CreateRecommendationForm extends React.Component{
             titleError: '',
             multimedia: props.reco ? props.reco.multimedia : '',
             header: props.reco ? props.reco.header : '',
+            headerError: '',
+
             description: props.reco ? props.reco.description : '',
+            descriptionError: '',
 
             teachingStrategies: props.reco ? props.reco.teachingStrategies : false,
             updatedMaterial: props.reco ? props.reco.updatedMaterial : false,
@@ -36,8 +39,14 @@ class CreateRecommendationForm extends React.Component{
             speakers: props.reco ? props.reco.speakers : false,
             
             topics: props.reco ? props.reco.topics : [''],
+            topicError: '',
+
             location: props.reco ? props.reco.location : '',
+            locationError: '',
+
             subject: props.reco ? props.reco.subject : '',
+            subjectError: '',
+
             language: props.reco ? props.reco.language : 'spanish',
             type: props.reco ? props.reco.type : 'event',
             schoolType: props.reco ? props.reco.schoolType : 'public',
@@ -46,7 +55,11 @@ class CreateRecommendationForm extends React.Component{
             size: props.reco ? props.reco.size : '1 - 10',
 
             question: props.reco ? props.reco.question : '',
+            questionError: '',
+
             choices: props.reco ? props.reco.choices : ['', ''],
+            choiceError: '',
+
             correctOption: props.reco ? props.reco.correctOption : -1,
             creationError: false
        };
@@ -57,11 +70,50 @@ class CreateRecommendationForm extends React.Component{
         if(prevProps !== this.props){
             if(this.props.lang === 'English'){
                 if(this.state.titleError){
-                    this.setState(() => ({titleError: 'The title must contain readable text.'}));
+                    this.setState(() => ({titleError: 'The title field must contain text.'}));
+                }
+                if(this.state.headerError){
+                    this.setState(() => ({headerError: 'The header field must contain text'}));
+                }
+                if(this.state.descriptionError){
+                    this.setState(() => ({descriptionError: 'The content field must contain text.'}));
+                }
+                if(this.state.topicError){
+                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                }
+                if(this.state.locationError){
+                    this.setState(() => ({locationError: 'Enter a valid address'}));
+                }
+                if(this.state.subjectError){
+                    this.setState(() => ({subjectError: 'The subject field must contain text.'}));
+                }
+                if(this.state.questionError){
+                    this.setState(() => ({questionError: 'The question field must contain text.'}));
+                }
+                if(this.state.choiceError){
+                    this.setState(() => ({choiceError: 'Enter valid options.'}));
                 }
             }else{
                 if(this.state.titleError){
-                    this.setState(() => ({titleError: 'El título debe contener texto legible.'}))
+                    this.setState(() => ({titleError: 'El título debe contener texto.'}))
+                }
+                if(this.state.headerError){
+                    this.setState(() => ({headerError: 'La descripción debe contener texto.'}))
+                }
+                if(this.state.questionError){
+                    this.setState(() => ({questionError: 'El contenido debe contener texto.'}))
+                }
+                if(this.state.topicError){
+                    this.setState(() => ({topicError: 'Escriba temas válidos.'}))
+                }
+                if(this.state.locationError){
+                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
+                }
+                if(this.state.subjectError){
+                    this.setState(() => ({subjectError: 'El tema de la clase debe contener texto.'}));
+                }
+                if(this.state.choiceError){
+                    this.setState(() => ({choiceError: 'Escriba opciones válidas.'}));
                 }
             }
         }
@@ -132,6 +184,25 @@ class CreateRecommendationForm extends React.Component{
         let topics = [...this.state.topics]
         topics[i] = e.target.value;
         this.setState(() => ({topics: topics}));
+
+        let errorCheck = false;
+        let j = 0;
+        //Check to see if description is only composed of spaces. 
+        for(j = 0; j < this.state.topics.length; j++){
+            if(this.state.topics[j] && this.state.topics[j].match(/^\s+$/)){
+                if(this.props.lang === 'English'){
+                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                }else{
+                    this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                }
+                errorCheck = true;
+                break;
+            }
+        }
+
+        if(!errorCheck){
+            this.setState(() => ({topicError: ''}));
+        }
     }
 
     //Delete topic from the array of listed topics for a class. 
@@ -168,8 +239,30 @@ class CreateRecommendationForm extends React.Component{
     onChoiceChange = i => e => {
         let choices = [...this.state.choices]
         choices[i] = e.target.value;
+        
+
         this.setState(() => ({choices}));
+
+        let errorCheck = false;
+        let j = 0;
+        //Check to see if description is only composed of spaces. 
+        for(j = 0; j < this.state.choices.length; j++){
+            if(this.state.choices[j] && this.state.choices[j].match(/^\s+$/)){
+                if(this.props.lang === 'English'){
+                    this.setState(() => ({choiceError: 'Enter valid options.'}));
+                }else{
+                    this.setState(() => ({choiceError: 'Escriba opciones válidas.'})); 
+                }
+                errorCheck = true;
+                break;
+            }
+        }
+
+        if(!errorCheck){
+            this.setState(() => ({choiceError: ''}));
+        }
     }
+
 
     //Delete choice from local state array. 
     deleteChoice = i => e => {
@@ -327,8 +420,14 @@ class CreateRecommendationForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
-        //Set error message if there are any required fields which are not filled upon submission. 
-        if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] ){
+            //Set error message if there are any required fields which are not filled upon submission. 
+        if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0]){
+            this.setState(() => ({creationError: true}));
+            //If checkboxes are empty...
+        }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
+            this.setState(() => ({creationError: true}));
+            //If a regex check fails...
+        }else if(this.state.titleError || this.state.headerError || this.state.descriptionError || this.state.locationError || this.state.topicError || this.state.subjectError || this.state.questionError || this.state.choiceError){
             this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
@@ -346,8 +445,10 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Recommendation title input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
-                    <input type="text" maxLength="100" placeholder = "Title" onBlur={() => {
+                    <input type="text" maxLength="200" placeholder = "Title" className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange} onBlur={() => {
                         //Check to see if title is only composed of spaces. 
                         if(this.state.title.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -358,7 +459,7 @@ class CreateRecommendationForm extends React.Component{
                         }else{
                             this.setState(() => ({titleError: ''}));
                         }
-                    }} className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange}/>
+                    }}/>
                     {this.state.titleError && 
                         <div>
                             <span className="text-danger"> 
@@ -370,24 +471,82 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Recommendation header input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Description' : 'Descripción'}:</label>
-                    <textarea type="text" rows="2" placeholder = "Description" className="form-control" value = {this.state.header} onChange={this.onHeaderChange}/>
-
+                    <textarea type="text" maxLength="200" rows="2" placeholder = "Description" className="form-control" value = {this.state.header} onChange={this.onHeaderChange} onBlur={() => {
+                        //Check to see if header is only composed of spaces. 
+                        if(this.state.header.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({headerError: 'The header must contain text.'}));
+                            }else{
+                                this.setState(() => ({headerError: 'La descripción debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({headerError: ''}));
+                        }
+                    }}/>
+                    {this.state.headerError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.headerError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Recommendation description input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Content' : 'Contenido'}:</label>
-                    <textarea type = "text" rows="5" placeholder = "Content" className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange}/>
-
+                    <textarea type = "text" rows="5" placeholder = "Content" className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange} onBlur={() => {
+                        //Check to see if description is only composed of spaces. 
+                        if(this.state.description.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({descriptionError: 'The content must contain text.'}));
+                            }else{
+                                this.setState(() => ({descriptionError: 'El contenido debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({descriptionError: ''}));
+                        }
+                    }}/>
+                    {this.state.descriptionError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.descriptionError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Recommendation location input field
                     }
                     <label>{this.props.lang === 'English' ? 'Location (Optional)' : 'Localización (Opcional)'}:</label>
-                    <input type = "text" placeholder = "Location" className="form-control" value = {this.state.location} onChange = {this.onLocationChange}/>
-
+                    <input type = "text" maxLength="150" placeholder = "Location" className="form-control" value = {this.state.location} onChange = {this.onLocationChange} onBlur={() => {
+                        //Check to see if address is only composed of spaces. 
+                        if(this.state.location.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({locationError: 'Enter a valid address.'}));
+                            }else{
+                                this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({locationError: ''}));
+                        }
+                    }}/>
+                    {this.state.locationError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.locationError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Multimedia input field
                     }
@@ -398,13 +557,35 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Quiz question input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </label>
-                    <input type="text" disabled={this.props.isEdit} className="form-control" placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange}/>
-
+                    <input type="text" maxLength="700" disabled={this.props.isEdit} className="form-control" placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange} onBlur={() => {
+                        //Check to see if description is only composed of spaces. 
+                        if(this.state.question.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({questionError: 'The question field must contain text.'}));
+                            }else{
+                                this.setState(() => ({questionError: 'La pregunta debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({questionError: ''}));
+                        }
+                    }}/>
+                    {this.state.questionError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.questionError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Choices to answer quiz question
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Options' : 'Opciones'} (Max: 4):</label>
                     {this.state.choices.map((choice, index) => (
                         <span key={index}>
@@ -416,6 +597,7 @@ class CreateRecommendationForm extends React.Component{
                             style={{width: '50%', display: 'inline', marginRight: '1rem'}}
                             value={choice}
                             disabled={this.props.isEdit}
+                            maxLength="400"
                             onChange={this.onChoiceChange(index)}
                             />
 
@@ -423,6 +605,11 @@ class CreateRecommendationForm extends React.Component{
                             <div className="btn btn-item">
                                 {this.props.lang === 'English' ? 'Mark As Correct Answer' : 'Marcar Como Contestación Correcta'}
                             </div>
+
+                            {this.state.correctOption === index && <div style={{display: 'inline-block', marginLeft: '1rem'}}>
+                                <span style={{color: '#5933AA', width: '1rem'}}><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+                            </div>}
+
                             </button>
 
                             {this.state.choices.length > 2 && <div style={{display: 'inline'}}>
@@ -435,7 +622,17 @@ class CreateRecommendationForm extends React.Component{
                             }
                         </span>
                     ))}
+                    
+                    
+                    {this.state.choiceError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.choiceError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Add Choice button
                     }
@@ -452,6 +649,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Categories checkbox selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Categories' : 'Categorías'}:</label>
                     <br/>
                     <label className="clickable radio__text">
@@ -478,6 +677,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Type radio button selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Type' : 'Tipo'}: </label>
                     <br/>
                     <label className="clickable radio__text">
@@ -505,13 +706,34 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Class subject input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'} :</label>
-                    <input type="text" placeholder="Subject" className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange}/>
-
+                    <input type="text" maxLength="100" placeholder="Subject" className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
+                        //Check to see if description is only composed of spaces. 
+                        if(this.state.subject.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({subjectError: 'The subject field must contain text.'}));
+                            }else{
+                                this.setState(() => ({subjectError: 'El tema de la clase debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({subjectError: ''}));
+                        }
+                    }}/>
+                    {this.state.subjectError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.subjectError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
                     {
                         //Class format radio button selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato de Clase'} :</label>
                     <br/>
                     
@@ -528,9 +750,12 @@ class CreateRecommendationForm extends React.Component{
                     </label>
                     <br/>
                     <br/>
+
                     {
                         //School system radio button selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School System' : 'Sistema Educativo'}:</label>
                     <br/>
                     
@@ -552,6 +777,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Level radio button selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Level' : 'Nivel'}:</label>
                     <br/>
                     
@@ -583,6 +810,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Group size radio button selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}</label>
                     <br/>
                     
@@ -609,6 +838,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Class topics input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Class Topics' : 'Tópicos de Clase'} (Max: 3):</label>
                     {this.state.topics.map((topic, index) => (
                         <span key={index}>
@@ -619,6 +850,7 @@ class CreateRecommendationForm extends React.Component{
                             style={{width: '50%', display: 'inline', marginRight: '1rem'}}
                             placeholder = "Topic"
                             value={topic}
+                            maxLength="50"
                             onChange={this.onTopicChange(index)}
                             />
                             {this.state.topics.length > 1 && <div style={{display: 'inline'}}>
@@ -630,6 +862,14 @@ class CreateRecommendationForm extends React.Component{
                             </div>}
                         </span>
                     ))}
+
+                    {this.state.topicError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.topicError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
                     {
                         //Add New Topic button
@@ -644,6 +884,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Resources checkbox input field
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Resources' : 'Recursos'}</label>
                     <br/>
                     <label className="clickable radio__text">
@@ -714,6 +956,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Language radio button selector
                     }
+                    
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}:</label>
                     <br/>
                     <label className="clickable radio__text">

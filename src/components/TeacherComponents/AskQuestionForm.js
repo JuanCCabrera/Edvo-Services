@@ -61,7 +61,8 @@ class AskQuestionForm extends React.Component{
         //Enable error message if there is a missing form field. 
         if(!this.state.subject || !this.state.body){
             this.setState(() => ({askQuestionError: true})); 
-        //Otherwise, dispatch form data. 
+        }else if(this.state.subjectError || this.state.subjectError){
+            this.setState(() => ({askQuestionError: true}))
         }else{
             this.setState(() => ({askQuestionError: false}));
             this.props.onSubmit({
@@ -83,12 +84,13 @@ class AskQuestionForm extends React.Component{
                     type = "text"
                     placeholder = {this.props.lang === 'English' ? 'Subject' : 'Tema'}
                     value = {this.state.subject}
+                    maxLength="100"
                     onChange = {this.onSubjectChange} onBlur={() => {
                         if(this.state.subject && this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
-                                this.setState(() => ({subjectError: 'The name field must contain text.'}));
+                                this.setState(() => ({subjectError: 'The subject field must contain text.'}));
                             }else{
-                                this.setState(() => ({subjectError: 'El campo del nombre debe contener texto.'})); 
+                                this.setState(() => ({subjectError: 'El campo del tema debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({subjectError: ''}));
@@ -110,15 +112,43 @@ class AskQuestionForm extends React.Component{
                     //Question body input field
                 }
                     <p>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </p>
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.body.length}/5000</span>
+                    <br/>
                     <textarea
                     className="form-control"
                     type = "text"
                     placeholder = {this.props.lang === 'English' ? 'Write your question here.' : 'Escriba su pregunta en este espacio.'}
                     cols='41'
                     rows='6'
+                    maxLength="5000"
                     value = {this.state.body}
                     onChange = {this.onBodyChange}
+                    onBlur={() => {
+                        if(this.state.body && this.state.body.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({bodyError: 'The question field must contain text.'}));
+                            }else{
+                                this.setState(() => ({bodyError: 'El campo de la pregunta debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({bodyError: ''}));
+                        }
+                    }}
                     />
+
+                    {
+                        //Question body error
+                    }
+                    {this.state.bodyError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.bodyError}
+                            </span>
+                            <br/>
+                        </div>}
+                    <br/>
+
+
                     {
                         //Message displayed if an attempt is made to submit the form without filling all fields. 
                     }

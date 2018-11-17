@@ -140,7 +140,7 @@ class ContactForm extends React.Component{
                     maxLength="100"
                     onBlur={() => {
                         //Check if the email field matches the expected email address format. 
-                        if(!this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/)){
+                        if(!this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
                             }else{

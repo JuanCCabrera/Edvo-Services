@@ -57,7 +57,7 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({nameError: 'The name field must contain text.'}));
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'The address field must contain text.'}));
+                    this.setState(() => ({locationError: 'Enter a valid address.'}));
                 }
                 if(this.state.institutionIDError){
                     this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
@@ -67,10 +67,10 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'El campo de la dirección debe contener texto.'}))
+                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}))
                 }
                 if(this.state.institutionIDError){
-                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'}));
+                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución válida.'}));
                 }
             }
         }
@@ -155,9 +155,9 @@ class CreateInstitutionForm extends React.Component{
                                     //Check if address field is only composed of spaces. 
                                     if(this.state.location.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({locationError: 'The address field must contain text.'}));
+                                            this.setState(() => ({locationError: 'Enter a valid address'}));
                                         }else{
-                                            this.setState(() => ({locationError: 'El campo de la dirección debe contener texto.'})); 
+                                            this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
                                         }
                                     }else{
                                         this.setState(() => ({locationError: ''}));
