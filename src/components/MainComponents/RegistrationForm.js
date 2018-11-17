@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { connect } from 'react-redux';
 import {Line} from 'rc-progress';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * The Registration form is used to generate the full profile information for a user of the Teacher type. 
@@ -191,7 +192,7 @@ class RegistrationForm extends React.Component{
         var today=moment();
         var difference = today.diff(dateOfBirth, 'years');
         //Check if the selected date of birth falls between 18-90 years ago. 
-        if(dateOfBirth && (difference > 18 && difference < 90)){
+        if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
@@ -506,6 +507,7 @@ class RegistrationForm extends React.Component{
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
             this.setState(() => ({globalError: true, secError: false}));
         }else{
+            this.props.dispatch(setSuccessModal());
             this.setState(() => ({secError: false, globalError: false}));
         }
     }
@@ -624,6 +626,8 @@ class RegistrationForm extends React.Component{
                         />
                         */}
 
+                        <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
+                        <br/>
                         <DatePicker
                         className="form-control"
                         selected={this.state.dateOfBirth}
@@ -1106,6 +1110,8 @@ class RegistrationForm extends React.Component{
                         />
                     */}
 
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
+                    <br/>
                     <DatePicker
                     selected={this.state.timeEmployed}
                     className="form-control"

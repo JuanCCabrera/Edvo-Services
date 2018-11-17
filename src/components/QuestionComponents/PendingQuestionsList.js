@@ -32,7 +32,7 @@ class PendingQuestionsList extends React.Component {
     componentDidUpdate(prevProps){
         //Move to the previous page if there are no items remaining on the current page.
         if(prevProps.questions !== this.props.questions){
-            if(this.state.displayedQuestions.length === 1 && this.currentPage !== 1){
+            if(this.state.displayedQuestions.length === 0 && this.currentPage !== 1){
                 this.handlePageChange(this.currentPage-1);
             }else{
                 this.handlePageChange(this.currentPage);

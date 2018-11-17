@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form available in the Teacher Home page which allows teachers to send questions to the Edvo Tech staff. 
@@ -65,6 +66,7 @@ class AskQuestionForm extends React.Component{
             this.setState(() => ({askQuestionError: true}))
         }else{
             this.setState(() => ({askQuestionError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.onSubmit({
                 subject: this.state.subject,
                 body: this.state.body,

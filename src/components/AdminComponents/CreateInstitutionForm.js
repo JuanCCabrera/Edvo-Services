@@ -2,6 +2,7 @@ import React from 'react';
 import 'react-dates/lib/css/_datepicker.css';
 import AdminButtonList from './AdminButtonList';
 import { connect } from 'react-redux';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form to create a new institution and upload it to the database. 
@@ -85,6 +86,7 @@ class CreateInstitutionForm extends React.Component{
             this.setState(() => ({createInstitutionError: true}));
         }else{
             this.setState(() => ({createInstitutionError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.history.push('/admin/settings/schools');
         }
         //TO-DO Add new school to database

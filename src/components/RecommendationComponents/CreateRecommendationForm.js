@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { setSuccessModal } from '../../actions/successModal';
+import { setEditModal } from '../../actions/editModal';
 
 /**
  * Form used to create a new recommendation which can then be assigned to a user of the Teacher type. 
@@ -431,6 +433,11 @@ class CreateRecommendationForm extends React.Component{
             this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
+            if(this.props.isEdit){
+                this.props.dispatch(setEditModal());
+            }else{
+                this.props.dispatch(setSuccessModal());
+            }
             this.props.onSubmit(this.state);
         }
     }

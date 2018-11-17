@@ -43,6 +43,9 @@ import { clearSelectedRecommendation } from '../actions/teacherRecommendations';
 import QuestionModal from '../components/TeacherComponents/QuestionModal';
 import {clearSelectedQuestion} from '../actions/teacherQuestions';
 
+import SuccessModal from '../components/SuccessModal';
+import SuccessfulEditModal from '../components/SuccessfulEditModal';
+
 /**
  * AppRouter - Main routing component of the application. Contains a header element, two modals which 
  * are invisible unless a recommendation or question is selected, a footer, and a set of conditionally rendered pages.
@@ -64,6 +67,16 @@ const AppRouter = (props) => (
             //Question Modal (hidden until a question is selected)
         }
             <QuestionModal clearSelectedQuestion={() => props.dispatch(clearSelectedQuestion())}/>
+
+        {
+            //Success Modal (hidden until a major action is completed successfully)
+        }
+            <SuccessModal/>
+
+        {
+            //Successful Edit Modal (hidden until any edits are made successfully)
+        }
+            <SuccessfulEditModal/>
         {
             //Switch component. Displays ONLY the component related to the specified route path (must match the page URL). 
         }

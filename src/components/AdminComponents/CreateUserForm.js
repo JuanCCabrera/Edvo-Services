@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import AdminButtonList from './AdminButtonList';
 import { connect } from 'react-redux';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form to create a new user and upload his or her information to the database
@@ -85,7 +86,7 @@ class CreateUserForm extends React.Component{
         var today=moment();
         var difference = today.diff(dateOfBirth, 'years');
         //Check if the selected date of birth falls between 18-90 years ago. 
-        if(dateOfBirth && (difference > 18 && difference < 90)){
+        if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
@@ -181,6 +182,7 @@ class CreateUserForm extends React.Component{
             this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.history.push('/admin/settings/users');
         }
         //TO-DO Add new user to database

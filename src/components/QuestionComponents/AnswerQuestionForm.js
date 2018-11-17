@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { answerQuestion } from '../../actions/question';
 import QuestionButtonList from './QuestionButtonList';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form used to answer pending user questions. This form is available in the Answer Question page. 
@@ -34,6 +35,7 @@ class AnswerQuestionForm extends React.Component {
             this.setState(() => ({answerError: true}));
         }else{
             this.setState(() => ({answerError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
             //Move to the Pending Questions page upon completing the submission. 
             this.props.history.push('/staff/questions');

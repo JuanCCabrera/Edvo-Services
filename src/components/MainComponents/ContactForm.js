@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form used so a user may send his or her doubts to Edvo Tech's staff. 
@@ -77,6 +78,7 @@ class ContactForm extends React.Component{
             this.setState(() => ({contactError: true}))
         }else{  //Otherwise, submit form information
             this.setState(() => ({contactError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.onSubmit({
                 name: this.state.name,
                 email: this.state.email,

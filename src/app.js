@@ -97,6 +97,7 @@ store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 07:30:24', subject: '
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-09 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-08 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 4, favorite: false, read: true}));
 store.dispatch(loadTeacherQuestion({askedDate: '2018-10-07 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
+store.dispatch(loadTeacherQuestion({askedDate: '2018-10-06 07:30:29', subject: 'Potatoes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
 
 //Generate Profile Test Data
 store.dispatch(loadProfile({name: 'Henry', lastName: 'Ford', gender: 'male'}));

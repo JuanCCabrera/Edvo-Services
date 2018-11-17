@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {connect} from 'react-redux';
 import {loadProfile} from '../actions/profile';
+import {setEditModal} from '../actions/editModal';
 
 /**
  * Basic information profile form available in the settings page of every user type. It allows users to change their name, last name, gender, and date of birth as well as access means to change their password. 
@@ -52,7 +53,7 @@ class BasicInfoProfileForm extends React.Component{
         var today=moment();
         var difference = today.diff(dateOfBirth, 'years');
         //Check if the selected date of birth falls between 18-90 years ago. 
-        if(dateOfBirth && (difference > 18 && difference < 90)){
+        if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
@@ -113,6 +114,7 @@ class BasicInfoProfileForm extends React.Component{
         }else{
             this.setState(() => ({formIncompleteError: false}));
             this.props.dispatch(loadProfile({name: this.state.name, lastName: this.state.lastName, dateOfBirth: this.state.dateOfBirth, gender: this.state.gender}));
+            this.props.dispatch(setEditModal());
         }
 
         //TO-DO Modify user data in database

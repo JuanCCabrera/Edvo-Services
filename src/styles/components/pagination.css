@@ -1,0 +1,9 @@
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 0;
+    color: #5933AA;
+    background-color: white;
+    border-color: #ddd;
+}

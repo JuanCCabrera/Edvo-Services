@@ -7,6 +7,7 @@ import MentorButtonList from './MentorButtonList';
  * @param {*} props - Default properties 
  */
  const MentorProfile = (props) => (
+     <div className="background-home">
         <div className="container">
             <div className="row">
                 <div className="col-sm-4"/>
@@ -16,6 +17,7 @@ import MentorButtonList from './MentorButtonList';
                 <div className="col-sm-4"/>
             </div>
         </div>
+    </div>
  );
 
  export default MentorProfile;

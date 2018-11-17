@@ -32,7 +32,7 @@ class TeacherQuestionsList extends React.Component{
         //If component was modified...
         if(prevProps.question !== this.props.question){
             //If there are no recommendations displayed on the current page...
-            if(this.state.displayedQuestions.length === 1 && this.currentPage !== 1){
+            if(this.state.displayedQuestions.length === 0 && this.currentPage !== 1){
                 //Go to previous page
                 this.handlePageChange(this.currentPage-1);
             }else{
