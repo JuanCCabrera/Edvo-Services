@@ -1,9 +1,23 @@
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
+.pagination > .active > .undefined,
+.pagination > .active > .undefined:focus
+.pagination > .active > .undefined:active
+.pagination > .active > .undefined:hover{
     z-index: 0;
-    color: #5933AA;
-    background-color: white;
-    border-color: #ddd;
+    color: white;
+    background-color: #5933AA;
+    border-color: #5933AA;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover{
+    z-index: 0;
+    color: #fff;
+    cursor: default;
+    background-color: #5933AA;
+    border-color: #5933AA;
+
 }
