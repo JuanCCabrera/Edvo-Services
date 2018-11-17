@@ -149,9 +149,12 @@ img.resize-persons {
     background-color: #061551;
 }
 .header{
-    max-height: 10vh;
     background-color: #061551;
     color:white;
+}
+
+.text-white a{
+    color: white;
 }
 
 .footer{
@@ -162,6 +165,7 @@ img.resize-persons {
 
 .logo{
 font-family: Pacifico;
+position: relative;
 }
 
 
@@ -242,4 +246,33 @@ font-family: Pacifico;
     cursor: pointer;
     width: 100%;
 
+}
+
+.navbar-nav li{
+    color: white;
+    transition: 0.5s;
+}
+
+.navbar-nav li:hover{
+    color: #061551;
+    background-color: white;
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover{
+    color: #061551;
+}
+
+.text-center li{
+    display: inline-block;
+    list-style-type: none;
+}
+
+.navbar-inverse .navbar-brand:hover{
+    color: #061551;
 }
