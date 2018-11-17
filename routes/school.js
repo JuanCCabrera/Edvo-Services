@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const val= require('./validate'); //validate inputs
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -18,8 +19,8 @@ router.post('/settings/info', (req,res,next)=> {
         gender: req.body.gender,
         dob: req.body.dob
       };
-    //verify no input is empty
-    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
+    //verify no input is empty 
+    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -72,7 +73,7 @@ router.get('/settings/info', (req,res,next)=> {
       userid: req.body.userid, 
     };
    //verify inputs
-   if(data.userid == null){
+   if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -119,7 +120,7 @@ router.get('/home', (req,res,next)=> {
       userid: req.body.userid, 
     };
    //verify inputs
-   if(data.userid == null){
+   if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});

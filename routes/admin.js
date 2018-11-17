@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const val= require('./validate'); //validate inputs //falta recombody question y choices //answer
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -19,7 +20,7 @@ router.post('/settings/info', (req,res,next)=> {
         dob: req.body.dob
       };
     //verify no input is empty
-    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
+    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -72,7 +73,7 @@ router.get('/settings/info', (req,res,next)=> {
       userid: req.body.userid, 
     };
   //verify no input is empty
-  if(data.userid == null ){
+  if(val.validateUserID(data.userid) ){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -119,7 +120,7 @@ router.post('/settings/institutions/add', (req,res,next)=> {
       accounts: req.body.accounts
     };
   //verify no input is empty
-  if(data.userid == null || data.institutionid == null || data.name ==null || data.location ==null || data.schooltype == null || data.accounts==null ){
+  if(val.validateUserID(data.userid) || val.validateNoSpace(data.institutionid) || val.validateStrings(data.name) || val.validateStringLocation(data.location) || val.validateNoSpace(data.schooltype) || val.validateInt(data.accounts) ){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -184,7 +185,7 @@ router.delete('/settings/institutions/remove', (req,res,next)=> {
       institutionid : req.body.institutionid,
     };
   //verify no input is empty
-  if(data.userid == null || data.institutionid == null ){
+  if(val.validateUserID(data.userid) || val.validateNoSpace(data.institutionid) ){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -276,7 +277,7 @@ router.post('/settings/users/remove', (req,res,next)=> {
       removeid: req.body.userIDToRemove
     };
   //verify no input is empty
-  if(data.userid == null || data.removeid ==null ){
+  if(val.validateUserID(data.userid) || val.validateUserID(data.removeid) ){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.', 
       isBase64Encoded: false,});
@@ -357,7 +358,7 @@ router.post('/settings/users/permissions', (req,res,next)=> {
       permission: req.body.permissions
     };
   //verify no input is empty
-  if(data.userid == null || data.permission == null || data.changeid ==null ){
+  if(val.validateUserID(data.userid) || val.validateNoSpace(data.permission) || val.validateUserID(data.changeid) ){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -469,10 +470,10 @@ router.post('/recommendations/create', (req,res,next)=> {
     };
 
   //verify no input is empty
-  if(data.userid ==null || data.title ==null || data.header == null || data.description == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
-    ||data.instructions == null ||data.moodle == null || data.google == null || data.emails == null || data.books == null || data.apps == null || data.socialmedia == null || data.projector == null 
-    || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.topica == null
-    || data.subject == null || data.type == null || data.spanish == null || data.english == null || data.schooltype == null || data.format == null ||data.groupsize == null || data.level == null 
+  if(val.validateUserID(data.userid) || data.title ==null || data.header == null || data.description == null || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
+  || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
+  || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateStrings(data.topica)
+    || val.validateStrings(data.subject) || val.validateStrings(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
     || data.question == null || data.choices == null){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
@@ -599,16 +600,16 @@ router.post('/recommendations/modify', (req,res,next)=> {
       active : req.body.active,
     };
 
-  //verify no input is empty
-  if(data.recomid == null || data.userid ==null || data.title ==null || data.header == null || data.description == null || data.strategies == null || data.material == null || data.timemanagement == null || data.tech == null 
-    ||data.instructions == null ||data.moodle == null || data.google == null || data.emails == null || data.books == null || data.apps == null || data.socialmedia == null || data.projector == null 
-    || data.computer == null || data.tablet == null || data.stylus == null || data.internet == null || data.smartboard == null || data.smartpencil == null || data.speakers == null || data.topica == null
-    || data.subject == null || data.type == null || data.spanish == null || data.english == null || data.schooltype == null || data.format == null ||data.groupsize == null || data.level == null 
-    || data.active == null ){
-    return res.status(403).json({statusCode: 403,
-      message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
-  }
+ //verify no input is empty
+ if(val.validateInt(data.recomid) || val.validateUserID(data.userid) || data.title ==null || data.header == null || data.description == null || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
+ || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
+ || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateStrings(data.topica)
+ || val.validateStrings(data.subject) || val.validateStrings(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
+ || val.validateBool(data.active) ){
+   return res.status(403).json({statusCode: 403,
+     message: 'Inputs were not received as expected.',
+     isBase64Encoded: false,});
+ }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -672,7 +673,7 @@ router.post('/recommendations/remove', (req,res,next)=> {
       userid: req.body.userid, 
       recomid : req.body.recomid
     };
-  if(data.userid == null || data.recomid == null){
+  if(val.validateUserID(data.userid) || val.validateInt(data.recomid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -735,7 +736,7 @@ router.post('/recommendations/assign', (req,res,next)=> {
       usersAssign : req.body.usersToAssign
     };
   //verify inputs are valid
-  if(data.userid == null || data.recomid == null || data.usersAssign == null){
+  if(val.validateUserID(data.userid) || val.validateInt(data.recomid) || val.validateUserID(data.usersAssign)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -827,7 +828,7 @@ router.post('/questions/answer', (req,res,next)=> {
       answer : req.body.answer
     };
   //verify inputs are valid
-  if(data.userid == null || data.askeddate == null || data.teacherid == null || data.answer == null){
+  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateUserID(data.teacherid) || data.answer == null){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -886,7 +887,7 @@ router.get('/staff/questions', (req,res,next)=> {
       userid: req.body.userid, //change to req.query.userid for testing
     };
   //verify inputs are valid
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -938,7 +939,7 @@ router.get('/recommendations', (req,res,next)=> {
       userid: req.body.userid, //change to req.query.userid for testing
     };
   //verify inputs are valid
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -990,7 +991,7 @@ router.get('/recommendations/users', (req,res,next)=> {
       userid: req.body.userid, //change to req.query.userid for testing
     };
   //verify inputs are valid
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -1052,13 +1053,13 @@ router.post('/settings/users/add', (req,res,next)=> {
       membersince: todaysDate,
       policies: req.body.policies,
     };
-    if(data.userid == null || data.userToCreateid == null || data.usertype == null || data.name == null || data.lastname ==null || data.gender == null 
-      || data.email == null || data.dob == null || data.policies == null){
+    if(val.validateUserID(data.userid) || val.validateUserID(data.userToCreateid) || val.validateNoSpace(data.usertype) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) 
+      || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
-    if(data.usertype == 'school' && data.institutionid == null){
+    if(data.usertype == 'school' && val.validateNoSpace(data.institutionid)){
       return res.status(403).json({statusCode: 403,
         message: 'Missing institutionid for usertype school Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -1119,10 +1120,10 @@ router.get('/settings/users', (req,res,next)=> {
   const users = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid, //change to req.query.userid for testing
+      userid: req.body.userid, 
     };
   //verify inputs are valid
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -1176,7 +1177,7 @@ router.get('/user/recommendations', (req,res,next)=> {
       userToAssign : req.body.userToAssign
     };
   //verify inputs are valid
-  if(data.userid == null || data.userToAssign== null){
+  if(val.validateUserID(data.userid) || val.validateUserID(data.userToAssign)){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});

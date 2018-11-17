@@ -126,6 +126,17 @@ function validateDate( toValidate ) {
       return patt.test(str);
     }
   }
+//validate timestamp
+function validateTime( toValidate ) {
+    var str = toValidate;
+    var patt = new RegExp(/^[0-9]{4}-[0-9]{2}-[0-9]{2}[\s]{1}[0-9]{2}\:[0-9]{2}:[0-9]{2}$/);
+    var patt1= new RegExp(/^\s/);
+    if (str == "" || patt1.test(str) ){
+        return false;
+    }else{
+        return patt.test(str);
+    }
+}
 
 //validate Level
 function validateLevel( toValidate ) {
@@ -164,7 +175,8 @@ function validateGroup( toValidate ) {
     validatetoken:validatetoken,
     validateDate:validateDate,
     validateLevel:validateLevel,
-    validateGroup:validateGroup
+    validateGroup:validateGroup,
+    validateTime:validateTime
 }
   //var patt = new RegExp(/^[a-zA-Z\s]*$/);
   //var res = patt.test(str);

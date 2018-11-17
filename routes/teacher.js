@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const val= require('./validate'); //validate inputs //falta question
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -23,7 +24,7 @@ router.get('/home', (req, res, next) => {
       userid: req.body.userid, //change to req.query.userid for testing
     };
   //verify inputs
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -126,7 +127,7 @@ router.post('/questions/ask', (req,res,next)=> {
         question: req.body.question
       };
     //verify inputs
-    if(data.userid == null || data.subject == null || data.question == null){
+    if(val.validateUserID(data.userid) || val.validateStrings(data.subject) || data.question == null){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -197,7 +198,7 @@ router.get('/questions', (req,res,next)=> {
         userid: req.body.userid, 
       };
     //verify inputs
-    if(data.userid == null){
+    if(val.validateUserID(data.userid)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -259,7 +260,7 @@ router.post('/questions/read', (req,res,next)=> {
     };
 
   //verify inputs
-  if(data.userid == null || data.askeddate == null){
+  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -333,7 +334,7 @@ router.post('/questions/rate', (req,res,next)=> {
       rate: req.body.rate
     };
   //verify inputs
-  if(data.userid == null || data.askeddate == null || data.rate == null){
+  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateRate(data.rate)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -405,7 +406,7 @@ router.post('/recommendations/read', (req,res,next)=> {
         recomid: req.body.recomid,
       };
     //verify inputs
-    if(data.userid == null || data.recomid == null){
+    if(val.validateUserID(data.userid) || val.validateInt(data.recomid)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -455,7 +456,7 @@ router.post('/recommendations/rate', (req,res,next)=> {
       rate: req.body.rate
     };
   //verify inputs
-  if(data.userid == null || data.recomid == null || data.rate == null){
+  if(val.validateUserID(data.userid) || val.validateInt(data.recomid) || val.validateRate(data.rate)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -517,7 +518,7 @@ router.post('/recommendations/favorite', (req,res,next)=> {
       favorite: req.body.favorite
     };
   //verify inputs
-  if(data.userid == null || data.recomid == null || data.favorite == null){
+  if(val.validateUserID(data.userid) || val.validateInt(data.recomid) || val.validateBool(data.favorite)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -566,7 +567,7 @@ router.post('/questions/favorite', (req,res,next)=> {
       favorite: req.body.favorite
     };
   //verify inputs
-  if(data.userid == null || data.askeddate == null || data.favorite == null){
+  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateBool(data.favorite)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -617,7 +618,7 @@ router.post('/settings/info', (req,res,next)=> {
         dob: req.body.dob
       };
     //verify no input is empty
-    if(data.userid == null || data.name == null || data.lastname ==null || data.gender == null || data.dob == null){
+    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -678,7 +679,7 @@ router.post('/settings/classes/add', (req,res,next)=> {
         topicc: req.body.topicc
       };
     //verify inputs
-    if(data.userid == null || data.subject == null || data.format == null || data.language == null || data.level == null || data.groupsize == null || data.topica == null){
+    if(val.validateUserID(data.userid) || val.validateStrings(data.subject) || val.validateNoSpace(data.format) || val.validateNoSpace(data.language) || val.validateLevel(data.level) || val.validateGroup(data.groupsize) || val.validateStrings(data.topica)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -733,7 +734,7 @@ router.delete('/settings/classes/remove', (req,res,next)=> {
       classid: req.body.classInfoID
     };
  //verify inputs
- if(data.userid == null || data.classid == null){
+ if(val.validateUserID(data.userid) || val.validateInt(data.classid)){
   return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
     isBase64Encoded: false,});
@@ -792,7 +793,7 @@ router.get('/settings/classes', (req,res,next)=> {
       userid: req.body.userid,  //change to req.query.userid for testing
     };
   //verify inputs
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -842,7 +843,7 @@ router.get('/settings/info', (req,res,next)=> {
       userid: req.body.userid, 
     };
   //verify inputs
-  if(data.userid == null ){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected',
       isBase64Encoded: false,});
@@ -885,7 +886,7 @@ router.get('/recommendations', (req,res,next)=> {
       userid: req.body.userid,  //change to req.query.userid for testing
     };
   //verify inputs
-  if(data.userid == null ){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -945,7 +946,7 @@ router.get('/settings/plans', (req,res,next)=> {
       userid: req.body.userid,  //change to req.query.userid for testing
     };
   //verify inputs
-  if(data.userid == null ){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -1002,7 +1003,7 @@ router.post('/settings/plans', (req,res,next)=> {
       action: req.body.action //solo puede ser active o suspended
     };
   //verify inputs
-  if(data.userid == null || data.action == null){
+  if(val.validateUserID(data.userid) || val.validateNoSpace(data.action)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});

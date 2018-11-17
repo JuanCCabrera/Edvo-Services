@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const val= require('./validate'); //validate inputs
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T..+/, ''); //today's date format YYYY-MM-DD 00:00:00
@@ -20,7 +21,7 @@ router.post('/contact',(req, res, next) =>{
     name: req.body.name
   };
   //verify inputs are valid
-  if(data.email == null || data.message == null){
+  if(val.validateEmail(data.email) || data.message == null){
     return res.status(401).json({statusCode: 401,
       message: 'Inputs were not received as expected.',});
   }
@@ -50,7 +51,7 @@ router.post('/log', (req,res,next)=> {
       userid: req.body.userid,
     };
   //verify inputs
-  if(data.userid == null){
+  if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
