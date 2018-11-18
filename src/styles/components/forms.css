@@ -15,3 +15,15 @@
 .req{
     color: red;
 }
+
+.btn-pad{
+    margin-bottom: 2rem;
+    margin-left: 0;
+}
+
+@media only screen and (max-width: 992px){
+    .btn-pad{
+        margin-bottom: 2rem;
+        margin-left: 0;
+    }
+}

@@ -17,7 +17,7 @@ class ClassList extends React.Component{
                 //Page title
             }
                 <div className="form__title text-center">
-                <p>{this.props.lang === 'English' ? 'Classes' : 'Clases'}</p>
+                <p>{this.props.lang === 'English' ? 'Classes' : 'Cursos'}</p>
                 <hr className="break" style={{borderColor: '#5933AA'}}/>
                 </div>
             {

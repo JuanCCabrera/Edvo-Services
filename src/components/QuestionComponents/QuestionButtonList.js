@@ -10,8 +10,10 @@ const QuestionButtonList = (props) => (
     <div>
         <br/>
         <Link to={"/staff/questions"} style={{textDecoration: 'none'}}>
-            <div className="nav__button nav__button__text">
+            <div className="nav__button">
+                <div className="nav__button__text" style={{marginBottom: '1rem'}}>
                     {props.lang === 'English' ? 'View Pending Questions' : 'Ver Preguntas Pendientes'}
+                </div>
             </div>
         </Link>
     </div>

@@ -154,7 +154,7 @@ class RegistrationForm extends React.Component{
                     this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
                 }
                 if(this.state.subjectError){
-                    this.setState(() => ({subjectError: 'El tema de la clase debe contener texto.'}));
+                    this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'}));
                 }
                 if(this.state.schoolLocationError){
                     this.setState(() => ({schoolLocationError: 'La localización de la escuela debe contener texto'}));
@@ -719,7 +719,7 @@ class RegistrationForm extends React.Component{
                     //Page two
                 }
                 {this.state.currPage == 2 && <div>
-                    <h2> {this.props.lang === 'English' ? 'Class Information' : 'Información de Clase'} </h2>
+                    <h2> {this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'} </h2>
                     <br/>
                     {
                         //Class subject input field
@@ -732,7 +732,7 @@ class RegistrationForm extends React.Component{
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
                             }else{
-                                this.setState(() => ({subjectError: 'El tema de la clase debe contener texto.'})); 
+                                this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({subjectError: ''}));
@@ -750,7 +750,7 @@ class RegistrationForm extends React.Component{
                         //Class format radio selector
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato de Clase'}:</label>
+                    <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato del Curso'}:</label>
                     <br/>
                     <label className="clickable radio__text">
                     <input type="radio" name="format" value= "classroom" checked={this.state.format === 'classroom'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Classroom' : 'Salón de Clases'}
@@ -833,7 +833,7 @@ class RegistrationForm extends React.Component{
                         //Topics taught input field 
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Topics Taught' : 'Tópicos de Clase'} (Max: 3):</label>
+                    <label>{this.props.lang === 'English' ? 'Topics Taught' : 'Temas del Curso'} (Max: 3):</label>
                     {
                         //Mapping to generate a field for each topics in the topics array. 
                     }
@@ -869,7 +869,7 @@ class RegistrationForm extends React.Component{
                     {
                         //Button to add a new topic field to the topics array. (Maximum of 3). 
                     }
-                    <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>{this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tópico Nuevo'}</button>
+                    <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>{this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}</button>
 
                     <br/>
                     {

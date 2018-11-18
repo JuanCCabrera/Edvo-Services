@@ -32,7 +32,7 @@ const ClassListItem = (props) => (
     {
         //Topics list
     }
-        {!(props.class.topicA === '' && props.class.topicB === '' && props.class.topicC === '') && <p>{props.lang === 'English' ? 'Class Topics' : 'Tópicos de Clase'}: <br/></p>}
+        {!(props.class.topicA === '' && props.class.topicB === '' && props.class.topicC === '') && <p>{props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}: <br/></p>}
         <ol>
             {props.class.topicA !== '' && <li>{props.class.topicA}</li>}
             {props.class.topicB !== '' && <li>{props.class.topicB}</li>}

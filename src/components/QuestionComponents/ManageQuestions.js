@@ -12,8 +12,10 @@ const ManageQuestions = (props) => (
     <div className="background-home">
         <div className="container">
             <div className="row">
-                <div className="col-sm-2 text-center well">
-                    <QuestionButtonList/>
+                <div className="col-sm-2">
+                    <div className="text-center well">
+                        <QuestionButtonList/>
+                    </div>
                 </div>
                 <div className="col-sm-1"/>
                 <div className="col-sm-9">
@@ -21,7 +23,7 @@ const ManageQuestions = (props) => (
                     //Page title
                 }
                 <div className="text-center pending__title__2">
-                    <p>{props.lang === 'English' ? 'Pending Questions' : 'Preguntas Pendientes'}</p>
+                    <p>{props.lang === 'English' ? 'Pending Questions' : 'Preguntas \nPendientes'}</p>
                     <hr className="break"/>
                 </div>
                     <QuestionFilters/>

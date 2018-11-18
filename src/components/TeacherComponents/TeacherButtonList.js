@@ -26,7 +26,7 @@ const TeacherButtonList = (props) => (
         <Link to={"/teacher/settings/classes"}>
             <div className="nav__button">
                 <p className="nav__button__text"> 
-                    {props.lang === 'English' ? 'Classes' : 'Clases'}
+                    {props.lang === 'English' ? 'Classes' : 'Cursos'}
                 </p>
             </div>
         </Link>

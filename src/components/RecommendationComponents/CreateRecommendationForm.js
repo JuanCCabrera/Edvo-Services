@@ -112,7 +112,7 @@ class CreateRecommendationForm extends React.Component{
                     this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
                 }
                 if(this.state.subjectError){
-                    this.setState(() => ({subjectError: 'El tema de la clase debe contener texto.'}));
+                    this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'}));
                 }
                 if(this.state.choiceError){
                     this.setState(() => ({choiceError: 'Escriba opciones válidas.'}));
@@ -607,26 +607,28 @@ class CreateRecommendationForm extends React.Component{
                             maxLength="400"
                             onChange={this.onChoiceChange(index)}
                             />
-
-                            <button disabled={this.props.isEdit} onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>
-                            <div className="btn btn-item">
-                                {this.props.lang === 'English' ? 'Mark As Correct Answer' : 'Marcar Como Contestación Correcta'}
-                            </div>
-
-                            {this.state.correctOption === index && <div style={{display: 'inline-block', marginLeft: '1rem'}}>
-                                <span style={{color: '#5933AA', width: '1rem'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
+                            
+                            {this.state.correctOption === index && <div style={{display: 'inline-block', marginLeft: '0.3rem'}}>
+                                <span style={{color: 'green', width: '1rem'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
                             </div>}
-
-                            </button>
 
                             {this.state.choices.length > 2 && <div style={{display: 'inline'}}>
                             <button disabled={this.props.isEdit} onClick={this.deleteChoice(index)}>
-                                <span style={{fontSize: '2rem', marginBottom: '0', paddingBottom: '0'} }>
+                                <span style={{fontSize: '1.8rem', width: '1rem', verticalAlign: 'center'}}>
                                     <i className="fa fa-window-close"></i>
                                 </span>
                             </button>
                             </div>
                             }
+
+                            <br/>
+                            <button disabled={this.props.isEdit} onClick={this.setCorrectOption(index)} disabled={this.state.correctOption === index}>
+                            <div className="btn btn-item btn-pad">
+                                {this.props.lang === 'English' ? 'Mark As Correct Answer' : 'Marcar Como Contestación Correcta'}
+                            </div>
+
+                            </button>
+
                         </span>
                     ))}
                     
@@ -722,7 +724,7 @@ class CreateRecommendationForm extends React.Component{
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
                             }else{
-                                this.setState(() => ({subjectError: 'El tema de la clase debe contener texto.'})); 
+                                this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({subjectError: ''}));
@@ -847,7 +849,7 @@ class CreateRecommendationForm extends React.Component{
                     }
                     
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Class Topics' : 'Tópicos de Clase'} (Max: 3):</label>
+                    <label>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'} (Max: 3):</label>
                     {this.state.topics.map((topic, index) => (
                         <span key={index}>
                             <br/>
@@ -883,7 +885,7 @@ class CreateRecommendationForm extends React.Component{
                     }
                     <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>
                         <div className="btn btn-item">
-                            {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tópico Nuevo'}
+                            {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}
                         </div>
                     </button>
                     <br/>
@@ -981,7 +983,7 @@ class CreateRecommendationForm extends React.Component{
                     }
                     {this.state.creationError === true && 
                         <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>Please fill all nonoptional fields before saving the recommendation.</p> : <p>Por favor, llene todos los campos no-opcionales antes de guardar la recomendación.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all required fields before saving the recommendation.</p> : <p>Por favor, llene todos los campos requeridos antes de guardar la recomendación.</p>}
                         </div>}
                     
                     <br/>

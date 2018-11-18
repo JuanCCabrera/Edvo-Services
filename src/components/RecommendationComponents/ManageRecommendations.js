@@ -12,8 +12,10 @@ const ManageRecommendations = (props) => (
     <div className="background-home">
         <div className = "container">
             <div className="row">
-                <div className="col-sm-2 text-center well">
-                    <RecommendationButtonList/>
+                <div className="col-sm-2 ">
+                    <div className="text-center well">
+                        <RecommendationButtonList/>
+                    </div>
                 </div>
                 <div className="col-sm-1"/>
                 <div className="col-sm-9">
@@ -25,7 +27,6 @@ const ManageRecommendations = (props) => (
                         <hr className="break"/>
                     </div>
                     <RecommendationsFilters/>
-                
                     <ManageRecommendationsList/>
                 </div>
             </div>
