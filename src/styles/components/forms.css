@@ -4,6 +4,10 @@
     padding-bottom: 0;
 }
 
+.btn-primary{
+    background-color: #5933AA;
+}
+
 .form__title{
     text-align: center;
     font-size: 3rem;
@@ -27,3 +31,5 @@
         margin-left: 0;
     }
 }
+
+

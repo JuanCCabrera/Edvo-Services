@@ -23,7 +23,9 @@ const ManageRecommendations = (props) => (
                         //Page title
                     }
                     <div className="text-center pending__title__2">
-                        <p>{props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</p>
+                        <div className="spec__mobile__font">
+                            {props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}
+                        </div>
                         <hr className="break"/>
                     </div>
                     <RecommendationsFilters/>

@@ -12,10 +12,6 @@ html, body {
     background-color: rgba(0, 0, 0, 0.096);
 }
 
-.low_card_title_margin p{
-    margin-bottom: 3rem;
-}
-
 .card-title{
     font-weight: normal;
     font-size: 1.7rem;
@@ -82,20 +78,16 @@ html, body {
 
 .card {
     /* Add shadows to create the "card" effect */
-    width: 35rem;
     margin: 1rem 1rem;
+    padding: 0 1rem;
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
     transition: 0.3s;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
-    padding-bottom: 3rem; 
-    min-height: 23rem;
-}
-
-.card_left_margin{
-    margin-left: 3.3rem;
+    padding-bottom: 1rem; 
+    min-height: 17rem;
 }
 
 @media only screen and (max-width: 768px){

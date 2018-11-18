@@ -26,7 +26,8 @@ const TeacherHome = (props) => (
             </div>
             <div className="container">
                 <div className="row text-center">
-                    <div className="col-sm-4 card card_left_margin">
+                    <div className="col-md-4">
+                        <div className="card" style={{paddingBottom: '4.4rem'}}>
                             {
                                 //Days in platform
                             }
@@ -44,123 +45,133 @@ const TeacherHome = (props) => (
                                 <br/>
                                 <h1>{props.teacherMetrics.daysInPlatform}</h1>
                             </div>
+                        </div>
                     </div>
-                    <div className="col-sm-4 card">
-                                    {
-                                        //Number of recommendations read (Acts as link to Teacher Recommendations page)
-                                    }
+                    <div className="col-md-4">
+                        <div className="card">
+                            {
+                                //Number of recommendations read (Acts as link to Teacher Recommendations page)
+                            }
+                            <div>
+                                <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
+                                    {props.lang === 'English' ? 
                                     <div>
-                                        <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
-                                            {props.lang === 'English' ? 
-                                            <div>
-                                                <h2>Recommendations Read</h2>
-                                            </div>
-                                            : 
-                                            <div>
-                                                <h2>Recomendaciones Leídas</h2>
-                                            </div>}
-                                            <h1>{props.teacherRecommendations.filter((reco) => {
-                                                return reco.read === true;
-                                            }).length}</h1>
-
-                                            <button className="btn btn-item">{props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
-                                        </NavLink>
+                                        <h2>Recommendations Read</h2>
                                     </div>
+                                    : 
+                                    <div>
+                                        <h2>Recomendaciones Leídas</h2>
+                                    </div>}
+                                    <h1>{props.teacherRecommendations.filter((reco) => {
+                                        return reco.read === true;
+                                    }).length}</h1>
+
+                                    <button className="btn btn-item">{props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
+                                </NavLink>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-sm-4 card">
-                                    {
-                                        //Number of questions asked (Acts as link to Teacher Questions page)
-                                    }
-                                    <NavLink to="/teacher/questions" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
-                                        {props.lang === 'English' ? 
-                                        <div>
-                                            <h2>Questions Asked</h2>
-                                            <br/>
-                                            <h1>{props.teacherQuestions.length}</h1>
-                                        </div>
-                                        : 
-                                        <div>
-                                            <h2>Preguntas Hechas</h2>
-                                            <br/>
-                                            <h1>{props.teacherQuestions.length}</h1>
-                                        </div>}
-                                        <button className="btn btn-item">{props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
-                                    </NavLink>
+                    <div className="col-md-4">
+                        <div className="card">
+                            {
+                                //Number of questions asked (Acts as link to Teacher Questions page)
+                            }
+                            <NavLink to="/teacher/questions" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
+                                {props.lang === 'English' ? 
+                                <div>
+                                    <h2>Questions Asked</h2>
+                                    <br/>
+                                    <h1>{props.teacherQuestions.length}</h1>
+                                </div>
+                                : 
+                                <div>
+                                    <h2>Preguntas Hechas</h2>
+                                    <br/>
+                                    <h1>{props.teacherQuestions.length}</h1>
+                                </div>}
+                                <button className="btn btn-item">{props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4 card card_left_margin low_card_title_margin">
-
-                                    {
-                                        //Recent Recommendations List
-                                    }
-                                    <div>
-                                        {props.lang === 'English' ? 
-                                            <div className="text-center"> 
-                                                <h3 style={{marginBottom: '2rem'}}>
-                                                    My Most Recent Recommendations
-                                                </h3>
-                                            </div>
-                                            :
-                                            <div className="text-center">
-                                                <h3 style={{marginBottom: '0'}}>
-                                                    Mis Recomendaciones
-                                                </h3>
-                                                <h3 style={{marginTop: '0',marginBottom: '2rem'}}>
-                                                    Más Recientes
-                                                </h3>
-                                            </div>
-                                        }
-                                        <RecentRecommendationsList/>
+                    <div className="col-md-4">
+                        <div className="card">
+                            {
+                                //Recent Recommendations List
+                            }
+                            <div>
+                                {props.lang === 'English' ? 
+                                    <div className="text-center"> 
+                                        <h3 style={{marginBottom: '2rem'}}>
+                                            My Most Recent Recommendations
+                                        </h3>
                                     </div>
+                                    :
+                                    <div className="text-center">
+                                        <h3 style={{marginBottom: '0'}}>
+                                            Mis Recomendaciones
+                                        </h3>
+                                        <h3 style={{marginTop: '0',marginBottom: '2rem'}}>
+                                            Más Recientes
+                                        </h3>
+                                    </div>
+                                }
+                                <RecentRecommendationsList/>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-sm-4 card">
-                                    {
-                                        //Top Rated Recommendations List
-                                    }
-                                    <div>
-                                        {props.lang === 'English' ? 
-                                            <div className="text-center"> 
-                                                <h3 style={{marginBottom: '2rem'}}>
-                                                    My Top-Rated Recommendations
-                                                </h3>
-                                            </div>
-                                            :
-                                            <div className="text-center">
-                                                <h3 style={{marginBottom: '0'}}>
-                                                    Mis Recomendaciones
-                                                </h3>
-                                                <h3 style={{marginTop: '0', marginBottom: '2rem'}}>
-                                                    Altamente Clasificadas
-                                                </h3>
-                                            </div>
-                                        }
-                                        <TopRecommendationsList/>
+                    <div className="col-md-4">
+                        <div className="card">
+                            {
+                                //Top Rated Recommendations List
+                            }
+                            <div>
+                                {props.lang === 'English' ? 
+                                    <div className="text-center"> 
+                                        <h3 style={{marginBottom: '2rem'}}>
+                                            My Top-Rated Recommendations
+                                        </h3>
                                     </div>
+                                    :
+                                    <div className="text-center">
+                                        <h3 style={{marginBottom: '0'}}>
+                                            Mis Recomendaciones
+                                        </h3>
+                                        <h3 style={{marginTop: '0', marginBottom: '2rem'}}>
+                                            Altamente Clasificadas
+                                        </h3>
+                                    </div>
+                                }
+                                <TopRecommendationsList/>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-sm-4 card">
-                                    {
-                                        //Ask Question Form
-                                    }
-                                    <div>
-                                        {props.lang === 'English' ? 
-                                            <div className="text-center"> 
-                                                <h3 style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
-                                                    Ask a Question
-                                                </h3>
-                                            </div>
-                                            :
-                                            <div className="text-center">
-                                                <h3 style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
-                                                    Envíe una Pregunta
-                                                </h3>
-                                            </div>
-                                        }
-                                        <AskQuestionForm 
-                                        onSubmit={(question) => {
-                                            props.dispatch(sendAskedQuestion(question));
-                                        }}/>
+                    <div className="col-md-4">
+                        <div className="card">
+                            {
+                                //Ask Question Form
+                            }
+                            <div>
+                                {props.lang === 'English' ? 
+                                    <div className="text-center"> 
+                                        <h3 style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
+                                            Ask a Question
+                                        </h3>
                                     </div>
+                                    :
+                                    <div className="text-center">
+                                        <h3 style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
+                                            Envíe una Pregunta
+                                        </h3>
+                                    </div>
+                                }
+                                <AskQuestionForm 
+                                onSubmit={(question) => {
+                                    props.dispatch(sendAskedQuestion(question));
+                                }}/>
+                            </div>
+                        </div>
                     </div>
                 </div>                     
             </div>

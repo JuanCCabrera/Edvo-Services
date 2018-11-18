@@ -60,14 +60,17 @@ class Plan extends React.Component{
             <div className="background-home">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-2 text-center well">
-            {
-                //Teacher settings page links
-            }
-                <TeacherButtonList/>
-                </div>
-                <div className="col-sm-1"/>
-                <div className="big-card col-sm-9">
+                        <div className="col-sm-2">
+                            <div className="text-center well">
+                                {
+                                    //Teacher settings page links
+                                }
+                                    <TeacherButtonList/>
+                                    </div>
+                            </div>
+                        <div className="col-sm-1"/>
+                <div className="col-sm-9">
+                    <div className="big-card">
                 {
                     //Page title
                 }
@@ -126,8 +129,8 @@ class Plan extends React.Component{
                     //Coupon code input field
                 }
                 <div style={{marginTop: '3rem'}}>
-                {this.props.lang === 'English' ? <h4>Coupon Code:</h4>: <h4>Código de Cupón:</h4>}
-                <input type="text" className="form-control" style={{width: '50%'}} value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
+                {this.props.lang === 'English' ? <h4>Coupon code:</h4>: <h4>Código de cupón:</h4>}
+                <input type="text" className="form-control" style={{width: '80%'}} value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
                 {
                     //Submit coupon code button
                 }
@@ -137,6 +140,7 @@ class Plan extends React.Component{
                     </div>
                     </button>
                 <br/>
+                </div>
                 </div>
                 </div>
             </div>
