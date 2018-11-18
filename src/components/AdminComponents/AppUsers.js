@@ -14,11 +14,13 @@ import {connect} from 'react-redux';
         <div className="background-home">
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-2 text-center well">
+                    <div className="col-sm-2">
+                        <div className="text-center well">
                         {
                             //Links to traverse Administrator Settings page
                         }
                             <AdminButtonList/>
+                        </div>
                     </div>
                     <div className="col-sm-1"/>
                     <div className="col-sm-9">

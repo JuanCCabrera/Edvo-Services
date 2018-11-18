@@ -194,16 +194,19 @@ class CreateUserForm extends React.Component{
                 <div className="container">
                     <div className="row">
 
-                        <div className="col-sm-2 text-center well">
+                        <div className="col-sm-2">
+                            <div className="text-center well">
                                 {
                                     //List of links to traverse the Administrator Settings page.
                                 }
                                 <AdminButtonList/>
+                            </div>
                         </div>
 
                         <div className="col-sm-1"/>
 
-                        <div className="big-card col-sm-9">
+                        <div className="col-sm-9">
+                        <div className="big-card ">
                             <form onSubmit={this.onSubmit}>
                                 <div>
                                     {
@@ -289,7 +292,7 @@ class CreateUserForm extends React.Component{
                                     }
                                     <label>Email:</label>
                                     <br/>
-                                    <input type="text" className="form-control" maxLength="100" style={{width: '40%'}} placeholder = "Email" onBlur={() => {
+                                    <input type="text" className="form-control" maxLength="100" style={{width: '70%'}} placeholder = "Email" onBlur={() => {
                                         //Check if the email field matches the expected email address format. 
                                         if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                                             if(this.props.lang === 'English'){
@@ -381,20 +384,20 @@ class CreateUserForm extends React.Component{
                                             <br/>
                                         
                                         </div>
-                                        <div className="col-sm-1"/>
-                                        <div className="col-sm-5 item-card">
-                                            <ul style={{fontSize: '1.3rem', paddingLeft: '0'}}>
-                                            <p className="card-title">{this.props.lang === 'English' ? 'Password Requirements' : 'Requisitos de Contraseña'}:</p>
-                                            <li>{this.props.lang === 'English' ? 'Minimum of 8 characters' : 'Mínimo de 8 caracteres'}</li>
-                                            <li>{this.props.lang === 'English' ? 'At least one character of each of the following' : 'Al menos un caracter de cada uno de los siguientes'}:</li>
-                                            <ul style={{paddingLeft: '0.5rem'}}>
-                                                <li>- {this.props.lang === 'English' ? 'Lowercase letters' : 'Letras minúsculas'} (a-z)</li>
-                                                <li>- {this.props.lang === 'English' ? 'Uppercase letters' : 'Letras mayúsculas'} (A-Z)</li>
-                                                <li>- {this.props.lang === 'English' ? 'Numbers' : 'Números'} (0-9)</li>
-                                                <li>- {this.props.lang === 'English' ? 'Special characters' : 'Caracteres especiales'} (e.g. !@#$%^&*)</li>
+                                        <div className="col-sm-6">
+                                            <div className="item-card">
+                                                <ul style={{fontSize: '1.3rem', paddingLeft: '0'}}>
+                                                <p className="card-title">{this.props.lang === 'English' ? 'Password Requirements' : 'Requisitos de Contraseña'}:</p>
+                                                <li>{this.props.lang === 'English' ? 'Minimum of 8 characters' : 'Mínimo de 8 caracteres'}</li>
+                                                <li>{this.props.lang === 'English' ? 'At least one character of each of the following' : 'Al menos un caracter de cada uno de los siguientes'}:</li>
+                                                <ul style={{paddingLeft: '0.5rem'}}>
+                                                    <li>- {this.props.lang === 'English' ? 'Lowercase letters' : 'Letras minúsculas'} (a-z)</li>
+                                                    <li>- {this.props.lang === 'English' ? 'Uppercase letters' : 'Letras mayúsculas'} (A-Z)</li>
+                                                    <li>- {this.props.lang === 'English' ? 'Numbers' : 'Números'} (0-9)</li>
+                                                    <li>- {this.props.lang === 'English' ? 'Special characters' : 'Caracteres especiales'} (e.g. !@#$%^&*)</li>
+                                                    </ul>
                                                 </ul>
-                                            </ul>
-
+                                            </div>
                                         </div>
                                     </div>
                                     {
@@ -567,6 +570,7 @@ class CreateUserForm extends React.Component{
                     </div>
                 </div>
             </div>
+        </div>
         );
     }
 }

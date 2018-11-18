@@ -41,9 +41,10 @@ class UserListItem extends React.Component{
             {
                 //User challenges categories (as filled in registration)
             }
-            <span className="item__body">{this.props.lang === 'English' ? 'Categories' : 'Categorías'}: {' '}
+            <span className="item__body">{this.props.lang === 'English' ? 'Categories' : 'Categorías'}: 
+            <br/>
             {this.props.user.categories.map((category) => {
-                return (<span key={uuid()} className="badge" style={{marginLeft: '1rem', maginBottom: '0rem', backgroundColor: '#5933AA'}}>{category + ' '}</span>)
+                return (<span key={uuid()} className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{category + ' '}</span>)
             })}
             </span>
             <br/>

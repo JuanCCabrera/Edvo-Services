@@ -10,71 +10,74 @@ const AdminHome = (props) => (
     <div className="background-home">
         <div className="container">
             <div className="row">
-            {
-                //Link to Administrator Settings page
-            }
-            <NavLink to="/admin/settings/info" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                <div className="col-xs-12 col-xl-4 big-card-admin-home text-center">
-                    
-                        {props.lang === 'English' ? 
-                        <div>
-                            <h2>Platform</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
-                            <h2>Settings</h2>
-                        </div>
-                        : 
-                        <div>
-                            <h2>Modificar</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
-                            <h2>Plataforma</h2>
-                        </div>}
+                {
+                    //Link to Administrator Settings page
+                }
+                
+                <div className="center-block">
+                <div className="col-sm-4">
+                    <div className="big-card-admin-home">
+                        <NavLink to="/admin/settings/info" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                                {props.lang === 'English' ? 
+                                <div className="big__admin__text">
+                                    <p>Platform</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
+                                    <p>Settings</p>
+                                </div>
+                                : 
+                                <div className="big__admin__text">
+                                    <p>Modificar</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
+                                    <p>Plataforma</p>
+                                </div>}
+                        
+                        </NavLink>
+                    </div>
+                    </div>
                 </div>
-                
-                </NavLink>
-                {
-                    //Link to Assign Recommendations page
-                }
-                <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                 
-                    <div className="col-xs-12 col-xl-4 big-card-admin-home text-center">
-                
-                       {props.lang === 'English' ? 
-                        <div>
-                            <h2>Manage</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
-                            <h2>Recommendations</h2>
-                        </div>
-                        : 
-                        <div>
-                            <h2>Manejar</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
-                            <h2>Recomendaciones</h2>
-                        </div>}
+                    {
+                        //Link to Assign Recommendations page
+                    }
+                <div className="col-sm-4">
+                    <div className="big-card-admin-home">
+                        <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>                
+                            {props.lang === 'English' ? 
+                                <div className="big__admin__text">
+                                    <p>Manage</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                                    <p>Recommendations</p>
+                                </div>
+                                : 
+                                <div className="big__admin__text">
+                                    <p>Manejar</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                                    <p>Recomendaciones</p>
+                                </div>}
+                        </NavLink>
                     </div>
-                </NavLink>
+                </div>
 
-                {
-                    //Link to Pending Questions page
-                }
-                <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                    
-                    <div className="col-xs-12 col-xl-4 big-card-admin-home text-center">
-               
-                    {props.lang === 'English' ? 
-                        <div>
-                            <h2>Answer</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
-                            <h2>Questions</h2>
-                        </div>
-                        : 
-                        <div>
-                            <h2>Contestar</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
-                            <h2>Preguntas</h2>
-                        </div>}
+                    {
+                        //Link to Pending Questions page
+                    }
+                <div className="col-sm-4">
+                    <div className="big-card-admin-home">
+                        <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                            {props.lang === 'English' ? 
+                                <div className="big__admin__text">
+                                    <p>Answer</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
+                                    <p>Questions</p>
+                                </div>
+                                : 
+                                <div className="big__admin__text">
+                                    <p>Contestar</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
+                                    <p>Preguntas</p>
+                                </div>}                
+                        </NavLink>
                     </div>
-                
-                </NavLink>
+                </div>
             </div>
         </div>
     </div>

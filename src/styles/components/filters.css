@@ -10,3 +10,25 @@
 .btn-filter:hover{
     cursor: default;
 }
+
+.dropdown-pad{
+    padding: 0.6rem;
+}
+
+@media only screen and (max-width: 360px){
+    .btn-default{
+        font-size: 80%;
+    }
+    .btn-filter{
+        font-size: 80%;
+    }
+}
+
+@media only screen and (max-width: 320px){
+    .btn-default{
+        font-size: 70%;
+    }
+    .btn-filter{
+        font-size: 70%;
+    }
+}

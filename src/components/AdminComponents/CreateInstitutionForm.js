@@ -98,15 +98,18 @@ class CreateInstitutionForm extends React.Component{
             <div className="background-home">
                 <div className="container">
                     <div className="row">
-                    <div className="col-sm-2 text-center well">
+                    <div className="col-sm-2">
+                        <div className="text-center well">
                             {
                                 //List of links to traverse Administrator Settings page.
                             }
                             <AdminButtonList/>
                         </div>
-                        <div className="col-sm-1"/>
+                    </div>
+                    <div className="col-sm-1"/>
                             
-                        <div className="big-card col-sm-9">
+                    <div className="col-sm-9">
+                        <div className="big-card ">
                             <form onSubmit={this.onSubmit}>
                             <div>
                                 <div className="form__title">
@@ -259,6 +262,7 @@ class CreateInstitutionForm extends React.Component{
                     </div>
                 </div>
             </div>
+        </div>
         );
     }
 }

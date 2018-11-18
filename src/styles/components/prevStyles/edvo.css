@@ -126,9 +126,7 @@ img.resize-persons {
 	background: #854dff;
 	border-radius: .4em;
     padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: 3em;
-    max-width: 20vw;
+    padding-bottom: 0;
 }
 
 .speech-bubble:after {
@@ -251,6 +249,20 @@ position: relative;
 .navbar-nav li{
     color: white;
     transition: 0.5s;
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 768px){
+    .navbar-nav li{
+        border-radius: 3rem;
+    }
+
+    .navbar-right{
+        border-top: 4px solid black;
+        padding-top: 0.7rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .navbar-nav li:hover{

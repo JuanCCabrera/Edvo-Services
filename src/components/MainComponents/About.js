@@ -87,14 +87,16 @@ const AboutPage = (props) => (
             }
             <div className="row about__low">
                 <div className="col-sm-4"/>
-                <div className="col-sm-4 text-center speech-bubble about__others__say">
-                        {props.lang === 'English' ? 
-                        <div>
-                            <p>What others say</p>
-                        </div> : <div>
-                            <p>¿Qué dicen?</p>
+                <div className="col-sm-4 ">
+                    <div className="text-center speech-bubble about__others__say">
+                            {props.lang === 'English' ? 
+                            <div>
+                                <p>What others say</p>
+                            </div> : <div>
+                                <p>¿Qué dicen?</p>
+                        </div>
+                        }
                     </div>
-                    }
                 </div>
                 <div className="col-sm-4"/>
             </div>

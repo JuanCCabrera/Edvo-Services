@@ -49,7 +49,7 @@ html, body {
     border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
     min-height: 14rem;
-    margin: 1.5rem 1.0rem;
+    margin: 1.5rem 0;
     padding: 1.5rem 1.5rem;
 }
 
@@ -98,6 +98,12 @@ html, body {
     margin-left: 3.3rem;
 }
 
+@media only screen and (max-width: 768px){
+    .card_left_margin{
+        margin-left: 0;
+    }
+}
+
 .withMargins{
     margin: 15px 15px;
 }
@@ -115,39 +121,44 @@ html, body {
 .big-card-admin-home{
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
-    transition: 0.3s;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
     margin-top: 2.7rem;
     margin-bottom: 2.7rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 2.7rem;
-    border-radius: 0.5rem;
-    width: 30%; 
-    min-width: 35rem;
+    padding-top: 3.7rem;
+    padding-bottom: 3.7rem;
+    font-weight: bold;
+}
+
+.big__admin__text{
+    font-size: 3rem;
+    text-align: center;
+    margin: 0.5rem;
 }
 
 .big-card-admin-home:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    
     background-color: rgba(0, 0, 0, 0.096);
 }
 
 .big-card-mentor-home{
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
-    transition: 0.3s;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
     margin-top: 2.7rem;
     margin-bottom: 2.7rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    padding: 2.7rem;
-    border-radius: 0.5rem;
-    min-width: 35rem;
-    width: 45%; 
+    padding-top: 3.7rem;
+    padding-bottom: 3.7rem;
+    font-weight: bold;
+}
+
+.big__mentor__text{
+    font-size: 3rem;
+    text-align: center;
+    margin: 0.5rem;
 }
 
 .big-card-mentor-home:hover{
@@ -159,5 +170,34 @@ html, body {
     z-index: 9999;
 }
 
+@media only screen and (max-width: 1200px){
+    .big__admin__text{
+        font-size: 2rem;
+    }
+}
 
+@media only screen and (max-width: 1200px){
+    .big__mentor__text{
+        font-size: 2rem;
+    }
+}
 
+@media only screen and (max-width: 768px){
+    .big-card-admin-home{
+        max-height: 17.5rem;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .big-card-mentor-home{
+        max-height: 17.5rem;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
