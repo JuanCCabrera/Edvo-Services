@@ -651,6 +651,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Add Choice button
                     }
+                    {this.state.choices.length < 4 && 
+                    <div>
                     <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Add New Option ' : 'Añadir Nueva Opción '} 
@@ -658,6 +660,7 @@ class CreateRecommendationForm extends React.Component{
                         </div>
                     </button>
                     <br/>
+                    </div>}
                     {
                         //<button onClick={() => this.setState(() => ({correctOption: -1}))}>{this.props.lang === 'English' ? 'Clear Selection of Correct Answer' : 'Deshacer Seleccion de Contestacion Correcta'}</button>
                     }
@@ -716,7 +719,6 @@ class CreateRecommendationForm extends React.Component{
                     <label className="clickable radio__text">
                     <input type="radio" name="type" value= "material" checked={this.state.type === 'material'} onChange = {this.onTypeChange}/> {this.props.lang === 'English' ? 'New Material' : 'Material Nuevo'} 
                     </label>
-                    <br/>
                     <br/>
                     <hr/>
                     {
@@ -890,6 +892,8 @@ class CreateRecommendationForm extends React.Component{
                     {
                         //Add New Topic button
                     }
+                    {this.state.topics.length < 3 && 
+                    <div>
                     <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}
@@ -897,6 +901,7 @@ class CreateRecommendationForm extends React.Component{
                         </div>
                     </button>
                     <br/>
+                    </div>}
                     <br/>
                     {
                         //Resources checkbox input field
