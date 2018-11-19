@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const val= require('./validate'); //validate inputs //falta recombody question y choices //answer
+const val= require('./validate'); //validate inputs
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -470,11 +470,11 @@ router.post('/recommendations/create', (req,res,next)=> {
     };
 
   //verify no input is empty
-  if(val.validateUserID(data.userid) || data.title ==null || data.header == null || data.description == null || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
+  if(val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
   || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
   || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateStrings(data.topica)
     || val.validateStrings(data.subject) || val.validateStrings(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
-    || data.question == null || data.choices == null){
+    || val.validateLongText(data.question) || val.validateLongText(data.choices)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -485,7 +485,7 @@ router.post('/recommendations/create', (req,res,next)=> {
   
   //verify all choices have both parameters
   for(var i=0; i<length ; i++){
-    if(choicejson[i].choice == null || choicejson[i].correctanswer == null){
+    if(val.validateLongText(choicejson[i].choice) || val.validateLongText(choicejson[i].correctanswer)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -601,7 +601,7 @@ router.post('/recommendations/modify', (req,res,next)=> {
     };
 
  //verify no input is empty
- if(val.validateInt(data.recomid) || val.validateUserID(data.userid) || data.title ==null || data.header == null || data.description == null || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
+ if(val.validateInt(data.recomid) || val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
  || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
  || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateStrings(data.topica)
  || val.validateStrings(data.subject) || val.validateStrings(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
@@ -746,7 +746,7 @@ router.post('/recommendations/assign', (req,res,next)=> {
   
   // //verify all choices have both parameters
   // for(var i=0; i<length ; i++){
-  //   if(usersjson[i].userid == null){
+  //   if(usersjson[i].userid ==null){
   //     return res.status(403).json({statusCode: 403,
   //         message: 'Inputs for userid to assign recommendation were not received as expected.',
   //       isBase64Encoded: false,});
@@ -828,7 +828,7 @@ router.post('/questions/answer', (req,res,next)=> {
       answer : req.body.answer
     };
   //verify inputs are valid
-  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateUserID(data.teacherid) || data.answer == null){
+  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateUserID(data.teacherid) || val.validateLongText(data.answer)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
@@ -1123,6 +1123,7 @@ router.get('/settings/users', (req,res,next)=> {
       userid: req.body.userid, 
     };
   //verify inputs are valid
+  console.log(data.userid);
   if(val.validateUserID(data.userid)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
@@ -1146,13 +1147,19 @@ router.get('/settings/users', (req,res,next)=> {
       done();
       if (results.length === 1){ // user exists and is of type admin
         //SQL Query > select all users
-        const query1 = client.query('SELECT * FROM users WHERE usertype = $1 AND institutionid is null', ['teacher',]);
+        const query1 = client.query('WITH userlist as (SELECT users.userid, name, lastname, email, strategies, material, timemanagement, tech, instructions FROM users NATURAL INNER JOIN user_info WHERE usertype = $1 AND institutionid is null), recom as (SELECT userid, count(date) as recomassigned FROM edu_recommendations WHERE date > (now() - INTERVAL \'7 DAYS\') GROUP BY userid) Select * FROM userlist as ul NATURAL LEFT JOIN recom', ['teacher',]);
         //stream results back one row at a time
         query1.on('row', (row) => {
           users.push(row);
         });
         query1.on('end', () => {
           done();
+          for(i=0;i<users.length;i++){
+            if(users[i].recomassigned == null)
+              users[i].recomassigned = false;
+            else
+              users[i].recomassigned = true;
+          }
           return res.status(201).json({statusCode: 201, users});
         });
       }else// user doesn't exist in record or isnt of type admin, send error statuscode

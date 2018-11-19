@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const val= require('./validate'); //validate inputs //falta question
+const val= require('./validate'); //validate inputs 
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -127,7 +127,7 @@ router.post('/questions/ask', (req,res,next)=> {
         question: req.body.question
       };
     //verify inputs
-    if(val.validateUserID(data.userid) || val.validateStrings(data.subject) || data.question == null){
+    if(val.validateUserID(data.userid) || val.validateStrings(data.subject) || val.validateLongText(data.question)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
