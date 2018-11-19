@@ -227,7 +227,7 @@ class CreateUserForm extends React.Component{
                                             }
                                             <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                             <br/>
-                                            <input type="text" className="form-control" maxLength="100" placeholder="Name" onBlur={() => {
+                                            <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
                                                 //Check if the name field only contains spaces. 
                                                 if(this.state.name.match(/^\s+$/)){
                                                     if(this.props.lang === 'English'){
@@ -259,7 +259,7 @@ class CreateUserForm extends React.Component{
                                             }
                                             <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                                             <br/>
-                                            <input type="text" className="form-control" maxLength="100" placeholder="Last Name" onBlur={() => {
+                                            <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Last Name' : 'Apellido'} onBlur={() => {
                                                 //Check if the last name field only consists of spaces. 
                                                 if(this.state.lastName.match(/^\s+$/)){
                                                     if(this.props.lang === 'English'){
@@ -327,7 +327,7 @@ class CreateUserForm extends React.Component{
                                             }
                                             <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
                                             <br/>
-                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = "Password" value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
+                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Password' : 'Contraseña'} value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
                                                 //Check if the password field matches the expected password format. 
                                                 if(this.state.password && !this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/)){
                                                     if(this.props.lang === 'English'){
@@ -358,7 +358,7 @@ class CreateUserForm extends React.Component{
                                             }
                                             <label>{this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'}:</label>
                                             <br/>
-                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = "Confirm Password" value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange} onBlur={() => {
+                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'} value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange} onBlur={() => {
                                                 //Check if the confirm password field matches the password field. 
                                                 if((this.state.password !== this.state.confirmPassword) && this.state.confirmPassword){
                                                     if(this.props.lang === 'English'){
@@ -520,7 +520,7 @@ class CreateUserForm extends React.Component{
                                     }
                                     <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                     <br/>
-                                    <input type="text" className="form-control" maxLength="30" style={{width: '40%'}} disabled={this.state.type !== 'school'} placeholder = "Institution ID" onBlur={() => {
+                                    <input type="text" className="form-control" maxLength="30" style={{width: '40%'}} disabled={this.state.type !== 'school'} placeholder ={this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
                                         //Check if institution ID field matches expected format. 
                                         if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                             if(this.props.lang === 'English'){

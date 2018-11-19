@@ -141,7 +141,7 @@ class BasicInfoProfileForm extends React.Component{
                                 }
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                                <input type="text" placeholder="Name" className="form-control" maxLength="100" onBlur={() => {
+                                <input type="text" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} className="form-control" maxLength="100" onBlur={() => {
                                     //Check if the name field only consists of spaces. 
                                     if(this.state.name.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
@@ -175,7 +175,7 @@ class BasicInfoProfileForm extends React.Component{
                                 }
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
-                                <input type="text" placeholder="Last Name" className="form-control" maxLength="100" onBlur={() => {
+                                <input type="text" placeholder={this.props.lang === 'English' ? 'Last Name' : 'Apellido'} className="form-control" maxLength="100" onBlur={() => {
                                     //Check if the last name field only consists of spaces. 
                                     if(this.state.lastName.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){

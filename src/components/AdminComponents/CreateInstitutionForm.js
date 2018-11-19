@@ -126,7 +126,7 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                 <br/>
-                                <input className="form-control" maxLength="100" style={{width: '60%'}} type="text" placeholder="Name" onBlur={() => {
+                                <input className="form-control" maxLength="100" style={{width: '60%'}} type="text" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
                                     //Check if the name field only contains spaces. 
                                     if(this.state.name.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
@@ -156,7 +156,7 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Address' : 'Dirección Física'}:</label> 
                                 <br/>
-                                <input type="text" className="form-control" maxLength="150" placeholder = "Location" onBlur={() => {
+                                <input type="text" className="form-control" maxLength="150" placeholder = {this.props.lang === 'English' ? 'Address' : 'Dirección Física'} onBlur={() => {
                                     //Check if address field is only composed of spaces. 
                                     if(this.state.location.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
@@ -215,7 +215,7 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                 <br/>
-                                <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = "Institution ID" onBlur={() => {
+                                <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
                                     //Check if institution ID field matches expected format. 
                                     if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                         if(this.props.lang === 'English'){

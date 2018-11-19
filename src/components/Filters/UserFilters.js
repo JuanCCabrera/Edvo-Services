@@ -16,7 +16,7 @@ class UserFilters extends React.Component{
                 {
                     //Text filter input field
                 }
-                <input className="form-control" type="text" placeholder="Search" value ={this.props.userFilters.text} onChange={(e) => {
+                <input className="form-control" type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.userFilters.text} onChange={(e) => {
                     this.props.dispatch(setUserTextFilter(e.target.value));
                 }}/>
 

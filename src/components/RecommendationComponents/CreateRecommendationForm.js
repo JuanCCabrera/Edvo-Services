@@ -247,7 +247,7 @@ class CreateRecommendationForm extends React.Component{
 
         let errorCheck = false;
         let j = 0;
-        //Check to see if description is only composed of spaces. 
+        //Check to see if option(choice) is only composed of spaces. 
         for(j = 0; j < this.state.choices.length; j++){
             if(this.state.choices[j] && this.state.choices[j].match(/^\s+$/)){
                 if(this.props.lang === 'English'){
@@ -455,7 +455,7 @@ class CreateRecommendationForm extends React.Component{
                     
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
-                    <input type="text" maxLength="200" placeholder = "Title" className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange} onBlur={() => {
+                    <input type="text" maxLength="200" placeholder = {this.props.lang === 'English' ? 'Title' : 'Título'} className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange} onBlur={() => {
                         //Check to see if title is only composed of spaces. 
                         if(this.state.title.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -481,7 +481,10 @@ class CreateRecommendationForm extends React.Component{
                     
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Description' : 'Descripción'}:</label>
-                    <textarea type="text" maxLength="200" rows="2" placeholder = "Description" className="form-control" value = {this.state.header} onChange={this.onHeaderChange} onBlur={() => {
+                    <br/>
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.header.length}/200</span>
+                    <br/>
+                    <textarea type="text" maxLength="200" rows="2" placeholder = {this.props.lang === 'English' ? 'Description' : 'Descripción'} className="form-control" value = {this.state.header} onChange={this.onHeaderChange} onBlur={() => {
                         //Check to see if header is only composed of spaces. 
                         if(this.state.header.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -508,7 +511,10 @@ class CreateRecommendationForm extends React.Component{
                     
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Content' : 'Contenido'}:</label>
-                    <textarea type = "text" rows="5" placeholder = "Content" className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange} onBlur={() => {
+                    <br/>
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.description.length}/5000</span>
+                    <br/>
+                    <textarea type = "text" rows="5" maxLength="5000" placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'} className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
                         if(this.state.description.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -533,7 +539,7 @@ class CreateRecommendationForm extends React.Component{
                         //Recommendation location input field
                     }
                     <label>{this.props.lang === 'English' ? 'Location (Optional)' : 'Localización (Opcional)'}:</label>
-                    <input type = "text" maxLength="150" placeholder = "Location" className="form-control" value = {this.state.location} onChange = {this.onLocationChange} onBlur={() => {
+                    <input type = "text" maxLength="150" placeholder = {this.props.lang === 'English' ? 'Location' : 'Localización'} className="form-control" value = {this.state.location} onChange = {this.onLocationChange} onBlur={() => {
                         //Check to see if address is only composed of spaces. 
                         if(this.state.location.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -567,7 +573,7 @@ class CreateRecommendationForm extends React.Component{
                     
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </label>
-                    <input type="text" maxLength="700" disabled={this.props.isEdit} className="form-control" placeholder = "Question" value = {this.state.question} onChange={this.onQuestionChange} onBlur={() => {
+                    <input type="text" maxLength="700" disabled={this.props.isEdit} className="form-control" placeholder = {this.props.lang === 'English' ? 'Question' : 'Pregunta'} value = {this.state.question} onChange={this.onQuestionChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
                         if(this.state.question.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -599,7 +605,7 @@ class CreateRecommendationForm extends React.Component{
                             <br/>
                             <input
                             type = "text"
-                            placeholder = "Choice"
+                            placeholder = {this.props.lang === 'English' ? 'Option' : 'Opción'}
                             className="form-control"
                             style={{width: '50%', display: 'inline', marginRight: '1rem'}}
                             value={choice}
@@ -647,7 +653,8 @@ class CreateRecommendationForm extends React.Component{
                     }
                     <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>
                         <div className="btn btn-item">
-                            {this.props.lang === 'English' ? 'Add New Option' : 'Añadir Nueva Opción'}
+                            {this.props.lang === 'English' ? 'Add New Option ' : 'Añadir Nueva Opción '} 
+                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i class="fa fa-plus" aria-hidden="true"></i></span>
                         </div>
                     </button>
                     <br/>
@@ -660,26 +667,26 @@ class CreateRecommendationForm extends React.Component{
                     }
                     
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Categories' : 'Categorías'}:</label>
+                    <label>{this.props.lang === 'English' ? 'Challenge Categories' : 'Categorías de Retos'}:</label>
                     <br/>
                     <label className="clickable radio__text">
-                        <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'} 
+                        <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching strategies' : 'Estrategias de enseñanza'} 
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                        <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'}
+                        <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated material' : 'Material actualizado'}
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                        <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}
+                        <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time management' : 'Manejo del tiempo'}
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'}
+                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology integration' : 'Integración de tecnologia'}
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} 
+                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional alignment' : 'Alineación curricular'} 
                     </label>
                     <br/>
                     <br/>
@@ -718,7 +725,7 @@ class CreateRecommendationForm extends React.Component{
                     
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'} :</label>
-                    <input type="text" maxLength="100" placeholder="Subject" className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
+                    <input type="text" maxLength="100" placeholder={this.props.lang === 'English' ? 'Subject' : 'Tema'} className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
                         if(this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -857,7 +864,7 @@ class CreateRecommendationForm extends React.Component{
                             type = "text"
                             className="form-control"
                             style={{width: '50%', display: 'inline', marginRight: '1rem'}}
-                            placeholder = "Topic"
+                            placeholder = {this.props.lang === 'English' ? 'Topic' : 'Tema'}
                             value={topic}
                             maxLength="50"
                             onChange={this.onTopicChange(index)}
@@ -886,6 +893,7 @@ class CreateRecommendationForm extends React.Component{
                     <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}
+                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i class="fa fa-plus" aria-hidden="true"></i></span>
                         </div>
                     </button>
                     <br/>

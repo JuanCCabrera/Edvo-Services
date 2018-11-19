@@ -534,7 +534,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                    <input type = "text" placeholder = "Name" maxLength="100" value = {this.state.name} onChange = {this.onNameChange} onBlur={() => {
+                    <input type = "text" placeholder = {this.props.lang === 'English' ? 'Name' : 'Nombre'} maxLength="100" value = {this.state.name} onChange = {this.onNameChange} onBlur={() => {
                         //Check if the name field only contains spaces. 
                         if(this.state.name.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -563,7 +563,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
-                    <input type = "text" placeholder = "Last Name" maxLength="100" value = {this.state.lastName} onChange = {this.onLastNameChange} onBlur={() => {
+                    <input type = "text" placeholder = {this.props.lang === 'English' ? 'Last Name' : 'Apellido'} maxLength="100" value = {this.state.lastName} onChange = {this.onLastNameChange} onBlur={() => {
                         //Check if the last name field only consists of spaces. 
                         if(this.state.lastName.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -681,7 +681,7 @@ class RegistrationForm extends React.Component{
                     } 
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Location of Employment' : 'Localización de Empleo'}:</label>
-                    <input type="text" placeholder="Location" maxLength="150" value={this.state.location} onChange={this.onLocationChange} onBlur={() => {
+                    <input type="text" placeholder= {this.props.lang === 'English' ? 'Location' : 'Localización'} maxLength="150" value={this.state.location} onChange={this.onLocationChange} onBlur={() => {
                         //Check to see if address is only composed of spaces. 
                         if(this.state.location.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -726,7 +726,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'}:</label>
-                    <input type="text" placeholder="Subject" value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
+                    <input type="text" placeholder= {this.props.lang === 'English' ? 'Subject' : 'Tema'} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces. 
                         if(this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -845,7 +845,7 @@ class RegistrationForm extends React.Component{
                             }
                             <input
                             type = "text"
-                            placeholder = "Topic"
+                            placeholder = {this.props.lang === 'English' ? 'Topic' : 'Tema'}
                             value={topic}
                             maxLength="50"
                             onChange={this.onTopicChange(index)}
@@ -903,7 +903,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'}:</label>
-                    <input type="text" placeholder="School Name" value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
+                    <input type="text" placeholder= {this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'} value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces. 
                         if(this.state.schoolName.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
@@ -929,14 +929,14 @@ class RegistrationForm extends React.Component{
                         //School location input field
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de Escuela'}:</label>
-                    <input type="text" placeholder="School Location" value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
+                    <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'}:</label>
+                    <input type="text" placeholder= {this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'} value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces. 
                         if(this.state.schoolLocation.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({schoolLocationError: 'The school location field must contain text.'}));
                             }else{
-                                this.setState(() => ({schoolLocationError: 'La localización de la escuela debe contener texto'})); 
+                                this.setState(() => ({schoolLocationError: 'El campo de la localización de la escuela debe contener texto'})); 
                             }
                         }else{
                             this.setState(() => ({schoolLocationError: ''}));
@@ -955,7 +955,7 @@ class RegistrationForm extends React.Component{
                         //Institution ID input field
                     }
                     <label>{this.props.lang === 'English' ? 'Institution ID (Optional)' : 'Identificación de institución (Opcional)'}:</label>
-                    <input type="text" placeholder="Institution ID" value={this.state.institutionID} onChange={this.onInstitutionIDChange} onBlur={() => {
+                    <input type="text" placeholder= {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} value={this.state.institutionID} onChange={this.onInstitutionIDChange} onBlur={() => {
                         //Check if institution ID field matches expected format. 
                         if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                             if(this.props.lang === 'English'){
@@ -1151,23 +1151,23 @@ class RegistrationForm extends React.Component{
                     <label>{this.props.lang === 'English' ? 'Challenges' : 'Retos'}:</label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'}
+                    <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching strategies' : 'Estrategias de enseñanza'}
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'} 
+                    <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated material' : 'Material actualizado'} 
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}
+                    <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time management' : 'Manejo del tiempo'}
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'}
+                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology integration' : 'Integración de tecnologia'}
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'}
+                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional alignment' : 'Alineación curricular'}
                     </label>
                     <br/>
                     <br/>

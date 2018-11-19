@@ -67,7 +67,7 @@ class AnswerQuestionForm extends React.Component {
                                     <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
                                     <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.answer.length}/5000</span>
                                     <br/>
-                                    <textarea type="text" rows='10' className="form-control" maxLength="5000" value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange} onBlur={() => {
+                                    <textarea type="text" rows='10' className="form-control" maxLength="5000" value={this.state.answer} placeholder= {this.props.lang === 'English' ? 'Write your answer here!' : 'Escriba su respuesta aquí!'} onChange={this.onAnswerChange} onBlur={() => {
                                         if(this.state.answer && this.state.answer.match(/^\s+$/)){
                                             this.setState(() => ({answerError: true}));
                                         }
