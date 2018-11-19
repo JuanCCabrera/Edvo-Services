@@ -439,6 +439,9 @@ router.post('/recommendations/read', (req,res,next)=> {
           //SQL Query > update read data
           client.query('UPDATE edu_recommendations SET read=$1 WHERE recomid = $2', [true, data.recomid,]);
           
+          //add to quiz
+
+
           return res.status(201).json({statusCode: 201});
         }else
         {
