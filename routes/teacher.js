@@ -159,25 +159,31 @@ router.post('/questions/ask', (req,res,next)=> {
           });
           query.on('end', () => {
             done();
-            if(subscription[0].status == 'active'){
-              //SQL Query > insert data
-              client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDate, data.userid, data.subject, data.question, false, false,]);
-              //SQL Query > select data
-              const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDate]);
-              //stream results back one row at a time
-              query.on('row', (row) => {
-              results.push(row);
-              });
-              query.on('end', () => {
-              done();
-              return res.status(201).json({statusCode: 201, results});
-              });
-          }
-          else{
-            return res.status(402).json({statusCode: 402,
-              message: 'User doesn\'t have a subscription active.',
-              isBase64Encoded: false,});
-          }
+            if(subscription.length >0){
+              if(subscription[0].status == 'active'){
+                //SQL Query > insert data
+                client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDate, data.userid, data.subject, data.question, false, false,]);
+                //SQL Query > select data
+                const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDate]);
+                //stream results back one row at a time
+                query.on('row', (row) => {
+                results.push(row);
+                });
+                query.on('end', () => {
+                done();
+                return res.status(201).json({statusCode: 201, results});
+                });
+              }
+              else{
+                return res.status(402).json({statusCode: 402,
+                  message: 'User doesn\'t have a subscription active.',
+                  isBase64Encoded: false,});
+              }
+            }else{
+              return res.status(402).json({statusCode: 402,
+                message: 'User doesn\'t have a subscription active.',
+                isBase64Encoded: false,});
+            }
           });
         }else
         {
