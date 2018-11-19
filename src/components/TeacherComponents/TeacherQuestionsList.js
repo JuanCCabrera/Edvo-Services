@@ -89,6 +89,7 @@ class TeacherQuestionsList extends React.Component{
                 {
                     //Pagination component
                 }
+                <div className="text-center">
                 {(this.props.question.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -97,6 +98,7 @@ class TeacherQuestionsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
                 {
                     //Message displayed if there are no items in the list. 
                 }

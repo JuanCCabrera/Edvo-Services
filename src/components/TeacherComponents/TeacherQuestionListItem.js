@@ -8,11 +8,19 @@ import {selectQuestion} from '../../actions/teacherQuestions';
  */
 const TeacherQuestionListItem = (props) => (
         //Open question modal if the question item is clicked. 
-        <div className="clickable" onClick={() => {props.dispatch(selectQuestion(props.question));}}>
+        <div className="clickable list-group-item item-card" onClick={() => {props.dispatch(selectQuestion(props.question));}}>
             {
                 //Question subject and date in which it was asked.
             }
-            <h4>{props.question.subject}</h4> <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.question.askedDate}</h5>
+            <div className="card-title">
+            <p>{props.question.subject}</p> 
+            </div>
+
+            {
+                //Question date
+            }
+            
+            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.question.askedDate}</h5>
             {
                 //Question body. 
             }

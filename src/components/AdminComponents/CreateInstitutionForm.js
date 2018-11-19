@@ -16,10 +16,16 @@ class CreateInstitutionForm extends React.Component{
         //An institution must have a name, locaiton, type (public, private, or independent) and an institution ID issued by an Administrator. 
         this.state={
             name: '',
+            nameError: '',
+
             location: '', 
             numAccounts: '',
+            locationError: '',
+
             type: 'public',
             institutionID: '',
+            institutionIDError: '',
+
             createInstitutionError: false
         };
     }
@@ -51,6 +57,33 @@ class CreateInstitutionForm extends React.Component{
         this.setState(() => ({institutionID}));
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            //Update the language of the error messages whenever the language is set to change. 
+            if(this.props.lang === 'English'){
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'The name field must contain text.'}));
+                }
+                if(this.state.locationError){
+                    this.setState(() => ({locationError: 'The address field must contain text.'}));
+                }
+                if(this.state.institutionIDError){
+                    this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                }
+            }else{
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
+                }
+                if(this.state.locationError){
+                    this.setState(() => ({locationError: 'El campo de la dirección debe contener texto.'}))
+                }
+                if(this.state.institutionIDError){
+                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'}));
+                }
+            }
+        }
+    }
+
     //Submit Institution information
     onSubmit = (e) => {
         e.preventDefault();
@@ -68,8 +101,9 @@ class CreateInstitutionForm extends React.Component{
     });
         if(!this.state.name || !this.state.location){
             this.setState(() => ({createInstitutionError : true})); 
+        }else if(this.state.nameError || this.state.locationError || this.state.institutionIDError){
+            this.setState(() => ({createInstitutionError: true}));
         }else{
-            console.log(this.state);
             this.setState(() => ({createInstitutionError: false}));
             <Redirect to='/admin/settings/schools' />
         }
@@ -108,22 +142,69 @@ class CreateInstitutionForm extends React.Component{
                                 {
                                     //Name input field
                                 }
+                                <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                 <br/>
-                                <input className="form-control" style={{width: '60%'}} type="text" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
-
+                                <input className="form-control" maxLength="100" style={{width: '60%'}} type="text" placeholder="Name" onBlur={() => {
+                                    //Check if the name field only contains spaces. 
+                                    if(this.state.name.match(/^\s+$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({nameError: 'The name field must contain text.'}));
+                                        }else{
+                                            this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'})); 
+                                        }
+                                    }else{
+                                        this.setState(() => ({nameError: ''}));
+                                    }
+                                }}
+                                value={this.state.name} onChange={this.onNameChange}/>
+                                {
+                                    //Name error
+                                }
+                                {this.state.nameError && 
+                                    <div>
+                                        <span className="text-danger"> 
+                                            {this.state.nameError}
+                                        </span>
+                                        <br/>
+                                    </div>}
                                 <br/>
                                 {
                                     //Location input field
                                 }
-                                <label>{this.props.lang === 'English' ? 'Location' : 'Localización'}:</label>
+                                <span className="req">*</span>
+                                <label>{this.props.lang === 'English' ? 'Address' : 'Dirección Física'}:</label> 
                                 <br/>
-                                <input type="text" className="form-control" placeholder = "Location" value = {this.state.location} onChange={this.onLocationChange}/>
+                                <input type="text" className="form-control" maxLength="150" placeholder = "Location" onBlur={() => {
+                                    //Check if address field is only composed of spaces. 
+                                    if(this.state.location.match(/^\s+$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({locationError: 'The address field must contain text.'}));
+                                        }else{
+                                            this.setState(() => ({locationError: 'El campo de la dirección debe contener texto.'})); 
+                                        }
+                                    }else{
+                                        this.setState(() => ({locationError: ''}));
+                                    }
+                                }}
+                                value = {this.state.location} onChange={this.onLocationChange}/>
 
+                                {
+                                    //Location error
+                                }
+                                {this.state.locationError && 
+                                    <div>
+                                        <span className="text-danger"> 
+                                            {this.state.locationError}
+                                        </span>
+                                        <br/>
+                                    </div>}
                                 <br/>
+
                                 {
                                     //School type radio button selection
                                 }
+                                <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'School Type' : 'Tipo de Escuela'}:</label>
                                 <br/>
 
@@ -150,17 +231,40 @@ class CreateInstitutionForm extends React.Component{
                                 {
                                     //Institution ID input field
                                 }
+                                <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                 <br/>
-                                <input type="text" style={{width: '50%'}} className="form-control" placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
-                            
+                                <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = "Institution ID" onBlur={() => {
+                                    //Check if institution ID field matches expected format. 
+                                    if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                                        }else{
+                                            this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'})); 
+                                        }
+                                    }else{
+                                        this.setState(() => ({institutionIDError: ''}));
+                                    }
+                                }}
+                                value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+
+                                {
+                                    //Institution ID error
+                                }
+                                {this.state.institutionIDError && 
+                                    <div>
+                                        <span className="text-danger"> 
+                                            {this.state.institutionIDError}
+                                        </span>
+                                        <br/>
+                                    </div>}
                                 <br/>
                                 {
                                     //Error displayed if input is missing from required (any) field. 
                                 }
                                 {this.state.createInstitutionError === true && 
                                     <div className="text-danger" style={{marginBottom: '2.7rem'}}>
-                                        {this.props.lang === 'English' ? <p>Please fill all the blank fields before submitting a new institution.</p> : <p>Por favor, llene todos los campos antes de guardar la institución nueva.</p>}
+                                        {this.props.lang === 'English' ? <p>Please fill all fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                                     </div>
                                 }
                                 {

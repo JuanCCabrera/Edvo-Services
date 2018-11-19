@@ -12,17 +12,35 @@ const TeacherButtonList = (props) => (
         {
             //Link to the Basic Information Form
         }
-        <Link to={"/teacher/settings/info"}>{props.lang === 'English' ? 'Account Information' : 'Información de Cuenta'}</Link>
+        <Link to={"/teacher/settings/info"}>
+            <div className="nav__button">
+                <p className="nav__button__text">    
+                    {props.lang === 'English' ? 'My Profile' : 'Mi Perfil'}
+                </p>
+            </div>
+        </Link>
         <br/>
         {
             //Link to the Classes page
         }
-        <Link to={"/teacher/settings/classes"}>{props.lang === 'English' ? 'Classes' : 'Clases'}</Link>
+        <Link to={"/teacher/settings/classes"}>
+            <div className="nav__button">
+                <p className="nav__button__text"> 
+                    {props.lang === 'English' ? 'Classes' : 'Clases'}
+                </p>
+            </div>
+        </Link>
         <br/>
         {
             //Link to the Plan page
         }
-        <Link to={"/teacher/settings/plans"}>Plan</Link>
+        <Link to={"/teacher/settings/plans"}>
+            <div className="nav__button">
+                <p className="nav__button__text"> 
+                    Plan
+                </p>
+            </div>
+        </Link>
     </div>
 );
 

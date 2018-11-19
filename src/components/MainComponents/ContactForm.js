@@ -11,8 +11,14 @@ class ContactForm extends React.Component{
         //The form must include a user's name, email and a message. 
         this.state = {
             name: '',
+            nameError: '',
+
             email: '',
+            emailError: '',
+
             message: '',
+            messageError: '',
+
             contactError: false 
         };
     }
@@ -35,12 +41,41 @@ class ContactForm extends React.Component{
         this.setState(() => ({message}));
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            //Update error messages if language is changed. 
+            if(this.props.lang === 'English'){
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'The name field must contain text.'}));
+                }
+                if(this.state.emailError){
+                    this.setState(() => ({emailError: 'Enter a valid email address.'}));
+                }
+                if(this.state.messageError){
+                    this.setState(() => ({messageError: 'The message field must contain text.'}));
+                }
+            }else{
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
+                }
+                if(this.state.emailError){
+                    this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'}))
+                }
+                if(this.state.messageError){
+                    this.setState(() => ({messageError: 'El campo del mensaje debe contener texto.'}))
+                }
+            }
+        }
+    }
+
 
     //Submit contact form
     onSubmit = (e) => {
         e.preventDefault();
         if(!this.state.name || !this.state.email || !this.state.message){   //Generate error if there are missing fields
             this.setState(() => ({contactError: true})); 
+        }else if(this.state.nameError || this.state.emailError || this.state.messageError){
+            this.setState(() => ({contactError: true}))
         }else{  //Otherwise, submit form information
             this.setState(() => ({contactError: false}));
             this.props.onSubmit({

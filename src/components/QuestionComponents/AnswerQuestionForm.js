@@ -38,6 +38,8 @@ class AnswerQuestionForm extends React.Component {
         if(!this.state.answer){
             this.setState(() => ({answerError: true}));
         //Otherwise, clear the error message indicator.
+        }else if(this.state.answerError){
+            this.setState(() => ({answerError: true}));
         }else{
             this.setState(() => ({answerError: ''}));
             console.log("TEACHER ID TO ANSWER: ", this.state.userID);
@@ -82,7 +84,13 @@ class AnswerQuestionForm extends React.Component {
                                 //Answer input field
                             }
                             <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
-                                <textarea type="text" rows='10' className="form-control" required value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange}/>
+                            <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.answer.length}/5000</span>
+                            <br/>
+                                <textarea type="text" rows='10' className="form-control" maxLength="5000" value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange} onBlur={() => {
+                                    if(this.state.answer && this.state.answer.match(/^\s+$/)){
+                                        this.setState(() => ({answerError: true}));
+                                    }
+                                }}/>
                             {
                                 //Message displayed when trying to submit an answer without filling the answer input field. 
                             }

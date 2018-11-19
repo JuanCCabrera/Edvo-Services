@@ -17,27 +17,37 @@ const EditRecommendation = (props) => (
     role={auth0Client.getRole()}
     perform="admin:recommendations-modify"
     yes={() => (
-    <div>
-        
-    {console.log("PROPS EDIT:L ", props)}
+    <div className="background-home">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-2 text-center well">
         {
             //Recommendations button list
         }
         <RecommendationButtonList/>
-        {
-            //Page title
-        }
-        <h2> {props.lang === 'English' ? 'Edit Recommendation' : 'Modificar Recomendación'} </h2>
-        {
-            //Create Recommendation form with preset recommendation data (editable recommendation). 
-        }
-        <CreateRecommendationForm 
-        reco={props.recommendation}
-        isEdit={true}
-        onSubmit={(recommendation) => {
-            props.dispatch(editRecommendation(props.recommendation.id, recommendation));
-            props.history.push('/recommendations/manage');
-        }}/>
+        </div>
+        <div className="col-sm-1"/>
+            <div className="col-sm-9 big-card">
+                <div className="form__title">
+                    {
+                        //Page title
+                    }
+                    <p> {props.lang === 'English' ? 'Edit Recommendation' : 'Modificar Recomendación'} </p>
+                    <hr className="break" style={{borderColor: '#5933AA'}}/>
+                </div>
+                {
+                    //Create Recommendation form with preset recommendation data (editable recommendation). 
+                }
+                <CreateRecommendationForm 
+                reco={props.recommendation}
+                isEdit={true}
+                onSubmit={(recommendation) => {
+                    props.dispatch(editRecommendation(props.recommendation.id, recommendation));
+                    props.history.push('/recommendations/manage');
+                }}/>
+                </div>
+            </div>
+        </div>
     </div>
                          )}
                          no={() => <Redirect to="/" />}

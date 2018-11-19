@@ -13,8 +13,11 @@ class AskQuestionForm extends React.Component{
         //Each question must contain a subject and a question body. 
         this.state = {
             subject: '',
+            subjectError: '',
+
             body: '',
             success: false,
+            bodyError: '',
             askQuestionError: false
         };
     }
@@ -31,6 +34,27 @@ class AskQuestionForm extends React.Component{
         this.setState(() => ({body}));
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            //Change rendered error message if the language changes. 
+            if(this.props.lang === 'English'){
+                if(this.state.subjectError){
+                    this.setState(() => ({subjectError: 'The subject field must contain text.'}));
+                }
+                if(this.state.bodyError){
+                    this.setState(() => ({bodyError: 'The question field must contain text.'}));
+                }
+            }else{
+                if(this.state.subjectError){
+                    this.setState(() => ({subjectError: 'El campo del tema debe contener texto.'}))
+                }
+                if(this.state.bodyError){
+                    this.setState(() => ({bodyError: 'El campo de la pregunta debe contener texto.'}))
+                }
+            }
+        }
+    }
+
     //Submits question information. 
     onSubmit = (e) => {
         //Prevent page refresh
@@ -41,10 +65,14 @@ class AskQuestionForm extends React.Component{
             this.setState(() => ({askQuestionError: true, success: false})); 
         }else{
             this.setState(() => ({askQuestionError: ''}));
-            axios.post('http://localhost:3000/teacher/questions/ask', {
+            axios.post('http://142.93.250.246/api/teacher/questions/ask', {
             subject: this.state.subject,
-            question: this.state.body
-    },{headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+            question: this.state.body,
+            userid: '1'
+    })
+    .catch(error => {
+        console.log("ERROR ASKING: ", error.message)
+    })
     .then((response)=>{
         if(response.status == 201)
             this.setState(() => ({success: true, subject: '', body: ''}));
@@ -64,8 +92,29 @@ class AskQuestionForm extends React.Component{
                     type = "text"
                     placeholder = {this.props.lang === 'English' ? 'Subject' : 'Tema'}
                     value = {this.state.subject}
-                    onChange = {this.onSubjectChange}/>
+                    onChange = {this.onSubjectChange} onBlur={() => {
+                        if(this.state.subject && this.state.subject.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({subjectError: 'The name field must contain text.'}));
+                            }else{
+                                this.setState(() => ({subjectError: 'El campo del nombre debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({subjectError: ''}));
+                        }
+                    }}/>
+                    {
+                        //Subject error
+                    }
+                    {this.state.subjectError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.subjectError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                 {
                     //Question body input field
                 }
@@ -84,7 +133,7 @@ class AskQuestionForm extends React.Component{
                     }
                     {this.state.askQuestionError === true && 
                         <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>Please fill all fields before sending a question.</p> : <p>Por favor, llene todos los espacios en blanco antes de enviar una pregunta.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                         </div>
                     }{this.state.success === true && 
                         <div className="text-danger">

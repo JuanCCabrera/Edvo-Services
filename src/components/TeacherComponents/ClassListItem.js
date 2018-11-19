@@ -8,11 +8,11 @@ import { removeClass } from '../../actions/classes';
  * @param {*} props - Contains default properties, class information and the current langauge state.
  */
 const ClassListItem = (props) => (
-    <div>
+    <div className="list-group-item">
     {
         //Class subject
     }
-        <h4>{props.class.subject}</h4>
+        <h4 className="card-title">{props.class.subject}</h4>
     {
         //Class format
     }
@@ -41,7 +41,11 @@ const ClassListItem = (props) => (
     {
         //Remove class button
     }
-        <button disabled={props.classes.length === 1} onClick={() => {props.dispatch(removeClass({classInfoId: props.class.classInfoId}))}}>Remove</button>
+        <button disabled={props.classes.length === 1} onClick={() => {props.dispatch(removeClass({classInfoId: props.class.classInfoId}))}}>
+            <div className="btn btn-item">
+                {props.lang === 'English' ? 'Remove' : 'Remover'}
+            </div>
+        </button>
     </div>
 );
 

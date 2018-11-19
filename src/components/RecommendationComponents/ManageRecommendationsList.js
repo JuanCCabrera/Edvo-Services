@@ -23,10 +23,10 @@ class ManageRecommendationsList extends React.Component{
             displayedRecommendations: []
         }
     }
-    componentWillUnmount(){
-        console.log("I INMOUNTED EVERYTHING");
-        this.props.dispatch(unloadRecommendations());
-    }
+    // componentWillUnmount(){
+    //     console.log("I INMOUNTED EVERYTHING");
+    //     this.props.dispatch(unloadRecommendations());
+    // }
 
     //Configure initial state if component will be mounted. 
     //Determine the recommendations to display on the first page. 

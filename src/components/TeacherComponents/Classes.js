@@ -14,13 +14,23 @@ const Classes = (props) => (
     role={auth0Client.getRole()}
     perform="teacher:settings"
     yes={() => (
-    <div>
-        <TeacherButtonList/>
-        <ClassList/>
+        <div className="background-home">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-2 text-center well">
+                    <TeacherButtonList/>
+                </div>
+                <div className="col-sm-1"/>
+                <div className="big-card col-sm-9">
+                    <ClassList/>
+                </div>
+            </div>
+        </div>
     </div>
                  )}
                  no={() => <Redirect to="/" />}
                />    
+
 );
 
 export default Classes;

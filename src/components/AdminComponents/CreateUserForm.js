@@ -18,16 +18,30 @@ class CreateUserForm extends React.Component{
         //institution ID (if the user is of the school type). 
         this.state={
             email: '',
+            emailError: '',
+
             password: '', 
+            passwordError: '',
+
             confirmPassword: '',
+            confrimPasswordError: '',
+
             name: '',
+            nameError:'',
+
             lastName: '',
+            lastNameError: '',
+
             dateOfBirth: moment(),
+            dateOfBirthError: '',
+
             calendarFocused: false,
             gender: 'male',
             levelOfEdu: 'AS',
             type: 'school',
             institutionID: '',
+            institutionIDError: '',
+
             creationError: false
         };
     }
@@ -70,8 +84,17 @@ class CreateUserForm extends React.Component{
 
     //Change dateOfBirth in local state
     onDateChange = (dateOfBirth) => {
-        if(dateOfBirth){
-            this.setState(() => ({dateOfBirth}));
+        var today=moment();
+        var difference = today.diff(dateOfBirth, 'years');
+        //Check if the selected date of birth falls between 18-90 years ago. 
+        if(dateOfBirth && (difference > 18 && difference < 90)){
+            this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
+        }else{
+            if(this.props.lang === 'English'){
+                this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+            }else{
+                this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+            }
         }
     };
 
@@ -98,12 +121,65 @@ class CreateUserForm extends React.Component{
         this.setState(() => ({institutionID}));
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            //Update the language of the error messages whenever the language is set to change. 
+            if(this.props.lang === 'English'){
+                if(this.state.emailError){
+                    this.setState(() => ({emailError: 'Enter a valid email address.'}));
+                }
+                if(this.state.passwordError){
+                    this.setState(() => ({passwordError: 'Enter a valid password.'}));
+                }
+                if(this.state.confirmPasswordError){
+                    this.setState(() => ({confirmPasswordError: 'Incorrect password. Try again. '}));
+                }
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'The name field must contain text.'}));
+                }
+                if(this.state.lastNameError){
+                    this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
+                }
+                if(this.state.dateOfBirthError){
+                    this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth'}));
+                }
+                if(this.state.institutionIDError){
+                    this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                }
+            }else{
+                if(this.state.emailError){
+                    this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'}))
+                }
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
+                }
+                if(this.state.lastNameError){
+                    this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'}))
+                }
+                if(this.state.passwordError){
+                    this.setState(() => ({passwordError: 'Escriba una contraseña valida.'}));
+                }
+                if(this.state.confirmPasswordError){
+                    this.setState(() => ({confirmPasswordError: 'Contraseña incorrecta. Trate otra vez.'}));
+                }
+                if(this.state.dateOfBirthError){
+                    this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                }
+                if(this.state.institutionIDError){
+                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'}));
+                }
+            }
+        }
+    }
+
     //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
 
         if(!this.state.email || !this.state.password || !this.state.confirmPassword || !this.state.name || !this.state.lastName || (this.state.type === 'school' && !this.state.institutionID)){
+            this.setState(() => ({creationError: true}));
+        }else if(this.state.emailError || this.state.nameError || this.state.lastNameError || this.state.passwordError || this.state.confirmPasswordError || this.state.dateOfBirthError || this.state.institutionIDError){
             this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
@@ -166,9 +242,31 @@ class CreateUserForm extends React.Component{
                                             }
                                             <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                             <br/>
-                                            <input type="text" className="form-control" placeholder="Name" value={this.state.name} onChange={this.onNameChange}/>
-                                        
+                                            <input type="text" className="form-control" maxLength="100" placeholder="Name" onBlur={() => {
+                                                //Check if the name field only contains spaces. 
+                                                if(this.state.name.match(/^\s+$/)){
+                                                    if(this.props.lang === 'English'){
+                                                        this.setState(() => ({nameError: 'The name field must contain text.'}));
+                                                    }else{
+                                                        this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'})); 
+                                                    }
+                                                }else{
+                                                    this.setState(() => ({nameError: ''}));
+                                                }
+                                            }}
+                                            value={this.state.name} onChange={this.onNameChange}/>
+                                            {
+                                                //Name error
+                                            }
+                                            {this.state.nameError && 
+                                                <div>
+                                                    <span className="text-danger"> 
+                                                        {this.state.nameError}
+                                                    </span>
+                                                    <br/>
+                                                </div>}
                                             <br/>
+
                                         </div>
                                         <div className="col-sm-6">
                                             {
@@ -176,8 +274,30 @@ class CreateUserForm extends React.Component{
                                             }
                                             <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                                             <br/>
-                                            <input type="text" className="form-control" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}/>
+                                            <input type="text" className="form-control" maxLength="100" placeholder="Last Name" onBlur={() => {
+                                                //Check if the last name field only consists of spaces. 
+                                                if(this.state.lastName.match(/^\s+$/)){
+                                                    if(this.props.lang === 'English'){
+                                                        this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
+                                                    }else{
+                                                        this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'})); 
+                                                    }
+                                                }else{
+                                                    this.setState(() => ({lastNameError: ''}));
+                                                }
+                                            }}
+                                            value={this.state.lastName} onChange={this.onLastNameChange}/>
 
+                                            {
+                                                //Last name error
+                                            }
+                                            {this.state.lastNameError && 
+                                                <div>
+                                                    <span className="text-danger"> 
+                                                        {this.state.lastNameError}
+                                                    </span>
+                                                    <br/>
+                                                </div>}
                                             <br/>
                                         </div>
                                     </div>
@@ -187,28 +307,114 @@ class CreateUserForm extends React.Component{
                                     }
                                     <label>Email:</label>
                                     <br/>
-                                    <input type="text" className="form-control" style={{width: '40%'}} placeholder = "Email" value = {this.state.email} onChange={this.onEmailChange}/>
-                    
-                                    <br/>
-
+                                    <input type="text" className="form-control" maxLength="100" style={{width: '40%'}} placeholder = "Email" onBlur={() => {
+                                        //Check if the email field matches the expected email address format. 
+                                        if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/)){
+                                            if(this.props.lang === 'English'){
+                                                this.setState(() => ({emailError: 'Enter a valid email address.'}));
+                                            }else{
+                                                this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'})); 
+                                            }
+                                        }else{
+                                            this.setState(() => ({emailError: ''}));
+                                        }
+                                    }}
+                                    value = {this.state.email}
+                                    onChange = {this.onEmailChange}
+                                    />
+                
                                     {
-                                        //Password input field
+                                        //Email error
                                     }
-                                    <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
+                                    {this.state.emailError && 
+                                        <div>
+                                            <span className="text-danger"> 
+                                                {this.state.emailError}
+                                            </span>
+                                            <br/>
+                                        </div>}
                                     <br/>
-                                    <input type="password" className="form-control" style={{width: '50%'}} placeholder = "Password" value = {this.state.password} onChange={this.onPasswordChange}/>
-                    
-                                    <br/>
-                                
-                                    {
-                                        //Confirm Password input field
-                                    }
-                                    <label>{this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'}:</label>
-                                    <br/>
-                                    <input type="password" className="form-control" style={{width: '50%'}} placeholder = "Confirm Password" value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange}/>
+                
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            {
+                                                //Password input field
+                                            }
+                                            <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
+                                            <br/>
+                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = "Password" value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
+                                                //Check if the password field matches the expected password format. 
+                                                if(this.state.password && !this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/)){
+                                                    if(this.props.lang === 'English'){
+                                                        this.setState(() => ({passwordError: 'Enter a valid password.'}));
+                                                    }else{
+                                                        this.setState(() => ({passwordError: 'Escriba una contraseña valida.'})); 
+                                                    }
+                                                }else{
+                                                    this.setState(() => ({passwordError: ''}));
+                                                }
+                                            }}/>
+                        
+                                            {
+                                                //Password error
+                                            }
+                                            {this.state.passwordError && 
+                                                <div>
+                                                    <span className="text-danger"> 
+                                                        {this.state.passwordError}
+                                                    </span>
+                                                    <br/>
+                                                </div>}
+                                            <br/>
+                                            
+                                        
+                                            {
+                                                //Confirm Password input field
+                                            }
+                                            <label>{this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'}:</label>
+                                            <br/>
+                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = "Confirm Password" value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange} onBlur={() => {
+                                                //Check if the confirm password field matches the password field. 
+                                                if((this.state.password !== this.state.confirmPassword) && this.state.confirmPassword){
+                                                    if(this.props.lang === 'English'){
+                                                        this.setState(() => ({confirmPasswordError: 'Incorrect password. Try again.'}));
+                                                    }else{
+                                                        this.setState(() => ({confirmPasswordError: 'Contraseña incorrecta. Trate otra vez.'})); 
+                                                    }
+                                                }else{
+                                                    this.setState(() => ({confirmPasswordError: ''}));
+                                                }
+                                            }}/>
+                        
+                                            {
+                                                //Confirm password error
+                                            }
+                                            {this.state.confirmPasswordError && 
+                                                <div>
+                                                    <span className="text-danger"> 
+                                                        {this.state.confirmPasswordError}
+                                                    </span>
+                                                    <br/>
+                                                </div>}
+                                            <br/>
+                                        
+                                        </div>
+                                        <div className="col-sm-1"/>
+                                        <div className="col-sm-5 item-card">
+                                            <ul style={{fontSize: '1.3rem', paddingLeft: '0'}}>
+                                            <p className="card-title">{this.props.lang === 'English' ? 'Password Requirements' : 'Requisitos de Contraseña'}:</p>
+                                            <li>{this.props.lang === 'English' ? 'Minimum of 8 characters' : 'Mínimo de 8 caracteres'}</li>
+                                            <li>{this.props.lang === 'English' ? 'At least one character of each of the following' : 'Al menos un caracter de cada uno de los siguientes'}:</li>
+                                            <ul style={{paddingLeft: '0.5rem'}}>
+                                                <li>- {this.props.lang === 'English' ? 'Lowercase letters' : 'Letras minúsculas'} (a-z)</li>
+                                                <li>- {this.props.lang === 'English' ? 'Uppercase letters' : 'Letras mayúsculas'} (A-Z)</li>
+                                                <li>- {this.props.lang === 'English' ? 'Numbers' : 'Números'} (0-9)</li>
+                                                <li>- {this.props.lang === 'English' ? 'Special characters' : 'Caracteres especiales'} (e.g. !@#$%^&*)</li>
+                                                </ul>
+                                            </ul>
 
-                                    <br/>
-                                   
+                                        </div>
+                                    </div>
                                     {
                                         //Date of birth selector
                                     }
@@ -228,13 +434,22 @@ class CreateUserForm extends React.Component{
                                     <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
                                     <br/>
                                     <DatePicker
+                                    className="form-control" 
                                     selected={this.state.dateOfBirth}
                                     onChange={this.onDateChange}
-                                    className="form-control"
+                                    maxDate={moment()}
                                     />
+                                    <br/>
 
+                                    {this.state.dateOfBirthError && 
+                                        <div>
+                                            <span className="text-danger"> 
+                                                {this.state.dateOfBirthError}
+                                            </span>
+                                            <br/>
+                                        </div>}
                                     <br/>
-                                    <br/>
+
                                     {
                                         //Gender radio button selector
                                     }
@@ -320,7 +535,30 @@ class CreateUserForm extends React.Component{
                                     }
                                     <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                     <br/>
-                                    <input type="text" className="form-control" style={{width: '40%'}} maxLength="8" disabled={this.state.type !== 'school'} placeholder = "Institution ID" value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+                                    <input type="text" className="form-control" maxLength="30" style={{width: '40%'}} disabled={this.state.type !== 'school'} placeholder = "Institution ID" onBlur={() => {
+                                        //Check if institution ID field matches expected format. 
+                                        if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
+                                            if(this.props.lang === 'English'){
+                                                this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                                            }else{
+                                                this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'})); 
+                                            }
+                                        }else{
+                                            this.setState(() => ({institutionIDError: ''}));
+                                        }
+                                    }}
+                                    value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+    
+                                    {
+                                        //Institution ID error
+                                    }
+                                    {this.state.institutionIDError && 
+                                        <div>
+                                            <span className="text-danger"> 
+                                                {this.state.institutionIDError}
+                                            </span>
+                                            <br/>
+                                        </div>}
 
                                     {
                                         //Message displayed when trying to submit a new user without filling all the fields. 
@@ -329,7 +567,7 @@ class CreateUserForm extends React.Component{
                                     <br/>
                                     {this.state.creationError === true && 
                                         <div className="text-danger" style={{marginBottom: "2.7rem"}}>
-                                            {this.props.lang === 'English' ? <p>Please fill all blank fields.</p> : <p>Por favor, llene todos los campos.</p>}
+                                            {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                                         </div>
                                     }
 

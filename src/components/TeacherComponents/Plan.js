@@ -89,14 +89,24 @@ class Plan extends React.Component{
             perform="teacher:settings"
             yes={() => (
             <div>
+            <div className="background-home">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-2 text-center well">
             {
                 //Teacher settings page links
             }
                 <TeacherButtonList/>
+                </div>
+                <div className="col-sm-1"/>
+                <div className="big-card col-sm-9">
                 {
                     //Page title
                 }
-                {this.props.lang === 'English' ? <h3>Plan</h3> : <h3>Plan</h3>}
+                <div className="form__title text-center">
+                    {this.props.lang === 'English' ? <p>Plan</p> : <p>Plan</p>}
+                    <hr className="break" style={{borderColor: '#5933AA'}}/>
+                </div>
                 {
                     //Name of package owned by teacher
                 }
@@ -104,14 +114,17 @@ class Plan extends React.Component{
                 {
                     //Link to Plans page to allow teacher to view the benefits of his or her subscription plan.
                 }
-                <div className="btn btn-default">
-                    <Link to='/plans'>{this.props.lang === 'English' ? 'View Perks' : 'Ver Beneficios'}</Link>
-                </div>
+                
+                <Link to='/plans' style={{color:'white', textDecoration: 'none'}}>
+                        <div className="btn btn-item linktext">
+                            {this.props.lang === 'English' ? 'View Perks' : 'Ver Beneficios'}
+                        </div>
+                    </Link>
                 {
                     //Cancel plan button
                 }
                 {this.props.plan.status === 'active' && this.props.lang === 'English' && <button onClick={this.cancelPlan}>
-                    <div className="btn btn-default">
+                    <div className="btn btn-item">
                         Cancel Plan
                     </div>
                 </button>}
@@ -119,7 +132,7 @@ class Plan extends React.Component{
                     //Cancel Plan button (translation)
                 }
                 {this.props.plan.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.cancelPlan}>
-                    <div className="btn btn-default">
+                    <div className="btn btn-item">
                         Cancelar Plan
                     </div>
                 </button>}
@@ -127,7 +140,7 @@ class Plan extends React.Component{
                     //Resubscribe button
                 }
                 {this.props.plan.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.resubscribeToPlan}>
-                <div className="btn btn-default">
+                <div className="btn btn-item">
                         Resubscribe
                     </div>
                 </button>}
@@ -136,7 +149,7 @@ class Plan extends React.Component{
                     //Resubscribe button (translation)
                 }
                 {this.props.plan.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.resubscribeToPlan}>
-                <div className="btn btn-default">
+                <div className="btn btn-item">
                         Resuscribirse
                     </div>
                 </button>}
@@ -144,21 +157,32 @@ class Plan extends React.Component{
                 {
                     //Coupon code input field
                 }
+                <div style={{marginTop: '3rem'}}>
                 {this.props.lang === 'English' ? <h4>Coupon Code:</h4>: <h4>Código de Cupón:</h4>}
-                <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
+                <input type="text" className="form-control" style={{width: '50%'}} value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
                 {
                     //Submit coupon code button
                 }
-                <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>
+                <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>
+                    <div className="btn btn-item">
+                        {this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}
+                    </div>
+                    </button>
                 <br/>
                 {/* {this.state.status === 'active' && this.props.lang === 'English' && <h3>Coupon Code:</h3>}
                 {this.state.status === 'active' && <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>}
                 {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>}
                 <br/> */}
+                </div>
+                </div>
             </div>
+        </div>
+    </div>
+</div>
                              )}
                              no={() => <Redirect to="/" />}
                            />
+
         )
     }
 }

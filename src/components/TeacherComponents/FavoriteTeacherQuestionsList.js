@@ -70,6 +70,7 @@ class FavoriteTeacherQuestionsList extends React.Component{
                 {
                     //Pagination component
                 }
+                <div className="text-center">
                 {(this.props.question.length > 3) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -78,6 +79,7 @@ class FavoriteTeacherQuestionsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+                </div>
                 {
                     //Message displayed if there are no items in the favorite questions list. 
                 }

@@ -10,26 +10,36 @@ import StarRatingComponent from 'react-star-rating-component';
  * @param {*} props - Default properties, current language state, selected question information and teacher question filtering data.
  */
 const QuestionModal = (props) => (
+    <div className="modal">
     <Modal
     isOpen = {props.question.subject !== ''}
     onRequestClose = {props.clearSelectedQuestion}
     contentLabel="Question"
+    closeTimeoutMS={200}
+    className="modal-card"
     >
     <div className="container">
         <div className="row">
         {
             //Quesiton subject
         }
-            <div className="col-sm-10">
-                <h2>{props.question.subject}</h2>
+            <div className="col-sm-10 text-center form__title">
+                <p>{props.question.subject}</p>
+                <hr className="break" style={{borderColor: '#5933AA'}}/>
             </div>
             {
                 //Favoriting star
             }
-            <div className="col-sm-1">
-                <h3>{props.lang === 'English' ? 'Favorite' : 'Favorita'}: </h3>
-            </div>
-            <div className="col-sm-1">
+            <div className="badge clickable" style={{backgroundColor: '#5933AA', marginTop: '1rem'}} onClick={() => {
+                if(props.isFavorite === 0){
+                    props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
+                }else{
+                    props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
+                }
+            }}>
+            <div className="col-sm-2">
+                <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>
+            
                 <StarRatingComponent
                     name="favorite"
                     starCount={1}
@@ -46,16 +56,23 @@ const QuestionModal = (props) => (
                 />
             
             </div>
+            </div>
         </div>
     </div>
+    
     {
         //Quesiton body
     }
+        <div className="card-title">
         <h3>{props.question.question}</h3>
+        </div>
     {
         //Question answer
     }
-        {props.question.answer !== '' ? <p>{props.question.answer}</p> : 
+        {props.question.answer !== '' ? 
+
+        <p>Answer: {props.question.answer}</p> 
+        : 
         <p>{props.lang === 'English' ? 'This question has not been answered.' : 'Esta pregunta no se ha contestado.'}</p>}
     {
         //Date in which the question was asked
@@ -75,8 +92,13 @@ const QuestionModal = (props) => (
         {
             //Button to close the question modal. 
         }
-        <button onClick = {props.clearSelectedQuestion}>{props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
+        <button onClick = {props.clearSelectedQuestion}>
+            <div className="btn btn-item">
+                {props.lang === 'English' ? 'Close' : 'Cerrar'}
+            </div>
+        </button>
     </Modal>
+    </div>
 );
 
 //Map selected question information, value represeting the question's favorite status and the current language state to the component properties. 

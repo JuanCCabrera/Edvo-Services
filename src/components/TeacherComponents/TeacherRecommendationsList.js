@@ -100,6 +100,7 @@ class TeacherRecommendationsList extends React.Component{
             {
                 //Pagination component
             }
+            <div className="text-center">
                 {(this.props.recommendation.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
@@ -108,6 +109,7 @@ class TeacherRecommendationsList extends React.Component{
                     onChange={this.handlePageChange}
                     />
                 }
+            </div>
                 {
                     //Message displayed if there are no items on the list. 
                 }

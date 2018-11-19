@@ -15,6 +15,7 @@ class CreateRecommendationForm extends React.Component{
         this.state = {
             props: props,
             title: props.reco ? props.reco.title : '',
+            titleError: '',
             multimedia: props.reco ? props.reco.multimedia : '',
             header: props.reco ? props.reco.header : '',
             description: props.reco ? props.reco.description : '',
@@ -56,6 +57,20 @@ class CreateRecommendationForm extends React.Component{
        };
     }
     //Change Handlers
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            if(this.props.lang === 'English'){
+                if(this.state.titleError){
+                    this.setState(() => ({titleError: 'The title must contain readable text.'}));
+                }
+            }else{
+                if(this.state.titleError){
+                    this.setState(() => ({titleError: 'El título debe contener texto legible.'}))
+                }
+            }
+        }
+    }
 
     //Change Title in local state
     onTitleChange = (e) => {
@@ -395,8 +410,25 @@ class CreateRecommendationForm extends React.Component{
                         //Recommendation title input field
                     }
                     <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
-                    <input type="text" placeholder = "Title" className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange}/>
-
+                    <input type="text" maxLength="100" placeholder = "Title" onBlur={() => {
+                        //Check to see if title is only composed of spaces. 
+                        if(this.state.title.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({titleError: 'The title must contain text.'}));
+                            }else{
+                                this.setState(() => ({titleError: 'El título debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({titleError: ''}));
+                        }
+                    }} className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange}/>
+                    {this.state.titleError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.titleError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
                     {
                         //Recommendation header input field
