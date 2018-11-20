@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { selectRecommendation } from '../../actions/assignRecommendations';
+import {selectAssignmentRecommendationToDisplay} from '../../actions/assignmentRecommendationModal';
 
 /**
  * Single list item of the Recommendations List. 
@@ -79,6 +80,14 @@ const RecommendationListItem = (props) => (
         }}>
             <div className="btn btn-item">
                 {props.lang === 'English' ? 'Select' : 'Seleccionar'}
+            </div>
+        </button>
+
+        <button onClick={() => {
+            props.dispatch(selectAssignmentRecommendationToDisplay(props.reco));
+        }}>
+            <div className="btn btn-item">
+                {props.lang === 'English' ? 'View Recommendation Informacion' : 'Ver Más Información'}
             </div>
         </button>
     </div>

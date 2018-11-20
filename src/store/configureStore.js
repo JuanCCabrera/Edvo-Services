@@ -23,6 +23,7 @@ import profileReducer from '../reducers/profile';
 import successModalReducer from '../reducers/successModal';
 import editModalReducer from '../reducers/editModal';
 import userModalReducer from '../reducers/userModal';
+import assignmentRecommendationReducer from '../reducers/assignmentRecommendationModal';
 
 //Store creation
 
@@ -54,7 +55,8 @@ export default () => {
             profile: profileReducer,
             successModal: successModalReducer,
             editModal: editModalReducer,
-            userModal: userModalReducer
+            userModal: userModalReducer,
+            assignmentRecommendationModal: assignmentRecommendationReducer
         })
     );
 
