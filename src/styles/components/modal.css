@@ -19,7 +19,6 @@
 
 .modal {
     background: #464b5e;
-    color: white;
     max-width: 30rem;
     outline: none;
     padding: 3.2rem;
@@ -27,15 +26,29 @@
 }
 
 .modal-card{
-    background-color: white;
+    background-color: #5933AA;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
     transition: 0.3s;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
     min-height: 14rem;
-    padding: 1.5rem 1.5rem;
+    padding: 0 0;
     outline: none;
+}
+
+.modal-title{
+    color: white;
+    background-color:#5933AA;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    width: 90%;
+    font-size: 4.0rem;
+    border: 0.8rem solid #464b5e;
+    border-radius: 3rem;
+    margin: 2.7rem auto;
 }
 
 .modal-card:hover{
@@ -52,4 +65,23 @@
     font-size: 2rem;
     font-weight: 300;
     word-break: break-all;
+}
+
+.modal__checkmark{
+    font-size: 7rem;
+    color: white;
+}
+
+.btn-modal{
+    background-color: white;
+    color: #5933AA;
+    font-weight: normal;
+}
+
+
+.btn-modal:hover{
+    color: white;
+    background-color: #5933AA;
+    font-weight: normal;
+    border: 1px solid white;
 }

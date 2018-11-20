@@ -12,14 +12,17 @@ const NewRecommendation = (props) => (
     <div className="background-home">
         <div className="container">
             <div className="row">
-                <div className="col-sm-2 text-center well">
+                <div className="col-sm-2">
+                    <div className="text-center well">
                     {
                         //Links to traverse the Recommendations Control page. 
                     }
                         <RecommendationButtonList/>
+                    </div>
                 </div>
                 <div className="col-sm-1"/>
-                <div className="col-sm-9 big-card">
+                <div className="col-sm-9">
+                    <div className="big-card">
                         {
                             //Page title
                         }
@@ -34,6 +37,7 @@ const NewRecommendation = (props) => (
                             <CreateRecommendationForm isEdit={false} onSubmit={(recommendation) => {
                                 props.dispatch(createRecommendation(recommendation));
                             }}/>
+                    </div>
                 </div>
             </div>
         </div>

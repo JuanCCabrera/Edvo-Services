@@ -4,7 +4,7 @@ import moment from 'moment';
 const profileReducerDefaultState = {
     name: '',
     lastName: '',
-    dateOfBirth: moment(),
+    dateOfBirth: moment().subtract('18',"years"),
     gender: 'male' 
 }
 
@@ -17,7 +17,7 @@ const profileReducer = (state = profileReducerDefaultState, action) => {
     switch(action.type){
         //Load information to edit in basic information form of Settings pages. 
         case 'LOAD_PROFILE':
-            console.log("REDUCER: ", action.profile);
+        console.log(action.profile);
             return {...action.profile}
         default:
             return {...state}

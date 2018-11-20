@@ -16,7 +16,7 @@ class TeacherRecommendationsFilters extends React.Component{
                 {
                     //Text filter input field
                 }
-                <input className="form-control" type="text" placeholder="Search" value ={this.props.filter.text} onChange={(e) => {
+                <input className="form-control" type="text" placeholder= {this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setTeacherRecommendationsTextFilter(e.target.value));
                 }}/>
 
@@ -35,7 +35,7 @@ class TeacherRecommendationsFilters extends React.Component{
 
                                     <option value="date">{this.props.lang === 'English' ? 'Date' : 'Fecha'}</option>
 
-                                    <option value="rate">{this.props.lang === 'English' ? 'Rating' : 'Clasificacion'}</option>
+                                    <option value="rate">{this.props.lang === 'English' ? 'Rating' : 'Clasificación'}</option>
                             </select>
                     </div>
 

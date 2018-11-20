@@ -4,6 +4,10 @@
     padding-bottom: 0;
 }
 
+.btn-primary{
+    background-color: #5933AA;
+}
+
 .form__title{
     text-align: center;
     font-size: 3rem;
@@ -15,3 +19,17 @@
 .req{
     color: red;
 }
+
+.btn-pad{
+    margin-bottom: 2rem;
+    margin-left: 0;
+}
+
+@media only screen and (max-width: 992px){
+    .btn-pad{
+        margin-bottom: 2rem;
+        margin-left: 0;
+    }
+}
+
+

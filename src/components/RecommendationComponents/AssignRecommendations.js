@@ -49,7 +49,7 @@ import axios from 'axios';
                     }}>
                         <div className="btn btn-item">
                             {props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'} 
-                            <i class="fa fa-arrow-right" aria-hidden="true" style={{marginLeft: '1rem'}}></i>
+                            <i className="fa fa-arrow-right" aria-hidden="true" style={{marginLeft: '1rem'}}></i>
                         </div>
                     </button>  
                 </div>

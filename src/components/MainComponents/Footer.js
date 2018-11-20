@@ -12,17 +12,17 @@ const Footer = () => (
                     {
                         //Link to facebook page
                     }
-                    <a href='https://www.facebook.com/EdvoTech/' target='_blank'>FACEBOOK_IMG</a>
+                    <a href='https://www.facebook.com/EdvoTech/' target='_blank'><i className="text-white fab fa-facebook-square fa-3x"></i></a>
                 
                     {
                         //Link to LinkedIn page
                     }
-                    <a href='https://www.linkedin.com/company/edvotech/' target='_blank'>LINKEDIN_IMG</a>
+                    <a href='https://www.linkedin.com/company/edvotech/' target='_blank'><i className="text-white ml-3 mr-3 fab fa-linkedin-in fa-3x"></i></a>
               
                     {
                         //Link to Instagram page
                     }
-                    <a href='https://www.instagram.com/edvotech/' target='_blank'>INSTA_IMG</a>
+                    <a href='https://www.instagram.com/edvotech/' target='_blank'><i className="text-white ml-3 mr-3 fab fa-instagram fa-3x"></i></a>
                 </div>
             </div>
             <div className="row">

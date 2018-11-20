@@ -16,47 +16,52 @@ const MentorHome = (props) => (
     <div className="background-home">
         <div className="container">
             <div className="row">
-            {
-                //Navigation link to the Assign Recommendations page. 
-            }
-            <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                
-                <div className="col-sm-6 big-card-mentor-home text-center">
-                {props.lang === 'English' ? 
-                        <div>
-                            <h2>Manage</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
-                            <h2>Recommendations</h2>
+                {
+                    //Navigation link to the Assign Recommendations page. 
+                }
+                <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                    
+                    <div className="col-sm-6">
+                        <div className="big-card-mentor-home">
+                            {props.lang === 'English' ? 
+                                <div className="big__mentor__text">
+                                    <p>Manage</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                                    <p>Recommendations</p>
+                                </div>
+                                : 
+                                <div className="big__mentor__text">
+                                    <p>Manejar</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                                    <p>Recomendaciones</p>
+                                </div>
+                            }
                         </div>
-                        : 
-                        <div>
-                            <h2>Manejar</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
-                            <h2>Recomendaciones</h2>
-                        </div>}
-                </div>
-                
-            </NavLink>
+                    </div>
+                    
+                </NavLink>
 
-            {
-                //Navigation link to the Pending Questions page. 
-            }
-            <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                <div className="col-sm-6 big-card-mentor-home text-center">
-                    {props.lang === 'English' ? 
-                        <div>
-                            <h2>Answer</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
-                            <h2>Questions</h2>
+                {
+                    //Navigation link to the Pending Questions page. 
+                }
+                <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
+                    <div className="col-sm-6">
+                        <div className="big-card-mentor-home">
+                            {props.lang === 'English' ? 
+                                <div className="big__mentor__text">
+                                    <p>Answer</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
+                                    <p>Questions</p>
+                                </div>
+                                : 
+                                <div className="big__mentor__text">
+                                    <p>Contestar</p>
+                                    <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
+                                    <p>Preguntas</p>
+                                </div>
+                            }
                         </div>
-                        : 
-                        <div>
-                            <h2>Contestar</h2>
-                            <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
-                            <h2>Preguntas</h2>
-                        </div>}
                     </div>   
-                
                 </NavLink>
             </div>
         </div>

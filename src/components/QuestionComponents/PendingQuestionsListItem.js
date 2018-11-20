@@ -13,39 +13,76 @@ import {Link} from 'react-router-dom';
         userId: ''
     }
  */
-const PendingQuestionsListItem = (props) => (
-    <div className="item-card">
-    {
-        //Question subject
+class PendingQuestionsListItem  extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            toggleButton: false
+        }
     }
-        <p className="item__body card-title">{props.question.subject}</p>
-    {
-        //Question body
-    }
-        <p className="item__body">{props.question.question}</p>
-
-    {
-        //Navigation link to the Answer Question page with a specific question identifier. 
-    }
-        <Link to={`/staff/questions/${props.question.askedDate}/${props.question.userId}`}>
-            <button>
-                <div className="btn btn-item">{props.lang === 'English' ? 'Answer' : 'Responder'}</div>
-            </button>
-        </Link>
-    {
-        //Button to remove a question from the list of Pending Questions.
-    }
-        
-        <button onClick={() => {
-            props.dispatch(removeQuestion({questionID: props.question.questionID, askedDate: props.question.askedDate, userId: props.question.userId}));
-        }}>
-            <div className="btn btn-item">
-                {props.lang === 'English' ? 'Remove' : 'Remover'}
-            </div>
-        </button>
     
-    </div>
-);
+    render(){
+        return (
+            <div className="item-card">
+            {
+                //Question subject
+            }
+                <p className="item__body card-title">{this.props.question.subject}</p>
+            {
+                //Question body
+            }
+                <p className="item__body">{this.props.question.question}</p>
+
+            {
+                //Navigation link to the Answer Question page with a specific question identifier. 
+            }
+                <Link to={`/staff/questions/${this.props.question.askedDate}/${this.props.question.userId}`}>
+                    <button>
+                        <div className="btn btn-item">{this.props.lang === 'English' ? 'Answer' : 'Responder'}</div>
+                    </button>
+                </Link>
+            {
+                //Button to remove a question from the list of Pending Questions.
+            }
+
+            {this.state.toggleButton ? 
+            
+                <div>
+                    <br/>
+                    <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
+                        {this.props.lang === 'English' ? 'Are you sure you would like to remove this quesiton?' : '¿Estás seguro de que quieres remover esta pregunta?'}
+                    </div>
+                    <br/>
+                    <button onClick={() => {
+                        this.props.dispatch(removeQuestion({questionID: this.props.question.questionID, askedDate: this.props.question.askedDate, userId: this.props.question.userId}));
+                        this.setState(() => ({toggleButton: false}));
+                    }}>
+                    <div className="btn btn-item" style={{marginTop: '10px'}}>
+                            {this.props.lang === 'English' ? 'Yes' : 'Si'}
+                    </div>
+                    </button>
+    
+                    <button onClick={() => {
+                        this.setState(() => ({toggleButton: false}));
+                    }}>
+                    <div className="btn btn-item" style={{marginTop: '10px'}}>
+                            {this.props.lang === 'English' ? 'No' : 'No'}
+                    </div>
+                    </button>
+                </div>
+                :
+                <div style={{display: 'inline-block'}}>
+                <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
+                    <div className="btn btn-item">
+                        {this.props.lang === 'English' ? 'Remove' : 'Remover'}
+                    </div>
+                </button>
+                </div>
+                }
+            </div>
+        );
+    }
+}
 
 //Map current language state to component properties. 
 const mapStateToProps = (state) => {

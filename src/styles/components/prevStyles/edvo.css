@@ -126,9 +126,7 @@ img.resize-persons {
 	background: #854dff;
 	border-radius: .4em;
     padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: 3em;
-    max-width: 20vw;
+    padding-bottom: 0;
 }
 
 .speech-bubble:after {
@@ -149,9 +147,12 @@ img.resize-persons {
     background-color: #061551;
 }
 .header{
-    max-height: 10vh;
     background-color: #061551;
     color:white;
+}
+
+.text-white a{
+    color: white;
 }
 
 .footer{
@@ -162,6 +163,7 @@ img.resize-persons {
 
 .logo{
 font-family: Pacifico;
+position: relative;
 }
 
 
@@ -242,4 +244,47 @@ font-family: Pacifico;
     cursor: pointer;
     width: 100%;
 
+}
+
+.navbar-nav li{
+    color: white;
+    transition: 0.5s;
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 768px){
+    .navbar-nav li{
+        border-radius: 3rem;
+    }
+
+    .navbar-right{
+        border-top: 4px solid black;
+        padding-top: 0.7rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+.navbar-nav li:hover{
+    color: #061551;
+    background-color: white;
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover{
+    color: #061551;
+}
+
+.text-center li{
+    display: inline-block;
+    list-style-type: none;
+}
+
+.navbar-inverse .navbar-brand:hover{
+    color: #061551;
 }

@@ -19,8 +19,10 @@ const ManageRecommendations = (props) => (
     <div className="background-home">
         <div className = "container">
             <div className="row">
-                <div className="col-sm-2 text-center well">
-                    <RecommendationButtonList/>
+                <div className="col-sm-2 ">
+                    <div className="text-center well">
+                        <RecommendationButtonList/>
+                    </div>
                 </div>
                 <div className="col-sm-1"/>
                 <div className="col-sm-9">
@@ -28,11 +30,12 @@ const ManageRecommendations = (props) => (
                         //Page title
                     }
                     <div className="text-center pending__title__2">
-                        <p>{props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</p>
+                        <div className="spec__mobile__font">
+                            {props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}
+                        </div>
                         <hr className="break"/>
                     </div>
                     <RecommendationsFilters/>
-                
                     <ManageRecommendationsList/>
                 </div>
             </div>

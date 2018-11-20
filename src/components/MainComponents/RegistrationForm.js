@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import { Redirect, BrowserRouter, Route } from 'react-router-dom';
+import {Line} from 'rc-progress';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * The Registration form is used to generate the full profile information for a user of the Teacher type. 
@@ -20,25 +22,44 @@ class RegistrationForm extends React.Component{
         //accepting terms of use and accepting privacy policy
         this.state = {
              name: '',
+             nameError: '',
+
              lastName: '',
+             lastNameError: '',
+
              gender: 'male',
-             dateOfBirth: moment(),
+             dateOfBirth: moment().subtract('18',"years"),
+             dateOfBirthError: '',
+
              calendarFocused: false,
              levelOfEdu: 'AS',
              location: '',
+             locationError: '',
+
              pageOneError: '',
             
              subject: '',
+             subjectError: '',
+
              format: 'classroom',
              language: 'spanish',
              level: 'Kindergarden - 3rd grade',
              size: '1 - 10',
+
              topicsTaught: [''],
+             topicError: '',
+
              pageTwoError: '',
 
              schoolName: '',
+             schoolNameError: '',
+
              schoolLocation: '',
+             schoolLocationError: '',
+
              institutionID: '',
+             institutionIDError: '',
+
              schoolType: 'public',
              moodle: false,
              googleClassroom: false,
@@ -55,7 +76,9 @@ class RegistrationForm extends React.Component{
              speakers: false,
              pageThreeError: '',
 
-             timeEmployed: moment(),
+             timeEmployed: moment().subtract('18',"years"),
+             timeEmployedError: '',
+
              employedCalendarFocused: false,
              spanish: false,
              english: false,
@@ -73,8 +96,80 @@ class RegistrationForm extends React.Component{
 
              globalError: false,
 
+             progress: "25",
+
             currPage: 1
         };
+    }
+
+    //Change Handlers
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps !== this.props){
+            if(this.props.lang === 'English'){
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'The name field must contain text.'}));
+                }
+                if(this.state.lastNameError){
+                    this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
+                }
+                if(this.state.dateOfBirthError){
+                    this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                }
+                if(this.state.timeEmployedError){
+                    this.setState(() => ({timeEmployedError: 'Enter a valid date of employment.'}));
+                }
+                if(this.state.topicError){
+                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                }
+                if(this.state.locationError){
+                    this.setState(() => ({locationError: 'Enter a valid address'}));
+                }
+                if(this.state.subjectError){
+                    this.setState(() => ({subjectError: 'The subject field must contain text.'}));
+                }
+                if(this.state.schoolLocationError){
+                    this.setState(() => ({schoolLocationError: 'The school location field must contain text.'}));
+                }
+                if(this.state.schoolNameError){
+                    this.setState(() => ({schoolNameError: 'The school name field must contain text.'}));
+                }
+                if(this.state.institutionIDError){
+                    this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                }
+            }else{
+                if(this.state.nameError){
+                    this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
+                }
+                if(this.state.lastNameError){
+                    this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'}))
+                }
+                if(this.state.dateOfBirthError){
+                    this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento válida.'}));
+                }
+                if(this.state.timeEmployedError){
+                    this.setState(() => ({timeEmployedError: 'Escriba una fecha de empleo válida.'}));
+                }
+                if(this.state.topicError){
+                    this.setState(() => ({topicError: 'Escriba temas válidos.'}))
+                }
+                if(this.state.locationError){
+                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
+                }
+                if(this.state.subjectError){
+                    this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'}));
+                }
+                if(this.state.schoolLocationError){
+                    this.setState(() => ({schoolLocationError: 'La localización de la escuela debe contener texto'}));
+                }
+                if(this.state.schoolNameError){
+                    this.setState(() => ({schoolNameError: 'El nombre de la escuela debe contener texto.'}));
+                }
+                if(this.state.institutionIDError){
+                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución válida.'}));
+                }
+            }
+        }
     }
 
     //Change name in local state
@@ -97,8 +192,17 @@ class RegistrationForm extends React.Component{
 
     //Change date in local state
     onDateChange = (dateOfBirth) => {
-        if(dateOfBirth){
-            this.setState(() => ({dateOfBirth}));
+        var today=moment();
+        var difference = today.diff(dateOfBirth, 'years');
+        //Check if the selected date of birth falls between 18-90 years ago. 
+        if(dateOfBirth && (difference >= 18 && difference < 90)){
+            this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
+        }else{
+            if(this.props.lang === 'English'){
+                this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+            }else{
+                this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+            }
         }
     };
 
@@ -154,6 +258,25 @@ class RegistrationForm extends React.Component{
         let topics = [...this.state.topicsTaught]
         topics[i] = e.target.value;
         this.setState(() => ({topicsTaught: topics}));
+
+        let errorCheck = false;
+        let j = 0;
+        //Check to see if description is only composed of spaces. 
+        for(j = 0; j < this.state.topicsTaught.length; j++){
+            if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
+                if(this.props.lang === 'English'){
+                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                }else{
+                    this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                }
+                errorCheck = true;
+                break;
+            }
+        }
+
+        if(!errorCheck){
+            this.setState(() => ({topicError: ''}));
+        }
     }
 
     //Delete topic from topics array in local state
@@ -281,8 +404,17 @@ class RegistrationForm extends React.Component{
 
     //Change employed date in local state
     onEmployedDateChange = (timeEmployed) => {
-        if(timeEmployed){
-            this.setState(() => ({timeEmployed}));
+        var today=moment();
+        var difference = today.diff(timeEmployed, 'years');
+        //Check if the selected date of birth falls between 18-90 years ago. 
+        if(timeEmployed && (difference >= 18 && difference < 90)){
+            this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: ''}));
+        }else{
+            if(this.props.lang === 'English'){
+                this.setState(() => ({timeEmployedError: 'Enter a valid date of employment.'}));
+            }else{
+                this.setState(() => ({timeEmployedError: 'Escriba una fecha de empleo válida.'}));
+            }
         }
     };
 
@@ -349,19 +481,19 @@ class RegistrationForm extends React.Component{
     //Once used, each one will take the user to a specific page (currPage). These are accessed by buttons on the bottom of the Registration page. 
 
     toPageOne = (e) => {
-        this.setState(() => ({currPage: 1}));
+        this.setState(() => ({currPage: 1, progress: "25"}));
     }
 
     toPageTwo = (e) => {
-        this.setState(() => ({currPage: 2}));
+        this.setState(() => ({currPage: 2, progress: "50"}));
     }
 
     toPageThree = (e) => {
-        this.setState(() => ({currPage: 3}));
+        this.setState(() => ({currPage: 3, progress: "75"}));
     }
 
     toPageFour = (e) => {
-        this.setState(() => ({currPage: 4}));
+        this.setState(() => ({currPage: 4, progress: "100"}));
     }
 
     //Submit registration information
@@ -375,7 +507,10 @@ class RegistrationForm extends React.Component{
         //Display default error message if there are required fields left blank. 
         else if(!this.state.name || !this.state.lastName || !this.state.location || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
             this.setState(() => ({globalError: true, secError: false}));
+        }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
+            this.setState(() => ({globalError: true, secError: false}));
         }else{
+            this.props.dispatch(setSuccessModal());
             this.setState(() => ({secError: false, globalError: false}));
             axios.post('http://localhost:3000/register', {
                 usertype: 'teacher',
@@ -447,35 +582,105 @@ class RegistrationForm extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="big-card">
+            <div id="top"/>
             <form onSubmit={this.onSubmit}>
+            {
+                //Progress Bar
+            }
+            <div className="text-center">
+            <Line percent={this.state.progress} strokeWidth="1.2" strokeColor="#5933AA" style={{marginTop: '2rem', width: '90%'}}/>
+            </div>
             {
                 //Page one
             }
-                {this.state.currPage == 1 && <div>
-                    <h2> General Information </h2>
+            {this.state.currPage == 1 && <div>
                     <br/>
-                    {
-                        //Name input field
-                    }
-                    <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                    <input type = "text" placeholder = "Name" value = {this.state.name} onChange = {this.onNameChange}/>
-    
+                    <div className="form__title">
+                        {this.props.lang === 'English' ? 'General Information' : 'Información General'}
+                        <hr className="break" style={{borderColor: '#5933AA'}} />
+                    </div>
                     <br/>
-                    {
-                        //Last name input field
-                    }
-                    <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
-                    <input type = "text" placeholder = "Last Name" value = {this.state.lastName} onChange = {this.onLastNameChange}/>
-    
-                    <br/> 
+                    <div className="row">
+                        <div className="col-md-6">
+                            {
+                                //Name input field
+                            }
+                            <span className="req">*</span>
+                            <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
+                            <input type = "text" className="form-control" placeholder = {this.props.lang === 'English' ? 'Name' : 'Nombre'} maxLength="100" value = {this.state.name} onChange = {this.onNameChange} onBlur={() => {
+                                //Check if the name field only contains spaces. 
+                                if(this.state.name.match(/^\s+$/)){
+                                    if(this.props.lang === 'English'){
+                                        this.setState(() => ({nameError: 'The name field must contain text.'}));
+                                    }else{
+                                        this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'})); 
+                                    }
+                                }else{
+                                    this.setState(() => ({nameError: ''}));
+                                }
+                            }}/>
+                            {
+                                //Name error
+                            }
+                            {this.state.nameError && 
+                                <div>
+                                    <span className="text-danger"> 
+                                        {this.state.nameError}
+                                    </span>
+                                    <br/>
+                                </div>}
+                            <br/>
+                        </div>
+                        <div className="col-md-6">
+                            
+                            {
+                                //Last name input field
+                            }
+                            <span className="req">*</span>
+                            <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
+                            <input type = "text" className="form-control" placeholder = {this.props.lang === 'English' ? 'Last Name' : 'Apellido'} maxLength="100" value = {this.state.lastName} onChange = {this.onLastNameChange} onBlur={() => {
+                                //Check if the last name field only consists of spaces. 
+                                if(this.state.lastName.match(/^\s+$/)){
+                                    if(this.props.lang === 'English'){
+                                        this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
+                                    }else{
+                                        this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'})); 
+                                    }
+                                }else{
+                                    this.setState(() => ({lastNameError: ''}));
+                                }
+                            }}
+                            value={this.state.lastName} onChange={this.onLastNameChange}/>
+
+                            {
+                                //Last name error
+                            }
+                            {this.state.lastNameError && 
+                                <div>
+                                    <span className="text-danger"> 
+                                        {this.state.lastNameError}
+                                    </span>
+                                    <br/>
+                                </div>}
+                            <br/>
+                        </div>
+                    </div>
                     {
                         //Gender radio selector
                     }  
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                     <br/>
-                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}<br/>
-                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Female' : 'Femenino'}<br/>
+                        <label className="clickable radio__text">
+                        <input type="radio" name="gender" value= "male" checked={this.state.gender === 'male'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Male' : 'Masculino'}
+                        </label>
+                        <br/>
+                        <label className="clickable radio__text">
+                        <input type="radio" name="gender" value= "female" checked={this.state.gender === 'female'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Female' : 'Femenino'}
+                        </label>
+                        <br/>
+                    
                     {
                        //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> {this.props.lang === 'English' ? 'Other' : 'Otro'} <br/>
                     }
@@ -484,6 +689,7 @@ class RegistrationForm extends React.Component{
                     {
                         //Date of birth selector
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
 
@@ -498,36 +704,92 @@ class RegistrationForm extends React.Component{
                         />
                         */}
 
+                        <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
+                        <br/>
                         <DatePicker
+                        className="form-control"
                         selected={this.state.dateOfBirth}
                         onChange={this.onDateChange}
+                        maxDate={moment()}
                         />
+
+                        {this.state.dateOfBirthError && 
+                            <div>
+                                <span className="text-danger"> 
+                                    {this.state.dateOfBirthError}
+                                </span>
+                                <br/>
+                            </div>}
+                        <br/>
     
                     <br/>
                     {
                         //Level of education radio selector
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Level of Education' : 'Nivel de Educación'}:</label>
                     <br/>
-                    <input type="radio" name="levelOfEdu" value= "AS" checked={this.state.levelOfEdu === 'AS'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Associate\'s Degree' : 'Grado Asociado'}<br/>
-                    <input type="radio" name="levelOfEdu" value= "BSD" checked={this.state.levelOfEdu === 'BSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Bachellor\'s Degree' : 'Bachillerato'}<br/>
-                    <input type="radio" name="levelOfEdu" value= "MSD" checked={this.state.levelOfEdu === 'MSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Master\'s Degree' : 'Maestría'}<br/>
-                    <input type="radio" name="levelOfEdu" value= "PHD" checked={this.state.levelOfEdu === 'PHD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Doctor of Philosophy' : 'Doctor en Filosofía'}<br/>
-                    <input type="radio" name="levelOfEdu" value= "EDD" checked={this.state.levelOfEdu === 'EDD'} onChange = {this.onLOEChange}/>  {this.props.lang === 'English' ? 'Doctor of Education' : 'Doctor en Educación'}<br/>
-                    <input type="radio" name="levelOfEdu" value= "NA" checked={this.state.levelOfEdu === 'NA'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'None' : 'Ninguna'}<br/>
-
+                    <label className="clickable radio__text">
+                    <input type="radio" name="levelOfEdu" value= "AS" checked={this.state.levelOfEdu === 'AS'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Associate\'s Degree' : 'Grado Asociado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="levelOfEdu" value= "BSD" checked={this.state.levelOfEdu === 'BSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Bachellor\'s Degree' : 'Bachillerato'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="levelOfEdu" value= "MSD" checked={this.state.levelOfEdu === 'MSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Master\'s Degree' : 'Maestría'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="levelOfEdu" value= "PHD" checked={this.state.levelOfEdu === 'PHD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'Doctor of Philosophy' : 'Doctor en Filosofía'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="levelOfEdu" value= "EDD" checked={this.state.levelOfEdu === 'EDD'} onChange = {this.onLOEChange}/>  {this.props.lang === 'English' ? 'Doctor of Education' : 'Doctor en Educación'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="levelOfEdu" value= "NA" checked={this.state.levelOfEdu === 'NA'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? 'None' : 'Ninguna'}
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Location of employment input field
-                    }
+                    } 
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Location of Employment' : 'Localización de Empleo'}:</label>
-                        <input type="text" placeholder="Location" value={this.state.location} onChange={this.onLocationChange}/>
-    
-                <br/>
+                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Location' : 'Localización'} maxLength="150" value={this.state.location} onChange={this.onLocationChange} onBlur={() => {
+                        //Check to see if address is only composed of spaces. 
+                        if(this.state.location.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({locationError: 'Enter a valid address.'}));
+                            }else{
+                                this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({locationError: ''}));
+                        }
+                    }}/>
+                    {this.state.locationError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.locationError}
+                            </span>
+                            <br/>
+                        </div>}
+                    <br/>
                 {
                     //Button to change page to page 2
                 }
-                <button onClick={this.toPageTwo}>{this.props.lang === 'English' ? 'Next' : 'Continuar'}</button>
+                <a href="#top">
+                    <button onClick={this.toPageTwo}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Next' : 'Continuar'}
+                        </div>
+                    </button>
+                </a>
+
                 </div>}
 
                 <br/>
@@ -535,60 +797,125 @@ class RegistrationForm extends React.Component{
                     //Page two
                 }
                 {this.state.currPage == 2 && <div>
-                    <h2> {this.props.lang === 'English' ? 'Class Information' : 'Información de Clase'} </h2>
+                    <div className="form__title">
+                        {this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}
+                        <hr className="break" style={{borderColor: '#5933AA'}} />
+                    </div>
                     <br/>
                     {
                         //Class subject input field
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'}:</label>
-                    <input type="text" placeholder="Subject" value={this.state.subject} onChange={this.onSubjectChange}/>
-
+                    <input type="text"  className="form-control" placeholder= {this.props.lang === 'English' ? 'Subject' : 'Tema'} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
+                        //Check to see if the subject is only composed of spaces. 
+                        if(this.state.subject.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({subjectError: 'The subject field must contain text.'}));
+                            }else{
+                                this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({subjectError: ''}));
+                        }
+                    }}/>
+                    {this.state.subjectError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.subjectError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
                     {
                         //Class format radio selector
                     }
-                    <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato de Clase'}:</label>
+                    <span className="req">*</span>
+                    <label>{this.props.lang === 'English' ? 'Class Format' : 'Formato del Curso'}:</label>
                     <br/>
-                    <input type="radio" name="format" value= "classroom" checked={this.state.format === 'classroom'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Classroom' : 'Salón de Clases'}<br/>
-                    <input type="radio" name="format" value= "blended" checked={this.state.format === 'blended'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Blended' : 'Mixto'}<br/>
-                    <input type="radio" name="format" value= "online" checked={this.state.format === 'online'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Online' : 'En Línea'} <br/>
-                
+                    <label className="clickable radio__text">
+                    <input type="radio" name="format" value= "classroom" checked={this.state.format === 'classroom'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Classroom' : 'Salón de Clases'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="format" value= "blended" checked={this.state.format === 'blended'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Blended' : 'Mixto'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="format" value= "online" checked={this.state.format === 'online'} onChange = {this.onFormatChange}/> {this.props.lang === 'English' ? 'Online' : 'En Línea'}
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Class language radio seelctor
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}:</label>
                     <br/>
-                    <input type="radio" name="lang" value= "spanish" checked={this.state.language === 'spanish'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}<br/>
-                    <input type="radio" name="lang" value= "english" checked={this.state.language === 'english'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'}<br/>
-                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="lang" value= "spanish" checked={this.state.language === 'spanish'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="lang" value= "english" checked={this.state.language === 'english'} onChange = {this.onLanguageChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'}
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Class level radio selector
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Level' : 'Nivel'}:</label>
                     <br/>
-                    <input type="radio" name="level" value= "Kindergarden - 3rd grade" checked={this.state.level === 'Kindergarden - 3rd grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'Kindergarden - 3rd grade' : 'Kindergarden - 3er grado'}<br/>
-                    <input type="radio" name="level" value= "4th - 6th grade" checked={this.state.level === '4th - 6th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '4th - 6th grade' : '4to - 6to grado'}<br/>
-                    <input type="radio" name="level" value= "7th - 8th grade" checked={this.state.level === '7th - 8th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '7th - 8th grade' : '7mo - 8vo grado'} <br/>
-                    <input type="radio" name="level" value= "9th - 12th grade" checked={this.state.level === '9th - 12th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '9th - 12th grade' : '9no - 12mo grado'}<br/>
-                    <input type="radio" name="level" value= "University / College" checked={this.state.level === 'University / College'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'University/College' : 'Universidad/Colegio'}<br/>
-
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "Kindergarden - 3rd grade" checked={this.state.level === 'Kindergarden - 3rd grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'Kindergarden - 3rd grade' : 'Kindergarden - 3er grado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "4th - 6th grade" checked={this.state.level === '4th - 6th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '4th - 6th grade' : '4to - 6to grado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "7th - 8th grade" checked={this.state.level === '7th - 8th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '7th - 8th grade' : '7mo - 8vo grado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "9th - 12th grade" checked={this.state.level === '9th - 12th grade'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? '9th - 12th grade' : '9no - 12mo grado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="level" value= "University / College" checked={this.state.level === 'University / College'} onChange = {this.onLevelChange}/> {this.props.lang === 'English' ? 'University/College' : 'Universidad/Colegio'}
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Class size radio selector
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}</label>
                     <br/>
-                    <input type="radio" name="size" value= "1 - 10" checked={this.state.size === '1 - 10'} onChange = {this.onSizeChange}/> 1 - 10<br/>
-                    <input type="radio" name="size" value= "11 - 20" checked={this.state.size === '11 - 20'} onChange = {this.onSizeChange}/> 11 - 20<br/>
-                    <input type="radio" name="size" value= "21 - 30" checked={this.state.size === '21 - 30'} onChange = {this.onSizeChange}/> 21 - 30 <br/>
-                    <input type="radio" name="size" value= "31+" checked={this.state.size === '31+'} onChange = {this.onSizeChange}/> 31+<br/>
-                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "1 - 10" checked={this.state.size === '1 - 10'} onChange = {this.onSizeChange}/> 1 - 10
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "11 - 20" checked={this.state.size === '11 - 20'} onChange = {this.onSizeChange}/> 11 - 20
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "21 - 30" checked={this.state.size === '21 - 30'} onChange = {this.onSizeChange}/> 21 - 30 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="size" value= "31+" checked={this.state.size === '31+'} onChange = {this.onSizeChange}/> 31+
+                    </label>
+                    <br/>
+                    <br/>
                     {
                         //Topics taught input field 
                     }
-                    <label>{this.props.lang === 'English' ? 'Topics Taught' : 'Tópicos de Clase'} (Max: 3):</label>
+                    <span className="req">*</span>
+                    <label>{this.props.lang === 'English' ? 'Topics Taught' : 'Temas del Curso'} (Max: 3):</label>
                     {
                         //Mapping to generate a field for each topics in the topics array. 
                     }
@@ -600,109 +927,282 @@ class RegistrationForm extends React.Component{
                             }
                             <input
                             type = "text"
-                            placeholder = "Topic"
+                            className="form-control"
+                            placeholder = {this.props.lang === 'English' ? 'Topic' : 'Tema'}
+                            style={{width: '50%', display: 'inline', marginRight: '1rem'}}
                             value={topic}
+                            maxLength="50"
                             onChange={this.onTopicChange(index)}
                             />
                             {
                                 //Button to delete the topic (Minimum of 1). 
                             }
-                            <button onClick={this.deleteTopic(index)}>X</button>
+                            {this.state.topicsTaught.length > 1 && <div style={{display: 'inline'}}>
+                            <button onClick={this.deleteTopic(index)}>
+                                <span>
+                                    <i className="fa fa-window-close"></i>
+                                </span>
+                            </button>
+                            </div>}
                         </span>
                     ))}
+
+                    {this.state.topicError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.topicError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Button to add a new topic field to the topics array. (Maximum of 3). 
                     }
-                    <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>{this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tópico Nuevo'}</button>
-
+                    {this.state.topicsTaught.length < 3 &&
+                    <div>
+                    <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}
+                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i className="fa fa-plus" aria-hidden="true"></i></span>
+                        </div>
+                    </button>
+                    </div>
+                    }
+                    <br/>
                     <br/>
                     {
                         //Buttons to move to the previous and next pages
                     }
-                    <button onClick={this.toPageOne}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.toPageThree}>{this.props.lang === 'English' ? 'Next' : 'Continuar'}</button>
+                    <a href="#top">
+                        <button onClick={this.toPageOne}>
+                            <div className="btn btn-item">
+                                {this.props.lang === 'English' ? 'Back' : 'Regresar'}
+                            </div>
+                        </button>
+                    </a>
+                    
+                    <a href="#top">
+                        <button onClick={this.toPageThree}>
+                            <div className="btn btn-item">
+                                {this.props.lang === 'English' ? 'Next' : 'Continuar'}
+                            </div>
+                        </button>
+                    </a>
                 </div>}
 
                 {
                     //Page three
                 }
-                {this.state.currPage == 3 && <div>
-                    <h2>{this.props.lang === 'English' ? 'School Information' : 'Información de Escuela'}</h2>
+                {this.state.currPage == 3 && 
+                <div>
+                    <div className="form__title">
+                        {this.props.lang === 'English' ? 'School Information' : 'Información de Escuela'}
+                        <hr className="break" style={{borderColor: '#5933AA'}} />
+                    </div>
                     <br/>
                     {
                         //School name input field
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'}:</label>
-                    <input type="text" placeholder="School Name" value={this.state.schoolName} onChange={this.onSchoolNameChange}/>
-
+                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'} value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
+                        //Check to see if the subject is only composed of spaces. 
+                        if(this.state.schoolName.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({schoolNameError: 'The school name field must contain text.'}));
+                            }else{
+                                this.setState(() => ({schoolNameError: 'El nombre de la escuela debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({schoolNameError: ''}));
+                        }
+                    }}/>
+                    {this.state.schoolNameError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.schoolNameError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+                    
+
                     {
                         //School location input field
                     }
-                    <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de Escuela'}:</label>
-                    <input type="text" placeholder="School Location" value={this.state.schoolLocation} onChange={this.onSchoolLocationChange}/>
-
+                    <span className="req">*</span>
+                    <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'}:</label>
+                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'} value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
+                        //Check to see if the subject is only composed of spaces. 
+                        if(this.state.schoolLocation.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({schoolLocationError: 'The school location field must contain text.'}));
+                            }else{
+                                this.setState(() => ({schoolLocationError: 'El campo de la localización de la escuela debe contener texto'})); 
+                            }
+                        }else{
+                            this.setState(() => ({schoolLocationError: ''}));
+                        }
+                    }}/>
+                    {this.state.schoolLocationError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.schoolLocationError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Institution ID input field
                     }
                     <label>{this.props.lang === 'English' ? 'Institution ID (Optional)' : 'Identificación de institución (Opcional)'}:</label>
-                    <input type="text" placeholder="Institution ID" value={this.state.institutionID} onChange={this.onInstitutionIDChange}/>
+                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} value={this.state.institutionID} onChange={this.onInstitutionIDChange} onBlur={() => {
+                        //Check if institution ID field matches expected format. 
+                        if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                            }else{
+                                this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({institutionIDError: ''}));
+                        }
+                    }}
+                    value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
 
+                    {
+                        //Institution ID error
+                    }
+                    {this.state.institutionIDError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.institutionIDError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //School system radio selector
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School System' : 'Sistema Educativo'}:</label>
                     <br/>
-                    <input type="radio" name="system" value= "public" checked={this.state.schoolType === 'public'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Público'}<br/>
-                    <input type="radio" name="system" value= "private" checked={this.state.schoolType === 'private'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privado'}<br/>
-                    <input type="radio" name="system" value= "independent" checked={this.state.schoolType === 'independent'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'} <br/>
-                    
+                    <label className="clickable radio__text">
+                    <input type="radio" name="system" value= "public" checked={this.state.schoolType === 'public'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Public' : 'Público'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="system" value= "private" checked={this.state.schoolType === 'private'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Private' : 'Privado'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="radio" name="system" value= "independent" checked={this.state.schoolType === 'independent'} onChange = {this.onSchoolTypeChange}/> {this.props.lang === 'English' ? 'Independent' : 'Independiente'}
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Resources owned checkboxes
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'What resources do you use in your school?' : '¿Qué recursos utiliza en su escuela?'}</label>
                     <br/>
-                    <input type="checkbox" name="resource" checked={this.state.moodle === true} onChange={this.onMoodleChange}/> Moodle <br/>
-                    <input type="checkbox" name="resource" checked={this.state.googleClassroom === true} onChange={this.onGoogleClassroomChange}/> Google Classroom <br/>
-                    <input type="checkbox" name="resource" checked={this.state.emailResource === true} onChange={this.onEmailResourceChange}/> Emails <br/>
-                    <input type="checkbox" name="resource" checked={this.state.books === true} onChange={this.onBooksChange}/> {this.props.lang === 'English' ? 'Books' : 'Libros'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} <br/>
-                    
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.moodle === true} onChange={this.onMoodleChange}/> Moodle 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.googleClassroom === true} onChange={this.onGoogleClassroomChange}/> Google Classroom 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.emailResource === true} onChange={this.onEmailResourceChange}/> Emails 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.books === true} onChange={this.onBooksChange}/> {this.props.lang === 'English' ? 'Books' : 'Libros'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} 
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Accessible resources checkboxes
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Which resources do you have access to?' : '¿A cuáles de estos recursos tiene acceso en su escuela?'}</label>
                     <br/>
-                    <input type="checkbox" name="resource" checked={this.state.projector === true} onChange={this.onProjectorChange}/> {this.props.lang === 'English' ? 'Projector' : 'Proyector'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.computer === true} onChange={this.onComputerChange}/> {this.props.lang === 'English' ? 'Computer' : 'Computadora'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.tablet === true} onChange={this.onTabletChange}/> {this.props.lang === 'English' ? 'Tablet' : 'Tableta'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.stylus === true} onChange={this.onStylusChange}/> Stylus <br/>
-                    <input type="checkbox" name="resource" checked={this.state.internet === true} onChange={this.onInternetChange}/> Internet <br/>
-                    <input type="checkbox" name="resource" checked={this.state.smartboard === true} onChange={this.onSmartBoardChange}/> {this.props.lang === 'English' ? 'Smart Board' : 'Pizarra Inteligente'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.smartpencil === true} onChange={this.onSmartPencilChange}/> {this.props.lang === 'English' ? 'Smart Pencil' : 'Lápiz Inteligente'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.speakers === true} onChange={this.onSpeakersChange}/> {this.props.lang === 'English' ? 'Speakers' : 'Bocinas'} <br/>
-
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.projector === true} onChange={this.onProjectorChange}/> {this.props.lang === 'English' ? 'Projector' : 'Proyector'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.computer === true} onChange={this.onComputerChange}/> {this.props.lang === 'English' ? 'Computer' : 'Computadora'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.tablet === true} onChange={this.onTabletChange}/> {this.props.lang === 'English' ? 'Tablet' : 'Tableta'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.stylus === true} onChange={this.onStylusChange}/> Stylus 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.internet === true} onChange={this.onInternetChange}/> Internet 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.smartboard === true} onChange={this.onSmartBoardChange}/> {this.props.lang === 'English' ? 'Smart Board' : 'Pizarra Inteligente'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.smartpencil === true} onChange={this.onSmartPencilChange}/> {this.props.lang === 'English' ? 'Smart Pencil' : 'Lápiz Inteligente'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.speakers === true} onChange={this.onSpeakersChange}/> {this.props.lang === 'English' ? 'Speakers' : 'Bocinas'} 
+                    </label>
+                    <br/>
                     <br/>
                     {
                         //Buttons to go to the previous and next pages. 
                     }
-                    <button onClick={this.toPageTwo}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.toPageFour}>{this.props.lang === 'English' ? 'Next' : 'Continuar'}</button>
+                    <a href="#top">
+                        <button onClick={this.toPageTwo}>
+                            <div className="btn btn-item">
+                                {this.props.lang === 'English' ? 'Back' : 'Regresar'}
+                            </div>
+                        </button>
+                    </a>
+
+                    <a href="#top">
+                    <button onClick={this.toPageFour}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Next' : 'Continuar'}
+                        </div>
+                    </button>
+                </a>
                 </div>}
 
                 {
                     //Page four
                 }
                 {this.state.currPage == 4 && <div>
-                    <h2>{this.props.lang === 'English' ? 'Profile' : 'Perfil'}</h2>
+                    <div className="form__title">
+                        {this.props.lang === 'English' ? 'Profile' : 'Perfil'}
+                        <hr className="break" style={{borderColor: '#5933AA'}} />
+                    </div>
                     <br/>
 
                     {
                         //Date selector for employment date input field. 
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Employed Since' : 'Empleado Desde'}:</label>
                     <br/>
                     {/*
@@ -716,36 +1216,79 @@ class RegistrationForm extends React.Component{
                         />
                     */}
 
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
+                    <br/>
                     <DatePicker
                     selected={this.state.timeEmployed}
+                    className="form-control"
                     onChange={this.onEmployedDateChange}
+                    maxDate={moment()}
                     />
 
+                    {this.state.timeEmployedError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.timeEmployedError}
+                            </span>
+                            <br/>
+                        </div>}
                     <br/>
+
                     {
                         //Known languages checkbox selector
                     }
+                    <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Known Languages' : 'Lenguajes Conocidos'}:</label>
                     <br/>
-                    <input type="checkbox" name="preflang" value= "spanish" checked={this.state.spanish === true} onChange = {this.onSpanishChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}<br/>
-                    <input type="checkbox" name="preflang" value= "english" checked={this.state.english === true} onChange = {this.onEnglishChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'} <br/>
-                    
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="preflang" value= "spanish" checked={this.state.spanish === true} onChange = {this.onSpanishChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}
+                    </label>
                     <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="preflang" value= "english" checked={this.state.english === true} onChange = {this.onEnglishChange}/> {this.props.lang === 'English' ? 'English' : 'Inglés'} 
+                    </label>
+                    <br/>
+                    <br/>
+
                     {
                         //Challenges checkbox selector
                     }
-                    <label>{this.props.lang === 'English' ? 'Challenges' : 'Retos'}:</label>
+                    <span className="req">*</span>
+                    <label>{this.props.lang === 'English' ? 'Which topics do you see as a challenge?' : '¿Qué temas ve como retos para usted?'}:</label>
                     <br/>
-                    <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'} <br/>
-                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'} <br/>
-
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching strategies' : 'Estrategias de enseñanza'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.updatedMaterial === true} onChange={this.onUpdatedMaterialChange}/> {this.props.lang === 'English' ? 'Updated material' : 'Material actualizado'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.timeManagement === true} onChange={this.onTimeManagementChange}/> {this.props.lang === 'English' ? 'Time management' : 'Manejo del tiempo'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.technologyIntegration === true} onChange={this.onTechnologyIntegrationChange}/> {this.props.lang === 'English' ? 'Technology integration' : 'Integración de tecnologia'}
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.instructionAlignment === true} onChange={this.onInstructionAlignmentChange}/> {this.props.lang === 'English' ? 'Instructional alignment' : 'Alineación curricular'}
+                    </label>
+                    <br/>
                     <br/>
 
-                    <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="http://localhost:8080/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> <br/>
-                    <input type="checkbox" name="privacyPolicy" checked={this.state.privacyPolicy === true} onChange={this.onPrivacyChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto la '} <a href="http://localhost:8080/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a><br/>
+                    <span className="req">*</span>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="http://localhost:8080/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> 
+                    </label>
+                    <br/>
+                    <span className="req">*</span>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="privacyPolicy" checked={this.state.privacyPolicy === true} onChange={this.onPrivacyChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto la '} <a href="http://localhost:8080/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a>
+                    </label>
+                    <br/>
+                    <br/>
                     {
                         //Error message is displayed if the Terms of Use or Privacy Policy is not accepted when trying to submit the form. 
                     }
@@ -758,13 +1301,26 @@ class RegistrationForm extends React.Component{
                     }
                     {this.state.globalError === true && 
                     <div className="text-danger">
-                        {this.props.lang === 'English' ? <p>Please fill all fields before completing your registration.</p> : <p>Por favor, llene todos los campos antes de completar su registración.</p>}
+                        {this.props.lang === 'English' ? <p>Please fill all the required fields before completing your registration.</p> : <p>Por favor, llene todos los campos requeridos antes de completar su registración.</p>}
                     </div>}
                     
                     {
                         //Buttons to return to the previous page and to submit the registration form. 
                     }
-                    <button onClick={this.toPageThree}>{this.props.lang === 'English' ? 'Back' : 'Regresar'}</button> <button onClick={this.onSubmit}>Submit</button>
+                    <a href="#top">
+                        <button onClick={this.toPageThree}>
+                            <div className="btn btn-item">
+                                {this.props.lang === 'English' ? 'Back' : 'Regresar'}
+                            </div>
+                        </button>
+                    </a>
+
+                    <button onClick={this.onSubmit}>
+                        <div className="btn btn-item">
+                            {this.props.lang === 'English' ? 'Submit' : 'Enviar'}
+                        </div>
+                    </button>
+
                 </div>}
                 </form>
             </div>

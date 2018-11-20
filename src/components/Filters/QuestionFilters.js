@@ -12,16 +12,16 @@ class QuestionFilters extends React.Component{
     
     render() {
         return (
-            <div className="form-group row">
-                {
-                    //Filter text input
-                }
-                <div className="col-xs-12 col-sm-10 left-input-margin">
-                <input className="form-control" type="text" placeholder="Search" value ={this.props.filter.text} onChange={(e) => {
-                    this.props.dispatch(setQuestionsTextFilter(e.target.value));
-                }}/>
+            <div>
+            {
+                //Filter text input
+            }
+                    
+                <div className="form-group" style={{width: '90%'}}>
+                   <input className="form-control" type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
+                        this.props.dispatch(setQuestionsTextFilter(e.target.value));
+                    }}/>
                 </div>
-                <div className="col-sm-2"/>
             </div>
         );
     }
@@ -30,6 +30,7 @@ class QuestionFilters extends React.Component{
 //Map filter text data to component properties
 const mapStateToProps = (state) => {
     return {
+        lang: state.language.lang,
         filter: state.questionsFilters
     };
 };

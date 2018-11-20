@@ -40,7 +40,7 @@ class ClassList extends React.Component{
                 //Page title
             }
                 <div className="form__title text-center">
-                <p>{this.props.lang === 'English' ? 'Classes' : 'Clases'}</p>
+                <p>{this.props.lang === 'English' ? 'Classes' : 'Cursos'}</p>
                 <hr className="break" style={{borderColor: '#5933AA'}}/>
                 </div>
             {
@@ -48,7 +48,7 @@ class ClassList extends React.Component{
             }   
             <div className="list-group">
                     {this.props.classes.map((class_info) => {
-                        return <ClassListItem key={class_info.classInfoId} class={class_info}/>
+                        return <ClassListItem key={class_info.classInfoId} className={class_info}/>
                     })}
                     <br/>
                     </div>

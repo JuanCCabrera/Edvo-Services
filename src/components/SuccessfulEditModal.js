@@ -1,0 +1,54 @@
+import React from 'react';
+import Modal from 'react-modal';
+import {connect} from 'react-redux';
+import { setEditModal } from '../actions/editModal';
+
+const SuccessfulEditModal =(props) => (
+    <div className="modal"> 
+        <Modal
+        isOpen = {props.editModal.editModalFlag === true}
+        onRequestClose = {() => {
+            props.dispatch(setEditModal());
+        }}
+        contentLabel="Successful Edit"
+        closeTimeoutMS={200}
+        className="modal-card" 
+        >
+        <div className="text-center" style={{padding: '2rem 2rem 1rem 2rem'}}>
+            <span className="modal__checkmark"><i className="fa fa-check-circle" aria-hidden="true"></i></span>
+            <br/>
+            <div>
+                <div className="text-center">
+                    <div className="card-title font-weight-bold" style={{color: 'white'}}>
+                        <div style={{fontSize:'4rem'}}>
+                            {props.lang === 'English' ? 'Great!' : 'Perfecto!'}
+                        </div> 
+                        {props.lang === 'English' ? 'All changes have been saved successfully.' : 'Todos los cambios se han guardado.'}
+                    </div>
+                    <hr className="break" style={{borderColor: 'white'}}/>
+                </div>
+            </div>
+        </div>
+        <div className="text-center" style={{backgroundColor: 'white', marginTop: '0', padding: '1rem'}}>
+                <button onClick={() => {props.dispatch(setEditModal())}}>
+                        <p className="btn btn-item">
+                            {props.lang === 'English' ? 'Continue' : 'Continuar'}
+                        </p> 
+                </button>
+        </div>
+
+        </Modal>
+    </div>
+);
+
+//Map selected question information, value represeting the question's favorite status and the current language state to the component properties. 
+const mapStateToProps = (state) => {
+    
+    return {
+        lang: state.language.lang,
+        editModal: state.editModal
+    }
+}
+//Connect component to the controller. 
+export default connect(mapStateToProps)(SuccessfulEditModal);
+

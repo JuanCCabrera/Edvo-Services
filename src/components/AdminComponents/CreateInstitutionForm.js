@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import Can from '../../Can';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form to create a new institution and upload it to the database. 
@@ -65,7 +66,7 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({nameError: 'The name field must contain text.'}));
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'The address field must contain text.'}));
+                    this.setState(() => ({locationError: 'Enter a valid address.'}));
                 }
                 if(this.state.institutionIDError){
                     this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
@@ -75,10 +76,10 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'El campo de la dirección debe contener texto.'}))
+                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}))
                 }
                 if(this.state.institutionIDError){
-                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'}));
+                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución válida.'}));
                 }
             }
         }
@@ -105,7 +106,8 @@ class CreateInstitutionForm extends React.Component{
             this.setState(() => ({createInstitutionError: true}));
         }else{
             this.setState(() => ({createInstitutionError: false}));
-            <Redirect to='/admin/settings/schools' />
+            this.props.dispatch(setSuccessModal());
+            this.props.history.push('/admin/settings/schools');
         }
         //TO-DO Add new school to database
     }
@@ -120,15 +122,18 @@ class CreateInstitutionForm extends React.Component{
             <div className="background-home">
                 <div className="container">
                     <div className="row">
-                    <div className="col-sm-2 text-center well">
+                    <div className="col-sm-2">
+                        <div className="text-center well">
                             {
                                 //List of links to traverse Administrator Settings page.
                             }
                             <AdminButtonList/>
                         </div>
-                        <div className="col-sm-1"/>
+                    </div>
+                    <div className="col-sm-1"/>
                             
-                        <div className="big-card col-sm-9">
+                    <div className="col-sm-9">
+                        <div className="big-card ">
                             <form onSubmit={this.onSubmit}>
                             <div>
                                 <div className="form__title">
@@ -145,7 +150,7 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                 <br/>
-                                <input className="form-control" maxLength="100" style={{width: '60%'}} type="text" placeholder="Name" onBlur={() => {
+                                <input className="form-control" maxLength="100" style={{width: '60%'}} type="text" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
                                     //Check if the name field only contains spaces. 
                                     if(this.state.name.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
@@ -175,13 +180,13 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Address' : 'Dirección Física'}:</label> 
                                 <br/>
-                                <input type="text" className="form-control" maxLength="150" placeholder = "Location" onBlur={() => {
+                                <input type="text" className="form-control" maxLength="150" placeholder = {this.props.lang === 'English' ? 'Address' : 'Dirección Física'} onBlur={() => {
                                     //Check if address field is only composed of spaces. 
                                     if(this.state.location.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({locationError: 'The address field must contain text.'}));
+                                            this.setState(() => ({locationError: 'Enter a valid address'}));
                                         }else{
-                                            this.setState(() => ({locationError: 'El campo de la dirección debe contener texto.'})); 
+                                            this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
                                         }
                                     }else{
                                         this.setState(() => ({locationError: ''}));
@@ -234,7 +239,7 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                 <br/>
-                                <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = "Institution ID" onBlur={() => {
+                                <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
                                     //Check if institution ID field matches expected format. 
                                     if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                         if(this.props.lang === 'English'){
@@ -280,11 +285,11 @@ class CreateInstitutionForm extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div>
-                                                     )}
-                                                     no={() => <Redirect to="/" />}
-                                                   />
-        );
+                </div>
+                </div>
+     )}
+     no={() => <Redirect to="/" />}
+   />);
     }
 }
 

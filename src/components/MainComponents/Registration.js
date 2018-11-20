@@ -8,9 +8,20 @@ import ContactForm from './ContactForm';
  */
 const Registration = (props) => (
     <div>
-        <RegistrationForm {...props}/>
-
-        <ContactForm/>
+        <div className="background-home">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-2"/>
+                    <div className="col-sm-8">
+                        <RegistrationForm/>
+                    </div>
+                    <div className="col-sm-2"/>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ContactForm/>
+        </div>
     </div>
 );
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Main.css';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form used so a user may send his or her doubts to Edvo Tech's staff. 
@@ -78,6 +79,7 @@ class ContactForm extends React.Component{
             this.setState(() => ({contactError: true}))
         }else{  //Otherwise, submit form information
             this.setState(() => ({contactError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.onSubmit({
                 name: this.state.name,
                 email: this.state.email,
@@ -110,29 +112,113 @@ class ContactForm extends React.Component{
             <div className="row justify-content-center">
                <div className="col-md-offset-3 col-md-3">
                   <div className="form-group">
-                     <input id="form_name" type="text" name="name" className="form-control" placeholder="Name"
-                        required="required" data-error="Firstname is required."/>
-                     <div className="help-block with-errors"></div>
+                  <input
+                  className="form-control"
+                    type = "text"
+                    placeholder = "Name" 
+                    maxLength="100"
+                    onBlur={() => {
+                        //Check if the name field only contains spaces. 
+                        if(this.state.name.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({nameError: 'The name field must contain text.'}));
+                            }else{
+                                this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({nameError: ''}));
+                        }
+                    }}
+                    value = {this.state.name}
+                    onChange = {this.onNameChange}/>
+                    {this.state.nameError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.nameError}
+                            </span>
+                            <br/>
+                        </div>}
+                    <br/>
                   </div>
                </div>
                <div className="col-md-3">
                   <div className="form-group">
-                     <input id="form_email" type="email" name="email" className="form-control" placeholder="Email"
-                        required="required" data-error="Valid email is required."/>
-                     <div className="help-block with-errors"></div>
+                  <input
+                  className="form-control"
+                    type = "text"
+                    placeholder = "Email"
+                    maxLength="100"
+                    onBlur={() => {
+                        //Check if the email field matches the expected email address format. 
+                        if(!this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({emailError: 'Enter a valid email address.'}));
+                            }else{
+                                this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({emailError: ''}));
+                        }
+                    }}
+                    value = {this.state.email}
+                    onChange = {this.onEmailChange}
+                    />
+
+                    {
+                        //Email error
+                    }
+                    {this.state.emailError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.emailError}
+                            </span>
+                            <br/>
+                        </div>}
+                    <br/>
                   </div>
                </div>
             </div>
             <div className="row justify-content-center">
                <div className="col-md-offset-3 col-md-6">
                   <div className="form-group">
-                     <textarea id="form_message" name="message" className="form-control" placeholder="Message" rows="4"
-                        required="required" data-error="Please,leave us a message."></textarea>
-                     <div className="help-block with-errors"></div>
+                  <textarea
+                  id="form_message" name="message" className="form-control" placeholder="Message" rows="4"
+                    maxLength="4000"
+                    onBlur={() => {
+                        //Check if the message field only contains spaces. 
+                        if(this.state.message.match(/^\s+$/)){
+                            if(this.props.lang === 'English'){
+                                this.setState(() => ({messageError: 'The message field must contain text.'}));
+                            }else{
+                                this.setState(() => ({messageError: 'El campo del mensaje debe contener texto.'})); 
+                            }
+                        }else{
+                            this.setState(() => ({messageError: ''}));
+                        }
+                    }}
+                    value = {this.state.message}
+                    onChange = {this.onMessageChange}/>
+
+                    {
+                        //Message error
+                    }
+                    {this.state.messageError && 
+                        <div>
+                            <span className="text-danger"> 
+                                {this.state.messageError}
+                            </span>
+                            <br/>
+                        </div>}
+                    <br/>
+               {this.state.contactError === true && 
+                    <div className="text-danger text-center">
+                        {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
+                    </div>}
                   </div>
                </div>
-               <div className="col-md-offset-3 container col-md-6">
-                  <input type="submit" className="Contact-Btn" value="Send"/>
+                 <div className="col-md-offset-3 container col-md-6">
+               <button className="Contact-Btn" onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Send' : 'Enviar'}</button>
+                  
                </div>
             </div>
          </form>

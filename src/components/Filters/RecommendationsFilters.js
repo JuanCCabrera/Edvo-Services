@@ -18,9 +18,11 @@ class RecommendationsFilters extends React.Component{
                         {
                             //Text filter input field
                         }
-                        <input className="form-control" type="text" placeholder="Search" value ={this.props.filter.text} onChange={(e) => {
-                            this.props.dispatch(setRecommendationsTextFilter(e.target.value));
-                        }}/>
+                        <div style={{width: '90%'}}>
+                            <input className="form-control" type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
+                                this.props.dispatch(setRecommendationsTextFilter(e.target.value));
+                            }}/>
+                        </div>
                     </div>
                 </div>
 
@@ -47,7 +49,7 @@ class RecommendationsFilters extends React.Component{
 
                                     <option value="Teaching Strategies">{this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Educación'}</option>
 
-                                    <option value="Instructional Alignment">{this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineamiento de Instrucción'}</option>
+                                    <option value="Instructional Alignment">{this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineación Curricular'}</option>
                             </select>
                     </div>
                 </div>

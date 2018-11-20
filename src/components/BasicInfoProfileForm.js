@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../Auth';
 import {loadProfile} from '../actions/profile';
+import {setEditModal} from '../actions/editModal';
 
 const reset = () => {
     console.log("RESETTING");
@@ -33,8 +34,9 @@ class BasicInfoProfileForm extends React.Component{
             lastName: props.info ? props.info.lastName : '',
             lastNameError: '',
 
-            dateOfBirth: props.info ? props.info.dateOfBirth : moment(),
+            dateOfBirth: props.info ? props.info.dateOfBirth : moment().subtract('18',"years"),
             dateOfBirthError: '',
+            
 
             calendarFocused: false,
             gender: props.info ? props.info.gender : 'male',
@@ -82,7 +84,7 @@ class BasicInfoProfileForm extends React.Component{
         var today=moment();
         var difference = today.diff(dateOfBirth, 'years');
         //Check if the selected date of birth falls between 18-90 years ago. 
-        if(dateOfBirth && (difference > 18 && difference < 90)){
+        if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
@@ -152,11 +154,14 @@ class BasicInfoProfileForm extends React.Component{
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
             .then((response)=>{
-                if(response.status == 201)
-                    this.state.props.history.push('/admin/home');
+                if(response.status == 201){
+                    console.log('submitted');
+                    console.log(this.state);
+                    this.props.dispatch(loadProfile({name: this.state.name, lastName: this.state.lastName, dateOfBirth: this.state.dateOfBirth, gender: this.state.gender}));
+                    this.props.dispatch(setEditModal());
+
+                }
             });
-            console.log('submitted');
-            console.log(this.state);
         }
 
         //TO-DO Modify user data in database
@@ -183,7 +188,7 @@ class BasicInfoProfileForm extends React.Component{
                                 }
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
-                                <input type="text" placeholder="Name" className="form-control" maxLength="100" onBlur={() => {
+                                <input type="text" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} className="form-control" maxLength="100" onBlur={() => {
                                     //Check if the name field only consists of spaces. 
                                     if(this.state.name.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
@@ -217,7 +222,7 @@ class BasicInfoProfileForm extends React.Component{
                                 }
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
-                                <input type="text" placeholder="Last Name" className="form-control" maxLength="100" onBlur={() => {
+                                <input type="text" placeholder={this.props.lang === 'English' ? 'Last Name' : 'Apellido'} className="form-control" maxLength="100" onBlur={() => {
                                     //Check if the last name field only consists of spaces. 
                                     if(this.state.lastName.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
@@ -284,7 +289,7 @@ class BasicInfoProfileForm extends React.Component{
                                 <br/>
                             </div>}
                         <br/>
-
+                        <br/>
                         {
                             //Gender radio selector
                         }

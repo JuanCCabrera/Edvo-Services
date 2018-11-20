@@ -1,5 +1,5 @@
 .item__body{
-    word-break: break-all;
+    
 }
 
 .pending__title{
@@ -27,4 +27,20 @@
     border: 0.8rem outset #5933AA;
     border-radius: 3rem;
     margin: 2.7rem auto;
+}
+
+.spec__mobile__font{
+
+}
+
+@media only screen and (max-width: 570px){
+    .spec__mobile__font{
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .pending__title__2{
+        font-size: 3.5rem;
+    }
 }

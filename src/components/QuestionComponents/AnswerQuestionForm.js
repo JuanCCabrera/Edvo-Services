@@ -8,6 +8,7 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+import { setSuccessModal } from '../../actions/successModal';
 
 /**
  * Form used to answer pending user questions. This form is available in the Answer Question page. 
@@ -54,6 +55,7 @@ class AnswerQuestionForm extends React.Component {
                 this.props.history.push('/staff/questions');
             });
             this.setState(() => ({answerError: false}));
+            this.props.dispatch(setSuccessModal());
             this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
             //Move to the Pending Questions page upon completing the submission. 
             this.props.history.push('/staff/questions');
@@ -66,49 +68,53 @@ class AnswerQuestionForm extends React.Component {
             role={auth0Client.getRole()}
             perform="admin:questions-answer"
             yes={() => (
-            <div>
+            <div className="background-home">
                 <form onSubmit={this.onSubmit}>
                     <div className="container">
                         <div className="row">
-                            <div className="col-sm-2 text-center well">
-                            <QuestionButtonList/>
+                            <div className="col-sm-2">
+                                <div className="text-center well">
+                                   <QuestionButtonList/>
+                                </div>
                             </div>
                             <div className="col-sm-1"/>
-                            <div className="col-sm-9 big-card item__body">
-                            {
-                                //Question
-                            }
-                            <h3> {this.props.lang === 'English' ? 'Question' : 'Pregunta'} </h3>
-                                {this.props.question.question}
-                            {
-                                //Answer input field
-                            }
-                            <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
-                            <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.answer.length}/5000</span>
-                            <br/>
-                                <textarea type="text" rows='10' className="form-control" maxLength="5000" value={this.state.answer} placeholder="Write your answer here!" onChange={this.onAnswerChange} onBlur={() => {
-                                    if(this.state.answer && this.state.answer.match(/^\s+$/)){
-                                        this.setState(() => ({answerError: true}));
+                            <div className="col-sm-9">
+                                <div className=" big-card item__body">
+                                    {
+                                        //Question
                                     }
-                                }}/>
-                            {
-                                //Message displayed when trying to submit an answer without filling the answer input field. 
-                            }
-                                {this.state.answerError}
-                                <br/>
-                                {this.state.answerError === true && 
-                                    <div className="text-danger"  style={{marginBottom: '2.7rem'}}>
-                                        {this.props.lang === 'English' ? <p>Please fill the 'Answer' field before submitting an answer.</p> : <p>Por favor, llene el campo de 'Respuesta' antes de guardar la respuesta.</p>}
-                                    </div>
-                                }
-                                {
-                                    //Button to submit an answer. 
-                                }
-                                <button onClick={this.onSubmit}>
-                                    <div className="btn btn-item">
-                                        {this.props.lang === 'English' ? 'Answer' : 'Responder'}
-                                    </div>
-                                </button>
+                                    <h3> {this.props.lang === 'English' ? 'Question' : 'Pregunta'} </h3>
+                                        {this.props.question.question}
+                                    {
+                                        //Answer input field
+                                    }
+                                    <h3> {this.props.lang === 'English' ? 'Answer' : 'Respuesta'} </h3>
+                                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.answer.length}/5000</span>
+                                    <br/>
+                                    <textarea type="text" rows='10' className="form-control" maxLength="5000" value={this.state.answer} placeholder= {this.props.lang === 'English' ? 'Write your answer here!' : 'Escriba su respuesta aquí!'} onChange={this.onAnswerChange} onBlur={() => {
+                                        if(this.state.answer && this.state.answer.match(/^\s+$/)){
+                                            this.setState(() => ({answerError: true}));
+                                        }
+                                    }}/>
+                                    {
+                                        //Message displayed when trying to submit an answer without filling the answer input field. 
+                                    }
+                                    {this.state.answerError}
+                                    <br/>
+                                    {this.state.answerError === true && 
+                                        <div className="text-danger"  style={{marginBottom: '2.7rem'}}>
+                                            {this.props.lang === 'English' ? <p>Please fill the 'Answer' field before submitting an answer.</p> : <p>Por favor, llene el campo de 'Respuesta' antes de guardar la respuesta.</p>}
+                                        </div>
+                                    }
+                                    {
+                                        //Button to submit an answer. 
+                                    }
+                                    <button onClick={this.onSubmit}>
+                                        <div className="btn btn-item">
+                                            {this.props.lang === 'English' ? 'Answer' : 'Responder'}
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
