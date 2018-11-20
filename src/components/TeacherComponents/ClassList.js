@@ -48,7 +48,7 @@ class ClassList extends React.Component{
             }   
             <div className="list-group">
                     {this.props.classes.map((class_info) => {
-                        return <ClassListItem key={class_info.classInfoId} className={class_info}/>
+                        return <ClassListItem key={class_info.classInfoId} classes={class_info}/>
                     })}
                     <br/>
                     </div>
@@ -59,6 +59,7 @@ class ClassList extends React.Component{
 
 //Map list of loaded classes and current language state to the component properties. 
 const mapStateToProps = (state) => {
+    console.log(state.classes);
     return{
         classes: state.classes,
         lang: state.language.lang

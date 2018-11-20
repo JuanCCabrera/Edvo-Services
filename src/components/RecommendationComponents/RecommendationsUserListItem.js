@@ -13,12 +13,10 @@ const RecommendationsUserListItem = (props) => (
                 </p>
             </div>
             <div className="col-sm-2">
-                <p>
                     {props.user.id === props.selectedUser && 
                     <div>
                         <span style={{display: 'inline'}}><i className="fa fa-check-circle" style={{color: 'green'}} aria-hidden="true"></i></span>
                     </div>}
-                </p>
             </div>
         </div>
         <h5>Email: {props.user.email}</h5>
@@ -38,17 +36,17 @@ const RecommendationsUserListItem = (props) => (
             <button onClick={() => {
                 props.dispatch(selectUser({userID: props.user.id}));
             }}>
-                <div className="btn btn-item">
+                <p className="btn btn-item">
                     {props.lang === 'English' ? 'Select' : 'Seleccionar'}
-                </div>
+                </p>
             </button>
 
             <button onClick={() => {
                 props.dispatch(selectUserToDisplay(props.user));
             }}>
-                <div className="btn btn-item">
+                <p className="btn btn-item">
                     {props.lang === 'English' ? 'View User Information' : 'Ver Más Información'}
-                </div>
+                </p>
             </button>
     </div>
 );

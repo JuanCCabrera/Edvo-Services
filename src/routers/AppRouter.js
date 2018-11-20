@@ -57,6 +57,9 @@ import SuccessfulEditModal from '../components/SuccessfulEditModal';
 import UserModal from '../components/AdminComponents/UserModal';
 import {clearUserModal} from '../actions/userModal';
 
+import AssignmentRecommendationModal from '../components/AdminComponents/AssignmentRecommendationModal';
+import {clearAssignmentRecommendationModal} from '../actions/assignmentRecommendationModal';
+
 /**
  * AppRouter - Main routing component of the application. Contains a header element, two modals which 
  * are invisible unless a recommendation or question is selected, a footer, and a set of conditionally rendered pages.
@@ -83,6 +86,11 @@ const AppRouter = (props) => (
             //User Modal (hidden until user is selected)
         }
             <UserModal clearSelectedUser={() => props.dispatch(clearUserModal())}/>
+
+        {
+            //Assignment Recommendation Modal (hidden until recommendation is selected from the Assign Recommendations page)
+        }
+            <AssignmentRecommendationModal clearSelectedRecommendation={() => props.dispatch(clearAssignmentRecommendationModal())}/>
 
         {
             //Success Modal (hidden until a major action is completed successfully)

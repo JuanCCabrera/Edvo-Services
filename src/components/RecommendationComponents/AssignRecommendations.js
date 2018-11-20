@@ -44,7 +44,6 @@ import axios from 'axios';
             {(props.assigned.userID && props.assigned.recoID) && 
                 <div>
                     <button onClick={() => {
-                        console.log(props.assigned);
                         props.dispatch(assignRecommendation());
                     }}>
                         <div className="btn btn-item">

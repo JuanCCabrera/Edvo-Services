@@ -48,7 +48,48 @@ class ClassListItem extends React.Component{
         </ol>
     {
         //Remove class button
+        /*
+
+    {this.props.classData.length > 1 && 
+        <div>
+        {this.state.toggleButton ? 
+            
+        <div>
+
+            <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
+                {this.props.lang === 'English' ? 'Are you sure you would like to remove this class?' : '¿Estás seguro de que quieres remover esta clase?'}
+            </div>
+            <br/>
+            <button onClick={() => {
+                this.props.dispatch(removeClass(this.props.classes.classInfoId)); 
+                this.setState(() => ({toggleButton: false}));
+            }}>
+                <div className="btn btn-item" style={{marginTop: '10px'}}>
+                        {this.props.lang === 'English' ? 'Yes' : 'Si'}
+                </div>
+            </button>
+
+            <button onClick={() => {
+                this.setState(() => ({toggleButton: false}));
+            }}>
+                <div className="btn btn-item" style={{marginTop: '10px'}}>
+                        {this.props.lang === 'English' ? 'No' : 'No'}
+                </div>
+            </button>
+        </div>
+        :
+        <div>
+        <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
+            <div className="btn btn-item" style={{marginTop: '10px'}}>
+                {this.props.lang === 'English' ? 'Remove' : 'Remover'}
+            </div>
+        </button>
+        </div>
+        }
+        </div>
     }
+    */
+}
         
     </div>
     );
@@ -58,7 +99,7 @@ class ClassListItem extends React.Component{
 //Map list of classes and current language state to the component properties. 
 const mapStateToProps = (state,props) => {
     return {
-        classes: state.classes,
+        classData: state.classes,
         lang: state.language.lang
     }
 }

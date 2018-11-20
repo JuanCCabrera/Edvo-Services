@@ -176,7 +176,6 @@ class CreateUserForm extends React.Component{
     //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
 
         if(!this.state.email || !this.state.password || !this.state.confirmPassword || !this.state.name || !this.state.lastName || (this.state.type === 'school' && !this.state.institutionID)){
             this.setState(() => ({creationError: true}));

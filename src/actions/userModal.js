@@ -1,6 +1,6 @@
 /**
- * selectRecommendation - Generates an object indicating to the central controller to select a recommendation and display its information on a Modal. 
- * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, multimedia template, date in which it was assigned, boolean indicating whether it has been read or not (read = true), and an associated rating
+ * selectUserToDisplay - Generates an object indicating to the central controller to select a user and display his or her information on a Modal. 
+ * @param {*} param0 - Object containing a user's registration information as described in the Registration Form. 
  */
 export const selectUserToDisplay = (
     {
@@ -58,10 +58,6 @@ export const selectUserToDisplay = (
             smartpencil , 
             speakers,
         }
-});
-
-export const setUserModal = () => ({
-    type: 'TOGGLE_USER_MODAL'
 });
 
 export const clearUserModal = () => ({
