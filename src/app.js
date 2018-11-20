@@ -127,12 +127,12 @@ const recoThreeID = uuid();
 // store.dispatch(loadTeacherFavoriteRecommendation({recoID: recoThreeID, title: 'Seeking Help for Students', header: 'Test data', location: 'Test location', description: 'Learn more about how to seek help for students using this video!', multimedia: '', date: '2018-10-20 06:20:21', read: true, rating: 5}));
 
 //Generating Teacher Questions Test Data (Includes Favorite Questions)
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 06:10:25', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:25', rate: 1, favorite: true, read: false}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 07:30:24', subject: 'Updated Material', question: 'How can I update material for my class?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:26', rate: 1, favorite: false, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-09 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-08 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 4, favorite: false, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-07 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
-store.dispatch(loadTeacherQuestion({askedDate: '2018-10-06 07:30:29', subject: 'Potatoes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-11 06:10:25', subject: 'Technolgy Integration', question: 'How can I integrate technolgy into the classroom?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:25', rate: 1, favorite: true, read: false}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-10 07:30:24', subject: 'Updated Material', question: 'How can I update material for my class?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:26', rate: 1, favorite: false, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-09 06:10:26', subject: 'Seeking Help for Students', question: 'How do I help my students to dedicate more time to their studies?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:27', rate: 1, favorite: false, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-08 06:10:28', subject: 'Analyzing Class Attendance', question: 'Is there any useful information I can get from class attendance forms?', answer: 'Just do it!', answerDate: '2018-10-10 06:10:28', rate: 4, favorite: false, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-07 07:30:29', subject: 'Quizzes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
+// store.dispatch(loadTeacherQuestion({askedDate: '2018-10-06 07:30:29', subject: 'Potatoes', question: 'How can I use quizzes as a teaching tool and not a testing tool?', answer: '', answerDate: '2018-10-10 06:10:29', rate: 5, favorite: true, read: true}));
 
 
 

@@ -3,6 +3,9 @@ import Modal from 'react-modal';
 import {connect} from 'react-redux';
 import { rateQuestion, addFavoriteQuestion, removeFavoriteQuestion } from '../../actions/teacherQuestions';
 import StarRatingComponent from 'react-star-rating-component';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import moment from 'moment';
 
 /**
  * Modal displayed when a question is selected. The modal displays information about the question including the question's
@@ -30,12 +33,21 @@ const QuestionModal = (props) => (
             {
                 //Favoriting star
             }
-            <div className="badge clickable" style={{backgroundColor: '#5933AA', marginTop: '1rem'}} onClick={() => {
-                if(props.isFavorite === 0){
-                    props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
+            <div className="badge clickable" style={{backgroundColor: '#5933AA', marginTop: '1rem'}} onClick={() =>  {
+                
+                let favorite = !props.question.favorite
+                axios.post('http://localhost:3000/teacher/questions/favorite',{
+                        askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
+                        favorite: favorite
+                    },{
+                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                    }).then(response =>{
+                    
+                if(props.question.favorite === 0){
+                    props.dispatch(addFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
                 }else{
                     props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
-                }
+                }});
             }}>
             <div className="col-sm-2">
                 <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>

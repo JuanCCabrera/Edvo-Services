@@ -4,9 +4,10 @@ import Pagination from 'react-js-pagination';
 import uuid from 'uuid';
 import TeacherQuestionListItem from './TeacherQuestionListItem';
 import getVisibleTeacherQuestions from '../../selectors/teacherQuestions';
-import { loadTeacherQuestion } from '../../actions/teacherQuestions';
+import { addFavoriteQuestion, loadTeacherQuestion } from '../../actions/teacherQuestions';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import moment from 'moment';
 
 /**
  * List of questions a teacher has asked. This list is available in the Teacher Questions page. 
@@ -32,7 +33,11 @@ class TeacherQuestionsList extends React.Component{
             response.data.questions.forEach(element => {
                 console.log("RATE QUESIONS FOR TEACHER: ", element);
                 this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 
-                subject: element.subject, userId: element.userid, answer: element.answer, rate: element.rate}));
+                subject: element.subject, favorite: element.favorite, userId: element.userid, answer: element.answer, rate: element.rate}));
+                if(element.favorite == true){
+                    console.log("FAVORITE QUESTION: ???", element);
+                    this.props.dispatch(addFavoriteQuestion({askedDate: moment(element.askeddate).format("YYYY-MM-DD HH:mm:ss")}));
+                }
             });
         });
         this.currentPage = 1;
