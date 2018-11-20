@@ -152,6 +152,7 @@ class CreateInstitutionForm extends React.Component{
                                 <br/>
                                 <input className="form-control" maxLength="100" style={{width: '60%'}} type="text" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
                                     //Check if the name field only contains spaces. 
+                                    this.setState(() => ({name: this.state.name.trim()}));
                                     if(this.state.name.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
                                             this.setState(() => ({nameError: 'The name field must contain text.'}));
@@ -182,6 +183,7 @@ class CreateInstitutionForm extends React.Component{
                                 <br/>
                                 <input type="text" className="form-control" maxLength="150" placeholder = {this.props.lang === 'English' ? 'Address' : 'Dirección Física'} onBlur={() => {
                                     //Check if address field is only composed of spaces. 
+                                    this.setState(() => ({location: this.state.location.trim()}));
                                     if(this.state.location.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
                                             this.setState(() => ({locationError: 'Enter a valid address'}));
@@ -241,6 +243,7 @@ class CreateInstitutionForm extends React.Component{
                                 <br/>
                                 <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
                                     //Check if institution ID field matches expected format. 
+                                    this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                                     if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                         if(this.props.lang === 'English'){
                                             this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));

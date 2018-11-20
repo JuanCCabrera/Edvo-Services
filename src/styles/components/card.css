@@ -53,6 +53,8 @@ html, body {
     background-color: #5933AA;
     color: white;
     font-weight: normal;
+    font-size: 105%;
+    margin-top: 1rem;
 }
 
 .btn-item-margin{
@@ -66,10 +68,15 @@ html, body {
 }
 
 .btn-item:hover{
-    color: #5933AA;
-    background-color: white;
+    color: white;
+    background-color: #472988;
     font-weight: normal;
     border: 1px solid #5933AA;
+}
+
+button:disabled > .btn-item{
+    background-color: #cdc2e6;
+    border: 1px solid #cdc2e6;
 }
 
 .item-card:hover{
@@ -88,6 +95,11 @@ html, body {
     padding-bottom: 1rem; 
 }
 
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 @media only screen and (max-width: 768px){
     .card_left_margin{
         margin-left: 0;
@@ -98,11 +110,6 @@ html, body {
     margin: 15px 15px;
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
 /* Add some padding inside the card container */
 .container {
     padding: 2px 16px;
@@ -110,6 +117,7 @@ html, body {
 
 .big-card-teacher-home{
     background-color: white;
+    transition: 0.3s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
     border: 1.2px solid #5933aa;
     border-radius: 0.5rem;
@@ -118,6 +126,11 @@ html, body {
     padding-top: 3.7rem;
     padding-bottom: 3.7rem;
     font-weight: bold;
+    min-height: 18rem;
+}
+
+.big-card-teacher-home:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .big-card-admin-home{
@@ -176,6 +189,10 @@ html, body {
 
 .front-card{
     z-index: 9999;
+}
+
+.home__card__title{
+    font-size: 2.5rem;
 }
 
 @media only screen and (max-width: 1200px){

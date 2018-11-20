@@ -77,7 +77,7 @@ class TeacherHome extends React.Component {
             <div className="container">
                 <div className="row text-center text-uppercase">
                     <div className="col-md-4">
-                        <div className="big-card-teacher-home" style={{paddingBottom: '6.9rem'}}>
+                        <div className="big-card-teacher-home" style={{paddingBottom: '8.2rem'}}>
                             {
                                 //Days in platform
                             }
@@ -151,14 +151,14 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 {this.props.lang === 'English' ? 
-                                    <div className="text-center"> 
+                                    <div className="text-center home__card__title"> 
                                         <p style={{margin: '2rem 0'}}>
                                             My Most Recent Recommendations
                                         </p>
                                     </div>
                                     :
-                                    <div className="text-center">
-                                        <p style={{marginTop: '2rem'}}>
+                                    <div className="text-center home__card__title">
+                                        <p style={{marginTop: '2rem', marginBottom: '0'}}>
                                             Mis Recomendaciones
                                         </p>
                                         <p style={{marginTop: '0',marginBottom: '2rem'}}>
@@ -177,14 +177,14 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 {this.props.lang === 'English' ? 
-                                    <div className="text-center"> 
+                                    <div className="text-center home__card__title"> 
                                         <p style={{margin: '2rem 0'}}>
                                             My Top-Rated Recommendations
                                         </p>
                                     </div>
                                     :
-                                    <div className="text-center">
-                                        <p style={{marginTop: '2rem'}}>
+                                    <div className="text-center home__card__title">
+                                        <p style={{marginTop: '2rem', marginBottom: '0'}}>
                                             Mis Recomendaciones
                                         </p>
                                         <p style={{marginTop: '0', marginBottom: '2rem'}}>
@@ -203,13 +203,13 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 {this.props.lang === 'English' ? 
-                                    <div className="text-center"> 
+                                    <div className="text-center home__card__title"> 
                                         <p style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
                                             Ask a Question
                                         </p>
                                     </div>
                                     :
-                                    <div className="text-center">
+                                    <div className="text-center home__card__title">
                                         <p style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
                                             Envíe una Pregunta
                                         </p>

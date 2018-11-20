@@ -64,7 +64,7 @@ class CreateRecommendationForm extends React.Component{
             question: props.reco ? props.reco.question : '',
             questionError: '',
 
-            choices: props.reco ? props.reco.choices : ['', ''],
+            choices: props.reco ? props.reco.choices : ['', '', ''],
             choiceError: '',
 
             correctOption: props.reco ? props.reco.correctOption : -1,
@@ -427,7 +427,7 @@ class CreateRecommendationForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
             //Set error message if there are any required fields which are not filled upon submission. 
-        if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0]){
+        if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] || !this.state.choices[0] || !this.state.choices[1] || !this.state.choices[2]){
             this.setState(() => ({creationError: true}));
             //If checkboxes are empty...
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
@@ -518,7 +518,8 @@ class CreateRecommendationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Title' : 'Título'}:</label>
                     <input type="text" maxLength="200" placeholder = {this.props.lang === 'English' ? 'Title' : 'Título'} className="form-control" style={{width: '50%'}} value = {this.state.title} onChange={this.onTitleChange} onBlur={() => {
-                        //Check to see if title is only composed of spaces. 
+                        //Check to see if title is only composed of spaces.
+                        this.setState(() => ({title: this.state.title.trim()})); 
                         if(this.state.title.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({titleError: 'The title must contain text.'}));
@@ -547,7 +548,8 @@ class CreateRecommendationForm extends React.Component{
                     <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.header.length}/200</span>
                     <br/>
                     <textarea type="text" maxLength="200" rows="2" placeholder = {this.props.lang === 'English' ? 'Description' : 'Descripción'} className="form-control" value = {this.state.header} onChange={this.onHeaderChange} onBlur={() => {
-                        //Check to see if header is only composed of spaces. 
+                        //Check to see if header is only composed of spaces.
+                        this.setState(() => ({header: this.state.header.trim()})); 
                         if(this.state.header.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({headerError: 'The header must contain text.'}));
@@ -578,6 +580,7 @@ class CreateRecommendationForm extends React.Component{
                     <br/>
                     <textarea type = "text" rows="5" maxLength="5000" placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'} className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
+                        this.setState(() => ({description: this.state.description.trim()}));
                         if(this.state.description.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({descriptionError: 'The content must contain text.'}));
@@ -603,6 +606,7 @@ class CreateRecommendationForm extends React.Component{
                     <label>{this.props.lang === 'English' ? 'Location (Optional)' : 'Localización (Opcional)'}:</label>
                     <input type = "text" maxLength="150" placeholder = {this.props.lang === 'English' ? 'Location' : 'Localización'} className="form-control" value = {this.state.location} onChange = {this.onLocationChange} onBlur={() => {
                         //Check to see if address is only composed of spaces. 
+                        this.setState(() => ({location: this.state.location.trim()}));
                         if(this.state.location.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({locationError: 'Enter a valid address.'}));
@@ -637,6 +641,7 @@ class CreateRecommendationForm extends React.Component{
                     <label>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </label>
                     <input type="text" maxLength="700" disabled={this.props.isEdit} className="form-control" placeholder = {this.props.lang === 'English' ? 'Question' : 'Pregunta'} value = {this.state.question} onChange={this.onQuestionChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
+                        this.setState(() => ({question: this.state.question.trim()}));
                         if(this.state.question.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({questionError: 'The question field must contain text.'}));
@@ -661,7 +666,7 @@ class CreateRecommendationForm extends React.Component{
                     }
                     
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Options' : 'Opciones'} (Max: 4):</label>
+                    <label>{this.props.lang === 'English' ? 'Options' : 'Opciones'}:</label>
                     {this.state.choices.map((choice, index) => (
                         <span key={index}>
                             <br/>
@@ -677,16 +682,20 @@ class CreateRecommendationForm extends React.Component{
                             />
                             
                             {this.state.correctOption === index && <div style={{display: 'inline-block', marginLeft: '0.3rem'}}>
-                                <span style={{color: 'green', width: '1rem'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
+                                <span style={{color: 'green'}}><i className="fa fa-check-circle fa-lg" aria-hidden="true"></i></span>
                             </div>}
 
-                            {this.state.choices.length > 2 && <div style={{display: 'inline'}}>
+                            
+                            {/* Delete quiz choice
+
+                            this.state.choices.length > 2 && <div style={{display: 'inline'}}>
                             <button disabled={this.props.isEdit} onClick={this.deleteChoice(index)}>
                                 <span style={{fontSize: '1.8rem', width: '1rem', verticalAlign: 'center'}}>
                                     <i className="fa fa-window-close"></i>
                                 </span>
                             </button>
                             </div>
+                            */
                             }
 
                             <br/>
@@ -712,7 +721,8 @@ class CreateRecommendationForm extends React.Component{
 
                     {
                         //Add Choice button
-                    }
+                    /*
+                    
                     {this.state.choices.length < 4 && 
                     <div>
                     <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>
@@ -723,6 +733,9 @@ class CreateRecommendationForm extends React.Component{
                     </button>
                     <br/>
                     </div>}
+                    */
+                    }
+
                     {
                         //<button onClick={() => this.setState(() => ({correctOption: -1}))}>{this.props.lang === 'English' ? 'Clear Selection of Correct Answer' : 'Deshacer Seleccion de Contestacion Correcta'}</button>
                     }
@@ -791,6 +804,7 @@ class CreateRecommendationForm extends React.Component{
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'} :</label>
                     <input type="text" maxLength="100" placeholder={this.props.lang === 'English' ? 'Subject' : 'Tema'} className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
+                        this.setState(() => ({subject: this.state.subject.trim()}));
                         if(this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
@@ -935,8 +949,8 @@ class CreateRecommendationForm extends React.Component{
                             />
                             {this.state.topics.length > 1 && <div style={{display: 'inline'}}>
                             <button onClick={this.deleteTopic(index)}>
-                                <span>
-                                    <i className="fa fa-window-close"></i>
+                                <span title={this.props.lang === 'English' ? 'Delete topic' : 'Remover tema'} style={{color: '#b33a3a'}}>
+                                    <i className="fa fa-window-close fa-lg"></i>
                                 </span>
                             </button>
                             </div>}

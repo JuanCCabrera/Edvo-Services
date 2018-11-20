@@ -119,6 +119,7 @@ class ContactForm extends React.Component{
                     maxLength="100"
                     onBlur={() => {
                         //Check if the name field only contains spaces. 
+                        this.setState(() => ({name: this.state.name.trim()}));
                         if(this.state.name.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({nameError: 'The name field must contain text.'}));
@@ -150,6 +151,7 @@ class ContactForm extends React.Component{
                     maxLength="100"
                     onBlur={() => {
                         //Check if the email field matches the expected email address format. 
+                        this.setState(() => ({email: this.state.email.trim()}));
                         if(!this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
@@ -186,6 +188,7 @@ class ContactForm extends React.Component{
                     maxLength="4000"
                     onBlur={() => {
                         //Check if the message field only contains spaces. 
+                        this.setState(() => ({message: this.state.message.trim()}));
                         if(this.state.message.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({messageError: 'The message field must contain text.'}));

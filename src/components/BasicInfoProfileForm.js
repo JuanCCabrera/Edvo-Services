@@ -190,6 +190,7 @@ class BasicInfoProfileForm extends React.Component{
                                 <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                 <input type="text" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} className="form-control" maxLength="100" onBlur={() => {
                                     //Check if the name field only consists of spaces. 
+                                    this.setState(() => ({name: this.state.name.trim()}));
                                     if(this.state.name.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
                                             this.setState(() => ({nameError: 'The name field must contain text.'}));
@@ -224,6 +225,7 @@ class BasicInfoProfileForm extends React.Component{
                                 <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                                 <input type="text" placeholder={this.props.lang === 'English' ? 'Last Name' : 'Apellido'} className="form-control" maxLength="100" onBlur={() => {
                                     //Check if the last name field only consists of spaces. 
+                                    this.setState(() => ({lastName: this.state.lastName.trim()}));
                                     if(this.state.lastName.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
                                             this.setState(() => ({lastNameError: 'The last name field must contain text.'}));

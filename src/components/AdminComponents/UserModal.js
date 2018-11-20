@@ -20,9 +20,9 @@ class UserModal extends React.Component{
                 closeTimeoutMS={200} 
                 >
                 <div>
-                    <h1 className="form__title">{this.props.userSpec.name} {this.props.userSpec.lastName}</h1>
-                    <p>Email: {this.props.userSpec.email}</p>
-                    <h3>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    <h1 className="form__title" style={{marginBottom: '1.5rem'}}>{this.props.userSpec.name} {this.props.userSpec.lastName}</h1>
+                    <p style={{textAlign: 'center'}}>Email: {this.props.userSpec.email}</p>
+                    <h3 style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.userSpec.subject}</p>
                     <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.userSpec.format}</p>
                     <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.userSpec.language}</p>
@@ -57,11 +57,13 @@ class UserModal extends React.Component{
                     </div>
                 
                     <br/>
+                    <div style={{textAlign: 'center'}}>
                     {
                         //Button to close modal
                     }
-                    <div className="btn btn-item">
-                        <button onClick = {this.props.clearSelectedUser}>{this.props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
+                        <div className="btn btn-item">
+                            <button onClick = {this.props.clearSelectedUser}>{this.props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
+                        </div>
                     </div>
                 </div>
                 </Modal>
