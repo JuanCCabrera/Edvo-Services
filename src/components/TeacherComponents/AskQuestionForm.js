@@ -19,7 +19,8 @@ class AskQuestionForm extends React.Component{
             body: '',
             success: false,
             bodyError: '',
-            askQuestionError: false
+            askQuestionError: false,
+            askQuestionPlan: false
         };
     }
 
@@ -72,7 +73,7 @@ class AskQuestionForm extends React.Component{
             userid: '1'
     })
     .catch(error => {
-        console.log("ERROR ASKING: ", error.message)
+            this.setState(() => ({askQuestionPlan: true}))
     })
     .then((response)=>{
         if(response.status == 201){
@@ -174,6 +175,11 @@ class AskQuestionForm extends React.Component{
 
                     {
                         //Message displayed if an attempt is made to submit the form without filling all fields. 
+                    }
+                    {this.state.askQuestionPlan === true && 
+                        <div className="text-danger">
+                            {this.props.lang === 'English' ? <p>You are not subscribed.</p> : <p>No tiene una subscripcion.</p>}
+                        </div>
                     }
                     {this.state.askQuestionError === true && 
                         <div className="text-danger">
