@@ -76,6 +76,7 @@ class TeacherQuestionsList extends React.Component{
                 {
                     //Pagination component
                 }
+                
                 <div className="text-center">
                 {(this.props.question.length > 5) &&
                     <Pagination

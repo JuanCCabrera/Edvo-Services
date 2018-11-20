@@ -16,7 +16,8 @@ class TeacherRecommendationsFilters extends React.Component{
                 {
                     //Text filter input field
                 }
-                <input className="form-control" type="text" placeholder= {this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
+
+                <input className="form-control" type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setTeacherRecommendationsTextFilter(e.target.value));
                 }}/>
 

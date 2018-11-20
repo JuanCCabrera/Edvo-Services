@@ -233,6 +233,7 @@ class CreateRecommendationForm extends React.Component{
 
     //Change correctOption in local state
     setCorrectOption = (choiceIndex) => (e) => {
+        console.log(choiceIndex);
         e.preventDefault();
         this.setState(() => ({correctOption: choiceIndex}));
     }
@@ -656,7 +657,7 @@ class CreateRecommendationForm extends React.Component{
                     <button onClick={this.addChoice} disabled={this.state.choices.length === 4 || this.props.isEdit}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Add New Option ' : 'Añadir Nueva Opción '} 
-                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i class="fa fa-plus" aria-hidden="true"></i></span>
+                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i className="fa fa-plus" aria-hidden="true"></i></span>
                         </div>
                     </button>
                     <br/>
@@ -897,7 +898,7 @@ class CreateRecommendationForm extends React.Component{
                     <button onClick={this.addTopic} disabled={this.state.topics.length === 3}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}
-                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i class="fa fa-plus" aria-hidden="true"></i></span>
+                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i className="fa fa-plus" aria-hidden="true"></i></span>
                         </div>
                     </button>
                     <br/>

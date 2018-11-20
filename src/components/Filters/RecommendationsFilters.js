@@ -14,11 +14,11 @@ class RecommendationsFilters extends React.Component{
         return (
             <div className="form-group">
                 <div className="row">
-                    <div className="col-sm-10 left-input-margin">
+                    <div className="col-sm-10">
                         {
                             //Text filter input field
                         }
-                        <div style={{width: '90%'}}>
+                        <div>
                             <input className="form-control" type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
                                 this.props.dispatch(setRecommendationsTextFilter(e.target.value));
                             }}/>
@@ -26,7 +26,7 @@ class RecommendationsFilters extends React.Component{
                     </div>
                 </div>
 
-                <div className="btn-group left-input-margin">
+                <div className="btn-group">
                     <span className="btn btn-filter" style={{marginBottom: '1rem'}}>
                                 <i className="fas fa-filter"></i>
                     </span>

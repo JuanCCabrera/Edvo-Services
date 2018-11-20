@@ -2,6 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import {connect} from 'react-redux';
 import { selectUser } from '../../actions/assignRecommendations';
+import {selectUserToDisplay } from '../../actions/userModal';
 
 const RecommendationsUserListItem = (props) => (
     <div className="list-group-item">
@@ -39,6 +40,14 @@ const RecommendationsUserListItem = (props) => (
             }}>
                 <div className="btn btn-item">
                     {props.lang === 'English' ? 'Select' : 'Seleccionar'}
+                </div>
+            </button>
+
+            <button onClick={() => {
+                props.dispatch(selectUserToDisplay(props.user));
+            }}>
+                <div className="btn btn-item">
+                    {props.lang === 'English' ? 'View User Information' : 'Ver Más Información'}
                 </div>
             </button>
     </div>

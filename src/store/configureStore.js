@@ -22,6 +22,7 @@ import schoolsFiltersReducer from '../reducers/filterReducers/schoolFilters';
 import profileReducer from '../reducers/profile';
 import successModalReducer from '../reducers/successModal';
 import editModalReducer from '../reducers/editModal';
+import userModalReducer from '../reducers/userModal';
 
 //Store creation
 
@@ -52,7 +53,8 @@ export default () => {
             schoolFilters: schoolsFiltersReducer,
             profile: profileReducer,
             successModal: successModalReducer,
-            editModal: editModalReducer
+            editModal: editModalReducer,
+            userModal: userModalReducer
         })
     );
 

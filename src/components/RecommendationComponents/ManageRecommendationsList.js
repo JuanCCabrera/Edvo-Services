@@ -77,7 +77,7 @@ class ManageRecommendationsList extends React.Component{
                 //Pagination component
             }
             <div className="text-center">
-                {(this.props.recommendation.length !== 0) &&
+                {(this.props.recommendation.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}

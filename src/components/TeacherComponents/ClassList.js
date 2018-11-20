@@ -25,7 +25,7 @@ class ClassList extends React.Component{
             }   
             <div className="list-group">
                     {this.props.classes.map((class_info) => {
-                        return <ClassListItem key={class_info.classInfoId} class={class_info}/>
+                        return <ClassListItem key={class_info.classInfoId} className={class_info}/>
                     })}
                     <br/>
                     </div>

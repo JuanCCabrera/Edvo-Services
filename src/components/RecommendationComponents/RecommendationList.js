@@ -76,7 +76,7 @@ class RecommendationsList extends React.Component{
             {
                 //Pagination component
             }
-                {(this.props.recommendation.length !== 0) &&
+                {(this.props.recommendation.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}

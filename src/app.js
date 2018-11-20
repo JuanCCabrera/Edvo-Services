@@ -28,7 +28,7 @@ const store = configureStore();
 
 //Generating User Test Data
 
-store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', email: 'pablo.picasso@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
+store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', email: 'pablo.picasso@upr.edu', weeklyReco: false, moodle: true, googleclassroom: true, computer: true, tablet: true, topica: 'Matrix Algebra', categories: ['Technology Integration', 'Teaching Strategies']}));
 store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Rodriguez', email: 'daniel.rodriguez44@upr.edu', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
 store.dispatch(addUser({id: uuid(), name: 'Arsalan', lastName: 'Leeway', email: 'ars.leway@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
 store.dispatch(addUser({id: uuid(), name: 'Mary', lastName: 'Kate', email: 'mary.kate@capone.edu', weeklyReco: true, categories: ['Instructional Alignment', 'Updated Material']}));
@@ -44,6 +44,7 @@ store.dispatch(addSchool({id: uuid(), name: 'Colegio San Alberto', location: 'Vi
 store.dispatch(addSchool({id: uuid(), name: 'Colegio San Tomas', location: 'Via Altra, IU-97, Paseos del Alma, Toa Alta, PR', type: 'Public', numAccounts: 2000}));
 
 //Generating Admin/Mentor Recommendations Test Data
+
 store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Test data', multimedia: 'none', description: '#1', updatedMaterial: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));
@@ -54,7 +55,7 @@ store.dispatch(loadRecommendation({id: uuid(), title: 'A New Method for Teaching
 store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair Chance', header: 'Test data', multimedia: 'none', description: '#8'}));
 
 //Generating Admin/Mentor Questions Test Data
-store.dispatch(loadQuestion({question: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAThey misbehave almost every day. They probably do not think I am a good leader. What should I do?', askedDate: '2018-10-28 06:20:25', subject: 'How can I make my students behave?', userId: uuid()}));
+store.dispatch(loadQuestion({question: 'They misbehave almost every day. They probably do not think I am a good leader. What should I do?', askedDate: '2018-10-28 06:20:25', subject: 'How can I make my students behave?', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'I wish to study abroad to learn more about Spanish culture. Which location would work well to further my studies?', askedDate: '2018-10-27 12:24:24', subject: 'Where should I study abroad for more experience?', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'How can I integrate technolgy into the classroom?', askedDate: '2018-10-28 06:20:21', subject: 'Technology Integration Question', userId: uuid()}));
 store.dispatch(loadQuestion({question: 'Hi there! How do I use the recommendations page?', askedDate: '2018-10-27 12:24:14', subject: 'Recommendation Page Question', userId: uuid()}));

@@ -62,7 +62,7 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
                     {
                         //User List with filters
                     }
-                    <UserFilters/>
+                    <UserFilters inAssignmentPage={true}/>
                     <div className="list-group">
                         <RecommendationsUserList/>
                     </div>

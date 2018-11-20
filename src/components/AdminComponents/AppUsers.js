@@ -39,7 +39,7 @@ import {connect} from 'react-redux';
                                     {
                                         //User filters
                                     }
-                                        <UserFilters/>
+                                        <UserFilters inAssignmentPage={false}/>
                                 </div>
                                 <div className="col-sm-6">
                                     {

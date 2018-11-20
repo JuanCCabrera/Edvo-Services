@@ -20,74 +20,36 @@ class ClassListItem extends React.Component{
     {
         //Class subject
     }
-        <h4 className="card-title">{this.props.class.subject}</h4>
+        <h4 className="card-title">{this.props.classes.subject}</h4>
     {
         //Class format
     }
-        <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.class.format}</p>
+        <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.classes.format}</p>
     {
         //Class language
     }
-        <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.class.language}</p>
+        <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.classes.language}</p>
     {
         //Class level
     }
-        <p>{this.props.lang === 'English' ? 'Level' : 'Nivel'}: {this.props.class.level}</p>
+        <p>{this.props.lang === 'English' ? 'Level' : 'Nivel'}: {this.props.classes.level}</p>
     {
         //Class group size
     }
-        <p>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}: {this.props.class.groupSize} {this.props.lang === 'English' ? 'students' : 'estudiantes'}</p>
+        <p>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}: {this.props.classes.groupSize} {this.props.lang === 'English' ? 'students' : 'estudiantes'}</p>
     {
         //Topics list
     }
-        {!(this.props.class.topicA === '' && this.props.class.topicB === '' && this.props.class.topicC === '') && <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}: <br/></p>}
+        {!(this.props.classes.topicA === '' && this.props.classes.topicB === '' && this.props.classes.topicC === '') && <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}: <br/></p>}
         <ol>
-            {this.props.class.topicA !== '' && <li>{this.props.class.topicA}</li>}
-            {this.props.class.topicB !== '' && <li>{this.props.class.topicB}</li>}
-            {this.props.class.topicC !== '' && <li>{this.props.class.topicC}</li>}
+            {this.props.classes.topicA !== '' && <li>{this.props.classes.topicA}</li>}
+            {this.props.classes.topicB !== '' && <li>{this.props.classes.topicB}</li>}
+            {this.props.classes.topicC !== '' && <li>{this.props.classes.topicC}</li>}
         </ol>
     {
         //Remove class button
     }
-        {this.props.classes.length === 1 ? 
-            <div>
-            </div> 
-            : 
-            <div>
-                    {this.state.toggleButton ? 
-            <div>
-                <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
-                    {this.props.lang === 'English' ? 'Are you sure you would like to remove this class?' : '¿Estás seguro de que quieres remover a este curso?'}
-                </div>
-                <br/>
-                <button onClick={() => {
-                    this.props.dispatch(removeClass({classInfoId: this.props.class.classInfoId})); ; 
-                    this.setState(() => ({toggleButton: false}));
-                }}>
-                <div className="btn btn-item" style={{marginTop: '10px'}}>
-                        {this.props.lang === 'English' ? 'Yes' : 'Si'}
-                </div>
-                </button>
-
-                <button onClick={() => {
-                    this.setState(() => ({toggleButton: false}));
-                }}>
-                <div className="btn btn-item" style={{marginTop: '10px'}}>
-                        {this.props.lang === 'English' ? 'No' : 'No'}
-                </div>
-                </button>
-            </div>
-            :
-            <div>
-            <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
-                <div className="btn btn-item" style={{marginTop: '10px'}}>
-                    {this.props.lang === 'English' ? 'Remove' : 'Remover'}
-                </div>
-            </button>
-            </div>
-        }
-        </div>
-    }
+        
     </div>
     );
     }

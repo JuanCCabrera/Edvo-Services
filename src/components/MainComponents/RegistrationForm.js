@@ -896,7 +896,7 @@ class RegistrationForm extends React.Component{
                     <button onClick={this.addTopic} disabled={this.state.topicsTaught.length === 3}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Add New Topic' : 'Añadir Tema Nuevo'}
-                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i class="fa fa-plus" aria-hidden="true"></i></span>
+                            <span style={{size: '50%', marginLeft: '0.5rem'}}><i className="fa fa-plus" aria-hidden="true"></i></span>
                         </div>
                     </button>
                     </div>

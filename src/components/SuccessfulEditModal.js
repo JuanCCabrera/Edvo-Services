@@ -15,13 +15,13 @@ const SuccessfulEditModal =(props) => (
         className="modal-card" 
         >
         <div className="text-center" style={{padding: '2rem 2rem 1rem 2rem'}}>
-            <span className="modal__checkmark"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+            <span className="modal__checkmark"><i className="fa fa-check-circle" aria-hidden="true"></i></span>
             <br/>
             <div>
                 <div className="text-center">
                     <div className="card-title font-weight-bold" style={{color: 'white'}}>
                         <div style={{fontSize:'4rem'}}>
-                            {props.lang === 'English' ? 'Great!' : 'Perfecto!'}
+                            {props.lang === 'English' ? 'Great!' : '¡Perfecto!'}
                         </div> 
                         {props.lang === 'English' ? 'All changes have been saved successfully.' : 'Todos los cambios se han guardado.'}
                     </div>
