@@ -62,12 +62,12 @@ store.dispatch(createQuiz({score: null, quizID: 'Quiz 2 June 2018', quizDate: '2
 
 //Generating User Test Data
 
-// store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', email: 'pablo.picasso@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
-// store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Rodriguez', email: 'daniel.rodriguez44@upr.edu', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
-// store.dispatch(addUser({id: uuid(), name: 'Arsalan', lastName: 'Leeway', email: 'ars.leway@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
-// store.dispatch(addUser({id: uuid(), name: 'Mary', lastName: 'Kate', email: 'mary.kate@capone.edu', weeklyReco: true, categories: ['Instructional Alignment', 'Updated Material']}));
-// store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Arhuella', email: 'daniel.arhuella3@upr.edu', weeklyReco: false, categories: ['Updated Material', 'Technology Integration']}));
-// store.dispatch(addUser({id: uuid(), name: 'Felipe', lastName: 'Ortiz', email: 'felipe.ortiz@gmail.com', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
+store.dispatch(addUser({id: uuid(), name: 'Pablo', lastName: 'Picasso', email: 'pablo.picasso@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
+store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Rodriguez', email: 'daniel.rodriguez44@upr.edu', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
+store.dispatch(addUser({id: uuid(), name: 'Arsalan', lastName: 'Leeway', email: 'ars.leway@upr.edu', weeklyReco: false, categories: ['Technology Integration', 'Teaching Strategies']}));
+store.dispatch(addUser({id: uuid(), name: 'Mary', lastName: 'Kate', email: 'mary.kate@capone.edu', weeklyReco: true, categories: ['Instructional Alignment', 'Updated Material']}));
+store.dispatch(addUser({id: uuid(), name: 'Daniel', lastName: 'Arhuella', email: 'daniel.arhuella3@upr.edu', weeklyReco: false, categories: ['Updated Material', 'Technology Integration']}));
+store.dispatch(addUser({id: uuid(), name: 'Felipe', lastName: 'Ortiz', email: 'felipe.ortiz@gmail.com', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
 
 //Generating School Test Data
 store.dispatch(addSchool({id: uuid(), name: 'Colegio San Palomar', location: 'Via Roma, LU-67, Paseo del Indio, Yabucoa, PR', type: 'Private', numAccounts: 10}));

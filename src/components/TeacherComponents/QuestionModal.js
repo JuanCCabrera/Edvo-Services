@@ -22,6 +22,7 @@ const QuestionModal = (props) => (
     className="modal-card"
     >
     <div className="container">
+    {console.log("QUESTION MODAL PROPS: ",props.question.favorite)}
         <div className="row">
         {
             //Quesiton subject
@@ -34,19 +35,20 @@ const QuestionModal = (props) => (
                 //Favoriting star
             }
             <div className="badge clickable" style={{backgroundColor: '#5933AA', marginTop: '1rem'}} onClick={() =>  {
-                
-                let favorite = !props.question.favorite
+                console.log("BEFORE: ",props.question.favorite);
+                const favoriteQuestion = !props.question.favorite;
+                console.log("AFTER: ",favoriteQuestion);
                 axios.post('http://localhost:3000/teacher/questions/favorite',{
                         askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
-                        favorite: favorite
+                        favorite: !favoriteQuestion
                     },{
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                     }).then(response =>{
                     
-                if(props.question.favorite === 0){
+                if(props.question.favorite == true){
                     props.dispatch(addFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
                 }else{
-                    props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
+                    props.dispatch(removeFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
                 }});
             }}>
             <div className="col-sm-2">
@@ -98,7 +100,16 @@ const QuestionModal = (props) => (
             name="rate"
             starCount={5}
             value={props.question.rate}
-            onStarClick={(nextValue, prevValue, name) => {props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))}}
+            onStarClick={(nextValue, prevValue, name) => {
+                axios.post('http://localhost:3000/teacher/questions/rate',{
+                    askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
+                    rate: nextValue
+                },{
+                    headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                }).then(response =>{
+                    console.log("AFTER RATING Q: ", response);
+                props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))})}
+            }
         />
         <br/>
         {

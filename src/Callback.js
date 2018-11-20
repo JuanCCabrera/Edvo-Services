@@ -26,10 +26,10 @@ class Callback extends Component {
                 route = '/'+localStorage.getItem('role')+'/home';
             })
             .catch(error => {
-                console.log("ERROR CALLBACK REQ: ", error);
                 if(error.response.status == 403)
                     route = '/register';
                 else{
+                    localStorage.clear();
                     auth0Client.signIn();
                 }
 
