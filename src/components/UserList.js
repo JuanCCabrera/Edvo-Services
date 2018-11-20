@@ -7,6 +7,7 @@ import axios from 'axios';
 import uuid from 'uuid';
 import getVisibleUsers from '../selectors/users';
 import auth0Client from '../Auth';
+import moment from 'moment';
 
 /**
  * List of users displayed in AppUsers and Assign Recommendations page. 
@@ -32,7 +33,7 @@ class UserList extends React.Component{
             response.data.users.forEach(element => {
                 console.log("NEW USER: ", element);
                 this.props.dispatch(addUser({id: element.userid, name: element.name,
-                    email: element.email, lastname: element.lastname, 
+                    email: element.email, lastName: element.lastname, 
                     weeklyReco: element.weeklyReco, 
                     categories: element.categories}));
             });
@@ -85,7 +86,15 @@ class UserList extends React.Component{
                 {this.state.displayedUsers.map((user) => {
                     return <UserListItem key={user.id} user={user} 
                     userRemoval={() => {
-                        this.props.dispatch(removeUser({id: user.id}));
+                        console.log("REMOVING USER NOW!!!!!!!", user.id)
+                        axios.post('http://localhost:3000/admin/settings/users/remove',{
+                            subToRemove: user.id
+                },{
+                    headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                }).then(response =>{
+                    console.log("AFTER EMOVING USER: ", response);
+                    this.props.dispatch(removeUser({id: user.id}))}
+                        );
                     }}/>
                 })}
                 <br/>
