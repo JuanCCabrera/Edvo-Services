@@ -87,6 +87,7 @@ class AskQuestionForm extends React.Component{
                     value = {this.state.subject}
                     maxLength="100"
                     onChange = {this.onSubjectChange} onBlur={() => {
+                        this.setState(() => ({subject: this.state.subject.trim()}));
                         if(this.state.subject && this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
@@ -125,6 +126,7 @@ class AskQuestionForm extends React.Component{
                     value = {this.state.body}
                     onChange = {this.onBodyChange}
                     onBlur={() => {
+                        this.setState(() => ({body: this.state.body.trim()}));
                         if(this.state.body && this.state.body.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({bodyError: 'The question field must contain text.'}));

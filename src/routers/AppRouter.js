@@ -52,6 +52,8 @@ import {clearUserModal} from '../actions/userModal';
 import AssignmentRecommendationModal from '../components/AdminComponents/AssignmentRecommendationModal';
 import {clearAssignmentRecommendationModal} from '../actions/assignmentRecommendationModal';
 
+import CreateCouponForm from '../components/AdminComponents/CreateCouponForm';
+
 /**
  * AppRouter - Main routing component of the application. Contains a header element, two modals which 
  * are invisible unless a recommendation or question is selected, a footer, and a set of conditionally rendered pages.
@@ -131,6 +133,7 @@ const AppRouter = (props) => (
                 <Route exact path='/admin/settings/users/add' component={CreateUserForm}/>
                 <Route exact path='/admin/settings/schools' component={AppSchools}/>
                 <Route exact path='/admin/settings/schools/add' component={CreateInstitutionForm}/>
+                <Route exact path='/admin/settings/coupons' component={CreateCouponForm}/>
                 <Route path='/admin/home' component={AdminHome}/>
 
                 {

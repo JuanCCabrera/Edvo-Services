@@ -67,6 +67,7 @@ class ManageRecommendationsListItem extends React.Component{
                 //Recommendation header
             }
                 <p className="item__body">{this.props.reco.header}</p>
+            
             {
                 //Link to edit the recommendation item
             }
@@ -115,9 +116,6 @@ class ManageRecommendationsListItem extends React.Component{
                     </button>
                     </div>
                     }
-
-                
-            
             </div>
         );
         }

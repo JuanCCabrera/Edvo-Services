@@ -45,7 +45,7 @@ store.dispatch(addSchool({id: uuid(), name: 'Colegio San Tomas', location: 'Via 
 
 //Generating Admin/Mentor Recommendations Test Data
 
-store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Test data', multimedia: 'none', description: '#1', updatedMaterial: true}));
+store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Are you sure you would like to remove this recommendation? This is only test data. Hello. Please read this out loud, but don\'t have too much fun. Stop now. I think this is enough information. Bye now!', multimedia: 'none', description: '#1', updatedMaterial: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'Integrating Technology', header: 'Test data', multimedia: 'none', description: '#4', technologyIntegration: true, updatedMaterial: true}));

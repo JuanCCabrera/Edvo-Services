@@ -10,13 +10,13 @@ const RecommendationsControl = (props) => (
     <div className="background-home">
         <div className = "container">
             <div className="row">
-                <div className="col-sm-2">
+                <div className="col-sm-1">
                     <div className="text-center well">
                         <RecommendationButtonList/>
                     </div>
                 </div>
                 <div className="col-sm-1"/>
-                <div className="col-sm-9">
+                <div className="col-sm-10">
                     <AssignRecommendations/>
                 </div>
             </div>

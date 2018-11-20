@@ -228,6 +228,7 @@ class CreateUserForm extends React.Component{
                                             <br/>
                                             <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
                                                 //Check if the name field only contains spaces. 
+                                                this.setState(() => ({name: this.name.lastName.trim()}));
                                                 if(this.state.name.match(/^\s+$/)){
                                                     if(this.props.lang === 'English'){
                                                         this.setState(() => ({nameError: 'The name field must contain text.'}));
@@ -260,6 +261,7 @@ class CreateUserForm extends React.Component{
                                             <br/>
                                             <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Last Name' : 'Apellido'} onBlur={() => {
                                                 //Check if the last name field only consists of spaces. 
+                                                this.setState(() => ({lastName: this.state.lastName.trim()}));
                                                 if(this.state.lastName.match(/^\s+$/)){
                                                     if(this.props.lang === 'English'){
                                                         this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
@@ -292,7 +294,8 @@ class CreateUserForm extends React.Component{
                                     <label>Email:</label>
                                     <br/>
                                     <input type="text" className="form-control" maxLength="100" style={{width: '70%'}} placeholder = "Email" onBlur={() => {
-                                        //Check if the email field matches the expected email address format. 
+                                        //Check if the email field matches the expected email address format.
+                                        this.setState(() => ({email: this.state.email.trim()})); 
                                         if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                                             if(this.props.lang === 'English'){
                                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
@@ -521,6 +524,7 @@ class CreateUserForm extends React.Component{
                                     <br/>
                                     <input type="text" className="form-control" maxLength="30" style={{width: '40%'}} disabled={this.state.type !== 'school'} placeholder ={this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
                                         //Check if institution ID field matches expected format. 
+                                        this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                                         if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                             if(this.props.lang === 'English'){
                                                 this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));

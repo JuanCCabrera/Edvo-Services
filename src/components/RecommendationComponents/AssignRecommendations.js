@@ -17,34 +17,31 @@ import RecommendationsFilters from '../Filters/RecommendationsFilters';
             {
                 //Button to clear selection for recommendation assignment. 
             }
-            {(props.assigned.userID || props.assigned.recoID) && 
-                    <div>
-                    <button onClick={() => {
+                <div>
+                    <button disabled={!(props.assigned.userID || props.assigned.recoID)} onClick={() => {
                         props.dispatch(clearSelection());
                     }}>
                         <div className="btn btn-item">
                         {props.lang === 'English' ? 'Clear Selection' : 'Deshacer Selección'}
                         </div>
                     </button>
-                    </div>
-            }
+                </div>
         </div>
         <div>
             {
                 //Button to assign recommendation based on the selected user and recommendation. 
             }
-            {(props.assigned.userID && props.assigned.recoID) && 
-                <div>
-                    <button onClick={() => {
-                        props.dispatch(assignRecommendation());
-                    }}>
-                        <div className="btn btn-item">
-                            {props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'} 
-                            <i className="fa fa-arrow-right" aria-hidden="true" style={{marginLeft: '1rem'}}></i>
-                        </div>
-                    </button>  
-                </div>
-            }
+            <div>
+                <button disabled={!(props.assigned.userID && props.assigned.recoID)} onClick={() => {
+                    props.dispatch(assignRecommendation());
+                }}>
+                    <div className="btn btn-item">
+                        {props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'} 
+                        <i className="fa fa-arrow-right" aria-hidden="true" style={{marginLeft: '1rem'}}></i>
+                    </div>
+                </button>  
+            </div>
+            
         </div>
     </div>
         <div className="row">

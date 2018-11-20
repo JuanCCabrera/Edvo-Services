@@ -21,10 +21,10 @@ class AssignmentRecommendationModal extends React.Component{
                 >
                 <div>
                     <h1 className="form__title">{this.props.recoSpec.title}</h1>
-                    <h2>{this.props.recoSpec.header}</h2>
+                    <h4>{this.props.recoSpec.header}</h4>
                     <p>{this.props.recoSpec.description}</p>
                     <hr/>
-                    <h3>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    <h3 style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.recoSpec.subject}</p>
                     <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.recoSpec.format}</p>
                     <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.recoSpec.language}</p>
@@ -50,11 +50,14 @@ class AssignmentRecommendationModal extends React.Component{
                     </div>
                 
                     <br/>
+                    <div style={{textAlign: 'center'}}>
                     {
                         //Button to close modal
                     }
-                    <div className="btn btn-item">
-                        <button onClick = {this.props.clearSelectedRecommendation}>{this.props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
+                    
+                        <div className="btn btn-item">
+                            <button onClick = {this.props.clearSelectedRecommendation}>{this.props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
+                        </div>
                     </div>
                 </div>
                 </Modal>

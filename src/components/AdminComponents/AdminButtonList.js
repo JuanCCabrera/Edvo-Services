@@ -41,6 +41,17 @@ const AdminButtonList = (props) => (
                 </p>
             </div>
         </Link>
+        <br/>
+        {
+            //Link to Create Coupon page
+        }
+        <Link to={"/admin/settings/coupons"}>
+            <div className="nav__button">
+                <p className="nav__button__text">
+                    {props.lang === 'English' ? 'Create Coupon' : 'Crear Cupón'}
+                </p>
+            </div>
+        </Link>
     </div>
 );
 

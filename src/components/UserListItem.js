@@ -48,6 +48,8 @@ class UserListItem extends React.Component{
             })}
             </span>
             <br/>
+
+            
             {
                 //User removal button
             }

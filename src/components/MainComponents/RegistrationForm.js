@@ -93,7 +93,7 @@ class RegistrationForm extends React.Component{
 
              globalError: false,
 
-             progress: "25",
+             progress: "10",
 
             currPage: 1
         };
@@ -478,15 +478,15 @@ class RegistrationForm extends React.Component{
     //Once used, each one will take the user to a specific page (currPage). These are accessed by buttons on the bottom of the Registration page. 
 
     toPageOne = (e) => {
-        this.setState(() => ({currPage: 1, progress: "25"}));
+        this.setState(() => ({currPage: 1, progress: "10"}));
     }
 
     toPageTwo = (e) => {
-        this.setState(() => ({currPage: 2, progress: "50"}));
+        this.setState(() => ({currPage: 2, progress: "40"}));
     }
 
     toPageThree = (e) => {
-        this.setState(() => ({currPage: 3, progress: "75"}));
+        this.setState(() => ({currPage: 3, progress: "70"}));
     }
 
     toPageFour = (e) => {
@@ -502,9 +502,11 @@ class RegistrationForm extends React.Component{
             this.setState(() => ({secError: true, globalError: false}));
         }
         //Display default error message if there are required fields left blank. 
-        else if(!this.state.name || !this.state.lastName || !this.state.location || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
+        if(!this.state.name || !this.state.lastName || !this.state.location || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
             this.setState(() => ({globalError: true, secError: false}));
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
+            this.setState(() => ({globalError: true, secError: false}));
+        }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError || this.state.subjectError || this.state.topicError || this.state.schoolNameError || this.state.schoolLocationError || this.state.institutionIDError || this.state.timeEmployedError){
             this.setState(() => ({globalError: true, secError: false}));
         }else{
             this.props.dispatch(setSuccessModal());
@@ -514,14 +516,37 @@ class RegistrationForm extends React.Component{
 
     render(){
         return(
-            <div className="big-card">
+            <div>
             <div id="top"/>
+            <div className="big-card">
             <form onSubmit={this.onSubmit}>
             {
                 //Progress Bar
             }
             <div className="text-center">
-            <Line percent={this.state.progress} strokeWidth="1.2" strokeColor="#5933AA" style={{marginTop: '2rem', width: '90%'}}/>
+            
+            <Line percent={this.state.progress} strokeWidth="1.2" strokeColor="#5933AA" style={{marginTop: '0.2rem', width: '90%'}}/>
+            {
+                /* Progress bar numbers
+            
+            <div className="row" style={{marginBottom: '0', paddingBottom: '0', color: '#5933aa'}}>
+                <div className="col-xs-3 col-sm-3">
+                1
+                </div>
+                <div className="col-xs-3 col-sm-3">
+                2
+                </div>
+                <div className="col-xs-3 col-sm-3">
+                3
+                </div>
+                <div className="col-xs-3 col-sm-3">
+                4
+                </div>
+            </div>
+            
+            */
+            }
+
             </div>
             {
                 //Page one
@@ -541,7 +566,8 @@ class RegistrationForm extends React.Component{
                             <span className="req">*</span>
                             <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                             <input type = "text" className="form-control" placeholder = {this.props.lang === 'English' ? 'Name' : 'Nombre'} maxLength="100" value = {this.state.name} onChange = {this.onNameChange} onBlur={() => {
-                                //Check if the name field only contains spaces. 
+                                //Check if the name field only contains spaces.  
+                                this.setState(() => ({name: this.state.name.trim()}));
                                 if(this.state.name.match(/^\s+$/)){
                                     if(this.props.lang === 'English'){
                                         this.setState(() => ({nameError: 'The name field must contain text.'}));
@@ -573,6 +599,7 @@ class RegistrationForm extends React.Component{
                             <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                             <input type = "text" className="form-control" placeholder = {this.props.lang === 'English' ? 'Last Name' : 'Apellido'} maxLength="100" value = {this.state.lastName} onChange = {this.onLastNameChange} onBlur={() => {
                                 //Check if the last name field only consists of spaces. 
+                                this.setState(() => ({lastName: this.state.lastName.trim()}));
                                 if(this.state.lastName.match(/^\s+$/)){
                                     if(this.props.lang === 'English'){
                                         this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
@@ -688,7 +715,8 @@ class RegistrationForm extends React.Component{
                     <br/>
                     {
                         //Location of employment input field
-                    } 
+                        /*
+                    
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Location of Employment' : 'Localización de Empleo'}:</label>
                     <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Location' : 'Localización'} maxLength="150" value={this.state.location} onChange={this.onLocationChange} onBlur={() => {
@@ -711,6 +739,8 @@ class RegistrationForm extends React.Component{
                             <br/>
                         </div>}
                     <br/>
+                        */
+                    }
                 {
                     //Button to change page to page 2
                 }
@@ -740,7 +770,8 @@ class RegistrationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'}:</label>
                     <input type="text"  className="form-control" placeholder= {this.props.lang === 'English' ? 'Subject' : 'Tema'} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
-                        //Check to see if the subject is only composed of spaces. 
+                        //Check to see if the subject is only composed of spaces.
+                        this.setState(() => ({subject: this.state.subject.trim()})); 
                         if(this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
@@ -871,8 +902,8 @@ class RegistrationForm extends React.Component{
                             }
                             {this.state.topicsTaught.length > 1 && <div style={{display: 'inline'}}>
                             <button onClick={this.deleteTopic(index)}>
-                                <span>
-                                    <i className="fa fa-window-close"></i>
+                                <span style={{color: '#b33a3a'}} title={this.props.lang === 'English' ? 'Delete topic' : 'Remover tema'}>
+                                    <i className="fa fa-window-close fa-lg"></i>
                                 </span>
                             </button>
                             </div>}
@@ -939,7 +970,8 @@ class RegistrationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'}:</label>
                     <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'} value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
-                        //Check to see if the subject is only composed of spaces. 
+                        //Check to see if the subject is only composed of spaces.
+                        this.setState(() => ({schoolName: this.state.schoolName.trim()})); 
                         if(this.state.schoolName.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({schoolNameError: 'The school name field must contain text.'}));
@@ -967,6 +999,7 @@ class RegistrationForm extends React.Component{
                     <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'}:</label>
                     <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'} value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces. 
+                        this.setState(() => ({schoolLocation: this.state.schoolLocation.trim()}));
                         if(this.state.schoolLocation.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({schoolLocationError: 'The school location field must contain text.'}));
@@ -992,6 +1025,7 @@ class RegistrationForm extends React.Component{
                     <label>{this.props.lang === 'English' ? 'Institution ID (Optional)' : 'Identificación de institución (Opcional)'}:</label>
                     <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} value={this.state.institutionID} onChange={this.onInstitutionIDChange} onBlur={() => {
                         //Check if institution ID field matches expected format. 
+                        this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                         if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
@@ -1256,6 +1290,7 @@ class RegistrationForm extends React.Component{
                 </div>}
                 </form>
             </div>
+        </div>
         );
     }
 }
