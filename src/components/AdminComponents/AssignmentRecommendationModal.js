@@ -24,27 +24,27 @@ class AssignmentRecommendationModal extends React.Component{
                     <h2>{this.props.recoSpec.header}</h2>
                     <p>{this.props.recoSpec.description}</p>
                     <hr/>
-                    <h3>Class Information</h3>
-                    <p>Subject: {this.props.recoSpec.subject}</p>
-                    <p>Format: {this.props.recoSpec.format}</p>
-                    <p>Language: {this.props.recoSpec.language}</p>
-                    <p>Level: {this.props.recoSpec.level}</p>
-                    <p>Group size: {this.props.recoSpec.size} students</p>
-                    <p>Class Topics:</p>
+                    <h3>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.recoSpec.subject}</p>
+                    <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.recoSpec.format}</p>
+                    <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.recoSpec.language}</p>
+                    <p>{this.props.lang === 'English' ? 'Level' : 'Nivel'}: {this.props.recoSpec.level}</p>
+                    <p>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}: {this.props.recoSpec.size} {this.props.lang === 'English' ? 'students' : 'estudiantes'}</p>
+                    <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}:</p>
                         <ul style={{listStyleType: 'circle'}}>
                             {this.props.recoSpec.topics[0] && <li>{this.props.recoSpec.topics[0]}</li>}
                             {this.props.recoSpec.topics[1] && <li>{this.props.recoSpec.topics[1]}</li>}
                             {this.props.recoSpec.topics[2] && <li>{this.props.recoSpec.topics[2]}</li>}
                         </ul>
                     <div class="panel panel-default" style={{maxWidth: '25rem'}}>
-                        <div class="panel-heading"><h4 style={{margin: '0'}}>Challenge Categories:</h4></div>
+                        <div class="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Challenge Categories' : 'Categorías de Retos'}:</h4></div>
                         <div class="panel-body">
                             <ul style={{listStyleType: 'circle'}}>
-                                {this.props.recoSpec.teachingStrategies && <li>Teaching Strategies</li>}
-                                {this.props.recoSpec.updatedMaterial && <li>Updated Material</li>}
-                                {this.props.recoSpec.timeManagement && <li>Time Management</li>}
-                                {this.props.recoSpec.technologyIntegration && <li>Technology Integration</li>}
-                                {this.props.recoSpec.instructionAlignment && <li>Instructional Alignment</li>}
+                                {this.props.recoSpec.teachingStrategies && <li>{this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'}</li>}
+                                {this.props.recoSpec.updatedMaterial && <li>{this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'}</li>}
+                                {this.props.recoSpec.timeManagement && <li>{this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}</li>}
+                                {this.props.recoSpec.technologyIntegration && <li>{this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'}</li>}
+                                {this.props.recoSpec.instructionAlignment && <li>{this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineación Curricular'}</li>}
                             </ul>
                         </div>
                     </div>
