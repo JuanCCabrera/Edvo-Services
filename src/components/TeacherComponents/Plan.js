@@ -36,7 +36,6 @@ class Plan extends React.Component{
     applyCoupon = (e) => {
         e.preventDefault();
 
-        console.log('apply coupon ' + this.state.coupon);
         //TO-DO Integrate with the database
     }
 

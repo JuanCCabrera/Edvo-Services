@@ -58,7 +58,6 @@ class AskQuestionForm extends React.Component{
     onSubmit = (e) => {
         //Prevent page refresh
         e.preventDefault();
-        console.log(this.state);
         //Enable error message if there is a missing form field. 
         if(!this.state.subject || !this.state.body){
             this.setState(() => ({askQuestionError: true})); 

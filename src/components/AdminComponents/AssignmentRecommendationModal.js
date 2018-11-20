@@ -65,7 +65,6 @@ class AssignmentRecommendationModal extends React.Component{
 
 //Map value indicating favorite status, selected recommendation information and current language state to component properties. 
 const mapStateToProps = (state) => {
-    console.log(state.assignmentRecommendationModal);
     return {
         recoInfo: state.assignmentRecommendationModal,
         recoSpec: state.assignmentRecommendationModal.selectedAssignmentRecommendation,

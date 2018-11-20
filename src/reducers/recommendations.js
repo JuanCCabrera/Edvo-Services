@@ -20,7 +20,6 @@ const recommendationsReducer = (state = recommendationsReducerDefaultState, acti
         //Update a recommendation with new information obtained from the Edit Recommendation page. 
         case 'EDIT_RECOMMENDATION':
         return state.map((recommendation) => {
-            console.log(recommendation);
             if (recommendation.id === action.id) {
                 return {
                     ...recommendation,

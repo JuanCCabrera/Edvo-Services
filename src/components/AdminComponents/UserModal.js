@@ -23,10 +23,10 @@ class UserModal extends React.Component{
                     <h1 className="form__title">{this.props.userSpec.name} {this.props.userSpec.lastName}</h1>
                     <p>Email: {this.props.userSpec.email}</p>
                     <h3>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
-                    <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.recoSpec.subject}: {this.props.userSpec.subject}</p>
-                    <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.recoSpec.format}: {this.props.userSpec.format}</p>
-                    <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.recoSpec.language}: {this.props.userSpec.language}</p>
-                    <p>{this.props.lang === 'English' ? 'Level' : 'Nivel'}: {this.props.recoSpec.level}: {this.props.userSpec.level}</p>
+                    <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.userSpec.subject}</p>
+                    <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.userSpec.format}</p>
+                    <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.userSpec.language}</p>
+                    <p>{this.props.lang === 'English' ? 'Level' : 'Nivel'}: {this.props.userSpec.level}</p>
                     <p>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}: {this.props.userSpec.groupsize} {this.props.lang === 'English' ? 'students' : 'estudiantes'}</p>
                     <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}:</p>
                         <ul style={{listStyleType: 'circle'}}>
@@ -35,9 +35,9 @@ class UserModal extends React.Component{
                             {this.props.userSpec.topicc && <li>{this.props.userSpec.topicc}</li>}
                         </ul>
                     <hr/>
-                    <div class="panel panel-default" style={{maxWidth: '25rem'}}>
-                        <div class="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Available Resources' : 'Recursos Disponibles'}</h4></div>
-                        <div class="panel-body">
+                    <div className="panel panel-default" style={{maxWidth: '25rem'}}>
+                        <div className="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Available Resources' : 'Recursos Disponibles'}</h4></div>
+                        <div className="panel-body">
                             <ul style={{listStyleType: 'circle'}}>
                                 {this.props.userSpec.moodle && <li>Moodle</li>}
                                 {this.props.userSpec.googleClassroom && <li>Google Classroom</li>}
@@ -72,7 +72,6 @@ class UserModal extends React.Component{
 
 //Map value indicating favorite status, selected recommendation information and current language state to component properties. 
 const mapStateToProps = (state) => {
-    console.log(state.userModal.selectedUser);
     return {
         userInfo: state.userModal,
         userSpec: state.userModal.selectedUser,
