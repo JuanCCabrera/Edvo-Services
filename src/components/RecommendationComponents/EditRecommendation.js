@@ -58,7 +58,7 @@ const EditRecommendation = (props) => (
 const mapStateToProps = (state, props) => {
     return{
         recommendation: state.recommendations.find((reco) => {
-            return reco.id === props.match.params.id;
+            return reco.id == props.match.params.id;
         }),
         lang: state.language.lang
     };

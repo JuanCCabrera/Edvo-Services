@@ -33,8 +33,8 @@ class Plan extends React.Component{
             this.setState({couponShow: false, status});
         })
         .then(response => {
-            this.setState({status: response.data.subscription[0].status});
-            console.log("PLANS RESPONSE: ", response);
+            console.log("PLANS RESPONSE: ", response.data.subscription.status);
+            this.setState({status: response.data.subscription.status});
         });
     }
 
@@ -67,8 +67,7 @@ class Plan extends React.Component{
 
     resubscribeToPlan = (e) => {
         e.preventDefault();
-        console.log('resubscribe to plan');
-        //TO-DO: Integrate with the database
+        this.props.history.replace('/teacher/settings/plans/payment');
     }
 
     //Cancelling a plan is not available. Integration with the database is required. 
@@ -126,7 +125,7 @@ class Plan extends React.Component{
                 {
                     //Cancel plan button
                 }
-                {this.props.plan.status === 'active' && this.props.lang === 'English' && <button onClick={this.cancelPlan}>
+                {this.state.status === 'active' && this.props.lang === 'English' && <button onClick={this.cancelPlan}>
                     <div className="btn btn-item">
                         Cancel Plan
                     </div>
@@ -134,7 +133,7 @@ class Plan extends React.Component{
                 {
                     //Cancel Plan button (translation)
                 }
-                {this.props.plan.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.cancelPlan}>
+                {this.state.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.cancelPlan}>
                     <div className="btn btn-item">
                         Cancelar Plan
                     </div>
@@ -142,7 +141,7 @@ class Plan extends React.Component{
                 {
                     //Resubscribe button
                 }
-                {this.props.plan.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.resubscribeToPlan}>
+                {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.resubscribeToPlan}>
                 <div className="btn btn-item">
                         Resubscribe
                     </div>
@@ -151,7 +150,7 @@ class Plan extends React.Component{
                 {
                     //Resubscribe button (translation)
                 }
-                {this.props.plan.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.resubscribeToPlan}>
+                {this.state.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.resubscribeToPlan}>
                 <div className="btn btn-item">
                         Resuscribirse
                     </div>
@@ -160,23 +159,23 @@ class Plan extends React.Component{
                 {
                     //Coupon code input field
                 }
-                <div style={{marginTop: '3rem'}}>
+                {this.state.status === 'active' && <div style={{marginTop: '3rem'}}>
                 {this.props.lang === 'English' ? <h4>Coupon code:</h4>: <h4>Código de cupón:</h4>}
                 <input type="text" className="form-control" style={{width: '80%'}} value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
                 {
-                    //Submit coupon code button
+                    console.log("THE STATE OF STATUS: ", this.state.status)
                 }
-                <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>
+                {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>
                     <div className="btn btn-item">
                         {this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}
                     </div>
-                    </button>
+                    </button>}
                 <br/>
                 {/* {this.state.status === 'active' && this.props.lang === 'English' && <h3>Coupon Code:</h3>}
                 {this.state.status === 'active' && <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>}
                 {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>}
                 <br/> */}
-                </div>
+                </div>}
                 </div>
                 </div>
             </div>

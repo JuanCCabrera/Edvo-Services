@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 import TeacherRecommendationsListItem from './TeacherRecommendationsListItem';
-import { loadTeacherRecommendation, unloadTeacherRecommendations } from '../../actions/teacherRecommendations';
+import { addFavoriteRecommendation, loadTeacherRecommendation, unloadTeacherRecommendations } from '../../actions/teacherRecommendations';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import getVisibleTeacherRecommendations from '../../selectors/teacherRecommendations';
@@ -35,11 +35,18 @@ class TeacherRecommendationsList extends React.Component{
         })
         .then(response => {
             response.data.recommendations.forEach(element => {  
-                console.log("RECOM RESPONSE: ", element.rate);        
+                console.log("RECOM RESPONSE: ", element);        
                 console.log("ACTION OUTPUT: ",this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, 
                 header: element.header, location: element.location, 
                 description: element.description, 
                 multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate})));
+                if(element.favorite == true){
+                    console.log("FAVORITE LOADING", element);
+                    this.props.dispatch(addFavoriteRecommendation({recoID: element.recomid, title: element.title, 
+                        header: element.header, location: element.location, 
+                        description: element.description, 
+                        multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate}));
+                }
 
          });
     });

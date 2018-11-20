@@ -27,7 +27,7 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
-    let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
+    let {token} = await this.props.stripe.createToken({name: auth0Client.getProfile().email});
     console.log("ID TOKEN IN CHECKOUT: ", auth0Client.getIdToken());
     await axios.post('http://localhost:3000/plans/',
         {

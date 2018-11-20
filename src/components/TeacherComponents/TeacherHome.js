@@ -92,7 +92,7 @@ class TeacherHome extends React.Component {
                                     <p>Días en Plataforma</p>
                                     
                                 </div>}
-                                <p className="big__teacher__home__text">{props.teacherMetrics.daysInPlatform}</p>
+                                <p className="big__teacher__home__text">{this.props.teacherMetrics.daysInPlatform}</p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 <NavLink to="/teacher/recommendations" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
-                                    {props.lang === 'English' ? 
+                                    {this.props.lang === 'English' ? 
                                     <div>
                                         <p>Recommendations Read</p>
                                     </div>
@@ -111,11 +111,11 @@ class TeacherHome extends React.Component {
                                     <div>
                                         <p>Recomendaciones Leídas</p>
                                     </div>}
-                                    <p className="big__teacher__home__text">{props.teacherRecommendations.filter((reco) => {
+                                    <p className="big__teacher__home__text">{this.props.teacherRecommendations.filter((reco) => {
                                         return reco.read === true;
                                     }).length}</p>
 
-                                    <button className="btn btn-item">{props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
+                                    <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
                                 </NavLink>
                             </div>
                         </div>
@@ -126,19 +126,19 @@ class TeacherHome extends React.Component {
                                 //Number of questions asked (Acts as link to Teacher Questions page)
                             }
                             <NavLink to="/teacher/questions" activeClassName="is-active" exact={true} style={{textDecoration: 'none', color: 'black'}}>
-                                {props.lang === 'English' ? 
+                                {this.props.lang === 'English' ? 
                                 <div>
                                     <p>Questions Asked</p>
                                     <p className="big__teacher__home__text">
-                                        {props.teacherQuestions.length}
+                                        {this.props.teacherQuestions.length}
                                     </p>
                                 </div>
                                 : 
                                 <div>
                                     <p>Preguntas Hechas</p>
-                                    <p className="big__teacher__home__text">{props.teacherQuestions.length}</p>
+                                    <p className="big__teacher__home__text">{this.props.teacherQuestions.length}</p>
                                 </div>}
-                                <button className="btn btn-item">{props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
+                                <button className="btn btn-item">{this.props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
                             </NavLink>
                         </div>
                     </div>
@@ -150,7 +150,7 @@ class TeacherHome extends React.Component {
                                 //Recent Recommendations List
                             }
                             <div>
-                                {props.lang === 'English' ? 
+                                {this.props.lang === 'English' ? 
                                     <div className="text-center"> 
                                         <p style={{margin: '2rem 0'}}>
                                             My Most Recent Recommendations
@@ -176,7 +176,7 @@ class TeacherHome extends React.Component {
                                 //Top Rated Recommendations List
                             }
                             <div>
-                                {props.lang === 'English' ? 
+                                {this.props.lang === 'English' ? 
                                     <div className="text-center"> 
                                         <p style={{margin: '2rem 0'}}>
                                             My Top-Rated Recommendations
@@ -202,7 +202,7 @@ class TeacherHome extends React.Component {
                                 //Ask Question Form
                             }
                             <div>
-                                {props.lang === 'English' ? 
+                                {this.props.lang === 'English' ? 
                                     <div className="text-center"> 
                                         <p style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
                                             Ask a Question

@@ -28,8 +28,8 @@ class RecommendationModal extends React.Component{
     >
     <div className="container">
         <div className="row">
-        {
-            //Recommendation title
+        {            
+            console.log("RECOMMEDNTAION MODAL: ", this.props)
         }
             <div className="col-lg-10 text-left">
                 <h2>{this.props.recommendation.title}</h2>
@@ -49,13 +49,25 @@ class RecommendationModal extends React.Component{
                 starCount={1}
                 value={this.props.isFavorite}
                 onStarClick = {(nextValue, prevValue, name) => {
-                    if(prevValue === 0){
+                    let favorite = false
+                    if(prevValue == 0)
+                        favorite = true
+                    console.log("IM CLICKING TO FAVPREV: ", prevValue);
+                    console.log("IM CLICKING TO FAVBNEXT: ", nextValue);
+                    axios.post('http://localhost:3000/teacher/recommendations/favorite',{
+                        recomid: this.props.recommendation.recoID,
+                        favorite: favorite
+                    },{
+                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                    }).then(response =>{
+                    if(prevValue == 0){
                         //Add to favorites list 
+                        console.log("IM FAVORITIN: ", this.props.recommendation);
                         this.props.dispatch(addFavoriteRecommendation(this.props.recommendation));
                     }else{
                         //Remove from favorites list through filter
                         this.props.dispatch(removeFavoriteRecommendation({recoID: this.props.recommendation.recoID}));
-                    }
+                    }});
                 }}
             />
             </div>
