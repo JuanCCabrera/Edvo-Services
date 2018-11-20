@@ -238,6 +238,7 @@ class CreateRecommendationForm extends React.Component{
 
     //Change correctOption in local state
     setCorrectOption = (choiceIndex) => (e) => {
+        console.log(choiceIndex);
         e.preventDefault();
         this.setState(() => ({correctOption: choiceIndex}));
     }

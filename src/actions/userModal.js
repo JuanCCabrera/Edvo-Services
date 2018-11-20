@@ -1,16 +1,13 @@
-//User Action Generators
-
 /**
- * addUser - Generates an object indicating to the central controller that a user must be added to the User List. 
- * @param {*} param0 - Object containing a user ID, name, last name, user email, a boolean indicating whether a user has received a weekly recommendation during the current week (has received one = true), and a list of categories that the user marked during his or her registration process. 
+ * selectRecommendation - Generates an object indicating to the central controller to select a recommendation and display its information on a Modal. 
+ * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, multimedia template, date in which it was assigned, boolean indicating whether it has been read or not (read = true), and an associated rating
  */
-export const addUser = (
+export const selectUserToDisplay = (
     {
-        id = 'test_id',
-        name = 'test_name',
-        lastName = 'test_last_name',
-        email = 'aaa@aaa.com',
-        subject = 'Test Subject',
+        name = '',
+        lastName = '',
+        email = '',
+        subject = '',
         format = 'classroom',
         language = 'spanish',
         level = 'Kindergarden - 3rd grade',
@@ -32,12 +29,9 @@ export const addUser = (
         smartboard = false, 
         smartpencil = false , 
         speakers = false,
-        weeklyReco = false,
-        categories = []
     } = {}) => ({
-        type: 'ADD_USER',
-        user: {
-            id,
+        type: 'SELECT_USER_TO_DISPLAY',
+        selectedUser:{
             name,
             lastName,
             email,
@@ -63,18 +57,14 @@ export const addUser = (
             smartboard, 
             smartpencil , 
             speakers,
-            weeklyReco,
-            categories
         }
 });
 
-/**
- * removeUser - Generates an object indicating to the central controller that a user with a specified ID must be removed from the User List. 
- * @param {*} param0 - Object containing a user's ID
- */
-export const removeUser = ({id} = {}) => ({
-    type: 'REMOVE_USER',
-    id: id
+export const setUserModal = () => ({
+    type: 'TOGGLE_USER_MODAL'
 });
 
+export const clearUserModal = () => ({
+    type: 'CLEAR_USER_MODAL'
+});
 

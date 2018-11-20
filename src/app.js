@@ -78,6 +78,7 @@ store.dispatch(addSchool({id: uuid(), name: 'Colegio San Alberto', location: 'Vi
 store.dispatch(addSchool({id: uuid(), name: 'Colegio San Tomas', location: 'Via Altra, IU-97, Paseos del Alma, Toa Alta, PR', type: 'Public', numAccounts: 2000}));
 
 //Generating Admin/Mentor Recommendations Test Data
+
 store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Test data', multimedia: 'none', description: '#1', updatedMaterial: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
 store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));

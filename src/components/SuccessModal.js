@@ -21,7 +21,7 @@ const SuccessModal =(props) => (
                 <div className="text-center">
                     <div className="card-title font-weight-bold" style={{color: 'white'}}>
                         <div style={{fontSize:'4rem'}}>
-                            {props.lang === 'English' ? 'Success!' : 'Éxito!'}
+                            {props.lang === 'English' ? 'Success!' : '¡Éxito!'}
                         </div> 
                         {props.lang === 'English' ? 'The action was completed successfully.' : 'La acción fue completada exitosamente.'}
                     </div>

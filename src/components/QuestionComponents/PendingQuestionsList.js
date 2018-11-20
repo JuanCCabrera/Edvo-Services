@@ -86,7 +86,7 @@ class PendingQuestionsList extends React.Component {
                 //Pagination component
             }
                 <div className="text-center">
-                {(this.props.questions.length !== 0) &&
+                {(this.props.questions.length > 5) &&
                     <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.itemsPerPage}

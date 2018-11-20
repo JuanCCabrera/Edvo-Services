@@ -21,7 +21,7 @@ const SuccessfulEditModal =(props) => (
                 <div className="text-center">
                     <div className="card-title font-weight-bold" style={{color: 'white'}}>
                         <div style={{fontSize:'4rem'}}>
-                            {props.lang === 'English' ? 'Great!' : 'Perfecto!'}
+                            {props.lang === 'English' ? 'Great!' : '¡Perfecto!'}
                         </div> 
                         {props.lang === 'English' ? 'All changes have been saved successfully.' : 'Todos los cambios se han guardado.'}
                     </div>

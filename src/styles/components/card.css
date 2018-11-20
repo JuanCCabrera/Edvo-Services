@@ -80,14 +80,12 @@ html, body {
     /* Add shadows to create the "card" effect */
     margin: 1rem 1rem;
     padding: 0 1rem;
-    background-color:white;
+    background-color: white;
+    border: 1.2px solid #5933aa;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
     transition: 0.3s;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
     padding-bottom: 1rem; 
-    min-height: 17rem;
 }
 
 @media only screen and (max-width: 768px){
@@ -110,6 +108,18 @@ html, body {
     padding: 2px 16px;
 }
 
+.big-card-teacher-home{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    border: 1.2px solid #5933aa;
+    border-radius: 0.5rem;
+    margin-top: 2.7rem;
+    margin-bottom: 2.7rem;
+    padding-top: 3.7rem;
+    padding-bottom: 3.7rem;
+    font-weight: bold;
+}
+
 .big-card-admin-home{
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
@@ -125,6 +135,12 @@ html, body {
 
 .big__admin__text{
     font-size: 3rem;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.big__teacher__home__text{
+    font-size: 5rem;
     text-align: center;
     margin: 0.5rem;
 }

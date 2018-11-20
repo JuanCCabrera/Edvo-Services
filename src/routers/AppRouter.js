@@ -54,6 +54,9 @@ import Stripe from '../components/TeacherComponents/Stripe';
 import SuccessModal from '../components/SuccessModal';
 import SuccessfulEditModal from '../components/SuccessfulEditModal';
 
+import UserModal from '../components/AdminComponents/UserModal';
+import {clearUserModal} from '../actions/userModal';
+
 /**
  * AppRouter - Main routing component of the application. Contains a header element, two modals which 
  * are invisible unless a recommendation or question is selected, a footer, and a set of conditionally rendered pages.
@@ -75,6 +78,11 @@ const AppRouter = (props) => (
             //Question Modal (hidden until a question is selected)
         }
             <QuestionModal clearSelectedQuestion={() => props.dispatch(clearSelectedQuestion())}/>
+
+        {
+            //User Modal (hidden until user is selected)
+        }
+            <UserModal clearSelectedUser={() => props.dispatch(clearUserModal())}/>
 
         {
             //Success Modal (hidden until a major action is completed successfully)

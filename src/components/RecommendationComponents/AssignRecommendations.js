@@ -70,7 +70,7 @@ import axios from 'axios';
                     {
                         //User List with filters
                     }
-                    <UserFilters/>
+                    <UserFilters inAssignmentPage={true}/>
                     <div className="list-group">
                         <RecommendationsUserList/>
                     </div>
