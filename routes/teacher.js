@@ -1205,6 +1205,8 @@ router.post('/quizzes/take', (req,res,next)=> {
                   score = score+1;
                   //SQL Query > update quiz score
                   client.query('UPDATE quiz SET score =$1 WHERE userid =$2 AND quizid =$3',[score, data.userid, data.quizid]);
+                }else if(i == 11){
+                  client.query('UPDATE quiz SET score =$1 WHERE userid =$2 AND quizid =$3',[score, data.userid, data.quizid]);
                 }
               }
               //SQL Query > get quiz score
