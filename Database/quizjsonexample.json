@@ -1,0 +1,265 @@
+{
+    "statusCode": 200,
+    "quizzes": [
+        {
+            "quizid": 3,
+            "score": 10,
+            "created": "2018-11-22T09:04:33.000Z",
+            "userid": "auth0|test2",
+            "questions": [
+                {
+                    "quizid": 3,
+                    "answerid": 4,
+                    "quizquestionid": 5,
+                    "recommendationtitle": "1st recommendtion",
+                    "question": "Is this the first recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 3,
+                            "quizquestionid": 5,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 4,
+                            "quizquestionid": 5,
+                            "choice": "Yes",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 5,
+                    "quizquestionid": 6,
+                    "recommendationtitle": "Second recommendtion",
+                    "question": "Is this the second recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 5,
+                            "quizquestionid": 6,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 6,
+                            "quizquestionid": 6,
+                            "choice": "Yes",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 8,
+                    "quizquestionid": 7,
+                    "recommendationtitle": "3rd recommendtion",
+                    "question": "Is this the third recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 7,
+                            "quizquestionid": 7,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 8,
+                            "quizquestionid": 7,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 10,
+                    "quizquestionid": 8,
+                    "recommendationtitle": "2nd recommendtion",
+                    "question": "Is this the 2nd recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 9,
+                            "quizquestionid": 8,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 10,
+                            "quizquestionid": 8,
+                            "choice": "Yes",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 12,
+                    "quizquestionid": 9,
+                    "recommendationtitle": "3rd recommendtion",
+                    "question": "Is this the 3rd recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 11,
+                            "quizquestionid": 9,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 12,
+                            "quizquestionid": 9,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 14,
+                    "quizquestionid": 10,
+                    "recommendationtitle": "4th recommendtion",
+                    "question": "Is this the 4 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 13,
+                            "quizquestionid": 10,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 14,
+                            "quizquestionid": 10,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 16,
+                    "quizquestionid": 11,
+                    "recommendationtitle": "5th recommendtion",
+                    "question": "Is this the 5 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 15,
+                            "quizquestionid": 11,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 16,
+                            "quizquestionid": 11,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 18,
+                    "quizquestionid": 12,
+                    "recommendationtitle": "6th recommendtion",
+                    "question": "Is this the 6 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 17,
+                            "quizquestionid": 12,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 18,
+                            "quizquestionid": 12,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 20,
+                    "quizquestionid": 13,
+                    "recommendationtitle": "7th recommendtion",
+                    "question": "Is this the 7 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 19,
+                            "quizquestionid": 13,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 20,
+                            "quizquestionid": 13,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 22,
+                    "quizquestionid": 14,
+                    "recommendationtitle": "8th recommendtion",
+                    "question": "Is this the 8 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 21,
+                            "quizquestionid": 14,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 22,
+                            "quizquestionid": 14,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 24,
+                    "quizquestionid": 15,
+                    "recommendationtitle": "9th recommendtion",
+                    "question": "Is this the 9 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 23,
+                            "quizquestionid": 15,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 23,
+                            "quizquestionid": 15,
+                            "choice": "No",
+                            "correctanswer": false
+                        }
+                    ]
+                },
+                {
+                    "quizid": 3,
+                    "answerid": 25,
+                    "quizquestionid": 16,
+                    "recommendationtitle": "10th recommendtion",
+                    "question": "Is this the 10 recommendation?",
+                    "choices": [
+                        {
+                            "choiceid": 25,
+                            "quizquestionid": 16,
+                            "choice": "No",
+                            "correctanswer": false
+                        },
+                        {
+                            "choiceid": 26,
+                            "quizquestionid": 16,
+                            "choice": "Definitely",
+                            "correctanswer": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

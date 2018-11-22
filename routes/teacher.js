@@ -476,7 +476,7 @@ router.post('/recommendations/read', (req,res,next)=> {
               }else{//there isn't a quiz with available space
                 //create quiz
                 //SQL Query > create quiz data
-                const query3 = client.query('INSERT INTO quiz(userid, count, score, created) values($1, $2, $3, $4) returning quizid',[data.userid, 1, 0, todaysDate,]);
+                const query3 = client.query('INSERT INTO quiz(userid, count, created) values($1, $2, $4) returning quizid',[data.userid, 1, todaysDate,]);
                 //stream results back one row at a time
                 query3.on('row', (row) => {
                   quizid.push(row);
@@ -1190,7 +1190,7 @@ router.post('/quizzes/take', (req,res,next)=> {
               isBase64Encoded: false,});
 
           }else{
-            if(qresults[0].score > 0){
+            if(qresults[0].score != null ){
               return res.status(402).json({statusCode: 402,
                 message: 'Quiz has been answered',
                 isBase64Encoded: false,});
@@ -1229,6 +1229,68 @@ router.post('/quizzes/take', (req,res,next)=> {
     });
   });
 });
+
+
+//GET quizzes 
+router.get('/quizzes', (req,res,next)=> {
+  const results = [];
+  const userexist = [];
+  const quizzes =[];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+    };
+  //verify inputs
+  if(val.validateUserID(data.userid)){
+    return res.status(403).json({statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, message: err});
+    }
+    //verify if user exists in database records and is teacher
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher']);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      userexist.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (userexist.length === 1){ // user exists and is of type teacher
+        //SQL Query > get quizzes
+        const query1 = client.query('WITH body as(WITH qchoices as(WITH qqs as (SELECT qq.quizid, qq.choiceid as answerid, qq.quizquestionid, recommendationtitle, question FROM quiz_qs as qq natural inner join quiz_question) SELECT qqs.quizquestionid, array_to_json(array_agg(quiz_question_choice)) as choices FROM  quiz_question_choice natural inner join qqs GROUP BY qqs.quizquestionid), qqs as (SELECT qq.quizid, qq.choiceid as answerid, qq.quizquestionid, recommendationtitle, question FROM quiz_qs as qq natural inner join quiz_question) SELECT qqs.quizid, answerid, qqs.quizquestionid, recommendationtitle, question, choices FROM qqs natural inner join qchoices) SELECT quiz.quizid, score, created, userid, array_to_json(array_agg(body)) as questions FROM body natural inner join quiz WHERE count= 12 AND userid = $1 GROUP BY quiz.quizid, score, userid, created',[data.userid,]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          quizzes.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          if(quizzes.length == 0){
+            return res.status(402).json({statusCode: 402,
+              message: 'No quiz available for user.',
+              isBase64Encoded: false});
+
+          }else{
+            return res.status(200).json({statusCode: 200 , quizzes});
+          }
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
 
 
 module.exports = router;
