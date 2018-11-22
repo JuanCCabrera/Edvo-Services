@@ -150,6 +150,7 @@ const MainPageDisplay = (props) => (
                         <li>Materia</li>
                         <img src="http://localhost:8080/static/images/persons.png" className="How-Img" />
                     </ul>
+                   
                 </div>
                 }
                 {props.lang === 'English' ? 
