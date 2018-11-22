@@ -158,7 +158,7 @@ router.post('/recommendations/create', (req,res,next)=> {
   || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
   || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateStrings(data.topica)
     || val.validateStrings(data.subject) || val.validateStrings(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
-    || val.validateLongText(data.question) || val.validateLongText(data.choices)){
+    || val.validateLongText(data.question) || val.validateLongText(data.choices) || !Array.isArray(data.choices)){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});

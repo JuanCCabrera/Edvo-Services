@@ -1128,5 +1128,107 @@ router.post('/settings/plans', (req,res,next)=> {
 });
 
 
+//quiz routes HERE
+
+/*ANSWER QUIZ*/
+router.post('/quizzes/take', (req,res,next)=> {
+  const results = [];
+  const userexist = [];
+  const qresults =[];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid, 
+      quizid: req.body.quizid,
+      answers: req.body.answers
+    };
+  //verify inputs
+  if(val.validateUserID(data.userid) || val.validateInt(data.quizid) || val.validateLongText(data.answers) || !Array.isArray(data.answers)){
+    return res.status(403).json({statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  if(data.answers.length <12){
+    return res.status(403).json({statusCode: 403,
+      message: 'Inputs were not received as expected. Missing answers.',
+      isBase64Encoded: false,});
+  }
+  for(var i=0; i< data.answers.length; i++){
+    if(val.validateInt(data.answers[i].quizquestionid) || val.validateInt(data.answers[i].choiceid) || val.validateBool(data.answers[i].correctanswer)){
+      return res.status(403).json({statusCode: 403,
+        message: 'Inputs were not received as expected.',
+        isBase64Encoded: false,});
+    }
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, message: err});
+    }
+    //verify if user exists in database records and is teacher
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher']);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      userexist.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (userexist.length === 1){ // user exists and is of type teacher
+        //SQL Query > get quiz score
+        const query2 = client.query('SELECT score FROM quiz WHERE userid =$1 AND quizid =$2',[data.userid, data.quizid]);
+        //stream results back one row at a time
+        query2.on('row', (row) => {
+          qresults.push(row);
+        });
+        query2.on('end', () => {
+          done();
+          if(qresults.length == 0){
+            return res.status(403).json({statusCode: 403,
+              message: 'Quiz doesn\'t exist',
+              isBase64Encoded: false,});
+
+          }else{
+            if(qresults[0].score > 0){
+              return res.status(402).json({statusCode: 402,
+                message: 'Quiz has been answered',
+                isBase64Encoded: false,});
+            }else{
+              //var to store score
+              var score =0;
+              //post answers
+              for(var i=0; i< data.answers.length; i++){
+                //SQL query > update choice
+                client.query('UPDATE quiz_qs SET choiceid = $1 WHERE quizid = $2 AND quizquestionid =$3',[data.answers[i].choiceid, data.quizid, data.answers[i].quizquestionid,]);
+                if(data.answers[i].correctanswer === true){
+                  score = score+1;
+                  //SQL Query > update quiz score
+                  client.query('UPDATE quiz SET score =$1 WHERE userid =$2 AND quizid =$3',[score, data.userid, data.quizid]);
+                }
+              }
+              //SQL Query > get quiz score
+              const query1 = client.query('SELECT * FROM quiz WHERE userid =$1 AND quizid =$2',[data.userid, data.quizid]);
+              //stream results back one row at a time
+              query1.on('row', (row) => {
+                results.push(row);
+              });
+              query1.on('end', () => {
+                done();
+                return res.status(201).json({statusCode: 201 , results});
+              });
+            }
+          }
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+            message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
 
 module.exports = router;

@@ -55,7 +55,7 @@ router.post('/', (req,res,next)=> {
       || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies) || val.validateDate(data.teachersince)
       || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
       || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.applications) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
-      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || data.class == null || val.validateStrings(data.schoolname) || val.validateStringLocation(data.location)){
+      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.class) || !Array.isArray(data.class) || val.validateStrings(data.schoolname) || val.validateStringLocation(data.location)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
           isBase64Encoded: false,});
