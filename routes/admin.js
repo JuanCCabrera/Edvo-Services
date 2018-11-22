@@ -440,7 +440,7 @@ router.post('/recommendations/create', (req,res,next)=> {
       tech : req.body.tech,
       instructions : req.body.instructions,
       moodle : req.body.moodle,
-      google : req.body.googleClassroom,
+      googleclassroom : req.body.googleClassroom,
       emails : req.body.emails,
       books : req.body.books,
       apps : req.body.applications,
@@ -485,7 +485,7 @@ router.post('/recommendations/create', (req,res,next)=> {
   
   //verify all choices have both parameters
   for(var i=0; i<length ; i++){
-    if(val.validateLongText(choicejson[i].choice) || val.validateLongText(choicejson[i].correctanswer)){
+    if(val.validateLongText(choicejson[i].choice) || val.validateBool(choicejson[i].correctanswer)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});

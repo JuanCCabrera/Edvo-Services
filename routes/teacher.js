@@ -406,6 +406,10 @@ router.post('/questions/rate', (req,res,next)=> {
 /* Mark read recommendation*/  
 router.post('/recommendations/read', (req,res,next)=> {
     const resultsexist = [];
+    const userexist = [];
+    const quizresult =[];
+    const quizid =[];
+    const quizqid =[];
     //grab data from http request
     const data = {
         userid: req.body.userid,
@@ -425,32 +429,89 @@ router.post('/recommendations/read', (req,res,next)=> {
         console.log(err);
         return res.status(500).json({statusCode: 500, message: err});
       }
-  
-      //verify if recommendation exists in database records
-      const query2 = client.query('SELECT * FROM edu_recommendations WHERE recomid = $1 AND userid= $2', [data.recomid, data.userid]);
-      //stream results back one row at a time
-      query2.on('row', (row) => {
-        resultsexist.push(row);
-      });
-      query2.on('end', () => {
-        done();
-        if (resultsexist.length === 1){ // recommendation exist and is of specified user
-        
-          //SQL Query > update read data
-          client.query('UPDATE edu_recommendations SET read=$1 WHERE recomid = $2', [true, data.recomid,]);
-          
-          //add to quiz
-
-
-          return res.status(201).json({statusCode: 201});
-        }else
-        {
-          return res.status(401).json({statusCode: 401,
-              message: 'Invalid recommendation. Inputs where not received as expected.',
-              isBase64Encoded: false,});
-        }
-      });
+       //verify if user exists in database records
+    const query = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'teacher']);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      userexist.push(row);
     });
+    query.on('end', () => {
+      done();
+      if (userexist.length === 1){ // user exists and is of type teacher----------------
+        //verify if recommendation exists in database records
+        const query1 = client.query('SELECT * FROM edu_recommendations WHERE recomid = $1 AND userid= $2', [data.recomid, data.userid]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          resultsexist.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          if (resultsexist.length === 1){ // recommendation exist and is of specified user
+          
+            //SQL Query > update read data
+            client.query('UPDATE edu_recommendations SET read=$1 WHERE recomid = $2', [true, data.recomid,]);
+            //verify a quiz exists and has empty questions spaces
+            const query2 = client.query('SELECT * FROM quiz WHERE userid = $1 AND count < $2', [data.userid, 12,]);
+            //stream results back one row at a time
+            query2.on('row', (row) => {
+              quizresult.push(row);
+            });
+            query2.on('end', () => {
+              done();
+              //quiz exists and has empty slots
+              if(quizresult.length === 1){ 
+                //SQL QUERY > update count of quizes questions
+                client.query('UPDATE quiz SET count = $1 WHERE quizid = $2', [quizresult[0].count+1, quizresult[0].quizid]);
+                //SQL QUERY> get recomendation question
+                const query4 = client.query('SELECT * FROM quiz_question NATURAL INNER JOIN recommendation_body WHERE recomid = $1', [data.recomid,]);
+                //stream results back one row at a time
+                query4.on('row', (row) => {
+                  quizqid.push(row);
+                });
+                query4.on('end', () => {
+                  done();
+                  //SQL Query > insert question for quiz
+                  client.query('INSERT INTO quiz_qs(quizid, quizquestionid, recommendationtitle) values ($1, $2, $3)',[quizresult[0].quizid, quizqid[0].quizquestionid, quizqid[0].title]);  
+                });
+              }else{//there isn't a quiz with available space
+                //create quiz
+                //SQL Query > create quiz data
+                const query3 = client.query('INSERT INTO quiz(userid, count, score, created) values($1, $2, $3, $4) returning quizid',[data.userid, 1, 0, todaysDate,]);
+                //stream results back one row at a time
+                query3.on('row', (row) => {
+                  quizid.push(row);
+                });
+                query3.on('end', () => {
+                  done();
+                  //SQL QUERY> get recomendation question
+                  const query4 = client.query('SELECT * FROM quiz_question NATURAL INNER JOIN recommendation_body WHERE recomid = $1', [data.recomid,]);
+                  //stream results back one row at a time
+                  query4.on('row', (row) => {
+                    quizqid.push(row);
+                  });
+                  query4.on('end', () => {
+                    done();
+                    //SQL Query > insert first question for quiz
+                    client.query('INSERT INTO quiz_qs(quizid, quizquestionid, recommendationtitle) values ($1, $2, $3)',[quizid[0].quizid, quizqid[0].quizquestionid, quizqid[0].title]);  
+                  });
+                });
+              }
+              return res.status(201).json({statusCode: 201}); 
+            });
+          }else
+          {
+            return res.status(401).json({statusCode: 401,
+                message: 'Invalid recommendation. Inputs where not received as expected.',
+                isBase64Encoded: false,});
+          }
+        });
+      }else{
+        return res.status(401).json({statusCode: 401,
+          message: 'User does not exists in records or is not a teacher. Inputs where not received as expected.',
+          isBase64Encoded: false,});
+      }
+    });
+  });
 });
 
 
