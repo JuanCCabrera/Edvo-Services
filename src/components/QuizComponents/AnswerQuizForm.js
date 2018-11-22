@@ -28,9 +28,12 @@ class AnswerQuizForm extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        if(Object.keys(this.state.answers).length != 12)
+            console.log("PLEASE ANSWER ALL QUESTIONS!");
+        else{
         console.log("QUIZ POST REQUEST: ", this.props.quiz.quizID, this.props.quiz.quizDate, this.state.answers);
         this.props.history.push('/teacher/quizzes');
-        
+        }        
     }
 
     render(){

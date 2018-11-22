@@ -167,8 +167,8 @@ const AppRouter = (props) => (
                 {
                     //Teacher Quizzes
                 }
-                <SecuredRoute exact path='/teacher/quizzes' component={ManageQuizzes}/>
-                <SecuredRoute path="/teacher/quizzes/:quizID" component={AnswerQuizForm}/>
+                <Route exact path='/teacher/quizzes' component={ManageQuizzes}/>
+                <Route path="/teacher/quizzes/:quizID" component={AnswerQuizForm}/>
 
                 {
                     //Route Not Found Page

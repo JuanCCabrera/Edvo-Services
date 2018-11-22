@@ -6,6 +6,12 @@ import Can from '../../Can';
 import {Redirect} from 'react-router-dom';
 import { setSuccessModal } from '../../actions/successModal';
 import { setEditModal } from '../../actions/editModal';
+//WYSIWYG
+import { EditorState, convertFromRaw, convertToRaw, ContentState } from 'draft-js';
+import { Editor} from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 
 /**
  * Form used to create a new recommendation which can then be assigned to a user of the Teacher type. 
@@ -14,8 +20,13 @@ class CreateRecommendationForm extends React.Component{
     constructor(props){
         //Each recommendation must contain a title, header, description, class information (class subject, topics, language, level, type, school type, class format, class level, class size, a quiz question and at least two possible answers for the question.)
         super(props);
+        console.log("PROPS OF MODIFY RECOM: ", props.reco);
+        if(props.reco)
+            console.log("DRAFTJS: ", htmlToDraft(props.reco.description));
         this.state = {
             props: props,
+            editorState: props.reco ? EditorState.createWithContent(ContentState.createFromBlockArray(
+                htmlToDraft(props.reco.description).contentBlocks)) : EditorState.createEmpty(),
             title: props.reco ? props.reco.title : '',
             titleError: '',
             multimedia: props.reco ? props.reco.multimedia : '',
@@ -500,6 +511,10 @@ class CreateRecommendationForm extends React.Component{
         }
     }
 
+    onChange = (editorState) => { 
+        console.log("WYSIWYG: ",draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())));
+        this.setState({editorState});}
+
     render(){
         return(
             <Can
@@ -578,7 +593,17 @@ class CreateRecommendationForm extends React.Component{
                     <br/>
                     <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.description.length}/5000</span>
                     <br/>
-                    <textarea type = "text" rows="5" maxLength="5000" placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'} className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange} onBlur={() => {
+                    <Editor 
+                    type = "text" 
+                    placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'} 
+                    className="form-control" 
+                    editorState={this.state.editorState} 
+                    onEditorStateChange={this.onChange}
+                    wrapperClassName="wrapper-class"
+                    editorClassName="editor-class"
+                    toolbarClassName="toolbar-class"
+                    />
+                    {/* <textarea type = "text" rows="5" maxLength="5000" placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'} className="form-control" value = {this.state.description} onChange = {this.onDescriptionChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
                         this.setState(() => ({description: this.state.description.trim()}));
                         if(this.state.description.match(/^\s+$/)){
@@ -590,7 +615,7 @@ class CreateRecommendationForm extends React.Component{
                         }else{
                             this.setState(() => ({descriptionError: ''}));
                         }
-                    }}/>
+                    }}/> */}
                     {this.state.descriptionError && 
                         <div>
                             <span className="text-danger"> 

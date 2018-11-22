@@ -505,9 +505,9 @@ class RegistrationForm extends React.Component{
             this.setState(() => ({secError: true, globalError: false}));
         }
         //Display default error message if there are required fields left blank. 
-        if(!this.state.name || !this.state.lastName || !this.state.location || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
+        if(!this.state.name || !this.state.lastName || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
             this.setState(() => ({globalError: true, secError: false}));
-        }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
+        }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) || !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
             this.setState(() => ({globalError: true, secError: false}));
         }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError || this.state.subjectError || this.state.topicError || this.state.schoolNameError || this.state.schoolLocationError || this.state.institutionIDError || this.state.timeEmployedError){
             this.setState(() => ({globalError: true, secError: false}));
@@ -515,13 +515,12 @@ class RegistrationForm extends React.Component{
             this.props.dispatch(setSuccessModal());
             this.setState(() => ({secError: false, globalError: false}));
             axios.post('http://localhost:3000/register', {
-                usertype: 'teacher',
                 name: this.state.name,
                 lastname: this.state.lastName,
                 gender: this.state.gender,
                 email: this.state.email,
                 password: this.state.password,
-                dob: this.state.dateOfBirth,
+                dob: moment(this.state.dateOfBirth).format("YYYY-MM-DD HH:mm:ss"),
                 policies: true,
                 teachersince: this.state.timeEmployed,
                 education: this.state.levelOfEdu,
@@ -533,7 +532,7 @@ class RegistrationForm extends React.Component{
                 tech: this.state.technologyIntegration,
                 instructions: this.state.instructionAlignment,
                 schoolname: this.state.schoolName,
-                location: this.state.location,
+                location: this.state.schoolLocation,
                 schooltype: this.state.schoolType,
                 moodle: this.state.moodle,
                 googleclassroom: this.state.googleClassroom,
@@ -549,26 +548,18 @@ class RegistrationForm extends React.Component{
                 smartboard: this.state.smartboard,
                 smartpencil: this.state.smartpencil,
                 speakers: this.state.speakers,
-
-                subject: this.state.subject,
-                format: this.state.format,
-                language: 'spanish',
+                teachersince: moment(this.state.timeEmployed).format("YYYY-MM-DD HH:mm:ss"),
                 level: this.state.level,
-                groupsize: this.state.size,
-                topics: this.state.topicsTaught,
-                pageTwoError: this.state.pageTwoError,
-                level: this.state.level,
-                schoolLocation: this.state.schoolLocation,
                 institutionID: this.state.institutionID,
-                pageThreeError: this.state.pageThreeError,
+                class: {
+                    subject: this.state.subject,
+                    format: this.state.format,
+                    language: this.state.language,
+                    level: this.state.level,
+                    groupsize: this.state.size,
+                    topics: this.state.topicsTaught
 
-                employedCalendarFocused: this.state.employedCalendarFocused,
-                preferredLanguage: this.state.preferredLanguage,
-                pageFourError: this.state.pageFourError,
-
-                globalError: this.state.globalError,
-
-                currPage: this.state.currPage
+                }
             },
             {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
             .then(response =>{

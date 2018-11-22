@@ -84,7 +84,7 @@ class RecommendationModal extends React.Component{
         {
             //Description
         }
-            <p>{this.props.recommendation.description}</p>
+        <div dangerouslySetInnerHTML={{ __html: this.props.recommendation.description}} />
         {
             //Location
         }
