@@ -21,3 +21,9 @@ export const createQuiz = (
             }
         }
 };
+
+export const reset = () => {
+    return{
+        type: 'RESET'
+    }
+}

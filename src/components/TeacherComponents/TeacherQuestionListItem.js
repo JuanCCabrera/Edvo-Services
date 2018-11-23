@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {selectQuestion} from '../../actions/teacherQuestions';
 import moment from 'moment';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
 /**
  * Single item in the Teacher Questions list. Each Teacher Question contains the question's subject, question body, and the date in which the question was asked. 
@@ -9,7 +11,21 @@ import moment from 'moment';
  */
 const TeacherQuestionListItem = (props) => (
         //Open question modal if the question item is clicked. 
-        <div className="clickable list-group-item item-card" onClick={() => {props.dispatch(selectQuestion(props.question));}}>
+        <div className="clickable list-group-item item-card" onClick={() => {
+            console.log("PROPS OF QUESTIONL ", props.question.read)
+            if(props.question.read == false){
+            axios.post('https://beta.edvotech.com/api/teacher/questions/read', {
+                        askeddate: props.question.askedDate
+                    },
+                    {
+                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+                    .then((response)=>{
+                        if(response.status == 201){
+                            console.log("READ SUCCESS");
+                        }
+                    });
+                }
+            props.dispatch(selectQuestion(props.question));}}>
             {
                 //Question subject and date in which it was asked.
             }

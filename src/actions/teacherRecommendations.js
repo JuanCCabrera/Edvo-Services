@@ -13,7 +13,7 @@ export const loadTeacherRecommendation = (
         description = '',
         multimedia = '',
         date = '',
-        read = false,
+        read = true,
         rate = 0
     } = {}) => (
         {
@@ -74,7 +74,7 @@ export const selectRecommendation = (
         description = '',
         multimedia = '',
         date = '',
-        read = false,
+        read = true,
         rate = 0,
     } = {}) => ({
         type: 'SELECT_RECOMMENDATION',

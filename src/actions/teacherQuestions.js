@@ -44,7 +44,7 @@ export const selectQuestion = (
         answerDate = '',
         rate = 0,
         favorite = false,
-        read = false,
+        read = true,
     } = {}) => ({
         type: 'SELECT_QUESTION',
         selectedQuestion: {

@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {selectRecommendation} from '../../actions/teacherRecommendations';
+import axios from 'axios';
+import auth0Client from '../../Auth';
 
 /**
  * Single item of the Teacher Recommendations list. It contains the recommendation's title, date of assignment and header. 
@@ -8,7 +10,21 @@ import {selectRecommendation} from '../../actions/teacherRecommendations';
  */
 const TeacherRecommendationsListItem = (props) => (
     //Open recommendation modal when recommendation item is selected. 
-        <div className="clickable list-group-item item-card" onClick={() => {props.dispatch(selectRecommendation(props.reco));}}>
+        <div className="clickable list-group-item item-card" onClick={() => {
+            console.log("SELECTED RECOMMENDATION FROM LIST: ",props.reco);
+            if(props.reco.read == null){
+            axios.post('https://beta.edvotech.com/api/teacher/recommendations/read', {
+                recomid: props.reco.recoID
+            },
+            {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+            .then((response)=>{
+                if(response.status == 201){
+                    console.log("READ SUCCESS");
+                }
+            });
+            }
+            props.dispatch(selectRecommendation(props.reco));}}>
         {
             //Recommendation title and date of assignment. 
         }

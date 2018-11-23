@@ -15,7 +15,8 @@ class AnswerQuizForm extends React.Component {
             show: false,
             quizDate: props.quiz.quizDate,
             quizID: props.quiz.quizID,
-            correctChoices: props.quiz.correctChoices
+            correctChoices: props.quiz.correctChoices,
+            score: props.quiz.score ? props.quiz.schore : null
         };
     }
 
@@ -46,7 +47,9 @@ class AnswerQuizForm extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("POST QUIZ RESPONSE: ", response);
+            if(response.data.statusCode == 201)
+                console.log("POST QUIZ RESPONSE: ", response);
+                this.props.history.push('/teacher/quizzes');
         });
     }
 
@@ -56,17 +59,17 @@ class AnswerQuizForm extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     <QuizButtonList/>
                     <h3> Quiz </h3>
-                    {console.log("THE CORRECT CHOICES!!!!!!!", this.props.quiz.correctChoices)}
                     {/* {this.props.quiz.quizDate} */}
                     {
                         this.props.quiz.questions.questions.map(element => {
-                            return ( <h3 key= {uuid()}>{element.questionstring} 
+                            return ( <div><h4 key= {uuid()}>{element.recommendation}</h4>
+                            <h3 key= {uuid()}>{element.questionstring} </h3>
                             <select name={element.questionid} onChange={this.onAnswerChange} value={this.state.answers[element.questionid]} required>
                                 <option  disabled selected></option>
                             {element.choices.map(answer =>{
                                 return(<option key={uuid()} value={answer.choiceid}>{answer.choice}</option>)
                             })}
-                            </select></h3> )
+                            </select> </div> )
                     })}
                      {this.state.show === true && <h3 className="text-capitalize text-danger">PLEASE ANSWER ALL</h3>}
                     <button type="submit" onClick={this.onSubmit}>Answer</button>

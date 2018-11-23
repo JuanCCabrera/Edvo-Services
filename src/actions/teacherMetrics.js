@@ -47,6 +47,7 @@ export const loadTeacherTopRecommendation = ({
     multimedia = '',
     date = '',
     rate = 0,
+    read = true
 } = {}) => {
     return{
         type: 'LOAD_TEACHER_TOP_RECOMMENDATION',
@@ -58,7 +59,8 @@ export const loadTeacherTopRecommendation = ({
             description: description,
             multimedia: multimedia,
             date: date,
-            rate: rate
+            rate: rate,
+            read: read
         }
     }
 }
@@ -76,7 +78,8 @@ export const loadTeacherRecentRecommendation = ({
     description = '',
     multimedia = '',
     date = '',
-    rate = 0
+    rate = 0,
+    read = true
 } = {}) => { 
     return{
         type: 'LOAD_TEACHER_RECENT_RECOMMENDATION',
@@ -88,7 +91,8 @@ export const loadTeacherRecentRecommendation = ({
             description: description,
             multimedia: multimedia,
             date: date,
-            rate: rate
+            rate: rate,
+            read: read
         }
     }
 }
