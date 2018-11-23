@@ -66,11 +66,11 @@ class AskQuestionForm extends React.Component{
             this.setState(() => ({askQuestionError: true, success: false})); 
         }else{
             this.setState(() => ({askQuestionError: ''}));
-            axios.post('http://142.93.250.246/api/teacher/questions/ask', {
+            axios.post('https://beta.edvotech.com/api/teacher/questions/ask', {
             subject: this.state.subject,
-            question: this.state.body,
-            userid: '1'
-    })
+            question: this.state.body
+    },{
+        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .catch(error => {
             this.setState(() => ({askQuestionPlan: true}))
     })
