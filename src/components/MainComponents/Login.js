@@ -84,7 +84,7 @@ const LoginPage = (props) => (
                 {
                     !auth0Client.isAuthenticated() &&
                     <div>
-                        <button onClick={() => {signOut(props)}}>
+                        <button onClick={auth0Client.signIn}>
                             <div className="btn btn-item">
                             {props.lang === 'English' ? 'Register' : 'Registrarse'}
                             </div>
