@@ -10,6 +10,8 @@ import {loadTeacherRecommendation, unloadTeacherRecommendations} from '../../act
 import Can from '../../Can';
 import auth0Client from '../../Auth';
 import axios from 'axios';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
 /**
  * The Teacher Home page contains a value indicating the number of days the Teacher has spent on the platform, the number of recommendations
  * the teacher has read, the number of questions the teacher has asked, a list of the teacher's top rated recommendations, a list of the teacher's
@@ -35,6 +37,7 @@ class TeacherHome extends React.Component {
     componentWillMount(){
         console.log("PROPS IN HOME THIS: ",this.props);
         console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/home',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -54,8 +57,11 @@ class TeacherHome extends React.Component {
             response.data.topRecommendations.forEach(element => {
                 this.props.dispatch(loadTeacherTopRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read}));
                 });
+            this.props.dispatch(setLoadingModal());
         })
         .catch(error =>{
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
             console.log("TOEKN FOR HOME: ", auth0Client.getIdToken());
             console.log("ERROR RE: ", error.response.status);
             console.log("ERROR TEACHER HOMEE: ", error);
@@ -133,7 +139,7 @@ class TeacherHome extends React.Component {
                                 <div>
                                     <p>Questions Asked</p>
                                     <p className="big__teacher__home__text">
-                                        {this.state.questionsAsked}
+                                        {this.props.teacherMetrics.questionsAsked}
                                     </p>
                                 </div>
                                 : 

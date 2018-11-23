@@ -5,6 +5,7 @@ import uuid from 'uuid';
 import TeacherQuestionListItem from './TeacherQuestionListItem';
 import getVisibleTeacherQuestions from '../../selectors/teacherQuestions';
 import { addFavoriteQuestion, loadTeacherQuestion } from '../../actions/teacherQuestions';
+import { setLoadingModal } from '../../actions/loadingModal';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import moment from 'moment';
@@ -26,6 +27,7 @@ class TeacherQuestionsList extends React.Component{
 
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
@@ -39,6 +41,7 @@ class TeacherQuestionsList extends React.Component{
                     this.props.dispatch(addFavoriteQuestion({askedDate: element.askeddate}));
                 }
             });
+            this.props.dispatch(setLoadingModal());
         });
         this.currentPage = 1;
         const initialPageQuestions = this.props.question.slice(0,this.itemsPerPage);

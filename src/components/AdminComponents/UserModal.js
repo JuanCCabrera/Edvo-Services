@@ -12,7 +12,6 @@ class UserModal extends React.Component{
     }
     render(){
         return (
-            <div className="modal">
                 <Modal
                 isOpen = {this.props.userInfo.userModalFlag}
                 onRequestClose = {this.props.clearSelectedUser}
@@ -67,7 +66,6 @@ class UserModal extends React.Component{
                     </div>
                 </div>
                 </Modal>
-            </div>
             );
     }
 }

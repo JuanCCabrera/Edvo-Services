@@ -87,7 +87,7 @@ const QuestionModal = (props) => (
         {
             //Question answer
         }
-            {props.question.answer !== '' ? 
+            {props.question.answer ? 
 
             <div>
                 <p className="font-weight-bold">{props.lang === 'English' ? 'Answer:' : 'Contestación:'}</p>
@@ -105,6 +105,8 @@ const QuestionModal = (props) => (
         {
             //Question rating
         }
+
+        {props.question.answer && <div>
             <span>{props.lang === 'English' ? 'Rate: ': 'Calificar: '}</span>
             <StarRatingComponent
             name="rate"
@@ -131,6 +133,8 @@ const QuestionModal = (props) => (
             />
             <br/>
         </div>
+        }
+        </div>
         </div>
             {
                 //Button to close the question modal. 
@@ -155,6 +159,7 @@ const mapStateToProps = (state) => {
             val = 1;
         }
     }
+    console.log('ANSWER',state.teacherQuestions.selectedQuestion.answer);
     return {
         question: state.teacherQuestions.selectedQuestion,
         isFavorite: val,

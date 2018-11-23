@@ -6,6 +6,7 @@ import { addFavoriteRecommendation, loadTeacherRecommendation, unloadTeacherReco
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import getVisibleTeacherRecommendations from '../../selectors/teacherRecommendations';
+import { setLoadingModal } from '../../actions/loadingModal';
 
 /**
  * List of recommendations assigned to the Teacher. This list is available in the Teacher Recommendations page. 
@@ -29,6 +30,7 @@ class TeacherRecommendationsList extends React.Component{
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
         console.log("LIST IS MOUNTED");
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/recommendations',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -49,6 +51,7 @@ class TeacherRecommendationsList extends React.Component{
                 }
 
          });
+         this.props.dispatch(setLoadingModal());
     });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
