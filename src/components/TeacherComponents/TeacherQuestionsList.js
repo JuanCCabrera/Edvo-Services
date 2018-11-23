@@ -30,6 +30,7 @@ class TeacherQuestionsList extends React.Component{
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
+            console.log("RESPONSE OF QUESTION@@@@@@", response)
             response.data.questions.forEach(element => {
                 console.log("RATE QUESIONS FOR TEACHER: ", element);
                 this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 

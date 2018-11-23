@@ -64,7 +64,11 @@ class AskQuestionForm extends React.Component{
         //Enable error message if there is a missing form field. 
         if(!this.state.subject || !this.state.body){
             this.setState(() => ({askQuestionError: true, success: false})); 
-        }else{
+        }
+        else if(this.state.subjectError || this.state.subjectError){
+            this.setState(() => ({askQuestionError: true}))
+        }
+        else{
             this.setState(() => ({askQuestionError: ''}));
             axios.post('https://beta.edvotech.com/api/teacher/questions/ask', {
             subject: this.state.subject,
@@ -75,20 +79,12 @@ class AskQuestionForm extends React.Component{
             this.setState(() => ({askQuestionPlan: true}))
     })
     .then((response)=>{
+        console.log("ERROR ASKING: ", response.status)
         if(response.status == 201){
             this.setState(() => ({success: true, subject: '', body: ''}));
     
-            this.setState(() => ({askQuestionError: true})); 
-        }
-        else if(this.state.subjectError || this.state.subjectError){
-            this.setState(() => ({askQuestionError: true}))
-        }else{
-            this.setState(() => ({askQuestionError: false}));
+            this.setState(() => ({askQuestionError: false})); 
             this.props.dispatch(setSuccessModal());
-            this.props.onSubmit({
-                subject: this.state.subject,
-                body: this.state.body,
-            });
         }
     });
 }
