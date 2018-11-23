@@ -33,23 +33,6 @@ const QuestionModal = (props) => (
                 {
                     //Favoriting star
                 }
-                <div onClick={() =>  {
-                    console.log("BEFORE: ",props.question.favorite);
-                    const favoriteQuestion = !props.question.favorite;
-                    console.log("AFTER: ",favoriteQuestion);
-                    axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
-                            askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
-                            favorite: !favoriteQuestion
-                        },{
-                            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-                        }).then(response =>{
-                        
-                    if(props.question.favorite == true){
-                        props.dispatch(addFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
-                    }else{
-                        props.dispatch(removeFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
-                    }});
-                }}>
                 <div>
                     <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>
                 
@@ -79,7 +62,6 @@ const QuestionModal = (props) => (
                 />
                 
                 </div>
-            </div>
         
         {
             //Quesiton body
