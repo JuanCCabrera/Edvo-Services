@@ -61,6 +61,8 @@ import AssignmentRecommendationModal from '../components/AdminComponents/Assignm
 import {clearAssignmentRecommendationModal} from '../actions/assignmentRecommendationModal';
 
 import CreateCouponForm from '../components/AdminComponents/CreateCouponForm';
+import FailureModal from '../components/FailureModal';
+import LoadingModal from '../components/LoadingModal';
 
 /**
  * AppRouter - Main routing component of the application. Contains a header element, two modals which 
@@ -103,6 +105,17 @@ const AppRouter = (props) => (
             //Successful Edit Modal (hidden until any edits are made successfully)
         }
             <SuccessfulEditModal/>
+
+        {
+            //Failure Modal (hidden until an error occurs)
+        }
+            <FailureModal/>
+
+        {
+            //Loading Modal (hidden until lists are loading)
+        }
+            <LoadingModal/>
+            
         {
             //Switch component. Displays ONLY the component related to the specified route path (must match the page URL). 
         }

@@ -248,7 +248,7 @@ class CreateUserForm extends React.Component{
                                             <br/>
                                             <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
                                                 //Check if the name field only contains spaces. 
-                                                this.setState(() => ({name: this.name.lastName.trim()}));
+                                                this.setState(() => ({name: this.state.name.trim()}));
                                                 if(this.state.name.match(/^\s+$/)){
                                                     if(this.props.lang === 'English'){
                                                         this.setState(() => ({nameError: 'The name field must contain text.'}));

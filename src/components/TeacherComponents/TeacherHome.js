@@ -94,7 +94,7 @@ class TeacherHome extends React.Component {
                                     <p>Días en Plataforma</p>
                                     
                                 </div>}
-                                <p className="big_teacherhome_text">{this.state.daysInPlatform}</p>
+                                <p className="big__teacher__home__text">{this.props.teacherMetrics.daysInPlatform}</p>
                             </div>
                         </div>
                     </div>
@@ -114,9 +114,7 @@ class TeacherHome extends React.Component {
                                         <p>Recomendaciones Leídas</p>
                                     </div>}
                                     <p className="big__teacher__home__text">
-                                        {this.props.teacherRecommendations.filter((reco) => {
-                                            return reco.read === true;
-                                        }).length}
+                                        {this.props.teacherMetrics.recommendationsRead}
                                     </p>
 
                                     <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
@@ -133,14 +131,14 @@ class TeacherHome extends React.Component {
                                 {this.props.lang === 'English' ? 
                                 <div>
                                     <p>Questions Asked</p>
-                                    <p className="big_teacherhome_text">
+                                    <p className="big__teacher__home__text">
                                         {this.state.questionsAsked}
                                     </p>
                                 </div>
                                 : 
                                 <div>
                                     <p>Preguntas Hechas</p>
-                                    <p className="big_teacherhome_text">{this.props.teacherQuestions.length}</p>
+                                    <p className="big__teacher__home__text">{this.props.teacherMetrics.questionsAsked}</p>
                                 </div>}
                                 <button className="btn btn-item">{this.props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
                             </NavLink>
@@ -192,7 +190,7 @@ class TeacherHome extends React.Component {
                                             Mis Recomendaciones
                                         </p>
                                         <p style={{marginTop: '0', marginBottom: '2rem'}}>
-                                            Altamente Clasificadas
+                                            Altamente Calificadas
                                         </p>
                                     </div>
                                 }
@@ -237,12 +235,12 @@ class TeacherHome extends React.Component {
 
 //Map teacher metrics, teacher recommendations, teacher questions, and current language state to component properties. 
 const mapStateToProps = (state) => {
+    console.log(state.teacherMetrics);
     return {
         teacherMetrics: state.teacherMetrics,
         teacherRecommendations: state.teacherRecommendations.recommendations,
         teacherQuestions: state.teacherQuestions.teacherQuestions,
         lang: state.language.lang,
-        daysInPlatform: state.daysInPlatform
     };
 };
 //Connect componet to controller.

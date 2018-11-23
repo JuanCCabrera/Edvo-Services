@@ -36,7 +36,7 @@ class TeacherRecommendationsFilters extends React.Component{
 
                                     <option value="date">{this.props.lang === 'English' ? 'Date' : 'Fecha'}</option>
 
-                                    <option value="rate">{this.props.lang === 'English' ? 'Rating' : 'Clasificación'}</option>
+                                    <option value="rate">{this.props.lang === 'English' ? 'Rating' : 'Calificación'}</option>
                             </select>
                     </div>
 

@@ -24,7 +24,7 @@ const TopRecommendationsList = (props) => (
             </div>
             :
             <div>
-                <p>Usted no tiene recomendaciones clasificadas.</p>
+                <p>Usted no tiene recomendaciones calificadas.</p>
             </div>
         )}
     </div>
