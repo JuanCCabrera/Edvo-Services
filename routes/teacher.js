@@ -447,42 +447,21 @@ router.post('/recommendations/read', (req,res,next)=> {
         query1.on('end', () => {
           done();
           if (resultsexist.length === 1){ // recommendation exist and is of specified user
-          
-            //SQL Query > update read data
-            client.query('UPDATE edu_recommendations SET read=$1 WHERE recomid = $2', [true, data.recomid,]);
-            //verify a quiz exists and has empty questions spaces
-            const query2 = client.query('SELECT * FROM quiz WHERE userid = $1 AND count < $2', [data.userid, 12,]);
-            //stream results back one row at a time
-            query2.on('row', (row) => {
-              quizresult.push(row);
-            });
-            query2.on('end', () => {
-              done();
-              //quiz exists and has empty slots
-              if(quizresult.length === 1){ 
-                //SQL QUERY > update count of quizes questions
-                client.query('UPDATE quiz SET count = $1 WHERE quizid = $2', [quizresult[0].count+1, quizresult[0].quizid]);
-                //SQL QUERY> get recomendation question
-                const query4 = client.query('SELECT * FROM quiz_question NATURAL INNER JOIN recommendation_body WHERE recomid = $1', [data.recomid,]);
-                //stream results back one row at a time
-                query4.on('row', (row) => {
-                  quizqid.push(row);
-                });
-                query4.on('end', () => {
-                  done();
-                  //SQL Query > insert question for quiz
-                  client.query('INSERT INTO quiz_qs(quizid, quizquestionid, recommendationtitle) values ($1, $2, $3)',[quizresult[0].quizid, quizqid[0].quizquestionid, quizqid[0].title]);  
-                });
-              }else{//there isn't a quiz with available space
-                //create quiz
-                //SQL Query > create quiz data
-                const query3 = client.query('INSERT INTO quiz(userid, count, created) values($1, $2, $4) returning quizid',[data.userid, 1, todaysDate,]);
-                //stream results back one row at a time
-                query3.on('row', (row) => {
-                  quizid.push(row);
-                });
-                query3.on('end', () => {
-                  done();
+            if(resultsexist[0].read == false){
+              //SQL Query > update read data
+              client.query('UPDATE edu_recommendations SET read=$1 WHERE recomid = $2', [true, data.recomid,]);
+              //verify a quiz exists and has empty questions spaces
+              const query2 = client.query('SELECT * FROM quiz WHERE userid = $1 AND count < $2', [data.userid, 12,]);
+              //stream results back one row at a time
+              query2.on('row', (row) => {
+                quizresult.push(row);
+              });
+              query2.on('end', () => {
+                done();
+                //quiz exists and has empty slots
+                if(quizresult.length === 1){ 
+                  //SQL QUERY > update count of quizes questions
+                  client.query('UPDATE quiz SET count = $1 WHERE quizid = $2', [quizresult[0].count+1, quizresult[0].quizid]);
                   //SQL QUERY> get recomendation question
                   const query4 = client.query('SELECT * FROM quiz_question NATURAL INNER JOIN recommendation_body WHERE recomid = $1', [data.recomid,]);
                   //stream results back one row at a time
@@ -491,13 +470,37 @@ router.post('/recommendations/read', (req,res,next)=> {
                   });
                   query4.on('end', () => {
                     done();
-                    //SQL Query > insert first question for quiz
-                    client.query('INSERT INTO quiz_qs(quizid, quizquestionid, recommendationtitle) values ($1, $2, $3)',[quizid[0].quizid, quizqid[0].quizquestionid, quizqid[0].title]);  
+                    //SQL Query > insert question for quiz
+                    client.query('INSERT INTO quiz_qs(quizid, quizquestionid, recommendationtitle) values ($1, $2, $3)',[quizresult[0].quizid, quizqid[0].quizquestionid, quizqid[0].title]);  
                   });
-                });
-              }
-              return res.status(201).json({statusCode: 201}); 
-            });
+                }else{//there isn't a quiz with available space
+                  //create quiz
+                  //SQL Query > create quiz data
+                  const query3 = client.query('INSERT INTO quiz(userid, count, created) values($1, $2, $4) returning quizid',[data.userid, 1, todaysDate,]);
+                  //stream results back one row at a time
+                  query3.on('row', (row) => {
+                    quizid.push(row);
+                  });
+                  query3.on('end', () => {
+                    done();
+                    //SQL QUERY> get recomendation question
+                    const query4 = client.query('SELECT * FROM quiz_question NATURAL INNER JOIN recommendation_body WHERE recomid = $1', [data.recomid,]);
+                    //stream results back one row at a time
+                    query4.on('row', (row) => {
+                      quizqid.push(row);
+                    });
+                    query4.on('end', () => {
+                      done();
+                      //SQL Query > insert first question for quiz
+                      client.query('INSERT INTO quiz_qs(quizid, quizquestionid, recommendationtitle) values ($1, $2, $3)',[quizid[0].quizid, quizqid[0].quizquestionid, quizqid[0].title]);  
+                    });
+                  });
+                }
+                return res.status(201).json({statusCode: 201}); 
+              });
+            }else{
+              return res.status(201).json({statusCode: 201});
+            }
           }else
           {
             return res.status(401).json({statusCode: 401,
