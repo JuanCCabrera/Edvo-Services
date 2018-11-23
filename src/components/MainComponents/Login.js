@@ -81,10 +81,18 @@ const LoginPage = (props) => (
                         </div>
                         }
                 
-          {
-            !auth0Client.isAuthenticated() &&
-            <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign Up' : 'Registrarse'}</button>
-          }
+                {
+                    !auth0Client.isAuthenticated() &&
+                    <div>
+                        <button onClick={() => {signOut(props)}}>
+                            <div className="btn btn-item">
+                            {props.lang === 'English' ? 'Register' : 'Registrarse'}
+                            </div>
+                        </button>
+                    </div>
+                }
+                    </div>
+                </div>
             </div>
         </div>
         <div>
@@ -93,8 +101,6 @@ const LoginPage = (props) => (
             props.dispatch(sendContactForm(contact));
             }}/>
         </div>
-    </div>
-    </div>
     </div>
 );
 
