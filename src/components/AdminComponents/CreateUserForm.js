@@ -183,7 +183,7 @@ class CreateUserForm extends React.Component{
             this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
-            axios.post('http://localhost:3000/admin/settings/users/add', {
+            axios.post('https://beta.edvotech.com/api/admin/settings/users/add', {
             email: this.state.email,
             password: this.state.password, 
             confirmPassword: this.state.confirmPassword,

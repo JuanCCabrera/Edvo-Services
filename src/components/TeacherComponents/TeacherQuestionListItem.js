@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {selectQuestion} from '../../actions/teacherQuestions';
+import moment from 'moment';
 
 /**
  * Single item in the Teacher Questions list. Each Teacher Question contains the question's subject, question body, and the date in which the question was asked. 
@@ -20,7 +21,7 @@ const TeacherQuestionListItem = (props) => (
                 //Question date
             }
             
-            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.question.askedDate}</h5>
+            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {moment(props.question.askedDate).format("YYYY-MM-DD")}</h5>
             {
                 //Question body. 
             }

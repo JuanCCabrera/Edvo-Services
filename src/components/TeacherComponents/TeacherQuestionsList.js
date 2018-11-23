@@ -26,7 +26,7 @@ class TeacherQuestionsList extends React.Component{
 
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
-        axios.get('http://localhost:3000/teacher/questions',
+        axios.get('https://beta.edvotech.com/api/teacher/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
@@ -36,7 +36,7 @@ class TeacherQuestionsList extends React.Component{
                 subject: element.subject, favorite: element.favorite, userId: element.userid, answer: element.answer, rate: element.rate}));
                 if(element.favorite == true){
                     console.log("FAVORITE QUESTION: ???", element);
-                    this.props.dispatch(addFavoriteQuestion({askedDate: moment(element.askeddate).format("YYYY-MM-DD HH:mm:ss")}));
+                    this.props.dispatch(addFavoriteQuestion({askedDate: element.askeddate}));
                 }
             });
         });

@@ -25,7 +25,7 @@ class SchoolHome extends React.Component {
     }
     componentWillMount(){
         console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
-        axios.get('http://localhost:3000/school/home',
+        axios.get('https://beta.edvotech.com/api/school/home',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })

@@ -21,9 +21,9 @@ class TeacherHome extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            daysInPlatform: '',
-            recommendationsRead: '',
-            questionsAsked:'',
+            daysInPlatform: 0,
+            recommendationsRead: 0,
+            questionsAsked: 0,
             topRecommendations: [],
             mostRecentrecommendations: []
         };
@@ -40,10 +40,12 @@ class TeacherHome extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("###################TEACHER HOME: ", response);
-            this.setState({daysInPlatform: response.data.daysInPlatforms});
-            this.setState({recommendationsRead: response.data.recommendationsRead});
-            this.setState({questionsAsked: response.data.questionsasked});
+            console.log("###################TEACHER HOME DAYS: ", response.data.daysInPlatforms);
+            this.props.dispatch(loadTeacherDaysInPlatform({daysInPlatform: response.data.daysInPlatforms}));
+            this.props.dispatch(loadTeacherQuestionsAsked({questionsAsked: response.data.questionsasked}));
+            this.props.dispatch(loadTeacherRecommendationsRead({recommendationsRead: response.data.recommendationsRead}));
+            console.log("STATE OF TEACHER HOME: ", this.state);
+            
             response.data.recentRecommendations.forEach(element => {
             this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
             this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
@@ -92,7 +94,7 @@ class TeacherHome extends React.Component {
                                     <p>Días en Plataforma</p>
                                     
                                 </div>}
-                                <p className="big__teacher__home__text">{this.props.teacherMetrics.daysInPlatform}</p>
+                                <p className="big_teacherhome_text">{this.state.daysInPlatform}</p>
                             </div>
                         </div>
                     </div>
@@ -111,9 +113,7 @@ class TeacherHome extends React.Component {
                                     <div>
                                         <p>Recomendaciones Leídas</p>
                                     </div>}
-                                    <p className="big__teacher__home__text">{this.props.teacherRecommendations.filter((reco) => {
-                                        return reco.read === true;
-                                    }).length}</p>
+                                    <p className="big_teacherhome_text">{this.state.recommendationsRead}</p>
 
                                     <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
                                 </NavLink>
@@ -129,14 +129,14 @@ class TeacherHome extends React.Component {
                                 {this.props.lang === 'English' ? 
                                 <div>
                                     <p>Questions Asked</p>
-                                    <p className="big__teacher__home__text">
-                                        {this.props.teacherQuestions.length}
+                                    <p className="big_teacherhome_text">
+                                        {this.state.questionsAsked}
                                     </p>
                                 </div>
                                 : 
                                 <div>
                                     <p>Preguntas Hechas</p>
-                                    <p className="big__teacher__home__text">{this.props.teacherQuestions.length}</p>
+                                    <p className="big_teacherhome_text">{this.props.teacherQuestions.length}</p>
                                 </div>}
                                 <button className="btn btn-item">{this.props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
                             </NavLink>
@@ -151,13 +151,13 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 {this.props.lang === 'English' ? 
-                                    <div className="text-center home__card__title"> 
+                                    <div className="text-center home_card_title"> 
                                         <p style={{margin: '2rem 0'}}>
                                             My Most Recent Recommendations
                                         </p>
                                     </div>
                                     :
-                                    <div className="text-center home__card__title">
+                                    <div className="text-center home_card_title">
                                         <p style={{marginTop: '2rem', marginBottom: '0'}}>
                                             Mis Recomendaciones
                                         </p>
@@ -177,13 +177,13 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 {this.props.lang === 'English' ? 
-                                    <div className="text-center home__card__title"> 
+                                    <div className="text-center home_card_title"> 
                                         <p style={{margin: '2rem 0'}}>
                                             My Top-Rated Recommendations
                                         </p>
                                     </div>
                                     :
-                                    <div className="text-center home__card__title">
+                                    <div className="text-center home_card_title">
                                         <p style={{marginTop: '2rem', marginBottom: '0'}}>
                                             Mis Recomendaciones
                                         </p>
@@ -203,13 +203,13 @@ class TeacherHome extends React.Component {
                             }
                             <div>
                                 {this.props.lang === 'English' ? 
-                                    <div className="text-center home__card__title"> 
+                                    <div className="text-center home_card_title"> 
                                         <p style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
                                             Ask a Question
                                         </p>
                                     </div>
                                     :
-                                    <div className="text-center home__card__title">
+                                    <div className="text-center home_card_title">
                                         <p style={{marginBottom: '3.1rem', marginTop: '3rem'}}>
                                             Envíe una Pregunta
                                         </p>

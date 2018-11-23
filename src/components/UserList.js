@@ -27,7 +27,7 @@ class UserList extends React.Component{
 
     //Configure state when component is being mounted. 
     componentWillMount(){
-        axios.get('http://localhost:3000/admin/settings/users',{
+        axios.get('https://beta.edvotech.com/api/admin/settings/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             response.data.users.forEach(element => {
@@ -87,7 +87,7 @@ class UserList extends React.Component{
                     return <UserListItem key={user.id} user={user} 
                     userRemoval={() => {
                         console.log("REMOVING USER NOW!!!!!!!", user.id)
-                        axios.post('http://localhost:3000/admin/settings/users/remove',{
+                        axios.post('https://beta.edvotech.com/api/admin/settings/users/remove',{
                             subToRemove: user.id
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }

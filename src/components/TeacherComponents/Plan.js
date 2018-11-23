@@ -25,7 +25,7 @@ class Plan extends React.Component{
         }
     }
     componentWillMount(){
-        axios.get('http://localhost:3000/teacher/settings/plans',
+        axios.get('https://beta.edvotech.com/api/teacher/settings/plans',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
@@ -73,7 +73,7 @@ class Plan extends React.Component{
     cancelPlan = (e) => {
         e.preventDefault();
         console.log("WHY????? ",auth0Client.getIdToken());
-        axios.post('http://localhost:3000/teacher/settings/plans/cancel',{},
+        axios.post('https://beta.edvotech.com/api/teacher/settings/plans/cancel',{},
         {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .then((response)=>{
         console.log(response);

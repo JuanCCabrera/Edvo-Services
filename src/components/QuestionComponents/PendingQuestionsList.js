@@ -24,7 +24,7 @@ class PendingQuestionsList extends React.Component {
     }
     //Configure initial local state values, including the list of questions to display on the first page. 
     componentWillMount(){        
-        axios.get('http://localhost:3000/admin/staff/questions',
+        axios.get('https://beta.edvotech.com/api/admin/staff/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {

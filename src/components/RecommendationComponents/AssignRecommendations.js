@@ -113,7 +113,7 @@ import axios from 'axios';
                     console.log(props.assigned);
                     props.dispatch(assignRecommendation());
                     console.log("USER TO: ", props.assigned)
-                    axios.post('http://localhost:3000/admin/recommendations/assign', {
+                    axios.post('https://beta.edvotech.com/api/admin/recommendations/assign', {
                         recomid: props.assigned.recoID,
                         usersToAssign: props.assigned.userID
                     },

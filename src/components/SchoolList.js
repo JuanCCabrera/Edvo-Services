@@ -29,7 +29,7 @@ class SchoolList extends React.Component{
     componentWillMount(){
         //Change UUID for InsitutionID when DB connection is made
         //send to action
-        axios.get('http://localhost:3000/admin/settings/institutions',{
+        axios.get('https://beta.edvotech.com/api/admin/settings/institutions',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             console.log("REPSONSE: ", response);

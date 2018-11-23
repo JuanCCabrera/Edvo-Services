@@ -34,23 +34,6 @@ const QuestionModal = (props) => (
             {
                 //Favoriting star
             }
-            <div className="badge clickable" style={{backgroundColor: '#5933AA', marginTop: '1rem'}} onClick={() =>  {
-                console.log("BEFORE: ",props.question.favorite);
-                const favoriteQuestion = !props.question.favorite;
-                console.log("AFTER: ",favoriteQuestion);
-                axios.post('http://localhost:3000/teacher/questions/favorite',{
-                        askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
-                        favorite: !favoriteQuestion
-                    },{
-                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-                    }).then(response =>{
-                    
-                if(props.question.favorite == true){
-                    props.dispatch(addFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
-                }else{
-                    props.dispatch(removeFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
-                }});
-            }}>
             <div className="col-sm-2">
                 <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>
             
@@ -58,21 +41,30 @@ const QuestionModal = (props) => (
                     name="favorite"
                     starCount={1}
                     value={props.isFavorite}
-                    onStarClick={(nextValue, prevValue, name) => {
-                        if(prevValue === 0){
-                            //Add to favorites list 
-                            props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
-                        }else{
-                            //Remove from favorites list through filter
-                            props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
-                        }
+                    onStarClick={() => {
+                        const favoriteQuestion = !props.question.favorite;
+                        console.log("THE FAVORITE VALUE IS: ", props.question.favorite);
+                console.log("AFTER: ",favoriteQuestion);
+                axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
+                        askeddate: props.question.askedDate,
+                        favorite: favoriteQuestion
+                    },{
+                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                    }).then(response =>{
+                    if(response.data.statusCode == 201){
+                        console.log("FAV WAS SUCCESSFUL!!!");
+                if(props.question.favorite == false){
+                    props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
+                }else{
+                    props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
+                }}});
+                        
                     }}
                 />
             
             </div>
             </div>
         </div>
-    </div>
     
     {
         //Quesiton body
@@ -91,7 +83,7 @@ const QuestionModal = (props) => (
     {
         //Date in which the question was asked
     }
-        <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.question.askedDate}</h4>
+        <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{moment(props.question.askedDate).format("YYYY-MM-DD")}</h4>
     {
         //Question rating
     }
@@ -101,8 +93,8 @@ const QuestionModal = (props) => (
             starCount={5}
             value={props.question.rate}
             onStarClick={(nextValue, prevValue, name) => {
-                axios.post('http://localhost:3000/teacher/questions/rate',{
-                    askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
+                axios.post('https://beta.edvotech.com/api/teacher/questions/rate',{
+                    askeddate: props.question.askedDate,
                     rate: nextValue
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }

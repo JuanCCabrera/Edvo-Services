@@ -1,3 +1,4 @@
+import moment from 'moment';
 //Reducer default state
 const teacherQuestionsReducerDefaultState = {
     teacherQuestions: [],
@@ -64,9 +65,11 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
             }
         //Modify question favorite status (mark as favorite), log it, and add question to the Favorite Questions List
         case 'ADD_FAVORITE_QUESTION':
+            console.log("ADDING TO FAVORITES IN REDUCER: ",action.askedDate);
             return{
                 teacherQuestions: state.teacherQuestions.map((question) => {
-                    if(question.askedDate === action.askedDate){
+                    console.log("ADDING ASKING FAV: ",question.askedDate, " AND ", action.askedDate)
+                    if(question.askedDate == action.askedDate){
                         question.favorite = true;
                     }
                     return question;
@@ -80,7 +83,8 @@ const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, ac
         case 'REMOVE_FAVORITE_QUESTION':
             return{
                 teacherQuestions: state.teacherQuestions.map((question) => {
-                    if(question.askedDate === action.askedDate){
+                    console.log("REMOVING ASKING FAV: ",question.askedDate, " AND ", action.askedDate)
+                    if(question.askedDate== action.askedDate){
                         question.favorite = false;
                     }
                     return question;

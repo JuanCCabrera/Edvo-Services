@@ -114,56 +114,56 @@ const AppRouter = (props) => (
                 <Route path="/about" component={AboutPage}/>
                 <Route path="/plans" component={PlansPage}/>
                 <Route path="/login" component={LoginPage}/>
-                <SecuredRoute path="/register" component={Registration}/>
+                <Route path="/register" component={Registration}/>
                 <Route path='/callback' component={Callback}/>
                 <Route exact path='/callback' component={MainPage}/>
 
                 {
                     //Teacher Components
                 }
-                <SecuredRoute path='/teacher/home' component={TeacherHome}/>
-                <SecuredRoute path='/teacher/settings/info' component={TeacherProfile}/>
-                <SecuredRoute path='/teacher/settings/classes' component={Classes}/>
-                <SecuredRoute path='/teacher/settings/plans/payment' exact component={Stripe} />
-                <SecuredRoute path='/teacher/settings/plans' component={Plan}/>
-                <SecuredRoute path='/teacher/recommendations' component={TeacherRecommendations}/>
-                <SecuredRoute path='/teacher/questions' component={TeacherQuestions}/>
+                <Route path='/teacher/home' component={TeacherHome}/>
+                <Route path='/teacher/settings/info' component={TeacherProfile}/>
+                <Route path='/teacher/settings/classes' component={Classes}/>
+                <Route path='/teacher/settings/plans/payment' exact component={Stripe} />
+                <Route path='/teacher/settings/plans' component={Plan}/>
+                <Route path='/teacher/recommendations' component={TeacherRecommendations}/>
+                <Route path='/teacher/questions' component={TeacherQuestions}/>
 
                 {
                     //Mentor Components
                 }
-                <SecuredRoute path='/mentor/home' component={MentorHome}/>
-                <SecuredRoute path='/mentor/settings' component={MentorProfile}/> 
+                <Route path='/mentor/home' component={MentorHome}/>
+                <Route path='/mentor/settings' component={MentorProfile}/> 
                 
                 {
                     //School
                 }
-                <SecuredRoute path='/school/home' component={SchoolHome}/>
-                <SecuredRoute path='/school/settings' component={SchoolProfile}/>
+                <Route path='/school/home' component={SchoolHome}/>
+                <Route path='/school/settings' component={SchoolProfile}/>
                 {
                     //Administrator Components
                 }
-                <SecuredRoute exact path='/admin/settings/info' component={AdminProfile}/>
-                <SecuredRoute exact path='/admin/settings/users' component={AppUsers}/>
-                <SecuredRoute exact path='/admin/settings/users/add' component={CreateUserForm}/>
-                <SecuredRoute exact path='/admin/settings/schools' component={AppSchools}/>
-                <SecuredRoute exact path='/admin/settings/schools/add' component={CreateInstitutionForm}/>
-                <SecuredRoute exact path='/admin/settings/coupons' component={CreateCouponForm}/>
-                <SecuredRoute path='/admin/home' component={AdminHome}/>
+                <Route exact path='/admin/settings/info' component={AdminProfile}/>
+                <Route exact path='/admin/settings/users' component={AppUsers}/>
+                <Route exact path='/admin/settings/users/add' component={CreateUserForm}/>
+                <Route exact path='/admin/settings/schools' component={AppSchools}/>
+                <Route exact path='/admin/settings/schools/add' component={CreateInstitutionForm}/>
+                <Route exact path='/admin/settings/coupons' component={CreateCouponForm}/>
+                <Route path='/admin/home' component={AdminHome}/>
 
                 {
                     //Staff Recommendations Components
                 }
-                <SecuredRoute exact path='/recommendations/assign' component={RecommendationsControl}/>
-                <SecuredRoute exact path='/recommendations/create' component={NewRecommendation}/>
-                <SecuredRoute exact path='/recommendations/manage' component={ManageRecommendations}/>
-                <SecuredRoute path="/recommendations/edit/:id" component={EditRecommendation}/>
+                <Route exact path='/recommendations/assign' component={RecommendationsControl}/>
+                <Route exact path='/recommendations/create' component={NewRecommendation}/>
+                <Route exact path='/recommendations/manage' component={ManageRecommendations}/>
+                <Route path="/recommendations/edit/:id" component={EditRecommendation}/>
 
                 {
                     //Staff Questions Components
                 }
-                <SecuredRoute exact path='/staff/questions' component={ManageQuestions}/>
-                <SecuredRoute path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
+                <Route exact path='/staff/questions' component={ManageQuestions}/>
+                <Route path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
                 {
                     //Teacher Quizzes
                 }

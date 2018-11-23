@@ -449,7 +449,7 @@ class CreateRecommendationForm extends React.Component{
         }else{
             this.setState(() => ({creationError: false}));
             console.log("TOKEN: ",auth0Client.getIdToken());
-        axios.post('http://localhost:3000/admin/recommendations/create', {
+        axios.post('https://beta.edvotech.com/api/admin/recommendations/create', {
             usertype: auth0Client.getRole(),
             title: this.state.title,
             multimedia: this.state.multimedia,

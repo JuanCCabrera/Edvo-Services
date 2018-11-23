@@ -44,7 +44,7 @@ class AnswerQuestionForm extends React.Component {
         }else{
             this.setState(() => ({answerError: ''}));
             console.log("TEACHER ID TO ANSWER: ", this.state.userID);
-            axios.post('http://localhost:3000/admin/questions/answer', {
+            axios.post('https://beta.edvotech.com/api/admin/questions/answer', {
                 askeddate: moment(this.state.askedDate).format("YYYY-MM-DD HH:mm:ss"),
                 answer: this.state.answer,
                 teacherid: this.state.userID

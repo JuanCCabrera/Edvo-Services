@@ -19,7 +19,7 @@ class Callback extends Component {
             this.props.history.replace('/login');
         }
         if(email){
-            await axios.get('http://localhost:3000/user',  {
+            await axios.get('https://beta.edvotech.com/api/user',  {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{                
                 localStorage.setItem('role',response.data.body.user[0].usertype);

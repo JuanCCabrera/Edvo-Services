@@ -31,7 +31,7 @@ class ManageRecommendationsList extends React.Component{
     //Configure initial state if component will be mounted. 
     //Determine the recommendations to display on the first page. 
     componentWillMount(){
-        axios.get('http://localhost:3000/admin/recommendations',{
+        axios.get('https://beta.edvotech.com/api/admin/recommendations',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             console.log("REPSONSE RECOM:L ", response);

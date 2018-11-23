@@ -54,7 +54,7 @@ class RecommendationModal extends React.Component{
                         favorite = true
                     console.log("IM CLICKING TO FAVPREV: ", prevValue);
                     console.log("IM CLICKING TO FAVBNEXT: ", nextValue);
-                    axios.post('http://localhost:3000/teacher/recommendations/favorite',{
+                    axios.post('https://beta.edvotech.com/api/teacher/recommendations/favorite',{
                         recomid: this.props.recommendation.recoID,
                         favorite: favorite
                     },{
@@ -106,7 +106,7 @@ class RecommendationModal extends React.Component{
             starCount={5}
             value={this.props.recommendation.rate}
             onStarClick={(nextValue, prevValue, name) => {
-                axios.post('http://localhost:3000/teacher/recommendations/rate',{
+                axios.post('https://beta.edvotech.com/api/teacher/recommendations/rate',{
                     recomid: this.props.recommendation.recoID,
                     rate: nextValue
                 },{

@@ -88,7 +88,7 @@ class CreateCouponForm extends React.Component{
             this.state.couponName," | ", 
             this.state.percentage," | ", 
             this.state.months);
-            axios.post('http://localhost:3000/admin/settings/coupons/create',{
+            axios.post('https://beta.edvotech.com/api/admin/settings/coupons/create',{
                             couponid: this.state.couponID,
                             couponname: this.state.couponName,
                             percentage: this.state.percentage,
