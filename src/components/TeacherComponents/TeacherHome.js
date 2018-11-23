@@ -35,7 +35,7 @@ class TeacherHome extends React.Component {
     componentWillMount(){
         console.log("PROPS IN HOME THIS: ",this.props);
         console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
-        axios.get('http://localhost:3000/teacher/home',
+        axios.get('https://beta.edvotech.com/api/teacher/home',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
@@ -113,7 +113,11 @@ class TeacherHome extends React.Component {
                                     <div>
                                         <p>Recomendaciones Leídas</p>
                                     </div>}
-                                    <p className="big_teacherhome_text">{this.state.recommendationsRead}</p>
+                                    <p className="big__teacher__home__text">
+                                        {this.props.teacherRecommendations.filter((reco) => {
+                                            return reco.read === true;
+                                        }).length}
+                                    </p>
 
                                     <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
                                 </NavLink>

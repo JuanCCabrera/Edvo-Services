@@ -15,8 +15,8 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
     switch(action.type){
         case 'RESET':
         return {
-            recommendationsRead: 0,
-            questionsAsked: 0,
+            recommendationsRead: null,
+            questionsAsked: null,
             daysInPlatform: 0,
             topRecommendations: [],
             mostRecentrecommendations: []

@@ -40,7 +40,15 @@ class Callback extends Component {
 
     render(){
         return(
-            <p>loading...</p>
+            <div className="container">
+                <div className="card text-center">
+                    <div style={{listStyleType: 'none', verticalAlign: 'center'}}>
+                        <h1>Loading...</h1>
+                        <i className="fa fa-spinner fa-pulse fa-4x fa-fw"></i>
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

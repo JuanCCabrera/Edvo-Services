@@ -37,6 +37,20 @@
     outline: none;
 }
 
+.home-modal-card{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    min-height: 14rem;
+    outline: none;
+    max-width: 100rem;
+    padding: 1rem;
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
 .modal-title{
     color: white;
     background-color:#5933AA;
@@ -84,4 +98,16 @@
     background-color: #5933AA;
     font-weight: normal;
     border: 1px solid white;
+}
+
+.teacher-modal-body{
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.text-left > span {
+    position: relative;
+    bottom: 10px;
+    font-size: 1.8rem;
+
 }
