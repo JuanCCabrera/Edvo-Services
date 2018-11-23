@@ -96,7 +96,6 @@ class TeacherHome extends React.Component {
                                     
                                 </div>}
                                 <p className="big__teacher__home__text">{this.props.teacherMetrics.daysInPlatform}</p>
-                                {console.log("THIS IS THE PROPS STATE METRICS: ", this.props.teacherMetrics)}
                             </div>
                         </div>
                     </div>
@@ -192,7 +191,7 @@ class TeacherHome extends React.Component {
                                             Mis Recomendaciones
                                         </p>
                                         <p style={{marginTop: '0', marginBottom: '2rem'}}>
-                                            Altamente Clasificadas
+                                            Altamente Calificadas
                                         </p>
                                     </div>
                                 }
@@ -237,12 +236,12 @@ class TeacherHome extends React.Component {
 
 //Map teacher metrics, teacher recommendations, teacher questions, and current language state to component properties. 
 const mapStateToProps = (state) => {
+    console.log(state.teacherMetrics);
     return {
         teacherMetrics: state.teacherMetrics,
         teacherRecommendations: state.teacherRecommendations.recommendations,
         teacherQuestions: state.teacherQuestions.teacherQuestions,
         lang: state.language.lang,
-        daysInPlatform: state.daysInPlatform
     };
 };
 //Connect componet to controller.

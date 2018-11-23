@@ -22,6 +22,44 @@ const QuestionModal = (props) => (
     className="home-modal-card"
     >
     <div>
+
+    <div className="text-right" style={{paddingBottom: '0', marginBottom: '0'}}>
+        <div title={props.lang === 'English' ? 'Mark as favorite' : 'Marcar como favorita'}>
+        <StarRatingComponent
+            name="favorite"
+            starCount={1}
+            value={props.isFavorite}
+            starColor={'#5933aa'}
+            renderStarIcon={(index, value) => {
+                return (
+                    <span style={{transition: '0.3s'}}>
+                    <i className={index <= value ? 'fa fa-star fa-3x' : 'fa fa-star fa-2x'} />
+                    </span>
+                );
+            }}
+            onStarClick={() => {
+                const favoriteQuestion = !props.question.favorite;
+                console.log("THE FAVORITE VALUE IS: ", props.question.favorite);
+        console.log("AFTER: ",favoriteQuestion);
+        axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
+                askeddate: props.question.askedDate,
+                favorite: favoriteQuestion
+            },{
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+            }).then(response =>{
+            if(response.data.statusCode == 201){
+                console.log("FAV WAS SUCCESSFUL!!!");
+        if(props.question.favorite == false){
+            props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
+        }else{
+            props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
+        }}});
+                
+            }}
+        />
+        </div>
+    
+    </div>
         {console.log("QUESTION MODAL PROPS: ",props.question.favorite)}
             {
                 //Quesiton subject
@@ -34,60 +72,51 @@ const QuestionModal = (props) => (
                     //Favoriting star
                 }
                 <div>
-                    <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>
-                
-                    <StarRatingComponent
-                    name="favorite"
-                    starCount={1}
-                    value={props.isFavorite}
-                    onStarClick={() => {
-                        const favoriteQuestion = !props.question.favorite;
-                        console.log("THE FAVORITE VALUE IS: ", props.question.favorite);
-                console.log("AFTER: ",favoriteQuestion);
-                axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
-                        askeddate: props.question.askedDate,
-                        favorite: favoriteQuestion
-                    },{
-                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-                    }).then(response =>{
-                    if(response.data.statusCode == 201){
-                        console.log("FAV WAS SUCCESSFUL!!!");
-                if(props.question.favorite == false){
-                    props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
-                }else{
-                    props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
-                }}});
-                        
-                    }}
-                />
+                    
+                    
                 
                 </div>
-        
+        <div className="teacher-modal-body">
         {
             //Quesiton body
         }
-            <div className="card-title">
+            <div >
             <h3>{props.question.question}</h3>
+            <hr/>
             </div>
         {
             //Question answer
         }
             {props.question.answer !== '' ? 
 
-            <p>Answer: {props.question.answer}</p> 
+            <div>
+                <p className="font-weight-bold">{props.lang === 'English' ? 'Answer:' : 'Contestación:'}</p>
+                <p>{props.question.answer}</p> 
+            </div>
             : 
             <p>{props.lang === 'English' ? 'This question has not been answered.' : 'Esta pregunta no se ha contestado.'}</p>}
+        <br/>
         {
             //Date in which the question was asked
         }
             <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{moment(props.question.askedDate).format("YYYY-MM-DD")}</h4>
+        
+        <div className="text-left">
         {
             //Question rating
         }
-            <h4>{props.lang === 'English' ? 'Rate: ': 'Calificar: '}</h4>
+            <span>{props.lang === 'English' ? 'Rate: ': 'Calificar: '}</span>
             <StarRatingComponent
             name="rate"
             starCount={5}
+            starColor={'#ffb400'}
+            renderStarIcon={(index, value) => {
+                return (
+                    <span style={{transition: '0.3s'}}>
+                    <i className={index <= value ? 'fa fa-star fa-lg' : 'fa fa-star fa'} />
+                    </span>
+                );
+                }}
             value={props.question.rate}
             onStarClick={(nextValue, prevValue, name) => {
                 axios.post('https://beta.edvotech.com/api/teacher/questions/rate',{
@@ -101,14 +130,18 @@ const QuestionModal = (props) => (
                 }
             />
             <br/>
+        </div>
+        </div>
             {
                 //Button to close the question modal. 
             }
-            <button onClick = {props.clearSelectedQuestion}>
-                <div className="btn btn-item">
-                    {props.lang === 'English' ? 'Close' : 'Cerrar'}
-                </div>
-            </button>
+            <div className="text-center">
+                <button onClick = {props.clearSelectedQuestion}>
+                    <div className="btn btn-item">
+                        {props.lang === 'English' ? 'Close' : 'Cerrar'}
+                    </div>
+                </button>
+            </div>
         </div>
     </Modal>
     </div>

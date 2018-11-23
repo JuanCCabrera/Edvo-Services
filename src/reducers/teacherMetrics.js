@@ -1,5 +1,7 @@
 //Reducer default state
 const teacherMetricsReducerDefaultState = {
+    recommendationsRead: 0,
+    questionsAsked: 0,
     daysInPlatform: 0,
     topRecommendations: [],
     mostRecentrecommendations: []
@@ -24,8 +26,8 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
         //Log number of days teacher has logged into platform to display in the Teacher Home page.
         case 'LOAD_TEACHER_DAYS_IN_PLATFORM':
             return {
-                recommendationsRead: action.recommendationsRead,
-                questionsAsked: action.questionsAsked,
+                recommendationsRead: state.recommendationsRead,
+                questionsAsked: state.questionsAsked,
                 daysInPlatform: action.daysInPlatform,
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]

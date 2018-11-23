@@ -15,7 +15,10 @@ const getVisibleRecommendations = (recommendations, {text, category}) => {
         const titleMatch = reco.title.toLowerCase().includes(text.toLowerCase());
         const headerMatch = reco.header.toLowerCase().includes(text.toLowerCase());
         const descriptionMatch = reco.description.toLowerCase().includes(text.toLowerCase());
-        const locationMatch = reco.location.toLowerCase().includes(text.toLowerCase());
+        let locationMatch = false;
+        if(reco.location){
+            locationMatch = reco.location.toLowerCase().includes(text.toLowerCase());
+        }
         const subjectMatch = reco.subject.toLowerCase().includes(text.toLowerCase());
         const schoolTypeMatch = reco.schoolType.toLowerCase().includes(text.toLowerCase());
         let typeCheck = true;

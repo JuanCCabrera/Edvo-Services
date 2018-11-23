@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {selectRecommendation} from '../../actions/teacherRecommendations';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import moment from 'moment';
 
 /**
  * Single item of the Teacher Recommendations list. It contains the recommendation's title, date of assignment and header. 
@@ -32,7 +33,7 @@ const TeacherRecommendationsListItem = (props) => (
                 <p>{props.reco.title}</p>
             </div>
             
-            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.reco.date}</h5>
+            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {moment(props.reco.date).format("YYYY-MM-DD")}</h5>
         {
             //Recommendation header
         }

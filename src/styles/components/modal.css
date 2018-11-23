@@ -37,6 +37,18 @@
     outline: none;
 }
 
+.loading-modal-card{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    min-height: 14rem;
+    padding: 0 0;
+    outline: none;
+}
+
 .home-modal-card{
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);

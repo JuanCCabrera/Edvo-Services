@@ -8,6 +8,7 @@ import {removeFavoriteRecommendation} from '../../actions/teacherRecommendations
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import {rateTopAndMostRecent} from '../../actions/teacherMetrics';
+import moment from 'moment';
 
 /**
  * Modal displayed when a recommendation is selected. The modal displays information about the recommendation including the recommendation's
@@ -43,7 +44,7 @@ class RecommendationModal extends React.Component{
                         //Favorite star
                     }
 
-                    <div className="text-right" style={{paddingBottom: '0', marginBottom: '0'}}>
+                    <div title={this.   props.lang === 'English' ? 'Mark as favorite' : 'Marcar como favorita'} className="text-right" style={{paddingBottom: '0', marginBottom: '0'}}>
                     <StarRatingComponent
                         name="favorite"
                         starCount={1}
@@ -112,7 +113,7 @@ class RecommendationModal extends React.Component{
                                     //Date of assignment
                                 }
                                     <h4>{this.props.lang === 'English' ? 'Date: ' : 'Fecha: '}
-                                        {this.props.recommendation.date.slice(0,10)}
+                                        {moment(this.props.recommendation.date).format("YYYY-MM-DD")}
                                     </h4>
                                 
                             <div className="text-left">
