@@ -94,7 +94,8 @@ class TeacherHome extends React.Component {
                                     <p>Días en Plataforma</p>
                                     
                                 </div>}
-                                <p className="big_teacherhome_text">{this.state.daysInPlatform}</p>
+                                <p className="big__teacher__home__text">{this.props.teacherMetrics.daysInPlatform}</p>
+                                {console.log("THIS IS THE PROPS STATE METRICS: ", this.props.teacherMetrics)}
                             </div>
                         </div>
                     </div>
@@ -114,9 +115,7 @@ class TeacherHome extends React.Component {
                                         <p>Recomendaciones Leídas</p>
                                     </div>}
                                     <p className="big__teacher__home__text">
-                                        {this.props.teacherRecommendations.filter((reco) => {
-                                            return reco.read === true;
-                                        }).length}
+                                        {this.props.teacherMetrics.recommendationsRead}
                                     </p>
 
                                     <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
@@ -133,14 +132,14 @@ class TeacherHome extends React.Component {
                                 {this.props.lang === 'English' ? 
                                 <div>
                                     <p>Questions Asked</p>
-                                    <p className="big_teacherhome_text">
+                                    <p className="big__teacher__home__text">
                                         {this.state.questionsAsked}
                                     </p>
                                 </div>
                                 : 
                                 <div>
                                     <p>Preguntas Hechas</p>
-                                    <p className="big_teacherhome_text">{this.props.teacherQuestions.length}</p>
+                                    <p className="big__teacher__home__text">{this.props.teacherMetrics.questionsAsked}</p>
                                 </div>}
                                 <button className="btn btn-item">{this.props.lang === 'English' ? 'View Questions' : 'Ver Preguntas'}</button>
                             </NavLink>

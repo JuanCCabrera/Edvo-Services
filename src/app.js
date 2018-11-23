@@ -51,14 +51,14 @@ const store = configureStore();
 
 
 
-store.dispatch(createQuiz({score: 15, quizID: 'Quiz 1 May 2018', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Segunda Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Tercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
-['question-'+uuid(),'Cuarta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Quinta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Sexta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
-['question-'+uuid(),'Septima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Octava Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Novena Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
-['question-'+uuid(),'Decima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Undecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Duodecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]]] }));
-store.dispatch(createQuiz({score: null, quizID: 'Quiz 2 June 2018', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Segunda Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Tercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
-['question-'+uuid(),'Cuarta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Quinta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Sexta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
-['question-'+uuid(),'Septima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Octava Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Novena Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
-['question-'+uuid(),'Decima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Undecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Duodecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]]] }));
+// store.dispatch(createQuiz({score: 15, quizID: 'Quiz 1 May 2018', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Segunda Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Tercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+// ['question-'+uuid(),'Cuarta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Quinta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Sexta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+// ['question-'+uuid(),'Septima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Octava Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Novena Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+// ['question-'+uuid(),'Decima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Undecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Duodecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]]] }));
+// store.dispatch(createQuiz({score: null, quizID: 'Quiz 2 June 2018', quizDate: '2018-10-27 12:24:24', items:[['question-'+uuid(),'Primera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Segunda Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]], ['question-'+uuid(),'Tercera Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+// ['question-'+uuid(),'Cuarta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Quinta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Sexta Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+// ['question-'+uuid(),'Septima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Octava Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Novena Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],
+// ['question-'+uuid(),'Decima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Undecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]],['question-'+uuid(),'Duodecima Pregunta', [['answer-'+uuid(), 'True'],[ 'answer-'+uuid(), 'False']]]] }));
 
 //Generating User Test Data
 
@@ -103,7 +103,6 @@ store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History
 store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
 
 //Generating Teacher Metrics Test Data
-store.dispatch(loadTeacherDaysInPlatform({daysInPlatform: 5}));
 const recoOneID = uuid();
 const recoTwoID = uuid();
 const recoThreeID = uuid();

@@ -1,25 +1,23 @@
 //Loads a quiz from the response
 export const createQuiz = (
     {
-        number = '',
+        correctChoices = {},
         quizID = '',
         quizDate = '',
-        score = 0,
-        items = [
-            number = '',
-            question = '',
-            answers = []
-        ]
+        score = null,
+        questions = {
+            choices: {}
+        }
     } = {}) => {
         console.log("IN ACTION Quiz ID: ", quizID);
         return {
             type: 'CREATE_QUIZ',
             quiz_item: {
-                number,
+                correctChoices,
                 quizID,
                 quizDate,
                 score,
-                items
+                questions
             }
         }
 };

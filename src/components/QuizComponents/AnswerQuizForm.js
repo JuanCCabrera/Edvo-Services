@@ -4,17 +4,18 @@ import { answerQuiz } from '../../actions/quiz';
 import QuizButtonList from './QuizButtonList';
 import uuid from 'uuid';
 import axios from 'axios';
+import auth0Client from '../../Auth';
 
 class AnswerQuizForm extends React.Component {
     constructor(props){
         super(props);
-        console.log("PROPS IN ANSWER QUIZ", props);
         this.state = {
             props: props,
             answers: {},
             show: false,
-            quizDate: props.quizDate,
-            quizID: props.quizID
+            quizDate: props.quiz.quizDate,
+            quizID: props.quiz.quizID,
+            correctChoices: props.quiz.correctChoices
         };
     }
 
@@ -28,12 +29,25 @@ class AnswerQuizForm extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        if(Object.keys(this.state.answers).length != 12)
-            console.log("PLEASE ANSWER ALL QUESTIONS!");
-        else{
-        console.log("QUIZ POST REQUEST: ", this.props.quiz.quizID, this.props.quiz.quizDate, this.state.answers);
-        this.props.history.push('/teacher/quizzes');
-        }        
+        let answers = [];
+        //if(Object.keys(this.state.answers).length != 12)
+        Object.keys(this.state.answers).forEach(questionid => {
+            console.log("QUESTION ID FOREACH: ", questionid);
+            answers.push({quizquestionid: questionid, 
+            choiceid: this.state.answers[questionid], 
+            correctanswer: this.state.correctChoices[questionid] == this.state.answers[questionid] ? true : false})
+            console.log("ANSWER ARRAY ", answers)
+        })     
+        axios.post('https://beta.edvotech.com/api/teacher/quizzes/take',{
+            quizid: this.state.quizID,
+            answers: answers
+        },
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        })
+        .then(response => {
+            console.log("POST QUIZ RESPONSE: ", response);
+        });
     }
 
     render(){
@@ -42,14 +56,15 @@ class AnswerQuizForm extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     <QuizButtonList/>
                     <h3> Quiz </h3>
-                    {this.props.quiz.quizDate}
+                    {console.log("THE CORRECT CHOICES!!!!!!!", this.props.quiz.correctChoices)}
+                    {/* {this.props.quiz.quizDate} */}
                     {
-                        this.props.quiz.items.map(element => {
-                            return ( <h3 key= {uuid()}>{element[1]} 
-                            <select name={element[0]} onChange={this.onAnswerChange} value={this.state.answers[element[0]]} required>
+                        this.props.quiz.questions.questions.map(element => {
+                            return ( <h3 key= {uuid()}>{element.questionstring} 
+                            <select name={element.questionid} onChange={this.onAnswerChange} value={this.state.answers[element.questionid]} required>
                                 <option  disabled selected></option>
-                            {element[2].map(answer =>{
-                                return(<option key={uuid()} value={answer[0]}>{answer[1]}</option>)
+                            {element.choices.map(answer =>{
+                                return(<option key={uuid()} value={answer.choiceid}>{answer.choice}</option>)
                             })}
                             </select></h3> )
                     })}

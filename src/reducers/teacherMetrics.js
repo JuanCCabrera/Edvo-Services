@@ -15,8 +15,8 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
     switch(action.type){
         case 'RESET':
         return {
-            recommendationsRead: null,
-            questionsAsked: null,
+            recommendationsRead: 0,
+            questionsAsked: 0,
             daysInPlatform: 0,
             topRecommendations: [],
             mostRecentrecommendations: []
@@ -32,25 +32,25 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
             }
         case 'LOAD_TEACHER_QUESTIONS_ASKED':
             return {
-                recommendationsRead: action.recommendationsRead,
+                recommendationsRead: state.recommendationsRead,
                 questionsAsked: action.questionsAsked,
-                daysInPlatform: action.daysInPlatform,
+                daysInPlatform: state.daysInPlatform,
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
             }
         case 'LOAD_TEACHER_RECOMMENDATIONS_READ':
             return {
                 recommendationsRead: action.recommendationsRead,
-                questionsAsked: action.questionsAsked,
-                daysInPlatform: action.daysInPlatform,
+                questionsAsked: state.questionsAsked,
+                daysInPlatform: state.daysInPlatform,
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
             }
         //Log a top recommendation to display in the Top Recommendations List
         case 'LOAD_TEACHER_TOP_RECOMMENDATION':
             return {
-                recommendationsRead: action.recommendationsRead,
-                questionsAsked: action.questionsAsked,
+                recommendationsRead: state.recommendationsRead,
+                questionsAsked: state.questionsAsked,
                 daysInPlatform: state.daysInPlatform,
                 topRecommendations: [...state.topRecommendations, action.topRecommendation],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
@@ -58,7 +58,8 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
         //Log a most recent recommendation to display in the Recent Recommendations List
         case 'LOAD_TEACHER_RECENT_RECOMMENDATION':
             return{
-                questionsAsked: action.questionsAsked,
+                recommendationsRead: state.recommendationsRead,
+                questionsAsked: state.questionsAsked,
                 daysInPlatform: state.daysInPlatform,
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations, action.mostRecentrecommendation]
@@ -66,6 +67,8 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
         //Change rating of recommendations in teacher metrics
         case 'RATE_TOP_AND_MOST_RATED':
             return{
+                recommendationsRead: state.recommendationsRead,
+                questionsAsked: state.questionsAsked,
                 daysInPlatform: state.daysInPlatform,
                 topRecommendations: state.topRecommendations.map((reco) => {
                     if(reco.recoID === action.recoID){

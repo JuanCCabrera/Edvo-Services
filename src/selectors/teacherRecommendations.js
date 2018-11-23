@@ -13,7 +13,10 @@ const getVisibleTeacherRecommendations = (recommendations, {text, checkType, rea
         const titleMatch = reco.title.toLowerCase().includes(text.toLowerCase());
         const headerMatch = reco.header.toLowerCase().includes(text.toLowerCase());
         const descriptionMatch = reco.description.toLowerCase().includes(text.toLowerCase());
-        const locationMatch = reco.location.toLowerCase().includes(text.toLowerCase());
+        let locationMatch = false;
+        if(reco.location){
+            locationMatch = reco.location.toLowerCase().includes(text.toLowerCase());
+        }
         let typeCheck = true;
         if(read !== 'all'){
             if(read === 'read' && !reco.read){
