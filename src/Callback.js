@@ -21,9 +21,16 @@ class Callback extends Component {
         if(email){
             await axios.get('https://beta.edvotech.com/api/user',  {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-            }).then(response =>{                
+            }).then(response =>{ 
+                
                 localStorage.setItem('role',response.data.body.user[0].usertype);
-                route = '/'+localStorage.getItem('role')+'/home';
+                route = '/'+localStorage.getItem('role')+'/home';               
+                axios.post('https://beta.edvotech.com/api/log', {},
+                    {
+                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+                    .then((response)=>{
+                            console.log("LOGGED");
+                    });
             })
             .catch(error => {
                 if(error.response.status == 403)

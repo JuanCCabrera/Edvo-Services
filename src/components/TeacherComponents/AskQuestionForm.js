@@ -61,34 +61,36 @@ class AskQuestionForm extends React.Component{
     onSubmit = (e) => {
         //Prevent page refresh
         e.preventDefault();
+        this.setState(() => ({askQuestionPlan: false}));
         //Enable error message if there is a missing form field. 
         if(!this.state.subject || !this.state.body){
             this.setState(() => ({askQuestionError: true, success: false})); 
-        }
-        else if(this.state.subjectError || this.state.subjectError){
+        }else if(this.state.subjectError || this.state.subjectError){
             this.setState(() => ({askQuestionError: true}))
-        }
-        else{
-            this.setState(() => ({askQuestionError: ''}));
+        }else{
+            
             axios.post('https://beta.edvotech.com/api/teacher/questions/ask', {
             subject: this.state.subject,
             question: this.state.body
-    },{
-        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
-    .catch(error => {
-            this.setState(() => ({askQuestionPlan: true}))
-    })
-    .then((response)=>{
-        console.log("ERROR ASKING: ", response.status)
-        if(response.status == 201){
-            this.setState(() => ({success: true, subject: '', body: ''}));
-    
-            this.setState(() => ({askQuestionError: false})); 
-            this.props.dispatch(setSuccessModal());
+            },{
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+            .catch(error => {
+                console.log('ERROR', error);
+                    this.setState(() => ({askQuestionPlan: true}))
+            })
+            .then((response)=>{
+                if(response.status == 201){
+                    this.setState(() => ({success: true}));
+                    this.setState(() => ({askQuestionError: false}));
+                    this.props.dispatch(setSuccessModal());
+                    this.props.onSubmit({
+                        subject: this.state.subject,
+                        body: this.state.body,
+                    }); 
+                }
+            });
         }
-    });
 }
-    }
         
     render(){
         return(
@@ -174,17 +176,13 @@ class AskQuestionForm extends React.Component{
                         //Message displayed if an attempt is made to submit the form without filling all fields. 
                     }
                     {this.state.askQuestionPlan === true && 
-                        <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>You are not subscribed.</p> : <p>No tiene una subscripcion.</p>}
+                        <div className="text-danger text-center">
+                            {this.props.lang === 'English' ? <p>You do not have an active subscription.</p> : <p>Usted no tiene una suscripción activa.</p>}
                         </div>
                     }
                     {this.state.askQuestionError === true && 
-                        <div className="text-danger">
+                        <div className="text-danger text-center">
                             {this.props.lang === 'English' ? <p>Please fill all fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
-                        </div>
-                    }{this.state.success === true && 
-                        <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>Your question was submitted successfully</p> : <p>Su pregunta ha sido enviada exitosamente.</p>}
                         </div>
                     }
                     

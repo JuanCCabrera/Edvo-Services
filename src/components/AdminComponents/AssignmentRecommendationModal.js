@@ -12,11 +12,10 @@ class AssignmentRecommendationModal extends React.Component{
     }
     render(){
         return (
-            <div className="modal">
                 <Modal
                 isOpen = {this.props.recoInfo.assignmentRecommendationFlag}
                 onRequestClose = {this.props.clearSelectedRecommendation}
-                contentLabel="User"
+                contentLabel="Assignment Recommendation"
                 closeTimeoutMS={200} 
                 >
                 <div>
@@ -61,7 +60,6 @@ class AssignmentRecommendationModal extends React.Component{
                     </div>
                 </div>
                 </Modal>
-            </div>
             );
     }
 }
