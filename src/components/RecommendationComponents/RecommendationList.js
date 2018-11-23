@@ -28,7 +28,7 @@ class RecommendationsList extends React.Component{
     //when the component loads. 
     componentWillMount(){
         console.log("MOUTING RECOMLIST WITH ID: ", this.props.assigned.userID);
-        axios.get('http://localhost:3000/admin/user/recommendations',{
+        axios.get('https://beta.edvotech.com/api/admin/user/recommendations',{
             
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
             

@@ -14,10 +14,10 @@ const MainPage = (props) => (
             //Main page body
         }
         <MainPageDisplay/>
-            <ContactForm
-            onSubmit={(contact) => {
-                props.dispatch(sendContactForm(contact));
-            }}/>
+        <ContactForm
+        onSubmit={(contact) => {
+            props.dispatch(sendContactForm(contact));
+        }}/>
     </div>
 );
 

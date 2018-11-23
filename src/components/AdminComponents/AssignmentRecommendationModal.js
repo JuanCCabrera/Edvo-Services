@@ -36,9 +36,9 @@ class AssignmentRecommendationModal extends React.Component{
                             {this.props.recoSpec.topics[1] && <li>{this.props.recoSpec.topics[1]}</li>}
                             {this.props.recoSpec.topics[2] && <li>{this.props.recoSpec.topics[2]}</li>}
                         </ul>
-                    <div class="panel panel-default" style={{maxWidth: '25rem'}}>
-                        <div class="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Challenge Categories' : 'Categorías de Retos'}:</h4></div>
-                        <div class="panel-body">
+                    <div className="panel panel-default" style={{maxWidth: '25rem'}}>
+                        <div className="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Challenge Categories' : 'Categorías de Retos'}:</h4></div>
+                        <div className="panel-body">
                             <ul style={{listStyleType: 'circle'}}>
                                 {this.props.recoSpec.teachingStrategies && <li>{this.props.lang === 'English' ? 'Teaching Strategies' : 'Estrategias de Enseñanza'}</li>}
                                 {this.props.recoSpec.updatedMaterial && <li>{this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'}</li>}

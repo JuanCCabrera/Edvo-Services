@@ -25,7 +25,7 @@ class RecommendationsUserList extends React.Component{
     
     //Configure state when component is being mounted. This includes determing the initial list to display on the Assign Recommendations page. 
     componentWillMount(){
-        axios.get('http://localhost:3000/admin/recommendations/users',{
+        axios.get('https://beta.edvotech.com/api/admin/recommendations/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             console.log("ASSIGN USERS: ", response);

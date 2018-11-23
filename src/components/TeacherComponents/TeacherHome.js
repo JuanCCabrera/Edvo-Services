@@ -35,15 +35,16 @@ class TeacherHome extends React.Component {
     componentWillMount(){
         console.log("PROPS IN HOME THIS: ",this.props);
         console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
-        axios.get('http://localhost:3000/teacher/home',
+        axios.get('https://beta.edvotech.com/api/teacher/home',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
             console.log("###################TEACHER HOME: ", response);
-            this.setState({daysInPlatform: response.data.daysInPlatforms});
+            this.setState({daysInPlatform: response.data.daysInPlatform});
             this.setState({recommendationsRead: response.data.recommendationsRead});
             this.setState({questionsAsked: response.data.questionsasked});
+            this.props.dispatch(loadTeacherDaysInPlatform(this.reponse.data.daysInPlatform));
             response.data.recentRecommendations.forEach(element => {
             this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
             this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
@@ -111,9 +112,11 @@ class TeacherHome extends React.Component {
                                     <div>
                                         <p>Recomendaciones Leídas</p>
                                     </div>}
-                                    <p className="big__teacher__home__text">{this.props.teacherRecommendations.filter((reco) => {
-                                        return reco.read === true;
-                                    }).length}</p>
+                                    <p className="big__teacher__home__text">
+                                        {this.props.teacherRecommendations.filter((reco) => {
+                                            return reco.read === true;
+                                        }).length}
+                                    </p>
 
                                     <button className="btn btn-item">{this.props.lang === 'English' ? 'View Recommendations' : 'Ver Recomendaciones'}</button>
                                 </NavLink>

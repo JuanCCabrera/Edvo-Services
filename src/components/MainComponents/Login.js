@@ -37,51 +37,64 @@ const signOut = (props) => {
 const LoginPage = (props) => (
     <div>
         <div className="Edvo-Shadow">
-        <h1 className="text-center">Learn. Teach. Repeat</h1>
-        <div className="container row">
-<div className="Login container-fluid text-center col-md-offset-5 col-lg-3">
+            <h1 className="text-center">{props.lang === 'English' ? 'Learn. Teach. Repeat' : 'Aprenda. Eduque. Repita'}</h1>
+            <div className="container row">
+                <div className="Login container-fluid text-center col-md-offset-5 col-lg-3">
+                    {
+                        !auth0Client.isAuthenticated() &&
+                        <button onClick={auth0Client.signIn}>
+                            <div className="btn btn-item">
+                                {props.lang === 'English' ? 'Sign In' : 'Entrar'}
+                            </div>
+                        </button>
+                    }
 
-        {
-            !auth0Client.isAuthenticated() &&
-            <button onClick={auth0Client.signIn}>{props.lang === 'English' ? 'Sign In' : 'Entrar'}</button>
-          }
-          {
-            auth0Client.isAuthenticated() &&
-            <div>
-              <button className="SignUp-Button" onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}</button>
-            </div>
-          }
-          <p className="text-bold">{localStorage.getItem('loginError')}</p> 
-          </div>
-        <div className="Register text-center col-md-offset-1 container-fluid col-lg-3">
-            <div>
-            <img className="Materials-Img-S" src="http://localhost:8080/static/images/materials.png" />
-                {props.lang === 'English' ? 
-                <div>
-                    <h6>Join the community of schools</h6>
-                    <h6>who will evolve education!</h6>
-                    <h6>Don't miss out the opportunity of</h6>
-                    <h6>having personalized recommendation</h6>
-                    <h6>on teaching and learning.</h6>
-                </div> : <div>
-                    <h6>Únete a la comunidad de instituciones</h6>
-                    <h6>que revolucionarán la educación</h6>
-                    <h6>No pierda la oportunidad de</h6>
-                    <h6>tener sugerencias personalizadas</h6>
-                    <h6>sobre enseñanza y aprendizaje.</h6>
+                        {
+                        auth0Client.isAuthenticated() &&
+                        <div>
+                            <button className="SignUp-Button" onClick={() => {signOut(props)}}>
+                                <div className="btn btn-item">
+                                    {props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}
+                                </div>
+                            </button>
+                        </div>
+                        }
+
+                        <p className="text-bold">{localStorage.getItem('loginError')}</p> 
                 </div>
-                }
+                <div className="Register text-center col-md-offset-1 container-fluid col-lg-3">
+                    <div>
+                    <img className="Materials-Img-S" src="http://localhost:8080/static/images/materials.png" />
+                        {props.lang === 'English' ? 
+                        <div>
+                            <p>Join the community of schools
+                                who will evolve education!</p>
+                            <p>Don't miss out the opportunity of
+                            having personalized recommendations
+                            on teaching and learning.</p>
+                        </div> : <div>
+                            <p>¡Únete a la comunidad de instituciones
+                            que revolucionarán la educación!</p>
+                            <p>No pierda la oportunidad de
+                            tener sugerencias personalizadas
+                            sobre enseñanza y aprendizaje.</p>
+                        </div>
+                        }
                 
-          {
-            !auth0Client.isAuthenticated() &&
-            <div>
-              <button className="SignUp-Button" onClick={() => {signOut(props)}}>{props.lang === 'English' ? 'Register' : 'Registrarse'}</button>
-            </div>
-          }
+                {
+                    !auth0Client.isAuthenticated() &&
+                    <div>
+                        <button onClick={() => {signOut(props)}}>
+                            <div className="btn btn-item">
+                            {props.lang === 'English' ? 'Register' : 'Registrarse'}
+                            </div>
+                        </button>
+                    </div>
+                }
+                    </div>
+                </div>
             </div>
         </div>
-</div>
-</div>
         <div>
             <ContactForm
             onSubmit={(contact) => {

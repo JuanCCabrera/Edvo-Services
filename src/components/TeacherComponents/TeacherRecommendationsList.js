@@ -29,7 +29,7 @@ class TeacherRecommendationsList extends React.Component{
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
         console.log("LIST IS MOUNTED");
-        axios.get('http://localhost:3000/teacher/recommendations',
+        axios.get('https://beta.edvotech.com/api/teacher/recommendations',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })

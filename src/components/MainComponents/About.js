@@ -21,7 +21,6 @@ const AboutPage = (props) => (
                 <p>¿Quiénes somos?</p>
             </div>
             }
-            <i className="far fa-circle text-white text-bold"></i>
             <hr className="break"/>
         </div>
 
@@ -112,7 +111,7 @@ const AboutPage = (props) => (
                     </div>
 
                     <div className="col-sm-3 about__low__options">
-                        <img src="http://localhost:8080/static/images/logo_pre18.png" className="Feature-Img" />
+                        <img src="http://localhost:8080/static/images/logo_pre18.png" className="Feature-Img__pre18" />
                         <br/>
                         <a href='https://www.elnuevodia.com/negocios/empresas/nota/pre18arrancaracon40empresasboricuas-2405093' target='_blank'> {props.lang === 'English' ? 'Read article' : 'Leer'} </a>
                     </div>

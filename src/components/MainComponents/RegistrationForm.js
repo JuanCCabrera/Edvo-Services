@@ -514,7 +514,7 @@ class RegistrationForm extends React.Component{
         }else{
             this.props.dispatch(setSuccessModal());
             this.setState(() => ({secError: false, globalError: false}));
-            axios.post('http://localhost:3000/register', {
+            axios.post('https://beta.edvotech.com/api/register', {
                 name: this.state.name,
                 lastname: this.state.lastName,
                 gender: this.state.gender,

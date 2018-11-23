@@ -33,20 +33,17 @@ const PlansPage = (props) => (
                 <h3>{props.lang === 'English' ? 'PACKAGE' : 'SUPREMO'} </h3>
                 <h1>$59*</h1>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
-                <NavLink to="/login" activeclass="is-active" exact={true}>
-                            <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
-                        </NavLink>
-            </th>
+                <br/>
+                <br/>
+             </th>
+
             <th scope="col" className="text-center AbsolutePackage">
                 <h5 className="text-center">{props.lang === 'English' ? 'LIMITED SPACE AVAILABLE' : 'ESPACIOS LIMITADOS'}</h5>
                 <h3>{props.lang === 'English' ? 'ALL-ACCESS' : 'PAQUETE'} </h3>
                 <h3>{props.lang === 'English' ? 'PACKAGE' : 'ABSOLUTO'} </h3>
                 <h1>$249**</h1>
                 <p>{props.lang === 'English' ? 'per educator + 6 months of platform usage' : 'por educador + 6 meses de uso en la plataforma'} </p>
-                <NavLink to="/login" activeclass="is-active" exact={true}>
-                    <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
-                </NavLink>
-            </th>
+             </th>
         </tr>
         </thead>
         <tbody>
@@ -76,9 +73,9 @@ const PlansPage = (props) => (
                 <h3> {props.lang === 'English' ? 'User metrics' : 'Métricas de usuario'}</h3>
                 <p> {props.lang === 'English' ? 'Keep track of your professional development with our metrics on: Performance, Application, Engagement, and Individual Goals' : 'Siga su desarrollo profesional con nuestras métricas sobre: Rendimiento, Aplicación, Participación y Metas Individuales.'}</p>
             </th>
-                <td>CHECKMARK_IMG</td>
-                <td>CHECKMARK_IMG</td>
-                <td>CHECKMARK_IMG</td>
+            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
         </tr>
         <tr>
             <th scope="row">
@@ -140,8 +137,8 @@ const PlansPage = (props) => (
         {
             //Special details section
         }
-        <p>{props.lang === 'English' ? '* Package meant for purchase by educational institutions $59/month per educator.' : '* Oferta dirigida a instituciones educativas, $59/mes por educador.'}</p>
-        <p>{props.lang === 'English' ? '** Expires on September 15, 2018.' : '** Expira 15 de Septiembre 2018.'}</p>
+        <p style={{color: 'white'}}>{props.lang === 'English' ? '* Package meant for purchase by educational institutions $59/month per educator.' : '* Oferta dirigida a instituciones educativas, $59/mes por educador.'}</p>
+        <p style={{color: 'white'}}>{props.lang === 'English' ? '** Expires on September 15, 2018.' : '** Expira 15 de Septiembre 2018.'}</p>
 
     </div>
         <div>

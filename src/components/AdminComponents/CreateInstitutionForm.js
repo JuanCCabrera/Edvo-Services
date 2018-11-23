@@ -88,7 +88,7 @@ class CreateInstitutionForm extends React.Component{
     //Submit Institution information
     onSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/admin/settings/institutions/add', {
+        axios.post('https://beta.edvotech.com/api/admin/settings/institutions/add', {
         name: this.state.name,
         location: this.state.location,
         schooltype: this.state.type,

@@ -176,10 +176,12 @@ ul {
 	padding-bottom: 3rem;
 }
 .Feature-Img {
+	background-color: white;
 	max-width:10%;
 	max-height:10%;
 	margin-bottom: 5%;
   }
+
 .How-Img {
 	margin-top: 5%;
 	max-width:30%;
@@ -214,7 +216,6 @@ ul {
  .Contact-Content{
 	 background: rgba(7, 23, 77, 0.9);
 	 background: rgba(7, 23, 77, 0.9);
-	 height: 400px;
 	 
  }
  
@@ -232,12 +233,17 @@ ul {
 	 padding: 2%;
  
  }
+
+ .Contact-Btn:hover{
+	background-color: #472988;
+ }
+
  .Contact-Img-S{
 	max-width:5%;
 	max-height:5%;
 }
 .Contact-Font{
-	font-size: 2vw;
+	font-size: 2rem;
 }
 .Want{
 	color: #854dff;

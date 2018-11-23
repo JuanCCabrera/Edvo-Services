@@ -47,7 +47,7 @@ class BasicInfoProfileForm extends React.Component{
     componentWillMount(){
         console.log("WE HAVE EMAIL: ",auth0Client.getIdToken());
         //send this to action
-        axios.get('http://localhost:3000/admin/settings/info',
+        axios.get('https://beta.edvotech.com/api/admin/settings/info',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
@@ -145,7 +145,7 @@ class BasicInfoProfileForm extends React.Component{
             this.setState(() => ({formIncompleteError: true}));
         }else{
             this.setState(() => ({formIncompleteError: false}));
-            axios.post('http://localhost:3000/admin/settings/info', {
+            axios.post('https://beta.edvotech.com/api/admin/settings/info', {
             name: this.state.name,
             lastname: this.state.lastName,
             dob: this.state.dateOfBirth,

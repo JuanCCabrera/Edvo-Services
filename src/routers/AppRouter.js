@@ -121,19 +121,19 @@ const AppRouter = (props) => (
                 {
                     //Teacher Components
                 }
-                <SecuredRoute path='/teacher/home' component={TeacherHome}/>
-                <SecuredRoute path='/teacher/settings/info' component={TeacherProfile}/>
-                <SecuredRoute path='/teacher/settings/classes' component={Classes}/>
-                <SecuredRoute path='/teacher/settings/plans/payment' exact component={Stripe} />
-                <SecuredRoute path='/teacher/settings/plans' component={Plan}/>
-                <SecuredRoute path='/teacher/recommendations' component={TeacherRecommendations}/>
-                <SecuredRoute path='/teacher/questions' component={TeacherQuestions}/>
+                <Route path='/teacher/home' component={TeacherHome}/>
+                <Route path='/teacher/settings/info' component={TeacherProfile}/>
+                <Route path='/teacher/settings/classes' component={Classes}/>
+                <Route path='/teacher/settings/plans/payment' exact component={Stripe} />
+                <Route path='/teacher/settings/plans' component={Plan}/>
+                <Route path='/teacher/recommendations' component={TeacherRecommendations}/>
+                <Route path='/teacher/questions' component={TeacherQuestions}/>
 
                 {
                     //Mentor Components
                 }
-                <SecuredRoute path='/mentor/home' component={MentorHome}/>
-                <SecuredRoute path='/mentor/settings' component={MentorProfile}/> 
+                <Route path='/mentor/home' component={MentorHome}/>
+                <Route path='/mentor/settings' component={MentorProfile}/> 
                 
                 {
                     //School
@@ -149,7 +149,7 @@ const AppRouter = (props) => (
                 <SecuredRoute exact path='/admin/settings/schools' component={AppSchools}/>
                 <SecuredRoute exact path='/admin/settings/schools/add' component={CreateInstitutionForm}/>
                 <SecuredRoute exact path='/admin/settings/coupons' component={CreateCouponForm}/>
-                <SecuredRoute path='/admin/home' component={AdminHome}/>
+                <Route path='/admin/home' component={AdminHome}/>
 
                 {
                     //Staff Recommendations Components

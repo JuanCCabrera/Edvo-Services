@@ -280,11 +280,16 @@ position: relative;
     color: #061551;
 }
 
-.text-center li{
+.text-center > .nav li{
     display: inline-block;
     list-style-type: none;
 }
 
 .navbar-inverse .navbar-brand:hover{
     color: #061551;
+}
+
+.footer__space{
+    margin-left: 2rem;
+    margin-right: 2rem;
 }

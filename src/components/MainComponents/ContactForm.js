@@ -91,7 +91,7 @@ class ContactForm extends React.Component{
         return(
 <div>
    <div className="Parallax-Image Contact">
-      <div className="Contact-Content">
+      <div className="Contact-Content" style={{paddingTop: '5rem'}}>
          <div className="row">
             <div className="col-md-4 col-md-offset-3">
                <h5 className="Want Contact-Font">
@@ -134,7 +134,7 @@ class ContactForm extends React.Component{
                     onChange = {this.onNameChange}/>
                     {this.state.nameError && 
                         <div>
-                            <span className="text-danger"> 
+                            <span style={{color: 'white'}}> 
                                 {this.state.nameError}
                             </span>
                             <br/>
@@ -152,7 +152,7 @@ class ContactForm extends React.Component{
                     onBlur={() => {
                         //Check if the email field matches the expected email address format. 
                         this.setState(() => ({email: this.state.email.trim()}));
-                        if(!this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
+                        if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
                             }else{
@@ -171,7 +171,7 @@ class ContactForm extends React.Component{
                     }
                     {this.state.emailError && 
                         <div>
-                            <span className="text-danger"> 
+                            <span style={{color: 'white'}}> 
                                 {this.state.emailError}
                             </span>
                             <br/>
@@ -207,14 +207,14 @@ class ContactForm extends React.Component{
                     }
                     {this.state.messageError && 
                         <div>
-                            <span className="text-danger"> 
+                            <span style={{color: 'white'}}> 
                                 {this.state.messageError}
                             </span>
                             <br/>
                         </div>}
                     <br/>
                {this.state.contactError === true && 
-                    <div className="text-danger text-center">
+                    <div className="text-center" style={{color: 'white'}}>
                         {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                     </div>}
                   </div>

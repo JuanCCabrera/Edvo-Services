@@ -17,7 +17,7 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
         return {
             recommendationsRead: null,
             questionsAsked: null,
-            daysInPlatform: null,
+            daysInPlatform: 0,
             topRecommendations: [],
             mostRecentrecommendations: []
         }

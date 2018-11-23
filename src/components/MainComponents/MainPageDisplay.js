@@ -195,10 +195,7 @@ const MainPageDisplay = (props) => (
             <img className="Partners-Img" src="http://localhost:8080/static/images/spotin.png"/>
             </div>
         </div>
-    </div>
-    
-
-        
+    </div>     
     </div>
 );
 

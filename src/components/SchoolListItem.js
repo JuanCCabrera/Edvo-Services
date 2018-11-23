@@ -61,7 +61,7 @@ class SchoolListItem extends React.Component{
                         </div>
                         <br/>
                         <button onClick={() => {
-                            axios.delete('http://localhost:3000/admin/settings/institutions/remove',{
+                            axios.delete('https://beta.edvotech.com/api/admin/settings/institutions/remove',{
                 
                                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
                             data:{institutionid: props.school.id}

@@ -68,12 +68,13 @@
     font-weight: 700;
 }
 
-.Feature-Img {
+.Feature-Img__pre18 {
     max-width: 400px;
     max-height: 200px;
     overflow: hidden;
     margin-bottom: 2rem;
     background-color: black;
+    border: 1px solid white;
     padding-bottom: 1px;
 }
 

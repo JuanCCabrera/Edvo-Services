@@ -13,7 +13,7 @@ class ClassList extends React.Component{
         super(props);
     }
     componentDidMount(){
-        axios.get('http://localhost:3000/teacher/settings/classes',
+        axios.get('https://beta.edvotech.com/api/teacher/settings/classes',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })

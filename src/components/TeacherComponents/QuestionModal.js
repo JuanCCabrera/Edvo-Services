@@ -19,107 +19,105 @@ const QuestionModal = (props) => (
     onRequestClose = {props.clearSelectedQuestion}
     contentLabel="Question"
     closeTimeoutMS={200}
-    className="modal-card"
+    className="home-modal-card"
     >
-    <div className="container">
-    {console.log("QUESTION MODAL PROPS: ",props.question.favorite)}
-        <div className="row">
-        {
-            //Quesiton subject
-        }
-            <div className="col-sm-10 text-center form__title">
-                <p>{props.question.subject}</p>
-                <hr className="break" style={{borderColor: '#5933AA'}}/>
-            </div>
+    <div>
+        {console.log("QUESTION MODAL PROPS: ",props.question.favorite)}
             {
-                //Favoriting star
+                //Quesiton subject
             }
-            <div className="badge clickable" style={{backgroundColor: '#5933AA', marginTop: '1rem'}} onClick={() =>  {
-                console.log("BEFORE: ",props.question.favorite);
-                const favoriteQuestion = !props.question.favorite;
-                console.log("AFTER: ",favoriteQuestion);
-                axios.post('http://localhost:3000/teacher/questions/favorite',{
+                <div className="text-center form__title">
+                    <p>{props.question.subject}</p>
+                    <hr className="break" style={{borderColor: '#5933AA'}}/>
+                </div>
+                {
+                    //Favoriting star
+                }
+                <div onClick={() =>  {
+                    console.log("BEFORE: ",props.question.favorite);
+                    const favoriteQuestion = !props.question.favorite;
+                    console.log("AFTER: ",favoriteQuestion);
+                    axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
+                            askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
+                            favorite: !favoriteQuestion
+                        },{
+                            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                        }).then(response =>{
+                        
+                    if(props.question.favorite == true){
+                        props.dispatch(addFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
+                    }else{
+                        props.dispatch(removeFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
+                    }});
+                }}>
+                <div>
+                    <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>
+                
+                    <StarRatingComponent
+                        name="favorite"
+                        starCount={1}
+                        value={props.isFavorite}
+                        onStarClick={(nextValue, prevValue, name) => {
+                            if(prevValue === 0){
+                                //Add to favorites list 
+                                props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
+                            }else{
+                                //Remove from favorites list through filter
+                                props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
+                            }
+                        }}
+                    />
+                
+                </div>
+            </div>
+        
+        {
+            //Quesiton body
+        }
+            <div className="card-title">
+            <h3>{props.question.question}</h3>
+            </div>
+        {
+            //Question answer
+        }
+            {props.question.answer !== '' ? 
+
+            <p>Answer: {props.question.answer}</p> 
+            : 
+            <p>{props.lang === 'English' ? 'This question has not been answered.' : 'Esta pregunta no se ha contestado.'}</p>}
+        {
+            //Date in which the question was asked
+        }
+            <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.question.askedDate}</h4>
+        {
+            //Question rating
+        }
+            <h4>{props.lang === 'English' ? 'Rate: ': 'Calificar: '}</h4>
+            <StarRatingComponent
+                name="rate"
+                starCount={5}
+                value={props.question.rate}
+                onStarClick={(nextValue, prevValue, name) => {
+                    axios.post('https://beta.edvotech.com/api/teacher/questions/rate',{
                         askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
-                        favorite: !favoriteQuestion
+                        rate: nextValue
                     },{
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                     }).then(response =>{
-                    
-                if(props.question.favorite == true){
-                    props.dispatch(addFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
-                }else{
-                    props.dispatch(removeFavoriteQuestion({askedDate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss")}));
-                }});
-            }}>
-            <div className="col-sm-2">
-                <h3 style={{display: 'inline'}}>{props.lang === 'English' ? 'Favorite' : 'Favorita'} </h3>
-            
-                <StarRatingComponent
-                    name="favorite"
-                    starCount={1}
-                    value={props.isFavorite}
-                    onStarClick={(nextValue, prevValue, name) => {
-                        if(prevValue === 0){
-                            //Add to favorites list 
-                            props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
-                        }else{
-                            //Remove from favorites list through filter
-                            props.dispatch(removeFavoriteQuestion({askedDate: props.question.askedDate}));
-                        }
-                    }}
-                />
-            
-            </div>
-            </div>
-        </div>
-    </div>
-    
-    {
-        //Quesiton body
-    }
-        <div className="card-title">
-        <h3>{props.question.question}</h3>
-        </div>
-    {
-        //Question answer
-    }
-        {props.question.answer !== '' ? 
-
-        <p>Answer: {props.question.answer}</p> 
-        : 
-        <p>{props.lang === 'English' ? 'This question has not been answered.' : 'Esta pregunta no se ha contestado.'}</p>}
-    {
-        //Date in which the question was asked
-    }
-        <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{props.question.askedDate}</h4>
-    {
-        //Question rating
-    }
-        <h4>{props.lang === 'English' ? 'Rate: ': 'Clasificar: '}</h4>
-        <StarRatingComponent
-            name="rate"
-            starCount={5}
-            value={props.question.rate}
-            onStarClick={(nextValue, prevValue, name) => {
-                axios.post('http://localhost:3000/teacher/questions/rate',{
-                    askeddate: moment(props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"),
-                    rate: nextValue
-                },{
-                    headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-                }).then(response =>{
-                    console.log("AFTER RATING Q: ", response);
-                props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))})}
+                        console.log("AFTER RATING Q: ", response);
+                    props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))})}
+                }
+            />
+            <br/>
+            {
+                //Button to close the question modal. 
             }
-        />
-        <br/>
-        {
-            //Button to close the question modal. 
-        }
-        <button onClick = {props.clearSelectedQuestion}>
-            <div className="btn btn-item">
-                {props.lang === 'English' ? 'Close' : 'Cerrar'}
-            </div>
-        </button>
+            <button onClick = {props.clearSelectedQuestion}>
+                <div className="btn btn-item">
+                    {props.lang === 'English' ? 'Close' : 'Cerrar'}
+                </div>
+            </button>
+        </div>
     </Modal>
     </div>
 );

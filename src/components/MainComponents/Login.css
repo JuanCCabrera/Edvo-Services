@@ -51,14 +51,10 @@
     min-height: 75px;
 }
 .SignUp-Button{
-    background-color: #713c8f;
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 5px 40px;
     cursor: pointer;
-    border: 1px solid #713c8f;
-    border-radius: 2px;
     align-content: center;
 }
 .Register{
@@ -67,4 +63,8 @@
     margin-bottom: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
+}
+
+.Register h6{
+    font-size: 1.5rem;
 }

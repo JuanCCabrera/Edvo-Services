@@ -16,10 +16,6 @@ const ManageQuestions = (props) => (
     role={auth0Client.getRole()}
     perform="admin:questions-manage"
     yes={() => (
-    <div>
-        <QuestionButtonList/>
-        <QuestionFilters/>
-        <PendingQuestionsList/>
     <div className="background-home">
         <div className="container">
             <div className="row">
@@ -42,7 +38,6 @@ const ManageQuestions = (props) => (
                 </div>
             </div>
         </div>
-    </div>
     </div>
         )}
         no={() => <Redirect to="/" />}
