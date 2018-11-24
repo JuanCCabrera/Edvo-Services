@@ -4,7 +4,7 @@ import Pagination from 'react-js-pagination';
 import uuid from 'uuid';
 import TeacherQuestionListItem from './TeacherQuestionListItem';
 import getVisibleTeacherQuestions from '../../selectors/teacherQuestions';
-import { addFavoriteQuestion, loadTeacherQuestion } from '../../actions/teacherQuestions';
+import { addFavoriteQuestion, loadTeacherQuestion, unloadTeacherQuestions } from '../../actions/teacherQuestions';
 import { setLoadingModal } from '../../actions/loadingModal';
 import axios from 'axios';
 import auth0Client from '../../Auth';
@@ -24,7 +24,9 @@ class TeacherQuestionsList extends React.Component{
             displayedQuestions: []
         }
     }
-
+    componentWillUnmount(){
+        this.props.dispatch(unloadTeacherQuestions());
+    }
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
         this.props.dispatch(setLoadingModal());

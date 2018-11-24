@@ -59,6 +59,12 @@ export const selectQuestion = (
         }
 });
 
+export const unloadTeacherQuestions = () => {
+    return {
+        type: 'UNLOAD_TEACHER_QUESTIONS'
+    }
+};
+
 /**
  * clearSelectedQuestion - Generates an object indicating to the central controller to remove the question information included within a Modal and to make the Modal invisible. 
  */

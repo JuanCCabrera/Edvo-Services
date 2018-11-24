@@ -24,7 +24,7 @@ const PlansPage = (props) => (
                 <h3>{props.lang === 'English' ? 'PACKAGE' : 'ESTANDAR'}</h3>
                 <h1>$39</h1>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
-                <NavLink to="/login" activeclass="is-active" exact={true}>
+                <NavLink to="/teacher/settings/plans/payment" activeclass="is-active" exact={true}>
                             <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
                 </NavLink>
             </th>

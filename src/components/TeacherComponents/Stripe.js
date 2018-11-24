@@ -11,9 +11,9 @@ class Stripe extends Component {
   render() {
     return (
       <StripeProvider apiKey="pk_test_ZI69x9fLi6Webd9ERw5RXE8Y">
-        <div className="example">
+        <div className="form-group">
           <h1>Subscribe to Edvo Basic Plan</h1>
-          <Elements>
+          <Elements clasName="form-group">
             <CheckoutForm {...this.state.props}/>
           </Elements>
         </div>

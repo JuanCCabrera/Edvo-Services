@@ -43,7 +43,7 @@ class Plan extends React.Component{
         e.preventDefault();
         const couponCode = e.target.value;
         //Coupon code must be 8 characters long
-        if(couponCode.length < 8){
+        if(couponCode.length < 3){
             //Mark coupon code as possible to submit
             this.setState(() => ({coupon: couponCode, couponValid: false, couponError: ''}));
         }else{
@@ -55,8 +55,20 @@ class Plan extends React.Component{
     //Apply coupon code to user. Not available until integrated with the database to verify the coupon information. 
     applyCoupon = (e) => {
         e.preventDefault();
+        axios.post('https://beta.edvotech.com/api/plans/settings/plans',{
+            coupon: this.state.coupon
+        },
+        {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+    .then((response)=>{
+        if(response.status == 201){
+                    this.props.dispatch(setSuccessModal());
 
-        //TO-DO Integrate with the database
+        }
+    })
+    .catch(error => {
+        console.log("ERROR", error);
+    });
+
     }
 
     subscribeToPlan = (e) => {
@@ -76,7 +88,11 @@ class Plan extends React.Component{
         axios.post('https://beta.edvotech.com/api/teacher/settings/plans/cancel',{},
         {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .then((response)=>{
-        console.log(response);
+        if(response.status == 201){
+                    this.props.dispatch(loadProfile({name: this.state.name, lastName: this.state.lastName, dateOfBirth: this.state.dateOfBirth, gender: this.state.gender}));
+                    this.props.dispatch(setSuccessModal());
+
+                }
     });
     }
 
@@ -116,11 +132,12 @@ class Plan extends React.Component{
                     //Link to Plans page to allow teacher to view the benefits of his or her subscription plan.
                 }
                 
-                <Link to='/plans' style={{color:'white', textDecoration: 'none'}}>
+                {this.state.status !== 'active' && <Link to='/plans' style={{color:'white', textDecoration: 'none'}}>
                         <div className="btn btn-item linktext">
                             {this.props.lang === 'English' ? 'View Perks' : 'Ver Beneficios'}
                         </div>
                     </Link>
+                }
                 {
                     //Cancel plan button
                 }
@@ -161,9 +178,7 @@ class Plan extends React.Component{
                 {this.state.status === 'active' && <div style={{marginTop: '3rem'}}>
                 {this.props.lang === 'English' ? <h4>Coupon code:</h4>: <h4>Código de cupón:</h4>}
                 <input type="text" className="form-control" style={{width: '80%'}} value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
-                {
-                    console.log("THE STATE OF STATUS: ", this.state.status)
-                }
+                
                 {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>
                     <div className="btn btn-item">
                         {this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}

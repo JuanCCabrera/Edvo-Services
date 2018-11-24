@@ -23,6 +23,11 @@ const teacherQuestionsReducerDefaultState = {
 const teacherQuestionsReducer = (state = teacherQuestionsReducerDefaultState, action) => {
     switch(action.type){
         //Log question to display in the Teacher Questions page
+        case 'UNLOAD_TEACHER_RECOMMENDATIONS':
+            return {
+                teacherQuestions: [],
+                selectedQuestion: state.selectedQuestion
+            }
         case 'LOAD_TEACHER_QUESTION':
             return {
                 teacherQuestions: [...state.teacherQuestions, action.teacherQuestion],
