@@ -1301,4 +1301,67 @@ router.post('/settings/coupon/add', (req,res,next)=> {
   });
 });
 
+/* REMOVE question*/  
+router.delete('/questions/remove', (req,res,next)=> {
+  const resultsexist = [];
+  const userexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.body.userid,
+      askeddate: req.body.askeddate,
+    };
+
+  //verify inputs
+  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate)){
+    return res.status(403).json({statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, message: err});
+    }
+
+     //verify if user exists in database records
+     const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+     //stream results back one row at a time
+     query1.on('row', (row) => {
+       userexist.push(row);
+     });
+     query1.on('end', () => {
+       done();
+       if (userexist.length === 1){ // user exists and is of type admin
+        //verify if question exists in database records
+        const query2 = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, data.askeddate,]);
+        //stream results back one row at a time
+        query2.on('row', (row) => {
+          resultsexist.push(row);
+        });
+        query2.on('end', () => {
+          done();
+          if (resultsexist.length === 1){ // question exists
+          
+            //SQL Query > update read data
+            client.query('DELETE FROM questions WHERE userid = $1 AND askeddate = $2', [ data.userid, data.askeddate,]);
+            return res.status(200).json({statusCode: 200 });
+          }else
+          {
+            return res.status(401).json({statusCode: 401,
+                  message: 'Question does not exists in records. Inputs where not received as expected.',
+                isBase64Encoded: false,});
+          }
+        });
+      }else{
+        return res.status(401).json({statusCode: 401,
+          message: 'User does not exists in records or is not an admin. Inputs where not received as expected.',
+          isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
 module.exports = router;
