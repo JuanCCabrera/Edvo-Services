@@ -8,6 +8,7 @@ import auth0Client from '../../Auth';
 import { Redirect, BrowserRouter, Route } from 'react-router-dom';
 import {Line} from 'rc-progress';
 import { setSuccessModal } from '../../actions/successModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 /**
  * The Registration form is used to generate the full profile information for a user of the Teacher type. 
@@ -95,6 +96,8 @@ class RegistrationForm extends React.Component{
              secError: false,
 
              globalError: false,
+
+             registerInvalidInputs: false,
 
              progress: "10",
 
@@ -557,7 +560,9 @@ class RegistrationForm extends React.Component{
                     language: this.state.language,
                     level: this.state.level,
                     groupsize: this.state.size,
-                    topics: this.state.topicsTaught
+                    topicsa: this.state.topicsTaught[0],
+                    topicsb: this.state.topicsTaught[1],
+                    topicsc: this.state.topicsTaught[2]
 
                 }
             },
@@ -567,8 +572,13 @@ class RegistrationForm extends React.Component{
                 this.state.props.history.replace('/teacher/settings/plans');
             })
             .catch(error =>{
-                this.state.props.history.replace('/');
-            });
+                if(error.response.status == 401 || error.response.status == 500){
+                    this.props.dispatch(setFailureModal());
+                    this.setState(() => ({registerInvalidInputs: false}));
+                }
+                else if(error.response.status == 403){
+                    this.setState(() => ({registerInvalidInputs: true}));
+            }});
         }
         
         }
@@ -1320,6 +1330,10 @@ class RegistrationForm extends React.Component{
                     {this.state.secError === true && 
                     <div className="text-danger">
                         {this.props.lang === 'English' ? <p>You must accept the Terms of Use and Privacy Policy before completing your registration.</p> : <p>Debe aceptar los Términos de Uso y la Póliza de Privacidad antes de completar su registración.</p>}
+                    </div>}
+                    {this.state.registerInvalidInputs === true && 
+                    <div className="text-danger">
+                        {this.props.lang === 'English' ? <p>Provided input was not valid</p> : <p>Algunos datos provistos no son invalidos.</p>}
                     </div>}
                     {
                         //Error message is displayed if required fields are left blank. 

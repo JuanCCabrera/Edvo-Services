@@ -7,12 +7,13 @@ import axios from 'axios';
 import auth0Client from '../Auth';
 import {loadProfile} from '../actions/profile';
 import {setEditModal} from '../actions/editModal';
+import { setFailureModal } from '../actions/failureModal';
 
 const reset = () => {
     console.log("RESETTING");
     axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
       client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      email: auth0Client.getEmail(),
+      email: auth0Client.getProfile().email,
       connection: 'Username-Password-Authentication' ,
       json: true
     },
@@ -40,7 +41,8 @@ class BasicInfoProfileForm extends React.Component{
 
             calendarFocused: false,
             gender: props.info ? props.info.gender : 'male',
-            formIncompleteError: false
+            formIncompleteError: false,
+            profileInvalidInputs: false
         };
     }
 
@@ -153,10 +155,18 @@ class BasicInfoProfileForm extends React.Component{
             },
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+                .catch(error => {
+                    if(error.response.status == 401){
+                        this.props.dispatch(setFailureModal());
+                        this.setState(() => ({profileInvalidInputs: false}));
+                    }
+    
+                    else if(error.response.status == 403 || error.response.status == 500){
+                        this.setState(() => ({profileInvalidInputs: true}));
+                    }
+                })
             .then((response)=>{
                 if(response.status == 201){
-                    console.log('submitted');
-                    console.log(this.state);
                     this.props.dispatch(loadProfile({name: this.state.name, lastName: this.state.lastName, dateOfBirth: this.state.dateOfBirth, gender: this.state.gender}));
                     this.props.dispatch(setEditModal());
 
@@ -320,6 +330,11 @@ class BasicInfoProfileForm extends React.Component{
                         <div className="text-danger" style={{marginTop: '2rem', marginBottom: '0'}}>
                             {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                         </div>}
+                        {this.state.profileInvalidInputs === true && 
+                            <div className="text-danger text-center">
+                                {this.props.lang === 'English' ? <p>Invalid user or data.</p> : <p>Usuario o datos no validos.</p>}
+                            </div>
+                        }
 
                         <br/>
 

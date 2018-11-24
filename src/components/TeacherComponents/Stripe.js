@@ -12,7 +12,7 @@ class Stripe extends Component {
     return (
       <StripeProvider apiKey="pk_test_ZI69x9fLi6Webd9ERw5RXE8Y">
         <div className="example">
-          <h1>React Stripe Elements Example</h1>
+          <h1>Subscribe to Edvo Basic Plan</h1>
           <Elements>
             <CheckoutForm {...this.state.props}/>
           </Elements>

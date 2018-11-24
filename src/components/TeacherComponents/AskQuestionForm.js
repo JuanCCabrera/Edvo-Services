@@ -20,7 +20,9 @@ class AskQuestionForm extends React.Component{
             success: false,
             bodyError: '',
             askQuestionError: false,
-            askQuestionPlan: false
+            askQuestionPlan: false,
+            askInvalidInputs: false,
+            askQuestionAllowed: false
         };
     }
 
@@ -72,16 +74,39 @@ class AskQuestionForm extends React.Component{
             axios.post('https://beta.edvotech.com/api/teacher/questions/ask', {
             subject: this.state.subject,
             question: this.state.body
-            },{
-                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
+            }, {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+            })
             .catch(error => {
-                console.log('ERROR', error);
+                if(error.response.status == 401){
+                    this.setState(() => ({askInvalidInputs: true}))
+                    this.setState(() => ({askQuestionError: false}));
+                    this.setState(() => ({askQuestionPlan: false}));
+                    this.setState(() => ({askQuestionAllowed: false}));
+                }
+                
+                else if(error.response.status == 402){
                     this.setState(() => ({askQuestionPlan: true}))
+                    this.setState(() => ({askQuestionAllowed: false}));
+                    this.setState(() => ({askInvalidInputs: false}));
+                    this.setState(() => ({askQuestionError: false}));
+                }
+
+                else if(error.response.status == 403){
+                    this.setState(() => ({askQuestionAllowed: true}))
+                    this.setState(() => ({askQuestionError: false}));
+                    this.setState(() => ({askQuestionPlan: false}));
+                    this.setState(() => ({askInvalidInputs: false}));
+                }
             })
             .then((response)=>{
+                console.log(respose.status)
                 if(response.status == 201){
                     this.setState(() => ({success: true}));
                     this.setState(() => ({askQuestionError: false}));
+                    this.setState(() => ({askQuestionPlan: false}));
+                    this.setState(() => ({askQuestionAllowed: false}));
+                    this.setState(() => ({askInvalidInputs: false}));
                     this.props.dispatch(setSuccessModal());
                     this.props.onSubmit({
                         subject: this.state.subject,
@@ -178,6 +203,16 @@ class AskQuestionForm extends React.Component{
                     {this.state.askQuestionPlan === true && 
                         <div className="text-danger text-center">
                             {this.props.lang === 'English' ? <p>You do not have an active subscription.</p> : <p>Usted no tiene una suscripción activa.</p>}
+                        </div>
+                    }
+                    {this.state.askInvalidInputs === true && 
+                        <div className="text-danger text-center">
+                            {this.props.lang === 'English' ? <p>Invalid user or data.</p> : <p>Usuario o datos no validos.</p>}
+                        </div>
+                    }
+                    {this.state.askQuestionAllowed === true && 
+                        <div className="text-danger text-center">
+                            {this.props.lang === 'English' ? <p>You are not allowed to perform this action</p> : <p>No tiene los permisos necesarios para realizar esta operacion.</p>}
                         </div>
                     }
                     {this.state.askQuestionError === true && 

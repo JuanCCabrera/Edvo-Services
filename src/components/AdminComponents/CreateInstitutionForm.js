@@ -7,6 +7,8 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import Can from '../../Can';
 import { setSuccessModal } from '../../actions/successModal';
+import { setFailureModal } from '../../actions/failureModal';
+import { addSchool } from '../../actions/school';
 
 /**
  * Form to create a new institution and upload it to the database. 
@@ -26,10 +28,14 @@ class CreateInstitutionForm extends React.Component{
             type: 'public',
             institutionID: '',
             institutionIDError: '',
+            numAccountsError: '',
 
-            createInstitutionError: false
+            createInstitutionError: false,
+            createInstitutionIncompleteError: false,
+            createInstitutionInvalidInputs: false
         };
     }
+
 
     onNumberChange = (e) => {
         const numAccounts = e.target.value;
@@ -71,6 +77,9 @@ class CreateInstitutionForm extends React.Component{
                 if(this.state.institutionIDError){
                     this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
                 }
+                if(this.state.numAccountsError){
+                    this.setState(() => ({numAccountsError: 'Enter a valid number.'}));
+                }
             }else{
                 if(this.state.nameError){
                     this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
@@ -81,33 +90,53 @@ class CreateInstitutionForm extends React.Component{
                 if(this.state.institutionIDError){
                     this.setState(() => ({institutionIDError: 'Escriba una identificación de institución válida.'}));
                 }
+                if(this.state.numAccountsError){
+                    this.setState(() => ({numAccountsError: 'Escriba un numero valido.'}));
+                }
             }
         }
     }
+    //
+    // createInstitutionError: false,
+    //         createInstitutionIncompleteError: false,
+    //         createInstitutionInvalidInputs: false
 
     //Submit Institution information
     onSubmit = (e) => {
-        e.preventDefault();
-        axios.post('https://beta.edvotech.com/api/admin/settings/institutions/add', {
-        name: this.state.name,
-        location: this.state.location,
-        schooltype: this.state.type,
-        institutionid: this.state.institutionID,
-        accounts: this.state.numAccounts
-    }, {
-        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-    }).then((response)=>{
-        if(response.status == 200)
-        <Redirect to='/admin/settings/schools' />
-    });
+        e.preventDefault();        
         if(!this.state.name || !this.state.location){
             this.setState(() => ({createInstitutionError : true})); 
         }else if(this.state.nameError || this.state.locationError || this.state.institutionIDError){
             this.setState(() => ({createInstitutionError: true}));
         }else{
-            this.setState(() => ({createInstitutionError: false}));
-            this.props.dispatch(setSuccessModal());
-            this.props.history.push('/admin/settings/schools');
+            axios.post('https://beta.edvotech.com/api/admin/settings/institutions/add', {
+        name: this.state.name,
+        location: this.state.location,
+        schooltype: this.state.type,
+        institutionid: this.state.institutionID,
+        accounts: this.state.numAccounts
+            }, {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+            })
+        .catch(error => {
+            if(error.response.status == 403 || error.response.status == 500){
+                this.props.dispatch(setFailureModal());
+                this.setState(() => ({createInstitutionInvalidInputs: false}));
+                this.setState(() => ({createInstitutionError: false}));
+            }
+
+                else if(error.response.status == 401){
+                    this.setState(() => ({createInstitutionInvalidInputs: true}));
+                }
+            })
+        .then((response)=>{
+            if(response.status == 201){              
+                this.setState(() => ({createInstitutionError: false}));
+                this.props.dispatch(setSuccessModal());
+                this.props.history.push('/admin/settings/schools');
+
+            }
+        });
         }
         //TO-DO Add new school to database
     }
@@ -232,6 +261,40 @@ class CreateInstitutionForm extends React.Component{
                                     {this.props.lang === 'English' ? ' Independent' : ' Independiente'}
                                 </label>
 
+                                <br/>
+                                <br/>
+
+                                {
+                                    //Number of accounts
+                                }
+                                <span className="req">*</span>
+                                <label>{this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'}:</label>
+                                <br/>
+                                <input type="text" style={{width: '50%'}} maxLength="5" className="form-control" placeholder = {this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'} onBlur={() => {
+                                    //Check if institution ID field matches expected format. 
+                                    this.setState(() => ({numAccounts: this.state.numAccounts.trim()}));
+                                    if(!this.state.numAccounts.match(/^[1-9\|]*$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({numAccountsError: 'Numero invalido'}));
+                                        }else{
+                                            this.setState(() => ({numAccountsError: 'Invalid number'})); 
+                                        }
+                                    }else{
+                                        this.setState(() => ({numAccountsError: ''}));
+                                    }
+                                }}
+                                value = {this.state.numAccounts} onChange={this.onNumberChange}/>
+                                
+                                {
+                                    //Institution ID error
+                                }
+                                {this.state.numAccountsError && 
+                                    <div>
+                                        <span className="text-danger"> 
+                                            {this.state.numAccountsError}
+                                        </span>
+                                        <br/>
+                                    </div>}
                                 <br/>
                                 <br/>
 

@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {removeSchool} from '../actions/school';
 import axios from 'axios';
 import auth0Client from '../Auth';
+import { setFailureModal } from '../actions/failureModal';
+import { setSuccessModal } from '../actions/successModal';
 
 /**
  * Single item of the School List.
@@ -57,22 +59,24 @@ class SchoolListItem extends React.Component{
                 {this.state.toggleButton ? 
                     <div>
                         <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
-                            {this.props.lang === 'English' ? 'Are you sure you would like to remove this user?' : '¿Estás seguro de que quieres remover a este usuario?'}
+                            {this.props.lang === 'English' ? 'Are you sure you would like to remove this institution?' : '¿Estás seguro de que quieres remover esta institucion?'}
                         </div>
                         <br/>
                         <button onClick={() => {
                             axios.delete('https://beta.edvotech.com/api/admin/settings/institutions/remove',{
                 
                                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
-                            data:{institutionid: props.school.id}
+                            data:{institutionid: this.props.school.id}
                     })
                         .then(response => {
-                            console.log("RESPONSE REMOVING SCHOOL: ", response);
-                            this.props.dispatch(removeSchool({id: this.props.school.id})); ; 
-                            this.setState(() => ({toggleButton: false}));
+                            if(response.status == 201){
+                                this.props.dispatch(removeSchool({id: this.props.school.id}));
+                                this.props.dispatch(setSuccessModal());            
+                            }
                         })
                         .catch(error=>{
-                            console.log("ERROR REMOVING SCHOOL: ", error);
+                            if(error)
+                                this.props.dispatch(setFailureModal());
                         });
                         }}>
                         <div className="btn btn-item" style={{marginTop: '10px'}}>

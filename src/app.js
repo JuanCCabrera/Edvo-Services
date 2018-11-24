@@ -70,22 +70,22 @@ const store = configureStore();
 // store.dispatch(addUser({id: uuid(), name: 'Felipe', lastName: 'Ortiz', email: 'felipe.ortiz@gmail.com', weeklyReco: true, categories: ['Technology Integration', 'Instructional Alignment']}));
 
 //Generating School Test Data
-store.dispatch(addSchool({id: uuid(), name: 'Colegio San Palomar', location: 'Via Roma, LU-67, Paseo del Indio, Yabucoa, PR', type: 'Private', numAccounts: 10}));
-store.dispatch(addSchool({id: uuid(), name: 'Colegio San Antonio', location: 'Via Greca, LM-87, Paseos del Alma, Juncos, PR', type: 'Public', numAccounts: 20}));
-store.dispatch(addSchool({id: uuid(), name: 'Colegio San Juan', location: 'Via Algo, LU-987, Paseo del Indio, Cabo Rojo, PR', type: 'Private', numAccounts: 100}));
-store.dispatch(addSchool({id: uuid(), name: 'Colegio San Jose', location: 'Via Isla, LI-87, Paseos del Alma, Toa Baja, PR', type: 'Public', numAccounts: 200}));
-store.dispatch(addSchool({id: uuid(), name: 'Colegio San Alberto', location: 'Via Baja, KU-67, Paseo del Indio, Sabana Grande, PR', type: 'Private', numAccounts: 150}));
-store.dispatch(addSchool({id: uuid(), name: 'Colegio San Tomas', location: 'Via Altra, IU-97, Paseos del Alma, Toa Alta, PR', type: 'Public', numAccounts: 2000}));
+// store.dispatch(addSchool({id: uuid(), name: 'Colegio San Palomar', location: 'Via Roma, LU-67, Paseo del Indio, Yabucoa, PR', type: 'Private', numAccounts: 10}));
+// store.dispatch(addSchool({id: uuid(), name: 'Colegio San Antonio', location: 'Via Greca, LM-87, Paseos del Alma, Juncos, PR', type: 'Public', numAccounts: 20}));
+// store.dispatch(addSchool({id: uuid(), name: 'Colegio San Juan', location: 'Via Algo, LU-987, Paseo del Indio, Cabo Rojo, PR', type: 'Private', numAccounts: 100}));
+// store.dispatch(addSchool({id: uuid(), name: 'Colegio San Jose', location: 'Via Isla, LI-87, Paseos del Alma, Toa Baja, PR', type: 'Public', numAccounts: 200}));
+// store.dispatch(addSchool({id: uuid(), name: 'Colegio San Alberto', location: 'Via Baja, KU-67, Paseo del Indio, Sabana Grande, PR', type: 'Private', numAccounts: 150}));
+// store.dispatch(addSchool({id: uuid(), name: 'Colegio San Tomas', location: 'Via Altra, IU-97, Paseos del Alma, Toa Alta, PR', type: 'Public', numAccounts: 2000}));
 
-//Generating Admin/Mentor Recommendations Test Data
+// //Generating Admin/Mentor Recommendations Test Data
 
-store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Are you sure you would like to remove this recommendation? This is only test data. Hello. Please read this out loud, but don\'t have too much fun. Stop now. I think this is enough information. Bye now!', multimedia: 'none', description: '<p>gsregsregrgre <strong><em>sgregresg jdyjdfydtyjdtyj</em></strong></p> <iframe width="auto" height="auto" src="https://www.youtube.com/embed/7N3jrHx-ldI" frameBorder="0"></iframe> <p></p>', updatedMaterial: true}));
-store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
-store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));
-store.dispatch(loadRecommendation({id: uuid(), title: 'All Aboard! Studying at Sea', header: 'Test data', multimedia: 'none', description: '#5', timeManagement: true}));
-store.dispatch(loadRecommendation({id: uuid(), title: 'Finding Your Calling', header: 'Test data', multimedia: 'none', description: '#6'}));
-store.dispatch(loadRecommendation({id: uuid(), title: 'A New Method for Teaching Online', header: 'Test data', multimedia: 'none', description: '#7', teachingStrategies: true}));
-store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair Chance', header: 'Test data', multimedia: 'none', description: '#8'}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'Compound Interest', header: 'Are you sure you would like to remove this recommendation? This is only test data. Hello. Please read this out loud, but don\'t have too much fun. Stop now. I think this is enough information. Bye now!', multimedia: 'none', description: '<p>gsregsregrgre <strong><em>sgregresg jdyjdfydtyjdtyj</em></strong></p> <iframe width="auto" height="auto" src="https://www.youtube.com/embed/7N3jrHx-ldI" frameBorder="0"></iframe> <p></p>', updatedMaterial: true}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'New Kids Welcome!', header: 'Test data', multimedia: 'none', description: '#2', instructionAlignment: true}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'Pursuing New Topics', header: 'Test data', multimedia: 'none', description: '#3', updatedMaterial: true}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'All Aboard! Studying at Sea', header: 'Test data', multimedia: 'none', description: '#5', timeManagement: true}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'Finding Your Calling', header: 'Test data', multimedia: 'none', description: '#6'}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'A New Method for Teaching Online', header: 'Test data', multimedia: 'none', description: '#7', teachingStrategies: true}));
+// store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair Chance', header: 'Test data', multimedia: 'none', description: '#8'}));
 
 //Generating Admin/Mentor Questions Test Data
 // store.dispatch(loadQuestion({question: 'They misbehave almost every day. They probably do not think I am a good leader. What should I do?', askedDate: '2018-10-28 06:20:25', subject: 'How can I make my students behave?', userId: uuid()}));
@@ -96,16 +96,16 @@ store.dispatch(loadRecommendation({id: uuid(), title: 'Give Your Students a Fair
 // store.dispatch(loadQuestion({question: 'What should I do?', askedDate: '2018-10-27 12:24:04', subject: 'Best way to get students to listen in class', userId: uuid()}));
 
 //Generating Teacher Class Test Data
-store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'Calculus I', format: 'Classroom', language: 'Spanish', level: 'University/College', groupSize: '1 - 10', topicA: 'Diff Equations', topicB: '2D Integrals'}));
-store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History I', format: 'Online', language: 'English', level: '7th - 8th grade', groupSize: '11 - 20', topicA: 'World War 1', topicB: 'World War 2'}));
+// store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'Calculus I', format: 'Classroom', language: 'Spanish', level: 'University/College', groupSize: '1 - 10', topicA: 'Diff Equations', topicB: '2D Integrals'}));
+// store.dispatch(loadClass({userId: uuid(), classInfoId: uuid(), subject: 'History I', format: 'Online', language: 'English', level: '7th - 8th grade', groupSize: '11 - 20', topicA: 'World War 1', topicB: 'World War 2'}));
 
-//Generating Teacher Plan Test Data
-store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
+// //Generating Teacher Plan Test Data
+// store.dispatch(loadPlan({name: 'Premium', status: 'active'}));
 
-//Generating Teacher Metrics Test Data
-const recoOneID = uuid();
-const recoTwoID = uuid();
-const recoThreeID = uuid();
+// //Generating Teacher Metrics Test Data
+// const recoOneID = uuid();
+// const recoTwoID = uuid();
+// const recoThreeID = uuid();
 
 // store.dispatch(loadRecommendation({recoID: recoOneID, title: 'Integrating Technology', header: 'Test data', location: 'Test location', description: '<p>gsregsregrgre <strong><em>sgregresg jdyjdfydtyjdtyj</em></strong></p> <iframe width="auto" height="auto" src="https://www.youtube.com/embed/7N3jrHx-ldI" frameBorder="0"></iframe> <p></p>', multimedia: 'multimediaLink', date: '2018-10-27 06:20:19', rating: 5}));
 // store.dispatch(loadTeacherTopRecommendation({recoID: recoTwoID, title: 'Updating Old Material', header: 'Test data', location: 'Test location', description: 'Learn more about how to update class material using this video!', multimedia: 'multimediaLink', date: '2018-10-26 06:20:20', rating: 5}));

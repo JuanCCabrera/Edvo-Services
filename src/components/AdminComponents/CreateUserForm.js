@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import { setSuccessModal } from '../../actions/successModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 /**
  * Form to create a new user and upload his or her information to the database
@@ -42,6 +43,7 @@ class CreateUserForm extends React.Component{
             type: 'school',
             institutionID: '',
             institutionIDError: '',
+            requestError: '',
 
             creationError: false
         };
@@ -146,6 +148,9 @@ class CreateUserForm extends React.Component{
                 }
                 if(this.state.institutionIDError){
                     this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                }                
+                if(this.state.requestError){
+                    this.setState(() => ({requestError: 'The user already exists'}));
                 }
             }else{
                 if(this.state.emailError){
@@ -168,6 +173,9 @@ class CreateUserForm extends React.Component{
                 }
                 if(this.state.institutionIDError){
                     this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'}));
+                }
+                if(this.state.requestError){
+                    this.setState(() => ({requestError: 'El usuario ya existe'}));
                 }
             }
         }
@@ -202,6 +210,10 @@ class CreateUserForm extends React.Component{
         if(response.status == 201)
             this.props.dispatch(setSuccessModal());
             this.props.history.push('/admin/settings/users');
+    })
+    .catch(error => {
+        if(error.response.status == 401)     
+            this.setState({requestError: error.response.data.message});
     });
         }
         
@@ -576,6 +588,18 @@ class CreateUserForm extends React.Component{
                                     {this.state.creationError === true && 
                                         <div className="text-danger" style={{marginBottom: "2.7rem"}}>
                                             {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
+                                        </div>
+                                    }
+
+                                    {
+                                        //Message displayed when backend throws an error
+                                    }
+                                    <br/>
+                                    {this.state.requestError && 
+                                        <div>
+                                             <span className="text-danger"> 
+                                                {this.state.requestError}
+                                            </span>
                                         </div>
                                     }
 
