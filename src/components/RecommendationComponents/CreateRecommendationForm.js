@@ -452,7 +452,7 @@ class CreateRecommendationForm extends React.Component{
         axios.post('https://beta.edvotech.com/api/admin/recommendations/create', {
             usertype: auth0Client.getRole(),
             title: this.state.title,
-            multimedia: this.state.multimedia,
+            multimedia: "",
             header: this.state.header,
             description: this.state.description,
 
@@ -591,12 +591,9 @@ class CreateRecommendationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Content' : 'Contenido'}:</label>
                     <br/>
-                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.description.length}/5000</span>
-                    <br/>
                     <Editor 
                     type = "text" 
-                    placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'} 
-                    className="form-control" 
+                    placeholder = {this.props.lang === 'English' ? 'Content' : 'Contenido'}
                     editorState={this.state.editorState} 
                     onEditorStateChange={this.onChange}
                     wrapperClassName="wrapper-class"
@@ -624,6 +621,7 @@ class CreateRecommendationForm extends React.Component{
                             <br/>
                         </div>}
                     <br/>
+                    <br/>
 
                     {
                         //Recommendation location input field
@@ -649,14 +647,15 @@ class CreateRecommendationForm extends React.Component{
                             </span>
                             <br/>
                         </div>}
-                    <br/>
 
                     {
-                        //Multimedia input field
-                    }
+                        /*//Multimedia input field
+                    
+                    
                     <label>{this.props.lang === 'English' ? 'Insert Video or Image Link (Optional)' : 'Inserte Enlace de Vídeo o Imagen (Opcional)'}:</label>
                     <input type="text" placeholder = "Multimedia" className="form-control" value = {this.state.multimedia} onChange={this.onMultimediaChange}/>
-
+                        */
+                    }
                     <br/>
                     {
                         //Quiz question input field

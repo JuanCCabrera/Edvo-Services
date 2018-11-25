@@ -7,6 +7,8 @@ import getVisibleRecommendations from '../../selectors/recommendations';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import { loadRecommendation, unloadRecommendations } from '../../actions/recommendations';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 /**
  * List of recommendations which can be edited or removed from the system. 
@@ -31,6 +33,8 @@ class ManageRecommendationsList extends React.Component{
     //Configure initial state if component will be mounted. 
     //Determine the recommendations to display on the first page. 
     componentWillMount(){
+        this.props.dispatch(setLoadingModal());
+        this.props.dispatch(unloadRecommendations());
         axios.get('https://beta.edvotech.com/api/admin/recommendations',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
@@ -41,6 +45,10 @@ class ManageRecommendationsList extends React.Component{
                     header: element.header, multimedia: element.multimedia, 
                     description: element.description}));
             });
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
@@ -110,10 +118,10 @@ class ManageRecommendationsList extends React.Component{
                 //Message displayed if there are no recommendations in the Recommendations List. 
                 //This includes a link to create a new recommendation. 
             }
-                <div className="close-empty-message-card">
+                
                 {(this.props.recommendation.length === 0) &&
                     (this.props.lang === 'English' ?
-                    <div>
+                    <div className="close-empty-message-card">
                         <p>There are no available recommendations to manage.</p>
                         <Link to='/recommendations/create'>
                             <button>
@@ -123,7 +131,7 @@ class ManageRecommendationsList extends React.Component{
                             </button>
                         </Link>
                     </div> : 
-                    <div>
+                    <div className="close-empty-message-card" >
                         <p>No hay recomendaciones disponibles para administrar.</p>
                         <Link to='/recommendations/create'>
                             <button>
@@ -135,7 +143,6 @@ class ManageRecommendationsList extends React.Component{
                     </div>)
                 }
                 </div>
-            </div>
         )
     }
 }

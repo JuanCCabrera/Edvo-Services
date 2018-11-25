@@ -7,6 +7,9 @@ import axios from 'axios';
 import { reset, loadQuestion } from '../../actions/question';
 import getVisibleQuestions from '../../selectors/questions';
 import auth0Client from '../../Auth';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
+import {resetQuestionsList} from '../../actions/question';
 
 /**
  * The Pending Questions list contains a list of all questions created by users which are pending answers by the Edvo Tech staff. 
@@ -25,7 +28,9 @@ class PendingQuestionsList extends React.Component {
 
 
     //Configure initial local state values, including the list of questions to display on the first page. 
-    componentWillMount(){        
+    componentWillMount(){ 
+        this.props.dispatch(setLoadingModal());
+        this.props.dispatch(resetQuestionsList());       
         axios.get('https://beta.edvotech.com/api/admin/staff/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
@@ -34,6 +39,10 @@ class PendingQuestionsList extends React.Component {
                 this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askeddate, 
                 subject: element.subject, userId: element.userid}));
             });
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });    
         this.pageSlice = Math.ceil(this.props.questions.length/this.itemsPerPage);
         this.currentPage = 1;
@@ -100,17 +109,17 @@ class PendingQuestionsList extends React.Component {
             {
                 //If there are no elements in the Pending Questions list, then a message specifying this is shown. 
             }
-                <div className="close-empty-message-card">
+                
                     {(this.props.questions.length === 0) &&
+                        
                         (this.props.lang === 'English' ? 
-                        <div>
+                        <div className="close-empty-message-card">
                             <p>There are no questions pending answers.</p>
                         </div> : 
-                        <div>
+                        <div className="close-empty-message-card">
                             <p>No hay preguntas con respuestas pendientes.</p>
                         </div>)
                     }
-                </div>
             </div>
         );
     }

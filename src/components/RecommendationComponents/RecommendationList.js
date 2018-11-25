@@ -7,6 +7,8 @@ import getVisibleRecommendations from '../../selectors/recommendations';
 import {loadRecommendation, unloadRecommendations} from '../../actions/recommendations';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 /**
  * List of recommendations displayed in the Assign Recommendations page. 
@@ -28,6 +30,8 @@ class RecommendationsList extends React.Component{
     //when the component loads. 
     componentWillMount(){
         console.log("MOUTING RECOMLIST WITH ID: ", this.props.assigned.userID);
+        this.props.dispatch(setLoadingModal());
+        this.props.dispatch(unloadRecommendations());
         axios.get('https://beta.edvotech.com/api/admin/user/recommendations',{
             
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
@@ -43,11 +47,14 @@ class RecommendationsList extends React.Component{
                 this.props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
                     header: element.header, multimedia: element.multimedia, 
                     description: element.description}));
+                
             })
-            .catch(error =>{
-                console.log("ERROR ASSINING: ", error);
-            });
-        });
+            this.props.dispatch(setLoadingModal());
+        }).catch(error =>{
+            console.log("ERROR ASSINING: ", error);
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
+        });;
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
@@ -130,7 +137,7 @@ class RecommendationsList extends React.Component{
                         </div>
                         :
                         <div>
-                            <p>No hay recomendaciones disponibles para asignarle a este usuario. Si desea asignar una recomendación al usuario seleccionado, debe crear una recomendación Nueva.</p>
+                            <p>No hay recomendaciones disponibles para asignarle a este usuario. Si desea asignar una recomendación al usuario seleccionado, debe crear una recomendación nueva.</p>
                             <Link to='/recommendations/create'>
                                 <button>
                                     <div className="btn btn-item">

@@ -18,10 +18,10 @@ const questionsReducer = (state = questionReducerDefaultState, action) => {
             return [...state];
         //Remove question from list of questions
         case 'REMOVE_QUESTION':
-            return state.filter(({askedDate,userId}) => askedDate !== action.askedDate && userId !== action.userId);
+            return state.filter(({askedDate,userId}) => (askedDate !== action.askedDate || userId !== action.userId));
         case 'ANSWER_QUESTION':
         //Remove question from Pending Questions list once it has been answered
-            return state.filter(({askedDate,userId}) => askedDate !== action.askedDate && userId !== action.userId);
+            return state.filter(({askedDate,userId}) => (askedDate !== action.askedDate || userId !== action.userId));
         //Return existing state by default
         default: 
             return [...state]

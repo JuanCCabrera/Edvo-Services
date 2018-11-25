@@ -118,17 +118,16 @@ class TeacherQuestionsList extends React.Component{
                 {
                     //Message displayed if there are no items in the list. 
                 }
-                <div className="empty-message-card">
                     {(this.props.question.length === 0) && (this.props.lang === 'English' ?
-                        <div>
+                        
+                        <div className="empty-message-card">
                             <p>You have not made any questions.</p>
                         </div>
                         :
-                        <div>
+                        <div className="empty-message-card">
                             <p>Usted no ha hecho preguntas.</p>
                         </div>
                     )}
-                </div>
             </div>
         )
     }

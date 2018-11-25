@@ -835,7 +835,7 @@ class RegistrationForm extends React.Component{
                     //Button to change page to page 2
                 }
                 <a href="#top">
-                    <button onClick={this.toPageTwo}>
+                    <button disabled={!(this.state.name && this.state.lastName) || (this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError)} onClick={this.toPageTwo}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Next' : 'Continuar'}
                         </div>
@@ -1036,7 +1036,7 @@ class RegistrationForm extends React.Component{
                     </a>
                     
                     <a href="#top">
-                        <button onClick={this.toPageThree}>
+                        <button disabled={!(this.state.subject && this.state.topicsTaught[0]) || (this.state.subjectError || this.state.topicError)} onClick={this.toPageThree}>
                             <div className="btn btn-item">
                                 {this.props.lang === 'English' ? 'Next' : 'Continuar'}
                             </div>
@@ -1244,7 +1244,7 @@ class RegistrationForm extends React.Component{
                     </a>
 
                     <a href="#top">
-                    <button onClick={this.toPageFour}>
+                    <button disabled={!(this.state.schoolName && this.state.schoolLocation && (this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.applications || this.state.socialMedia) && (this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)) || (this.state.schoolNameError || this.state.schoolLocationError)} onClick={this.toPageFour}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Next' : 'Continuar'}
                         </div>
@@ -1382,7 +1382,7 @@ class RegistrationForm extends React.Component{
                         </button>
                     </a>
 
-                    <button onClick={this.onSubmit}>
+                    <button disabled={!((this.state.english || this.state.spanish) && (this.state.teachingStrategies || this.state.technologyIntegration || this.state.updatedMaterial || this.state.instructionAlignment || this.state.timeManagement) && this.state.termsOfUse && this.state.privacyPolicy) || (this.state.timeEmployedError)} onClick={this.onSubmit}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Submit' : 'Enviar'}
                         </div>

@@ -127,17 +127,16 @@ class TeacherRecommendationsList extends React.Component{
                 {
                     //Message displayed if there are no items on the list. 
                 }
-                <div className="empty-message-card">
+                
                     {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
-                        <div>
+                        <div className="empty-message-card">
                             <p>You do not have any assigned recommendations.</p>
                         </div>
                         :
-                        <div>
+                        <div className="empty-message-card">
                             <p>Usted no tiene recomendaciones asignadas.</p>
                         </div>
                     )}
-                </div>
             </div>
         )
     }

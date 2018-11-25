@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import RecommendationsUserListItem from './RecommendationsUserListItem';
 import Pagination from 'react-js-pagination';
 import getVisibleUsers from '../../selectors/users';
-import {addUser} from '../../actions/user';
+import {addUser, unloadUsers} from '../../actions/user';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 /**
  * List of users which appears in the Assign Recommendations list. 
@@ -25,6 +27,8 @@ class RecommendationsUserList extends React.Component{
     
     //Configure state when component is being mounted. This includes determing the initial list to display on the Assign Recommendations page. 
     componentWillMount(){
+        this.props.dispatch(setLoadingModal());
+        this.props.dispatch(unloadUsers());
         axios.get('https://beta.edvotech.com/api/admin/recommendations/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
@@ -35,6 +39,10 @@ class RecommendationsUserList extends React.Component{
                     weeklyReco: element.weeklyReco, 
                     categories: element.categories}));
             });
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
         this.pageSlice = Math.ceil(this.props.users.length/this.itemsPerPage);
         this.currentPage = 1;

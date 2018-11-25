@@ -251,6 +251,31 @@ position: relative;
     border-radius: 0;
 }
 
+
+.navbar-nav > li > div{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+}
+
+.nav > li > div{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav > li > div > a{
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 0;
+}
+
+.navbar-nav li > div:hover a{
+    color: #061551;
+    background-color: white;
+}
+
+
 @media only screen and (max-width: 768px){
     .navbar-nav li{
         border-radius: 3rem;

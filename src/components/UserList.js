@@ -136,14 +136,18 @@ class UserList extends React.Component{
                 {
                     //Message displayed if there are no users in the list
                 }
-                <div className="close-empty-message-card">
                     {(this.props.users.length === 0) && (this.props.lang === 'English' ?
-                        <p>There are no registered users to manage.</p>
+                     
+                        <div className="close-empty-message-card">
+                            <p>There are no registered users to manage.</p>
+                        </div>
                         :
-                        <p>No hay usuarios registrados para administrar.</p>
-                    )
+                    
+                        <div className="close-empty-message-card">
+                            <p>No hay usuarios registrados para administrar.</p>
+                        </div>
+                        )
                     }
-                </div>
             </div>
         )
     }

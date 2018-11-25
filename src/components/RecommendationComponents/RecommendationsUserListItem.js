@@ -15,15 +15,15 @@ const RecommendationsUserListItem = (props) => (
             <div className="col-sm-2">
                     {props.user.id === props.selectedUser && 
                     <div>
-                        <span style={{display: 'inline'}}><i className="fa fa-check-circle" style={{color: 'green'}} aria-hidden="true"></i></span>
+                        <span style={{display: 'inline'}}><i className="fa fa-check-circle fa-lg" style={{color: 'green'}} aria-hidden="true"></i></span>
                     </div>}
             </div>
         </div>
-        <h5>Email: {props.user.email}</h5>
+        <p>Email: {props.user.email}</p>
         {
             //<h6>Has weekly recommendation: {props.user.weeklyReco ? 'Yes' : 'No'}</h6>
         }
-        <h6>{props.lang === 'English' ? 'Categories' : 'Categorías'}: 
+        <p>{props.lang === 'English' ? 'Categories' : 'Categorías'}: 
         <br/>
         {props.user.categories.map((category) => {
             return (
@@ -32,7 +32,7 @@ const RecommendationsUserListItem = (props) => (
                 <br/>
                 </div>)
         })}
-        </h6>
+        </p>
             <button onClick={() => {
                 props.dispatch(selectUser({userID: props.user.id}));
             }}>

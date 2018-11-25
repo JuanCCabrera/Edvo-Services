@@ -64,7 +64,7 @@ export const answerQuestion = ({askedDate, userId, answer} = {}) => {
     }
 }
 
-export const reset = () => {
+export const resetQuestionsList = () => {
     return{
         type: 'UNLOAD_ADMIN_QUESTIONS'
     }

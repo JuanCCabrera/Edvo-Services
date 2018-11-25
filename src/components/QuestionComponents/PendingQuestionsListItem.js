@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {reset, removeQuestion} from '../../actions/question';
-import {Link} from 'react-router-dom';
+import {resetQuestionsList, removeQuestion} from '../../actions/question';
+import {Link, withRouter, Router} from 'react-router-dom';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import {setSuccessModal} from '../../actions/successModal';
@@ -58,7 +58,7 @@ class PendingQuestionsListItem  extends React.Component{
                         {this.props.lang === 'English' ? 'Are you sure you would like to remove this quesiton?' : '¿Estás seguro de que quieres remover esta pregunta?'}
                     </div>
                     <br/>
-                    <button onClick={() => {
+                    <button onClick={() => {    
                         console.log("PROPS IN SEE QUESTIONS: ", this.props);
                         axios.delete('https://beta.edvotech.com/api/admin/questions/remove',{
                         data:{askeddate: this.props.question.askedDate,
@@ -71,18 +71,18 @@ class PendingQuestionsListItem  extends React.Component{
                             console.log("RESPOSNE STATUS: ", response.status);
                             if(response.status == 200){
                                 this.props.dispatch(setSuccessModal());
-                                //REACT UPDATE ERROR !this.props.dispatch(removeQuestion({questionID: this.props.question.questionID, askedDate: moment(this.props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"), userId: this.props.question.userId}));
-                                this.setState(() => ({toggleButton: false}));
-                        }
+                                console.log('ASKED DATE', this.props.question.askedDate);
+                                console.log('UserID', this.props.question.userId);
+                                this.props.dispatch(removeQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId}));
+                            }
                         })
                         .catch(error => {
                             console.log("RESPONSE DATA: ", error.response);
-                            if(error.response.status == 401 || error.response.status == 403)
-                                this.setState({cardError: true});
-                            else{
+                            if(error.response.status == 401 || error.response.status == 403){
+                                
                                 this.props.dispatch(setFailureModal());
-                        }
-                        });
+                            }
+                        });    
                     }}>
                     <div className="btn btn-item" style={{marginTop: '10px'}}>
                             {this.props.lang === 'English' ? 'Yes' : 'Si'}
@@ -119,6 +119,6 @@ const mapStateToProps = (state) => {
 }
 
 //Connect component to the controller. 
-export default connect(mapStateToProps)(PendingQuestionsListItem);
+export default withRouter(connect(mapStateToProps)(PendingQuestionsListItem));
 
 

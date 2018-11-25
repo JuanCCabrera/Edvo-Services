@@ -1,0 +1,7 @@
+.rdw-editor-main{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

@@ -111,18 +111,16 @@ class SchoolList extends React.Component{
                 {
                     //Message shown if there are no items on the list
                 }
-                <div className="close-empty-message-card">
                     {(this.props.schools.length === 0) && (this.props.lang === 'English' ?
-                        <div>
+                        <div className="close-empty-message-card">
                             <p>There are no registered institutions to manage.</p>
                         </div>
                         :
-                        <div>
+                        <div className="close-empty-message-card">
                             <p>No hay instituciones registradas para administrar.</p>
                         </div>
                     )
                     }
-                </div>
             </div>
         )
     }
