@@ -32,7 +32,7 @@ import {Redirect} from 'react-router-dom';
         </div>
     </div>
                  )}
-                 no={() => <Redirect to="/" />}
+                 no={() => <Redirect to="/login"/>}
                />
 
  );

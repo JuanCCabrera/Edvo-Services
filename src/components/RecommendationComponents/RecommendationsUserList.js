@@ -105,11 +105,13 @@ class RecommendationsUserList extends React.Component{
                     //Text displayed if there are no users on the Users List. 
                 }
 
-                {(this.props.users.length === 0) && (this.props.lang === 'English' ?
-                    <p>There are no registered users in the system.</p>
-                    :
-                    <p>No hay usuarios registrados en el sistema.</p>
-                )}
+                <div className="text-center text-danger">
+                    {(this.props.users.length === 0) && (this.props.lang === 'English' ?
+                        <p>There are no registered users in the system.</p>
+                        :
+                        <p>No hay usuarios registrados en el sistema.</p>
+                    )}
+                </div>
             </div>
         )
     }

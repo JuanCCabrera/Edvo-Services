@@ -110,17 +110,31 @@ class ManageRecommendationsList extends React.Component{
                 //Message displayed if there are no recommendations in the Recommendations List. 
                 //This includes a link to create a new recommendation. 
             }
+                <div className="close-empty-message-card">
                 {(this.props.recommendation.length === 0) &&
                     (this.props.lang === 'English' ?
                     <div>
                         <p>There are no available recommendations to manage.</p>
-                        <Link to='/recommendations/create'><button>Create New Recommendation</button></Link>
+                        <Link to='/recommendations/create'>
+                            <button>
+                                <div className="btn btn-item">
+                                    Create New Recommendation
+                                </div>
+                            </button>
+                        </Link>
                     </div> : 
                     <div>
                         <p>No hay recomendaciones disponibles para administrar.</p>
-                        <Link to='/recommendations/create'><button>Crear Nueva Recomendación</button></Link>
+                        <Link to='/recommendations/create'>
+                            <button>
+                                <div className="btn btn-item">
+                                    Crear Nueva Recomendación
+                                </div>
+                            </button>
+                        </Link>
                     </div>)
                 }
+                </div>
             </div>
         )
     }

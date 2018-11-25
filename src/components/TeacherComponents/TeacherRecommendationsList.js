@@ -7,7 +7,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import getVisibleTeacherRecommendations from '../../selectors/teacherRecommendations';
 import { setLoadingModal } from '../../actions/loadingModal';
-
+import { setFailureModal } from '../../actions/failureModal';
 /**
  * List of recommendations assigned to the Teacher. This list is available in the Teacher Recommendations page. 
  */
@@ -49,9 +49,13 @@ class TeacherRecommendationsList extends React.Component{
                         description: element.description, 
                         multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate}));
                 }
-
          });
          this.props.dispatch(setLoadingModal());
+    }).catch(error => {
+        console.log("ERROR ERROR ERROR");
+        this.props.dispatch(setLoadingModal());
+        this.props.dispatch(setFailureModal());
+        
     });
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
@@ -123,15 +127,17 @@ class TeacherRecommendationsList extends React.Component{
                 {
                     //Message displayed if there are no items on the list. 
                 }
-                {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
-                    <div>
-                        <p>There are no available recommendations.</p>
-                    </div>
-                    :
-                    <div>
-                        <p>No hay recomendaciones disponibles.</p>
-                    </div>
-                )}
+                <div className="empty-message-card">
+                    {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
+                        <div>
+                            <p>You do not have any assigned recommendations.</p>
+                        </div>
+                        :
+                        <div>
+                            <p>Usted no tiene recomendaciones asignadas.</p>
+                        </div>
+                    )}
+                </div>
             </div>
         )
     }

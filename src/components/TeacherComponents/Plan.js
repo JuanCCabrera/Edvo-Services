@@ -197,7 +197,7 @@ class Plan extends React.Component{
     </div>
 </div>
                              )}
-                             no={() => <Redirect to="/" />}
+                             no={() => <Redirect to="/login"/>}
                            />
 
         )

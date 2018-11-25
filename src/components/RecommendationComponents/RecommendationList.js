@@ -9,7 +9,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 
 /**
- * List of recommendations displayed in the Assign Recommendations and Manage Recommendations pages. 
+ * List of recommendations displayed in the Assign Recommendations page. 
  */
 class RecommendationsList extends React.Component{
     constructor(props){
@@ -116,17 +116,31 @@ class RecommendationsList extends React.Component{
             {
                 //Message displayed when there are no elements in the Recommendations page. It includes a link to create a new recommendation. 
             }
-                {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
-                    <div>
-                        <p>There are no available recommendations for assignment. Please create a new recommendation to assign.</p>
-                        <Link to='/recommendations/create'><button>Create New Recommendation</button></Link>
-                    </div>
-                    :
-                    <div>
-                        <p>No hay recomendaciones disponibles para asignar. Si desea asignar una recomendación al usuario seleccionado, cree una recomendación nueva para asignar.</p>
-                        <Link to='/recommendations/create'><button>Crear Nueva Recomendación</button></Link>
-                    </div>
-                )}
+                <div className="text-center text-danger">
+                    {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
+                        <div>
+                            <p>There are no available recommendations for assignment. Please create a new recommendation to assign.</p>
+                            <Link to='/recommendations/create'>
+                                <button>
+                                    <div className="btn btn-item">
+                                        Create New Recommendation
+                                    </div>
+                                </button>
+                            </Link>
+                        </div>
+                        :
+                        <div>
+                            <p>No hay recomendaciones disponibles para asignarle a este usuario. Si desea asignar una recomendación al usuario seleccionado, debe crear una recomendación Nueva.</p>
+                            <Link to='/recommendations/create'>
+                                <button>
+                                    <div className="btn btn-item">
+                                        Crear Nueva Recomendación
+                                    </div>
+                                </button>
+                            </Link>
+                        </div>
+                    )}
+                </div>
             </div>
         )
     }

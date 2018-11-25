@@ -12,6 +12,24 @@ html, body {
     background-color: rgba(0, 0, 0, 0.096);
 }
 
+.loading-card{
+    margin: 1rem 1rem;
+    padding-top: 18rem;
+    padding-bottom: 18rem;
+    background-color: white;
+    border: 1.2px solid #5933aa;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-radius: 0.5rem;
+}
+
+@media only screen and (max-width: 1200px){
+    .loading-card{
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+}
+
 .card-title{
     font-weight: normal;
     font-size: 1.7rem;
@@ -95,6 +113,12 @@ html, body {
     margin-top: 1rem;
 }
 
+@media only screen and (max-width: 420px){
+    .btn-item{
+        font-size: 95%;
+    }
+}
+
 .btn-item-margin{
     margin-top: '2rem';
 }
@@ -131,6 +155,7 @@ button:disabled > .btn-item{
     transition: 0.3s;
     border-radius: 0.5rem;
     padding-bottom: 1rem; 
+    min-height: 18rem;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -197,10 +222,10 @@ button:disabled > .btn-item{
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
-    margin-top: 2.7rem;
-    margin-bottom: 2.7rem;
-    padding-top: 3.7rem;
-    padding-bottom: 3.7rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     font-weight: bold;
 }
 
@@ -227,8 +252,8 @@ button:disabled > .btn-item{
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
-    margin-top: 2.7rem;
-    margin-bottom: 2.7rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
     padding-top: 3.7rem;
     padding-bottom: 3.7rem;
     font-weight: bold;
@@ -277,6 +302,8 @@ button:disabled > .btn-item{
         padding-bottom: 2rem;
         padding-left: 0;
         padding-right: 0;
+        margin-top: 2rem;
+        margin-bottom: 2rem
     }
 }
 
@@ -289,3 +316,13 @@ button:disabled > .btn-item{
         padding-right: 0;
     }
 }
+
+@media only screen and (max-width: 768px){
+    .big-card-mentor-home{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem
+    }
+}
+

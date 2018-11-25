@@ -74,7 +74,7 @@ class CheckoutForm extends Component {
         </button>
       </div>
         )}
-        no={() => <Redirect to="/" />}
+        no={() => <Redirect to="/login"/>}
       />
     );
   }

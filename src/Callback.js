@@ -47,7 +47,7 @@ class Callback extends Component {
     render(){
         return(
             <div className="container">
-                <div className="card text-center">
+                <div className="text-center loading-card">
                     <div style={{listStyleType: 'none', verticalAlign: 'center'}}>
                         <h1>Loading...</h1>
                         <i className="fa fa-spinner fa-pulse fa-4x fa-fw"></i>

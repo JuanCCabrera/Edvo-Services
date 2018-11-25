@@ -67,7 +67,7 @@ const MentorHome = (props) => (
         </div>
     </div>
                                      )}
-                                     no={() => <Redirect to="/" />}
+                                     no={() => <Redirect to="/login"/>}
                                    />
 );
 

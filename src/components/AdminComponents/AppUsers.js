@@ -71,7 +71,7 @@ import {connect} from 'react-redux';
             </div>
         </div>
                                      )}
-                                     no={() => <Redirect to="/" />}
+                                     no={() => <Redirect to="/login"/>}
                                    />
  );
 

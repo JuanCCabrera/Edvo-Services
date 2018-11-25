@@ -122,28 +122,12 @@ import axios from 'axios';
                     }
                 </div>
                 }
-                <button disabled={!props.assigned.userID || !props.assigned.recoID} onClick={() => {
-                    console.log(props.assigned);
-                    props.dispatch(assignRecommendation());
-                    console.log("USER TO: ", props.assigned)
-                    axios.post('https://beta.edvotech.com/api/admin/recommendations/assign', {
-                        recomid: props.assigned.recoID,
-                        usersToAssign: props.assigned.userID
-                    },
-                    {
-                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` 
-                    }})
-                        .then((response)=>{
-                        console.log("REPSONSE TO ASSIGNING: ", response);
-                    });
-
-                }}>{props.lang === 'English' ? 'Assign Recommendation' : 'Asignar Recomendación'}</button>  
             </div>
         </div>
     </div>
-                             )}
-                             no={() => <Redirect to="/" />}
-                           />
+        )}
+        no={() => <Redirect to="/login"/>}
+    />
             
  );
 

@@ -83,15 +83,17 @@ class FavoriteRecommendationsList extends React.Component{
                 {
                     //Display message if there are no recommendations in the list. 
                 }
+                <div className="empty-message-card">
                 {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
                     <div>
-                        <p>There are no favorite recommendations available.</p>
+                        <p>You do not have favorite recommendations.</p>
                     </div>
                     :
                     <div>
-                        <p>No hay recomendaciones favoritas disponibles.</p>
+                        <p>Usted no tiene recomendaciones favoritas.</p>
                     </div>
                 )}
+                </div>
             </div>
         )
     }
