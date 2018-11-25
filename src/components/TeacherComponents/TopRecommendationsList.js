@@ -18,15 +18,19 @@ const TopRecommendationsList = (props) => (
     {
         //Message displayed if there are no items in the Top Recommendations list. 
     }
+        <div className="text-center">
         {(props.recommendation.length === 0) && (props.lang === 'English' ?
             <div>
+                <hr/>
                 <p>You do not have any rated recommendations.</p>
             </div>
             :
             <div>
+                <hr/>
                 <p>Usted no tiene recomendaciones calificadas.</p>
             </div>
         )}
+        </div>
     </div>
 );
 

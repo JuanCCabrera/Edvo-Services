@@ -18,15 +18,19 @@ const RecentRecommendationsList = (props) => (
     {
         //Display message if there are no items on the list
     }
-        {(props.recommendation.length === 0) && (props.lang === 'English' ?
-            <div>
-                <p>You do not have any assigned recommendations.</p>
-            </div>
-            :
-            <div>
-                <p>Usted no tiene recomendaciones asignadas.</p>
-            </div>
-        )}
+        <div className="text-center">
+            {(props.recommendation.length === 0) && (props.lang === 'English' ?
+                <div>
+                    <hr/>
+                    <p>You do not have any assigned recommendations.</p>
+                </div>
+                :
+                <div>
+                    <hr/>
+                    <p>Usted no tiene recomendaciones asignadas.</p>
+                </div>
+            )}
+        </div>
     </div>
 );
 

@@ -9,6 +9,7 @@ import { setLoadingModal } from '../../actions/loadingModal';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import moment from 'moment';
+import { setFailureModal } from '../../actions/failureModal';
 
 /**
  * List of questions a teacher has asked. This list is available in the Teacher Questions page. 
@@ -45,6 +46,9 @@ class TeacherQuestionsList extends React.Component{
                 }
             });
             this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
         this.currentPage = 1;
         const initialPageQuestions = this.props.question.slice(0,this.itemsPerPage);
@@ -114,15 +118,17 @@ class TeacherQuestionsList extends React.Component{
                 {
                     //Message displayed if there are no items in the list. 
                 }
-                {(this.props.question.length === 0) && (this.props.lang === 'English' ?
-                    <div>
-                        <p>There are no available questions.</p>
-                    </div>
-                    :
-                    <div>
-                        <p>No hay preguntas disponibles.</p>
-                    </div>
-                )}
+                <div className="empty-message-card">
+                    {(this.props.question.length === 0) && (this.props.lang === 'English' ?
+                        <div>
+                            <p>You have not made any questions.</p>
+                        </div>
+                        :
+                        <div>
+                            <p>Usted no ha hecho preguntas.</p>
+                        </div>
+                    )}
+                </div>
             </div>
         )
     }

@@ -98,15 +98,17 @@ class PendingQuestionsList extends React.Component {
             {
                 //If there are no elements in the Pending Questions list, then a message specifying this is shown. 
             }
-                {(this.props.questions.length === 0) &&
-                    (this.props.lang === 'English' ? 
-                    <div>
-                        <p>There are no questions pending answers.</p>
-                    </div> : 
-                    <div>
-                        <p>No hay preguntas con respuestas pendientes.</p>
-                    </div>)
-                }
+                <div className="close-empty-message-card">
+                    {(this.props.questions.length === 0) &&
+                        (this.props.lang === 'English' ? 
+                        <div>
+                            <p>There are no questions pending answers.</p>
+                        </div> : 
+                        <div>
+                            <p>No hay preguntas con respuestas pendientes.</p>
+                        </div>)
+                    }
+                </div>
             </div>
         );
     }

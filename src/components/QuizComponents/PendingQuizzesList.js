@@ -122,15 +122,17 @@ class PendingQuizzesList extends React.Component {
                 {
                     //Message displayed if there are no items in the list. 
                 }
-                {(this.props.quizzes.length === 0) && (this.props.lang === 'English' ?
-                    <div>
-                        <p>There are no available quizzes.</p>
-                    </div>
-                    :
-                    <div>
-                        <p>No hay pruebas disponibles.</p>
-                    </div>
-                )}
+                <div className="close-empty-message-card">
+                    {(this.props.quizzes.length === 0) && (this.props.lang === 'English' ?
+                        <div>
+                            <p>You do not have any quizzes yet.</p>
+                        </div>
+                        :
+                        <div>
+                            <p>Usted no tiene pruebas disponibles.</p>
+                        </div>
+                    )}
+                </div>
             </div>
         );
     }

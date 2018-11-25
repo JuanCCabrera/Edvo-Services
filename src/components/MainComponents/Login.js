@@ -85,7 +85,7 @@ const LoginPage = (props) => (
                                         auth0Client.isAuthenticated() &&
                                         <div>
                                             <button className="SignUp-Button" onClick={() => {signOut(props)}}>
-                                                <div className="btn btn-item">
+                                                <div className="btn btn-item" style={{marginBottom: '1rem'}}>
                                                     {props.lang === 'English' ? 'Sign Out' : 'Desconectarse'}
                                                 </div>
                                             </button>
