@@ -122,7 +122,7 @@ class AnswerQuestionForm extends React.Component {
                 </form>
             </div>
                              )}
-                             no={() => <Redirect to="/" />}
+                             no={() => <Redirect to="/login" />}
                            />
         );
     }

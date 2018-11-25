@@ -31,7 +31,7 @@ import auth0Client from '../../Auth';
             </div>
         </div>
                              )}
-                             no={() => <Redirect to="/" />}
+                             no={() => <Redirect to="/login" />}
                            />
  );
 

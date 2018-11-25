@@ -142,7 +142,7 @@ import axios from 'axios';
         </div>
     </div>
                              )}
-                             no={() => <Redirect to="/" />}
+                             no={() => <Redirect to="/login" />}
                            />
             
  );

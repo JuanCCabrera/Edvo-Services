@@ -7,6 +7,8 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import {loadPlan} from '../../actions/plan';
 import {Link} from 'react-router-dom';
+import {setSuccessModal} from '../../actions/successModal';
+import {setFailureModal} from '../../actions/failureModal';
 
 /**
  * Plan page in Teacher Settings. It displays the name of the subscription plan currently owned by the Teacher use (if any) or an option to resubscribe to the plan
@@ -20,6 +22,7 @@ class Plan extends React.Component{
             coupon: '',
             couponValid: false,
             couponShow: false,
+            cardError: false,
             couponError: '',
             status: ''
         }
@@ -30,11 +33,12 @@ class Plan extends React.Component{
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
         .catch(error=>{
-            this.setState({couponShow: false, status});
+            this.props.dispatch(setFailureModal());
         })
         .then(response => {
-            console.log("PLANS RESPONSE: ", response.data.subscription.status);
-            this.setState({status: response.data.subscription.status});
+            if(response.status == 200){
+                this.setState({status: response.data.subscription.status});
+            }
         });
     }
 
@@ -52,47 +56,32 @@ class Plan extends React.Component{
         }
     }
 
-    //Apply coupon code to user. Not available until integrated with the database to verify the coupon information. 
-    applyCoupon = (e) => {
-        e.preventDefault();
-        axios.post('https://beta.edvotech.com/api/plans/settings/plans',{
-            coupon: this.state.coupon
-        },
-        {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
-    .then((response)=>{
-        if(response.status == 201){
-                    this.props.dispatch(setSuccessModal());
-
-        }
-    })
-    .catch(error => {
-        console.log("ERROR", error);
-    });
-
-    }
-
     subscribeToPlan = (e) => {
         e.preventDefault();
         this.props.history.replace('/teacher/settings/plans/payment');
     }
 
-    resubscribeToPlan = (e) => {
+    modifyPlan = (e) => {
         e.preventDefault();
-        this.props.history.replace('/teacher/settings/plans/payment');
-    }
-
-    //Cancelling a plan is not available. Integration with the database is required. 
-    cancelPlan = (e) => {
-        e.preventDefault();
-        console.log("WHY????? ",auth0Client.getIdToken());
-        axios.post('https://beta.edvotech.com/api/teacher/settings/plans/cancel',{},
+        axios.post('https://beta.edvotech.com/api/teacher/settings/plans',{
+            action: this.state.status
+        },
         {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .then((response)=>{
+        console.log("RESUSCRIBE RESPONSE: ",response);
+        console.log("RESPOSNE STATUS: ", response.status);
         if(response.status == 201){
-                    this.props.dispatch(loadProfile({name: this.state.name, lastName: this.state.lastName, dateOfBirth: this.state.dateOfBirth, gender: this.state.gender}));
-                    this.props.dispatch(setSuccessModal());
-
-                }
+            this.props.dispatch(setSuccessModal());
+            const stateStatus = this.state.status == 'active' ? 'suspended' : 'active';
+            this.setState({status: stateStatus});
+        }
+    })
+    .catch(error => {
+        if(error.response.status == 402 || error.response.status == 403)
+            this.setState({cardError: true});
+        else{
+            this.props.dispatch(setFailureModal());
+        }
     });
     }
 
@@ -141,7 +130,7 @@ class Plan extends React.Component{
                 {
                     //Cancel plan button
                 }
-                {this.state.status === 'active' && this.props.lang === 'English' && <button onClick={this.cancelPlan}>
+                {this.state.status === 'active' && this.props.lang === 'English' && <button onClick={this.modifyPlan}>
                     <div className="btn btn-item">
                         Cancel Plan
                     </div>
@@ -149,7 +138,7 @@ class Plan extends React.Component{
                 {
                     //Cancel Plan button (translation)
                 }
-                {this.state.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.cancelPlan}>
+                {this.state.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.modifyPlan}>
                     <div className="btn btn-item">
                         Cancelar Plan
                     </div>
@@ -157,7 +146,7 @@ class Plan extends React.Component{
                 {
                     //Resubscribe button
                 }
-                {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.resubscribeToPlan}>
+                {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.modifyPlan}>
                 <div className="btn btn-item">
                         Resubscribe
                     </div>
@@ -166,38 +155,26 @@ class Plan extends React.Component{
                 {
                     //Resubscribe button (translation)
                 }
-                {this.state.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.resubscribeToPlan}>
+                {this.state.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.modifyPlan}>
                 <div className="btn btn-item">
                         Resuscribirse
                     </div>
                 </button>}
+                {this.state.cardError === true && 
+                        <div className="text-danger text-center">
+                            {this.props.lang === 'English' ? <p>Card used is no longer valid.</p> : <p>Tarjeta usada no es válida.</p>}
+                        </div>
+                    }
                 <br/>
-                {
-                    //Coupon code input field
-                }
-                {this.state.status === 'active' && <div style={{marginTop: '3rem'}}>
-                {this.props.lang === 'English' ? <h4>Coupon code:</h4>: <h4>Código de cupón:</h4>}
-                <input type="text" className="form-control" style={{width: '80%'}} value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>
                 
-                {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>
-                    <div className="btn btn-item">
-                        {this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}
-                    </div>
-                    </button>}
-                <br/>
-                {/* {this.state.status === 'active' && this.props.lang === 'English' && <h3>Coupon Code:</h3>}
-                {this.state.status === 'active' && <input type="text" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange}/>}
-                {this.state.status === 'active' && <button disabled={!this.state.couponValid} onClick={this.applyCoupon}>{this.props.lang === 'English' ? 'Apply Code' : 'Aplicar Código'}</button>}
-                <br/> */}
-                </div>}
+                </div>
                 </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
                              )}
-                             no={() => <Redirect to="/" />}
+                             no={() => <Redirect to="/login" />}
                            />
 
         )

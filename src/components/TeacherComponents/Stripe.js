@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 import {connect} from 'react-redux';
+import './Stripe.css';
 
 class Stripe extends Component {
   constructor(props) {
