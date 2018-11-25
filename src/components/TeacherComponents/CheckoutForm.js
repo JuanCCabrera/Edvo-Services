@@ -27,7 +27,7 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
-    let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
+    let {token} = await this.props.stripe.createToken({name: auth0Client.getProfile().email});
     console.log("ID TOKEN IN CHECKOUT: ", auth0Client.getIdToken());
     await axios.post('https://beta.edvotech.com/api/plans/',
         {
@@ -38,7 +38,7 @@ class CheckoutForm extends Component {
         {
           headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
           .catch(error => {
-            console.log("STRiPE ERROR: ", error.response.status);
+            console.log("STRIPE ERROR: ", error.response.status);
           })
           .then(response =>{
             console.log("STRIPE RESPONSE: ",response);
@@ -52,7 +52,7 @@ class CheckoutForm extends Component {
      return (
 
        <div>
-     <h1>Subscription complete Complete</h1>
+     <h1>Subscription Complete</h1>
      <button onClick={this.onButtonClick}>OK</button>
      </div>
     );
@@ -65,12 +65,17 @@ class CheckoutForm extends Component {
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <input name="coupon" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange} />
-        <button onClick={this.submit}>Send</button>
+        <br/>
+        <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="10" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange} />
+        <button onClick={this.submit}>
+          <div className="btn btn-item">
+            Send
+          </div>
+        </button>
       </div>
-                                   )}
-                                   no={() => <Redirect to="/" />}
-                                 />
+        )}
+        no={() => <Redirect to="/" />}
+      />
     );
   }
 }

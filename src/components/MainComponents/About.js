@@ -35,11 +35,11 @@ const AboutPage = (props) => (
                         <div>
                             <h2 className="about__subtitle">What we do</h2>
                             <h4 className="about__sub__text">An educator holds the most important profession being the gateway to all other </h4>
-                            <h4 className="about__sub__text">professions. With them, we are on our way to Evolve Education!</h4>
+                            <h4 className="about__sub__text">professions. With them, we are on our way to <span className="about__sub__text__bold">evolve education</span>!</h4>
                         </div> : <div>
                             <h2 className="about__subtitle">¿Qué hacemos?</h2>
                             <h4 className="about__sub__text">Un educador mantiene la profesión mas importante sobre todas las profesiones.</h4>
-                            <h4 className="about__sub__text">Con ellos vamos encaminados a <span className="about__sub__text__bold">¡Evolucionar la Educación!</span></h4>
+                            <h4 className="about__sub__text">¡Con ellos vamos encaminados a <span className="about__sub__text__bold">evolucionar la educación</span>!</h4>
                         </div>
                         }
                     </div>
@@ -129,16 +129,17 @@ const AboutPage = (props) => (
                     </div>
                 </div>
             </div>
+            {
+                //Contact Form
+            }
+            <div className="row">
+                <ContactForm
+                onSubmit={(contact) => {
+                props.dispatch(sendContactForm(contact));
+                }}/>
+            </div>
         </div>
-        {
-            //Contact Form
-        }
-        <div>
-            <ContactForm
-            onSubmit={(contact) => {
-            props.dispatch(sendContactForm(contact));
-            }}/>
-        </div>
+        
     </div>
 );
 

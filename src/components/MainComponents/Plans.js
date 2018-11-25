@@ -61,12 +61,9 @@ const PlansPage = (props) => (
                 <h3> {props.lang === 'English' ? 'Q&A with experts' : 'Preguntas y respuestas con expertos'}</h3>
                 <p> {props.lang === 'English' ? 'Ask private questions and our team of experts will provide solutions on time management, teaching strategies and technology integration' : 'Pregunte en privado y nuestro grupo de expertos le proveerá soluciones sobre manejo de tiempo, enseñanza e integración tecnológica'} </p>
             </th>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i>
-                <p className="text-center mt-3 Font-10-Px">1 question per month</p></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i>
-                <p className="text-center mt-3 Font-10-Px">5 questions per month</p></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i>
-                <p className="text-center mt-3 Font-10-Px">5 questions per month</p></td>
+            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
         </tr>
         <tr>
             <th>

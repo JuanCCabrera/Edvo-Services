@@ -63,7 +63,6 @@ class AskQuestionForm extends React.Component{
     onSubmit = (e) => {
         //Prevent page refresh
         e.preventDefault();
-        this.setState(() => ({askQuestionPlan: false}));
         //Enable error message if there is a missing form field. 
         if(!this.state.subject || !this.state.body){
             this.setState(() => ({askQuestionError: true, success: false})); 
@@ -100,18 +99,14 @@ class AskQuestionForm extends React.Component{
                 }
             })
             .then((response)=>{
-                console.log(respose.status)
                 if(response.status == 201){
-                    this.setState(() => ({success: true}));
+                    this.setState(() => ({success: true, subject: '', body: ''}));
+                    this.setState(() => ({askQuestionPlan: false}));
                     this.setState(() => ({askQuestionError: false}));
                     this.setState(() => ({askQuestionPlan: false}));
                     this.setState(() => ({askQuestionAllowed: false}));
                     this.setState(() => ({askInvalidInputs: false}));
                     this.props.dispatch(setSuccessModal());
-                    this.props.onSubmit({
-                        subject: this.state.subject,
-                        body: this.state.body,
-                    }); 
                 }
             });
         }

@@ -4,10 +4,6 @@
 .Login{
     border: 2px solid lightgray;
     border-radius: 3px;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    padding-top: 10%;
-    padding-bottom: 10%;
 }
 
 .Login > form > h2{ 
@@ -63,6 +59,8 @@
     margin-bottom: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .Register h6{

@@ -91,7 +91,8 @@ class ContactForm extends React.Component{
         return(
 <div>
    <div className="Parallax-Image Contact">
-      <div className="Contact-Content" style={{paddingTop: '5rem'}}>
+      <div className="Contact-Content" style={{paddingTop: '5rem', paddingBottom: '5rem'}}>
+      <div className="container">
          <div className="row">
             <div className="col-md-4 col-md-offset-3">
                <h5 className="Want Contact-Font">
@@ -115,7 +116,7 @@ class ContactForm extends React.Component{
                   <input
                   className="form-control"
                     type = "text"
-                    placeholder = "Name" 
+                    placeholder = {this.props.lang === 'English' ? 'Name' : 'Nombre'} 
                     maxLength="100"
                     onBlur={() => {
                         //Check if the name field only contains spaces. 
@@ -184,7 +185,7 @@ class ContactForm extends React.Component{
                <div className="col-md-offset-3 col-md-6">
                   <div className="form-group">
                   <textarea
-                  id="form_message" name="message" className="form-control" placeholder="Message" rows="4"
+                  id="form_message" name="message" className="form-control" placeholder={this.props.lang === 'English' ? 'Message' : 'Mensaje'} rows="4"
                     maxLength="4000"
                     onBlur={() => {
                         //Check if the message field only contains spaces. 
@@ -225,6 +226,7 @@ class ContactForm extends React.Component{
                </div>
             </div>
          </form>
+      </div>
       </div>
    </div>
 </div>

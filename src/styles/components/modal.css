@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
 .ReactModalPortal .ReactModal__Overlay--after-open{
@@ -35,6 +36,7 @@
     min-height: 14rem;
     padding: 0 0;
     outline: none;
+    z-index: 5;
 }
 
 .loading-modal-card{

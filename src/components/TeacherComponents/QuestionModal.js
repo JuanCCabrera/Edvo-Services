@@ -101,12 +101,12 @@ const QuestionModal = (props) => (
         }
             <h4>{props.lang === 'English' ? 'Date: ' : 'Fecha: '}{moment(props.question.askedDate).format("YYYY-MM-DD")}</h4>
         
-        <div className="text-left">
+        <div>
         {
             //Question rating
         }
 
-        {props.question.answer && <div>
+        {props.question.answer && <div className="text-left">
             <span>{props.lang === 'English' ? 'Rate: ': 'Calificar: '}</span>
             <StarRatingComponent
             name="rate"

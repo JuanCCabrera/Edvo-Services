@@ -12,6 +12,7 @@ import auth0Client from '../../Auth';
 import axios from 'axios';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
+import {withRouter} from 'react-router-dom';
 /**
  * The Teacher Home page contains a value indicating the number of days the Teacher has spent on the platform, the number of recommendations
  * the teacher has read, the number of questions the teacher has asked, a list of the teacher's top rated recommendations, a list of the teacher's
@@ -75,13 +76,13 @@ class TeacherHome extends React.Component {
         yes={() => (
         <div className="background-home">
             <div className="container text-center">
-                    {
-                        //Page title
-                    }
-                        <h1 className="home__title">
-                            {this.props.lang === 'English' ? 'My Dashboard' : 'Mi Tablero'}
-                            <hr className="break"/>
-                        </h1>
+                {
+                    //Page title
+                }
+                <h1 className="home__title">
+                    {this.props.lang === 'English' ? 'My Dashboard' : 'Mi Tablero'}
+                    <hr className="break"/>
+                </h1>
             </div>
             <div className="container">
                 <div className="row text-center text-uppercase">
