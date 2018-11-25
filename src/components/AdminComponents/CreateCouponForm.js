@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AdminButtonList from './AdminButtonList';
 import {setSuccessModal} from '../../actions/successModal';
+import {setFailureModal} from '../../actions/failureModal';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 
@@ -20,7 +21,8 @@ class CreateCouponForm extends React.Component{
 
             months: '1',
 
-            couponCreationError: false
+            couponCreationError: false,
+            couponRequestError: false
         }
     }
 
@@ -88,16 +90,25 @@ class CreateCouponForm extends React.Component{
             this.state.couponName," | ", 
             this.state.percentage," | ", 
             this.state.months);
-            axios.post('https://beta.edvotech.com/api/admin/settings/coupons/create',{
+            axios.post('https://beta.edvotech.com/api/admin/settings/coupon/add',{
                             couponid: this.state.couponID,
-                            couponname: this.state.couponName,
+                            name: this.state.couponName,
                             percentage: this.state.percentage,
-                            months: this.state.months
+                            duration: this.state.months
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                 }).then(response =>{
-                    this.setState(() => ({couponCreationError: false}));
-                    this.props.dispatch(setSuccessModal())});
+                        if(response.status == 200){
+                        this.props.dispatch(setSuccessModal())
+                        this.setState(() => ({couponid: '', name: '', percentage: '', duration: '',couponRequestError: false,couponCreationError: false}));                        
+                    }
+                    })
+                    .catch(error => {
+                        console.log("ERROR REPSONSE: ", error.response);
+                        if(error.response.status != null)
+                            this.setState({couponRequestError: true});
+                            this.props.dispatch(setFailureModal());
+                    })
              
         }
        
@@ -274,6 +285,10 @@ class CreateCouponForm extends React.Component{
                                         {this.state.couponCreationError === true && 
                                             <div className="text-danger">
                                                 {this.props.lang === 'English' ? <p>Please fill all required fields before creating the coupon.</p> : <p>Por favor, llene todos los campos requeridos antes de crear el cupón.</p>}
+                                            </div>}
+                                        {this.state.couponRequestError === true && 
+                                            <div className="text-danger">
+                                                {this.props.lang === 'English' ? <p>Coupon is invalid or already exists.</p> : <p>Cupón es invalido o ya existe.</p>}
                                             </div>}
 
 

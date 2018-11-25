@@ -77,4 +77,9 @@ export const removeUser = ({id} = {}) => ({
     id: id
 });
 
+export const unloadUsers = ({id} = {}) => ({
+    type: 'UNLOAD_USERS',
+    id: id
+});
+
 

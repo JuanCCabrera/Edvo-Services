@@ -12,6 +12,9 @@ const userReducer = (state = userReducerDefaultState, action) => {
         case 'ADD_USER':
             //Add new user to user list
             return [...state, action.user];
+        case 'UNLOAD_USERS':
+            //Add new user to user list
+            return [];
         //Remove user from the AppUsers and Assign Recommendations pages. 
         case 'REMOVE_USER':
             return state.filter(({id}) => id !== action.id);

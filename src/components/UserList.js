@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import UserListItem from './UserListItem';
 import Pagination from 'react-js-pagination';
-import {addUser, removeUser} from '../actions/user';
+import {addUser, removeUser, unloadUsers} from '../actions/user';
 import axios from 'axios';
 import uuid from 'uuid';
 import getVisibleUsers from '../selectors/users';
 import auth0Client from '../Auth';
 import moment from 'moment';
+import {setSuccessModal} from '../actions/successModal';
+import {setFailureModal} from '../actions/failureModal';
 
 /**
  * List of users displayed in AppUsers and Assign Recommendations page. 
@@ -24,18 +26,30 @@ class UserList extends React.Component{
             displayedUsers: []
         }
     }
-
+    componentWillUnmount(){
+        this.props.dispatch(unloadUsers());
+    }
     //Configure state when component is being mounted. 
     componentWillMount(){
         axios.get('https://beta.edvotech.com/api/admin/settings/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             response.data.users.forEach(element => {
-                console.log("NEW USER: ", element);
+                let categories = []
+                if(element.tech)
+                    categories.push("Technology Integration") 
+                if(element.timemanagement)
+                    categories.push("Time Management") 
+                if(element.strategies)
+                    categories.push("Teaching Strategies") 
+                if(element.instructions)
+                    categories.push("Instructional Alignment") 
+                if(element.material)
+                    categories.push("Updated Material") 
                 this.props.dispatch(addUser({id: element.userid, name: element.name,
                     email: element.email, lastName: element.lastname, 
-                    weeklyReco: element.weeklyReco, 
-                    categories: element.categories}));
+                    weeklyReco: element.recomassigned, 
+                    categories: categories}));
             });
         });
 
@@ -88,13 +102,20 @@ class UserList extends React.Component{
                     userRemoval={() => {
                         console.log("REMOVING USER NOW!!!!!!!", user.id)
                         axios.post('https://beta.edvotech.com/api/admin/settings/users/remove',{
-                            subToRemove: user.id
+                            userIDToRemove: user.id
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-                }).then(response =>{
-                    console.log("AFTER EMOVING USER: ", response);
-                    this.props.dispatch(removeUser({id: user.id}))}
-                        );
+                })
+                .then(response =>{
+                    if(response.status == 201){
+                    this.props.dispatch(setSuccessModal())                    
+                    this.props.dispatch(removeUser({id: user.id}))}}
+                )
+                .catch(error => {
+                    console.log("ERROR REPSONSE: ", error.response);
+                    if(error.response.status != null)
+                        this.props.dispatch(setFailureModal());
+                })
                     }}/>
                 })}
                 <br/>

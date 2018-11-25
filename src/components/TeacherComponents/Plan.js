@@ -33,7 +33,8 @@ class Plan extends React.Component{
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
         .catch(error=>{
-            this.props.dispatch(setFailureModal());
+            if(error.response.status == 500 || error.response.status == 502)
+                this.props.dispatch(setFailureModal());
         })
         .then(response => {
             if(response.status == 200){
