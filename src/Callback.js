@@ -3,8 +3,13 @@ import {Route, withRouter, Redirect} from 'react-router-dom';
 import auth0Client from './Auth';
 import 'babel-polyfill';
 import axios from 'axios';
+import {setRole} from './actions/credentials';
+import {connect} from 'react-redux';
 
-class Callback extends Component {
+class Callback extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
     async componentDidMount() {
         let route = auth0Client.getRedirectRoute();
@@ -28,6 +33,8 @@ class Callback extends Component {
                     {
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
                     .then((response)=>{
+                            
+                            this.props.dispatch(setRole({role: localStorage.getItem('role')}));
                             console.log("LOGGED");
                     });
             })
@@ -59,4 +66,4 @@ class Callback extends Component {
     }
 }
 
-export default withRouter(Callback);
+export default withRouter(connect()(Callback));

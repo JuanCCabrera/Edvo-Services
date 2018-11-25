@@ -8,6 +8,8 @@ import uuid from 'uuid';
 import auth0Client from '../Auth';
 
 import getVisibleSchools from '../selectors/schools';
+import { setLoadingModal } from '../actions/loadingModal';
+import { setFailureModal } from '../actions/failureModal';
 
 /**
  * List of schools displayed in AppSchools page. 
@@ -29,6 +31,7 @@ class SchoolList extends React.Component{
     componentWillMount(){
         //Change UUID for InsitutionID when DB connection is made
         //send to action
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/admin/settings/institutions',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
@@ -38,9 +41,10 @@ class SchoolList extends React.Component{
                     location: element.location, type: element.type, 
                     numAccounts: element.accounts}));
             });
-                
-            
-        
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
         this.pageSlice = Math.ceil(this.props.schools.length/this.itemsPerPage);
         this.currentPage = 1;

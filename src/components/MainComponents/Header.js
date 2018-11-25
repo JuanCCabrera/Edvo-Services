@@ -167,7 +167,7 @@ class Header extends React.Component{
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang,
-        role: auth0Client.getRole(),
+        role: localStorage.getItem('role'),
         isAuthenticated: auth0Client.isAuthenticated()
     };
 };

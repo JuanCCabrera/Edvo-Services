@@ -28,6 +28,7 @@ import userModalReducer from '../reducers/userModal';
 import assignmentRecommendationReducer from '../reducers/assignmentRecommendationModal';
 import failureModalReducer from '../reducers/failureModal';
 import loadingModalReducer from '../reducers/loadingModal';
+import credentialsReducer from '../reducers/credentials';
 
 //Store creation
 
@@ -63,7 +64,8 @@ export default () => {
             userModal: userModalReducer,
             assignmentRecommendationModal: assignmentRecommendationReducer,
             loadingModal: loadingModalReducer,
-            failureModal: failureModalReducer
+            failureModal: failureModalReducer,
+            credentials: credentialsReducer
         })
     );
 

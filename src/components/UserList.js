@@ -9,6 +9,7 @@ import getVisibleUsers from '../selectors/users';
 import auth0Client from '../Auth';
 import moment from 'moment';
 import {setSuccessModal} from '../actions/successModal';
+import {setLoadingModal} from '../actions/loadingModal';
 import {setFailureModal} from '../actions/failureModal';
 
 /**
@@ -31,6 +32,7 @@ class UserList extends React.Component{
     }
     //Configure state when component is being mounted. 
     componentWillMount(){
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/admin/settings/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
@@ -51,6 +53,10 @@ class UserList extends React.Component{
                     weeklyReco: element.recomassigned, 
                     categories: categories}));
             });
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
 
         this.pageSlice = Math.ceil(this.props.users.length/this.itemsPerPage);

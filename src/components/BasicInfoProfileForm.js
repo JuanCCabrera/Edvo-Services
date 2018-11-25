@@ -8,6 +8,7 @@ import auth0Client from '../Auth';
 import {loadProfile} from '../actions/profile';
 import {setEditModal} from '../actions/editModal';
 import { setFailureModal } from '../actions/failureModal';
+import { setLoadingModal } from '../actions/loadingModal';
 
 const reset = () => {
     console.log("RESETTING");
@@ -47,19 +48,22 @@ class BasicInfoProfileForm extends React.Component{
     }
 
     componentWillMount(){
+        this.props.dispatch(setLoadingModal());
         console.log("WE HAVE EMAIL: ",auth0Client.getIdToken());
         //send this to action
         axios.get('https://beta.edvotech.com/api/admin/settings/info',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
-        .catch(error=>{
-            console.log("ERROR: ", error);
-        })
         .then(response => {
-            
             this.setState({name: response.data.info.name, lastName: response.data.info.lastname,
                  dateOfBirth: moment(response.data.info.dob), gender: response.data.info.gender});
+            
+            this.props.dispatch(setLoadingModal());
+        }).catch(error=>{
+            console.log("ERROR: ", error);
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
     }
 
