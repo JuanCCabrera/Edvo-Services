@@ -14,8 +14,6 @@ import './Login.css';
  */
 const signOut = (props) => {
     auth0Client.signOut();
-    console.log("HISOTRY: ", props.history);
-    props.history.replace('/');
   };
 
   const reset = () => {

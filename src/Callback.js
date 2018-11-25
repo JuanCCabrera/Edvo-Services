@@ -12,8 +12,6 @@ class Callback extends Component {
         try{
             await auth0Client.handleAuthentication();
         }catch(err){
-            console.log("DATA: ",err)
-            console.log("CALLBACK CATCH:", err.errorDescription);
             localStorage.setItem('loginError',err.errorDescription);
             email = false;
             this.props.history.replace('/login');
@@ -24,7 +22,8 @@ class Callback extends Component {
             }).then(response =>{ 
                 
                 localStorage.setItem('role',response.data.body.user[0].usertype);
-                route = '/'+localStorage.getItem('role')+'/home';               
+                route = '/'+localStorage.getItem('role')+'/home';
+                localStorage.removeItem('loginError');             
                 axios.post('https://beta.edvotech.com/api/log', {},
                     {
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})

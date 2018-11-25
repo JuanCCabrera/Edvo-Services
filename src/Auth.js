@@ -48,12 +48,18 @@ class Auth {
   handleAuthentication() {
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
-        if (err) return reject(err);
+        if (err) {
+          console.log("FIRST ERROR handleAuth");
+        }
         if (!authResult || !authResult.idToken) {
+          console.log("SECOND ERROR handleAuth");
+          this.signOut();
           return reject(err);
         }
         this.setSession(authResult);
+        console.log("THIRD ERROR handleAuth");
         resolve();
+        console.log("FOURTH ERROR handleAuth");
       });
     })
   }
@@ -66,12 +72,7 @@ class Auth {
     if(localStorage.getItem('idToken') == null)
       localStorage.setItem('idToken',authResult.idToken);
     this.profile = {email: authResult.idTokenPayload.email, name: authResult.idTokenPayload.name};
-    console.log("THIS PROFILE: ", this.profile);
-    this.getEmail = authResult.idTokenPayload.email;  
-    //this.getEmail =   
-    console.log("EL ROL:::: ",localStorage.getItem('role'));
-    console.log("ID PAYLOAD: ",authResult.idToken);
-    // set the time that the id token will expire at
+    this.getEmail = authResult.idTokenPayload.email;
     localStorage.setItem('expiresAt', authResult.expiresIn * 1000 + new Date().getTime());
   }
 
@@ -82,7 +83,7 @@ class Auth {
   signOut() {
     console.log("SIGNING OUT!!");
     this.auth0.logout({
-      returnTo: 'http://localhost:8080',
+      returnTo: 'http://localhost:8080/login',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
     });
     localStorage.clear();

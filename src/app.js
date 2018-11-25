@@ -135,18 +135,7 @@ const store = configureStore();
 
 
 class App extends React.Component{
-    //Check if login is required by the user
-    async componentDidMount() {
-        try{
-            await auth0Client.silentAuth(); //Request user login status
-            this.forceUpdate();             
-        }catch(err){ //Indicate to auth0 that login is required. 
-            if(err.error === 'login_required') return;
-            console.log(err.error);
-        }
-    }
 
-    //Render Full Application (Top Level)
     render() {
             return(
                 <Provider store={store}> 

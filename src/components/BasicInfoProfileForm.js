@@ -13,7 +13,7 @@ const reset = () => {
     console.log("RESETTING");
     axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
       client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      email: auth0Client.getProfile().email,
+      email: auth0Client.getEmail(),
       connection: 'Username-Password-Authentication' ,
       json: true
     },
