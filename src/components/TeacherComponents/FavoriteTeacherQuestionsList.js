@@ -83,17 +83,15 @@ class FavoriteTeacherQuestionsList extends React.Component{
                 {
                     //Message displayed if there are no items in the favorite questions list. 
                 }
-                <div className="empty-message-card">
                     {(this.props.question.length === 0) && (this.props.lang === 'English' ?
-                        <div>
+                        <div className="empty-message-card">
                             <p>You do not have favorite questions.</p>
                         </div>
                         :
-                        <div>
+                        <div className="empty-message-card">
                             <p>Usted no tiene preguntas favoritas.</p>
                         </div>
                     )}
-                </div>
             </div>
         )
     }

@@ -17,13 +17,14 @@ class AssignmentRecommendationModal extends React.Component{
                 onRequestClose = {this.props.clearSelectedRecommendation}
                 contentLabel="Assignment Recommendation"
                 closeTimeoutMS={200} 
+                className="assign-modal-card"
                 >
                 <div>
                     <h1 className="form__title">{this.props.recoSpec.title}</h1>
                     <h4>{this.props.recoSpec.header}</h4>
                     <p>{this.props.recoSpec.description}</p>
                     <hr/>
-                    <h3 style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    <h3 className="text-center" style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.recoSpec.subject}</p>
                     <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.recoSpec.format}</p>
                     <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.recoSpec.language}</p>
@@ -35,6 +36,7 @@ class AssignmentRecommendationModal extends React.Component{
                             {this.props.recoSpec.topics[1] && <li>{this.props.recoSpec.topics[1]}</li>}
                             {this.props.recoSpec.topics[2] && <li>{this.props.recoSpec.topics[2]}</li>}
                         </ul>
+                    <br/>
                     <div className="panel panel-default" style={{maxWidth: '25rem'}}>
                         <div className="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Challenge Categories' : 'Categorías de Retos'}:</h4></div>
                         <div className="panel-body">

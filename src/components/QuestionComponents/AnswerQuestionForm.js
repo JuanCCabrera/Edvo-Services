@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { answerQuestion } from '../../actions/question';
+import { answerQuestion, removeQuestion } from '../../actions/question';
 import QuestionButtonList from './QuestionButtonList';
 import { loadTeacherQuestion } from '../../actions/teacherQuestions';
 import moment from 'moment';
@@ -9,6 +9,9 @@ import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import { setSuccessModal } from '../../actions/successModal';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
+import {resetQuestionsList, loadQuestion} from '../../actions/question';
 
 /**
  * Form used to answer pending user questions. This form is available in the Answer Question page. 
@@ -20,9 +23,25 @@ class AnswerQuestionForm extends React.Component {
         this.state = {
             answer: '',
             answerError: false,
-            userID: props.question.userId,
-            askedDate: props.question.askedDate
         };
+    }
+
+    componentWillMount(){
+        this.props.dispatch(setLoadingModal());
+        this.props.dispatch(resetQuestionsList());       
+        axios.get('https://beta.edvotech.com/api/admin/staff/questions',
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
+        .then(response => {
+            response.data.questions.forEach(element => {
+                this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askeddate, 
+                subject: element.subject, userId: element.userid}));
+            });
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
+        });    
     }
 
     //Change answer in local state.
@@ -45,20 +64,22 @@ class AnswerQuestionForm extends React.Component {
             this.setState(() => ({answerError: ''}));
             console.log("TEACHER ID TO ANSWER: ", this.state.userID);
             axios.post('https://beta.edvotech.com/api/admin/questions/answer', {
-                askeddate: moment(this.state.askedDate).format("YYYY-MM-DD HH:mm:ss"),
+                askeddate: this.props.question.askedDate,
                 answer: this.state.answer,
-                teacherid: this.state.userID
+                teacherid: this.props.question.userId
             },
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }}).then((response)=>{
-                if(response.status == 200)
-                this.props.history.push('/staff/questions');
+                if(response.status == 201){
+                    this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
+                    this.props.dispatch(setSuccessModal());
+                    this.props.history.push('/staff/questions');
+                }
+            }).catch(error => {
+                this.props.dispatch(setFailureModal());
             });
-            this.setState(() => ({answerError: false}));
-            this.props.dispatch(setSuccessModal());
-            this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
             //Move to the Pending Questions page upon completing the submission. 
-            this.props.history.push('/staff/questions');
+            this.setState(() => ({answerError: false}));
         }
     }
 
@@ -84,7 +105,7 @@ class AnswerQuestionForm extends React.Component {
                                         //Question
                                     }
                                     <h3> {this.props.lang === 'English' ? 'Question' : 'Pregunta'} </h3>
-                                        {this.props.question.question}
+                                        {this.props.question ? this.props.question.question : ''}
                                     {
                                         //Answer input field
                                     }

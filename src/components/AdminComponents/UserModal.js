@@ -17,11 +17,15 @@ class UserModal extends React.Component{
                 onRequestClose = {this.props.clearSelectedUser}
                 contentLabel="User"
                 closeTimeoutMS={200} 
+                className="user-modal-card"
                 >
                 <div>
                     <h1 className="form__title" style={{marginBottom: '1.5rem'}}>{this.props.userSpec.name} {this.props.userSpec.lastName}</h1>
                     <p style={{textAlign: 'center'}}>Email: {this.props.userSpec.email}</p>
-                    <h3 style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    <hr/>
+
+                    <h3 className="text-center" style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    <br/>
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Tema'}: {this.props.userSpec.subject}</p>
                     <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.userSpec.format}</p>
                     <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.userSpec.language}</p>
@@ -33,7 +37,7 @@ class UserModal extends React.Component{
                             {this.props.userSpec.topicb && <li>{this.props.userSpec.topicb}</li>}
                             {this.props.userSpec.topicc && <li>{this.props.userSpec.topicc}</li>}
                         </ul>
-                    <hr/>
+                    <br/>
                     <div className="panel panel-default" style={{maxWidth: '25rem'}}>
                         <div className="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Available Resources' : 'Recursos Disponibles'}</h4></div>
                         <div className="panel-body">
@@ -55,7 +59,6 @@ class UserModal extends React.Component{
                         </div>
                     </div>
                 
-                    <br/>
                     <div style={{textAlign: 'center'}}>
                     {
                         //Button to close modal
