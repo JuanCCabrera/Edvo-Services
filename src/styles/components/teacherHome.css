@@ -34,4 +34,10 @@
     margin: 2.7rem auto;
 }
 
+@media only screen and (max-width: 360px){
+    .home__title{
+        font-size: 20rem;
+    }
+}
+
 

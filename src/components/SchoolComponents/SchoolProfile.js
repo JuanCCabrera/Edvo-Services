@@ -9,8 +9,18 @@ import {Redirect} from 'react-router-dom';
     role={auth0Client.getRole()}
     perform="school:settings"
     yes={() => (
-        <div>
-            <BasicInfoProfileForm {...props}/>
+        <div className="background-home">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-3"/>
+                        <div className="col-sm-6" style={{marginBottom: '2.7rem'}}>
+                            <div className="big-card">
+                                <BasicInfoProfileForm/>
+                            </div>
+                        </div>
+                    <div className="col-sm-3"/>
+                </div>
+            </div>
         </div>
                  )}
                  no={() => <Redirect to="/" />}

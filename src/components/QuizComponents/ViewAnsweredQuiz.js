@@ -6,6 +6,8 @@ import uuid from 'uuid';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import moment from 'moment';
+import {setLoadingModal} from '../../actions/loadingModal';
+import {reset, createQuiz} from '../../actions/quiz';
 
 class ViewAnsweredQuiz extends React.Component {
     constructor(props){
@@ -24,7 +26,7 @@ class ViewAnsweredQuiz extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="background-home">
                     <QuizButtonList/>
                     <h3>{moment(this.state.quizDate).format("YYYY-MM") } Quiz</h3>
                     <h3>Your score: {this.state.score} / 12</h3>

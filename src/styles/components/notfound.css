@@ -1,0 +1,25 @@
+.not_found_btn{
+    
+}
+
+.not_found_card{
+    /* Add shadows to create the "card" effect */
+    margin: 1rem 1rem;
+    padding: 10rem;
+    background-color: white;
+    border: 1.2px solid #5933aa;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-radius: 0.5rem;
+}
+
+@media only screen and (max-width: 580px){
+    .not_found_btn{
+        font-size: 2rem; 
+    }
+
+    .not_found_card{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

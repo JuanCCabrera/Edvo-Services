@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import { Redirect, BrowserRouter, Route } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {Line} from 'rc-progress';
 import { setSuccessModal } from '../../actions/successModal';
 
@@ -65,6 +66,7 @@ class RegistrationForm extends React.Component{
              googleClassroom: false,
              emailResource: false,
              books: false,
+             applications: false,
              socialMedia: false,
              projector: false,
              computer: false,
@@ -76,7 +78,7 @@ class RegistrationForm extends React.Component{
              speakers: false,
              pageThreeError: '',
 
-             timeEmployed: moment().subtract('18',"years"),
+             timeEmployed: moment(),
              timeEmployedError: '',
 
              employedCalendarFocused: false,
@@ -157,7 +159,7 @@ class RegistrationForm extends React.Component{
                     this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
                 }
                 if(this.state.subjectError){
-                    this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'}));
+                    this.setState(() => ({subjectError: 'La materia del curso debe contener texto.'}));
                 }
                 if(this.state.schoolLocationError){
                     this.setState(() => ({schoolLocationError: 'La localización de la escuela debe contener texto'}));
@@ -348,6 +350,12 @@ class RegistrationForm extends React.Component{
         this.setState(() => ({books: !books}));
     }
 
+    //Change applications boolean in local state
+    onApplicationsChange = (e) => {
+        const applications = this.state.applications;
+        this.setState(() => ({applications: !applications}));
+    }
+
     //Change social media boolean in local state
     onSocialMediaChange = (e) => {
         const socialMedia = this.state.socialMedia;
@@ -407,7 +415,7 @@ class RegistrationForm extends React.Component{
         var today=moment();
         var difference = today.diff(timeEmployed, 'years');
         //Check if the selected date of birth falls between 18-90 years ago. 
-        if(timeEmployed && (difference >= 18 && difference < 90)){
+        if(timeEmployed && (difference >= 0 && difference < 90)){
             this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: ''}));
         }else{
             if(this.props.lang === 'English'){
@@ -509,10 +517,24 @@ class RegistrationForm extends React.Component{
             this.setState(() => ({globalError: true, secError: false}));
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) || !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
             this.setState(() => ({globalError: true, secError: false}));
-        }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError || this.state.subjectError || this.state.topicError || this.state.schoolNameError || this.state.schoolLocationError || this.state.institutionIDError || this.state.timeEmployedError){
+        }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError || this.state.subjectError || this.state.topicError || this.state.schoolNameError || this.state.schoolLocationError || this.state.timeEmployedError){
             this.setState(() => ({globalError: true, secError: false}));
         }else{
-            this.props.dispatch(setSuccessModal());
+            let topica = "";
+            let topicb = "";
+            let topicc = "";
+            const topicsLength = this.state.topicsTaught.length;
+            let i = 0;
+            for(i; i < topicsLength; i++){
+                if(i == 0){
+                    topica = this.state.topicsTaught[0];
+                }else if(i == 1){
+                    topicb = this.state.topicsTaught[1];
+                }else if(i == 2){
+                    topicc = this.state.topicsTaught[2];
+                }
+            }
+
             this.setState(() => ({secError: false, globalError: false}));
             axios.post('https://beta.edvotech.com/api/register', {
                 name: this.state.name,
@@ -520,12 +542,12 @@ class RegistrationForm extends React.Component{
                 gender: this.state.gender,
                 email: this.state.email,
                 password: this.state.password,
-                dob: moment(this.state.dateOfBirth).format("YYYY-MM-DD HH:mm:ss"),
+                dob: moment(this.state.dateOfBirth).format("YYYY-MM-DD"),
                 policies: true,
                 teachersince: this.state.timeEmployed,
                 education: this.state.levelOfEdu,
-                english: true,
-                spanish: true,
+                english: this.state.english,
+                spanish: this.state.spanish,
                 strategies: this.state.teachingStrategies,
                 material: this.state.updatedMaterial,
                 timemanagement: this.state.timeManagement,
@@ -538,7 +560,7 @@ class RegistrationForm extends React.Component{
                 googleclassroom: this.state.googleClassroom,
                 emails: this.state.emailResource,
                 books: this.state.books,
-                applications: true,
+                applications: this.state.applications,
                 socialmedia: this.state.socialMedia,
                 projector: this.state.projector,
                 computer: this.state.computer,
@@ -548,29 +570,29 @@ class RegistrationForm extends React.Component{
                 smartboard: this.state.smartboard,
                 smartpencil: this.state.smartpencil,
                 speakers: this.state.speakers,
-                teachersince: moment(this.state.timeEmployed).format("YYYY-MM-DD HH:mm:ss"),
+                teachersince: moment(this.state.timeEmployed).format("YYYY-MM-DD"),
                 level: this.state.level,
-                institutionID: this.state.institutionID,
+                institutionID: this.state.institutionID, //Not being used currently
                 class: {
                     subject: this.state.subject,
                     format: this.state.format,
                     language: this.state.language,
                     level: this.state.level,
                     groupsize: this.state.size,
-                    topics: this.state.topicsTaught
-
+                    topica: topica,
+                    topicb: topicb,
+                    topicc: topicc
                 }
             },
             {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
-            .then(response =>{
-                console.log("PROPS1: ",this.state.props);
-                this.state.props.history.replace('/teacher/settings/plans');
+            .then(response =>{  
+                localStorage.setItem('role','teacher');
+                this.props.dispatch(setSuccessModal());
+                this.props.history.replace('/teacher/settings/plans/payment');
             })
             .catch(error =>{
-                this.state.props.history.replace('/');
             });
         }
-        
         }
 
     render(){
@@ -827,7 +849,7 @@ class RegistrationForm extends React.Component{
                         //Class subject input field
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'}:</label>
+                    <label>{this.props.lang === 'English' ? 'Subject' : 'Materia'}:</label>
                     <input type="text"  className="form-control" placeholder= {this.props.lang === 'English' ? 'Subject' : 'Tema'} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces.
                         this.setState(() => ({subject: this.state.subject.trim()})); 
@@ -835,7 +857,7 @@ class RegistrationForm extends React.Component{
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
                             }else{
-                                this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'})); 
+                                this.setState(() => ({subjectError: 'La materia del curso debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({subjectError: ''}));
@@ -1079,8 +1101,9 @@ class RegistrationForm extends React.Component{
                     <br/>
 
                     {
+                        /*
                         //Institution ID input field
-                    }
+                    
                     <label>{this.props.lang === 'English' ? 'Institution ID (Optional)' : 'Identificación de institución (Opcional)'}:</label>
                     <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} value={this.state.institutionID} onChange={this.onInstitutionIDChange} onBlur={() => {
                         //Check if institution ID field matches expected format. 
@@ -1108,6 +1131,8 @@ class RegistrationForm extends React.Component{
                             <br/>
                         </div>}
                     <br/>
+                    */
+                    }
 
                     {
                         //School system radio selector
@@ -1151,7 +1176,11 @@ class RegistrationForm extends React.Component{
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} 
+                    <input type="checkbox" name="resource" checked={this.state.applications === true} onChange={this.onApplicationsChange}/> {this.props.lang === 'English' ? 'Applications' : 'Aplicaciones'} 
+                    </label>
+                    <br/>
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Redes Sociales'} 
                     </label>
                     <br/>
                     <br/>
@@ -1174,7 +1203,7 @@ class RegistrationForm extends React.Component{
                     </label>
                     <br/>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.stylus === true} onChange={this.onStylusChange}/> Stylus 
+                    <input type="checkbox" name="resource" checked={this.state.stylus === true} onChange={this.onStylusChange}/> {this.props.lang === 'English' ? 'Stylus' : 'Lápiz Digital'} 
                     </label>
                     <br/>
                     <label className="clickable radio__text">
@@ -1228,7 +1257,7 @@ class RegistrationForm extends React.Component{
                         //Date selector for employment date input field. 
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Employed Since' : 'Empleado Desde'}:</label>
+                    <label>{this.props.lang === 'English' ? 'Teacher Since' : 'Educador Desde'}:</label>
                     <br/>
                     {/*
                     <SingleDatePicker
@@ -1263,7 +1292,7 @@ class RegistrationForm extends React.Component{
                         //Known languages checkbox selector
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Known Languages' : 'Lenguajes Conocidos'}:</label>
+                    <label>{this.props.lang === 'English' ? 'Which language(s) do you understand?' : '¿Qué idioma(s) usted entiende?'}:</label>
                     <br/>
                     <label className="clickable radio__text">
                     <input type="checkbox" name="preflang" value= "spanish" checked={this.state.spanish === true} onChange = {this.onSpanishChange}/> {this.props.lang === 'English' ? 'Spanish' : 'Español'}
@@ -1279,7 +1308,7 @@ class RegistrationForm extends React.Component{
                         //Challenges checkbox selector
                     }
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Which topics do you see as a challenge?' : '¿Qué temas ve como retos para usted?'}:</label>
+                    <label>{this.props.lang === 'English' ? 'What are your challenges?' : '¿Cúales son sus retos?'}:</label>
                     <br/>
                     <label className="clickable radio__text">
                     <input type="checkbox" name="resource" checked={this.state.teachingStrategies === true} onChange={this.onTeachingStrategiesChange}/> {this.props.lang === 'English' ? 'Teaching strategies' : 'Estrategias de enseñanza'}
@@ -1362,4 +1391,4 @@ const mapStateToProps = (state) => {
 }
 
 //Connect component to the controller
-export default connect(mapStateToProps)(RegistrationForm);
+export default withRouter(connect(mapStateToProps)(RegistrationForm));

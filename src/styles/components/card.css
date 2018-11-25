@@ -44,9 +44,47 @@ html, body {
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.137);
     border-radius: 0.5rem;
-    min-height: 14rem;
+    min-height: 8rem;
     margin: 1.5rem 0;
     padding: 1.5rem 1.5rem;
+}
+
+.quiz-item-card{
+    /* Add shadows to create the "card" effect */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    transition: 0.3s;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.137);
+    border-radius: 0.5rem;
+    min-height: 8rem;
+    min-width: 40rem;
+    padding: 1.5rem;
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+}
+
+.quiz-item-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+@media only screen and (max-width: 1200px){
+    .quiz-item-card{
+        min-width: 30rem;
+    }
+}
+
+@media only screen and (max-width: 993px){
+    .quiz-item-card{
+        min-width: 25rem;
+    }
+}
+
+
+@media only screen and (max-width: 360px){
+    .quiz-item-card{
+        min-width: 20rem;
+    }
 }
 
 .btn-item{
@@ -113,6 +151,26 @@ button:disabled > .btn-item{
 /* Add some padding inside the card container */
 .container {
     padding: 2px 16px;
+}
+
+.big-card-school-home{
+    background-color: white;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);
+    border: 1.2px solid #5933aa;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.7rem;
+    padding-top: 3.7rem;
+    padding-bottom: 3.7rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: bold;
+    min-height: 21rem;
+}
+
+.big-card-school-home:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .big-card-teacher-home{
@@ -189,6 +247,11 @@ button:disabled > .btn-item{
 
 .front-card{
     z-index: 9999;
+}
+
+.top_targets{
+    font-weight: normal;
+    text-align: center;
 }
 
 .home__card__title{

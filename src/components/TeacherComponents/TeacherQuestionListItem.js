@@ -39,9 +39,11 @@ const TeacherQuestionListItem = (props) => (
             
             <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {moment(props.question.askedDate).format("YYYY-MM-DD")}</h5>
             {
-                //Question body. 
-            }
+               /* //Question body. 
+            
             <h5>{props.question.question}</h5>
+                */
+            }
         </div>
 );
 

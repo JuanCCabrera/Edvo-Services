@@ -82,7 +82,7 @@ class Auth {
   signOut() {
     console.log("SIGNING OUT!!");
     this.auth0.logout({
-      returnTo: 'http://localhost:8080',
+      returnTo: 'http://localhost:8080/login',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
     });
     localStorage.clear();

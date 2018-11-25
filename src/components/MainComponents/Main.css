@@ -211,7 +211,7 @@ ul {
 	color: white;
 	font-family: Montserrat;
 	background-image: url("http://localhost:8080/static/images/touch.jpg");
-	height: 400px;
+	padding-bottom: 0;
  }
  .Contact-Content{
 	 background: rgba(7, 23, 77, 0.9);
@@ -226,7 +226,6 @@ ul {
 	 color: white;
 	 text-align: center;
 	 text-decoration: none;
-	 display: inline-block;
 	 font-size: 20px;
 	 cursor: pointer;
 	 width: 100%;
@@ -246,5 +245,5 @@ ul {
 	font-size: 2rem;
 }
 .Want{
-	color: #854dff;
+	color: #854DFF;
 }

@@ -63,3 +63,9 @@ export const answerQuestion = ({askedDate, userId, answer} = {}) => {
         answer: answer
     }
 }
+
+export const reset = () => {
+    return{
+        type: 'RESET_TEACHER_QUESTIONS'
+    }
+}
