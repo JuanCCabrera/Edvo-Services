@@ -4,7 +4,7 @@ import PendingQuestionsListItem from './PendingQuestionsListItem';
 import uuid from 'uuid';
 import Pagination from 'react-js-pagination';
 import axios from 'axios';
-import { loadQuestion } from '../../actions/question';
+import { reset, loadQuestion } from '../../actions/question';
 import getVisibleQuestions from '../../selectors/questions';
 import auth0Client from '../../Auth';
 
@@ -22,6 +22,8 @@ class PendingQuestionsList extends React.Component {
             displayedQuestions: []
         }
     }
+
+
     //Configure initial local state values, including the list of questions to display on the first page. 
     componentWillMount(){        
         axios.get('https://beta.edvotech.com/api/admin/staff/questions',

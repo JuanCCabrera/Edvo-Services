@@ -174,11 +174,7 @@ class Plan extends React.Component{
         </div>
     </div>
                              )}
-<<<<<<< HEAD
                              no={() => <Redirect to="/login" />}
-=======
-                             no={() => <Redirect to="/login"/>}
->>>>>>> origin/JCCdbintegration6
                            />
 
         )

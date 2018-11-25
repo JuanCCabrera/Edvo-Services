@@ -66,6 +66,6 @@ export const answerQuestion = ({askedDate, userId, answer} = {}) => {
 
 export const reset = () => {
     return{
-        type: 'RESET_TEACHER_QUESTIONS'
+        type: 'UNLOAD_ADMIN_QUESTIONS'
     }
 }

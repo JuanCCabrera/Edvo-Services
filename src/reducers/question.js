@@ -11,6 +11,8 @@ const questionsReducer = (state = questionReducerDefaultState, action) => {
         //Log question to display in Pending Questions list
         case 'LOAD_QUESTION':
             return [...state, action.question_item];
+        case 'UNLOAD_ADMIN_QUESTIONS':
+            return [];
         //New question upload
         case 'CREATE_QUESTION':
             return [...state];

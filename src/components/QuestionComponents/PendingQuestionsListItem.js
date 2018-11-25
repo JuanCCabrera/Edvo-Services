@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {removeQuestion} from '../../actions/question';
+import {reset, removeQuestion} from '../../actions/question';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import {setSuccessModal} from '../../actions/successModal';
+import {setFailureModal} from '../../actions/failureModal';
+import moment from 'moment';
 
 /**
  * Single item in the Pending Questions list
@@ -20,7 +25,7 @@ class PendingQuestionsListItem  extends React.Component{
             toggleButton: false
         }
     }
-    
+
     render(){
         return (
             <div className="item-card">
@@ -54,8 +59,30 @@ class PendingQuestionsListItem  extends React.Component{
                     </div>
                     <br/>
                     <button onClick={() => {
-                        this.props.dispatch(removeQuestion({questionID: this.props.question.questionID, askedDate: this.props.question.askedDate, userId: this.props.question.userId}));
-                        this.setState(() => ({toggleButton: false}));
+                        console.log("PROPS IN SEE QUESTIONS: ", this.props);
+                        axios.delete('https://beta.edvotech.com/api/admin/questions/remove',{
+                        data:{askeddate: this.props.question.askedDate,
+                        userid: this.props.question.userId
+                    },
+                    headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                        })
+                        .then((response)=>{
+                            console.log("RESUSCRIBE RESPONSE: ",response);
+                            console.log("RESPOSNE STATUS: ", response.status);
+                            if(response.status == 200){
+                                this.props.dispatch(setSuccessModal());
+                                //REACT UPDATE ERROR !this.props.dispatch(removeQuestion({questionID: this.props.question.questionID, askedDate: moment(this.props.question.askedDate).format("YYYY-MM-DD HH:mm:ss"), userId: this.props.question.userId}));
+                                this.setState(() => ({toggleButton: false}));
+                        }
+                        })
+                        .catch(error => {
+                            console.log("RESPONSE DATA: ", error.response);
+                            if(error.response.status == 401 || error.response.status == 403)
+                                this.setState({cardError: true});
+                            else{
+                                this.props.dispatch(setFailureModal());
+                        }
+                        });
                     }}>
                     <div className="btn btn-item" style={{marginTop: '10px'}}>
                             {this.props.lang === 'English' ? 'Yes' : 'Si'}
