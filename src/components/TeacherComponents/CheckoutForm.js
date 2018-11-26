@@ -82,11 +82,11 @@ class CheckoutForm extends Component {
       perform="teacher:settings"
       yes={() => (
       <div className="checkout">
-      {console.log("EMAIL BOUND: ", auth0Client.getEmail())}
-        <h3>{this.props.lang === 'English' ? <h3>Would you like to complete the purchase?*</h3> : <h3>¿Desea completar la compra?*</h3>}</h3>
+        <h4>{this.props.lang === 'English' ? <h4>Would you like to complete the purchase?<span style={{color: 'red'}}>*</span></h4> : <h4>¿Desea completar la compra?<span style={{color: 'red'}}>*</span></h4>}</h4>
         
         <CardElement />
         <br/>
+        {this.props.lang === 'English' ? <h4>Do you have a coupon?</h4> : <h4>¿Posee un cupón?</h4>}
         <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="10" value={this.state.coupon} placeholder={this.props.lang === 'English' ? 'Insert coupon code here' : 'Introduzca su cupón aqui'} onChange={this.onCouponChange} />
         
                     {this.state.userError === true && 
@@ -108,10 +108,9 @@ class CheckoutForm extends Component {
           <div className="btn btn-item">
           {this.props.lang === 'English' ? 'Pay' : 'Pagar'}
           </div>
-          <p>{this.props.lang === 'English' ? <p>*If you have and institution coupon the subscription will not be charged,
-          the is used to verify user authenticity</p> : <p>*Si posee un cupón institucional su subscripción
-            será libre de costo, el proceso de introducir su tarjeta es para la autenticidad del usuario</p>}</p>
-        </button>
+           </button>
+           <p style={{marginTop: '2rem', color: 'red'}}>{this.props.lang === 'English' ? <p>*If you have an institution coupon, the subcription fee will not be billed to your card.</p> : <p>*Si posee un cupón institucional, no se le cobrará el costo de subscripcion a su tarjeta.</p>}</p>
+       
       </div>
         )}
         no={() => <Redirect to="/login" />}

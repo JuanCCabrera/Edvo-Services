@@ -48,7 +48,8 @@ class TeacherQuestionsList extends React.Component{
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
             this.props.dispatch(setLoadingModal());
-            this.props.dispatch(setFailureModal());
+            if(error.response.status >= 500)
+                this.props.dispatch(setFailureModal());
         });
         this.currentPage = 1;
         const initialPageQuestions = this.props.question.slice(0,this.itemsPerPage);
