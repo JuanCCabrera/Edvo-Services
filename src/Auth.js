@@ -4,7 +4,6 @@ import {Redirect} from 'react-router-dom';
 
 class Auth {
   constructor(props) {
-    console.log("CONSTRUCTING");
     this.auth0 = new auth0.WebAuth({
       // the following three lines MUST be updated
       domain: 'edvo-test.auth0.com',
@@ -14,14 +13,16 @@ class Auth {
       responseType: 'token id_token',
       scope: 'openid profile email'
     });
-
+    console.log("CONSTRUCTING");
     this.getProfile = this.getProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.signIn = this.signIn.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getRole = this.getRole.bind(this);
+    console.log("CONSTRUCTING EMAIL");
     this.getEmail = this.getEmail.bind(this);
+    console.log("CONSTRUCTED EMAIL");
     if(localStorage.getItem('route') == '[object Object]' || localStorage.getItem('route')==null)
       localStorage.setItem('route', '/');
   }
@@ -37,10 +38,6 @@ class Auth {
     return this.getEmail;
   }
 
-  getProfile() {
-    return this.profile;
-  }
-
   getIdToken() {
     return localStorage.getItem('idToken');
   }
@@ -49,17 +46,13 @@ class Auth {
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
         if (err) {
-          console.log("FIRST ERROR handleAuth");
         }
         if (!authResult || !authResult.idToken) {
-          console.log("SECOND ERROR handleAuth");
           this.signOut();
           return reject(err);
         }
         this.setSession(authResult);
-        console.log("THIRD ERROR handleAuth");
         resolve();
-        console.log("FOURTH ERROR handleAuth");
       });
     })
   }
@@ -71,8 +64,7 @@ class Auth {
   setSession(authResult, step) {
     if(localStorage.getItem('idToken') == null)
       localStorage.setItem('idToken',authResult.idToken);
-    this.profile = {email: authResult.idTokenPayload.email, name: authResult.idTokenPayload.name};
-    this.getEmail = authResult.idTokenPayload.email;
+    this.getEmail = () => authResult.idTokenPayload.email;
     localStorage.setItem('expiresAt', authResult.expiresIn * 1000 + new Date().getTime());
   }
 
@@ -81,7 +73,6 @@ class Auth {
   }
 
   signOut() {
-    console.log("SIGNING OUT!!");
     this.auth0.logout({
       returnTo: 'http://localhost:8080/login',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',

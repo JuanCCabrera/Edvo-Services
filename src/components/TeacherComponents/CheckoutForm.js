@@ -4,10 +4,12 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import Can from '../../Can';
 import {Redirect} from 'react-router-dom';
+import {setSuccessModal} from '../../actions/successModal';
 
 class CheckoutForm extends Component {
     constructor(props) {
         super(props);
+        console.log("EMAIL IN CONSTRUCTOR: ", auth0Client.getEmail);
         this.props = props;
         this.state = {complete: false, coupon: ''};
         this.submit = this.submit.bind(this);
@@ -66,27 +68,21 @@ class CheckoutForm extends Component {
         })
           .then(response =>{
             console.log("STRIPE RESPONSE: ",response);
-            if(response.status == 201)
-              this.setState({complete: true});
+            if(response.status == 201){
+              this.props.dispatch(setSuccessModal());
+              this.props.history.replace('/teacher/home')
+            }
           });
   }
 
   render() {
-    if (this.state.complete){
-     return (
-
-       <div>
-     <h1>Subscription Complete</h1>
-     <button onClick={this.onButtonClick}>OK</button>
-     </div>
-    );
-    }
     return (
       <Can
       role={auth0Client.getRole()}
       perform="teacher:settings"
       yes={() => (
       <div className="checkout">
+      {console.log("EMAIL BOUND: ", auth0Client.getEmail())}
         <p>Would you like to complete the purchase?</p>
         <CardElement />
         <br/>

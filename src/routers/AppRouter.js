@@ -147,7 +147,7 @@ class  AppRouter extends React.Component{
                             <Route path='/teacher/home' component={TeacherHome}/>
                             <Route path='/teacher/settings/info' component={TeacherProfile}/>
                             <Route path='/teacher/settings/classes' component={Classes}/>
-                            <Route path='/teacher/settings/plans/payment' exact component={Stripe} />
+                            <SecuredRoute path='/teacher/settings/plans/payment' exact component={Stripe} />
                             <Route path='/teacher/settings/plans' component={Plan}/>
                             <Route path='/teacher/recommendations' component={TeacherRecommendations}/>
                             <Route path='/teacher/questions' component={TeacherQuestions}/>

@@ -41,7 +41,7 @@ const LoginPage = (props) => (
                     <div className="col-sm-3"/>
                     <div className="text-center col-sm-6">
                         <div className="Register">
-                        <img className="Materials-Img-S" src="http://localhost:8080/static/images/materials.png" />
+                        <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/materials.png" />
                             {props.lang === 'English' ? 
                             <div>
                                 <p>Join the community of schools

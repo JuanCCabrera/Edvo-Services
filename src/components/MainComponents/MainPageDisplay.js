@@ -70,13 +70,13 @@ const MainPageDisplay = (props) => (
             <div className="container-fluid row text-center Tools">
                 {props.lang === 'English' ? 
                 <div className="col-md-4">
-                <img src="http://localhost:8080/static/images/flower.png" className="Feature-Img" />
+                <img src="https://beta.edvotech.com/static/images/flower.png" className="Feature-Img" />
                     <h2>DESIGN</h2>
                     <h5>Collaborating with you</h5>
                     <h5>to design better</h5>
                     <h5>learning experiences</h5>
                 </div> : <div className="col-md-4">
-                    <img src="http://localhost:8080/static/images/flower.png" className="Feature-Img" />
+                    <img src="https://beta.edvotech.com/static/images/flower.png" className="Feature-Img" />
                     <h2>DISEÑO</h2>
                     <h5>Colaborando contigo</h5>
                     <h5>para diseñar mejores</h5> 
@@ -85,12 +85,12 @@ const MainPageDisplay = (props) => (
                 }
                 {props.lang === 'English' ? 
                 <div className="col-md-4">
-                <img src="http://localhost:8080/static/images/circle.png" className="Feature-Img" />
+                <img src="https://beta.edvotech.com/static/images/circle.png" className="Feature-Img" />
                     <h2>MANAGEMENT</h2>
                     <h5>Helping you better</h5>
                     <h5>manage your time.</h5>
                 </div> : <div className="col-md-4">
-                <img src="http://localhost:8080/static/images/circle.png" className="Feature-Img" />
+                <img src="https://beta.edvotech.com/static/images/circle.png" className="Feature-Img" />
                     <h2>MANEJO</h2>
                     <h5>Ayudandote a manejar</h5> 
                     <h5>tu tiempo eficientemente.</h5>
@@ -98,14 +98,14 @@ const MainPageDisplay = (props) => (
                 }
                 {props.lang === 'English' ? 
                 <div className="col-md-4">
-                <img src="http://localhost:8080/static/images/cross.png" className="Feature-Img" />
+                <img src="https://beta.edvotech.com/static/images/cross.png" className="Feature-Img" />
                     <h2>TOOLS</h2>
                     <h5>Providing the tools</h5> 
                     <h5>needed to stay</h5> 
                     <h5>up to date</h5> 
                     <h5>with technology.</h5>
                 </div> : <div className="col-md-4">
-                <img src="http://localhost:8080/static/images/cross.png" className="Feature-Img" />
+                <img src="https://beta.edvotech.com/static/images/cross.png" className="Feature-Img" />
                     <h2>HERRAMIENTAS</h2>
                     <h5>Brindandote las herramientas</h5>
                     <h5>necesarias para que</h5> 
@@ -140,7 +140,7 @@ const MainPageDisplay = (props) => (
                         <li>Class size</li>
                         <li>Academic level</li>
                         <li>Subject</li>
-                        <img src="http://localhost:8080/static/images/persons.png" className="How-Img" />
+                        <img src="https://beta.edvotech.com/static/images/persons.png" className="How-Img" />
                     </ul>
                 </div> : <div className="col-md-4">
                     <h2>1. Completa tu perfil</h2>
@@ -148,7 +148,7 @@ const MainPageDisplay = (props) => (
                         <li>Cantidad de estudiantes</li>
                         <li>Nivel académico</li>
                         <li>Materia</li>
-                        <img src="http://localhost:8080/static/images/persons.png" className="How-Img" />
+                        <img src="https://beta.edvotech.com/static/images/persons.png" className="How-Img" />
                     </ul>
                    
                 </div>
@@ -159,24 +159,24 @@ const MainPageDisplay = (props) => (
                     <ul>
                         <li>How can I increase engagement?</li>
                         <li>How can I include experiments?</li>
-                        <img src="http://localhost:8080/static/images/display.png" className="How-Img" />
+                        <img src="https://beta.edvotech.com/static/images/display.png" className="How-Img" />
                     </ul>
                 </div> : <div className="col-md-4 mt-5">
                     <h2>2. Cuéntanos tus retos</h2>
                     <ul>
                         <li>¿Cómo puedo aumentar la participación?</li>
                         <li>¿Cómo puedo incluir experimentos?</li>
-                        <img src="http://localhost:8080/static/images/display.png" className="How-Img" />
+                        <img src="https://beta.edvotech.com/static/images/display.png" className="How-Img" />
                     </ul>
                 </div>
                 }
                 {props.lang === 'English' ? 
                 <div className="col-md-4 mt-10">
                     <h2>3. Receive suggestions for your classroom</h2>
-                        <img src="http://localhost:8080/static/images/results.png" className="How-Img" />
+                        <img src="https://beta.edvotech.com/static/images/results.png" className="How-Img" />
                 </div> : <div className="col-md-4 mt-10">
                     <h2>3. Obtén sugerencias para implementar en tu salón de clases</h2>
-                        <img src="http://localhost:8080/static/images/results.png" className="How-Img" />
+                        <img src="https://beta.edvotech.com/static/images/results.png" className="How-Img" />
                 </div>
                 }
             </div>
@@ -186,13 +186,13 @@ const MainPageDisplay = (props) => (
         <div>
             <div className="container-fluid row">
             <div className="col-md-4 text-center">
-            <img className="Partners-Img" src="http://localhost:8080/static/images/p18.png"/>
+            <img className="Partners-Img" src="https://beta.edvotech.com/static/images/p18.png"/>
             </div>
             <div className="col-md-4 text-center">
-            <img className="Partners-Img-S" src="http://localhost:8080/static/images/inprende.png"/>
+            <img className="Partners-Img-S" src="https://beta.edvotech.com/static/images/inprende.png"/>
             </div>
             <div className="col-md-4 text-center">
-            <img className="Partners-Img" src="http://localhost:8080/static/images/spotin.png"/>
+            <img className="Partners-Img" src="https://beta.edvotech.com/static/images/spotin.png"/>
             </div>
         </div>
     </div>     
