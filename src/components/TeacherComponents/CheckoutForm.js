@@ -83,10 +83,11 @@ class CheckoutForm extends Component {
       yes={() => (
       <div className="checkout">
       {console.log("EMAIL BOUND: ", auth0Client.getEmail())}
-        <p>Would you like to complete the purchase?</p>
+        <h3>{this.props.lang === 'English' ? <h3>Would you like to complete the purchase?*</h3> : <h3>¿Desea completar la compra?*</h3>}</h3>
+        
         <CardElement />
         <br/>
-        <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="10" value={this.state.coupon} placeholder='Insert coupon code here' onChange={this.onCouponChange} />
+        <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="10" value={this.state.coupon} placeholder={this.props.lang === 'English' ? 'Insert coupon code here' : 'Introduzca su cupón aqui'} onChange={this.onCouponChange} />
         
                     {this.state.userError === true && 
                         <div className="text-danger text-center">
@@ -105,8 +106,11 @@ class CheckoutForm extends Component {
                     }
         <button onClick={this.submit}>
           <div className="btn btn-item">
-            Send
+          {this.props.lang === 'English' ? 'Pay' : 'Pagar'}
           </div>
+          <p>{this.props.lang === 'English' ? <p>*If you have and institution coupon the subscription will not be charged,
+          the is used to verify user authenticity</p> : <p>*Si posee un cupón institucional su subscripción
+            será libre de costo, el proceso de introducir su tarjeta es para la autenticidad del usuario</p>}</p>
         </button>
       </div>
         )}

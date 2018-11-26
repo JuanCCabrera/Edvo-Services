@@ -24,7 +24,7 @@ class Stripe extends Component {
                       <p>{this.props.lang === 'English' ? 'Subscription Payment' : 'Pago de Suscripción'}</p>
                       <hr className="break" style={{borderColor: '#5933aa'}}/>
                     </div>
-                    <Elements>
+                    <Elements locale="es">
                       <CheckoutForm {...this.props}/>
                     </Elements>
                   </div>

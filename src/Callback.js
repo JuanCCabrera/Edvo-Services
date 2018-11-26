@@ -38,8 +38,10 @@ class Callback extends React.Component {
                     });
             })
             .catch(error => {
-                if(error.response.status == 403)
+                if(error.response.status == 403){
                     route = '/register';
+                    localStorage.removeItem('loginError');
+                }
                 else{
                     localStorage.clear();
                     auth0Client.signIn();
