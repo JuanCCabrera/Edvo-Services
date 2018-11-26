@@ -4,6 +4,8 @@ import ClassListItem from './ClassListItem';
 import { unloadClasses,loadClass } from '../../actions/classes';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import {setLoadingModal} from '../../actions/loadingModal';
+import {setFailureModal} from '../../actions/failureModal';
 
 /**
  * Class List contains the list of classes which a user registered through his or her registration form. 
@@ -13,6 +15,7 @@ class ClassList extends React.Component{
         super(props);
     }
     componentDidMount(){
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/settings/classes',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -24,8 +27,11 @@ class ClassList extends React.Component{
             format: element.format, language: element.language, level: element.level, 
             groupSize: element.groupsize, topicA: element.topica, topicB: element.topicb, topicC: element.topic}));
         });
+        this.props.dispatch(setLoadingModal());
         })
         .catch(error =>{
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
             console.log("ERROR CLASSES: ", error);
         })
     }

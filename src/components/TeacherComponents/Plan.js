@@ -9,6 +9,7 @@ import {loadPlan} from '../../actions/plan';
 import {Link} from 'react-router-dom';
 import {setSuccessModal} from '../../actions/successModal';
 import {setFailureModal} from '../../actions/failureModal';
+import { setLoadingModal } from '../../actions/loadingModal';
 
 /**
  * Plan page in Teacher Settings. It displays the name of the subscription plan currently owned by the Teacher use (if any) or an option to resubscribe to the plan
@@ -28,11 +29,13 @@ class Plan extends React.Component{
         }
     }
     componentWillMount(){
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/settings/plans',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
         .catch(error=>{
+            this.props.dispatch(setLoadingModal());
             if(error.response.status == 500 || error.response.status == 502)
                 this.props.dispatch(setFailureModal());
         })
@@ -40,6 +43,7 @@ class Plan extends React.Component{
             if(response.status == 200){
                 this.setState({status: response.data.subscription.status});
             }
+            this.props.dispatch(setLoadingModal());
         });
     }
 

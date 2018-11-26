@@ -90,21 +90,21 @@ class  AppRouter extends React.Component{
                     {
                         //Recommendation Modal (hidden until a recommendation is selected)
                     }
-                        <RecommendationModal clearSelectedRecommendation={() => props.dispatch(clearSelectedRecommendation())}/>
+                        <RecommendationModal clearSelectedRecommendation={() => this.props.dispatch(clearSelectedRecommendation())}/>
                     {
                         //Question Modal (hidden until a question is selected)
                     }
-                        <QuestionModal clearSelectedQuestion={() => props.dispatch(clearSelectedQuestion())}/>
+                        <QuestionModal clearSelectedQuestion={() => this.props.dispatch(clearSelectedQuestion())}/>
 
                     {
                         //User Modal (hidden until user is selected)
                     }
-                        <UserModal clearSelectedUser={() => props.dispatch(clearUserModal())}/>
+                        <UserModal clearSelectedUser={() => this.props.dispatch(clearUserModal())}/>
 
                     {
                         //Assignment Recommendation Modal (hidden until recommendation is selected from the Assign Recommendations page)
                     }
-                        <AssignmentRecommendationModal clearSelectedRecommendation={() => props.dispatch(clearAssignmentRecommendationModal())}/>
+                        <AssignmentRecommendationModal clearSelectedRecommendation={() => this.props.dispatch(clearAssignmentRecommendationModal())}/>
 
                     {
                         //Success Modal (hidden until a major action is completed successfully)

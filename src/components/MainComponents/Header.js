@@ -81,16 +81,7 @@ class Header extends React.Component{
                             
                         </ul>
                         <ul className="nav navbar-nav navbar-right navbar__text">
-                            {
-                                //Swap language button
-                            }
-                            <li>
-                                <div className="clickable" style={{padding: '10px 20px', marginTop: '0.5rem', marginBottom: '0.5rem'}} onClick={() => {
-                                        this.props.dispatch(swapLanguage());
-                                    }}>
-                                    <span>{this.props.lang === 'English' ? 'Español' : 'English'}</span>
-                                </div>
-                            </li>
+                            
     
                             {
                                 //Dashboard
@@ -156,6 +147,17 @@ class Header extends React.Component{
                                     </NavLink> 
                                 </li>
                             }
+
+                            {
+                                //Swap language button
+                            }
+                            <li>
+                                <div className="clickable" style={{padding: '10px 20px', marginTop: '0.5rem', marginBottom: '0.5rem'}} onClick={() => {
+                                        this.props.dispatch(swapLanguage());
+                                    }}>
+                                    <span>{this.props.lang === 'English' ? 'Español' : 'English'}</span>
+                                </div>
+                            </li>
                                 
                             
                             {

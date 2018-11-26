@@ -202,25 +202,6 @@ class CreateRecommendationForm extends React.Component{
         let topics = [...this.state.topics]
         topics[i] = e.target.value;
         this.setState(() => ({topics: topics}));
-
-        let errorCheck = false;
-        let j = 0;
-        //Check to see if description is only composed of spaces. 
-        for(j = 0; j < this.state.topics.length; j++){
-            if(this.state.topics[j] && this.state.topics[j].match(/^\s+$/)){
-                if(this.props.lang === 'English'){
-                    this.setState(() => ({topicError: 'Enter valid topics. '}));
-                }else{
-                    this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
-                }
-                errorCheck = true;
-                break;
-            }
-        }
-
-        if(!errorCheck){
-            this.setState(() => ({topicError: ''}));
-        }
     }
 
     //Delete topic from the array of listed topics for a class. 
@@ -259,30 +240,8 @@ class CreateRecommendationForm extends React.Component{
     onChoiceChange = i => e => {
         let choices = [...this.state.choices]
         choices[i] = e.target.value;
-        
-
-        this.setState(() => ({choices}));
-
-        let errorCheck = false;
-        let j = 0;
-        //Check to see if option(choice) is only composed of spaces. 
-        for(j = 0; j < this.state.choices.length; j++){
-            if(this.state.choices[j] && this.state.choices[j].match(/^\s+$/)){
-                if(this.props.lang === 'English'){
-                    this.setState(() => ({choiceError: 'Enter valid options.'}));
-                }else{
-                    this.setState(() => ({choiceError: 'Escriba opciones válidas.'})); 
-                }
-                errorCheck = true;
-                break;
-            }
-        }
-
-        if(!errorCheck){
-            this.setState(() => ({choiceError: ''}));
-        }
+        this.setState(() => ({choices: choices}));
     }
-
 
     //Delete choice from local state array. 
     deleteChoice = i => e => {
@@ -719,6 +678,36 @@ class CreateRecommendationForm extends React.Component{
                             disabled={this.props.isEdit}
                             maxLength="400"
                             onChange={this.onChoiceChange(index)}
+                            onBlur={() => {
+                                let choices = [...this.state.choices]
+                                choices[index] = this.state.choices[index].trim();
+                                this.setState(() => ({choices: choices}));
+                                let j = 0;
+                                let errorCheck = false;
+                                for(j = 0; j < this.state.choices.length; j++){
+                                    if(this.state.choices[j] && this.state.choices[j].match(/^\s+$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({choiceError: 'Enter valid options.'}));
+                                        }else{
+                                            this.setState(() => ({choiceError: 'Escriba opciones válidas.'})); 
+                                        }
+                                        errorCheck = true;
+                                        break;
+                                    }
+                                }
+                                if(!this.state.choices[index]){
+                                    if(this.props.lang === 'English'){
+                                        this.setState(() => ({choiceError: 'Enter valid options.'}));
+                                    }else{
+                                        this.setState(() => ({choiceError: 'Escriba opciones válidas.'})); 
+                                    }
+                                    errorCheck = true;
+                                }
+                                if(!errorCheck){
+                                    this.setState(() => ({choiceError: ''}));
+                                }
+                            }
+                            }
                             />
                             
                             {this.state.correctOption === index && <div style={{display: 'inline-block', marginLeft: '0.3rem'}}>
@@ -986,6 +975,28 @@ class CreateRecommendationForm extends React.Component{
                             value={topic}
                             maxLength="50"
                             onChange={this.onTopicChange(index)}
+                            onBlur={() => {
+                                    let topics = [...this.state.topics]
+                                    topics[index] = this.state.topics[index].trim();
+                                    this.setState(() => ({topics: topics}));
+                                    let j = 0;
+                                    let errorCheck = false;
+                                    for(j = 0; j < this.state.topics.length; j++){
+                                        if(this.state.topics[j] && this.state.topics[j].match(/^\s+$/)){
+                                            if(this.props.lang === 'English'){
+                                                this.setState(() => ({topicError: 'Enter valid topics. '}));
+                                            }else{
+                                                this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                                            }
+                                            errorCheck = true;
+                                            break;
+                                        }
+                                    }
+                                    if(!errorCheck){
+                                        this.setState(() => ({topicError: ''}));
+                                    }
+                                }
+                            }
                             />
                             {this.state.topics.length > 1 && <div style={{display: 'inline'}}>
                             <button onClick={this.deleteTopic(index)}>
