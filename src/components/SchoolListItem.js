@@ -34,7 +34,11 @@ class SchoolListItem extends React.Component{
                 {
                     //School name
                 }
-                <p className="item__body card-title">{this.props.school.name}</p>
+                <p className="item__body card-title">{this.props.school.name} / {this.props.lang === 'English' ? 'ID' : 'ID'}: {this.props.school.id}</p>
+                {
+                    //School ID
+                }
+                
                 {
                     //School location
                 }

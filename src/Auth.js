@@ -9,7 +9,7 @@ class Auth {
       domain: 'edvo-test.auth0.com',
       roleUrl: "https://edvo-test/role",
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      redirectUri: 'https://beta.edvotech.com/callback',
+      redirectUri: 'http://localhost:8080/callback',
       responseType: 'token id_token',
       scope: 'openid profile email'
     });
@@ -73,7 +73,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'https://beta.edvotech.com/login',
+      returnTo: 'http://localhost:8080/login',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
     });
     localStorage.clear();

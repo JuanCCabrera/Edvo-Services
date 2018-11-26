@@ -199,14 +199,15 @@ class RegistrationForm extends React.Component{
     onDateChange = (dateOfBirth) => {
         var today=moment();
         var difference = today.diff(dateOfBirth, 'years');
+        console.log(difference);
         //Check if the selected date of birth falls between 18-90 years ago. 
         if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Enter a valid date of birth.'}));
             }else{
-                this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
             }
         }
     };
@@ -263,25 +264,6 @@ class RegistrationForm extends React.Component{
         let topics = [...this.state.topicsTaught]
         topics[i] = e.target.value;
         this.setState(() => ({topicsTaught: topics}));
-
-        let errorCheck = false;
-        let j = 0;
-        //Check to see if description is only composed of spaces. 
-        for(j = 0; j < this.state.topicsTaught.length; j++){
-            if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
-                if(this.props.lang === 'English'){
-                    this.setState(() => ({topicError: 'Enter valid topics. '}));
-                }else{
-                    this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
-                }
-                errorCheck = true;
-                break;
-            }
-        }
-
-        if(!errorCheck){
-            this.setState(() => ({topicError: ''}));
-        }
     }
 
     //Delete topic from topics array in local state
@@ -417,14 +399,16 @@ class RegistrationForm extends React.Component{
     onEmployedDateChange = (timeEmployed) => {
         var today=moment();
         var difference = today.diff(timeEmployed, 'years');
+        var differenceToBirth = timeEmployed.diff(this.state.dateOfBirth, 'years');
+        console.log('DIF TO BIRTH',differenceToBirth);
         //Check if the selected date of birth falls between 18-90 years ago. 
-        if(timeEmployed && (difference >= 0 && difference < 90)){
+        if(timeEmployed && (difference >= 0 && difference < 90) && differenceToBirth > 18){
             this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({timeEmployedError: 'Enter a valid date of employment.'}));
+                this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'Enter a valid date of employment.'}));
             }else{
-                this.setState(() => ({timeEmployedError: 'Escriba una fecha de empleo válida.'}));
+                this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'Escriba una fecha de empleo válida.'}));
             }
         }
     };
@@ -834,15 +818,15 @@ class RegistrationForm extends React.Component{
                 {
                     //Button to change page to page 2
                 }
+                <a href={(!(this.state.name && this.state.lastName) || (this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError)) ? "#" : "#top"}>
+                    <button disabled={!(this.state.name && this.state.lastName) || (this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError)} onClick={this.toPageTwo}>
+                        
+                            <div className="btn btn-item">
+                                    {this.props.lang === 'English' ? 'Next' : 'Continuar'}
+                            </div>
                 
-                <button disabled={!(this.state.name && this.state.lastName) || (this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError)} onClick={this.toPageTwo}>
-                    <a href="#top">
-                        <div className="btn btn-item">
-                                {this.props.lang === 'English' ? 'Next' : 'Continuar'}
-                        </div>
-                    </a>
-                </button>
-                
+                    </button>
+                </a>
 
                 </div>}
 
@@ -988,6 +972,29 @@ class RegistrationForm extends React.Component{
                             value={topic}
                             maxLength="50"
                             onChange={this.onTopicChange(index)}
+                            onBlur={() => {
+                                let topics = [...this.state.topicsTaught]
+                                topics[index] = this.state.topicsTaught[index].trim();
+                                this.setState(() => ({topicsTaught: topics}));
+                                let j = 0;
+                                let errorCheck = false;
+                                for(j = 0; j < this.state.topicsTaught.length; j++){
+                                    if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
+                                        if(this.props.lang === 'English'){
+                                            this.setState(() => ({topicError: 'Enter valid topics. '}));
+                                        }else{
+                                            this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                                        }
+                                        errorCheck = true;
+                                        break;
+                                    }
+                                }
+                                if(!errorCheck){
+                                    this.setState(() => ({topicError: ''}));
+                                }
+                            }
+
+                            }
                             />
                             {
                                 //Button to delete the topic (Minimum of 1). 
@@ -1037,7 +1044,7 @@ class RegistrationForm extends React.Component{
                         </button>
                     </a>
                     
-                    <a href="#top">
+                    <a href={(!(this.state.subject && this.state.topicsTaught[0]) || (this.state.subjectError || this.state.topicError)) ? "#" : "#top"}>
                         <button disabled={!(this.state.subject && this.state.topicsTaught[0]) || (this.state.subjectError || this.state.topicError)} onClick={this.toPageThree}>
                             <div className="btn btn-item">
                                 {this.props.lang === 'English' ? 'Next' : 'Continuar'}
@@ -1245,7 +1252,7 @@ class RegistrationForm extends React.Component{
                         </button>
                     </a>
 
-                    <a href="#top">
+                    <a href={(!(this.state.schoolName && this.state.schoolLocation && (this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.applications || this.state.socialMedia) && (this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)) || (this.state.schoolNameError || this.state.schoolLocationError)) ? "#" : "#top"}>
                     <button disabled={!(this.state.schoolName && this.state.schoolLocation && (this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.applications || this.state.socialMedia) && (this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)) || (this.state.schoolNameError || this.state.schoolLocationError)} onClick={this.toPageFour}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Next' : 'Continuar'}
