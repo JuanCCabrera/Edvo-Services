@@ -100,7 +100,11 @@ class CreateCouponForm extends React.Component{
                 }).then(response =>{
                         if(response.status == 200){
                         this.props.dispatch(setSuccessModal())
-                        this.setState(() => ({couponid: '', name: '', percentage: '', duration: '',couponRequestError: false,couponCreationError: false}));                        
+                        this.setState(() => ({couponID: ''}));
+                        this.setState(() => ({couponName: ''}));
+                        this.setState(() => ({percentage: ''}));
+                        console.log("ARRIVED HERE AFTER SETTING DEFAULT STATES");
+                        this.setState(() => ({couponRequestError: false, couponCreationError: false}));              
                     }
                     })
                     .catch(error => {
@@ -108,13 +112,8 @@ class CreateCouponForm extends React.Component{
                         if(error.response.status != null)
                             this.setState({couponRequestError: true});
                             this.props.dispatch(setFailureModal());
-                    })
-             
-        }
-       
-
-
-
+                    })    
+                }
     }
 
     render(){

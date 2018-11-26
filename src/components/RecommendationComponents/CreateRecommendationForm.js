@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import Can from '../../Can';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 import { setSuccessModal } from '../../actions/successModal';
 import { setEditModal } from '../../actions/editModal';
+import { setFailureModal } from '../../actions/failureModal';
 //WYSIWYG
 import { EditorState, convertFromRaw, convertToRaw, ContentState } from 'draft-js';
 import { Editor} from 'react-draft-wysiwyg';
@@ -25,6 +26,7 @@ class CreateRecommendationForm extends React.Component{
             console.log("DRAFTJS: ", htmlToDraft(props.reco.description));
         this.state = {
             props: props,
+            recomid: props.reco ? props.reco.id : '',
             editorState: props.reco ? EditorState.createWithContent(ContentState.createFromBlockArray(
                 htmlToDraft(props.reco.description).contentBlocks)) : EditorState.createEmpty(),
             title: props.reco ? props.reco.title : '',
@@ -405,7 +407,7 @@ class CreateRecommendationForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
             //Set error message if there are any required fields which are not filled upon submission. 
-        if (!this.state.title || !this.state.header || !this.state.editorState || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] || !this.state.choices[0] || !this.state.choices[1] || !this.state.choices[2]){
+        if (!this.state.title || !this.state.header || !this.state.editorState || !(this.props.isEdit || this.state.question) || !this.state.subject || !this.state.topics[0] || (!this.props.isEdit && (!this.state.choices[0] || !this.state.choices[1] || !this.state.choices[2]))){
             this.setState(() => ({creationError: true}));
             //If checkboxes are empty...
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
@@ -426,6 +428,7 @@ class CreateRecommendationForm extends React.Component{
             console.log("REQUEST FULL: ",
         axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/'+createModify, {
             usertype: auth0Client.getRole(),
+            recomid: this.state.recomid,
             title: this.state.title,
             multimedia: "",
             header: this.state.header,
@@ -472,19 +475,18 @@ class CreateRecommendationForm extends React.Component{
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
             .then(response =>{
                 console.log("PROPS1: ",this.state.props);
-                this.state.props.history.replace('/teacher/home');
+                if(this.props.isEdit){
+                    this.props.dispatch(setEditModal());
+                }else{
+                    this.props.dispatch(setSuccessModal());
+                }
+                this.props.history.push('/recommendations/manage');
             })
             .catch(error =>{
                 console.log("ERROR IN CREATE RECOM: ", error);
-                this.state.props.history.replace('/');
+                this.props.dispatch(setFailureModal());
             }));
-    
-        
-            if(this.props.isEdit){
-                this.props.dispatch(setEditModal());
-            }else{
-                this.props.dispatch(setSuccessModal());
-            }
+            
             this.props.onSubmit(this.state);
         }
     }
@@ -1155,4 +1157,4 @@ const mapStateToProps = (state, props) => {
 }
 
 //Connect the component to the controller. 
-export default connect(mapStateToProps)(CreateRecommendationForm);
+export default withRouter(connect(mapStateToProps)(CreateRecommendationForm));

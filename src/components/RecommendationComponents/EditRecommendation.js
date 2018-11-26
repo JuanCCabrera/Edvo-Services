@@ -43,7 +43,6 @@ const EditRecommendation = (props) => (
                 isEdit={true}
                 onSubmit={(recommendation) => {
                     props.dispatch(editRecommendation(props.recommendation.id, recommendation));
-                    props.history.push('/recommendations/manage');
                 }}/>
                 </div>
             </div>
