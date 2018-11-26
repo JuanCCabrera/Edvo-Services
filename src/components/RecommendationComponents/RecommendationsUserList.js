@@ -29,7 +29,7 @@ class RecommendationsUserList extends React.Component{
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
         this.props.dispatch(unloadUsers());
-        axios.get('https://beta.edvotech.com/api/admin/recommendations/users',{
+        axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             console.log("ASSIGN USERS: ", response);

@@ -250,6 +250,8 @@ class CreateRecommendationForm extends React.Component{
     //Change correctOption in local state
     setCorrectOption = (choiceIndex) => (e) => {
         e.preventDefault();
+        console.log("CORRECT OPTION: ", choiceIndex);        
+        console.log("THIS STATE CHOICES: ", this.state.choices);
         this.setState(() => ({correctOption: choiceIndex}));
     }
 
@@ -433,12 +435,18 @@ class CreateRecommendationForm extends React.Component{
         this.setState(() => ({question}));
     }
 
+    onChange = (editorState) => {
+        const html = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
+        console.log("HTML: ", html)
+        this.setState({editorState});
+    }
+
     //Submit
 
     onSubmit = (e) => {
         e.preventDefault();
             //Set error message if there are any required fields which are not filled upon submission. 
-        if (!this.state.title || !this.state.header || !this.state.description || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] || !this.state.choices[0] || !this.state.choices[1] || !this.state.choices[2]){
+        if (!this.state.title || !this.state.header || !this.state.editorState || !this.state.question || (!this.state.choices[0] && !this.state.choices[1]) || !this.state.subject || !this.state.topics[0] || !this.state.choices[0] || !this.state.choices[1] || !this.state.choices[2]){
             this.setState(() => ({creationError: true}));
             //If checkboxes are empty...
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
@@ -449,12 +457,21 @@ class CreateRecommendationForm extends React.Component{
         }else{
             this.setState(() => ({creationError: false}));
             console.log("TOKEN: ",auth0Client.getIdToken());
-        axios.post('https://beta.edvotech.com/api/admin/recommendations/create', {
+            let choicesWithAnswer = []
+            for(var i=0; i<3 ; i++){
+                if(this.state.correctOption == i)
+                    choicesWithAnswer.push({choice: this.state.choices[i], correctanswer: true})
+                else                    
+                    choicesWithAnswer.push({choice: this.state.choices[i], correctanswer: false})
+            }
+            const createModify = this.props.isEdit ? "modify" : "create"
+            console.log("REQUEST FULL: ",
+        axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/'+createModify, {
             usertype: auth0Client.getRole(),
             title: this.state.title,
             multimedia: "",
             header: this.state.header,
-            description: this.state.description,
+            description: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
 
             strategies: this.state.teachingStrategies,
             material: this.state.updatedMaterial,
@@ -488,7 +505,7 @@ class CreateRecommendationForm extends React.Component{
             size: this.state.size,
 
             question: this.state.question,
-            choices: this.state.choices,
+            choices: choicesWithAnswer,
             correctoption: this.state.correctOption
         },
             {
@@ -500,7 +517,8 @@ class CreateRecommendationForm extends React.Component{
             .catch(error =>{
                 console.log("ERROR IN CREATE RECOM: ", error);
                 this.state.props.history.replace('/');
-            });
+            }));
+    
         
             if(this.props.isEdit){
                 this.props.dispatch(setEditModal());
@@ -511,9 +529,7 @@ class CreateRecommendationForm extends React.Component{
         }
     }
 
-    onChange = (editorState) => { 
-        console.log("WYSIWYG: ",draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())));
-        this.setState({editorState});}
+
 
     render(){
         return(
