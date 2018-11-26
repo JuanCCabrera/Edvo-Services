@@ -57,7 +57,7 @@ class Callback extends React.Component {
             <div className="container">
                 <div className="text-center loading-card">
                     <div style={{listStyleType: 'none', verticalAlign: 'center'}}>
-                        <h1>Loading...</h1>
+                        <h1>{this.props.lange === 'English' ? 'Loading...' : 'Cargando...'}</h1>
                         <i className="fa fa-spinner fa-pulse fa-4x fa-fw"></i>
                         <span className="sr-only">Loading...</span>
                     </div>
@@ -67,4 +67,9 @@ class Callback extends React.Component {
     }
 }
 
-export default withRouter(connect()(Callback));
+const mapStateToProps = (state) => {
+    return{
+        lang: state.language.lang
+    }
+}
+export default withRouter(connect(mapStateToProps)(Callback));

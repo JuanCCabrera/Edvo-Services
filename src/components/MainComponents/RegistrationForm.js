@@ -834,13 +834,15 @@ class RegistrationForm extends React.Component{
                 {
                     //Button to change page to page 2
                 }
-                <a href="#top">
-                    <button disabled={!(this.state.name && this.state.lastName) || (this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError)} onClick={this.toPageTwo}>
+                
+                <button disabled={!(this.state.name && this.state.lastName) || (this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError)} onClick={this.toPageTwo}>
+                    <a href="#top">
                         <div className="btn btn-item">
-                            {this.props.lang === 'English' ? 'Next' : 'Continuar'}
+                                {this.props.lang === 'English' ? 'Next' : 'Continuar'}
                         </div>
-                    </button>
-                </a>
+                    </a>
+                </button>
+                
 
                 </div>}
 
