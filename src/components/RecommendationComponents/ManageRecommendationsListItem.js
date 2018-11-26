@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { removeRecommendation } from '../../actions/recommendations';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import setSuccessModal from '../../actions/successModal';
+import setFailureModal from '../../actions/failureModal';
 
 /**
  * Single item of the Recommendations List
@@ -91,8 +95,26 @@ class ManageRecommendationsListItem extends React.Component{
                         </div>
                         <br/>
                         <button onClick={() => {
-                            this.props.dispatch(removeRecommendation({id: this.props.reco.id}));
-                            this.setState(() => ({toggleButton: false}));
+                            axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/remove',{
+                                recomid: this.props.reco.id
+                            },{
+                                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                            })
+                            .catch(error => {
+                                if(error.response.status == 401 || error.response.status == 403){
+
+                                this.props.dispatch(setFailureModal());
+                            }
+                            })  
+                            .then(response=>{
+                                console.log("RESPONSE: ", response);
+                                console.log("RESPONSEstatus: ", response.status == 200);
+                                console.log("RESPONSEdata: ", response.data);
+                                if(response.status == 200){
+                                    this.props.dispatch(removeRecommendation({id: this.props.reco.id}));
+                                    this.setState(() => ({toggleButton: false}));}
+                            })
+                             
                         }}>
                         <div className="btn btn-item" style={{marginTop: '10px'}}>
                                 {this.props.lang === 'English' ? 'Yes' : 'Si'}

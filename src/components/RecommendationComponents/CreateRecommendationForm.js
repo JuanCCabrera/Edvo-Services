@@ -198,7 +198,7 @@ class CreateRecommendationForm extends React.Component{
     }
 
     //Change topics in local state
-    onTopicChange = i => e => {
+    onTopicChange = i => e => {        
         let topics = [...this.state.topics]
         topics[i] = e.target.value;
         this.setState(() => ({topics: topics}));
@@ -415,14 +415,13 @@ class CreateRecommendationForm extends React.Component{
             this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
-            console.log("TOKEN: ",auth0Client.getIdToken());
             let choicesWithAnswer = []
             for(var i=0; i<3 ; i++){
                 if(this.state.correctOption == i)
                     choicesWithAnswer.push({choice: this.state.choices[i], correctanswer: true})
                 else                    
-                    choicesWithAnswer.push({choice: this.state.choices[i], correctanswer: false})
-            }
+                    choicesWithAnswer.push({choice: this.state.choices[i], correctanswer: false})            }
+
             const createModify = this.props.isEdit ? "modify" : "create"
             console.log("REQUEST FULL: ",
         axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/'+createModify, {
@@ -451,8 +450,10 @@ class CreateRecommendationForm extends React.Component{
             smartboard: this.state.smartboard,
             smartpencil: this.state.smartpencil,
             speakers: this.state.speakers,
+            topica: this.state.topics[0] == undefined ? '' : this.state.topics[0],
+            topicb: this.state.topics[1] == undefined ? '' : this.state.topics[1],
+            topicc: this.state.topics[2] == undefined ? '' : this.state.topics[2],
             
-            topics: this.state.topics,
             location: '',
             subject: this.state.subject,
             spanish: true, 

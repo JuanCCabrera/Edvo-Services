@@ -35,7 +35,7 @@ class ManageRecommendationsList extends React.Component{
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
         this.props.dispatch(unloadRecommendations());
-        axios.get('https://beta.edvotech.com/api/admin/recommendations',{
+        axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             console.log("REPSONSE RECOM:L ", response);
