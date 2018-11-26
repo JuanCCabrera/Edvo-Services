@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 // entry -> output
 
 module.exports = {
@@ -7,6 +8,9 @@ module.exports = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
+       plugins: [
+           new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)
+],
     module: {
         loaders: [{
             loader: 'babel-loader',
@@ -25,10 +29,10 @@ module.exports = {
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" }
           ]
         },
-    devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true
+        historyApiFallback: true,
+        disableHostCheck: true
     }
 };
 
