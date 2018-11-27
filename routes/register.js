@@ -1,24 +1,42 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const val= require('./validate'); //validate inputs
 const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
+const jwt = require('express-jwt');
+const cors = require('cors');
+const val= require('./validate'); //validate inputs
+const jwksRsa = require('jwks-rsa');
+const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
+
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://edvo-test.auth0.com/.well-known/jwks.json`
+  }),
+
+  // Validate the audience and the issuer.
+  audience: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
+  issuer: `https://edvo-test.auth0.com/`,
+  algorithms: ['RS256']
+});
+
 
 
 /* Create a single user with user_info, class_info and school_info*/
-router.post('/', (req,res,next)=> {
+router.post('/', checkJwt, (req,res,next)=> {
   const user = [];
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,
+      userid: req.user.sub,
       name: req.body.name, 
       lastname: req.body.lastname, 
       gender: req.body.gender,
-      email: req.body.email,
-      password: req.body.password,
+      email: req.user.email,
+      password: null,
       dob: req.body.dob,
       membersince: todaysDate,
       policies: req.body.policies,
@@ -38,7 +56,7 @@ router.post('/', (req,res,next)=> {
       googleclassroom: req.body.googleclassroom, 
       emails: req.body.emails, 
       books: req.body.books, 
-      applications: req.body.apps, 
+      applications: req.body.applications, 
       socialmedia: req.body.socialmedia, 
       projector: req.body.projector, 
       computer: req.body.computer, 
@@ -50,24 +68,37 @@ router.post('/', (req,res,next)=> {
       speakers: req.body.speakers,
       class: req.body.class
     };
-
-    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) 
+    console.log("DATA: ", data);
+console.log("1: ", val.validateUserID(data.userid));
+console.log("2: ", val.validateLongText(data.name));
+console.log("3: ", val.validateLongText(data.lastname));
+console.log("4: ", val.validateNoSpace(data.gender));
+console.log("5: ", val.validateEmail(data.email));
+console.log("6: ", val.validateDate(data.dob));
+console.log("7: ", val.validateBool(data.policies));
+console.log("8: ", val.validateDate(data.teachersince));
+console.log("9: ", val.validateEd(data.education));
+console.log("10: ", val.validateBool(data.spanish));
+    if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) 
       || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies) || val.validateDate(data.teachersince)
       || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
       || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.applications) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
-      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.class) || !Array.isArray(data.class) || val.validateStrings(data.schoolname) || val.validateStringLocation(data.location)){
+      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.class) || val.validateLongText(data.schoolname) || val.validateLongText(data.location)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
           isBase64Encoded: false,});
     }
-
+    console.log("FIRST");
     var classesjson = data.class
-    if(val.validateStrings(classesjson.subject) || val.validateNoSpace(classesjson.format) || val.validateNoSpace(classesjson.language) 
-      || val.validateLevel(classesjson.level) || val.validateGroup(classesjson.groupsize) || val.validateStrings(classesjson.topica)){
+    if(val.validateLongText(classesjson.subject) || val.validateLongText(classesjson.format) || val.validateNoSpace(classesjson.language) 
+      || val.validateLevel(classesjson.level) || val.validateGroup(classesjson.groupsize) || val.validateLongText(classesjson.topica)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
+    console.log("SECOND");
+    
+console.log("classesjson: ", classesjson);
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error

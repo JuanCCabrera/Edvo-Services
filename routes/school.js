@@ -1,81 +1,95 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const val= require('./validate'); //validate inputs
 const path = require('path');
+const jwt = require('express-jwt');
+const cors = require('cors');
+const jwksRsa = require('jwks-rsa');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
 
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://edvo-test.auth0.com/.well-known/jwks.json`
+  }),
 
-/* Modify user basic info */
-router.post('/settings/info', (req,res,next)=> {
-    const info = [];
-    const resultsexist = [];
-    //grab data from http request
-    const data = {
-        userid: req.body.userid, 
-        name: req.body.name,
-        lastname: req.body.lastname,
-        gender: req.body.gender,
-        dob: req.body.dob
-      };
-    //verify no input is empty 
-    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
-      return res.status(403).json({statusCode: 403,
-          message: 'Inputs were not received as expected.',
-        isBase64Encoded: false,});
+  // Validate the audience and the issuer.
+  audience: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
+  issuer: `https://edvo-test.auth0.com/`,
+  algorithms: ['RS256']
+});
+
+router.post('/settings/info', checkJwt, (req,res,next)=> {
+  const info = [];
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.user.sub, 
+      name: req.body.name,
+      lastname: req.body.lastname,
+      gender: req.body.gender,
+      dob: req.body.dob
+    };
+  //verify no input is empty
+  if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
+    return res.status(403).json({statusCode: 403,
+        message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, data: err});
     }
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done)=> {
-      //handle connection error
-      if(err){
-        done();
-        console.log(err);
-        return res.status(500).json({statusCode: 500, data: err});
-      }
-      //verify if user exists in database records
-      const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
-      //stream results back one row at a time
-      query1.on('row', (row) => {
-        resultsexist.push(row);
-      });
-      query1.on('end', () => {
-        done();
-        if (resultsexist.length === 1){ // user exists
-        
-          //SQL Query > update data
-          client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
-          //SQL Query > select data
-          const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
-          //stream results back one row at a time
-          query.on('row', (row) => {
-          info.push(row);
-          });
-          query.on('end', () => {
-            done();
-            return res.status(201).json({statusCode: 201, info});
-          });
-        }else
-        {
-          return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records. Inputs were not received as expected.',
-              isBase64Encoded: false,});
-        }
-      });
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
     });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // user exists
+      
+        //SQL Query > update data
+        client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
+        //SQL Query > select data
+        const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+        info.push(row);
+        });
+        query.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, info});
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+              message: 'User does not exists in records. Inputs were not received as expected.',
+            isBase64Encoded: false,});
+      }
+    });
+  });
 });
 
 /* Get basic info*/
-router.get('/settings/info', (req,res,next)=> {
+router.get('/settings/info', checkJwt,(req,res,next)=> {
   const info = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
+      userid: req.user.sub
     };
-   //verify inputs
-   if(val.validateUserID(data.userid)){
+  //verify no input is empty
+  if(val.validateUserID(data.userid) ){
     return res.status(403).json({statusCode: 403,
-      message: 'Inputs were not received as expected.',
+        message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
   // get a postgres client from the connection pool
@@ -106,9 +120,8 @@ router.get('/settings/info', (req,res,next)=> {
   });
 });
 
-
 /* GET HOME PAGE*/
-router.get('/home', (req,res,next)=> {
+router.get('/home', checkJwt, (req,res,next)=> {
   const validuser = [];
   const teachersdays = [];
   const averageQuestionsRate = [];
@@ -117,7 +130,7 @@ router.get('/home', (req,res,next)=> {
   const toptargetsordered = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
+      userid: req.user.sub, 
     };
    //verify inputs
    if(val.validateUserID(data.userid)){

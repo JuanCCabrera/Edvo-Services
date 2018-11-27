@@ -1,14 +1,129 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const val= require('./validate'); //validate inputs 
 const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/edvo1';
+const jwt = require('express-jwt');
+const cors = require('cors');
+const val= require('./validate'); //validate inputs 
+const jwksRsa = require('jwks-rsa');
+var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
+const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
 
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://edvo-test.auth0.com/.well-known/jwks.json`
+  }),
 
+  // Validate the audience and the issuer.
+  audience: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
+  issuer: `https://edvo-test.auth0.com/`,
+  algorithms: ['RS256']
+});
+
+/* Modify user basic info */
+router.post('/settings/info', checkJwt, (req,res,next)=> {
+  const info = [];
+  const resultsexist = [];
+  //grab data from http request
+  const data = {
+      userid: req.user.sub, 
+      name: req.body.name,
+      lastname: req.body.lastname,
+      gender: req.body.gender,
+      dob: req.body.dob
+    };
+  //verify no input is empty
+  if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
+    return res.status(403).json({statusCode: 403,
+        message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, data: err});
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1){ // user exists
+      
+        //SQL Query > update data
+        client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
+        //SQL Query > select data
+        const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+        info.push(row);
+        });
+        query.on('end', () => {
+          done();
+          return res.status(201).json({statusCode: 201, info});
+        });
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+              message: 'User does not exists in records. Inputs were not received as expected.',
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
+
+/* Get basic info*/
+router.get('/settings/info', checkJwt,(req,res,next)=> {
+  const info = [];
+  //grab data from http request
+  const data = {
+      userid: req.user.sub
+    };
+  //verify no input is empty
+  if(val.validateUserID(data.userid) ){
+    return res.status(403).json({statusCode: 403,
+        message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,});
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done)=> {
+    //handle connection error
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({statusCode: 500, data: err});
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      info.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (info.length === 1){ // user exists
+        return res.status(200).json({statusCode: 200 , info: info[0]});
+      }else
+      {
+        return res.status(401).json({statusCode: 401,
+              message: 'User does not exists in records. Inputs were not received as expected.',
+            isBase64Encoded: false,});
+      }
+    });
+  });
+});
 /*teachers homepage */
-router.get('/home', (req, res, next) => {
+router.get('/home', checkJwt, (req, res, next) => {
   const results = [];
   const resultsexist = [];
   const logs = [];
@@ -19,9 +134,10 @@ router.get('/home', (req, res, next) => {
   const topRecommendations = [];
   const recentRecommendations = [];
   const status = [];
+
   //grab data from http request
   const data = {
-      userid: req.body.userid, //change to req.query.userid for testing
+      userid: req.user.sub, //change to req.query.userid for testing
     };
   //verify inputs
   if(val.validateUserID(data.userid)){
@@ -116,13 +232,13 @@ router.get('/home', (req, res, next) => {
 });
 
 /*Ask a question */
-router.post('/questions/ask', (req,res,next)=> {
+router.post('/questions/ask', checkJwt, (req,res,next)=> {
     const results = [];
     const resultsexist = [];
     const subscription = [];
     //grab data from http request
     const data = {
-        userid: req.body.userid,
+        userid: req.user.sub,
         subject: req.body.subject,
         question: req.body.question
       };
@@ -162,9 +278,11 @@ router.post('/questions/ask', (req,res,next)=> {
             if(subscription.length >0){
               if(subscription[0].status == 'active'){
                 //SQL Query > insert data
-                client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDate, data.userid, data.subject, data.question, false, false,]);
+                  const todaysDateForQuery = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
+                client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDateForQuery, data.userid, data.subject, data.question, false, false,]);
                 //SQL Query > select data
-                const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDate]);
+                  console.log("THE DATE BEFORE INSERT: ", todaysDateForQuery);
+                const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDateForQuery]);
                 //stream results back one row at a time
                 query.on('row', (row) => {
                 results.push(row);
@@ -194,14 +312,13 @@ router.post('/questions/ask', (req,res,next)=> {
       });
     });
 });
-
 /* GET questions of a user*/
-router.get('/questions', (req,res,next)=> {
+router.get('/questions', checkJwt, (req,res,next)=> {
     const questions = [];
     const resultsexist = [];
     //grab data from http request
     const data = {
-        userid: req.body.userid, 
+        userid: req.user.sub, 
       };
     //verify inputs
     if(val.validateUserID(data.userid)){
@@ -255,13 +372,13 @@ router.get('/questions', (req,res,next)=> {
 });
 
 /* Mark read answered question*/  
-router.post('/questions/read', (req,res,next)=> {
+router.post('/questions/read',checkJwt,  (req,res,next)=> {
   const results = [];
   const resultsexist = [];
   const userexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,
+      userid: req.user.sub,
       askeddate: req.body.askeddate,
     };
 
@@ -329,16 +446,17 @@ router.post('/questions/read', (req,res,next)=> {
 
 
 /* Rate answered question*/  
-router.post('/questions/rate', (req,res,next)=> {
+router.post('/questions/rate', checkJwt, (req,res,next)=> {
   const results = [];
   const resultsexist = [];
   const userexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,
+      userid: req.user.sub,
       askeddate: req.body.askeddate,
       rate: req.body.rate
     };
+console.log(data);
   //verify inputs
   if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateRate(data.rate)){
     return res.status(403).json({statusCode: 403,
@@ -402,9 +520,9 @@ router.post('/questions/rate', (req,res,next)=> {
   });
 });
 
-
+ 
 /* Mark read recommendation*/  
-router.post('/recommendations/read', (req,res,next)=> {
+router.post('/recommendations/read', checkJwt, (req,res,next)=> {
     const resultsexist = [];
     const userexist = [];
     const quizresult =[];
@@ -412,7 +530,7 @@ router.post('/recommendations/read', (req,res,next)=> {
     const quizqid =[];
     //grab data from http request
     const data = {
-        userid: req.body.userid,
+        userid: req.user.sub,
         recomid: req.body.recomid,
       };
     //verify inputs
@@ -517,14 +635,13 @@ router.post('/recommendations/read', (req,res,next)=> {
   });
 });
 
-
 /* Rate recommendation*/  
-router.post('/recommendations/rate', (req,res,next)=> {
+router.post('/recommendations/rate', checkJwt, (req,res,next)=> {
   const resultsexist = [];
   const userexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,
+      userid: req.user.sub,
       recomid: req.body.recomid,
       rate: req.body.rate
     };
@@ -582,11 +699,11 @@ router.post('/recommendations/rate', (req,res,next)=> {
 });
 
 /* Favorite recommendation*/  
-router.post('/recommendations/favorite', (req,res,next)=> {
+router.post('/recommendations/favorite', checkJwt, (req,res,next)=> {
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,
+      userid: req.user.sub,
       recomid: req.body.recomid,
       favorite: req.body.favorite
     };
@@ -631,14 +748,15 @@ router.post('/recommendations/favorite', (req,res,next)=> {
 
 
 /* Favorite question*/  
-router.post('/questions/favorite', (req,res,next)=> {
+router.post('/questions/favorite', checkJwt, (req,res,next)=> {
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,
+      userid: req.user.sub,
       askeddate: req.body.askeddate,
       favorite: req.body.favorite
     };
+console.log("QUESTION: ", data);
   //verify inputs
   if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateBool(data.favorite)){
     return res.status(403).json({statusCode: 403,
@@ -678,70 +796,14 @@ router.post('/questions/favorite', (req,res,next)=> {
   });
 });
 
-/* Modify user basic info */
-router.post('/settings/info', (req,res,next)=> {
-    const info = [];
-    const resultsexist = [];
-    //grab data from http request
-    const data = {
-        userid: req.body.userid, 
-        name: req.body.name,
-        lastname: req.body.lastname,
-        gender: req.body.gender,
-        dob: req.body.dob
-      };
-    //verify no input is empty
-    if(val.validateUserID(data.userid) || val.validateNoSpace(data.name) || val.validateStrings(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
-      return res.status(403).json({statusCode: 403,
-          message: 'Inputs were not received as expected.',
-        isBase64Encoded: false,});
-    }
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done)=> {
-      //handle connection error
-      if(err){
-        done();
-        console.log(err);
-        return res.status(500).json({statusCode: 500, message: err});
-      }
-      //verify if user exists in database records
-      const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
-      //stream results back one row at a time
-      query1.on('row', (row) => {
-        resultsexist.push(row);
-      });
-      query1.on('end', () => {
-        done();
-        if (resultsexist.length === 1){ // user exists
-        
-          //SQL Query > update data
-          client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
-          //SQL Query > select data
-          const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
-          //stream results back one row at a time
-          query.on('row', (row) => {
-          info.push(row);
-          });
-          query.on('end', () => {
-            done();
-            return res.status(201).json({statusCode: 201 , info});
-          });
-        }else{
-          return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records. Inputs where not received as expected.',
-              isBase64Encoded: false,});
-        }
-      });
-    });
-});
 
 /* add classes */
-router.post('/settings/classes/add', (req,res,next)=> {
+router.post('/settings/classes/add', checkJwt, (req,res,next)=> {
     const classes = [];
     const resultsexist = [];
     //grab data from http request
     const data = {
-        userid: req.body.userid, 
+        userid: req.user.sub, 
         subject: req.body.classsubject,
         format: req.body.format,
         language: req.body.language,
@@ -752,7 +814,7 @@ router.post('/settings/classes/add', (req,res,next)=> {
         topicc: req.body.topicc
       };
     //verify inputs
-    if(val.validateUserID(data.userid) || val.validateStrings(data.subject) || val.validateNoSpace(data.format) || val.validateNoSpace(data.language) || val.validateLevel(data.level) || val.validateGroup(data.groupsize) || val.validateStrings(data.topica)){
+    if(val.validateUserID(data.userid) || val.validateLongText(data.subject) || val.validateNoSpace(data.format) || val.validateNoSpace(data.language) || val.validateLevel(data.level) || val.validateGroup(data.groupsize) || val.validateLongText(data.topica)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
@@ -798,12 +860,12 @@ router.post('/settings/classes/add', (req,res,next)=> {
 });
 
 /* Remove classes*/ 
-router.delete('/settings/classes/remove', (req,res,next)=> {
+router.delete('/settings/classes/remove', checkJwt, (req,res,next)=> {
   const classes = [];
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
+      userid: req.user.sub, 
       classid: req.body.classInfoID
     };
  //verify inputs
@@ -858,12 +920,12 @@ router.delete('/settings/classes/remove', (req,res,next)=> {
 });
 
 /* GET classes to modify */
-router.get('/settings/classes', (req,res,next)=> {
+router.get('/settings/classes', checkJwt, (req,res,next)=> {
   const classes = [];
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,  //change to req.query.userid for testing
+      userid: req.user.sub  //change to req.query.userid for testing
     };
   //verify inputs
   if(val.validateUserID(data.userid)){
@@ -908,55 +970,14 @@ router.get('/settings/classes', (req,res,next)=> {
   });
 });
 
-/* Get basic info*/
-router.get('/settings/info', (req,res,next)=> {
-  const info = [];
-  //grab data from http request
-  const data = {
-      userid: req.body.userid, 
-    };
-  //verify inputs
-  if(val.validateUserID(data.userid)){
-    return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected',
-      isBase64Encoded: false,});
-  }
-  // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
-    //handle connection error
-    if(err){
-      done();
-      console.log(err);
-      return res.status(500).json({statusCode: 500, message: err});
-    }
-    //verify if user exists in database records
-    const query1 = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
-    //stream results back one row at a time
-    query1.on('row', (row) => {
-      info.push(row);
-    });
-    query1.on('end', () => {
-      done();
-      if (info.length === 1){ // user exists
-        return res.status(200).json({statusCode: 200 , info: info[0]});
-      }else
-      {
-        return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records. Inputs were not received as expected.',
-            isBase64Encoded: false,});
-      }
-    });
-  });
-});
-
 /* View recommendations list */
-router.get('/recommendations', (req,res,next)=> {
+router.get('/recommendations', checkJwt, (req,res,next)=> {
   const results = [];
   const recommendations = [];
   const favoriterecommendations = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,  //change to req.query.userid for testing
+      userid: req.user.sub,  //change to req.query.userid for testing
     };
   //verify inputs
   if(val.validateUserID(data.userid)){
@@ -1011,12 +1032,12 @@ router.get('/recommendations', (req,res,next)=> {
 });
 
 /*GET to MODIFY PLAN*/
-router.get('/settings/plans', (req,res,next)=> {
+router.get('/settings/plans', checkJwt, (req,res,next)=> {
   const results = [];
   const subscription = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid,  //change to req.query.userid for testing
+      userid: req.user.sub,  //change to req.query.userid for testing
     };
   //verify inputs
   if(val.validateUserID(data.userid)){
@@ -1066,81 +1087,124 @@ router.get('/settings/plans', (req,res,next)=> {
   });
 });
 
+
 /*MODIFY PLAN*/
-router.post('/settings/plans', (req,res,next)=> {
+router.post('/settings/plans', checkJwt, (req, res, next) => {
   const results = [];
   const subscription = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
-      action: req.body.action //solo puede ser active o suspended
-    };
+    userid: req.user.sub,
+    action: req.body.action //solo puede ser active o suspended
+  };
   //verify inputs
-  if(val.validateUserID(data.userid) || val.validateNoSpace(data.action)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid) || val.validateNoSpace(data.action)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
-  if(data.action == 'active' || data.action == 'suspended')
-  {
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done)=> {
-      //handle connection error
-      if(err){
-        done();
-        console.log(err);
-        return res.status(500).json({statusCode: 500, message: err});
-      }
-      //verify if user exists in database records and is teacher
-      const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype = $2', [data.userid, 'teacher']);
-      //stream results back one row at a time
-      query.on('row', (row) => {
-        results.push(row);
-      });
-      query.on('end', () => {
-        done();
-        if (results.length === 1){ // user exists and is of type teacher
-          //SQL query > select all recomendations
-          const query1 = client.query('UPDATE subscription SET status = $1 WHERE userid = $2 returning *',[data.action, data.userid,]);
-          //stream results back one row at a time
-          query1.on('row', (row) => {
-            subscription.push(row);
-          });
-          query1.on('end', () => {
-            done();
-            if(subscription.length == 1)
-              return res.status(201).json({statusCode: 201 , subscription: subscription[0]});
-            else
-            {
+    console.log("ACTION: ", data.action);
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    //handle connection error
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ statusCode: 500, message: err });
+    }
+    //verify if user exists in database records and is teacher
+    const query = client.query('SELECT * FROM subscription WHERE userid = $1', [data.userid]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1) {
+
+        if (data.action == 'active') {
+          stripe.subscriptions.del(results[0].token, function(err, response){
+            if(err){
               return res.status(402).json({statusCode: 402, message: 'Update failed.'});
             }
+
+            const query1 = client.query('UPDATE subscription SET status = $1 WHERE userid = $2 returning *',['suspended', data.userid]);
+            //stream results back one row at a time
+            query1.on('row', (row) => {
+              subscription.push(row);
+            });
+            query1.on('end', () => {
+              done();
+              if(subscription.length == 1)
+                return res.status(201).json({statusCode: 201, subscription});
+              else
+              {
+                return res.status(402).json({statusCode: 402, message: 'Update failed.'});
+              }
+            });
           });
-        }else
-        {
-          return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
-              isBase64Encoded: false,});
         }
-      });
+        else if (data.action == 'suspended') {
+            
+          stripe.subscriptions.retrieve(results[0].token, function(err, response){
+         stripe.subscriptions.create({
+                    customer: response.customer,
+                    billing: 'charge_automatically',
+                    items: [
+                      {
+                        plan: "plan_D7HTWmx4J01DoB",
+                      },
+                    ]
+                  }, function (err, response) {
+            if (err) {
+              return res.status(402).json({ statusCode: 402, message: 'Update failed.' });
+            }
+             console.log("SUBSCRIPTION ID", response.id);
+            const query1 = client.query('UPDATE subscription SET status = $1, token = $2 WHERE userid = $3 returning *', ['active', response.id, data.userid]);
+            //stream results back one row at a time
+            query1.on('row', (row) => {
+              subscription.push(row);
+            });
+            query1.on('end', () => {
+              done();
+              if (subscription.length == 1){
+                  console.log("SUBSCRIPTION DB: ", subscription);
+                return res.status(201).json({ statusCode: 201, subscription });
+              }
+              else {
+                return res.status(402).json({ statusCode: 402, message: 'Update failed.' });
+              }
+            });
+          });
+        });
+        }
+        else {
+            console.log("THE ACTION INSIDE IS: ",data.action);
+          return res.status(401).json({
+            statusCode: 401,
+            message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+            isBase64Encoded: false,
+          });
+        }
+      }
+
+      else {
+        return res.status(403).json({ statusCode: 403, message: 'Inputs were not received as expected.', isBase64Encoded: false, });
+      }
     });
-  }else{
-    return res.status(403).json({statusCode: 403,
-      message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
-  }
+  });
 });
 
-
-//quiz routes HERE
-
 /*ANSWER QUIZ*/
-router.post('/quizzes/take', (req,res,next)=> {
+router.post('/quizzes/take', checkJwt, (req,res,next)=> {
   const results = [];
   const userexist = [];
   const qresults =[];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
+      userid: req.user.sub, 
       quizid: req.body.quizid,
       answers: req.body.answers
     };
@@ -1237,13 +1301,13 @@ router.post('/quizzes/take', (req,res,next)=> {
 
 
 //GET quizzes 
-router.get('/quizzes', (req,res,next)=> {
+router.get('/quizzes', checkJwt, (req,res,next)=> {
   const results = [];
   const userexist = [];
   const quizzes =[];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
+      userid: req.user.sub, 
     };
   //verify inputs
   if(val.validateUserID(data.userid)){
@@ -1295,5 +1359,7 @@ router.get('/quizzes', (req,res,next)=> {
     });
   });
 });
+
+
 
 module.exports = router;
