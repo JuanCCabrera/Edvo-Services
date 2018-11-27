@@ -30,31 +30,7 @@ class RecommendationsList extends React.Component{
     //when the component loads. 
     componentWillMount(){
         console.log("MOUTING RECOMLIST WITH ID: ", this.props.assigned.userID);
-        this.props.dispatch(setLoadingModal());
         this.props.dispatch(unloadRecommendations());
-        axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/user/recommendations',{
-            
-                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
-            
-            params: {
-                userToAssign: this.props.assigned.userID
-              }
-          })
-        .then(response => {
-            console.log("REPSONSE RECOM:L ", response);
-            response.data.recommendations.forEach(element => {
-                //Change id for userID when DB connection is ready
-                this.props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
-                    header: element.header, multimedia: element.multimedia, 
-                    description: element.description}));
-                
-            })
-            this.props.dispatch(setLoadingModal());
-        }).catch(error =>{
-            console.log("ERROR ASSINING: ", error);
-            this.props.dispatch(setLoadingModal());
-            this.props.dispatch(setFailureModal());
-        });;
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);

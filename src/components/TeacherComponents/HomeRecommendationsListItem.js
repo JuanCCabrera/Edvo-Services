@@ -13,7 +13,7 @@ const HomeRecommendationsListItem = (props) => (
         <div className="list-group-item">
             <div className="clickable" onClick={() => {
                 console.log("PROPS FOR READ RECOM IN HOME: ", props.reco)
-                if(props.reco.read == null){
+                if(props.reco.read != null){
                     axios.post('https://beta.edvotech.com/api/teacher/recommendations/read', {
                         recomid: props.reco.recoID
                     },

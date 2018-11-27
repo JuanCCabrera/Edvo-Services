@@ -202,7 +202,8 @@ class CreateUserForm extends React.Component{
             gender: this.state.gender,
             levelOfEdu: this.state.levelOfEdu,
             usertype: this.state.type,
-            institutionid: this.state.institutionID
+            institutionid: this.state.institutionID,
+            policies: true
     },
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -212,7 +213,7 @@ class CreateUserForm extends React.Component{
             this.props.history.push('/admin/settings/users');
     })
     .catch(error => {
-        if(error.response.status == 401)     
+        if(error.response.status == 401 || error.response.status == 403)     
             this.setState({requestError: error.response.data.message});
     });
         }

@@ -30,7 +30,7 @@ const MainPageDisplay = (props) => (
             <h1>EVOLVED</h1>
             <div className="container Join">
             <h4>Únete a la comunidad de educadores</h4>
-            <h4>que esta revolucionando la educación</h4>
+            <h4>que está revolucionando la educación</h4>
             <div>
             <NavLink to="/login" activeClassName="is-active Join" exact>
                 <button className="btn mb-5 mt-5">{props.lang === 'English' ? 'JOIN' : 'ÚNETE'}</button>

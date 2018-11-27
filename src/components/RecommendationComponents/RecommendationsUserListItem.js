@@ -3,6 +3,12 @@ import uuid from 'uuid';
 import {connect} from 'react-redux';
 import { selectUser } from '../../actions/assignRecommendations';
 import {selectUserToDisplay } from '../../actions/userModal';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import {setLoadingModal} from '../../actions/loadingModal';
+import {setSuccessModal} from '../../actions/successModal';
+import {setFailureModal} from '../../actions/failureModal';
+import {loadRecommendation, unloadRecommendations} from '../../actions/recommendations';
 
 const RecommendationsUserListItem = (props) => (
     <div className="list-group-item">
@@ -34,7 +40,31 @@ const RecommendationsUserListItem = (props) => (
         })}
         </p>
             <button onClick={() => {
+                props.dispatch(unloadRecommendations());
+                axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/user/recommendations',{
+
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
+
+                params: {
+                userToAssign: props.user.id
+                }
+                })
+                .then(response => {
+                console.log("REPSONSE RECOM:L ", props);
+                response.data.recommendations.forEach(element => {
+                    console.log("ELEMENT: ",
+                props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
+                header: element.header, multimedia: element.multimedia, 
+                description: element.description})));
+                console.log("HERE INSIDE RESPONSE");
                 props.dispatch(selectUser({userID: props.user.id}));
+
+                })
+                }).catch(error =>{
+                    console.log("ERROR: ", error)
+                    if(error.response.status > 300)
+                        props.dispatch(setFailureModal());
+                });
             }}>
                 <p className="btn btn-item">
                     {props.lang === 'English' ? 'Select' : 'Seleccionar'}

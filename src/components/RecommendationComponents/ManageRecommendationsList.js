@@ -41,9 +41,42 @@ class ManageRecommendationsList extends React.Component{
             console.log("REPSONSE RECOM:L ", response);
             response.data.recommendations.forEach(element => {
                 //Change id for userID when DB connection is ready
-                this.props.dispatch(loadRecommendation({id: element.recomid, title: element.title,
-                    header: element.header, multimedia: element.multimedia, 
-                    description: element.description}));
+                this.props.dispatch(loadRecommendation({
+                    id: element.recomid, 
+                    title: element.title,
+                    header: element.header, 
+                    multimedia: element.multimedia, 
+                    description: element.description,
+                    teachingStrategies: element.strategies,
+                    updatedMaterial: element.material,
+                    timeManagement: element.timemanagement,
+                    technologyIntegration: element.tech,
+                    instructionAlignment: element.instructions,
+
+                    moodle: element.moodle,
+                    googleClassroom: element.googleclassroom,
+                    emailResource: element.emails,
+                    books: element.books,
+                    socialMedia: element.socialmedia,
+                    projector: element.projector,
+                    computer: element.computer,
+                    tablet: element.tablet,
+                    stylus: element.stylus,
+                    internet: element.internet,
+                    smartboard:element.smartboard,
+                    smartpencil:element.smartpencil,
+                    speakers: element.speakers,
+                    
+                    topics: [element.topica, element.topicb, element.topicc],
+                    location: element.location,
+                    subject: element.subject,
+                    language: element.english == true ? 'english' : 'spanish',
+                    type: element.type,
+                    schoolType: element.schooltype,
+                    format: element.format,
+                    level: element.level,
+                    size: element.groupsize
+                }));
             });
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
