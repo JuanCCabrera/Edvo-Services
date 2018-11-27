@@ -56,9 +56,11 @@ class BasicInfoProfileForm extends React.Component{
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
         .then(response => {
+            const dateCheck = moment(response.data.info.dob).add('4',"hours");
+            console.log('DATE RESPONSE', dateCheck);
             this.setState({name: response.data.info.name, lastName: response.data.info.lastname,
-                 dateOfBirth: moment(response.data.info.dob), gender: response.data.info.gender});
-            
+                 dateOfBirth: moment(response.data.info.dob).add('4',"hours"), gender: response.data.info.gender});
+                
             this.props.dispatch(setLoadingModal());
         }).catch(error=>{
             console.log("ERROR: ", error);
@@ -154,7 +156,7 @@ class BasicInfoProfileForm extends React.Component{
             axios.post('https://beta.edvotech.com/api/admin/settings/info', {
             name: this.state.name,
             lastname: this.state.lastName,
-            dob: this.state.dateOfBirth,
+            dob: moment(this.state.dateOfBirth).format("YYYY-MM-DD"),
             gender: this.state.gender
             },
             {

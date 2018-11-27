@@ -36,12 +36,13 @@ class TeacherRecommendationsList extends React.Component{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            response.data.recommendations.forEach(element => {  
+            response.data.recommendations.forEach(element => { 
+                console.log('READ STATUS', !!element.read); 
                 console.log("RECOM RESPONSE: ", element);        
                 console.log("ACTION OUTPUT: ",this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, 
                 header: element.header, location: element.location, 
                 description: element.description, 
-                multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate})));
+                multimedia: element.multimedia, date: element.date, read: !!element.read, rate: element.rate})));
                 if(element.favorite == true){
                     console.log("FAVORITE LOADING", element);
                     this.props.dispatch(addFavoriteRecommendation({recoID: element.recomid, title: element.title, 

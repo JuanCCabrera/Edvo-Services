@@ -35,14 +35,17 @@ class SchoolList extends React.Component{
         axios.get('https://beta.edvotech.com/api/admin/settings/institutions',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
-            console.log("REPSONSE: ", response);
+            console.log("REPSONSE SCHOL LLIS    : ", response);
+            if(response.status == 201 && response.data.institutions){
             response.data.institutions.forEach(element => {
                 this.props.dispatch(addSchool({id: element.institutionid, name: element.name , 
-                    location: element.location, type: element.type, 
+                    location: element.location, type: element.schooltype, 
                     numAccounts: element.accounts}));
             });
+        }
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            console.log("ERROR SCHOOL LIST: ", error);
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
         });

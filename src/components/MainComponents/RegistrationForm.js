@@ -276,6 +276,23 @@ class RegistrationForm extends React.Component{
             ];
             this.setState(() => ({topicsTaught: topics}));
         }
+        
+            let j = 0;
+            let errorCheck = false;
+            for(j = 0; j < this.state.topicsTaught.length; j++){
+                if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
+                    if(this.props.lang === 'English'){
+                        this.setState(() => ({topicError: 'Enter valid topics. '}));
+                    }else{
+                        this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                    }
+                    errorCheck = true;
+                    break;
+                }
+            }
+            if(!errorCheck){
+                this.setState(() => ({topicError: ''}));
+            }
     }
 
     //Add topic to topics array in local state

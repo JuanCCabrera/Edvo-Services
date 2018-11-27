@@ -44,7 +44,7 @@ class SchoolListItem extends React.Component{
                 }
                 <p>{this.props.lang === 'English' ? 'Location' : 'Localización'}: {this.props.school.location}</p>
                 {
-                    //School type
+                    console.log("SCHOOL PROPS: ", this.props)
                 }
                 <p>{this.props.lang === 'English' ? 'Type' : 'Tipo'}: {this.props.school.type}</p>
                 {

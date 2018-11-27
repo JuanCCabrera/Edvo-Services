@@ -218,6 +218,23 @@ class CreateRecommendationForm extends React.Component{
             ];
             this.setState(() => ({topics}));
         }
+
+        let j = 0;
+        let errorCheck = false;
+        for(j = 0; j < this.state.topics.length; j++){
+            if(this.state.topics[j] && this.state.topics[j].match(/^\s+$/)){
+                if(this.props.lang === 'English'){
+                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                }else{
+                    this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                }
+                errorCheck = true;
+                break;
+            }
+        }
+        if(!errorCheck){
+            this.setState(() => ({topicError: ''}));
+        }
     }
 
     //Add a new topic to the list of topics in the local state. 

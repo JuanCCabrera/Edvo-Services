@@ -116,8 +116,8 @@ class AnswerQuizForm extends React.Component {
                                 {/* {this.props.quiz.quizDate} */}
                                 
                                     {this.props.quiz && this.props.quiz.questions.questions.map(element => {
-                                        return ( <div><span key= {uuid()}>{element.recommendation}</span>
-                                        <h3 style={{marginTop: '1rem'}} key= {uuid()}>{element.questionstring} </h3>
+                                        return ( <div key= {uuid()}><span >{element.recommendation}</span>
+                                        <h3 style={{marginTop: '1rem'}}>{element.questionstring} </h3>
                                         <div className="btn btn-default">
                                             <select name={element.questionid} onChange={this.onAnswerChange} value={this.state.answers[element.questionid]} required>
                                                 <option  disabled selected></option>

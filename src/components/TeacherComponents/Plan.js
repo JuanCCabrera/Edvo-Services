@@ -41,7 +41,9 @@ class Plan extends React.Component{
         })
         .then(response => {
             if(response.status == 200){
+                console.log("RESPONSE PLANS: ", response);
                 this.setState({status: response.data.subscription.status});
+                this.props.dispatch(loadPlan({name: response.data.subscription.type, status: response.data.subscription.status}));
             }
             this.props.dispatch(setLoadingModal());
         });
@@ -78,6 +80,7 @@ class Plan extends React.Component{
         if(response.status == 201){
             this.props.dispatch(setSuccessModal());
             const stateStatus = this.state.status == 'active' ? 'suspended' : 'active';
+            this.props.dispatch(loadPlan({status: stateStatus}));
             this.setState({status: stateStatus});
         }
     })
@@ -121,7 +124,15 @@ class Plan extends React.Component{
                 {
                     //Name of package owned by teacher
                 }
-                {this.props.lang === 'English' ? <h4>Name: {this.props.plan.name} Package</h4> : <h4>Nombre: Paquete {this.props.plan.name}</h4>}
+                {this.props.lang === 'English' ? 
+                 <div>
+                    <span>Plan: </span>{this.props.plan.status =="active" ? <h4>Standard Package</h4> : <h4> You are not currently subscribed. </h4>}
+                </div>
+                 :
+                 <div>
+                    <span>Plan: </span>{this.props.plan.status =="active" ? <h4>Paquete Estandar</h4> : <h4> Usted no tiene un suscripción activa. </h4>}
+                </div>
+                }
                 {
                     //Link to Plans page to allow teacher to view the benefits of his or her subscription plan.
                 }
