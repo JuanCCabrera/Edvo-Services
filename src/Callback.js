@@ -25,7 +25,7 @@ class Callback extends React.Component {
             await axios.get('https://beta.edvotech.com/api/user',  {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{ 
-                localStorage.setItem('role',response.data.body.user[0].usertype);
+                localStorage.setItem('role',response.data.user[0].usertype);
                 route = '/'+localStorage.getItem('role')+'/home';
                 localStorage.removeItem('loginError');             
                 axios.post('https://beta.edvotech.com/api/log', {},

@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 class Auth {
   constructor(props) {
+    console.log("####################AUTH0#########################")
     this.auth0 = new auth0.WebAuth({
       // the following three lines MUST be updated
       domain: 'edvo-test.auth0.com',
@@ -34,7 +35,7 @@ class Auth {
   }
 
   getEmail(){
-    return this.getEmail;
+    return localStorage.getItem('email');
   }
 
   getIdToken() {
@@ -61,9 +62,8 @@ class Auth {
   }
 
   setSession(authResult, step) {
-    if(localStorage.getItem('idToken') == null)
-      localStorage.setItem('idToken',authResult.idToken);
-    this.getEmail = () => authResult.idTokenPayload.email;
+    localStorage.setItem('idToken',authResult.idToken);
+    localStorage.setItem('email',authResult.idTokenPayload.email);
     localStorage.setItem('expiresAt', authResult.expiresIn * 1000 + new Date().getTime());
   }
 

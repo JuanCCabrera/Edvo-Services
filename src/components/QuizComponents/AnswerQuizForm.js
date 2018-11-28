@@ -27,12 +27,12 @@ class AnswerQuizForm extends React.Component {
             .then(response => {
                 this.props.dispatch(reset());
                 console.log("REPSONSE OF QUIZ: ", response);
-                let correctChoices = {}
-                let questions = []
-                let questionsObject = {
-                    questions: []
-                }
                 response.data.quizzes.forEach(element => {
+                    let correctChoices = {}
+                    let questions = []
+                    let questionsObject = {
+                        questions: []
+                    }
                     element.questions.forEach(question => {
                         let questionObject = {
                             questionid: '',
@@ -52,10 +52,11 @@ class AnswerQuizForm extends React.Component {
                             questionObject.choices.push(choiceObject);
                         })
                         questionsObject.questions.push(questionObject);
-                    })
-                    this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}))
-                    console.log("CORRECT ANSEWRS ARE: ", correctChoices);
-                    console.log("QUESTION OBJECT IS: ", questionsObject);
+                    });
+                    console.log("CQUESTION OBECT :LEKGNHT:::", questionsObject);
+                    if(questionsObject.questions.length == 12)
+                        this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
+                    
                     });
             });   
             this.props.dispatch(setLoadingModal()); 

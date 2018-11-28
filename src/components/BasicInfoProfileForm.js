@@ -10,16 +10,7 @@ import {setEditModal} from '../actions/editModal';
 import { setFailureModal } from '../actions/failureModal';
 import { setLoadingModal } from '../actions/loadingModal';
 
-const reset = () => {
-    console.log("RESETTING");
-    axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
-      client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      email: auth0Client.getEmail(),
-      connection: 'Username-Password-Authentication' ,
-      json: true
-    },
-    {headers: { 'content-type': 'application/json' }});
-  };
+
 
 /**
  * Basic information profile form available in the settings page of every user type. It allows users to change their name, last name, gender, and date of birth as well as access means to change their password. 
@@ -43,15 +34,35 @@ class BasicInfoProfileForm extends React.Component{
             calendarFocused: false,
             gender: props.info ? props.info.gender : 'male',
             formIncompleteError: false,
-            profileInvalidInputs: false
+            profileInvalidInputs: false,
+            resetPasswordMessage: false
         };
     }
+    resetPassword(e){
+        let message = false;
+        e.preventDefault();
+        axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
+          client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
+          email: auth0Client.getEmail(),
+          connection: 'Username-Password-Authentication' ,
+          json: true
+        },
+        {headers: { 'content-type': 'application/json' }})
+        .then(response => {
+            if(response.status == 200){
+                message = true;
+            }
+        });
+        (() => this.setState({resetPasswordMessage: message}));
+      };
+      
+
 
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
         console.log("WE HAVE EMAIL: ",auth0Client.getIdToken());
         //send this to action
-        axios.get('https://beta.edvotech.com/api/admin/settings/info',
+        axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/settings/info',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
@@ -107,14 +118,6 @@ class BasicInfoProfileForm extends React.Component{
     onFocusChange = ({focused}) => {
         this.setState(() => ({calendarFocused: focused}));
     };
-
-    //Lead to change password page (Requires integration)
-    changePassword = (e) => {
-        e.preventDefault();
-        reset();
-
-        //TO-DO Modify password and update in database
-    }
 
     componentDidUpdate(prevProps, prevState){
         if(prevProps !== this.props){
@@ -357,11 +360,14 @@ class BasicInfoProfileForm extends React.Component{
                             //Change password button
                         }
                         
-                        <button onClick={this.changePassword}>
+                        <button onClick={this.resetPassword}>
                             <div className="btn btn-item" style={{marginTop: '2rem'}}>
                                 {this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} 
                             </div>
                         </button>
+                        <br/>
+                        {this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? 'An email has been sent to '+auth0Client.getEmail()+' with a reset link' 
+                        : 'Un correo electrónico ha sido enviado a '+auth0Client.getEmail()+' con un enlace para cambiar su contraseña')}
                     </div>
 
                     </form>

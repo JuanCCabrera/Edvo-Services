@@ -9,7 +9,6 @@ export const createQuiz = (
             choices: {}
         }
     } = {}) => {
-        console.log("IN ACTION Quiz ID: ", quizID);
         return {
             type: 'CREATE_QUIZ',
             quiz_item: {
