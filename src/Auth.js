@@ -11,7 +11,7 @@ class Auth {
       domain: 'edvo-test.auth0.com',
       roleUrl: "https://edvo-test/role",
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      redirectUri: 'http://localhost:8080/callback',
+      redirectUri: 'https://beta.edvotech.com/callback',
       responseType: 'token id_token',
       scope: 'openid profile email'
     });
@@ -23,6 +23,8 @@ class Auth {
     this.getRole = this.getRole.bind(this);
     this.getEmail = this.getEmail.bind(this);
     this.getSubscribed = this.getSubscribed.bind(this);
+    if(localStorage.getItem('p-redirect')==null)
+      localStorage.setItem('p-redirect', '/login');
     if(localStorage.getItem('route') == '[object Object]' || localStorage.getItem('route')==null)
       localStorage.setItem('route', '/');
   }
@@ -87,7 +89,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'http://localhost:8080/login',
+      returnTo: 'https://beta.edvotech.com/login',
       clientID: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
     });
     localStorage.clear();
