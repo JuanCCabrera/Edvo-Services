@@ -26,8 +26,8 @@ const MainPageDisplay = (props) => (
             </div>
         </div> : 
         <div className="container Title">
-            <h1>EDUCATION</h1>
-            <h1>EVOLVED</h1>
+            <h1>EDUCACIÓN</h1>
+            <h1>EVOLUCIONADA</h1>
             <div className="container Join">
             <h4>Únete a la comunidad de educadores</h4>
             <h4>que está revolucionando la educación</h4>
