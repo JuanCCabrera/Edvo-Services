@@ -27,26 +27,44 @@ class ViewAnsweredQuiz extends React.Component {
     render(){
         return (
             <div className="background-home">
-                    <QuizButtonList/>
-                    <h3>{moment(this.state.quizDate).format("YYYY-MM") } Quiz</h3>
-                    <h3>Your score: {this.state.score} / 12</h3>
-                    <br/>
-                    {
-                        this.props.quiz.questions.questions.map(element => {
-                            return ( <div><h4 key= {uuid()}>Relevant Recommendation: {element.recommendation}</h4>
-                            <h2 key= {uuid()}>{element.questionstring} </h2>
-                            {element.choices.map(answer =>{
-                                console.log("CORRECT CHOICES", this.state.correctChoices)
-                                if(answer.choiceid == this.state.correctChoices[element.questionid]){
-                                    console.log("CORRECT CHOICES", answer.choiceid)
-                                    return(<h3 key={uuid()}>Correct Answer: {answer.choice}</h3>)
-                                }
-                            })}
-                            <br/>
-                            </div>)
-                    })}
-                     {this.state.show === true && <h3 className="text-capitalize text-danger">PLEASE ANSWER ALL</h3>}
-                    
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <div className="text-center well">
+                                <QuizButtonList/>
+                            </div>
+                        </div>
+                        <div className="col-sm-1"/>
+                        <div className="col-sm-9">
+                            <div className="big-card">
+                                <p className="form__title">{this.props.lang === 'English' ? 'Quiz' : 'Prueba'} {moment(this.state.quizDate).format("MM-DD-YYYY")}</p>    
+                                <p style={{fontWeight: 'bold', fontSize: '2rem'}}>{this.props.lang === 'English' ? 'Score' : 'Puntuación'}: {this.state.score} / 12</p>
+                                                           
+                                <br/>
+                                {
+                                    this.props.quiz.questions.questions.map((element, index) => {
+                                        return ( <div>
+                                        <p key= {uuid()}>{index+1}. {element.questionstring} </p>
+                                        {
+                                            //<p key= {uuid()} style={{fontSize: '1.35rem'}}>Relevant Recommendation: {element.recommendation}</p>
+                                        }
+
+                                        {element.choices.map((answer) =>{
+                                            console.log("CORRECT CHOICES", this.state.correctChoices)
+                                            if(answer.choiceid == this.state.correctChoices[element.questionid]){
+                                                console.log("CORRECT CHOICES", answer.choiceid)
+                                                return(<p key={uuid()}>{this.props.lang === 'English' ? 'Correct Answer' : 'Respuesta Correcta'}: {answer.choice}</p>)
+                                            }
+                                        })}
+                                        <hr/>
+                                        </div>)
+                                })}
+
+                                 {this.state.show === true && <h3 className="text-capitalize text-danger">PLEASE ANSWER ALL</h3>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -55,6 +73,7 @@ class ViewAnsweredQuiz extends React.Component {
 
 const mapStateToProps = (state, props) => {
     return{
+        lang: state.language.lang,
         quiz: state.quizzes.find((quiz) => {
             return ((quiz.quizID == props.match.params.quizID));
         })

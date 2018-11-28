@@ -1,6 +1,6 @@
 import React from 'react';
-import QuizButtonList from './QuizButtonList';
 import PendingQuizzesList from './PendingQuizzesList';
+import ReturnButtonList from './ReturnButtonList';
 
 const ManageQuizzes = (props) => (
     <div className="background-home">
@@ -8,7 +8,7 @@ const ManageQuizzes = (props) => (
             <div className="row">
                 <div className="col-sm-3">
                     <div className="text-center well">
-                        <QuizButtonList/>
+                        <ReturnButtonList/>
                     </div>
                 </div>
                 <div className="col-sm-1"/>

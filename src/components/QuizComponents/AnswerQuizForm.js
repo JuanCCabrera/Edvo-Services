@@ -6,6 +6,7 @@ import uuid from 'uuid';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import {setLoadingModal} from '../../actions/loadingModal';
+import {setFailureModal} from '../../actions/failureModal';
 import {reset, createQuiz} from '../../actions/quiz';
 
 class AnswerQuizForm extends React.Component {
@@ -13,12 +14,14 @@ class AnswerQuizForm extends React.Component {
         super(props);
         this.state = {
             answers: {},
+            answersError: false,
 
             show: false
         };
     }
 
     componentWillMount(){  
+        
             this.props.dispatch(setLoadingModal());      
             axios.get('https://beta.edvotech.com/api/teacher/quizzes',
             {
@@ -58,8 +61,12 @@ class AnswerQuizForm extends React.Component {
                         this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
                     
                     });
+                    
+                 this.props.dispatch(setLoadingModal()); 
+            }).catch(error => {
+                this.props.dispatch(setLoadingModal()); 
+                this.props.dispatch(setFailureModal());
             });   
-            this.props.dispatch(setLoadingModal()); 
     }
 
     onAnswerChange = (e) => {
@@ -93,6 +100,8 @@ class AnswerQuizForm extends React.Component {
             if(response.data.statusCode == 201)
                 console.log("POST QUIZ RESPONSE: ", response);
                 this.props.history.push('/teacher/quizzes');
+        }).catch(error => {
+            this.setState(() => ({show: true}));
         });
     }
 
@@ -111,14 +120,18 @@ class AnswerQuizForm extends React.Component {
                         <div className="big-card">
                             <form onSubmit={this.onSubmit}>
                                 <div className="form__title">
-                                    <h3> {this.props.lang === 'English' ? 'Quiz' : 'Prueba'} </h3>
-                                    <hr/>
+                                    <p> {this.props.lang === 'English' ? 'Quiz' : 'Prueba'} </p>
                                 </div>
                                 {/* {this.props.quiz.quizDate} */}
                                 
-                                    {this.props.quiz && this.props.quiz.questions.questions.map(element => {
-                                        return ( <div key= {uuid()}><span >{element.recommendation}</span>
-                                        <h3 style={{marginTop: '1rem'}}>{element.questionstring} </h3>
+                                    {this.props.quiz && this.props.quiz.questions.questions.map((element, index) => {
+                                        return ( <div key= {uuid()}>
+                                        <p style={{fontSize: '1.8rem'}}>{index+1}. {element.questionstring} </p>
+                                        {
+                                            //<p  style={{fontSize: '1.7rem'}}>{element.recommendation}</p>
+                                        }
+                                        <br/>
+                                        {this.props.lang === 'English' ? 'Answer: ' : 'Respuesta: '} 
                                         <div className="btn btn-default">
                                             <select name={element.questionid} onChange={this.onAnswerChange} value={this.state.answers[element.questionid]} required>
                                                 <option  disabled selected></option>
@@ -128,13 +141,11 @@ class AnswerQuizForm extends React.Component {
                                             })}
                                             </select> 
                                         </div>
-                                            <br/>
-                                            <br/>
-                                            <br/>
+                                        <hr/>
                                         </div> )
                                 })}
                             
-                                {this.state.show === true && <h3 className="text-capitalize text-danger">{this.props.lang === 'English' ? 'Please, answer all the questions displayed above.' : 'Por favor, conteste todas las preguntas de la prueba.'}</h3>}
+                                {this.state.show === true && <p className="text-danger">{this.props.lang === 'English' ? 'Please answer all the quiz questions displayed above.' : 'Por favor, conteste todas las preguntas de la prueba.'}</p>}
                                 <button type="submit" onClick={this.onSubmit}>
                                     <div className="btn btn-item">
                                         {this.props.lang === 'English' ? 'Answer' : 'Enviar'}

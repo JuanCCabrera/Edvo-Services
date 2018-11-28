@@ -15,7 +15,7 @@ const PendingQuizzesListItem = (props) => (
                     
                     {props.quiz.score == null && 
                         <Link to={`/teacher/quizzes/${props.quiz.quizID}`}>
-                            <button>
+                            <button style={{margin: '0'}}>
                                 <div className="btn btn-item">
                                     {props.lang === 'English' ? 'Answer' : 'Contestar'}
                                 </div>
@@ -24,6 +24,12 @@ const PendingQuizzesListItem = (props) => (
                     }
                         
                     {props.quiz.score != null && 
+                        <div>
+                        <span>
+                            {props.lang === 'English' ? 'Score' : 'Puntuación'}: {' '} {props.quiz.score}{'/12'}
+                        </span>
+                        <br/>
+
                         <Link to={`/teacher/quizzes/view/${props.quiz.quizID}`}>
                             <button>
                                 <div className="btn btn-item">
@@ -31,9 +37,9 @@ const PendingQuizzesListItem = (props) => (
                                 </div>
                             </button>
                         </Link>
+                        </div>
                     }
-
-                    {props.quiz.score != null && <p>{props.lang === 'English' ? 'Score' : 'Puntuación'}: {props.quiz.score}</p>}
+                    
                 </div>
             </div>
             <div className="col-sm-5"/>        

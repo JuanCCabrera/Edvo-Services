@@ -6,6 +6,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import { createQuiz, reset } from '../../actions/quiz';
 import {setLoadingModal} from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 class PendingQuizzesList extends React.Component {
     constructor(props){
@@ -60,8 +61,12 @@ class PendingQuizzesList extends React.Component {
                     this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
 
                 });
+            
+            this.props.dispatch(setLoadingModal());
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal());
+            this.props.dispatch(setFailureModal());
         });
-        this.props.dispatch(setLoadingModal());
         
         this.pageSlice = Math.ceil(this.props.quizzes.length/this.itemsPerPage);
         this.currentPage = 1;
