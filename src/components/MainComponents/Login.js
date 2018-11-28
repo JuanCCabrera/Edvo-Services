@@ -10,6 +10,7 @@ import axios from 'axios';
 import './Login.css';
 import { fromJS } from 'immutable';
 import {logSubscriptionStatus, logRegistrationStatus} from '../../actions/loginPage';
+import {setLoadingModal} from '../../actions/loadingModal';
 
 /**
  * Signs user out from their account and moves him or her to the Main page. 
@@ -45,6 +46,7 @@ class LoginPage extends React.Component{
     componentWillMount(){
         //TO-DO: Use this.props.dispatch(logRegistrationStatus({registered: bool})) and this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: bool}))
         //in a request to help determine if the user needs links to the Registration Form or Payment page. 
+        this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/user',  {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{ 
@@ -55,6 +57,7 @@ class LoginPage extends React.Component{
                     console.log("SUBSCRIPTION: ",response.data.subscription);
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: response.data.subscription != null ? true : false}));
                 }
+                this.props.dispatch(setLoadingModal());
             })
             .catch(error => {
                 console.log("ERROR################################", error);
@@ -62,7 +65,7 @@ class LoginPage extends React.Component{
                     this.props.dispatch(logRegistrationStatus({registered: false}));
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: false}))
                 }
-
+                this.props.dispatch(setLoadingModal());
             });
     }
 
@@ -137,7 +140,7 @@ class LoginPage extends React.Component{
                                                         </div>
                                                     }
 
-                                                    {(this.props.loginPage.registered && !this.props.loginPage.hasPaidSubscription) && 
+                                                    {(this.props.loginPage.registered && !this.props.loginPage.hasPaidSubscription && (localStorage.getItem('role') == "teacher" || localStorage.getItem('role'))) && 
                                                         <div>
                                                             <Link to={'/teacher/settings/plans/payment'}>
                                                                 <button>
