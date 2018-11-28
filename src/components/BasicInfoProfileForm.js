@@ -38,7 +38,7 @@ class BasicInfoProfileForm extends React.Component{
             resetPasswordMessage: false
         };
     }
-    resetPassword(e){
+    resetPassword(){
         let message = false;
         e.preventDefault();
         axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
@@ -53,7 +53,6 @@ class BasicInfoProfileForm extends React.Component{
                 message = true;
             }
         });
-        (() => this.setState({resetPasswordMessage: message}));
       };
       
 
@@ -68,7 +67,6 @@ class BasicInfoProfileForm extends React.Component{
     })
         .then(response => {
             const dateCheck = moment(response.data.info.dob).add('4',"hours");
-            console.log('DATE RESPONSE', dateCheck);
             this.setState({name: response.data.info.name, lastName: response.data.info.lastname,
                  dateOfBirth: moment(response.data.info.dob).add('4',"hours"), gender: response.data.info.gender});
                 
@@ -78,6 +76,12 @@ class BasicInfoProfileForm extends React.Component{
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
         });
+    }
+
+    onResetClick = (e) => {
+        const name = e.target.value;
+        this.setState({resetPasswordMessage: true});
+        this.resetPassword();
     }
 
     //Change name in local state
@@ -359,15 +363,17 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //Change password button
                         }
-                        
-                        <button onClick={this.resetPassword}>
+                        <button onClick={this.onResetClick}>
                             <div className="btn btn-item" style={{marginTop: '2rem'}}>
                                 {this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} 
                             </div>
                         </button>
                         <br/>
+                        <br/>
                         {this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? 'An email has been sent to '+auth0Client.getEmail()+' with a reset link' 
                         : 'Un correo electrónico ha sido enviado a '+auth0Client.getEmail()+' con un enlace para cambiar su contraseña')}
+                        {this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? 'If you are using a Microsoft account this will not reset your password' 
+                        : 'Si está utilizando una cuenta Microsoft usted no podra cambiar su contraseña por este medio')}
                     </div>
 
                     </form>

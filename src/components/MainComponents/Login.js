@@ -43,6 +43,22 @@ class LoginPage extends React.Component{
     componentWillMount(){
         //TO-DO: Use this.props.dispatch(logRegistrationStatus({registered: bool})) and this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: bool}))
         //in a request to help determine if the user needs links to the Registration Form or Payment page. 
+        axios.get('https://beta.edvotech.com/api/user',  {
+                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+            }).then(response =>{ 
+                if(response.status == 201){
+                    this.props.dispatch(logRegistrationStatus({registered: true}));
+                    console.log("SUBSCRIPTION: ",response.data.subscription);
+                    this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: response.data.subscription ? true : false}));
+                }
+            })
+            .catch(error => {
+                if(error.response.status == 403){
+                    this.props.dispatch(logRegistrationStatus({registered: false}));
+                    this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: false}))
+                }
+
+            });
     }
 
     render(){
