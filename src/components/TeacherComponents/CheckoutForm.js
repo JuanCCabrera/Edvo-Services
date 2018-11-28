@@ -69,6 +69,7 @@ class CheckoutForm extends Component {
           .then(response =>{
             console.log("STRIPE RESPONSE: ",response);
             if(response.status == 201){
+              localStorage.setItem('p-redirect','teacher/settings/plans');
               this.props.dispatch(setSuccessModal());
               this.props.history.replace('/teacher/home')
             }

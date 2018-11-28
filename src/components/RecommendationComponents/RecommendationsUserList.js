@@ -34,10 +34,47 @@ class RecommendationsUserList extends React.Component{
         .then(response => {
             console.log("ASSIGN USERS: ", response);
             response.data.users.forEach(element => {
-                this.props.dispatch(addUser({id: element.userid, name: element.name,
-                    email: element.email, lastname: element.lastname, 
+                console.log("RECOM LIST USERS: ", element)
+                let categories = []
+                if(element.tech)
+                    categories.push("Technology Integration") 
+                if(element.timemanagement)
+                    categories.push("Time Management") 
+                if(element.strategies)
+                    categories.push("Teaching Strategies") 
+                if(element.instructions)
+                    categories.push("Instructional Alignment") 
+                if(element.material)
+                    categories.push("Updated Material") 
+                this.props.dispatch(addUser({id: element.userid, 
+                    name: element.name,
+                    email: element.email, 
+                    lastname: element.lastname, 
                     weeklyReco: element.weeklyReco, 
-                    categories: element.categories}));
+                    categories: categories,
+
+                    moodle: element.moodle,
+                    googleclassroom: element.googleclassroom,
+                    emailResource: element.emails,
+                    books: element.books,
+                    socialmedia: element.socialmedia,
+                    projector: element.projector,
+                    computer: element.computer,
+                    tablet: element.tablet,
+                    stylus: element.stylus,
+                    internet: element.internet,
+                    smartboard:element.smartboard,
+                    smartpencil:element.smartpencil,
+                    speakers: element.speakers,
+                    
+                    topica: element.topica, 
+                    topicb: element.topicb, 
+                    topicc: element.topicc,
+                    
+                    format: element.format,
+                    level: element.level,
+                    groupsize: element.groupsize
+                }));
             });
             this.props.dispatch(setLoadingModal());
         }).catch(error => {

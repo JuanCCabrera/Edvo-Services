@@ -9,6 +9,7 @@ import auth0Client from '../../Auth';
 import axios from 'axios';
 import './Login.css';
 import { fromJS } from 'immutable';
+import {logSubscriptionStatus, logRegistrationStatus} from '../../actions/loginPage';
 
 /**
  * Signs user out from their account and moves him or her to the Main page. 
@@ -37,6 +38,7 @@ const signOut = (props) => {
 class LoginPage extends React.Component{
     constructor(props){
         super(props);
+        console.log("LOGIN PROPS: ", props);
 
     }
 
@@ -47,12 +49,15 @@ class LoginPage extends React.Component{
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{ 
                 if(response.status == 201){
+                    
+                    console.log("#########################################", response.data.subscription);
                     this.props.dispatch(logRegistrationStatus({registered: true}));
                     console.log("SUBSCRIPTION: ",response.data.subscription);
-                    this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: response.data.subscription ? true : false}));
+                    this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: response.data.subscription != null ? true : false}));
                 }
             })
             .catch(error => {
+                console.log("ERROR################################", error);
                 if(error.response.status == 403){
                     this.props.dispatch(logRegistrationStatus({registered: false}));
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: false}))
@@ -165,6 +170,7 @@ class LoginPage extends React.Component{
 
 //Map current language state to component properties.
 const mapStateToProps = (state) => {
+    console.log("LOGIN PAGE: ", state.loginPage)
     return {
         lang: state.language.lang,
         loginPage: state.loginPage

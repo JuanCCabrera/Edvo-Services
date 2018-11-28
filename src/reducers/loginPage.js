@@ -12,11 +12,11 @@ const loginPageReducerDefaultState = {
 const loginPageReducer = (state = loginPageReducerDefaultState, action) => {
     switch (action.type) {
         case 'LOG_REGISTRATION_STATUS':
-            return {...state.login, registered: action.registered};
+            return {...state, registered: action.registered};
         case 'LOG_SUBSCRIPTION_STATUS':
-            return {...state.login, hasPaidSubscription: action.hasPaidSubscription};
+            return {...state, hasPaidSubscription: action.hasPaidSubscription};
         default:
-            return {state};
+            return {...state};
     };
 }
 

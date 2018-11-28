@@ -1,5 +1,6 @@
 import auth0 from 'auth0-js';
 import React from 'react';
+import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
 class Auth {
@@ -20,9 +21,8 @@ class Auth {
     this.signIn = this.signIn.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getRole = this.getRole.bind(this);
-    console.log("CONSTRUCTING EMAIL");
     this.getEmail = this.getEmail.bind(this);
-    console.log("CONSTRUCTED EMAIL");
+    this.getSubscribed = this.getSubscribed.bind(this);
     if(localStorage.getItem('route') == '[object Object]' || localStorage.getItem('route')==null)
       localStorage.setItem('route', '/');
   }
@@ -40,6 +40,10 @@ class Auth {
 
   getIdToken() {
     return localStorage.getItem('idToken');
+  }
+
+  getSubscribed(){
+    return localStorage.getItem('p-redirect');
   }
 
   handleAuthentication() {
@@ -65,6 +69,16 @@ class Auth {
     localStorage.setItem('idToken',authResult.idToken);
     localStorage.setItem('email',authResult.idTokenPayload.email);
     localStorage.setItem('expiresAt', authResult.expiresIn * 1000 + new Date().getTime());
+    
+    axios.get('https://beta.edvotech.com/api/user',  {
+      headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+      }).then(response =>{ 
+      if(response.status == 201){
+  }     localStorage.setItem('p-redirect', response.data.subscription != null ? 'teacher/settings/plans' : 'teacher/settings/plans/payment');
+      })
+      .catch(error => {
+        localStorage.setItem('p-redirect', '/login');
+      });
   }
 
   signIn() {

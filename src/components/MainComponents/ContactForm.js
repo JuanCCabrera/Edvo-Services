@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Main.css';
+import axios from 'axios';
 import { setSuccessModal } from '../../actions/successModal';
 
 /**
@@ -79,12 +80,19 @@ class ContactForm extends React.Component{
             this.setState(() => ({contactError: true}))
         }else{  //Otherwise, submit form information
             this.setState(() => ({contactError: false}));
-            this.props.dispatch(setSuccessModal());
-            this.props.onSubmit({
+            axios.post('https://beta.edvotech.com/api/contact', {
                 name: this.state.name,
                 email: this.state.email,
                 message: this.state.message
-            });
+            })
+                    .then((response)=>{
+                        this.props.dispatch(setSuccessModal());
+                         this.setState({
+                        name: '',
+                        email: '',
+                        message: ''
+                    });
+                    });
         }
     }
     render(){

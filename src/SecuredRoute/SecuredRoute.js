@@ -14,7 +14,6 @@ function SecuredRoute(props) {
     return(
         <Route exact path={path} render={() => {
             if(!auth0Client.isAuthenticated()) {
-                localStorage.setItem('route', props.path);
                 auth0Client.signIn();
                 return <div/>;
             }

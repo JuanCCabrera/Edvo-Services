@@ -3,6 +3,10 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 import {connect} from 'react-redux';
 import './Stripe.css';
+import axios from 'axios';
+import auth0Client from '../../Auth';
+import Can from '../../Can';
+import {Redirect} from 'react-router-dom';
 
 class Stripe extends Component {
   constructor(props) {
@@ -12,6 +16,10 @@ class Stripe extends Component {
 
   render() {
     return (
+      <Can
+      role={auth0Client.getRole()}
+      perform="teacher:settings"
+      yes={() => (
       <div className="background-home">
         <div className="container">
           <div className="row">
@@ -35,6 +43,9 @@ class Stripe extends Component {
           </div>
         </div>
       </div>
+                                   )}
+                                   no={() => <Redirect to="/login" />}
+                                 />
     );
   }
 }

@@ -162,12 +162,14 @@ class Plan extends React.Component{
                 {
                     //Resubscribe button
                 }
+                <div>
                 {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.modifyPlan}>
                 <div className="btn btn-item">
                         Resubscribe
                     </div>
                 </button>}
-
+                </div>
+                <div>
                 {
                     //Resubscribe button (translation)
                 }
@@ -176,9 +178,18 @@ class Plan extends React.Component{
                         Resuscribirse
                     </div>
                 </button>}
+                
+                </div>
                 {this.state.cardError === true && 
                         <div className="text-danger text-center">
                             {this.props.lang === 'English' ? <p>Card used is no longer valid.</p> : <p>Tarjeta usada no es válida.</p>}
+                        </div>
+                    }
+                    <br/>
+                {this.state.status === 'suspended' && 
+                        <div className="text-danger text-center">
+                            {this.props.lang === 'English' ? <p>*If you are having problems with resubscribing please contact us at info@edvotech.com</p> : 
+                            <p>*Si se enfrenta con problemas al momento de resuscribirse porfavor contactenos a info@edvotech.com</p>}
                         </div>
                     }
                 <br/>
