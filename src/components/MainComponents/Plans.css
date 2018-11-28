@@ -51,4 +51,6 @@
 }
 .Body-Background{
     background: #061551;
+    overflow-x: auto;
+    overflow-y:auto;
 }
