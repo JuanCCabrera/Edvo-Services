@@ -32,7 +32,7 @@ const HomeRecommendationsListItem = (props) => (
             {
                 //Recommendation title and date of assignment. 
             }
-                <h4>{props.reco.title}</h4> <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.reco.date}</h5>
+                <h4>{props.reco.title}</h4> <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {props.reco.date.slice(0,10)}</h5>
             {
                 //Recommendation header
             }

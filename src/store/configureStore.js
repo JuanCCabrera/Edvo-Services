@@ -29,6 +29,7 @@ import assignmentRecommendationReducer from '../reducers/assignmentRecommendatio
 import failureModalReducer from '../reducers/failureModal';
 import loadingModalReducer from '../reducers/loadingModal';
 import credentialsReducer from '../reducers/credentials';
+import loginPageReducer from '../reducers/loginPage';
 
 //Store creation
 
@@ -65,7 +66,8 @@ export default () => {
             assignmentRecommendationModal: assignmentRecommendationReducer,
             loadingModal: loadingModalReducer,
             failureModal: failureModalReducer,
-            credentials: credentialsReducer
+            credentials: credentialsReducer,
+            loginPage: loginPageReducer
         })
     );
 

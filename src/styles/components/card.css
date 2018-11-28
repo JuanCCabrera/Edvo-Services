@@ -105,6 +105,10 @@ html, body {
     }
 }
 
+button{
+    padding-left: 0;
+}
+
 .btn-item{
     background-color: #5933AA;
     color: white;

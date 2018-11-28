@@ -1,0 +1,17 @@
+.quiz_button{
+    padding: 3rem;
+    float:none;
+    transition: 0.3s;
+    display:inline-block;
+    vertical-align: middle;
+    background-color: #5933aa;
+    border-radius: 20px;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.quiz_button:hover{
+    color: white;
+    background-color: #472988;
+}
