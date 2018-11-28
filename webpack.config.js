@@ -9,7 +9,10 @@ module.exports = {
         filename: 'bundle.js'
     },
        plugins: [
-           new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)
+           new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
+           new webpack.DefinePlugin({
+          'process.env': { NODE_ENV: JSON.stringify('production') }
+      })
 ],
     module: {
         loaders: [{
