@@ -35,7 +35,10 @@ html, body {
     font-size: 1.7rem;
     color: #5933AA;
     margin-bottom: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
+
 }
 
 .big-card{

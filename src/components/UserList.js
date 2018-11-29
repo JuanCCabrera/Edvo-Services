@@ -142,15 +142,22 @@ class UserList extends React.Component{
                 }
                     {(this.props.users.length === 0) && (this.props.lang === 'English' ?
                      
-                        <div className="close-empty-message-card">
-                            <p>There are no registered users to manage.</p>
-                        </div>
+                     <div className="close-empty-message-card">   
+                        {this.props.allUsers.length > 0 ? 
+                        <p>There are no recommendations which match the given parameters.</p>
                         :
-                    
-                        <div className="close-empty-message-card">
-                            <p>No hay usuarios registrados para administrar.</p>
-                        </div>
-                        )
+                        <p>There are no registered users in the system.</p>
+                        }
+                    </div>
+                    :  
+                     
+                    <div className="close-empty-message-card">
+                        {this.props.allUsers.length > 0 ? 
+                            <p>No hay usuarios que cumplen con los parámetros dados.</p>
+                            :
+                            <p>No hay usuarios registrados en el sistema.</p>
+                        }
+                    </div>)
                     }
             </div>
         )
@@ -160,6 +167,7 @@ class UserList extends React.Component{
 //Map filtered list of users, the user filter data and the current language state to the component properties.
 const mapStateToProps = (state) => {
     return{
+        allUsers: state.users,
         users: getVisibleUsers(state.users,state.userFilters),
         userFilters: state.userFilters,
         lang: state.language.lang

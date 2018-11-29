@@ -150,7 +150,11 @@ class ManageRecommendationsList extends React.Component{
                 {(this.props.recommendation.length === 0) &&
                     (this.props.lang === 'English' ?
                     <div className="close-empty-message-card">
-                        <p>There are no available recommendations to manage.</p>
+                        {this.props.allRecommendations.length > 0 ? 
+                            <p>There are no recommendations which match the given parameters.</p>
+                            :
+                            <p>There are no available recommendations to manage.</p>
+                        }
                         <Link to='/recommendations/create'>
                             <button>
                                 <div className="btn btn-item">
@@ -160,7 +164,11 @@ class ManageRecommendationsList extends React.Component{
                         </Link>
                     </div> : 
                     <div className="close-empty-message-card" >
-                        <p>No hay recomendaciones disponibles para administrar.</p>
+                        {this.props.allRecommendations.length > 0 ? 
+                            <p>No hay recomendaciones que cumplen con los parámetros dados.</p>
+                            :
+                            <p>No hay recomendaciones disponibles para administrar.</p>
+                        }
                         <Link to='/recommendations/create'>
                             <button>
                                 <div className="btn btn-item">
@@ -178,6 +186,7 @@ class ManageRecommendationsList extends React.Component{
 //Map filtered recommendations, recommendations filters data, recommendation assignment data and the current language state to the component's properties. 
 const mapStateToProps = (state) => {
     return{
+        allRecommendations: state.recommendations,
         recommendation: getVisibleRecommendations(state.recommendations, state.recommendationsFilters),
         filters: state.recommendationsFilters,
         assigned: state.assignRecommendation,

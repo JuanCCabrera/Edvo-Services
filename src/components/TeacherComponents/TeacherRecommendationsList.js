@@ -126,11 +126,21 @@ class TeacherRecommendationsList extends React.Component{
                 
                     {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
                         <div className="empty-message-card">
+                            
+                            {this.props.allRecommendations.length > 0 ? 
+                            <p>There are no recommendations which match the given parameters.</p>
+                            :
                             <p>You do not have any assigned recommendations.</p>
+                            }
                         </div>
                         :
                         <div className="empty-message-card">
+                            
+                            {this.props.allRecommendations.length > 0 ? 
+                            <p>No hay recomendaciones que cumplen con los parámetros dados.</p>
+                            :
                             <p>Usted no tiene recomendaciones asignadas.</p>
+                            }
                         </div>
                     )}
             </div>
@@ -141,6 +151,7 @@ class TeacherRecommendationsList extends React.Component{
 //Map filtered list of recommendations, teacher recommendations filter data and the current language state to the component properties. 
 const mapStateToProps = (state) => {
     return{
+        allRecommendations: state.teacherRecommendations.recommendations,
         recommendation: getVisibleTeacherRecommendations(state.teacherRecommendations.recommendations, state.teacherRecommendationsFilters),
         filters: state.teacherRecommendationsFilters,
         lang: state.language.lang

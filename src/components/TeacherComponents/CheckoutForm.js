@@ -99,7 +99,7 @@ class CheckoutForm extends Component {
                     }
                     {this.state.subscriptionError === true && 
                         <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>You are already subscribed</p> : <p>Ya esta subscrito</p>}
+                            {this.props.lang === 'English' ? <p>You are already subscribed</p> : <p>Ya esta suscrito.</p>}
                         </div>
                     }
         <button onClick={this.submit}>

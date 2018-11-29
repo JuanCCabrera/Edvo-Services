@@ -61,7 +61,7 @@ const RecommendationListItem = (props) => (
                     <p>
                         {props.reco.id === props.selectedRecommendation && 
                         <div>
-                            <span style={{display: 'inline'}}><i className="fa fa-check-circle" style={{color: 'green'}} aria-hidden="true"></i></span>
+                            <span style={{display: 'inline'}}><i className="fa fa-check-circle fa-lg" style={{color: 'green'}} aria-hidden="true"></i></span>
                         </div>}
                     </p>
                 </div>

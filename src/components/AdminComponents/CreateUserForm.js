@@ -257,6 +257,7 @@ class CreateUserForm extends React.Component{
                                             {
                                                 //Name input field
                                             }
+                                            <span className="req">*</span>
                                             <label>{this.props.lang === 'English' ? 'Name' : 'Nombre'}:</label>
                                             <br/>
                                             <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Name' : 'Nombre'} onBlur={() => {
@@ -290,6 +291,7 @@ class CreateUserForm extends React.Component{
                                             {
                                                 //Last name input field
                                             }
+                                            <span className="req">*</span>
                                             <label>{this.props.lang === 'English' ? 'Last Name' : 'Apellido'}:</label>
                                             <br/>
                                             <input type="text" className="form-control" maxLength="100" placeholder={this.props.lang === 'English' ? 'Last Name' : 'Apellido'} onBlur={() => {
@@ -324,6 +326,7 @@ class CreateUserForm extends React.Component{
                                     {
                                         //Email input field
                                     }
+                                    <span className="req">*</span>
                                     <label>Email:</label>
                                     <br/>
                                     <input type="text" className="form-control" maxLength="100" style={{width: '70%'}} placeholder = "Email" onBlur={() => {
@@ -360,6 +363,7 @@ class CreateUserForm extends React.Component{
                                             {
                                                 //Password input field
                                             }
+                                            <span className="req">*</span>
                                             <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
                                             <br/>
                                             <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Password' : 'Contraseña'} value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
@@ -391,6 +395,7 @@ class CreateUserForm extends React.Component{
                                             {
                                                 //Confirm Password input field
                                             }
+                                            <span className="req">*</span>
                                             <label>{this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'}:</label>
                                             <br/>
                                             <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Confirm Password' : 'Reingresar Contraseña'} value = {this.state.confirmPassword} onChange={this.onConfirmPasswordChange} onBlur={() => {
@@ -438,6 +443,7 @@ class CreateUserForm extends React.Component{
                                     {
                                         //Date of birth selector
                                     }
+                                    <span className="req">*</span>
                                     <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                                     <br/>
 
@@ -473,6 +479,7 @@ class CreateUserForm extends React.Component{
                                     {
                                         //Gender radio button selector
                                     }
+                                    <span className="req">*</span>
                                     <label>{this.props.lang === 'English' ? 'Gender' : 'Género'}:</label>
                                     <br/>
                                     <label className="clickable radio__text">
@@ -490,7 +497,7 @@ class CreateUserForm extends React.Component{
                                     <br/>
                                     {
                                         //Level of education radio button selector
-                                    }
+                                    /*
                                     <label>{this.props.lang === 'English' ? 'Level of Education' : 'Nivel de Educación'}:</label>
                                     <br/>
                                     <label className="clickable radio__text">
@@ -529,9 +536,12 @@ class CreateUserForm extends React.Component{
 
                                     <br/>
                                     <br/>
+                                    */
+                                    }
                                     {
                                         //User type radio button selector
                                     }
+                                    <span className="req">*</span>
                                     <label>{this.props.lang === 'English' ? 'User Type' : 'Tipo de Usuario'}:</label>
                                     <br/>
                                     <label className="clickable radio__text">

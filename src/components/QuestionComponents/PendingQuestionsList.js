@@ -114,10 +114,18 @@ class PendingQuestionsList extends React.Component {
                         
                         (this.props.lang === 'English' ? 
                         <div className="close-empty-message-card">
+                            {this.props.allQuestions.length > 0 ? 
+                            <p>There are no questions which match the given parameters.</p>
+                            :
                             <p>There are no questions pending answers.</p>
+                            }
                         </div> : 
                         <div className="close-empty-message-card">
+                            {this.props.allQuestions.length > 0 ? 
+                            <p>No hay preguntas que cumplen con los parámetros dados.</p>
+                            :
                             <p>No hay preguntas con respuestas pendientes.</p>
+                            }
                         </div>)
                     }
             </div>
@@ -128,6 +136,7 @@ class PendingQuestionsList extends React.Component {
 //Map set of filtered questions, question filters data and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
+        allQuestions: state.questions,
         questions: getVisibleQuestions(state.questions, state.questionsFilters),
         filters: state.questionsFilters,
         lang: state.language.lang

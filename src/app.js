@@ -134,7 +134,15 @@ const store = configureStore();
 
 
 
-class App extends React.Component{
+class App extends React.Component{    
+    async componentDidMount() {
+    try{
+        await auth0Client.silentAuth();
+        this.forceUpdate();
+    }catch(err){
+        if(err.error === 'login_required') return;
+    }
+}
 
     render() {
             return(

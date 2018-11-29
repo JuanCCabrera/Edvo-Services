@@ -118,11 +118,19 @@ class SchoolList extends React.Component{
                 }
                     {(this.props.schools.length === 0) && (this.props.lang === 'English' ?
                         <div className="close-empty-message-card">
-                            <p>There are no registered institutions to manage.</p>
+                            {this.props.allSchools.length > 0 ? 
+                                <p>There are no institutions which match the given parameters.</p>
+                                :
+                                <p>There are no registered institutions to manage.</p>
+                            }
                         </div>
                         :
                         <div className="close-empty-message-card">
-                            <p>No hay instituciones registradas para administrar.</p>
+                            {this.props.allSchools.length > 0 ? 
+                                <p>No hay instituciones que cumplen con los parámetros dados.</p>
+                                :
+                                <p>No hay instituciones registrados en el sistema.</p>
+                            }
                         </div>
                     )
                     }
@@ -134,6 +142,7 @@ class SchoolList extends React.Component{
 //Map filtered list of schools, school filter data and the current language state to the component properties. 
 const mapStateToProps = (state) => {
     return{
+        allSchools: state.schools,
         schools: getVisibleSchools(state.schools, state.schoolFilters),
         filters: state.schoolFilters,
         lang: state.language.lang

@@ -150,9 +150,23 @@ class RecommendationsUserList extends React.Component{
 
                 <div className="text-center text-danger">
                     {(this.props.users.length === 0) && (this.props.lang === 'English' ?
-                        <p>There are no registered users in the system.</p>
+                        <div>
+                            
+                            {this.props.allUsers.length > 0 ? 
+                            <p>There are no users which match the given parameters.</p>
+                            :
+                            <p>There are no users registered in the system.</p>
+                            }
+                        </div>
                         :
-                        <p>No hay usuarios registrados en el sistema.</p>
+                        
+                        <div>
+                        {this.props.allUsers.length > 0 ? 
+                            <p>No hay usuarios que cumplen con los parámetros dados.</p>
+                            :
+                            <p>No hay usuarios registrados en el sistema.</p>
+                        }
+                        </div>
                     )}
                 </div>
             </div>
@@ -163,6 +177,7 @@ class RecommendationsUserList extends React.Component{
 //Map filtered user list, recommendation assignment data, user filter data and current language state to component properties. 
 const mapStateToProps = (state) => {
     return{
+        allUsers: state.users,
         users: getVisibleUsers(state.users, state.userFilters),
         assigned: state.assignRecommendation,
         filters: state.userFilters,

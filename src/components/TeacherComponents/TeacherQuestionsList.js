@@ -119,11 +119,20 @@ class TeacherQuestionsList extends React.Component{
                     {(this.props.question.length === 0) && (this.props.lang === 'English' ?
                         
                         <div className="empty-message-card">
+                            
+                            {this.props.allQuestions.length > 0 ? 
+                            <p>There are no recommendations which match the given parameters.</p>
+                            :
                             <p>You have not made any questions.</p>
+                            }
                         </div>
                         :
                         <div className="empty-message-card">
+                            {this.props.allQuestions.length > 0 ? 
+                            <p>No hay preguntas que cumplen con los parámetros dados.</p>
+                            :
                             <p>Usted no ha hecho preguntas.</p>
+                            }
                         </div>
                     )}
             </div>
@@ -134,6 +143,7 @@ class TeacherQuestionsList extends React.Component{
 //Map filtered list of questions, filter data and current language state to the component properties. 
 const mapStateToProps = (state) => {
     return{
+        allQuestions: state.teacherQuestions,
         question: getVisibleTeacherQuestions(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters),
         filters: state.teacherQuestionsFilters,
         lang: state.language.lang

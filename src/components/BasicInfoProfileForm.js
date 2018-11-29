@@ -77,6 +77,7 @@ class BasicInfoProfileForm extends React.Component{
     }
 
     onResetClick = (e) => {
+        e.preventDefault();
         const name = e.target.value;
         this.setState({resetPasswordMessage: true});
         this.resetPassword();
@@ -193,7 +194,7 @@ class BasicInfoProfileForm extends React.Component{
         return(
             <div>
                 <div>
-                    <form onSubmit={this.onSubmit}>
+                    <form>
                         <div>
                             <div className="form__title">
                             <p> 

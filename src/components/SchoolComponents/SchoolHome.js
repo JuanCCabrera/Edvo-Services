@@ -6,6 +6,7 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import axios from 'axios';
 import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
 
 class SchoolHome extends React.Component {
     constructor(props){
@@ -31,17 +32,22 @@ class SchoolHome extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            this.setState({averageQuestionsRate: response.data.averageQuestionsRate});
-            this.setState({averageRecommendationsRate: response.data.averageRecommendationsRate});
-            this.setState({teachersdays: response.data.teachersdays});
+            console.log("RESPONSE HOME: ", response);
+            this.setState({averageQuestionsRate: !response.data.averageQuestionsRate ? 0 : response.data.averageQuestionsRate});
+            this.setState({averageRecommendationsRate: !response.data.averageRecommendationsRate ? 0:response.data.averageRecommendationsRate });
+            this.setState({teachersdays: !response.data.teachersdays ? 0 : response.data.teachersdays });
             this.setState({top1: response.data.toptargetsordered[0].target});
             this.setState({top1v: response.data.toptargetsordered[0].value});
             this.setState({top2: response.data.toptargetsordered[1].target});
             this.setState({top2v: response.data.toptargetsordered[1].value});
             this.setState({top3: response.data.toptargetsordered[2].target});
             this.setState({top3v: response.data.toptargetsordered[2].value});
+            this.props.dispatch(setLoadingModal());
+            }).catch(error => {
+                this.props.dispatch(setLoadingModal());
+                this.props.dispatch(setFailureModal());
             });
-        this.props.dispatch(setLoadingModal());
+       
     }
         render(){
             return(
