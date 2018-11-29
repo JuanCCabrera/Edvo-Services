@@ -15,72 +15,72 @@ import './Plans.css'
 const PlansPage = (props) => (
     <div className="Body-Background">
     <div className="Scrollable container pt-5 pb-5 text-left">
-        <div className="table-responsive">
+        <div className="table">
         <table className="text-white Promo">
         <thead>
         <tr className="text-center">
             <th scope="col" className="No-Border-Top text-center"></th>
             <th scope="col" className="No-Border-Top Subscribe-2 text-center">
-                <h3>{props.lang === 'English' ? 'STANDARD' : 'PAQUETE'}</h3>
-                <h3>{props.lang === 'English' ? 'PACKAGE' : 'ESTANDAR'}</h3>
-                <h1>$39</h1>
+                <p>{props.lang === 'English' ? 'STANDARD' : 'PAQUETE'}</p>
+                <p>{props.lang === 'English' ? 'PACKAGE' : 'ESTANDAR'}</p>
+                <p>$39</p>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
                 <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
-                            <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
+                        <button className="Subscribe">{props.lang === 'English' ? 'Subscribe' : 'Suscribirse'}</button>
                 </NavLink>
             </th>
             <th scope="col" className="No-Border-Top text-center">
-                <div style={{position: 'relative', top: '20px'}}>
-                <h3>{props.lang === 'English' ? 'PREMIUM' : 'PAQUETE'} </h3>
-                <h3>{props.lang === 'English' ? 'PACKAGE' : 'SUPREMO'} </h3>
-                <h1>$59*</h1>
+                <p>{props.lang === 'English' ? 'PREMIUM' : 'PAQUETE'} </p>
+                <p>{props.lang === 'English' ? 'PACKAGE' : 'SUPREMO'} </p>
+                <p>$59*</p>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
-                <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
-                            <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
-                </NavLink>
-                <br/>
-                </div>
+                <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
              </th>
 
             <th scope="col" className="text-center AbsolutePackage">
-                <h5 className="text-center">{props.lang === 'English' ? 'LIMITED SPACE AVAILABLE' : 'ESPACIOS LIMITADOS'}</h5>
-                <h3>{props.lang === 'English' ? 'ALL-ACCESS' : 'PAQUETE'} </h3>
-                <h3>{props.lang === 'English' ? 'PACKAGE' : 'ABSOLUTO'} </h3>
-                <h1>$249**</h1>
-                <p>{props.lang === 'English' ? 'per educator + 6 months of platform usage' : 'por educador + 6 meses de uso en la plataforma'} </p>
-                <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
-                            <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
-                </NavLink>
+                <div>
+                {
+                    //<p className="text-center">{props.lang === 'English' ? 'LIMITED SPACE AVAILABLE' : 'ESPACIOS LIMITADOS'}</p>
+                }
+                    <p>{props.lang === 'English' ? 'ALL-ACCESS' : 'PAQUETE'} </p>
+                    <p>{props.lang === 'English' ? 'PACKAGE' : 'ABSOLUTO'} </p>
+                    <p>$249**</p>
+                    <p>{props.lang === 'English' ? 'per 6 months' : 'cada 6 meses'}</p>
+                    <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
+                    {
+                        //<p>{props.lang === 'English' ? 'per educator + 6 months of platform usage' : 'por educador + 6 meses de uso en la plataforma'} </p>
+                    }
+                </div>
              </th>
         </tr>
         </thead>
         <tbody>
         <tr>
-        <th>
-                        <h3> {props.lang === 'English' ? 'Weekly recommendations' : 'Recomendaciones semanales'}</h3>
-                        <p> {props.lang === 'English' ? 'Over 10 custom recommendations based on the user\'s profile' : 'Sobre 10 recomendaciones personalizadas de acuerdo a su perfil'}</p>
-                    </th>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <th>
+                <h3> {props.lang === 'English' ? 'Weekly recommendations' : 'Recomendaciones semanales'}</h3>
+                <p> {props.lang === 'English' ? 'Over 10 custom recommendations based on the user\'s profile' : 'Sobre 10 recomendaciones personalizadas de acuerdo a su perfil'}</p>
+            </th>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         <tr>
             <th>
                 <h3> {props.lang === 'English' ? 'Q&A with experts' : 'Preguntas y respuestas con expertos'}</h3>
                 <p> {props.lang === 'English' ? 'Ask private questions and our team of experts will provide solutions on time management, teaching strategies and technology integration' : 'Pregunte en privado y nuestro grupo de expertos le proveerá soluciones sobre manejo de tiempo, enseñanza e integración tecnológica'} </p>
             </th>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         <tr>
             <th>
                 <h3> {props.lang === 'English' ? 'User metrics' : 'Métricas de usuario'}</h3>
                 <p> {props.lang === 'English' ? 'Keep track of your professional development with our metrics on: Performance, Application, Engagement, and Individual Goals' : 'Siga su desarrollo profesional con nuestras métricas sobre: Rendimiento, Aplicación, Participación y Metas Individuales.'}</p>
             </th>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         <tr>
             <th scope="row">
@@ -88,7 +88,7 @@ const PlansPage = (props) => (
                 <p> {props.lang === 'English' ? 'Get a detailed, graphical report of the professional development metrics of your institution' : 'Obtenga detalladas métricas en reportes o gráficas sobre el desarrollo profesional de su institución'}</p>
             </th>
             <td></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
             <td></td>
         </tr>
         <tr>
@@ -97,7 +97,7 @@ const PlansPage = (props) => (
                         <p> {props.lang === 'English' ? 'Administration\'s vision taken into consideration' : 'La visión de la administración es tomada en consideración'}</p>
                     </th>
             <td></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
             <td></td>
         </tr>
         <tr>
@@ -107,7 +107,7 @@ const PlansPage = (props) => (
                     </th>
             <td></td>
             <td></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         <tr>
         <th>
@@ -116,7 +116,7 @@ const PlansPage = (props) => (
                     </th>
             <td></td>
             <td></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         <tr>
         <th>
@@ -125,7 +125,7 @@ const PlansPage = (props) => (
                     </th>
             <td></td>
             <td></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         <tr>
         <th>
@@ -134,7 +134,7 @@ const PlansPage = (props) => (
                     </th>
             <td></td>
             <td></td>
-            <td><i className="text-white ml-5 mt-3 fas fa-check fa-3x"></i></td>
+            <td><span className="table_icon"><i className="text-white fas fa-check fa-3x"></i></span></td>
         </tr>
         </tbody>
     </table>
@@ -148,6 +148,7 @@ const PlansPage = (props) => (
 
     </div>
         <div>
+            <div id="bottom"/>
             <ContactForm
             onSubmit={(contact) => {
             props.dispatch(sendContactForm(contact));

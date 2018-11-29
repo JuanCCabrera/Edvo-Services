@@ -80,6 +80,7 @@ export const createRecommendation = (
                 format: format,
                 level: level,
                 size: size,
+                applications: applications,
             
                 question: question,
                 choices: choices,
@@ -164,6 +165,7 @@ export const loadRecommendation = (
     smartboard = false,
     smartpencil = false,
     speakers = false,
+    applications = false,
     
     topics = [''],
     location = '',
@@ -207,6 +209,7 @@ export const loadRecommendation = (
                 smartboard,
                 smartpencil,
                 speakers,
+                applications,
                 
                 topics,
                 location,
@@ -220,7 +223,7 @@ export const loadRecommendation = (
             
                 question,
                 choices,
-                correctOption
+                correctOption,
         }
     }
 }
