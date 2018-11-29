@@ -37,10 +37,11 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
+    console.log("TOKEN: ", token);
     await axios.post('https://beta.edvotech.com/api/plans/',
         {
             token: token.id,
-            plan: 'edvo-basic',
+            plan: 'edvo_basic_capstone',
             couponid: this.state.coupon
         },
         {

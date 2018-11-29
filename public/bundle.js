@@ -17357,6 +17357,7 @@ var BasicInfoProfileForm = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (BasicInfoProfileForm.__proto__ || Object.getPrototypeOf(BasicInfoProfileForm)).call(this, props));
 
         _this.onResetClick = function (e) {
+            e.preventDefault();
             var name = e.target.value;
             _this.setState({ resetPasswordMessage: true });
             _this.resetPassword();
@@ -17583,7 +17584,7 @@ var BasicInfoProfileForm = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         'form',
-                        { onSubmit: this.onSubmit },
+                        null,
                         _react2.default.createElement(
                             'div',
                             null,
@@ -30620,11 +30621,11 @@ var CreateRecommendationForm = function (_React$Component) {
                     smartboard: _this.state.smartboard,
                     smartpencil: _this.state.smartpencil,
                     speakers: _this.state.speakers,
-                    topica: _this.state.topics[0] == undefined ? '' : _this.state.topics[0],
-                    topicb: _this.state.topics[1] == undefined ? '' : _this.state.topics[1],
-                    topicc: _this.state.topics[2] == undefined ? '' : _this.state.topics[2],
+                    topica: _this.state.topics[0] == undefined ? "" : _this.state.topics[0],
+                    topicb: _this.state.topics[1] == undefined ? "" : _this.state.topics[1],
+                    topicc: _this.state.topics[2] == undefined ? "" : _this.state.topics[2],
 
-                    location: '',
+                    location: _this.state.location,
                     subject: _this.state.subject,
                     spanish: _this.state.language == "spanish" ? true : false,
                     english: _this.state.language == "english" ? true : false,
@@ -35919,6 +35920,8 @@ var _moment2 = _interopRequireDefault(_moment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -36042,6 +36045,48 @@ var App = function (_React$Component) {
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.prev = 0;
+                                _context.next = 3;
+                                return _Auth2.default.silentAuth();
+
+                            case 3:
+                                this.forceUpdate();
+                                _context.next = 10;
+                                break;
+
+                            case 6:
+                                _context.prev = 6;
+                                _context.t0 = _context['catch'](0);
+
+                                if (!(_context.t0.error === 'login_required')) {
+                                    _context.next = 10;
+                                    break;
+                                }
+
+                                return _context.abrupt('return');
+
+                            case 10:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this, [[0, 6]]);
+            }));
+
+            function componentDidMount() {
+                return _ref.apply(this, arguments);
+            }
+
+            return componentDidMount;
+        }()
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -36411,7 +36456,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n}\n\n.list-group-item{\n    transition: 0.2s;\n}\n\n.list-group-item:hover{\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.loading-card{\n    margin: 1rem 1rem;\n    padding-top: 18rem;\n    padding-bottom: 18rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n}\n\n@media only screen and (max-width: 1200px){\n    .loading-card{\n        padding-top: 10rem;\n        padding-bottom: 10rem;\n    }\n}\n\n.card-title{\n    font-weight: normal;\n    font-size: 1.7rem;\n    color: #5933AA;\n    margin-bottom: 1rem;\n    text-overflow: ellipsis;\n}\n\n.big-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    margin-top: 2.7rem;\n    margin-bottom: 2.7rem;\n    padding: 2.7rem;\n    border-radius: 0.5rem;\n    \n}\n\n.big-card-link:hover{\n    background-color: lightgray;\n}\n\n\n.item-card {\n    /* Add shadows to create the \"card\" effect */\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 8rem;\n    margin: 1.5rem 0;\n    padding: 1.5rem 1.5rem;\n    text-overflow: ellipsis;\n}\n\n.quiz-item-card{\n    /* Add shadows to create the \"card\" effect */\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 8rem;\n    min-width: 40rem;\n    padding: 1.5rem;\n    padding-left: 2rem;\n    margin: 1.5rem 0;\n}\n\n.quiz-item-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n@media only screen and (max-width: 1200px){\n    .quiz-item-card{\n        min-width: 30rem;\n    }\n}\n\n@media only screen and (max-width: 993px){\n    .quiz-item-card{\n        min-width: 25rem;\n    }\n}\n\n\n@media only screen and (max-width: 360px){\n    .quiz-item-card{\n        min-width: 20rem;\n    }\n}\n\nbutton{\n    padding-left: 0;\n}\n\n.btn-item{\n    background-color: #5933AA;\n    color: white;\n    font-weight: normal;\n    font-size: 105%;\n    margin-top: 1rem;\n}\n\n@media only screen and (max-width: 420px){\n    .btn-item{\n        font-size: 95%;\n    }\n}\n\n.btn-item-margin{\n    margin-top: '2rem';\n}\n\n.btn-item:enabled{\n    background-color: #5933AA;\n    color: white;\n    font-weight: normal;\n}\n\n.btn-item:hover{\n    color: white;\n    background-color: #472988;\n    font-weight: normal;\n    border: 1px solid #5933AA;\n}\n\nbutton:disabled > .btn-item{\n    background-color: #cdc2e6;\n    border: 1px solid #cdc2e6;\n}\n\n.item-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.card {\n    /* Add shadows to create the \"card\" effect */\n    margin: 1rem 1rem;\n    padding: 0 1rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n    padding-bottom: 1rem; \n    min-height: 18rem;\n}\n\n/* On mouse-over, add a deeper shadow */\n.card:hover {\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n@media only screen and (max-width: 768px){\n    .card_left_margin{\n        margin-left: 0;\n    }\n}\n\n.withMargins{\n    margin: 15px 15px;\n}\n\n/* Add some padding inside the card container */\n.container {\n    padding: 2px 16px;\n}\n\n.big-card-school-home{\n    background-color: white;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border: 1.2px solid #5933aa;\n    border-radius: 0.5rem;\n    margin-top: 1.5rem;\n    margin-bottom: 2.7rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    font-weight: bold;\n    min-height: 21rem;\n}\n\n.big-card-school-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.big-card-teacher-home{\n    background-color: white;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border: 1.2px solid #5933aa;\n    border-radius: 0.5rem;\n    margin-top: 2.7rem;\n    margin-bottom: 2.7rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    font-weight: bold;\n    min-height: 18rem;\n}\n\n.big-card-teacher-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.big-card-admin-home{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    margin-top: 8rem;\n    margin-bottom: 8rem;\n    padding-top: 5rem;\n    padding-bottom: 5rem;\n    font-weight: bold;\n}\n\n.big__admin__text{\n    font-size: 3rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big__teacher__home__text{\n    font-size: 5rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big-card-admin-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.big-card-mentor-home{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    margin-top: 8rem;\n    margin-bottom: 8rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    font-weight: bold;\n}\n\n.big__mentor__text{\n    font-size: 3rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big-card-mentor-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.front-card{\n    z-index: 9999;\n}\n\n.top_targets{\n    font-weight: normal;\n    text-align: center;\n}\n\n.home__card__title{\n    font-size: 2.5rem;\n}\n\n@media only screen and (max-width: 1200px){\n    .big__admin__text{\n        font-size: 2rem;\n    }\n}\n\n@media only screen and (max-width: 1200px){\n    .big__mentor__text{\n        font-size: 2rem;\n    }\n}\n\n@media only screen and (max-width: 768px){\n    .big-card-admin-home{\n        max-height: 17.5rem;\n        padding-top: 1rem;\n        padding-bottom: 2rem;\n        padding-left: 0;\n        padding-right: 0;\n        margin-top: 2rem;\n        margin-bottom: 2rem\n    }\n}\n\n@media only screen and (max-width: 1200px){\n    .big-card-mentor-home{\n        max-height: 17.5rem;\n        padding-top: 1rem;\n        padding-bottom: 2rem;\n        padding-left: 0;\n        padding-right: 0;\n    }\n}\n\n@media only screen and (max-width: 768px){\n    .big-card-mentor-home{\n        margin-top: 2rem;\n        margin-bottom: 2rem;\n        margin-top: 2rem;\n        margin-bottom: 2rem\n    }\n}\n\n", ""]);
+exports.push([module.i, "html, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n}\n\n.list-group-item{\n    transition: 0.2s;\n}\n\n.list-group-item:hover{\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.loading-card{\n    margin: 1rem 1rem;\n    padding-top: 18rem;\n    padding-bottom: 18rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n}\n\n@media only screen and (max-width: 1200px){\n    .loading-card{\n        padding-top: 10rem;\n        padding-bottom: 10rem;\n    }\n}\n\n.card-title{\n    font-weight: normal;\n    font-size: 1.7rem;\n    color: #5933AA;\n    margin-bottom: 1rem;\n    overflow: hidden;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n\n}\n\n.big-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    margin-top: 2.7rem;\n    margin-bottom: 2.7rem;\n    padding: 2.7rem;\n    border-radius: 0.5rem;\n    \n}\n\n.big-card-link:hover{\n    background-color: lightgray;\n}\n\n\n.item-card {\n    /* Add shadows to create the \"card\" effect */\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 8rem;\n    margin: 1.5rem 0;\n    padding: 1.5rem 1.5rem;\n    text-overflow: ellipsis;\n}\n\n.quiz-item-card{\n    /* Add shadows to create the \"card\" effect */\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 8rem;\n    min-width: 40rem;\n    padding: 1.5rem;\n    padding-left: 2rem;\n    margin: 1.5rem 0;\n}\n\n.quiz-item-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n@media only screen and (max-width: 1200px){\n    .quiz-item-card{\n        min-width: 30rem;\n    }\n}\n\n@media only screen and (max-width: 993px){\n    .quiz-item-card{\n        min-width: 25rem;\n    }\n}\n\n\n@media only screen and (max-width: 360px){\n    .quiz-item-card{\n        min-width: 20rem;\n    }\n}\n\nbutton{\n    padding-left: 0;\n}\n\n.btn-item{\n    background-color: #5933AA;\n    color: white;\n    font-weight: normal;\n    font-size: 105%;\n    margin-top: 1rem;\n}\n\n@media only screen and (max-width: 420px){\n    .btn-item{\n        font-size: 95%;\n    }\n}\n\n.btn-item-margin{\n    margin-top: '2rem';\n}\n\n.btn-item:enabled{\n    background-color: #5933AA;\n    color: white;\n    font-weight: normal;\n}\n\n.btn-item:hover{\n    color: white;\n    background-color: #472988;\n    font-weight: normal;\n    border: 1px solid #5933AA;\n}\n\nbutton:disabled > .btn-item{\n    background-color: #cdc2e6;\n    border: 1px solid #cdc2e6;\n}\n\n.item-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.card {\n    /* Add shadows to create the \"card\" effect */\n    margin: 1rem 1rem;\n    padding: 0 1rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n    padding-bottom: 1rem; \n    min-height: 18rem;\n}\n\n/* On mouse-over, add a deeper shadow */\n.card:hover {\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n@media only screen and (max-width: 768px){\n    .card_left_margin{\n        margin-left: 0;\n    }\n}\n\n.withMargins{\n    margin: 15px 15px;\n}\n\n/* Add some padding inside the card container */\n.container {\n    padding: 2px 16px;\n}\n\n.big-card-school-home{\n    background-color: white;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border: 1.2px solid #5933aa;\n    border-radius: 0.5rem;\n    margin-top: 1.5rem;\n    margin-bottom: 2.7rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    font-weight: bold;\n    min-height: 21rem;\n}\n\n.big-card-school-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.big-card-teacher-home{\n    background-color: white;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border: 1.2px solid #5933aa;\n    border-radius: 0.5rem;\n    margin-top: 2.7rem;\n    margin-bottom: 2.7rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    font-weight: bold;\n    min-height: 18rem;\n}\n\n.big-card-teacher-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.big-card-admin-home{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    margin-top: 8rem;\n    margin-bottom: 8rem;\n    padding-top: 5rem;\n    padding-bottom: 5rem;\n    font-weight: bold;\n}\n\n.big__admin__text{\n    font-size: 3rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big__teacher__home__text{\n    font-size: 5rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big-card-admin-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.big-card-mentor-home{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    margin-top: 8rem;\n    margin-bottom: 8rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    font-weight: bold;\n}\n\n.big__mentor__text{\n    font-size: 3rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big-card-mentor-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.front-card{\n    z-index: 9999;\n}\n\n.top_targets{\n    font-weight: normal;\n    text-align: center;\n}\n\n.home__card__title{\n    font-size: 2.5rem;\n}\n\n@media only screen and (max-width: 1200px){\n    .big__admin__text{\n        font-size: 2rem;\n    }\n}\n\n@media only screen and (max-width: 1200px){\n    .big__mentor__text{\n        font-size: 2rem;\n    }\n}\n\n@media only screen and (max-width: 768px){\n    .big-card-admin-home{\n        max-height: 17.5rem;\n        padding-top: 1rem;\n        padding-bottom: 2rem;\n        padding-left: 0;\n        padding-right: 0;\n        margin-top: 2rem;\n        margin-bottom: 2rem\n    }\n}\n\n@media only screen and (max-width: 1200px){\n    .big-card-mentor-home{\n        max-height: 17.5rem;\n        padding-top: 1rem;\n        padding-bottom: 2rem;\n        padding-left: 0;\n        padding-right: 0;\n    }\n}\n\n@media only screen and (max-width: 768px){\n    .big-card-mentor-home{\n        margin-top: 2rem;\n        margin-bottom: 2rem;\n        margin-top: 2rem;\n        margin-bottom: 2rem\n    }\n}\n\n", ""]);
 
 // exports
 
@@ -57794,6 +57839,8 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _loadingModal = __webpack_require__(19);
 
+var _failureModal = __webpack_require__(13);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57835,17 +57882,21 @@ var SchoolHome = function (_React$Component) {
             _axios2.default.get('https://beta.edvotech.com/api/school/home', {
                 headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken() }
             }).then(function (response) {
-                _this2.setState({ averageQuestionsRate: response.data.averageQuestionsRate });
-                _this2.setState({ averageRecommendationsRate: response.data.averageRecommendationsRate });
-                _this2.setState({ teachersdays: response.data.teachersdays });
+                console.log("RESPONSE HOME: ", response);
+                _this2.setState({ averageQuestionsRate: !response.data.averageQuestionsRate ? 0 : response.data.averageQuestionsRate });
+                _this2.setState({ averageRecommendationsRate: !response.data.averageRecommendationsRate ? 0 : response.data.averageRecommendationsRate });
+                _this2.setState({ teachersdays: !response.data.teachersdays ? 0 : response.data.teachersdays });
                 _this2.setState({ top1: response.data.toptargetsordered[0].target });
                 _this2.setState({ top1v: response.data.toptargetsordered[0].value });
                 _this2.setState({ top2: response.data.toptargetsordered[1].target });
                 _this2.setState({ top2v: response.data.toptargetsordered[1].value });
                 _this2.setState({ top3: response.data.toptargetsordered[2].target });
                 _this2.setState({ top3v: response.data.toptargetsordered[2].value });
+                _this2.props.dispatch((0, _loadingModal.setLoadingModal)());
+            }).catch(function (error) {
+                _this2.props.dispatch((0, _loadingModal.setLoadingModal)());
+                _this2.props.dispatch((0, _failureModal.setFailureModal)());
             });
-            this.props.dispatch((0, _loadingModal.setLoadingModal)());
         }
     }, {
         key: 'render',
@@ -58790,18 +58841,26 @@ var UserList = function (_React$Component) {
                 this.props.users.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allUsers.length > 0 ? _react2.default.createElement(
                         'p',
                         null,
-                        'There are no registered users to manage.'
+                        'There are no recommendations which match the given parameters.'
+                    ) : _react2.default.createElement(
+                        'p',
+                        null,
+                        'There are no registered users in the system.'
                     )
                 ) : _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allUsers.length > 0 ? _react2.default.createElement(
                         'p',
                         null,
-                        'No hay usuarios registrados para administrar.'
+                        'No hay usuarios que cumplen con los par\xE1metros dados.'
+                    ) : _react2.default.createElement(
+                        'p',
+                        null,
+                        'No hay usuarios registrados en el sistema.'
                     )
                 ))
             );
@@ -58816,6 +58875,7 @@ var UserList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allUsers: state.users,
         users: (0, _users2.default)(state.users, state.userFilters),
         userFilters: state.userFilters,
         lang: state.language.lang
@@ -59443,7 +59503,11 @@ var SchoolList = function (_React$Component) {
                 this.props.schools.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allSchools.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'There are no institutions which match the given parameters.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'There are no registered institutions to manage.'
@@ -59451,10 +59515,14 @@ var SchoolList = function (_React$Component) {
                 ) : _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allSchools.length > 0 ? _react2.default.createElement(
                         'p',
                         null,
-                        'No hay instituciones registradas para administrar.'
+                        'No hay instituciones que cumplen con los par\xE1metros dados.'
+                    ) : _react2.default.createElement(
+                        'p',
+                        null,
+                        'No hay instituciones registrados en el sistema.'
                     )
                 ))
             );
@@ -59469,6 +59537,7 @@ var SchoolList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allSchools: state.schools,
         schools: (0, _schools2.default)(state.schools, state.schoolFilters),
         filters: state.schoolFilters,
         lang: state.language.lang
@@ -60209,6 +60278,11 @@ var CreateUserForm = function (_React$Component) {
                                                 'div',
                                                 { className: 'col-sm-6' },
                                                 _react2.default.createElement(
+                                                    'span',
+                                                    { className: 'req' },
+                                                    '*'
+                                                ),
+                                                _react2.default.createElement(
                                                     'label',
                                                     null,
                                                     this.props.lang === 'English' ? 'Name' : 'Nombre',
@@ -60253,6 +60327,11 @@ var CreateUserForm = function (_React$Component) {
                                                 'div',
                                                 { className: 'col-sm-6' },
                                                 _react2.default.createElement(
+                                                    'span',
+                                                    { className: 'req' },
+                                                    '*'
+                                                ),
+                                                _react2.default.createElement(
                                                     'label',
                                                     null,
                                                     this.props.lang === 'English' ? 'Last Name' : 'Apellido',
@@ -60293,6 +60372,11 @@ var CreateUserForm = function (_React$Component) {
                                                 ),
                                                 _react2.default.createElement('br', null)
                                             )
+                                        ),
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'req' },
+                                            '*'
                                         ),
                                         _react2.default.createElement(
                                             'label',
@@ -60342,6 +60426,11 @@ var CreateUserForm = function (_React$Component) {
                                                 'div',
                                                 { className: 'col-sm-6' },
                                                 _react2.default.createElement(
+                                                    'span',
+                                                    { className: 'req' },
+                                                    '*'
+                                                ),
+                                                _react2.default.createElement(
                                                     'label',
                                                     null,
                                                     this.props.lang === 'English' ? 'Password' : 'Contraseña',
@@ -60377,6 +60466,11 @@ var CreateUserForm = function (_React$Component) {
                                                     _react2.default.createElement('br', null)
                                                 ),
                                                 _react2.default.createElement('br', null),
+                                                _react2.default.createElement(
+                                                    'span',
+                                                    { className: 'req' },
+                                                    '*'
+                                                ),
                                                 _react2.default.createElement(
                                                     'label',
                                                     null,
@@ -60477,6 +60571,11 @@ var CreateUserForm = function (_React$Component) {
                                             )
                                         ),
                                         _react2.default.createElement(
+                                            'span',
+                                            { className: 'req' },
+                                            '*'
+                                        ),
+                                        _react2.default.createElement(
                                             'label',
                                             null,
                                             this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento',
@@ -60510,6 +60609,11 @@ var CreateUserForm = function (_React$Component) {
                                         ),
                                         _react2.default.createElement('br', null),
                                         _react2.default.createElement(
+                                            'span',
+                                            { className: 'req' },
+                                            '*'
+                                        ),
+                                        _react2.default.createElement(
                                             'label',
                                             null,
                                             this.props.lang === 'English' ? 'Gender' : 'Género',
@@ -60534,60 +60638,10 @@ var CreateUserForm = function (_React$Component) {
                                         _react2.default.createElement('br', null),
                                         _react2.default.createElement('br', null),
                                         _react2.default.createElement(
-                                            'label',
-                                            null,
-                                            this.props.lang === 'English' ? 'Level of Education' : 'Nivel de Educación',
-                                            ':'
+                                            'span',
+                                            { className: 'req' },
+                                            '*'
                                         ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'label',
-                                            { className: 'clickable radio__text' },
-                                            _react2.default.createElement('input', { type: 'radio', name: 'levelOfEdu', value: 'AS', checked: this.state.levelOfEdu === 'AS', onChange: this.onLOEChange }),
-                                            ' ',
-                                            this.props.lang === 'English' ? ' Associate\'s Degree' : ' Grado Asociado'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'label',
-                                            { className: 'clickable radio__text' },
-                                            _react2.default.createElement('input', { type: 'radio', name: 'levelOfEdu', value: 'BSD', checked: this.state.levelOfEdu === 'BSD', onChange: this.onLOEChange }),
-                                            ' ',
-                                            this.props.lang === 'English' ? ' Bachellor\'s Degree' : ' Bachillerato'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'label',
-                                            { className: 'clickable radio__text' },
-                                            _react2.default.createElement('input', { type: 'radio', name: 'levelOfEdu', value: 'MSD', checked: this.state.levelOfEdu === 'MSD', onChange: this.onLOEChange }),
-                                            ' ',
-                                            this.props.lang === 'English' ? ' Master\'s Degree' : ' Maestría'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'label',
-                                            { className: 'clickable radio__text' },
-                                            _react2.default.createElement('input', { type: 'radio', name: 'levelOfEdu', value: 'PHD', checked: this.state.levelOfEdu === 'PHD', onChange: this.onLOEChange }),
-                                            this.props.lang === 'English' ? ' Doctor of Philosophy' : ' Doctor en Filosofía'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'label',
-                                            { className: 'clickable radio__text' },
-                                            _react2.default.createElement('input', { type: 'radio', name: 'levelOfEdu', value: 'EDD', checked: this.state.levelOfEdu === 'EDD', onChange: this.onLOEChange }),
-                                            ' ',
-                                            this.props.lang === 'English' ? ' Doctor of Education' : ' Doctor en Educación'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'label',
-                                            { className: 'clickable radio__text' },
-                                            _react2.default.createElement('input', { type: 'radio', name: 'levelOfEdu', value: 'NA', checked: this.state.levelOfEdu === 'NA', onChange: this.onLOEChange }),
-                                            ' ',
-                                            this.props.lang === 'English' ? ' None' : ' Ninguna'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement('br', null),
                                         _react2.default.createElement(
                                             'label',
                                             null,
@@ -61872,13 +61926,29 @@ var RecommendationsUserList = function (_React$Component) {
                     'div',
                     { className: 'text-center text-danger' },
                     this.props.users.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
-                        'p',
+                        'div',
                         null,
-                        'There are no registered users in the system.'
+                        this.props.allUsers.length > 0 ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'There are no users which match the given parameters.'
+                        ) : _react2.default.createElement(
+                            'p',
+                            null,
+                            'There are no users registered in the system.'
+                        )
                     ) : _react2.default.createElement(
-                        'p',
+                        'div',
                         null,
-                        'No hay usuarios registrados en el sistema.'
+                        this.props.allUsers.length > 0 ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'No hay usuarios que cumplen con los par\xE1metros dados.'
+                        ) : _react2.default.createElement(
+                            'p',
+                            null,
+                            'No hay usuarios registrados en el sistema.'
+                        )
                     ))
                 )
             );
@@ -61893,6 +61963,7 @@ var RecommendationsUserList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allUsers: state.users,
         users: (0, _users2.default)(state.users, state.userFilters),
         assigned: state.assignRecommendation,
         filters: state.userFilters,
@@ -62016,9 +62087,42 @@ var RecommendationsUserListItem = function RecommendationsUserListItem(props) {
 
                         props.dispatch((0, _assignRecommendations.selectUser)({ userID: props.user.id }));
                         response.data.recommendations.forEach(function (element) {
-                            props.dispatch((0, _recommendations.loadRecommendation)({ id: element.recomid, title: element.title,
-                                header: element.header, multimedia: element.multimedia,
-                                description: element.description }));
+                            props.dispatch((0, _recommendations.loadRecommendation)({
+                                id: element.recomid,
+                                title: element.title,
+                                header: element.header,
+                                multimedia: element.multimedia,
+                                description: element.description,
+                                teachingStrategies: element.strategies,
+                                updatedMaterial: element.material,
+                                timeManagement: element.timemanagement,
+                                technologyIntegration: element.tech,
+                                instructionAlignment: element.instructions,
+                                applications: element.applications,
+                                moodle: element.moodle,
+                                googleclassroom: element.googleclassroom,
+                                emailResource: element.emails,
+                                books: element.books,
+                                socialMedia: element.socialmedia,
+                                projector: element.projector,
+                                computer: element.computer,
+                                tablet: element.tablet,
+                                stylus: element.stylus,
+                                internet: element.internet,
+                                smartboard: element.smartboard,
+                                smartpencil: element.smartpencil,
+                                speakers: element.speakers,
+
+                                topics: [element.topica, element.topicb, element.topicc],
+                                location: element.location,
+                                subject: element.subject,
+                                language: element.english == true ? 'english' : 'spanish',
+                                type: element.type,
+                                schoolType: element.schooltype,
+                                format: element.format,
+                                level: element.level,
+                                size: element.groupsize
+                            }));
                         });
                     }).catch(function (error) {
                         if (error.response.status > 300) {
@@ -62216,7 +62320,11 @@ var RecommendationsList = function (_React$Component) {
                     this.props.recommendation.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement(
+                        this.props.allRecommendations.length > 0 ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'There are no recommendations which match the given parameters.'
+                        ) : _react2.default.createElement(
                             'p',
                             null,
                             'There are no available recommendations for assignment. Please create a new recommendation to assign.'
@@ -62237,7 +62345,11 @@ var RecommendationsList = function (_React$Component) {
                     ) : _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement(
+                        this.props.allRecommendations.length > 0 ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'No hay recomendaciones que cumplen con los par\xE1metros dados.'
+                        ) : _react2.default.createElement(
                             'p',
                             null,
                             'No hay recomendaciones disponibles para asignarle a este usuario. Si desea asignar una recomendaci\xF3n al usuario seleccionado, debe crear una recomendaci\xF3n nueva.'
@@ -62268,7 +62380,9 @@ var RecommendationsList = function (_React$Component) {
 
 
 var mapStateToProps = function mapStateToProps(state) {
+    console.log('RECOMMENDATIONS', state.recommendations);
     return {
+        allRecommendations: state.recommendations,
         recommendation: (0, _recommendations2.default)(state.recommendations, state.recommendationsFilters),
         filters: state.recommendationsFilters,
         assigned: state.assignRecommendation,
@@ -62373,7 +62487,7 @@ var RecommendationListItem = function RecommendationListItem(props) {
                         _react2.default.createElement(
                             'span',
                             { style: { display: 'inline' } },
-                            _react2.default.createElement('i', { className: 'fa fa-check-circle', style: { color: 'green' }, 'aria-hidden': 'true' })
+                            _react2.default.createElement('i', { className: 'fa fa-check-circle fa-lg', style: { color: 'green' }, 'aria-hidden': 'true' })
                         )
                     )
                 )
@@ -72740,7 +72854,11 @@ var ManageRecommendationsList = function (_React$Component) {
                 this.props.recommendation.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allRecommendations.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'There are no recommendations which match the given parameters.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'There are no available recommendations to manage.'
@@ -72761,7 +72879,11 @@ var ManageRecommendationsList = function (_React$Component) {
                 ) : _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allRecommendations.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'No hay recomendaciones que cumplen con los par\xE1metros dados.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'No hay recomendaciones disponibles para administrar.'
@@ -72792,6 +72914,7 @@ var ManageRecommendationsList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allRecommendations: state.recommendations,
         recommendation: (0, _recommendations2.default)(state.recommendations, state.recommendationsFilters),
         filters: state.recommendationsFilters,
         assigned: state.assignRecommendation,
@@ -73402,7 +73525,11 @@ var PendingQuestionsList = function (_React$Component) {
                 this.props.questions.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allQuestions.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'There are no questions which match the given parameters.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'There are no questions pending answers.'
@@ -73410,7 +73537,11 @@ var PendingQuestionsList = function (_React$Component) {
                 ) : _react2.default.createElement(
                     'div',
                     { className: 'close-empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allQuestions.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'No hay preguntas que cumplen con los par\xE1metros dados.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'No hay preguntas con respuestas pendientes.'
@@ -73428,6 +73559,7 @@ var PendingQuestionsList = function (_React$Component) {
 //Map set of filtered questions, question filters data and current language state to component properties. 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allQuestions: state.questions,
         questions: (0, _questions2.default)(state.questions, state.questionsFilters),
         filters: state.questionsFilters,
         lang: state.language.lang
@@ -74341,7 +74473,11 @@ var TeacherRecommendationsList = function (_React$Component) {
                 this.props.recommendation.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                     'div',
                     { className: 'empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allRecommendations.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'There are no recommendations which match the given parameters.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'You do not have any assigned recommendations.'
@@ -74349,7 +74485,11 @@ var TeacherRecommendationsList = function (_React$Component) {
                 ) : _react2.default.createElement(
                     'div',
                     { className: 'empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allRecommendations.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'No hay recomendaciones que cumplen con los par\xE1metros dados.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'Usted no tiene recomendaciones asignadas.'
@@ -74367,6 +74507,7 @@ var TeacherRecommendationsList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allRecommendations: state.teacherRecommendations.recommendations,
         recommendation: (0, _teacherRecommendations3.default)(state.teacherRecommendations.recommendations, state.teacherRecommendationsFilters),
         filters: state.teacherRecommendationsFilters,
         lang: state.language.lang
@@ -75062,7 +75203,11 @@ var TeacherQuestionsList = function (_React$Component) {
                 this.props.question.length === 0 && (this.props.lang === 'English' ? _react2.default.createElement(
                     'div',
                     { className: 'empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allQuestions.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'There are no recommendations which match the given parameters.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'You have not made any questions.'
@@ -75070,7 +75215,11 @@ var TeacherQuestionsList = function (_React$Component) {
                 ) : _react2.default.createElement(
                     'div',
                     { className: 'empty-message-card' },
-                    _react2.default.createElement(
+                    this.props.allQuestions.length > 0 ? _react2.default.createElement(
+                        'p',
+                        null,
+                        'No hay preguntas que cumplen con los par\xE1metros dados.'
+                    ) : _react2.default.createElement(
                         'p',
                         null,
                         'Usted no ha hecho preguntas.'
@@ -75088,6 +75237,7 @@ var TeacherQuestionsList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
+        allQuestions: state.teacherQuestions.teacherQuestions,
         question: (0, _teacherQuestions2.default)(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters),
         filters: state.teacherQuestionsFilters,
         lang: state.language.lang
@@ -77731,7 +77881,7 @@ var Stripe = function (_Component) {
                     { className: 'big-card' },
                     _react2.default.createElement(
                       _reactStripeElements.StripeProvider,
-                      { apiKey: 'pk_test_ZI69x9fLi6Webd9ERw5RXE8Y' },
+                      { apiKey: 'pk_live_LQ8GBkPBQ2oBasw3NDDOAtVz' },
                       _react2.default.createElement(
                         'div',
                         null,
@@ -78410,10 +78560,12 @@ var CheckoutForm = function (_Component) {
               case 2:
                 _ref2 = _context.sent;
                 token = _ref2.token;
-                _context.next = 6;
+
+                console.log("TOKEN: ", token);
+                _context.next = 7;
                 return _axios2.default.post('https://beta.edvotech.com/api/plans/', {
                   token: token.id,
-                  plan: 'edvo-basic',
+                  plan: 'edvo_basic_capstone',
                   couponid: this.state.coupon
                 }, {
                   headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken(), 'Content-Type': 'application/json' } }).catch(function (error) {
@@ -78438,7 +78590,7 @@ var CheckoutForm = function (_Component) {
                   }
                 });
 
-              case 6:
+              case 7:
               case 'end':
                 return _context.stop();
             }
@@ -78535,7 +78687,7 @@ var CheckoutForm = function (_Component) {
               ) : _react2.default.createElement(
                 'p',
                 null,
-                'Ya esta subscrito'
+                'Ya esta suscrito.'
               )
             ),
             _react2.default.createElement(

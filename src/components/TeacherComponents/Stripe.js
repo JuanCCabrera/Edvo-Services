@@ -26,7 +26,7 @@ class Stripe extends Component {
             <div className="col-sm-3"/>
             <div className="col-sm-6">
               <div className="big-card">
-                <StripeProvider apiKey="pk_test_ZI69x9fLi6Webd9ERw5RXE8Y">
+                <StripeProvider apiKey="pk_live_LQ8GBkPBQ2oBasw3NDDOAtVz">
                   <div>
                     <div className="form__title">
                       <p>{this.props.lang === 'English' ? 'Subscription Payment' : 'Pago de Suscripción'}</p>
