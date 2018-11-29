@@ -55,6 +55,8 @@ class CreateRecommendationForm extends React.Component{
             smartboard: props.reco ? props.reco.smartboard : false,
             smartpencil: props.reco ? props.reco.smartpencil : false,
             speakers: props.reco ? props.reco.speakers : false,
+            spanish: props.reco ? props.reco.spanish: false,
+            english: props.reco ? props.reco.english: false,
             
             topics: props.reco ? props.reco.topics : [''],
             topicError: '',
@@ -435,7 +437,7 @@ class CreateRecommendationForm extends React.Component{
         if (!this.state.title || !this.state.header || !this.state.editorState || !(this.props.isEdit || this.state.question) || !this.state.subject || !this.state.topics[0] || (!this.props.isEdit && (!this.state.choices[0] || !this.state.choices[1] || !this.state.choices[2]))){
             this.setState(() => ({creationError: true}));
             //If checkboxes are empty...
-        }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) && !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
+        }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) || !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
             this.setState(() => ({creationError: true}));
             //If a regex check fails...
         }else if(this.state.titleError || this.state.headerError || this.state.descriptionError || this.state.locationError || this.state.topicError || this.state.subjectError || this.state.questionError || this.state.choiceError){
@@ -484,8 +486,8 @@ class CreateRecommendationForm extends React.Component{
             
             location: '',
             subject: this.state.subject,
-            spanish: this.state.spanish, 
-            english: this.state.english,
+            spanish: this.state.language == "spanish" ? true : false,
+            english: this.state.language == "english" ? true : false,
             type: this.state.type,
             schooltype: this.state.schoolType,
             format: this.state.format,

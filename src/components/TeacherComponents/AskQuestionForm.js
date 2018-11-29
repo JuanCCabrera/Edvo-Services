@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 import { setSuccessModal } from '../../actions/successModal';
+import { setLoadingModal } from '../../actions/loadingModal';
+import { setFailureModal } from '../../actions/failureModal';
+import { reset,loadTeacherQuestionsAsked, loadTeacherRecentRecommendation, loadTeacherTopRecommendation, loadTeacherDaysInPlatform, loadTeacherRecommendationsRead } from '../../actions/teacherMetrics';
+import {loadTeacherRecommendation, unloadTeacherRecommendations} from '../../actions/teacherRecommendations';
 
 /**
  * Form available in the Teacher Home page which allows teachers to send questions to the Edvo Tech staff. 
@@ -107,6 +111,34 @@ class AskQuestionForm extends React.Component{
                     this.setState(() => ({askQuestionAllowed: false}));
                     this.setState(() => ({askInvalidInputs: false}));
                     this.props.dispatch(setSuccessModal());
+                    
+                    //Requerying Home
+                    this.props.dispatch(reset());
+                    this.props.dispatch(unloadTeacherRecommendations());
+                    this.props.dispatch(setLoadingModal());
+
+                    axios.get('https://beta.edvotech.com/api/teacher/home',
+                    {
+                        headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+                    })
+                    .then(response => {
+                        this.props.dispatch(loadTeacherDaysInPlatform({daysInPlatform: response.data.daysInPlatforms}));
+                        this.props.dispatch(loadTeacherQuestionsAsked({questionsAsked: response.data.questionsasked}));
+                        this.props.dispatch(loadTeacherRecommendationsRead({recommendationsRead: response.data.recommendationsRead}));
+                        
+                        response.data.recentRecommendations.forEach(element => {
+                        this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read}));
+                        this.props.dispatch(loadTeacherRecommendation({read: element.read, recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
+                        });
+                        response.data.topRecommendations.forEach(element => {
+                            this.props.dispatch(loadTeacherTopRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read}));
+                            });
+                        this.props.dispatch(setLoadingModal());
+                    })
+                    .catch(error =>{
+                        this.props.dispatch(setLoadingModal());
+                        this.props.dispatch(setFailureModal());
+                    })
                 }
             });
         }

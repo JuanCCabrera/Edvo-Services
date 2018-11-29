@@ -17,6 +17,7 @@ class Auth {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.signIn = this.signIn.bind(this);
+    this.signUp = this.signUp.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getRole = this.getRole.bind(this);
     this.getEmail = this.getEmail.bind(this);
@@ -83,6 +84,12 @@ class Auth {
 
   signIn() {
     this.auth0.authorize();
+  }
+
+  signUp() {
+    this.auth0.authorize({
+      mode: 'signUp'
+    });
   }
 
   signOut() {

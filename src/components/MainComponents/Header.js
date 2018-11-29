@@ -17,10 +17,6 @@ class Header extends React.Component{
     //
 
     componentWillMount(){
-        console.log(!this.props.creds.isAuthenticated && this.props.creds.role == null);
-        console.log(!this.props.creds.isAuthenticated);
-        console.log(this.props.creds.role == null);
-
         if(!this.props.creds.isAuthenticated && this.props.creds.role == null){
             if(auth0Client.isAuthenticated()){
                 this.props.dispatch(setAuthentication({isAuthenticated: true}));

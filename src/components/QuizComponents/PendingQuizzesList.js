@@ -63,7 +63,9 @@ class PendingQuizzesList extends React.Component {
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
             this.props.dispatch(setLoadingModal());
-            this.props.dispatch(setFailureModal());
+            if(error.response.status >= 500){
+                this.props.dispatch(setFailureModal());
+            }
         });
         
         this.pageSlice = Math.ceil(this.props.quizzes.length/this.itemsPerPage);

@@ -370,8 +370,9 @@ class BasicInfoProfileForm extends React.Component{
                         <br/>
                         {this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? 'An email has been sent to '+auth0Client.getEmail()+' with instructions to change your password.' 
                         : 'Un correo electrónico ha sido enviado a '+auth0Client.getEmail()+' con un enlace para cambiar su contraseña.')}
+                        <br/>
                         {this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? '*If you are using a Microsoft account this will not reset your password.' 
-                        : '*Si está utilizando una cuenta Microsoft usted no podra cambiar su contraseña por este medio.')}
+                        : '*Si está utilizando una cuenta Microsoft, usted no podrá cambiar su contraseña por este medio.')}
                     </div>
 
                     </form>

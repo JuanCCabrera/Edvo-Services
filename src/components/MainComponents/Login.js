@@ -106,7 +106,7 @@ class LoginPage extends React.Component{
                                                             </div>
                                                         </button>
 
-                                                        <button onClick={auth0Client.signIn} style={{marginBottom: '1rem'}}>
+                                                        <button onClick={auth0Client.signUp} style={{marginBottom: '1rem'}}>
                                                             <div className="btn btn-item">
                                                             {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
                                                             </div>
