@@ -56,9 +56,12 @@ class AssignmentRecommendationModal extends React.Component{
                         //Button to close modal
                     }
                     
-                        <div className="btn btn-item">
-                            <button onClick = {this.props.clearSelectedRecommendation}>{this.props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
-                        </div>
+                        
+                            <button className="btn btn-item" onClick = {this.props.clearSelectedRecommendation}>
+                                <div>
+                                    {this.props.lang === 'English' ? 'Close' : 'Cerrar'}
+                                </div>
+                            </button>
                     </div>
                 </div>
                 </Modal>

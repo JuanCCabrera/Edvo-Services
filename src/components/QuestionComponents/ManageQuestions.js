@@ -19,13 +19,7 @@ const ManageQuestions = (props) => (
     <div className="background-home">
         <div className="container">
             <div className="row">
-                <div className="col-sm-2">
-                    <div className="text-center well">
-                        <QuestionButtonList/>
-                    </div>
-                </div>
-                <div className="col-sm-1"/>
-                <div className="col-sm-9">
+                <div className="col-sm-12">
                 {
                     //Page title
                 }

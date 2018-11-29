@@ -7,6 +7,7 @@ import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
 import { reset,loadTeacherQuestionsAsked, loadTeacherRecentRecommendation, loadTeacherTopRecommendation, loadTeacherDaysInPlatform, loadTeacherRecommendationsRead } from '../../actions/teacherMetrics';
 import {loadTeacherRecommendation, unloadTeacherRecommendations} from '../../actions/teacherRecommendations';
+import {loadTeacherQuestion, unloadTeacherQuestions, addFavoriteQuestion} from '../../actions/teacherQuestions';
 
 /**
  * Form available in the Teacher Home page which allows teachers to send questions to the Edvo Tech staff. 
@@ -73,7 +74,6 @@ class AskQuestionForm extends React.Component{
         }else if(this.state.subjectError || this.state.subjectError){
             this.setState(() => ({askQuestionError: true}))
         }else{
-            
             axios.post('https://beta.edvotech.com/api/teacher/questions/ask', {
             subject: this.state.subject,
             question: this.state.body
@@ -110,7 +110,32 @@ class AskQuestionForm extends React.Component{
                     this.setState(() => ({askQuestionPlan: false}));
                     this.setState(() => ({askQuestionAllowed: false}));
                     this.setState(() => ({askInvalidInputs: false}));
-                    this.props.dispatch(setSuccessModal());
+                    if(!this.props.isInQuestionsPage){
+                        this.props.dispatch(setSuccessModal());
+                    }
+                    if(this.props.isInQuestionsPage){
+                        this.props.dispatch(setLoadingModal());
+                        this.props.dispatch(unloadTeacherQuestions());
+                        axios.get('https://beta.edvotech.com/api/teacher/questions',
+                            {
+                                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
+                            .then(response => {
+                                response.data.questions.forEach(element => {
+                                    this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 
+                                    subject: element.subject, favorite: element.favorite, userId: element.userid, answer: element.answer, rate: element.rate, read: element.read}));
+                                    if(element.favorite == true){
+                                        this.props.dispatch(addFavoriteQuestion({askedDate: element.askeddate}));
+                                    }
+                                });
+                                this.props.dispatch(setLoadingModal());
+                                this.props.dispatch(setSuccessModal());
+                            }).catch(error => {
+                                this.props.dispatch(setLoadingModal());
+                                if(error.response.status >= 500){
+                                    this.props.dispatch(setFailureModal());
+                                }
+                            });
+                    }
                     
                     //Requerying Home
                     this.props.dispatch(reset());
@@ -138,10 +163,11 @@ class AskQuestionForm extends React.Component{
                     .catch(error =>{
                         this.props.dispatch(setLoadingModal());
                         this.props.dispatch(setFailureModal());
-                    })
-                }
+                    });
+                } 
+                
             });
-        }
+    }
 }
         
     render(){
@@ -186,7 +212,7 @@ class AskQuestionForm extends React.Component{
                     //Question body input field
                 }
                     <p>{this.props.lang === 'English' ? 'Question' : 'Pregunta'}: </p>
-                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.body.length}/5000</span>
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}> {this.props.lang === 'English' ? 'Characters' : 'Caracteres'} {this.state.body.length}/5000 </span>
                     <br/>
                     <textarea
                     className="form-control"

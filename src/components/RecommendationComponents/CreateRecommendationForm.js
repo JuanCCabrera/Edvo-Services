@@ -565,7 +565,7 @@ class CreateRecommendationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Description' : 'Descripción'}:</label>
                     <br/>
-                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Length' : 'Largo'}: {this.state.header.length}/200</span>
+                    <span style={{color: 'gray', fontSize: '1.2rem'}}>{this.props.lang === 'English' ? 'Characters' : 'Caracteres'} {this.state.header.length}/200</span>
                     <br/>
                     <textarea type="text" maxLength="200" rows="2" placeholder = {this.props.lang === 'English' ? 'Description' : 'Descripción'} className="form-control" value = {this.state.header} onChange={this.onHeaderChange} onBlur={() => {
                         //Check to see if header is only composed of spaces.

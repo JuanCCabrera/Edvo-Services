@@ -63,9 +63,11 @@ class UserModal extends React.Component{
                     {
                         //Button to close modal
                     }
-                        <div className="btn btn-item">
-                            <button onClick = {this.props.clearSelectedUser}>{this.props.lang === 'English' ? 'Close' : 'Cerrar'}</button>
-                        </div>
+                        <button className="btn btn-item" onClick = {this.props.clearSelectedUser}>
+                            <div>
+                                {this.props.lang === 'English' ? 'Close' : 'Cerrar'}
+                            </div>
+                        </button>
                     </div>
                 </div>
                 </Modal>

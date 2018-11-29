@@ -142,6 +142,7 @@ class TeacherQuestionsList extends React.Component{
 
 //Map filtered list of questions, filter data and current language state to the component properties. 
 const mapStateToProps = (state) => {
+    console.log(getVisibleTeacherQuestions(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters));
     return{
         allQuestions: state.teacherQuestions.teacherQuestions,
         question: getVisibleTeacherQuestions(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters),

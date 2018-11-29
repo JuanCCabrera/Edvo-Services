@@ -14,7 +14,7 @@ const RecommendationsUserListItem = (props) => (
     <div className="list-group-item">
         <div className="row">
             <div className="col-sm-10 card-title">
-                <p>
+                <p className="card-title">
                     {props.user.name + ' ' + props.user.lastName} 
                 </p>
             </div>
@@ -25,7 +25,7 @@ const RecommendationsUserListItem = (props) => (
                     </div>}
             </div>
         </div>
-        <p>Email: {props.user.email}</p>
+        <p className="card-text">Email: {props.user.email}</p>
         {
             //<h6>Has weekly recommendation: {props.user.weeklyReco ? 'Yes' : 'No'}</h6>
         }

@@ -53,7 +53,7 @@ const RecommendationListItem = (props) => (
                     {
                         //Recommendation title
                     }
-                    <p>
+                    <p className="card-title">
                         {props.reco.title} 
                     </p>
                 </div>
@@ -69,8 +69,8 @@ const RecommendationListItem = (props) => (
         {
             //Recommendation header
         }
-        <div className="item__body">
-            <h5>{props.reco.header}</h5>
+        <div className="item__body card-text">
+            <p>{props.reco.header}</p>
         </div>
         {
             //Button to select a recommendation

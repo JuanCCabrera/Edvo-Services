@@ -28,7 +28,7 @@ const TeacherQuestionListItem = (props) => (
                 //Question subject and date in which it was asked.
             }
             <div className="card-title">
-            <p>{props.question.subject}</p> 
+            <p className="card-text">{props.question.subject}</p> 
             </div>
 
             {
