@@ -54,10 +54,10 @@ const AboutPage = (props) => (
                         {props.lang === 'English' ? 
                         <div>
                             <p className="about__subtitle__2">Why we do it</p>
-                            <p className="text-muted">We understand the great challenges that come with the responsibility of being an educator and that leads us to support them in every step of the process.</p>
+                            <p className="about__sub__text">We understand the great challenges that come with the responsibility of being an educator and that leads us to support them in every step of the process.</p>
                         </div> : <div>
                             <p className="about__subtitle__2">¿Por qué lo hacemos?</p>
-                            <p className="text-muted">Entendemos los grandes retos que vienen con la responsabilidad de ser un educador, lo cual nos lleva a querer apoyarlos en cada paso del camino.</p>
+                            <p className="about__sub__text">Entendemos los grandes retos que vienen con la responsabilidad de ser un educador, lo cual nos lleva a querer apoyarlos en cada paso del camino.</p>
                         </div>
                         }
                     </div>
@@ -70,10 +70,10 @@ const AboutPage = (props) => (
                         {props.lang === 'English' ? 
                         <div>
                             <p className="about__subtitle__2">How we do it</p>
-                            <p className="text-muted">Advocating for quality education and bringing the best practices to educators through innovative professional development opportunities.</p>
+                            <p className="about__sub__text">Advocating for quality education and bringing the best practices to educators through innovative professional development opportunities.</p>
                         </div> : <div>
                             <p className="about__subtitle__2">¿Cómo lo hacemos?</p>
-                            <p className="text-muted">Defendiendo la educación de calidad y brindando las mejores practicas para educadores através de oportunidades de desarrollo profesional innovadoras.</p>
+                            <p className="about__sub__text">Defendiendo la educación de calidad y brindando las mejores practicas para educadores através de oportunidades de desarrollo profesional innovadoras.</p>
                         </div>
                         }
                     </div>

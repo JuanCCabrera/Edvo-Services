@@ -415,9 +415,7 @@ class RegistrationForm extends React.Component{
     onEmployedDateChange = (timeEmployed) => {
         var today=moment();
         var difference = today.diff(timeEmployed, 'years');
-        console.log('DIFFERENCE IN YEARS', difference);
         var differenceToBirth = timeEmployed.diff(this.state.dateOfBirth, 'years');
-        console.log('DIF TO BIRTH',differenceToBirth);
         //Check if the selected date of birth falls between 18-90 years ago. 
         if(timeEmployed && (difference > 0 && difference < 90) && differenceToBirth >= 18){
             this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: ''}));

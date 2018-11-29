@@ -13,7 +13,7 @@ export const reset = () => {
  * @param {*} param0 - Object containing the number of days a teacher has logged in to the platform.
  */
 export const loadTeacherDaysInPlatform = ({daysInPlatform = 0} = {}) => {
-    console.log("THE DAYS IN PLATFORM ISSS: ", daysInPlatform);
+    
     return{
         type: 'LOAD_TEACHER_DAYS_IN_PLATFORM',
         daysInPlatform: daysInPlatform

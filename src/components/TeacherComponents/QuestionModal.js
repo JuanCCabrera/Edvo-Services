@@ -39,8 +39,6 @@ const QuestionModal = (props) => (
             }}
             onStarClick={() => {
                 const favoriteQuestion = !props.question.favorite;
-                console.log("THE FAVORITE VALUE IS: ", props.question.favorite);
-        console.log("AFTER: ",favoriteQuestion);
         axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
                 askeddate: props.question.askedDate,
                 favorite: favoriteQuestion
@@ -48,7 +46,6 @@ const QuestionModal = (props) => (
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{
             if(response.data.statusCode == 201){
-                console.log("FAV WAS SUCCESSFUL!!!");
         if(props.question.favorite == false){
             props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
         }else{
@@ -60,7 +57,6 @@ const QuestionModal = (props) => (
         </div>
     
     </div>
-        {console.log("QUESTION MODAL PROPS: ",props.question.favorite)}
             {
                 //Quesiton subject
             }
@@ -127,7 +123,6 @@ const QuestionModal = (props) => (
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                 }).then(response =>{
-                    console.log("AFTER RATING Q: ", response);
                 props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))})}
                 }
             />
@@ -159,7 +154,6 @@ const mapStateToProps = (state) => {
             val = 1;
         }
     }
-    console.log('ANSWER',state.teacherQuestions.selectedQuestion.answer);
     return {
         question: state.teacherQuestions.selectedQuestion,
         isFavorite: val,

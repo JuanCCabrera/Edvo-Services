@@ -28,7 +28,6 @@ class PendingQuizzesList extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("REPSONSE OF QUIZ: ", response);
             this.props.dispatch(reset());
             response.data.quizzes.forEach(element => {
                 let correctChoices = {}
@@ -56,7 +55,6 @@ class PendingQuizzesList extends React.Component {
                     })
                     questionsObject.questions.push(questionObject);
                 })
-                console.log("CQUESTION OBECT :LEKGNHT:::", questionsObject);
                 if(questionsObject.questions.length == 12)
                     this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
 
@@ -106,7 +104,6 @@ class PendingQuizzesList extends React.Component {
         return (
             <div>
                 
-                {console.log("PROPS?: ", this.props) }
                 {this.state.displayedQuizzes.map((quiz) => {
                     return <PendingQuizzesListItem key={quiz} quiz={quiz}/>
                 })}

@@ -41,7 +41,6 @@ class Plan extends React.Component{
         })
         .then(response => {
             if(response.status == 200){
-                console.log("RESPONSE PLANS: ", response);
                 this.setState({status: response.data.subscription.status});
                 this.props.dispatch(loadPlan({name: response.data.subscription.type, status: response.data.subscription.status}));
             }
@@ -75,8 +74,6 @@ class Plan extends React.Component{
         },
         {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .then((response)=>{
-        console.log("RESUSCRIBE RESPONSE: ",response);
-        console.log("RESPOSNE STATUS: ", response.status);
         if(response.status == 201){
             this.props.dispatch(setSuccessModal());
             const stateStatus = this.state.status == 'active' ? 'suspended' : 'active';

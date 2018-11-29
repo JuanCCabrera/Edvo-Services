@@ -31,7 +31,7 @@ class PendingQuestionsList extends React.Component {
     componentWillMount(){ 
         this.props.dispatch(setLoadingModal());
         this.props.dispatch(resetQuestionsList());       
-        axios.get('https://beta.edvotech.com/api/admin/staff/questions',
+        axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/staff/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {

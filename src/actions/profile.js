@@ -10,10 +10,6 @@ lastName = '',
 dateOfBirth = moment().subtract('18',"years"),
 gender = 'male'
 } = {}) => {
-    console.log("ACTION:L", name,
-    lastName,
-    dateOfBirth,
-    gender);
     return{
         type: 'LOAD_PROFILE',
         profile:{

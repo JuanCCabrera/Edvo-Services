@@ -59,7 +59,6 @@ class BasicInfoProfileForm extends React.Component{
 
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
-        console.log("WE HAVE EMAIL: ",auth0Client.getIdToken());
         //send this to action
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/settings/info',
         {
@@ -72,7 +71,6 @@ class BasicInfoProfileForm extends React.Component{
                 
             this.props.dispatch(setLoadingModal());
         }).catch(error=>{
-            console.log("ERROR: ", error);
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
         });
@@ -160,7 +158,7 @@ class BasicInfoProfileForm extends React.Component{
             this.setState(() => ({formIncompleteError: true}));
         }else{
             this.setState(() => ({formIncompleteError: false}));
-            axios.post('https://beta.edvotech.com/api/admin/settings/info', {
+            axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/settings/info', {
             name: this.state.name,
             lastname: this.state.lastName,
             dob: moment(this.state.dateOfBirth).format("YYYY-MM-DD"),

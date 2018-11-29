@@ -43,9 +43,7 @@ class SchoolListItem extends React.Component{
                     //School location
                 }
                 <p>{this.props.lang === 'English' ? 'Location' : 'Localización'}: {this.props.school.location}</p>
-                {
-                    console.log("SCHOOL PROPS: ", this.props)
-                }
+                
                 <p>{this.props.lang === 'English' ? 'Type' : 'Tipo'}: {this.props.school.type}</p>
                 {
                     //Number of accounts linked to the school

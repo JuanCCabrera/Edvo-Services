@@ -12,7 +12,6 @@ import moment from 'moment';
 const TeacherRecommendationsListItem = (props) => (
     //Open recommendation modal when recommendation item is selected. 
         <div className="clickable list-group-item item-card" onClick={() => {
-            console.log("SELECTED RECOMMENDATION FROM LIST: ",props.reco);
             if(props.reco.read != null){
             axios.post('https://beta.edvotech.com/api/teacher/recommendations/read', {
                 recomid: props.reco.recoID
@@ -21,7 +20,6 @@ const TeacherRecommendationsListItem = (props) => (
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
             .then((response)=>{
                 if(response.status == 201){
-                    console.log("READ SUCCESS");
                 }
             });
             }

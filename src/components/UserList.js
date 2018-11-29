@@ -106,7 +106,6 @@ class UserList extends React.Component{
                 {this.state.displayedUsers.map((user) => {
                     return <UserListItem key={user.id} user={user} 
                     userRemoval={() => {
-                        console.log("REMOVING USER NOW!!!!!!!", user.id)
                         axios.post('https://beta.edvotech.com/api/admin/settings/users/remove',{
                             userIDToRemove: user.id
                 },{
@@ -118,7 +117,6 @@ class UserList extends React.Component{
                     this.props.dispatch(removeUser({id: user.id}))}}
                 )
                 .catch(error => {
-                    console.log("ERROR REPSONSE: ", error.response);
                     if(error.response.status != null)
                         this.props.dispatch(setFailureModal());
                 })

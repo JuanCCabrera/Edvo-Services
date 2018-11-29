@@ -29,7 +29,7 @@ class AnswerQuestionForm extends React.Component {
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
         this.props.dispatch(resetQuestionsList());       
-        axios.get('https://beta.edvotech.com/api/admin/staff/questions',
+        axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/staff/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
@@ -62,8 +62,7 @@ class AnswerQuestionForm extends React.Component {
             this.setState(() => ({answerError: true}));
         }else{
             this.setState(() => ({answerError: ''}));
-            console.log("TEACHER ID TO ANSWER: ", this.state.userID);
-            axios.post('https://beta.edvotech.com/api/admin/questions/answer', {
+            axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/questions/answer', {
                 askeddate: this.props.question.askedDate,
                 answer: this.state.answer,
                 teacherid: this.props.question.userId

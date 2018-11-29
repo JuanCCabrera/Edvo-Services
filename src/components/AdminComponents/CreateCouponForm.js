@@ -85,11 +85,7 @@ class CreateCouponForm extends React.Component{
         }else if(this.state.couponIDError || this.state.couponNameError || this.state.percentageError){
             this.setState(() => ({couponCreationError: true}));
         }else{
-            console.log("REQUEST POST SEND CREATE COUPON: ",
-            this.state.couponID," | ", 
-            this.state.couponName," | ", 
-            this.state.percentage," | ", 
-            this.state.months);
+            
             axios.post('https://beta.edvotech.com/api/admin/settings/coupon/add',{
                             couponid: this.state.couponID,
                             name: this.state.couponName,
@@ -103,12 +99,10 @@ class CreateCouponForm extends React.Component{
                         this.setState(() => ({couponID: ''}));
                         this.setState(() => ({couponName: ''}));
                         this.setState(() => ({percentage: ''}));
-                        console.log("ARRIVED HERE AFTER SETTING DEFAULT STATES");
                         this.setState(() => ({couponRequestError: false, couponCreationError: false}));              
                     }
                     })
                     .catch(error => {
-                        console.log("ERROR REPSONSE: ", error.response);
                         if(error.response.status != null)
                             this.setState({couponRequestError: true});
                             this.props.dispatch(setFailureModal());
@@ -253,8 +247,7 @@ class CreateCouponForm extends React.Component{
                                                     this.setState(() => ({percentageError: 'El campo de porcentaje de descuento debe contener un número en el rango de 5-100.'})); 
                                                 }
                                             }else if(this.state.percentage && (Number(this.state.percentage) < 5 || Number(this.state.percentage) > 100)){
-                                                console.log(Number(this.state.percentage) < 5);
-                                                console.log(Number(this.state.percentage) > 100);
+                                                
                                                 if(this.props.lang === 'English'){
                                                     this.setState(() => ({percentageError: 'The percentage field must contain a number in the range 5-100.'}));
                                                 }else{

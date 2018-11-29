@@ -24,15 +24,47 @@ class ClassListItem extends React.Component{
     {
         //Class format
     }
-        <p>{this.props.lang === 'English' ? 'Format' : 'Formato'}: {this.props.classes.format}</p>
+        {this.props.lang === 'English' ? 
+        <div>
+            {this.props.classes.format == "classroom" && <p>Format: Classroom</p>}
+            {this.props.classes.format == "blended" && <p>Format: Blended</p>}
+            {this.props.classes.format == "online" && <p>Format: Online</p>}
+        </div>
+        :
+        <div>
+            {this.props.classes.format == "classroom" && <p>Formato: Salón de Clases</p>}
+            {this.props.classes.format == "blended" && <p>Formato: Mixto</p>}
+            {this.props.classes.format == "online" && <p>Formato: En Línea</p>}
+        </div>
+        }
     {
         //Class language
     }
-        <p>{this.props.lang === 'English' ? 'Language' : 'Lenguaje'}: {this.props.classes.language}</p>
+        {this.props.lang === 'English' ?  
+        <p>
+            {this.props.classes.language == "spanish" ? 'Language: Spanish' : 'Language: English'}
+        </p>
+        :
+        <p>
+            {this.props.classes.language == "spanish" ? 'Lenguaje: Español' : 'Language: Inglés'}
+        </p>
+        }
     {
         //Class level
     }
-        <p>{this.props.lang === 'English' ? 'Level' : 'Nivel'}: {this.props.classes.level}</p>
+        {this.props.lang === 'English' ? 
+        <div>
+            <p>Level: {this.props.classes.level}</p>
+        </div>
+        :
+        <div>
+            {this.props.classes.level == "Kindergarden - 3rd grade" && <p>Nivel: Kindergarden - 3er grado</p>}
+            {this.props.classes.level == "4th - 6th grade" && <p>Nivel: 4to - 6to grado</p>}
+            {this.props.classes.level == "7th - 8th grade" && <p>Nivel: 7mo - 8vo grado</p>}
+            {this.props.classes.level == "9th - 12th grade" && <p>Nivel: 9no - 12mo grado</p>}
+        </div>
+        
+        }
     {
         //Class group size
     }
@@ -99,7 +131,7 @@ class ClassListItem extends React.Component{
 //Map list of classes and current language state to the component properties. 
 const mapStateToProps = (state,props) => {
     return {
-        classData: state.classes,
+        classData: state.classes[0],
         lang: state.language.lang
     }
 }

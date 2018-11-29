@@ -32,9 +32,7 @@ class RecommendationsUserList extends React.Component{
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
-            console.log("ASSIGN USERS: ", response);
             response.data.users.forEach(element => {
-                console.log("RECOM LIST USERS: ", element)
                 let categories = []
                 if(element.tech)
                     categories.push("Technology Integration") 

@@ -8,7 +8,6 @@ const PendingQuizzesListItem = (props) => (
             <div className="col-sm-3"/>
             <div className="col-sm-4">
                 <div className="quiz-item-card">
-                    {console.log("QUIZ PROPS ITEM: ", props)}
                     <p className="item__body card-title">
                         {props.lang === 'English' ? 'Quiz' : 'Prueba'} {moment(props.quiz.quizDate).format("YYYY-MM-DD")}
                     </p>

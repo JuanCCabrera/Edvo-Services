@@ -36,22 +36,17 @@ class TeacherHome extends React.Component {
         this.props.dispatch(unloadTeacherRecommendations());
     }
     componentWillMount(){
-        console.log("PROPS IN HOME THIS: ",this.props);
-        console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
         this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/home',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("###################TEACHER HOME DAYS: ", response.data.daysInPlatforms);
             this.props.dispatch(loadTeacherDaysInPlatform({daysInPlatform: response.data.daysInPlatforms}));
             this.props.dispatch(loadTeacherQuestionsAsked({questionsAsked: response.data.questionsasked}));
             this.props.dispatch(loadTeacherRecommendationsRead({recommendationsRead: response.data.recommendationsRead}));
-            console.log("STATE OF TEACHER HOME: ", this.state);
             
             response.data.recentRecommendations.forEach(element => {
-                console.log("MOST RECENT RECOMMENDATIONS: ******************, ", element);
             this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read}));
             this.props.dispatch(loadTeacherRecommendation({read: element.read, recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
             });
@@ -63,9 +58,6 @@ class TeacherHome extends React.Component {
         .catch(error =>{
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
-            console.log("TOEKN FOR HOME: ", auth0Client.getIdToken());
-            console.log("ERROR RE: ", error.response.status);
-            console.log("ERROR TEACHER HOMEE: ", error);
         })
     }
         render(){
@@ -243,7 +235,6 @@ class TeacherHome extends React.Component {
 
 //Map teacher metrics, teacher recommendations, teacher questions, and current language state to component properties. 
 const mapStateToProps = (state) => {
-    console.log(state.teacherMetrics);
     return {
         teacherMetrics: state.teacherMetrics,
         teacherRecommendations: state.teacherRecommendations.recommendations,

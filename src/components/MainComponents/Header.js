@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {swapLanguage} from '../../actions/language';
+import {setAuthentication, setRole} from '../../actions/credentials';
 import auth0Client from '../../Auth';
 
 /**
@@ -14,6 +15,21 @@ class Header extends React.Component{
         super(props);
     }
     //
+
+    componentWillMount(){
+        console.log(!this.props.creds.isAuthenticated && this.props.creds.role == null);
+        console.log(!this.props.creds.isAuthenticated);
+        console.log(this.props.creds.role == null);
+
+        if(!this.props.creds.isAuthenticated && this.props.creds.role == null){
+            if(auth0Client.isAuthenticated()){
+                this.props.dispatch(setAuthentication({isAuthenticated: true}));
+            }
+            if(auth0Client.getRole()!= null){
+                this.props.dispatch(setRole(({role: auth0Client.getRole()})));
+            }
+        }
+    }
 
     render(){
 
@@ -182,8 +198,9 @@ class Header extends React.Component{
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang,
-        role: localStorage.getItem('role'),
-        isAuthenticated: auth0Client.isAuthenticated()
+        role: state.credentials.role,
+        isAuthenticated: state.credentials.isAuthenticated,
+        creds: state.credentials
     };
 };
 

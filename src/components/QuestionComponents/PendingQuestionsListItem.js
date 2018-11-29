@@ -59,25 +59,19 @@ class PendingQuestionsListItem  extends React.Component{
                     </div>
                     <br/>
                     <button onClick={() => {    
-                        console.log("PROPS IN SEE QUESTIONS: ", this.props);
-                        axios.delete('https://beta.edvotech.com/api/admin/questions/remove',{
+                        axios.delete('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/questions/remove',{
                         data:{askeddate: this.props.question.askedDate,
                         userid: this.props.question.userId
                     },
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                         })
                         .then((response)=>{
-                            console.log("RESUSCRIBE RESPONSE: ",response);
-                            console.log("RESPOSNE STATUS: ", response.status);
                             if(response.status == 200){
                                 this.props.dispatch(setSuccessModal());
-                                console.log('ASKED DATE', this.props.question.askedDate);
-                                console.log('UserID', this.props.question.userId);
                                 this.props.dispatch(removeQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId}));
                             }
                         })
                         .catch(error => {
-                            console.log("RESPONSE DATA: ", error.response);
                             if(error.response.status == 401 || error.response.status == 403){
                                 
                                 this.props.dispatch(setFailureModal());

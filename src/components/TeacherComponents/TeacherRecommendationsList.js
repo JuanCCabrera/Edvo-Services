@@ -29,22 +29,18 @@ class TeacherRecommendationsList extends React.Component{
 
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
-        console.log("LIST IS MOUNTED");
         this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/teacher/recommendations',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            response.data.recommendations.forEach(element => { 
-                console.log('READ STATUS', !!element.read); 
-                console.log("RECOM RESPONSE: ", element);        
-                console.log("ACTION OUTPUT: ",this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, 
+            response.data.recommendations.forEach(element => {        
+                this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, 
                 header: element.header, location: element.location, 
                 description: element.description, 
-                multimedia: element.multimedia, date: element.date, read: !!element.read, rate: element.rate})));
+                multimedia: element.multimedia, date: element.date, read: !!element.read, rate: element.rate}));
                 if(element.favorite == true){
-                    console.log("FAVORITE LOADING", element);
                     this.props.dispatch(addFavoriteRecommendation({recoID: element.recomid, title: element.title, 
                         header: element.header, location: element.location, 
                         description: element.description, 
@@ -53,7 +49,6 @@ class TeacherRecommendationsList extends React.Component{
          });
          this.props.dispatch(setLoadingModal());
     }).catch(error => {
-        console.log("ERROR ERROR ERROR");
         this.props.dispatch(setLoadingModal());
         this.props.dispatch(setFailureModal());
         

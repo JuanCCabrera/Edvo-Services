@@ -26,13 +26,11 @@ class SchoolHome extends React.Component {
     }
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
-        console.log("TEACHER HOME IS MOUNTING!!!!!!!!!!!!!!!!!!!")
         axios.get('https://beta.edvotech.com/api/school/home',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("HOEM REPOSNSE: ", response);
             this.setState({averageQuestionsRate: response.data.averageQuestionsRate});
             this.setState({averageRecommendationsRate: response.data.averageRecommendationsRate});
             this.setState({teachersdays: response.data.teachersdays});

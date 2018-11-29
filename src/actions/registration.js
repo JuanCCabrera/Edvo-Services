@@ -111,8 +111,8 @@ export const sendRegistration = (
 
         currPage: currPage
     }).then((response)=>{
-            if(response.status == 201)
-                console.log("USER REGISTERED");
+            
+                
     });
     return {
     type: 'SEND_LOGIN_FORM',

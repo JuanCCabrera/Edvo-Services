@@ -21,7 +21,6 @@ const signOut = (props) => {
   };
 
   const reset = () => {
-    console.log("RESETTING");
     axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
       client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
       email: auth0Client.getEmail(),
@@ -39,7 +38,6 @@ const signOut = (props) => {
 class LoginPage extends React.Component{
     constructor(props){
         super(props);
-        console.log("LOGIN PROPS: ", props);
 
     }
 
@@ -52,15 +50,12 @@ class LoginPage extends React.Component{
             }).then(response =>{ 
                 if(response.status == 201){
                     
-                    console.log("#########################################", response.data.subscription);
                     this.props.dispatch(logRegistrationStatus({registered: true}));
-                    console.log("SUBSCRIPTION: ",response.data.subscription);
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: response.data.subscription != null ? true : false}));
                 }
                 this.props.dispatch(setLoadingModal());
             })
             .catch(error => {
-                console.log("ERROR################################", error);
                 if(error.response.status == 403){
                     this.props.dispatch(logRegistrationStatus({registered: false}));
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: false}))
@@ -140,7 +135,7 @@ class LoginPage extends React.Component{
                                                         </div>
                                                     }
 
-                                                    {(this.props.loginPage.registered && !this.props.loginPage.hasPaidSubscription && (localStorage.getItem('role') == "teacher" || localStorage.getItem('role'))) && 
+                                                    {(this.props.loginPage.registered && !this.props.loginPage.hasPaidSubscription && auth0Client.getRole() == "teacher") && 
                                                         <div>
                                                             <Link to={'/teacher/settings/plans/payment'}>
                                                                 <button>
@@ -173,7 +168,7 @@ class LoginPage extends React.Component{
 
 //Map current language state to component properties.
 const mapStateToProps = (state) => {
-    console.log("LOGIN PAGE: ", state.loginPage)
+    
     return {
         lang: state.language.lang,
         loginPage: state.loginPage

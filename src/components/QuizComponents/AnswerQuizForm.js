@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { answerQuiz } from '../../actions/quiz';
+import {withRouter} from 'react-router-dom';
 import QuizButtonList from './QuizButtonList';
 import uuid from 'uuid';
 import axios from 'axios';
@@ -21,7 +22,6 @@ class AnswerQuizForm extends React.Component {
     }
 
     componentWillMount(){  
-        
             this.props.dispatch(setLoadingModal());      
             axios.get('https://beta.edvotech.com/api/teacher/quizzes',
             {
@@ -29,7 +29,6 @@ class AnswerQuizForm extends React.Component {
             })
             .then(response => {
                 this.props.dispatch(reset());
-                console.log("REPSONSE OF QUIZ: ", response);
                 response.data.quizzes.forEach(element => {
                     let correctChoices = {}
                     let questions = []
@@ -56,13 +55,15 @@ class AnswerQuizForm extends React.Component {
                         })
                         questionsObject.questions.push(questionObject);
                     });
-                    console.log("CQUESTION OBECT :LEKGNHT:::", questionsObject);
                     if(questionsObject.questions.length == 12)
                         this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
                     
                     });
-                    
-                 this.props.dispatch(setLoadingModal()); 
+                if(this.props.quiz.score){
+                    this.props.dispatch(setFailureModal());
+                    this.props.history.replace('/teacher/quizzes');
+                }
+                this.props.dispatch(setLoadingModal()); 
             }).catch(error => {
                 this.props.dispatch(setLoadingModal()); 
                 this.props.dispatch(setFailureModal());
@@ -74,20 +75,16 @@ class AnswerQuizForm extends React.Component {
         const newAnswers = this.state.answers;
         newAnswers[e.target.name] = e.target.value;
         this.setState({answers: newAnswers });
-        console.log(this.state.answers);
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log('CORRECT ANSWERS', this.props.quiz.correctChoices);
         let answers = [];
         //if(Object.keys(this.state.answers).length != 12)
         Object.keys(this.state.answers).forEach(questionid => {
-            console.log("QUESTION ID FOREACH: ", questionid);
             answers.push({quizquestionid: questionid, 
             choiceid: this.state.answers[questionid], 
             correctanswer: this.props.quiz.correctChoices[questionid] == this.state.answers[questionid] ? true : false})
-            console.log("ANSWER ARRAY ", answers)
         })     
         axios.post('https://beta.edvotech.com/api/teacher/quizzes/take',{
             quizid: this.props.quiz.quizID,
@@ -97,9 +94,9 @@ class AnswerQuizForm extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            if(response.data.statusCode == 201)
-                console.log("POST QUIZ RESPONSE: ", response);
+            if(response.data.statusCode == 201){
                 this.props.history.push('/teacher/quizzes');
+            }
         }).catch(error => {
             this.setState(() => ({show: true}));
         });
@@ -171,4 +168,4 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps)(AnswerQuizForm);
+export default withRouter(connect(mapStateToProps)(AnswerQuizForm));

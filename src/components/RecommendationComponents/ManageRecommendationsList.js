@@ -25,21 +25,14 @@ class ManageRecommendationsList extends React.Component{
             displayedRecommendations: []
         }
     }
-    // componentWillUnmount(){
-    //     console.log("I INMOUNTED EVERYTHING");
-    //     this.props.dispatch(unloadRecommendations());
-    // }
-
     //Configure initial state if component will be mounted. 
     //Determine the recommendations to display on the first page. 
     componentWillMount(){
-        console.log("ID TOKEN: ", auth0Client.getIdToken())
         this.props.dispatch(setLoadingModal());
         this.props.dispatch(unloadRecommendations());
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
-            console.log("REPSONSE RECOM:L ", response);
             response.data.recommendations.forEach(element => {
                 //Change id for userID when DB connection is ready
                 if (element.active)

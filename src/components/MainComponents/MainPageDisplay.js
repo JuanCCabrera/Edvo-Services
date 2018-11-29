@@ -48,7 +48,7 @@ const MainPageDisplay = (props) => (
     </div>
 
         <div className="Mission pt-5 pb-5">
-            <h1>edvo</h1>            
+            <p className="logo">edvo</p>            
             <hr className="Break"/>
             {props.lang === 'English' ? 
             <div className="Mission">

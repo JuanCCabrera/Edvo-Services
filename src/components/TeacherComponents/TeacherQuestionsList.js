@@ -35,13 +35,10 @@ class TeacherQuestionsList extends React.Component{
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
-            console.log("RESPONSE OF QUESTION@@@@@@", response)
             response.data.questions.forEach(element => {
-                console.log("RATE QUESIONS FOR TEACHER: ", element);
                 this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 
                 subject: element.subject, favorite: element.favorite, userId: element.userid, answer: element.answer, rate: element.rate, read: element.read}));
                 if(element.favorite == true){
-                    console.log("FAVORITE QUESTION: ???", element);
                     this.props.dispatch(addFavoriteQuestion({askedDate: element.askeddate}));
                 }
             });

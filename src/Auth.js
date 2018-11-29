@@ -5,7 +5,6 @@ import {Redirect} from 'react-router-dom';
 
 class Auth {
   constructor(props) {
-    console.log("####################AUTH0#########################")
     this.auth0 = new auth0.WebAuth({
       // the following three lines MUST be updated
       domain: 'edvo-test.auth0.com',
@@ -15,7 +14,6 @@ class Auth {
       responseType: 'token id_token',
       scope: 'openid profile email'
     });
-    console.log("CONSTRUCTING");
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.signIn = this.signIn.bind(this);

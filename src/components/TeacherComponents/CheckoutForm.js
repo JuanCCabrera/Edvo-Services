@@ -9,7 +9,6 @@ import {setSuccessModal} from '../../actions/successModal';
 class CheckoutForm extends Component {
     constructor(props) {
         super(props);
-        console.log("EMAIL IN CONSTRUCTOR: ", auth0Client.getEmail);
         this.props = props;
         this.state = {complete: false, coupon: ''};
         this.submit = this.submit.bind(this);
@@ -38,7 +37,6 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
-    console.log("ID TOKEN IN CHECKOUT: ", auth0Client.getIdToken());
     await axios.post('https://beta.edvotech.com/api/plans/',
         {
             token: token.id,
@@ -67,7 +65,6 @@ class CheckoutForm extends Component {
             }
         })
           .then(response =>{
-            console.log("STRIPE RESPONSE: ",response);
             if(response.status == 201){
               localStorage.setItem('p-redirect','teacher/settings/plans');
               this.props.dispatch(setSuccessModal());

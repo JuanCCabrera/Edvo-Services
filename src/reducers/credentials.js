@@ -15,12 +15,12 @@ const credentialsReducer = (state = credentialsReducerDefaultState, action) => {
     switch (action.type) {
         //Logs asked question
         case 'SET_AUTHENTICATION':
-            return {...state.credentials, isAuthenticated: action.isAuthenticated};
+            return {...state, isAuthenticated: action.isAuthenticated};
         //Returns existing state by default
         case 'SET_ROLE':
-            return {...state.credentials, role: action.role};
+            return {...state, role: action.role};
         default:
-            return {state};
+            return {...state};
     };
 }
 

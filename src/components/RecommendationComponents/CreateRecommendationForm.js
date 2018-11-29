@@ -21,11 +21,8 @@ class CreateRecommendationForm extends React.Component{
     constructor(props){
         //Each recommendation must contain a title, header, description, class information (class subject, topics, language, level, type, school type, class format, class level, class size, a quiz question and at least two possible answers for the question.)
         super(props);
-        console.log("PROPS OF MODIFY RECOM: ", props.reco);
-        if(props.reco)
-            console.log("DRAFTJS: ", htmlToDraft(props.reco.description));
+        
         this.state = {
-            props: props,
             recomid: props.reco ? props.reco.id : '',
             editorState: props.reco ? EditorState.createWithContent(ContentState.createFromBlockArray(
                 htmlToDraft(props.reco.description).contentBlocks)) : EditorState.createEmpty(),
@@ -46,6 +43,7 @@ class CreateRecommendationForm extends React.Component{
 
             moodle: props.reco ? props.reco.moodle : false,
             googleClassroom: props.reco ? props.reco.googleClassroom : false,
+            applications: props.reco ? props.reco.applications : false,
             emailResource: props.reco ? props.reco.emailResource : false,
             books: props.reco ? props.reco.books : false,
             socialMedia: props.reco ? props.reco.socialMedia : false,
@@ -83,6 +81,12 @@ class CreateRecommendationForm extends React.Component{
             correctOption: props.reco ? props.reco.correctOption : -1,
             creationError: false
        };
+    }
+
+    componentWillMount(){
+        if(!this.props.reco && this.props.isEdit){
+            this.props.history.replace('/recommendations/manage');
+        }
     }
     //Change Handlers
 
@@ -250,8 +254,6 @@ class CreateRecommendationForm extends React.Component{
     //Change correctOption in local state
     setCorrectOption = (choiceIndex) => (e) => {
         e.preventDefault();
-        console.log("CORRECT OPTION: ", choiceIndex);        
-        console.log("THIS STATE CHOICES: ", this.state.choices);
         this.setState(() => ({correctOption: choiceIndex}));
     }
 
@@ -321,6 +323,12 @@ class CreateRecommendationForm extends React.Component{
     onBooksChange = (e) => {
         const books = this.state.books;
         this.setState(() => ({books: !books}));
+    }
+
+    //Change applications boolean in local state
+    onApplicationsChange = (e) => {
+        const applications = this.state.applications;
+        this.setState(() => ({applications: !applications}));
     }
 
     //Change socialMedia in local state
@@ -415,7 +423,7 @@ class CreateRecommendationForm extends React.Component{
 
     onChange = (editorState) => {
         const html = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
-        console.log("HTML: ", html)
+
         this.setState({editorState});
     }
 
@@ -442,7 +450,7 @@ class CreateRecommendationForm extends React.Component{
                     choicesWithAnswer.push({choice: this.state.choices[i], correctanswer: false})            }
 
             const createModify = this.props.isEdit ? "modify" : "create"
-            console.log("REQUEST FULL: ",
+            
         axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/'+createModify, {
             usertype: auth0Client.getRole(),
             recomid: this.state.recomid,
@@ -476,14 +484,14 @@ class CreateRecommendationForm extends React.Component{
             
             location: '',
             subject: this.state.subject,
-            spanish: true, 
-            english: true,
+            spanish: this.state.spanish, 
+            english: this.state.english,
             type: this.state.type,
             schooltype: this.state.schoolType,
             format: this.state.format,
             level: this.state.level,
             size: this.state.size,
-            applications: true,
+            applications: this.state.applications,
 
             question: this.state.question,
             choices: choicesWithAnswer,
@@ -492,7 +500,6 @@ class CreateRecommendationForm extends React.Component{
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
             .then(response =>{
-                console.log("PROPS1: ",this.state.props);
                 if(this.props.isEdit){
                     this.props.dispatch(setEditModal());
                 }else{
@@ -501,9 +508,9 @@ class CreateRecommendationForm extends React.Component{
                 this.props.history.push('/recommendations/manage');
             })
             .catch(error =>{
-                console.log("ERROR IN CREATE RECOM: ", error);
+                
                 this.props.dispatch(setFailureModal());
-            }));
+            });
             
             this.props.onSubmit(this.state);
         }
@@ -1075,6 +1082,11 @@ class CreateRecommendationForm extends React.Component{
 
                     <label className="clickable radio__text">
                     <input type="checkbox" name="resource" checked={this.state.books === true} onChange={this.onBooksChange}/> {this.props.lang === 'English' ? 'Books' : 'Libros'} 
+                    </label>
+                    <br/>
+
+                    <label className="clickable radio__text">
+                    <input type="checkbox" name="resource" checked={this.state.applications === true} onChange={this.onApplicationsChange}/> {this.props.lang === 'English' ? 'Applications' : 'Aplicaciones'} 
                     </label>
                     <br/>
 

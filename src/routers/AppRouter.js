@@ -172,7 +172,7 @@ class  AppRouter extends React.Component{
                             <SecuredRoute exact path='/admin/settings/schools' component={AppSchools}/>
                             <SecuredRoute exact path='/admin/settings/schools/add' component={CreateInstitutionForm}/>
                             <SecuredRoute exact path='/admin/settings/coupons' component={CreateCouponForm}/>
-                            <SecuredRoute path='/admin/home' component={AdminHome}/>
+                            <SecuredRoute exact path='/admin/home' component={AdminHome}/>
 
                             {
                                 //Staff Recommendations Components
@@ -180,19 +180,19 @@ class  AppRouter extends React.Component{
                             <SecuredRoute exact path='/recommendations/assign' component={RecommendationsControl}/>
                             <SecuredRoute exact path='/recommendations/create' component={NewRecommendation}/>
                             <SecuredRoute exact path='/recommendations/manage' component={ManageRecommendations}/>
-                            <SecuredRoute path="/recommendations/edit/:id" component={EditRecommendation}/>
+                            <SecuredRoute exact path="/recommendations/edit/:id" component={EditRecommendation}/>
 
                             {
                                 //Staff Questions Components
                             }
                             <SecuredRoute exact path='/staff/questions' component={ManageQuestions}/>
-                            <SecuredRoute path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
+                            <SecuredRoute exact path="/staff/questions/:askedDate/:userId" component={AnswerQuestionForm}/>
                             {
                                 //Teacher Quizzes
                             }
                             <SecuredRoute exact path='/teacher/quizzes' component={ManageQuizzes}/>
-                            <SecuredRoute path="/teacher/quizzes/view/:quizID" component={ViewAnsweredQuiz}/>
-                            <SecuredRoute path="/teacher/quizzes/:quizID" component={AnswerQuizForm}/>
+                            <SecuredRoute exact path="/teacher/quizzes/view/:quizID" component={ViewAnsweredQuiz}/>
+                            <SecuredRoute exact path="/teacher/quizzes/:quizID" component={AnswerQuizForm}/>
 
                             {
                                 //Route Not Found Page

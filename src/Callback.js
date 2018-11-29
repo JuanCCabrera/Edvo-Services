@@ -3,7 +3,7 @@ import {Route, withRouter, Redirect} from 'react-router-dom';
 import auth0Client from './Auth';
 import 'babel-polyfill';
 import axios from 'axios';
-import {setRole} from './actions/credentials';
+import {setRole, setAuthentication} from './actions/credentials';
 import {connect} from 'react-redux';
 
 class Callback extends React.Component {
@@ -26,6 +26,8 @@ class Callback extends React.Component {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{ 
                 localStorage.setItem('role',response.data.user[0].usertype);
+                this.props.dispatch(setRole({role: response.data.user[0].usertype}));
+                this.props.dispatch(setAuthentication({isAuthenticated: true}));
                 route = '/'+localStorage.getItem('role')+'/home';
                 localStorage.removeItem('loginError');             
                 axios.post('https://beta.edvotech.com/api/log', {},
@@ -34,7 +36,6 @@ class Callback extends React.Component {
                     .then((response)=>{
                             
                             this.props.dispatch(setRole({role: localStorage.getItem('role')}));
-                            console.log("LOGGED");
                     });
             })
             .catch(error => {

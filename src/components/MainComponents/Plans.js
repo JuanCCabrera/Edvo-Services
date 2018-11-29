@@ -14,28 +14,32 @@ import './Plans.css'
  */
 const PlansPage = (props) => (
     <div className="Body-Background">
-    <div className="container pt-5 pb-5 text-left Body-Background">
-        <table className="table text-white Promo">
+    <div className="Scrollable container pt-5 pb-5 text-left">
+        <div className="table-responsive">
+        <table className="text-white Promo">
         <thead>
         <tr className="text-center">
             <th scope="col" className="No-Border-Top text-center"></th>
-            <th scope="col" className="No-Border-Top text-center">
+            <th scope="col" className="No-Border-Top Subscribe-2 text-center">
                 <h3>{props.lang === 'English' ? 'STANDARD' : 'PAQUETE'}</h3>
                 <h3>{props.lang === 'English' ? 'PACKAGE' : 'ESTANDAR'}</h3>
                 <h1>$39</h1>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
-                {console.log("UNDEFINED?????: ", auth0.getSubscribed())}
                 <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
                             <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
                 </NavLink>
             </th>
             <th scope="col" className="No-Border-Top text-center">
+                <div style={{position: 'relative', top: '20px'}}>
                 <h3>{props.lang === 'English' ? 'PREMIUM' : 'PAQUETE'} </h3>
                 <h3>{props.lang === 'English' ? 'PACKAGE' : 'SUPREMO'} </h3>
                 <h1>$59*</h1>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
+                <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
+                            <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
+                </NavLink>
                 <br/>
-                <br/>
+                </div>
              </th>
 
             <th scope="col" className="text-center AbsolutePackage">
@@ -44,6 +48,9 @@ const PlansPage = (props) => (
                 <h3>{props.lang === 'English' ? 'PACKAGE' : 'ABSOLUTO'} </h3>
                 <h1>$249**</h1>
                 <p>{props.lang === 'English' ? 'per educator + 6 months of platform usage' : 'por educador + 6 meses de uso en la plataforma'} </p>
+                <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
+                            <button className="Subscribe">{props.lang === 'English' ? 'SUBSCRIBE' : 'SUSCRIBIRSE'}</button>
+                </NavLink>
              </th>
         </tr>
         </thead>
@@ -131,6 +138,7 @@ const PlansPage = (props) => (
         </tr>
         </tbody>
     </table>
+    </div>
 
         {
             //Special details section

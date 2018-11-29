@@ -7,21 +7,65 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import moment from 'moment';
 import {setLoadingModal} from '../../actions/loadingModal';
+import {setFailureModal} from '../../actions/failureModal';
 import {reset, createQuiz} from '../../actions/quiz';
 
 class ViewAnsweredQuiz extends React.Component {
     constructor(props){
         super(props);
-        console.log("PROPS OF VIEW: ", props);
         this.state = {
-            props: props,
             answers: {},
             show: false,
-            quizDate: props.quiz.quizDate,
-            quizID: props.quiz.quizID,
-            correctChoices: props.quiz.correctChoices,
-            score: props.quiz.score
         };
+    }
+
+    componentWillMount(){  
+        this.props.dispatch(setLoadingModal());      
+        axios.get('https://beta.edvotech.com/api/teacher/quizzes',
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        })
+        .then(response => {
+            this.props.dispatch(reset());
+            response.data.quizzes.forEach(element => {
+                let correctChoices = {}
+                let questions = []
+                let questionsObject = {
+                    questions: []
+                }
+                element.questions.forEach(question => {
+                    let questionObject = {
+                        questionid: '',
+                        choices: [],
+                        questionstring: question.question,
+                        recommendation: ''
+                    }
+                    questionObject.questionid = question.quizquestionid;
+                    questionObject.recommendation = question.recommendationtitle
+                    question.choices.forEach(choice => {
+                        let choiceObject = {
+                            choiceid: choice.choiceid,
+                            choice: choice.choice
+                        }
+                        if(choice.correctanswer)
+                            correctChoices[choice.quizquestionid] = choice.choiceid;
+                        questionObject.choices.push(choiceObject);
+                    })
+                    questionsObject.questions.push(questionObject);
+                });
+                if(questionsObject.questions.length == 12)
+                    this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
+                
+                });
+            if(!this.props.quiz.score){
+                this.props.dispatch(setFailureModal());
+                this.props.history.replace('/teacher/quizzes');
+            }
+            this.props.dispatch(setLoadingModal()); 
+        }).catch(error => {
+            this.props.dispatch(setLoadingModal()); 
+            this.props.dispatch(setFailureModal());
+        });   
     }
 
     render(){
@@ -37,12 +81,14 @@ class ViewAnsweredQuiz extends React.Component {
                         <div className="col-sm-1"/>
                         <div className="col-sm-9">
                             <div className="big-card">
-                                <p className="form__title">{this.props.lang === 'English' ? 'Quiz' : 'Prueba'} {moment(this.state.quizDate).format("MM-DD-YYYY")}</p>    
-                                <p style={{fontWeight: 'bold', fontSize: '2rem'}}>{this.props.lang === 'English' ? 'Score' : 'Puntuación'}: {this.state.score} / 12</p>
+
                                                            
                                 <br/>
-                                {
-                                    this.props.quiz.questions.questions.map((element, index) => {
+                                { this.props.quiz && 
+                                    <div>
+                                        <p className="form__title">{this.props.lang === 'English' ? 'Quiz' : 'Prueba'} {moment(this.props.quiz.quizDate).format("MM-DD-YYYY")}</p>    
+                                        <p style={{fontWeight: 'bold', fontSize: '2rem'}}>{this.props.lang === 'English' ? 'Score' : 'Puntuación'}: {this.props.quiz.score} / 12</p>
+                                        {this.props.quiz.questions.questions.map((element, index) => {
                                         return ( <div>
                                         <p key= {uuid()}>{index+1}. {element.questionstring} </p>
                                         {
@@ -50,15 +96,17 @@ class ViewAnsweredQuiz extends React.Component {
                                         }
 
                                         {element.choices.map((answer) =>{
-                                            console.log("CORRECT CHOICES", this.state.correctChoices)
-                                            if(answer.choiceid == this.state.correctChoices[element.questionid]){
-                                                console.log("CORRECT CHOICES", answer.choiceid)
+                                            if(answer.choiceid == this.props.quiz.correctChoices[element.questionid]){
+                                                
                                                 return(<p key={uuid()}>{this.props.lang === 'English' ? 'Correct Answer' : 'Respuesta Correcta'}: {answer.choice}</p>)
                                             }
                                         })}
                                         <hr/>
                                         </div>)
-                                })}
+                                        })}
+                                </div>
+                            
+                            }
 
                                  {this.state.show === true && <h3 className="text-capitalize text-danger">PLEASE ANSWER ALL</h3>}
                             </div>

@@ -21,7 +21,6 @@ class ClassList extends React.Component{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("REPSONSE: ",response);
             response.data.classes.forEach(element => {
             this.props.dispatch(loadClass({userId: element.classinfoid, subject: element.subject, 
             format: element.format, language: element.language, level: element.level, 
@@ -32,7 +31,6 @@ class ClassList extends React.Component{
         .catch(error =>{
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
-            console.log("ERROR CLASSES: ", error);
         })
     }
     componentWillUnmount(){
@@ -65,7 +63,6 @@ class ClassList extends React.Component{
 
 //Map list of loaded classes and current language state to the component properties. 
 const mapStateToProps = (state) => {
-    console.log(state.classes);
     return{
         classes: state.classes,
         lang: state.language.lang

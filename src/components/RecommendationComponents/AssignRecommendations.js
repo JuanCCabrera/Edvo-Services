@@ -9,7 +9,8 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-
+import {setSuccessModal} from '../../actions/successModal';
+import {setFailureModal} from '../../actions/failureModal';
 /**
  * Assign Recommendations page layout. 
  * @param {*} props - Default properties, current language state and recommendation assignment information. 
@@ -41,18 +42,21 @@ import axios from 'axios';
             }
             <div>
                 <button disabled={!(props.assigned.userID && props.assigned.recoID)} onClick={() => {
-                    console.log(props.assigned);
                     props.dispatch(assignRecommendation());
-                    console.log("USER TO: ", props.assigned)
-                    axios.post('https://beta.edvotech.com/api/admin/recommendations/assign', {
+                    axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/assign', {
                         recomid: props.assigned.recoID,
                         usersToAssign: props.assigned.userID
                     },
                     {
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` 
                     }})
-                        .then((response)=>{
-                        console.log("REPSONSE TO ASSIGNING: ", response);
+                        .then(response=>{
+                            if(response.status == 201)
+                                props.dispatch(setSuccessModal())
+                    })
+                    .catch(error=>{
+                        if(error)
+                            props.dispatch(setFailureModal()); 
                     });
 
                 }}>

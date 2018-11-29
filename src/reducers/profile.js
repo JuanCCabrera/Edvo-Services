@@ -17,7 +17,6 @@ const profileReducer = (state = profileReducerDefaultState, action) => {
     switch(action.type){
         //Load information to edit in basic information form of Settings pages. 
         case 'LOAD_PROFILE':
-        console.log(action.profile);
             return {...action.profile}
         default:
             return {...state}

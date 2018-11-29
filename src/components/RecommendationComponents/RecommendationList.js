@@ -29,7 +29,6 @@ class RecommendationsList extends React.Component{
     //Configure local state when component will mount. This involves selecting which recommendations will be displayed on the first page
     //when the component loads. 
     componentWillMount(){
-        console.log("MOUTING RECOMLIST WITH ID: ", this.props.assigned.userID);
         this.props.dispatch(unloadRecommendations());
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;

@@ -61,8 +61,6 @@ class RecommendationModal extends React.Component{
                             let favorite = false
                             if(prevValue == 0)
                                 favorite = true
-                            console.log("IM CLICKING TO FAVPREV: ", prevValue);
-                            console.log("IM CLICKING TO FAVBNEXT: ", nextValue);
                             axios.post('https://beta.edvotech.com/api/teacher/recommendations/favorite',{
                                 recomid: this.props.recommendation.recoID,
                                 favorite: favorite
@@ -71,7 +69,6 @@ class RecommendationModal extends React.Component{
                             }).then(response =>{
                             if(prevValue == 0){
                                 //Add to favorites list 
-                                console.log("IM FAVORITIN: ", this.props.recommendation);
                                 this.props.dispatch(addFavoriteRecommendation(this.props.recommendation));
                             }else{
                                 //Remove from favorites list through filter
@@ -80,9 +77,6 @@ class RecommendationModal extends React.Component{
                         }}
                     />
                 </div>
-                        {            
-                            console.log("RECOMMEDNTAION MODAL: ", this.props)
-                        }
                         <div>
                             <div className="text-center form__title">
                                 <h2 className="">{this.props.recommendation.title}</h2>

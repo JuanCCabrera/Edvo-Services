@@ -107,9 +107,6 @@ class ManageRecommendationsListItem extends React.Component{
                             }
                             })  
                             .then(response=>{
-                                console.log("RESPONSE: ", response);
-                                console.log("RESPONSEstatus: ", response.status == 200);
-                                console.log("RESPONSEdata: ", response.data);
                                 if(response.status == 200){
                                     this.props.dispatch(removeRecommendation({id: this.props.reco.id}));
                                     this.setState(() => ({toggleButton: false}));}

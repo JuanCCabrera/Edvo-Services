@@ -12,7 +12,6 @@ import auth0Client from '../../Auth';
 const TeacherQuestionListItem = (props) => (
         //Open question modal if the question item is clicked. 
         <div className="clickable list-group-item item-card" onClick={() => {
-            console.log("PROPS OF QUESTIONL ", props.question.read)
             if(props.question.read == false){
             axios.post('https://beta.edvotech.com/api/teacher/questions/read', {
                         askeddate: props.question.askedDate
@@ -21,7 +20,6 @@ const TeacherQuestionListItem = (props) => (
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
                     .then((response)=>{
                         if(response.status == 201){
-                            console.log("READ SUCCESS");
                         }
                     });
                 }
