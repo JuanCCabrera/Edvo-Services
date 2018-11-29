@@ -98,16 +98,15 @@ class LoginPage extends React.Component{
                                                 <span className="text-bold text-danger"> {localStorage.getItem('loginError')}</span>
                                                 {
                                                     !auth0Client.isAuthenticated() &&
-                                                    <div>
-
-                                                        <button onClick={auth0Client.signIn}>
-                                                            <div className="btn btn-item">
+                                                    <div style={{marginBottom: '1rem'}}>
+                                                        <button className="btn btn-item" onClick={auth0Client.signIn} style={{marginRight: '1rem'}}>
+                                                            <div>
                                                                 {this.props.lang === 'English' ? 'Sign In' : 'Entrar'}
                                                             </div>
                                                         </button>
 
-                                                        <button onClick={auth0Client.signUp} style={{marginBottom: '1rem'}}>
-                                                            <div className="btn btn-item">
+                                                        <button className="btn btn-item">
+                                                            <div>
                                                             {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
                                                             </div>
                                                         </button>
@@ -116,7 +115,7 @@ class LoginPage extends React.Component{
                         
                                                 {
                                                 auth0Client.isAuthenticated() &&
-                                                    <div>
+                                                    <div style={{marginBottom: '1rem'}}>
                                                         <div>
                                                             <button className="SignUp-Button" onClick={() => {signOut(this.props)}}>
                                                                 <div className="btn btn-item" style={{marginBottom: '1rem'}}>

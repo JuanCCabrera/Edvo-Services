@@ -31,11 +31,12 @@ const TeacherRecommendationsListItem = (props) => (
                 <p>{props.reco.title}</p>
             </div>
             
-            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {moment(props.reco.date).format("YYYY-MM-DD")}</h5>
         {
             //Recommendation header
         }
-            <h5>{props.reco.header}</h5>
+            <p className="card-text">{props.reco.header}</p>
+            <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {moment(props.reco.date).format("YYYY-MM-DD")}</h5>
+        
         </div>
 );
 

@@ -72,24 +72,6 @@ class Header extends React.Component{
                                     </div>
                                 </a>
                             </li>
-    
-                            {
-                                //Link to Login page
-                            }
-                            
-                            {!this.props.isAuthenticated ?
-                                <li>
-                                    <NavLink className="inactive" activeClassName="active" to="/login">
-                                        <div><p>{this.props.lang === 'English' ? 'Login' : 'Entrar'}</p> </div>
-                                    </NavLink>
-                                </li>
-                                :
-                                <li>
-                                    <NavLink className="inactive" activeClassName="active" to="/login">
-                                        <div><p>{this.props.lang === 'English' ? 'Log Out' : 'Salir'}</p> </div>
-                                    </NavLink>
-                                </li>
-                            }
                             
                         </ul>
                         <ul className="nav navbar-nav navbar-right navbar__text">
@@ -160,6 +142,23 @@ class Header extends React.Component{
                                 </li>
                             }
 
+                            {
+                                //Link to Login page
+                            }
+                            
+                            {!this.props.isAuthenticated ?
+                                <li>
+                                    <NavLink className="inactive" activeClassName="active" to="/login">
+                                        <div><p>{this.props.lang === 'English' ? 'Login' : 'Entrar'}</p> </div>
+                                    </NavLink>
+                                </li>
+                                :
+                                <li>
+                                    <NavLink className="inactive" activeClassName="active" to="/login">
+                                        <div><p>{this.props.lang === 'English' ? 'Log Out' : 'Salir'}</p> </div>
+                                    </NavLink>
+                                </li>
+                            }
                             {
                                 //Swap language button
                             }

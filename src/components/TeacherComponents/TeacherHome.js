@@ -217,7 +217,8 @@ class TeacherHome extends React.Component {
                                         </p>
                                     </div>
                                 }
-                                <AskQuestionForm 
+                                <AskQuestionForm
+                                isInQuestionsPage={false} 
                                 onSubmit={(question) => {
                                     props.dispatch(sendAskedQuestion(question));
                                 }}/>

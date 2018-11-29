@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect, NavLink} from 'react-router-dom';
 import TeacherRecommendationsList from './TeacherRecommendationsList';
 import FavoriteRecommendationsList from './FavoriteRecommendationsList';
 import TeacherRecommendationsFilters from '../Filters/TeacherRecommendationsFilters';
@@ -25,18 +25,18 @@ const TeacherRecommendations = (props) => (
                     }
                     <div className="text-center pending__title__2">
                         <p>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</p>
-                        <hr className="break"/>
+                        
                     </div> 
                     <FavoriteRecommendationsList/>
                     <div className="text-center">
                         <h1 className="form__title">{props.lang === 'English' ? 'View Quizzes' : 'Ver Pruebas'}</h1>
-                        <Link to={'/teacher/quizzes'}>
-                            <button>
+                        <NavLink to={'/teacher/quizzes'}>
+                            <button className="btn btn-item">
                                 <div className="btn quiz_button">
-                                    <i className="fa fa-question-circle fa-5x" aria-hidden="true"></i>
+                                    <i className="fa fa-question-circle fa-3x" aria-hidden="true"></i>
                                 </div>
                             </button>
-                        </Link>
+                        </NavLink>
                     </div>
                     
                 </div>
@@ -48,7 +48,7 @@ const TeacherRecommendations = (props) => (
                 }
                 <div className="text-center pending__title__2">
                 <p>{props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}</p>
-                <hr className="break"/>
+                
                 </div>
                 <TeacherRecommendationsFilters/>
                 <TeacherRecommendationsList/>

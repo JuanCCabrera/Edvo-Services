@@ -341,8 +341,8 @@ class CreateInstitutionForm extends React.Component{
                                 {
                                     //Submit form button
                                 }
-                                <button onClick={this.onSubmit}>
-                                    <div className="btn btn-item">
+                                <button className="btn btn-item" onClick={this.onSubmit}>
+                                    <div>
                                         {this.props.lang === 'English' ? 'Create' : 'Crear'}
                                     </div>
                                 </button>

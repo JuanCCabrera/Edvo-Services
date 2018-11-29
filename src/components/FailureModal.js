@@ -32,10 +32,10 @@ const FailureModal =(props) => (
             </div>
         </div>
         <div className="text-center" style={{backgroundColor: 'white', marginTop: '0', padding: '1rem', paddingBottom: '2rem'}}>
-                <button onClick={() => {props.dispatch(setFailureModal())}}>
-                        <p className="btn btn-item">
+                <button className="btn btn-item" onClick={() => {props.dispatch(setFailureModal())}}>
+                        <div>
                             {props.lang === 'English' ? 'Close' : 'Cerrar'}
-                        </p> 
+                        </div> 
                 </button>
         </div>
 

@@ -36,7 +36,7 @@ class PendingQuestionsListItem  extends React.Component{
             {
                 //Question body
             }
-                <p className="item__body">{this.props.question.question}</p>
+                <p className="item__body card-text">{this.props.question.question}</p>
 
             {
                 //Navigation link to the Answer Question page with a specific question identifier. 

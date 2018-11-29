@@ -287,8 +287,8 @@ class CreateCouponForm extends React.Component{
                                         {
                                             //Submit button
                                         }
-                                        <button onClick={this.onSubmit}>
-                                            <div className="btn btn-item">
+                                        <button className="btn btn-item" onClick={this.onSubmit}>
+                                            <div>
                                                 {this.props.lang === 'English' ? 'Submit' : 'Enviar'}
                                             </div>
                                         </button>
