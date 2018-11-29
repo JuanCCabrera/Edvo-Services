@@ -47,7 +47,7 @@ class RecommendationsUserList extends React.Component{
                 this.props.dispatch(addUser({id: element.userid, 
                     name: element.name,
                     email: element.email, 
-                    lastname: element.lastname, 
+                    lastName: element.lastname, 
                     weeklyReco: element.weeklyReco, 
                     categories: categories,
 

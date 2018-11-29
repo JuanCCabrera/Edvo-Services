@@ -55,8 +55,8 @@ class CreateRecommendationForm extends React.Component{
             smartboard: props.reco ? props.reco.smartboard : false,
             smartpencil: props.reco ? props.reco.smartpencil : false,
             speakers: props.reco ? props.reco.speakers : false,
-            spanish: props.reco ? props.reco.spanish: false,
-            english: props.reco ? props.reco.english: false,
+            spanish: props.reco ? props.reco.spanish == "spanish" ? true: false : false,
+            english: props.reco ? props.reco.english == "english" ? true: false : false,
             
             topics: props.reco ? props.reco.topics : [''],
             topicError: '',

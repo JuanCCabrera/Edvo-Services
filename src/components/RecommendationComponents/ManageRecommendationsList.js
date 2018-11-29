@@ -47,7 +47,7 @@ class ManageRecommendationsList extends React.Component{
                         timeManagement: element.timemanagement,
                         technologyIntegration: element.tech,
                         instructionAlignment: element.instructions,
-
+                        applications: element.applications,
                         moodle: element.moodle,
                         googleclassroom: element.googleclassroom,
                         emailResource: element.emails,

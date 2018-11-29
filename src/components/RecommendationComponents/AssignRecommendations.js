@@ -11,6 +11,7 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import {setSuccessModal} from '../../actions/successModal';
 import {setFailureModal} from '../../actions/failureModal';
+import {removeUser} from '../actions/user';
 /**
  * Assign Recommendations page layout. 
  * @param {*} props - Default properties, current language state and recommendation assignment information. 
@@ -52,7 +53,8 @@ import {setFailureModal} from '../../actions/failureModal';
                     }})
                         .then(response=>{
                             if(response.status == 201)
-                                props.dispatch(setSuccessModal())
+                                props.dispatch(setSuccessModal());
+                                props.dispatch(removeUser({id: user.id}));
                     })
                     .catch(error=>{
                         if(error)
