@@ -31103,7 +31103,7 @@ var CreateRecommendationForm = function (_React$Component) {
 
                     question: _this.state.question,
                     choices: choicesWithAnswer,
-                    active: true
+                    active: _this.state.active
                 }, {
                     headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken(), 'Content-Type': 'application/json' } }).then(function (response) {
                     if (_this.props.isEdit) {
@@ -31179,6 +31179,7 @@ var CreateRecommendationForm = function (_React$Component) {
             choiceError: '',
 
             correctOption: props.reco ? props.reco.correctOption : -1,
+            active: props.reco ? props.reco.active : true,
             creationError: false
         };
         return _this;
@@ -77928,7 +77929,7 @@ var Stripe = function (_Component) {
                     { className: 'big-card' },
                     _react2.default.createElement(
                       _reactStripeElements.StripeProvider,
-                      { apiKey: 'pk_test_ZI69x9fLi6Webd9ERw5RXE8Y' },
+                      { apiKey: 'pk_live_LQ8GBkPBQ2oBasw3NDDOAtVz' },
                       _react2.default.createElement(
                         'div',
                         null,

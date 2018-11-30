@@ -34,7 +34,7 @@ class CreateCouponForm extends React.Component{
                     this.setState(() => ({couponNameError: 'The coupon name field must contain text.'}));
                 }
                 if(this.state.couponIDError){
-                    this.setState(() => ({couponIDError: 'The coupon ID field must contain text.'}));
+                    this.setState(() => ({couponIDError: 'The coupon ID must be alphanumeric and cannot contain spaces.'}));
                 }
                 if(this.state.percentageError){
                     this.setState(() => ({percentageError: 'The percentage field must contain a number in the range 5-100.'}));
@@ -44,7 +44,7 @@ class CreateCouponForm extends React.Component{
                     this.setState(() => ({couponNameError: 'El campo del nombre del cupón debe contener texto.'}))
                 }
                 if(this.state.couponIDError){
-                    this.setState(() => ({couponIDError: 'El campo de la identificación del cupón debe contener texto.'}))
+                    this.setState(() => ({couponIDError: 'El campo de la identificación del cupón debe ser alfanumérico y no puede contener espacios.'}));
                 }
                 if(this.state.percentageError){
                     this.setState(() => ({percentageError: 'El campo de porcentaje de descuento debe contener un número en el rango de 5-100.'}));
@@ -178,9 +178,9 @@ class CreateCouponForm extends React.Component{
                                             this.setState(() => ({couponID: this.state.couponID.trim()}));
                                             if(this.state.couponID && !this.state.couponID.trim().match(/^[a-zA-Z0-9\|]*$/)){
                                                 if(this.props.lang === 'English'){
-                                                    this.setState(() => ({couponIDError: 'The coupon ID field must not contain spaces.'}));
+                                                    this.setState(() => ({couponIDError: 'The coupon ID must be alphanumeric and cannot contain spaces.'}));
                                                 }else{
-                                                    this.setState(() => ({couponIDError: 'El campo de la identificación del cupón no debe contener espacios.'})); 
+                                                    this.setState(() => ({couponIDError: 'El campo de la identificación del cupón debe ser alfanumérico y no puede contener espacios.'})); 
                                                 }
                                             }else{
                                                 this.setState(() => ({couponIDError: ''}));
