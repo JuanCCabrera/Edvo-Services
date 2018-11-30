@@ -73,11 +73,11 @@ class ClassListItem extends React.Component{
         //Topics list
     }
         {!(this.props.classes.topicA === '' && this.props.classes.topicB === '' && this.props.classes.topicC === '') && <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}: <br/></p>}
-        <ol>
+        <ul style={{listStyleType: 'circle'}}>
             {this.props.classes.topicA !== '' && <li>{this.props.classes.topicA}</li>}
             {this.props.classes.topicB !== '' && <li>{this.props.classes.topicB}</li>}
             {this.props.classes.topicC !== '' && <li>{this.props.classes.topicC}</li>}
-        </ol>
+        </ul>
     {
         //Remove class button
         /*

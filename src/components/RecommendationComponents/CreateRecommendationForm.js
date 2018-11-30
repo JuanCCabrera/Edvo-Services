@@ -81,6 +81,7 @@ class CreateRecommendationForm extends React.Component{
             choiceError: '',
 
             correctOption: props.reco ? props.reco.correctOption : -1,
+            active: props.reco ? props.reco.active : true,
             creationError: false
        };
     }
@@ -497,7 +498,7 @@ class CreateRecommendationForm extends React.Component{
 
             question: this.state.question,
             choices: choicesWithAnswer,
-            active: true
+            active: this.state.active
         },
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 351);
+/******/ 	return __webpack_require__(__webpack_require__.s = 352);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 if (true) {
-  module.exports = __webpack_require__(382);
+  module.exports = __webpack_require__(383);
 } else {
   module.exports = require('./cjs/react.development.js');
 }
@@ -132,9 +132,9 @@ module.exports = $export;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(387);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(392);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
@@ -158,7 +158,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _auth0Js = __webpack_require__(433);
+var _auth0Js = __webpack_require__(434);
 
 var _auth0Js2 = _interopRequireDefault(_auth0Js);
 
@@ -312,33 +312,33 @@ exports.default = auth0Client;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(414);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(420);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(228);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(421);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(422);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(424);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(425);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(230);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(153);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(426);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(426);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(427);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__generatePath__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__generatePath__ = __webpack_require__(428);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "generatePath", function() { return __WEBPACK_IMPORTED_MODULE_11__generatePath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__matchPath__ = __webpack_require__(428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__matchPath__ = __webpack_require__(429);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_12__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__withRouter__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__withRouter__ = __webpack_require__(430);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_13__withRouter__["a"]; });
 
 
@@ -373,7 +373,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(434);
+module.exports = __webpack_require__(435);
 
 /***/ }),
 /* 6 */
@@ -5599,7 +5599,7 @@ if (false) {
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(387)();
+  module.exports = __webpack_require__(388)();
 }
 
 
@@ -5629,11 +5629,11 @@ var _extends = _assign || function (target) { for (var i = 1; i < arguments.leng
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var BlockTree = __webpack_require__(318);
+var BlockTree = __webpack_require__(319);
 var ContentState = __webpack_require__(203);
 var EditorBidiService = __webpack_require__(782);
 var Immutable = __webpack_require__(8);
-var SelectionState = __webpack_require__(96);
+var SelectionState = __webpack_require__(97);
 
 var OrderedSet = Immutable.OrderedSet,
     Record = Immutable.Record,
@@ -6198,7 +6198,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _rbacRules = __webpack_require__(465);
+var _rbacRules = __webpack_require__(466);
 
 var _rbacRules2 = _interopRequireDefault(_rbacRules);
 
@@ -8086,7 +8086,7 @@ exports.default = Can;
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(675)("./" + name);
+                __webpack_require__(676)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -10758,7 +10758,7 @@ exports.default = Can;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(674)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(675)(module)))
 
 /***/ }),
 /* 19 */
@@ -11023,7 +11023,7 @@ var insertFragmentIntoContentState = __webpack_require__(777);
 var insertTextIntoContentState = __webpack_require__(778);
 var invariant = __webpack_require__(11);
 var modifyBlockForContentState = __webpack_require__(779);
-var removeEntitiesAtEdges = __webpack_require__(315);
+var removeEntitiesAtEdges = __webpack_require__(316);
 var removeRangeFromContentState = __webpack_require__(780);
 var splitBlockInContentState = __webpack_require__(781);
 
@@ -11376,7 +11376,7 @@ module.exports = CharacterMetadata;
 
 
 var bind = __webpack_require__(238);
-var isBuffer = __webpack_require__(435);
+var isBuffer = __webpack_require__(436);
 
 /*global toString:true*/
 
@@ -12035,7 +12035,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(358);
+var	fixUrls = __webpack_require__(359);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -12800,7 +12800,7 @@ if (__webpack_require__(20)) {
   var createArrayIncludes = __webpack_require__(118);
   var speciesConstructor = __webpack_require__(125);
   var ArrayIterators = __webpack_require__(178);
-  var Iterators = __webpack_require__(84);
+  var Iterators = __webpack_require__(85);
   var $iterDetect = __webpack_require__(122);
   var setSpecies = __webpack_require__(71);
   var arrayFill = __webpack_require__(177);
@@ -13379,7 +13379,7 @@ if (true) {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(383);
+  module.exports = __webpack_require__(384);
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
@@ -13953,6 +13953,158 @@ module.exports = function (it, key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//Teacher Questions Action Generators
+
+
+/**
+ * loadTeacherQuestion - Generates object indicating to the central controller to load a question to the Teacher Questions page. 
+ * @param {*} param0 - Object containing the asked date, subject, question body, answer, date in which the answer was created, rating, a boolean indicating whether the question is a favorite (true = favorite), and a boolean indicating whether the question has been read (read = true)
+ */
+var loadTeacherQuestion = exports.loadTeacherQuestion = function loadTeacherQuestion() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$askedDate = _ref.askedDate,
+        askedDate = _ref$askedDate === undefined ? '' : _ref$askedDate,
+        _ref$subject = _ref.subject,
+        subject = _ref$subject === undefined ? '' : _ref$subject,
+        _ref$question = _ref.question,
+        question = _ref$question === undefined ? '' : _ref$question,
+        _ref$answer = _ref.answer,
+        answer = _ref$answer === undefined ? '' : _ref$answer,
+        _ref$answerDate = _ref.answerDate,
+        answerDate = _ref$answerDate === undefined ? '' : _ref$answerDate,
+        _ref$rate = _ref.rate,
+        rate = _ref$rate === undefined ? 0 : _ref$rate,
+        _ref$favorite = _ref.favorite,
+        favorite = _ref$favorite === undefined ? false : _ref$favorite,
+        _ref$read = _ref.read,
+        read = _ref$read === undefined ? false : _ref$read;
+
+    return {
+        type: 'LOAD_TEACHER_QUESTION',
+        teacherQuestion: {
+            askedDate: askedDate,
+            subject: subject,
+            question: question,
+            answer: answer,
+            answerDate: answerDate,
+            rate: rate,
+            favorite: favorite,
+            read: read
+        }
+    };
+};
+
+/**
+ * selectQuestion - Generates object indicating to the central controller that it must display a Modal containing the information relating to the selected question. 
+ * @param {*} param0 - Object containing information relating to a question from the Teacher Questions list. It must include the question's date in which it was asked,
+ * its subject, question body, answer, date in which the answer was created, rating, boolean indicating whether the question is a favorite (favorite = true), and a boolean indicating whether
+ * the question has been read (read = true)
+ */
+var selectQuestion = exports.selectQuestion = function selectQuestion() {
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref2$askedDate = _ref2.askedDate,
+        askedDate = _ref2$askedDate === undefined ? '' : _ref2$askedDate,
+        _ref2$subject = _ref2.subject,
+        subject = _ref2$subject === undefined ? '' : _ref2$subject,
+        _ref2$question = _ref2.question,
+        question = _ref2$question === undefined ? '' : _ref2$question,
+        _ref2$answer = _ref2.answer,
+        answer = _ref2$answer === undefined ? '' : _ref2$answer,
+        _ref2$answerDate = _ref2.answerDate,
+        answerDate = _ref2$answerDate === undefined ? '' : _ref2$answerDate,
+        _ref2$rate = _ref2.rate,
+        rate = _ref2$rate === undefined ? 0 : _ref2$rate,
+        _ref2$favorite = _ref2.favorite,
+        favorite = _ref2$favorite === undefined ? false : _ref2$favorite,
+        _ref2$read = _ref2.read,
+        read = _ref2$read === undefined ? true : _ref2$read;
+
+    return {
+        type: 'SELECT_QUESTION',
+        selectedQuestion: {
+            askedDate: askedDate,
+            subject: subject,
+            question: question,
+            answer: answer,
+            answerDate: answerDate,
+            rate: rate,
+            favorite: favorite,
+            read: read
+        }
+    };
+};
+
+var unloadTeacherQuestions = exports.unloadTeacherQuestions = function unloadTeacherQuestions() {
+    return {
+        type: 'UNLOAD_TEACHER_QUESTIONS'
+    };
+};
+
+/**
+ * clearSelectedQuestion - Generates an object indicating to the central controller to remove the question information included within a Modal and to make the Modal invisible. 
+ */
+var clearSelectedQuestion = exports.clearSelectedQuestion = function clearSelectedQuestion() {
+    return { type: 'CLEAR_SELECTED_QUESTION' };
+};
+
+/**
+ * rateQuestion - Generates an object indicating to the central controller to display a new rating for the question being shown on a Modal. 
+ * @param {*} param0 - Object containing the date in which a question was asked and an associated rating for the question
+ */
+var rateQuestion = exports.rateQuestion = function rateQuestion() {
+    var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref3$askedDate = _ref3.askedDate,
+        askedDate = _ref3$askedDate === undefined ? '' : _ref3$askedDate,
+        _ref3$rate = _ref3.rate,
+        rate = _ref3$rate === undefined ? 0 : _ref3$rate;
+
+    return {
+        type: 'RATE_QUESTION',
+        askedDate: askedDate,
+        rate: rate
+    };
+};
+
+/**
+ * addFavoriteQuestion - Generates an object indicating to the central controller to mark the selected question as a favorite, which displays it in the Favorite Teacher Questions List. 
+ * @param {*} param0 - Object containing the date in which a question was asked
+ */
+var addFavoriteQuestion = exports.addFavoriteQuestion = function addFavoriteQuestion() {
+    var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref4$askedDate = _ref4.askedDate,
+        askedDate = _ref4$askedDate === undefined ? '' : _ref4$askedDate;
+
+    return {
+        type: 'ADD_FAVORITE_QUESTION',
+        askedDate: askedDate
+    };
+};
+
+/**
+ * removeFavoriteQuestion - Generates and object indicating to the central controller to unmark the selected question as a favorite, which results in removing the question from the Favorite Teacher Questions List. 
+ * @param {*} param0 - Object containing the date in which a question was asked
+ */
+var removeFavoriteQuestion = exports.removeFavoriteQuestion = function removeFavoriteQuestion() {
+    var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref5$askedDate = _ref5.askedDate,
+        askedDate = _ref5$askedDate === undefined ? '' : _ref5$askedDate;
+
+    return {
+        type: 'REMOVE_FAVORITE_QUESTION',
+        askedDate: askedDate
+    };
+};
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.unloadRecommendations = exports.editRecommendation = exports.removeRecommendation = exports.loadRecommendation = exports.createRecommendation = undefined;
 
 var _axios = __webpack_require__(5);
@@ -14288,7 +14440,7 @@ var unloadRecommendations = exports.unloadRecommendations = function unloadRecom
 };
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14433,7 +14585,7 @@ function haveEqualEntity(charA, charB) {
 module.exports = ContentBlock;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14651,15 +14803,15 @@ var UnicodeUtils = {
 module.exports = UnicodeUtils;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(415);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(418);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__createHashHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(419);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(113);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
@@ -14678,7 +14830,7 @@ module.exports = UnicodeUtils;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14747,7 +14899,7 @@ module.exports = warning;
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var def = __webpack_require__(21).f;
@@ -14760,7 +14912,7 @@ module.exports = function (it, tag, stat) {
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -14796,14 +14948,14 @@ module.exports = exporter;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(10);
@@ -14814,12 +14966,12 @@ module.exports = function (it, TYPE) {
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(87);
+var dP = __webpack_require__(88);
 var createDesc = __webpack_require__(133);
-module.exports = __webpack_require__(89) ? function (object, key, value) {
+module.exports = __webpack_require__(90) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -14828,7 +14980,7 @@ module.exports = __webpack_require__(89) ? function (object, key, value) {
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(107);
@@ -14836,7 +14988,7 @@ var IE8_DOM_DEFINE = __webpack_require__(287);
 var toPrimitive = __webpack_require__(184);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(89) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(90) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -14850,7 +15002,7 @@ exports.f = __webpack_require__(89) ? Object.defineProperty : function definePro
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -14859,7 +15011,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
@@ -14869,7 +15021,7 @@ module.exports = !__webpack_require__(108)(function () {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
@@ -14881,7 +15033,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14896,7 +15048,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14919,7 +15071,7 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var store = __webpack_require__(188)('wks');
@@ -14936,7 +15088,7 @@ $exports.store = store;
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14944,11 +15096,11 @@ $exports.store = store;
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(709);
+var _setPrototypeOf = __webpack_require__(710);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(713);
+var _create = __webpack_require__(714);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -14975,7 +15127,7 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15072,7 +15224,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AdminButtonList);
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15212,7 +15364,7 @@ var SelectionState = function (_SelectionStateRecord) {
 module.exports = SelectionState;
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15255,158 +15407,6 @@ function replace(str) {
 }
 
 module.exports = cx;
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//Teacher Questions Action Generators
-
-
-/**
- * loadTeacherQuestion - Generates object indicating to the central controller to load a question to the Teacher Questions page. 
- * @param {*} param0 - Object containing the asked date, subject, question body, answer, date in which the answer was created, rating, a boolean indicating whether the question is a favorite (true = favorite), and a boolean indicating whether the question has been read (read = true)
- */
-var loadTeacherQuestion = exports.loadTeacherQuestion = function loadTeacherQuestion() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref$askedDate = _ref.askedDate,
-        askedDate = _ref$askedDate === undefined ? '' : _ref$askedDate,
-        _ref$subject = _ref.subject,
-        subject = _ref$subject === undefined ? '' : _ref$subject,
-        _ref$question = _ref.question,
-        question = _ref$question === undefined ? '' : _ref$question,
-        _ref$answer = _ref.answer,
-        answer = _ref$answer === undefined ? '' : _ref$answer,
-        _ref$answerDate = _ref.answerDate,
-        answerDate = _ref$answerDate === undefined ? '' : _ref$answerDate,
-        _ref$rate = _ref.rate,
-        rate = _ref$rate === undefined ? 0 : _ref$rate,
-        _ref$favorite = _ref.favorite,
-        favorite = _ref$favorite === undefined ? false : _ref$favorite,
-        _ref$read = _ref.read,
-        read = _ref$read === undefined ? false : _ref$read;
-
-    return {
-        type: 'LOAD_TEACHER_QUESTION',
-        teacherQuestion: {
-            askedDate: askedDate,
-            subject: subject,
-            question: question,
-            answer: answer,
-            answerDate: answerDate,
-            rate: rate,
-            favorite: favorite,
-            read: read
-        }
-    };
-};
-
-/**
- * selectQuestion - Generates object indicating to the central controller that it must display a Modal containing the information relating to the selected question. 
- * @param {*} param0 - Object containing information relating to a question from the Teacher Questions list. It must include the question's date in which it was asked,
- * its subject, question body, answer, date in which the answer was created, rating, boolean indicating whether the question is a favorite (favorite = true), and a boolean indicating whether
- * the question has been read (read = true)
- */
-var selectQuestion = exports.selectQuestion = function selectQuestion() {
-    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref2$askedDate = _ref2.askedDate,
-        askedDate = _ref2$askedDate === undefined ? '' : _ref2$askedDate,
-        _ref2$subject = _ref2.subject,
-        subject = _ref2$subject === undefined ? '' : _ref2$subject,
-        _ref2$question = _ref2.question,
-        question = _ref2$question === undefined ? '' : _ref2$question,
-        _ref2$answer = _ref2.answer,
-        answer = _ref2$answer === undefined ? '' : _ref2$answer,
-        _ref2$answerDate = _ref2.answerDate,
-        answerDate = _ref2$answerDate === undefined ? '' : _ref2$answerDate,
-        _ref2$rate = _ref2.rate,
-        rate = _ref2$rate === undefined ? 0 : _ref2$rate,
-        _ref2$favorite = _ref2.favorite,
-        favorite = _ref2$favorite === undefined ? false : _ref2$favorite,
-        _ref2$read = _ref2.read,
-        read = _ref2$read === undefined ? true : _ref2$read;
-
-    return {
-        type: 'SELECT_QUESTION',
-        selectedQuestion: {
-            askedDate: askedDate,
-            subject: subject,
-            question: question,
-            answer: answer,
-            answerDate: answerDate,
-            rate: rate,
-            favorite: favorite,
-            read: read
-        }
-    };
-};
-
-var unloadTeacherQuestions = exports.unloadTeacherQuestions = function unloadTeacherQuestions() {
-    return {
-        type: 'UNLOAD_TEACHER_QUESTIONS'
-    };
-};
-
-/**
- * clearSelectedQuestion - Generates an object indicating to the central controller to remove the question information included within a Modal and to make the Modal invisible. 
- */
-var clearSelectedQuestion = exports.clearSelectedQuestion = function clearSelectedQuestion() {
-    return { type: 'CLEAR_SELECTED_QUESTION' };
-};
-
-/**
- * rateQuestion - Generates an object indicating to the central controller to display a new rating for the question being shown on a Modal. 
- * @param {*} param0 - Object containing the date in which a question was asked and an associated rating for the question
- */
-var rateQuestion = exports.rateQuestion = function rateQuestion() {
-    var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref3$askedDate = _ref3.askedDate,
-        askedDate = _ref3$askedDate === undefined ? '' : _ref3$askedDate,
-        _ref3$rate = _ref3.rate,
-        rate = _ref3$rate === undefined ? 0 : _ref3$rate;
-
-    return {
-        type: 'RATE_QUESTION',
-        askedDate: askedDate,
-        rate: rate
-    };
-};
-
-/**
- * addFavoriteQuestion - Generates an object indicating to the central controller to mark the selected question as a favorite, which displays it in the Favorite Teacher Questions List. 
- * @param {*} param0 - Object containing the date in which a question was asked
- */
-var addFavoriteQuestion = exports.addFavoriteQuestion = function addFavoriteQuestion() {
-    var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref4$askedDate = _ref4.askedDate,
-        askedDate = _ref4$askedDate === undefined ? '' : _ref4$askedDate;
-
-    return {
-        type: 'ADD_FAVORITE_QUESTION',
-        askedDate: askedDate
-    };
-};
-
-/**
- * removeFavoriteQuestion - Generates and object indicating to the central controller to unmark the selected question as a favorite, which results in removing the question from the Favorite Teacher Questions List. 
- * @param {*} param0 - Object containing the date in which a question was asked
- */
-var removeFavoriteQuestion = exports.removeFavoriteQuestion = function removeFavoriteQuestion() {
-    var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref5$askedDate = _ref5.askedDate,
-        askedDate = _ref5$askedDate === undefined ? '' : _ref5$askedDate;
-
-    return {
-        type: 'REMOVE_FAVORITE_QUESTION',
-        askedDate: askedDate
-    };
-};
 
 /***/ }),
 /* 99 */
@@ -16012,7 +16012,7 @@ module.exports = function (it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(679);
+var _assign = __webpack_require__(680);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -16039,7 +16039,7 @@ exports.default = _assign2.default || function (target) {
 var global = __webpack_require__(61);
 var core = __webpack_require__(75);
 var ctx = __webpack_require__(286);
-var hide = __webpack_require__(86);
+var hide = __webpack_require__(87);
 var has = __webpack_require__(76);
 var PROTOTYPE = 'prototype';
 
@@ -16104,7 +16104,7 @@ module.exports = $export;
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(88);
+var isObject = __webpack_require__(89);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -16294,8 +16294,8 @@ module.exports = removeTextWithStrategy;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createLocation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(415);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(100);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -16368,7 +16368,7 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
@@ -16800,7 +16800,7 @@ var anInstance = __webpack_require__(72);
 var isObject = __webpack_require__(10);
 var fails = __webpack_require__(9);
 var $iterDetect = __webpack_require__(122);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(83);
 var inheritIfRequired = __webpack_require__(164);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
@@ -17328,7 +17328,7 @@ var _Auth = __webpack_require__(3);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
-var _profile = __webpack_require__(304);
+var _profile = __webpack_require__(305);
 
 var _editModal = __webpack_require__(200);
 
@@ -17790,28 +17790,28 @@ var BasicInfoProfileForm = function (_React$Component) {
                                 )
                             ),
                             _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'button',
-                                { onClick: this.onSubmit },
+                                { className: 'btn btn-item', onClick: this.onSubmit, style: { marginRight: '1rem' } },
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'btn btn-item', style: { marginTop: '2rem' } },
+                                    null,
                                     this.props.lang === 'English' ? 'Save' : 'Guardar'
                                 )
                             ),
                             _react2.default.createElement(
                                 'button',
-                                { onClick: this.onResetClick },
+                                { className: 'btn btn-item', onClick: this.onResetClick },
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'btn btn-item', style: { marginTop: '2rem' } },
+                                    null,
                                     this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'
                                 )
                             ),
                             _react2.default.createElement('br', null),
                             _react2.default.createElement('br', null),
                             this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? 'An email has been sent to ' + _Auth2.default.getEmail() + ' with instructions to change your password.' : 'Un correo electrónico ha sido enviado a ' + _Auth2.default.getEmail() + ' con un enlace para cambiar su contraseña.'),
-                            _react2.default.createElement('br', null),
                             this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? '*If you are using a Microsoft account this will not reset your password.' : '*Si está utilizando una cuenta Microsoft, usted no podrá cambiar su contraseña por este medio.')
                         )
                     )
@@ -18135,8 +18135,8 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(RecommendationButton
 
 
 
-var randomizeBlockMapKeys = __webpack_require__(314);
-var removeEntitiesAtEdges = __webpack_require__(315);
+var randomizeBlockMapKeys = __webpack_require__(315);
+var removeEntitiesAtEdges = __webpack_require__(316);
 
 var getContentStateFragment = function getContentStateFragment(contentState, selectionState) {
   var startKey = selectionState.getStartKey();
@@ -18209,7 +18209,7 @@ var _extends = _assign || function (target) { for (var i = 1; i < arguments.leng
  * 
  */
 
-var DraftEntityInstance = __webpack_require__(319);
+var DraftEntityInstance = __webpack_require__(320);
 var Immutable = __webpack_require__(8);
 
 var invariant = __webpack_require__(11);
@@ -18736,9 +18736,9 @@ function warning(message) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(402);
 
 
 
@@ -18904,7 +18904,7 @@ var createTransitionManager = function createTransitionManager() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
@@ -19106,7 +19106,7 @@ var generatePath = function generatePath() {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(34);
-var normalizeHeaderName = __webpack_require__(437);
+var normalizeHeaderName = __webpack_require__(438);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -19392,9 +19392,9 @@ var LIBRARY = __webpack_require__(59);
 var $export = __webpack_require__(1);
 var redefine = __webpack_require__(30);
 var hide = __webpack_require__(29);
-var Iterators = __webpack_require__(84);
+var Iterators = __webpack_require__(85);
 var $iterCreate = __webpack_require__(170);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(83);
 var getPrototypeOf = __webpack_require__(38);
 var ITERATOR = __webpack_require__(16)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -19466,7 +19466,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 var create = __webpack_require__(69);
 var descriptor = __webpack_require__(65);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(83);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -19515,7 +19515,7 @@ module.exports = function (KEY) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators = __webpack_require__(84);
+var Iterators = __webpack_require__(85);
 var ITERATOR = __webpack_require__(16)('iterator');
 var ArrayProto = Array.prototype;
 
@@ -19545,7 +19545,7 @@ module.exports = function (object, index, value) {
 
 var classof = __webpack_require__(104);
 var ITERATOR = __webpack_require__(16)('iterator');
-var Iterators = __webpack_require__(84);
+var Iterators = __webpack_require__(85);
 module.exports = __webpack_require__(40).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
@@ -19558,7 +19558,7 @@ module.exports = __webpack_require__(40).getIteratorMethod = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(562);
+var speciesConstructor = __webpack_require__(563);
 
 module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
@@ -19595,7 +19595,7 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 
 var addToUnscopables = __webpack_require__(60);
 var step = __webpack_require__(263);
-var Iterators = __webpack_require__(84);
+var Iterators = __webpack_require__(85);
 var toIObject = __webpack_require__(36);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -19838,7 +19838,7 @@ var toIndex = __webpack_require__(272);
 var gOPN = __webpack_require__(70).f;
 var dP = __webpack_require__(21).f;
 var arrayFill = __webpack_require__(177);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(83);
 var ARRAY_BUFFER = 'ArrayBuffer';
 var DATA_VIEW = 'DataView';
 var PROTOTYPE = 'prototype';
@@ -20114,10 +20114,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_classnames__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_onclickoutside__ = __webpack_require__(676);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_onclickoutside__ = __webpack_require__(677);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_popper__ = __webpack_require__(677);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_popper__ = __webpack_require__(678);
 
 
 
@@ -23406,7 +23406,7 @@ var PRESELECT_CHANGE_VIA_NAVIGATE = "navigate";
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(88);
+var isObject = __webpack_require__(89);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -23501,7 +23501,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(107);
-var dPs = __webpack_require__(692);
+var dPs = __webpack_require__(693);
 var enumBugKeys = __webpack_require__(189);
 var IE_PROTO = __webpack_require__(187)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -23516,7 +23516,7 @@ var createDict = function () {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(693).appendChild(iframe);
+  __webpack_require__(694).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -23546,9 +23546,9 @@ module.exports = Object.create || function create(O, Properties) {
 /* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(87).f;
+var def = __webpack_require__(88).f;
 var has = __webpack_require__(76);
-var TAG = __webpack_require__(93)('toStringTag');
+var TAG = __webpack_require__(94)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -23559,7 +23559,7 @@ module.exports = function (it, tag, stat) {
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(93);
+exports.f = __webpack_require__(94);
 
 
 /***/ }),
@@ -23570,7 +23570,7 @@ var global = __webpack_require__(61);
 var core = __webpack_require__(75);
 var LIBRARY = __webpack_require__(135);
 var wksExt = __webpack_require__(194);
-var defineProperty = __webpack_require__(87).f;
+var defineProperty = __webpack_require__(88).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -23585,15 +23585,15 @@ module.exports = function (name) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManagerContext; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_create_react_context__ = __webpack_require__(717);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_create_react_context__ = __webpack_require__(718);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_create_react_context___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_create_react_context__);
 
 
@@ -23650,7 +23650,7 @@ var Manager = function (_React$Component) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(722);
+var content = __webpack_require__(723);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -23942,25 +23942,25 @@ var AtomicBlockUtils = __webpack_require__(769);
 var BlockMapBuilder = __webpack_require__(109);
 var CharacterMetadata = __webpack_require__(33);
 var CompositeDraftDecorator = __webpack_require__(785);
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentState = __webpack_require__(203);
 var DefaultDraftBlockRenderMap = __webpack_require__(206);
-var DefaultDraftInlineStyle = __webpack_require__(321);
+var DefaultDraftInlineStyle = __webpack_require__(322);
 var DraftEditor = __webpack_require__(786);
-var DraftEditorBlock = __webpack_require__(323);
+var DraftEditorBlock = __webpack_require__(324);
 var DraftEntity = __webpack_require__(145);
 var DraftModifier = __webpack_require__(28);
-var DraftEntityInstance = __webpack_require__(319);
+var DraftEntityInstance = __webpack_require__(320);
 var EditorState = __webpack_require__(15);
 var KeyBindingUtil = __webpack_require__(213);
-var RichTextEditorUtil = __webpack_require__(337);
-var SelectionState = __webpack_require__(96);
+var RichTextEditorUtil = __webpack_require__(338);
+var SelectionState = __webpack_require__(97);
 
 var convertFromDraftStateToRaw = __webpack_require__(848);
-var convertFromHTMLToContentBlocks = __webpack_require__(335);
+var convertFromHTMLToContentBlocks = __webpack_require__(336);
 var convertFromRawToDraftState = __webpack_require__(851);
 var generateRandomKey = __webpack_require__(56);
-var getDefaultKeyBinding = __webpack_require__(338);
+var getDefaultKeyBinding = __webpack_require__(339);
 var getVisibleSelectionRect = __webpack_require__(856);
 
 var DraftPublic = {
@@ -24024,12 +24024,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var BlockMapBuilder = __webpack_require__(109);
 var CharacterMetadata = __webpack_require__(33);
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentBlockNode = __webpack_require__(39);
 var DraftEntity = __webpack_require__(145);
 var DraftFeatureFlags = __webpack_require__(63);
 var Immutable = __webpack_require__(8);
-var SelectionState = __webpack_require__(96);
+var SelectionState = __webpack_require__(97);
 
 var generateRandomKey = __webpack_require__(56);
 var sanitizeDraftText = __webpack_require__(204);
@@ -24365,7 +24365,7 @@ var _require = __webpack_require__(8),
 
 var React = __webpack_require__(0);
 
-var cx = __webpack_require__(97);
+var cx = __webpack_require__(98);
 
 var UL_WRAP = React.createElement('ul', { className: cx('public/DraftStyleDefault/ul') });
 var OL_WRAP = React.createElement('ol', { className: cx('public/DraftStyleDefault/ol') });
@@ -24702,7 +24702,7 @@ module.exports = getScrollPosition;
 
 
 
-var getSelectionOffsetKeyForNode = __webpack_require__(327);
+var getSelectionOffsetKeyForNode = __webpack_require__(328);
 
 /**
  * Get the key from the node's nearest offset-aware ancestor.
@@ -25043,13 +25043,13 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = connectAdvanced;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(391);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(217);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -25331,9 +25331,9 @@ selectorFactory) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(405);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(406);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(408);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(222);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
@@ -25368,7 +25368,7 @@ if (false) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(403);
 
 
 
@@ -25623,7 +25623,7 @@ var ActionTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(396);
 
 
 /** Built-in value references. */
@@ -25939,7 +25939,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(81);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -26050,13 +26050,13 @@ Link.contextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(114);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26126,7 +26126,7 @@ MemoryRouter.propTypes = {
 /* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(422)
+var isarray = __webpack_require__(423)
 
 /**
  * Expose `pathToRegexp`.
@@ -26654,11 +26654,11 @@ Prompt.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__generatePath__ = __webpack_require__(155);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -26779,7 +26779,7 @@ Redirect.contextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
@@ -26787,7 +26787,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(114);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -26949,7 +26949,7 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
@@ -27041,7 +27041,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(431);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(154);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -27329,12 +27329,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(34);
-var settle = __webpack_require__(438);
-var buildURL = __webpack_require__(440);
-var parseHeaders = __webpack_require__(441);
-var isURLSameOrigin = __webpack_require__(442);
+var settle = __webpack_require__(439);
+var buildURL = __webpack_require__(441);
+var parseHeaders = __webpack_require__(442);
+var isURLSameOrigin = __webpack_require__(443);
 var createError = __webpack_require__(241);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(443);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(444);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -27431,7 +27431,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(444);
+      var cookies = __webpack_require__(445);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -27515,7 +27515,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(439);
+var enhanceError = __webpack_require__(440);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -27578,7 +27578,7 @@ module.exports = Cancel;
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(456);
+var content = __webpack_require__(457);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27609,11 +27609,11 @@ if(false) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-__webpack_require__(471);
-
-__webpack_require__(668);
+__webpack_require__(472);
 
 __webpack_require__(669);
+
+__webpack_require__(670);
 
 if (global._babelPolyfill) {
   throw new Error("only one instance of babel-polyfill is allowed");
@@ -27820,7 +27820,7 @@ module.exports = function (fn, args, that) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseInt = __webpack_require__(7).parseInt;
-var $trim = __webpack_require__(83).trim;
+var $trim = __webpack_require__(84).trim;
 var ws = __webpack_require__(163);
 var hex = /^[-+]?0[xX]/;
 
@@ -27835,7 +27835,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseFloat = __webpack_require__(7).parseFloat;
-var $trim = __webpack_require__(83).trim;
+var $trim = __webpack_require__(84).trim;
 
 module.exports = 1 / $parseFloat(__webpack_require__(163) + '-0') !== -Infinity ? function parseFloat(str) {
   var string = $trim(String(str), 3);
@@ -28049,7 +28049,7 @@ module.exports = function (C, x) {
 "use strict";
 
 var strong = __webpack_require__(268);
-var validate = __webpack_require__(85);
+var validate = __webpack_require__(86);
 var MAP = 'Map';
 
 // 23.1 Map Objects
@@ -28085,7 +28085,7 @@ var step = __webpack_require__(263);
 var setSpecies = __webpack_require__(71);
 var DESCRIPTORS = __webpack_require__(20);
 var fastKey = __webpack_require__(58).fastKey;
-var validate = __webpack_require__(85);
+var validate = __webpack_require__(86);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function (that, key) {
@@ -28226,7 +28226,7 @@ module.exports = {
 "use strict";
 
 var strong = __webpack_require__(268);
-var validate = __webpack_require__(85);
+var validate = __webpack_require__(86);
 var SET = 'Set';
 
 // 23.2 Set Objects
@@ -28253,7 +28253,7 @@ var assign = __webpack_require__(251);
 var weak = __webpack_require__(271);
 var isObject = __webpack_require__(10);
 var fails = __webpack_require__(9);
-var validate = __webpack_require__(85);
+var validate = __webpack_require__(86);
 var WEAK_MAP = 'WeakMap';
 var getWeak = meta.getWeak;
 var isExtensible = Object.isExtensible;
@@ -28320,7 +28320,7 @@ var anInstance = __webpack_require__(72);
 var forOf = __webpack_require__(73);
 var createArrayMethod = __webpack_require__(51);
 var $has = __webpack_require__(35);
-var validate = __webpack_require__(85);
+var validate = __webpack_require__(86);
 var arrayFind = createArrayMethod(5);
 var arrayFindIndex = createArrayMethod(6);
 var id = 0;
@@ -28994,7 +28994,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(682);
+var aFunction = __webpack_require__(683);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -29019,7 +29019,7 @@ module.exports = function (fn, that, length) {
 /* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(89) && !__webpack_require__(108)(function () {
+module.exports = !__webpack_require__(90) && !__webpack_require__(108)(function () {
   return Object.defineProperty(__webpack_require__(288)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -29028,7 +29028,7 @@ module.exports = !__webpack_require__(89) && !__webpack_require__(108)(function 
 /* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(88);
+var isObject = __webpack_require__(89);
 var document = __webpack_require__(61).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -29042,8 +29042,8 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(76);
-var toIObject = __webpack_require__(90);
-var arrayIndexOf = __webpack_require__(684)(false);
+var toIObject = __webpack_require__(91);
+var arrayIndexOf = __webpack_require__(685)(false);
 var IE_PROTO = __webpack_require__(187)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -29103,11 +29103,11 @@ module.exports = function (it) {
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(687);
+var _iterator = __webpack_require__(688);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(699);
+var _symbol = __webpack_require__(700);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -29130,12 +29130,12 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 var LIBRARY = __webpack_require__(135);
 var $export = __webpack_require__(106);
 var redefine = __webpack_require__(295);
-var hide = __webpack_require__(86);
+var hide = __webpack_require__(87);
 var Iterators = __webpack_require__(191);
-var $iterCreate = __webpack_require__(691);
+var $iterCreate = __webpack_require__(692);
 var setToStringTag = __webpack_require__(193);
-var getPrototypeOf = __webpack_require__(694);
-var ITERATOR = __webpack_require__(93)('iterator');
+var getPrototypeOf = __webpack_require__(695);
+var ITERATOR = __webpack_require__(94)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -29201,7 +29201,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 /* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(86);
+module.exports = __webpack_require__(87);
 
 
 /***/ }),
@@ -29223,13 +29223,13 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 var pIE = __webpack_require__(137);
 var createDesc = __webpack_require__(133);
-var toIObject = __webpack_require__(90);
+var toIObject = __webpack_require__(91);
 var toPrimitive = __webpack_require__(184);
 var has = __webpack_require__(76);
 var IE8_DOM_DEFINE = __webpack_require__(287);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(89) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(90) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -29296,11 +29296,11 @@ exports.default = function (obj, keys) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_inherits__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_inherits__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_inherits__);
 
 
@@ -29458,8 +29458,8 @@ var HomeRecommendationsListItem = function HomeRecommendationsListItem(props) {
                         props.dispatch((0, _teacherRecommendations.selectRecommendation)(props.reco));
                     } },
                 _react2.default.createElement(
-                    'h4',
-                    null,
+                    'p',
+                    { className: 'card-title' },
                     props.reco.title
                 ),
                 ' ',
@@ -29471,8 +29471,8 @@ var HomeRecommendationsListItem = function HomeRecommendationsListItem(props) {
                     props.reco.date.slice(0, 10)
                 ),
                 _react2.default.createElement(
-                    'h5',
-                    null,
+                    'p',
+                    { className: 'card-text' },
                     props.reco.header
                 )
             )
@@ -29492,6 +29492,471 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeRecommendationsL
 
 /***/ }),
 /* 304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(2);
+
+var _axios = __webpack_require__(5);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _Auth = __webpack_require__(3);
+
+var _Auth2 = _interopRequireDefault(_Auth);
+
+var _successModal = __webpack_require__(25);
+
+var _loadingModal = __webpack_require__(19);
+
+var _failureModal = __webpack_require__(13);
+
+var _teacherMetrics = __webpack_require__(139);
+
+var _teacherRecommendations = __webpack_require__(62);
+
+var _teacherQuestions = __webpack_require__(77);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Form available in the Teacher Home page which allows teachers to send questions to the Edvo Tech staff. 
+ * Each question requires a subject and a question body. 
+ */
+var AskQuestionForm = function (_React$Component) {
+    _inherits(AskQuestionForm, _React$Component);
+
+    function AskQuestionForm(props) {
+        _classCallCheck(this, AskQuestionForm);
+
+        //Each question must contain a subject and a question body. 
+        var _this = _possibleConstructorReturn(this, (AskQuestionForm.__proto__ || Object.getPrototypeOf(AskQuestionForm)).call(this, props));
+
+        _this.onSubjectChange = function (e) {
+            var subject = e.target.value;
+            _this.setState(function () {
+                return { subject: subject };
+            });
+        };
+
+        _this.onBodyChange = function (e) {
+            var body = e.target.value;
+            _this.setState(function () {
+                return { body: body };
+            });
+        };
+
+        _this.onSubmit = function (e) {
+            //Prevent page refresh
+            e.preventDefault();
+            //Enable error message if there is a missing form field. 
+            if (!_this.state.subject || !_this.state.body) {
+                _this.setState(function () {
+                    return { askQuestionError: true, success: false };
+                });
+            } else if (_this.state.subjectError || _this.state.subjectError) {
+                _this.setState(function () {
+                    return { askQuestionError: true };
+                });
+            } else {
+                _axios2.default.post('https://beta.edvotech.com/api/teacher/questions/ask', {
+                    subject: _this.state.subject,
+                    question: _this.state.body
+                }, {
+                    headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken() }
+                }).catch(function (error) {
+                    if (error.response.status == 401) {
+                        _this.setState(function () {
+                            return { askInvalidInputs: true };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionError: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionPlan: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionAllowed: false };
+                        });
+                    } else if (error.response.status == 402) {
+                        _this.setState(function () {
+                            return { askQuestionPlan: true };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionAllowed: false };
+                        });
+                        _this.setState(function () {
+                            return { askInvalidInputs: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionError: false };
+                        });
+                    } else if (error.response.status == 403) {
+                        _this.setState(function () {
+                            return { askQuestionAllowed: true };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionError: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionPlan: false };
+                        });
+                        _this.setState(function () {
+                            return { askInvalidInputs: false };
+                        });
+                    }
+                }).then(function (response) {
+                    if (response.status == 201) {
+                        _this.setState(function () {
+                            return { success: true, subject: '', body: '' };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionPlan: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionError: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionPlan: false };
+                        });
+                        _this.setState(function () {
+                            return { askQuestionAllowed: false };
+                        });
+                        _this.setState(function () {
+                            return { askInvalidInputs: false };
+                        });
+                        if (!_this.props.isInQuestionsPage) {
+                            _this.props.dispatch((0, _successModal.setSuccessModal)());
+                        }
+                        if (_this.props.isInQuestionsPage) {
+                            _this.props.dispatch((0, _loadingModal.setLoadingModal)());
+                            _this.props.dispatch((0, _teacherQuestions.unloadTeacherQuestions)());
+                            _axios2.default.get('https://beta.edvotech.com/api/teacher/questions', {
+                                headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken(), 'Content-Type': 'application/json' } }).then(function (response) {
+                                response.data.questions.forEach(function (element) {
+                                    _this.props.dispatch((0, _teacherQuestions.loadTeacherQuestion)({ question: element.question, askedDate: element.askeddate,
+                                        subject: element.subject, favorite: element.favorite, userId: element.userid, answer: element.answer, rate: element.rate, read: element.read }));
+                                    if (element.favorite == true) {
+                                        _this.props.dispatch((0, _teacherQuestions.addFavoriteQuestion)({ askedDate: element.askeddate }));
+                                    }
+                                });
+                                _this.props.dispatch((0, _loadingModal.setLoadingModal)());
+                                _this.props.dispatch((0, _successModal.setSuccessModal)());
+                            }).catch(function (error) {
+                                _this.props.dispatch((0, _loadingModal.setLoadingModal)());
+                                if (error.response.status >= 500) {
+                                    _this.props.dispatch((0, _failureModal.setFailureModal)());
+                                }
+                            });
+                        }
+
+                        //Requerying Home
+                        _this.props.dispatch((0, _teacherMetrics.reset)());
+                        _this.props.dispatch((0, _teacherRecommendations.unloadTeacherRecommendations)());
+                        _this.props.dispatch((0, _loadingModal.setLoadingModal)());
+
+                        _axios2.default.get('https://beta.edvotech.com/api/teacher/home', {
+                            headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken() }
+                        }).then(function (response) {
+                            _this.props.dispatch((0, _teacherMetrics.loadTeacherDaysInPlatform)({ daysInPlatform: response.data.daysInPlatforms }));
+                            _this.props.dispatch((0, _teacherMetrics.loadTeacherQuestionsAsked)({ questionsAsked: response.data.questionsasked }));
+                            _this.props.dispatch((0, _teacherMetrics.loadTeacherRecommendationsRead)({ recommendationsRead: response.data.recommendationsRead }));
+
+                            response.data.recentRecommendations.forEach(function (element) {
+                                _this.props.dispatch((0, _teacherMetrics.loadTeacherRecentRecommendation)({ recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read }));
+                                _this.props.dispatch((0, _teacherRecommendations.loadTeacherRecommendation)({ read: element.read, recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate }));
+                            });
+                            response.data.topRecommendations.forEach(function (element) {
+                                _this.props.dispatch((0, _teacherMetrics.loadTeacherTopRecommendation)({ recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read }));
+                            });
+                            _this.props.dispatch((0, _loadingModal.setLoadingModal)());
+                        }).catch(function (error) {
+                            _this.props.dispatch((0, _loadingModal.setLoadingModal)());
+                            _this.props.dispatch((0, _failureModal.setFailureModal)());
+                        });
+                    }
+                });
+            }
+        };
+
+        _this.state = {
+            subject: '',
+            subjectError: '',
+
+            body: '',
+            success: false,
+            bodyError: '',
+            askQuestionError: false,
+            askQuestionPlan: false,
+            askInvalidInputs: false,
+            askQuestionAllowed: false
+        };
+        return _this;
+    }
+
+    //Changes subject in local state
+
+
+    //Changes question body in local state
+
+
+    _createClass(AskQuestionForm, [{
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevProps !== this.props) {
+                //Change rendered error message if the language changes. 
+                if (this.props.lang === 'English') {
+                    if (this.state.subjectError) {
+                        this.setState(function () {
+                            return { subjectError: 'The subject field must contain text.' };
+                        });
+                    }
+                    if (this.state.bodyError) {
+                        this.setState(function () {
+                            return { bodyError: 'The question field must contain text.' };
+                        });
+                    }
+                } else {
+                    if (this.state.subjectError) {
+                        this.setState(function () {
+                            return { subjectError: 'El campo del tema debe contener texto.' };
+                        });
+                    }
+                    if (this.state.bodyError) {
+                        this.setState(function () {
+                            return { bodyError: 'El campo de la pregunta debe contener texto.' };
+                        });
+                    }
+                }
+            }
+        }
+
+        //Submits question information. 
+
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'form',
+                    { onSubmit: this.onSubmit },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        this.props.lang === 'English' ? 'Subject' : 'Tema',
+                        ': '
+                    ),
+                    _react2.default.createElement('input', {
+                        className: 'form-control',
+                        type: 'text',
+                        placeholder: this.props.lang === 'English' ? 'Subject' : 'Tema',
+                        value: this.state.subject,
+                        maxLength: '100',
+                        onChange: this.onSubjectChange, onBlur: function onBlur() {
+                            _this2.setState(function () {
+                                return { subject: _this2.state.subject.trim() };
+                            });
+                            if (_this2.state.subject && _this2.state.subject.match(/^\s+$/)) {
+                                if (_this2.props.lang === 'English') {
+                                    _this2.setState(function () {
+                                        return { subjectError: 'The subject field must contain text.' };
+                                    });
+                                } else {
+                                    _this2.setState(function () {
+                                        return { subjectError: 'El campo del tema debe contener texto.' };
+                                    });
+                                }
+                            } else {
+                                _this2.setState(function () {
+                                    return { subjectError: '' };
+                                });
+                            }
+                        } }),
+                    this.state.subjectError && _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'text-danger' },
+                            this.state.subjectError
+                        ),
+                        _react2.default.createElement('br', null)
+                    ),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        this.props.lang === 'English' ? 'Question' : 'Pregunta',
+                        ': '
+                    ),
+                    _react2.default.createElement(
+                        'span',
+                        { style: { color: 'gray', fontSize: '1.2rem' } },
+                        ' ',
+                        this.props.lang === 'English' ? 'Characters' : 'Caracteres',
+                        ' ',
+                        this.state.body.length,
+                        '/5000 '
+                    ),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('textarea', {
+                        className: 'form-control',
+                        type: 'text',
+                        placeholder: this.props.lang === 'English' ? 'Write your question here.' : 'Escriba su pregunta en este espacio.',
+                        cols: '41',
+                        rows: '6',
+                        maxLength: '5000',
+                        value: this.state.body,
+                        onChange: this.onBodyChange,
+                        onBlur: function onBlur() {
+                            _this2.setState(function () {
+                                return { body: _this2.state.body.trim() };
+                            });
+                            if (_this2.state.body && _this2.state.body.match(/^\s+$/)) {
+                                if (_this2.props.lang === 'English') {
+                                    _this2.setState(function () {
+                                        return { bodyError: 'The question field must contain text.' };
+                                    });
+                                } else {
+                                    _this2.setState(function () {
+                                        return { bodyError: 'El campo de la pregunta debe contener texto.' };
+                                    });
+                                }
+                            } else {
+                                _this2.setState(function () {
+                                    return { bodyError: '' };
+                                });
+                            }
+                        }
+                    }),
+                    this.state.bodyError && _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'text-danger' },
+                            this.state.bodyError
+                        ),
+                        _react2.default.createElement('br', null)
+                    ),
+                    _react2.default.createElement('br', null),
+                    this.state.askQuestionPlan === true && _react2.default.createElement(
+                        'div',
+                        { className: 'text-danger text-center' },
+                        this.props.lang === 'English' ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'You do not have an active subscription.'
+                        ) : _react2.default.createElement(
+                            'p',
+                            null,
+                            'Usted no tiene una suscripci\xF3n activa.'
+                        )
+                    ),
+                    this.state.askInvalidInputs === true && _react2.default.createElement(
+                        'div',
+                        { className: 'text-danger text-center' },
+                        this.props.lang === 'English' ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'Invalid user or data.'
+                        ) : _react2.default.createElement(
+                            'p',
+                            null,
+                            'Usuario o datos no validos.'
+                        )
+                    ),
+                    this.state.askQuestionAllowed === true && _react2.default.createElement(
+                        'div',
+                        { className: 'text-danger text-center' },
+                        this.props.lang === 'English' ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'You are not allowed to perform this action'
+                        ) : _react2.default.createElement(
+                            'p',
+                            null,
+                            'No tiene los permisos necesarios para realizar esta operacion.'
+                        )
+                    ),
+                    this.state.askQuestionError === true && _react2.default.createElement(
+                        'div',
+                        { className: 'text-danger text-center' },
+                        this.props.lang === 'English' ? _react2.default.createElement(
+                            'p',
+                            null,
+                            'Please fill all fields with valid information.'
+                        ) : _react2.default.createElement(
+                            'p',
+                            null,
+                            'Por favor, llene todos los campos con informaci\xF3n v\xE1lida.'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'container-fluid' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'row text-center' },
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'button',
+                                    { className: 'btn btn-item send_button', onClick: this.onSubmit },
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        this.props.lang === 'English' ? 'Ask' : 'Enviar'
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AskQuestionForm;
+}(_react2.default.Component);
+
+//Map current language state to component properties. 
+
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        lang: state.language.lang
+    };
+};
+
+//Connect component to controller
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(AskQuestionForm);
+
+/***/ }),
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29535,7 +30000,7 @@ var loadProfile = exports.loadProfile = function loadProfile() {
 };
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {// Unique ID creation requires a high quality random # generator.  In the
@@ -29575,7 +30040,7 @@ module.exports = rng;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports) {
 
 /**
@@ -29604,7 +30069,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29652,7 +30117,7 @@ var getVisibleUsers = function getVisibleUsers(users, _ref) {
 exports.default = getVisibleUsers;
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29772,7 +30237,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserFilters);
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29877,7 +30342,7 @@ var clearUserModal = exports.clearUserModal = function clearUserModal() {
 };
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29958,7 +30423,7 @@ var clearAssignmentRecommendationModal = exports.clearAssignmentRecommendationMo
 };
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30014,7 +30479,7 @@ var getVisibleRecommendations = function getVisibleRecommendations(recommendatio
 exports.default = getVisibleRecommendations;
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30152,7 +30617,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(RecommendationsFilters);
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31009,8 +31474,8 @@ var CreateRecommendationForm = function (_React$Component) {
                                 _react2.default.createElement(
                                     'span',
                                     { style: { color: 'gray', fontSize: '1.2rem' } },
-                                    _this2.props.lang === 'English' ? 'Length' : 'Largo',
-                                    ': ',
+                                    _this2.props.lang === 'English' ? 'Characters' : 'Caracteres',
+                                    ' ',
                                     _this2.state.header.length,
                                     '/200'
                                 ),
@@ -31888,7 +32353,7 @@ var mapStateToProps = function mapStateToProps(state, props) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(CreateRecommendationForm));
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32007,7 +32472,7 @@ var randomizeBlockMapKeys = function randomizeBlockMapKeys(blockMap) {
 module.exports = randomizeBlockMapKeys;
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32114,7 +32579,7 @@ function removeForBlock(entityMap, block, offset) {
 module.exports = removeEntitiesAtEdges;
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32156,7 +32621,7 @@ function insertIntoList(targetList, toInsert, offset) {
 module.exports = insertIntoList;
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32215,7 +32680,7 @@ var getNextDelimiterBlockKey = function getNextDelimiterBlockKey(block, blockMap
 module.exports = getNextDelimiterBlockKey;
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32334,7 +32799,7 @@ function areEqual(a, b) {
 module.exports = BlockTree;
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32410,7 +32875,7 @@ var DraftEntityInstance = function (_DraftEntityInstanceR) {
 module.exports = DraftEntityInstance;
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32570,7 +33035,7 @@ var UnicodeBidi = {
 module.exports = UnicodeBidi;
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32613,7 +33078,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32667,7 +33132,7 @@ function isSelectionAtLeafStart(editorState) {
 module.exports = isSelectionAtLeafStart;
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32700,12 +33165,12 @@ var DraftEditorLeaf = __webpack_require__(790);
 var DraftOffsetKey = __webpack_require__(146);
 var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(57);
-var Scroll = __webpack_require__(325);
+var Scroll = __webpack_require__(326);
 var Style = __webpack_require__(210);
-var UnicodeBidi = __webpack_require__(320);
+var UnicodeBidi = __webpack_require__(321);
 var UnicodeBidiDirection = __webpack_require__(205);
 
-var cx = __webpack_require__(97);
+var cx = __webpack_require__(98);
 var getElementPosition = __webpack_require__(805);
 var getScrollPosition = __webpack_require__(211);
 var getViewportDimensions = __webpack_require__(809);
@@ -32879,7 +33344,7 @@ var DraftEditorBlock = function (_React$Component) {
 module.exports = DraftEditorBlock;
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32921,7 +33386,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33010,7 +33475,7 @@ var Scroll = {
 module.exports = Scroll;
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33235,7 +33700,7 @@ var DataTransfer = function () {
 module.exports = DataTransfer;
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33278,7 +33743,7 @@ function getSelectionOffsetKeyForNode(node) {
 module.exports = getSelectionOffsetKeyForNode;
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33365,7 +33830,7 @@ module.exports = getTextContentFromFiles;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33447,7 +33912,7 @@ function getUpdatedSelectionState(editorState, anchorKey, anchorOffset, focusKey
 module.exports = getUpdatedSelectionState;
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33481,7 +33946,7 @@ function getFragmentFromSelection(editorState) {
 module.exports = getFragmentFromSelection;
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33550,7 +34015,7 @@ var getRangeClientRects = isChrome ? getRangeClientRectsChrome : function (range
 module.exports = getRangeClientRects;
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33570,8 +34035,8 @@ module.exports = getRangeClientRects;
 
 
 var findAncestorOffsetKey = __webpack_require__(212);
-var getSelectionOffsetKeyForNode = __webpack_require__(327);
-var getUpdatedSelectionState = __webpack_require__(329);
+var getSelectionOffsetKeyForNode = __webpack_require__(328);
+var getUpdatedSelectionState = __webpack_require__(330);
 var invariant = __webpack_require__(11);
 var nullthrows = __webpack_require__(44);
 
@@ -33739,7 +34204,7 @@ function getTextContentLength(node) {
 module.exports = getDraftEditorSelectionWithNodes;
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33796,7 +34261,7 @@ var DraftRemovableWord = {
 module.exports = DraftRemovableWord;
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33847,7 +34312,7 @@ function moveSelectionForward(editorState, maxDistance) {
 module.exports = moveSelectionForward;
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33874,7 +34339,7 @@ var _knownListItemDepthCl,
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var CharacterMetadata = __webpack_require__(33);
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentBlockNode = __webpack_require__(39);
 var DefaultDraftBlockRenderMap = __webpack_require__(206);
 var DraftEntity = __webpack_require__(145);
@@ -33886,9 +34351,9 @@ var _require = __webpack_require__(8),
 
 var URI = __webpack_require__(842);
 
-var cx = __webpack_require__(97);
+var cx = __webpack_require__(98);
 var generateRandomKey = __webpack_require__(56);
-var getSafeBodyFromHTML = __webpack_require__(336);
+var getSafeBodyFromHTML = __webpack_require__(337);
 var invariant = __webpack_require__(11);
 var sanitizeDraftText = __webpack_require__(204);
 
@@ -34505,7 +34970,7 @@ var convertFromHTMLtoContentBlocks = function convertFromHTMLtoContentBlocks(htm
 module.exports = convertFromHTMLtoContentBlocks;
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34550,7 +35015,7 @@ function getSafeBodyFromHTML(html) {
 module.exports = getSafeBodyFromHTML;
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34571,7 +35036,7 @@ module.exports = getSafeBodyFromHTML;
 
 var DraftModifier = __webpack_require__(28);
 var EditorState = __webpack_require__(15);
-var SelectionState = __webpack_require__(96);
+var SelectionState = __webpack_require__(97);
 
 var adjustBlockDepthForContentState = __webpack_require__(843);
 var nullthrows = __webpack_require__(44);
@@ -34866,7 +35331,7 @@ var RichTextEditorUtil = {
 module.exports = RichTextEditorUtil;
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34996,7 +35461,7 @@ function getDefaultKeyBinding(e) {
 module.exports = getDefaultKeyBinding;
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35028,7 +35493,7 @@ var DraftStringKey = {
 module.exports = DraftStringKey;
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35084,7 +35549,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(QuestionButtonList);
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35146,16 +35611,16 @@ var TeacherRecommendationsListItem = function TeacherRecommendationsListItem(pro
                 )
             ),
             _react2.default.createElement(
+                'p',
+                { className: 'card-text' },
+                props.reco.header
+            ),
+            _react2.default.createElement(
                 'h5',
                 null,
                 props.lang === 'English' ? 'Date' : 'Fecha',
                 ': ',
                 (0, _moment2.default)(props.reco.date).format("YYYY-MM-DD")
-            ),
-            _react2.default.createElement(
-                'h5',
-                null,
-                props.reco.header
             )
         )
     );
@@ -35172,7 +35637,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(TeacherRecommendationsListItem);
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35188,7 +35653,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _teacherQuestions = __webpack_require__(98);
+var _teacherQuestions = __webpack_require__(77);
 
 var _moment = __webpack_require__(18);
 
@@ -35229,7 +35694,7 @@ var TeacherQuestionListItem = function TeacherQuestionListItem(props) {
                 { className: 'card-title' },
                 _react2.default.createElement(
                     'p',
-                    null,
+                    { className: 'card-text' },
                     props.question.subject
                 )
             ),
@@ -35255,7 +35720,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(TeacherQuestionListItem);
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35311,7 +35776,7 @@ function findTabbableDescendants(element) {
 }
 
 /***/ }),
-/* 344 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35381,7 +35846,7 @@ function resetForTesting() {
 }
 
 /***/ }),
-/* 345 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35423,7 +35888,7 @@ function totalCount() {
 }
 
 /***/ }),
-/* 346 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35446,7 +35911,7 @@ var SafeHTMLElement = EE.canUseDOM ? window.HTMLElement : {};
 exports.default = SafeHTMLElement;
 
 /***/ }),
-/* 347 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35709,7 +36174,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 348 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35751,7 +36216,7 @@ var QuizButtonList = function QuizButtonList(props) {
 exports.default = QuizButtonList;
 
 /***/ }),
-/* 349 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35827,7 +36292,7 @@ exports.IbanElement = IbanElement;
 exports.IdealBankElement = IdealBankElement;
 
 /***/ }),
-/* 350 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35848,7 +36313,7 @@ var shallowEqual = function shallowEqual(a, b) {
 exports.default = shallowEqual;
 
 /***/ }),
-/* 351 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35856,11 +36321,11 @@ exports.default = shallowEqual;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-__webpack_require__(352);
+__webpack_require__(353);
 
-__webpack_require__(359);
+__webpack_require__(360);
 
-__webpack_require__(361);
+__webpack_require__(362);
 
 var _react = __webpack_require__(0);
 
@@ -35872,7 +36337,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRedux = __webpack_require__(2);
 
-var _AppRouter = __webpack_require__(412);
+var _AppRouter = __webpack_require__(413);
 
 var _AppRouter2 = _interopRequireDefault(_AppRouter);
 
@@ -35896,7 +36361,7 @@ var _user = __webpack_require__(141);
 
 var _school = __webpack_require__(142);
 
-var _recommendations = __webpack_require__(77);
+var _recommendations = __webpack_require__(78);
 
 var _question = __webpack_require__(147);
 
@@ -35906,11 +36371,11 @@ var _teacherMetrics = __webpack_require__(139);
 
 var _teacherRecommendations = __webpack_require__(62);
 
-var _teacherQuestions = __webpack_require__(98);
+var _teacherQuestions = __webpack_require__(77);
 
 var _quiz = __webpack_require__(148);
 
-var _profile = __webpack_require__(304);
+var _profile = __webpack_require__(305);
 
 var _classes = __webpack_require__(199);
 
@@ -36106,13 +36571,13 @@ var App = function (_React$Component) {
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
 /***/ }),
-/* 352 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(353);
+var content = __webpack_require__(354);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36137,7 +36602,7 @@ if(false) {
 }
 
 /***/ }),
-/* 353 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -36145,37 +36610,37 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "/*!\n * Bootstrap v3.3.7 (http://getbootstrap.com)\n * Copyright 2011-2016 Twitter, Inc.\n * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\nhtml {\n  font-family: sans-serif;\n  -webkit-text-size-adjust: 100%;\n  -ms-text-size-adjust: 100%; }\n\nbody {\n  margin: 0; }\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block; }\n\naudio, canvas, progress, video {\n  display: inline-block;\n  vertical-align: baseline; }\n\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n[hidden], template {\n  display: none; }\n\na {\n  background-color: transparent; }\n\na:active, a:hover {\n  outline: 0; }\n\nabbr[title] {\n  border-bottom: 1px dotted; }\n\nb, strong {\n  font-weight: 700; }\n\ndfn {\n  font-style: italic; }\n\nh1 {\n  margin: .67em 0;\n  font-size: 2em; }\n\nmark {\n  color: #000;\n  background: #ff0; }\n\nsmall {\n  font-size: 80%; }\n\nsub, sup {\n  position: relative;\n  font-size: 75%;\n  line-height: 0;\n  vertical-align: baseline; }\n\nsup {\n  top: -.5em; }\n\nsub {\n  bottom: -.25em; }\n\nimg {\n  border: 0; }\n\nsvg:not(:root) {\n  overflow: hidden; }\n\nfigure {\n  margin: 1em 40px; }\n\nhr {\n  height: 0;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box; }\n\npre {\n  overflow: auto; }\n\ncode, kbd, pre, samp {\n  font-family: monospace,monospace;\n  font-size: 1em; }\n\nbutton, input, optgroup, select, textarea {\n  margin: 0;\n  font: inherit;\n  color: inherit; }\n\nbutton {\n  overflow: visible; }\n\nbutton, select {\n  text-transform: none; }\n\nbutton, html input[type=button], input[type=reset], input[type=submit] {\n  -webkit-appearance: button;\n  cursor: pointer; }\n\nbutton[disabled], html input[disabled] {\n  cursor: default; }\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  padding: 0;\n  border: 0; }\n\ninput {\n  line-height: normal; }\n\ninput[type=checkbox], input[type=radio] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  padding: 0; }\n\ninput[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {\n  height: auto; }\n\ninput[type=search] {\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  -webkit-appearance: textfield; }\n\ninput[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\nfieldset {\n  padding: .35em .625em .75em;\n  margin: 0 2px;\n  border: 1px solid silver; }\n\nlegend {\n  padding: 0;\n  border: 0; }\n\ntextarea {\n  overflow: auto; }\n\noptgroup {\n  font-weight: 700; }\n\ntable {\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntd, th {\n  padding: 0; }\n\n/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */\n@media print {\n  *, :after, :before {\n    color: #000 !important;\n    text-shadow: none !important;\n    background: 0 0 !important;\n    -webkit-box-shadow: none !important;\n    box-shadow: none !important; }\n  a, a:visited {\n    text-decoration: underline; }\n  a[href]:after {\n    content: \" (\" attr(href) \")\"; }\n  abbr[title]:after {\n    content: \" (\" attr(title) \")\"; }\n  a[href^=\"javascript:\"]:after, a[href^=\"#\"]:after {\n    content: \"\"; }\n  blockquote, pre {\n    border: 1px solid #999;\n    page-break-inside: avoid; }\n  thead {\n    display: table-header-group; }\n  img, tr {\n    page-break-inside: avoid; }\n  img {\n    max-width: 100% !important; }\n  h2, h3, p {\n    orphans: 3;\n    widows: 3; }\n  h2, h3 {\n    page-break-after: avoid; }\n  .navbar {\n    display: none; }\n  .btn > .caret, .dropup > .btn > .caret {\n    border-top-color: #000 !important; }\n  .label {\n    border: 1px solid #000; }\n  .table {\n    border-collapse: collapse !important; }\n  .table td, .table th {\n    background-color: #fff !important; }\n  .table-bordered td, .table-bordered th {\n    border: 1px solid #ddd !important; } }\n\n@font-face {\n  font-family: 'Glyphicons Halflings';\n  src: url(" + __webpack_require__(216) + ");\n  src: url(" + __webpack_require__(216) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(354) + ") format(\"woff2\"), url(" + __webpack_require__(355) + ") format(\"woff\"), url(" + __webpack_require__(356) + ") format(\"truetype\"), url(" + __webpack_require__(357) + "#glyphicons_halflingsregular) format(\"svg\"); }\n\n.glyphicon {\n  position: relative;\n  top: 1px;\n  display: inline-block;\n  font-family: 'Glyphicons Halflings';\n  font-style: normal;\n  font-weight: 400;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.glyphicon-asterisk:before {\n  content: \"*\"; }\n\n.glyphicon-plus:before {\n  content: \"+\"; }\n\n.glyphicon-eur:before, .glyphicon-euro:before {\n  content: \"\\20AC\"; }\n\n.glyphicon-minus:before {\n  content: \"\\2212\"; }\n\n.glyphicon-cloud:before {\n  content: \"\\2601\"; }\n\n.glyphicon-envelope:before {\n  content: \"\\2709\"; }\n\n.glyphicon-pencil:before {\n  content: \"\\270F\"; }\n\n.glyphicon-glass:before {\n  content: \"\\E001\"; }\n\n.glyphicon-music:before {\n  content: \"\\E002\"; }\n\n.glyphicon-search:before {\n  content: \"\\E003\"; }\n\n.glyphicon-heart:before {\n  content: \"\\E005\"; }\n\n.glyphicon-star:before {\n  content: \"\\E006\"; }\n\n.glyphicon-star-empty:before {\n  content: \"\\E007\"; }\n\n.glyphicon-user:before {\n  content: \"\\E008\"; }\n\n.glyphicon-film:before {\n  content: \"\\E009\"; }\n\n.glyphicon-th-large:before {\n  content: \"\\E010\"; }\n\n.glyphicon-th:before {\n  content: \"\\E011\"; }\n\n.glyphicon-th-list:before {\n  content: \"\\E012\"; }\n\n.glyphicon-ok:before {\n  content: \"\\E013\"; }\n\n.glyphicon-remove:before {\n  content: \"\\E014\"; }\n\n.glyphicon-zoom-in:before {\n  content: \"\\E015\"; }\n\n.glyphicon-zoom-out:before {\n  content: \"\\E016\"; }\n\n.glyphicon-off:before {\n  content: \"\\E017\"; }\n\n.glyphicon-signal:before {\n  content: \"\\E018\"; }\n\n.glyphicon-cog:before {\n  content: \"\\E019\"; }\n\n.glyphicon-trash:before {\n  content: \"\\E020\"; }\n\n.glyphicon-home:before {\n  content: \"\\E021\"; }\n\n.glyphicon-file:before {\n  content: \"\\E022\"; }\n\n.glyphicon-time:before {\n  content: \"\\E023\"; }\n\n.glyphicon-road:before {\n  content: \"\\E024\"; }\n\n.glyphicon-download-alt:before {\n  content: \"\\E025\"; }\n\n.glyphicon-download:before {\n  content: \"\\E026\"; }\n\n.glyphicon-upload:before {\n  content: \"\\E027\"; }\n\n.glyphicon-inbox:before {\n  content: \"\\E028\"; }\n\n.glyphicon-play-circle:before {\n  content: \"\\E029\"; }\n\n.glyphicon-repeat:before {\n  content: \"\\E030\"; }\n\n.glyphicon-refresh:before {\n  content: \"\\E031\"; }\n\n.glyphicon-list-alt:before {\n  content: \"\\E032\"; }\n\n.glyphicon-lock:before {\n  content: \"\\E033\"; }\n\n.glyphicon-flag:before {\n  content: \"\\E034\"; }\n\n.glyphicon-headphones:before {\n  content: \"\\E035\"; }\n\n.glyphicon-volume-off:before {\n  content: \"\\E036\"; }\n\n.glyphicon-volume-down:before {\n  content: \"\\E037\"; }\n\n.glyphicon-volume-up:before {\n  content: \"\\E038\"; }\n\n.glyphicon-qrcode:before {\n  content: \"\\E039\"; }\n\n.glyphicon-barcode:before {\n  content: \"\\E040\"; }\n\n.glyphicon-tag:before {\n  content: \"\\E041\"; }\n\n.glyphicon-tags:before {\n  content: \"\\E042\"; }\n\n.glyphicon-book:before {\n  content: \"\\E043\"; }\n\n.glyphicon-bookmark:before {\n  content: \"\\E044\"; }\n\n.glyphicon-print:before {\n  content: \"\\E045\"; }\n\n.glyphicon-camera:before {\n  content: \"\\E046\"; }\n\n.glyphicon-font:before {\n  content: \"\\E047\"; }\n\n.glyphicon-bold:before {\n  content: \"\\E048\"; }\n\n.glyphicon-italic:before {\n  content: \"\\E049\"; }\n\n.glyphicon-text-height:before {\n  content: \"\\E050\"; }\n\n.glyphicon-text-width:before {\n  content: \"\\E051\"; }\n\n.glyphicon-align-left:before {\n  content: \"\\E052\"; }\n\n.glyphicon-align-center:before {\n  content: \"\\E053\"; }\n\n.glyphicon-align-right:before {\n  content: \"\\E054\"; }\n\n.glyphicon-align-justify:before {\n  content: \"\\E055\"; }\n\n.glyphicon-list:before {\n  content: \"\\E056\"; }\n\n.glyphicon-indent-left:before {\n  content: \"\\E057\"; }\n\n.glyphicon-indent-right:before {\n  content: \"\\E058\"; }\n\n.glyphicon-facetime-video:before {\n  content: \"\\E059\"; }\n\n.glyphicon-picture:before {\n  content: \"\\E060\"; }\n\n.glyphicon-map-marker:before {\n  content: \"\\E062\"; }\n\n.glyphicon-adjust:before {\n  content: \"\\E063\"; }\n\n.glyphicon-tint:before {\n  content: \"\\E064\"; }\n\n.glyphicon-edit:before {\n  content: \"\\E065\"; }\n\n.glyphicon-share:before {\n  content: \"\\E066\"; }\n\n.glyphicon-check:before {\n  content: \"\\E067\"; }\n\n.glyphicon-move:before {\n  content: \"\\E068\"; }\n\n.glyphicon-step-backward:before {\n  content: \"\\E069\"; }\n\n.glyphicon-fast-backward:before {\n  content: \"\\E070\"; }\n\n.glyphicon-backward:before {\n  content: \"\\E071\"; }\n\n.glyphicon-play:before {\n  content: \"\\E072\"; }\n\n.glyphicon-pause:before {\n  content: \"\\E073\"; }\n\n.glyphicon-stop:before {\n  content: \"\\E074\"; }\n\n.glyphicon-forward:before {\n  content: \"\\E075\"; }\n\n.glyphicon-fast-forward:before {\n  content: \"\\E076\"; }\n\n.glyphicon-step-forward:before {\n  content: \"\\E077\"; }\n\n.glyphicon-eject:before {\n  content: \"\\E078\"; }\n\n.glyphicon-chevron-left:before {\n  content: \"\\E079\"; }\n\n.glyphicon-chevron-right:before {\n  content: \"\\E080\"; }\n\n.glyphicon-plus-sign:before {\n  content: \"\\E081\"; }\n\n.glyphicon-minus-sign:before {\n  content: \"\\E082\"; }\n\n.glyphicon-remove-sign:before {\n  content: \"\\E083\"; }\n\n.glyphicon-ok-sign:before {\n  content: \"\\E084\"; }\n\n.glyphicon-question-sign:before {\n  content: \"\\E085\"; }\n\n.glyphicon-info-sign:before {\n  content: \"\\E086\"; }\n\n.glyphicon-screenshot:before {\n  content: \"\\E087\"; }\n\n.glyphicon-remove-circle:before {\n  content: \"\\E088\"; }\n\n.glyphicon-ok-circle:before {\n  content: \"\\E089\"; }\n\n.glyphicon-ban-circle:before {\n  content: \"\\E090\"; }\n\n.glyphicon-arrow-left:before {\n  content: \"\\E091\"; }\n\n.glyphicon-arrow-right:before {\n  content: \"\\E092\"; }\n\n.glyphicon-arrow-up:before {\n  content: \"\\E093\"; }\n\n.glyphicon-arrow-down:before {\n  content: \"\\E094\"; }\n\n.glyphicon-share-alt:before {\n  content: \"\\E095\"; }\n\n.glyphicon-resize-full:before {\n  content: \"\\E096\"; }\n\n.glyphicon-resize-small:before {\n  content: \"\\E097\"; }\n\n.glyphicon-exclamation-sign:before {\n  content: \"\\E101\"; }\n\n.glyphicon-gift:before {\n  content: \"\\E102\"; }\n\n.glyphicon-leaf:before {\n  content: \"\\E103\"; }\n\n.glyphicon-fire:before {\n  content: \"\\E104\"; }\n\n.glyphicon-eye-open:before {\n  content: \"\\E105\"; }\n\n.glyphicon-eye-close:before {\n  content: \"\\E106\"; }\n\n.glyphicon-warning-sign:before {\n  content: \"\\E107\"; }\n\n.glyphicon-plane:before {\n  content: \"\\E108\"; }\n\n.glyphicon-calendar:before {\n  content: \"\\E109\"; }\n\n.glyphicon-random:before {\n  content: \"\\E110\"; }\n\n.glyphicon-comment:before {\n  content: \"\\E111\"; }\n\n.glyphicon-magnet:before {\n  content: \"\\E112\"; }\n\n.glyphicon-chevron-up:before {\n  content: \"\\E113\"; }\n\n.glyphicon-chevron-down:before {\n  content: \"\\E114\"; }\n\n.glyphicon-retweet:before {\n  content: \"\\E115\"; }\n\n.glyphicon-shopping-cart:before {\n  content: \"\\E116\"; }\n\n.glyphicon-folder-close:before {\n  content: \"\\E117\"; }\n\n.glyphicon-folder-open:before {\n  content: \"\\E118\"; }\n\n.glyphicon-resize-vertical:before {\n  content: \"\\E119\"; }\n\n.glyphicon-resize-horizontal:before {\n  content: \"\\E120\"; }\n\n.glyphicon-hdd:before {\n  content: \"\\E121\"; }\n\n.glyphicon-bullhorn:before {\n  content: \"\\E122\"; }\n\n.glyphicon-bell:before {\n  content: \"\\E123\"; }\n\n.glyphicon-certificate:before {\n  content: \"\\E124\"; }\n\n.glyphicon-thumbs-up:before {\n  content: \"\\E125\"; }\n\n.glyphicon-thumbs-down:before {\n  content: \"\\E126\"; }\n\n.glyphicon-hand-right:before {\n  content: \"\\E127\"; }\n\n.glyphicon-hand-left:before {\n  content: \"\\E128\"; }\n\n.glyphicon-hand-up:before {\n  content: \"\\E129\"; }\n\n.glyphicon-hand-down:before {\n  content: \"\\E130\"; }\n\n.glyphicon-circle-arrow-right:before {\n  content: \"\\E131\"; }\n\n.glyphicon-circle-arrow-left:before {\n  content: \"\\E132\"; }\n\n.glyphicon-circle-arrow-up:before {\n  content: \"\\E133\"; }\n\n.glyphicon-circle-arrow-down:before {\n  content: \"\\E134\"; }\n\n.glyphicon-globe:before {\n  content: \"\\E135\"; }\n\n.glyphicon-wrench:before {\n  content: \"\\E136\"; }\n\n.glyphicon-tasks:before {\n  content: \"\\E137\"; }\n\n.glyphicon-filter:before {\n  content: \"\\E138\"; }\n\n.glyphicon-briefcase:before {\n  content: \"\\E139\"; }\n\n.glyphicon-fullscreen:before {\n  content: \"\\E140\"; }\n\n.glyphicon-dashboard:before {\n  content: \"\\E141\"; }\n\n.glyphicon-paperclip:before {\n  content: \"\\E142\"; }\n\n.glyphicon-heart-empty:before {\n  content: \"\\E143\"; }\n\n.glyphicon-link:before {\n  content: \"\\E144\"; }\n\n.glyphicon-phone:before {\n  content: \"\\E145\"; }\n\n.glyphicon-pushpin:before {\n  content: \"\\E146\"; }\n\n.glyphicon-usd:before {\n  content: \"\\E148\"; }\n\n.glyphicon-gbp:before {\n  content: \"\\E149\"; }\n\n.glyphicon-sort:before {\n  content: \"\\E150\"; }\n\n.glyphicon-sort-by-alphabet:before {\n  content: \"\\E151\"; }\n\n.glyphicon-sort-by-alphabet-alt:before {\n  content: \"\\E152\"; }\n\n.glyphicon-sort-by-order:before {\n  content: \"\\E153\"; }\n\n.glyphicon-sort-by-order-alt:before {\n  content: \"\\E154\"; }\n\n.glyphicon-sort-by-attributes:before {\n  content: \"\\E155\"; }\n\n.glyphicon-sort-by-attributes-alt:before {\n  content: \"\\E156\"; }\n\n.glyphicon-unchecked:before {\n  content: \"\\E157\"; }\n\n.glyphicon-expand:before {\n  content: \"\\E158\"; }\n\n.glyphicon-collapse-down:before {\n  content: \"\\E159\"; }\n\n.glyphicon-collapse-up:before {\n  content: \"\\E160\"; }\n\n.glyphicon-log-in:before {\n  content: \"\\E161\"; }\n\n.glyphicon-flash:before {\n  content: \"\\E162\"; }\n\n.glyphicon-log-out:before {\n  content: \"\\E163\"; }\n\n.glyphicon-new-window:before {\n  content: \"\\E164\"; }\n\n.glyphicon-record:before {\n  content: \"\\E165\"; }\n\n.glyphicon-save:before {\n  content: \"\\E166\"; }\n\n.glyphicon-open:before {\n  content: \"\\E167\"; }\n\n.glyphicon-saved:before {\n  content: \"\\E168\"; }\n\n.glyphicon-import:before {\n  content: \"\\E169\"; }\n\n.glyphicon-export:before {\n  content: \"\\E170\"; }\n\n.glyphicon-send:before {\n  content: \"\\E171\"; }\n\n.glyphicon-floppy-disk:before {\n  content: \"\\E172\"; }\n\n.glyphicon-floppy-saved:before {\n  content: \"\\E173\"; }\n\n.glyphicon-floppy-remove:before {\n  content: \"\\E174\"; }\n\n.glyphicon-floppy-save:before {\n  content: \"\\E175\"; }\n\n.glyphicon-floppy-open:before {\n  content: \"\\E176\"; }\n\n.glyphicon-credit-card:before {\n  content: \"\\E177\"; }\n\n.glyphicon-transfer:before {\n  content: \"\\E178\"; }\n\n.glyphicon-cutlery:before {\n  content: \"\\E179\"; }\n\n.glyphicon-header:before {\n  content: \"\\E180\"; }\n\n.glyphicon-compressed:before {\n  content: \"\\E181\"; }\n\n.glyphicon-earphone:before {\n  content: \"\\E182\"; }\n\n.glyphicon-phone-alt:before {\n  content: \"\\E183\"; }\n\n.glyphicon-tower:before {\n  content: \"\\E184\"; }\n\n.glyphicon-stats:before {\n  content: \"\\E185\"; }\n\n.glyphicon-sd-video:before {\n  content: \"\\E186\"; }\n\n.glyphicon-hd-video:before {\n  content: \"\\E187\"; }\n\n.glyphicon-subtitles:before {\n  content: \"\\E188\"; }\n\n.glyphicon-sound-stereo:before {\n  content: \"\\E189\"; }\n\n.glyphicon-sound-dolby:before {\n  content: \"\\E190\"; }\n\n.glyphicon-sound-5-1:before {\n  content: \"\\E191\"; }\n\n.glyphicon-sound-6-1:before {\n  content: \"\\E192\"; }\n\n.glyphicon-sound-7-1:before {\n  content: \"\\E193\"; }\n\n.glyphicon-copyright-mark:before {\n  content: \"\\E194\"; }\n\n.glyphicon-registration-mark:before {\n  content: \"\\E195\"; }\n\n.glyphicon-cloud-download:before {\n  content: \"\\E197\"; }\n\n.glyphicon-cloud-upload:before {\n  content: \"\\E198\"; }\n\n.glyphicon-tree-conifer:before {\n  content: \"\\E199\"; }\n\n.glyphicon-tree-deciduous:before {\n  content: \"\\E200\"; }\n\n.glyphicon-cd:before {\n  content: \"\\E201\"; }\n\n.glyphicon-save-file:before {\n  content: \"\\E202\"; }\n\n.glyphicon-open-file:before {\n  content: \"\\E203\"; }\n\n.glyphicon-level-up:before {\n  content: \"\\E204\"; }\n\n.glyphicon-copy:before {\n  content: \"\\E205\"; }\n\n.glyphicon-paste:before {\n  content: \"\\E206\"; }\n\n.glyphicon-alert:before {\n  content: \"\\E209\"; }\n\n.glyphicon-equalizer:before {\n  content: \"\\E210\"; }\n\n.glyphicon-king:before {\n  content: \"\\E211\"; }\n\n.glyphicon-queen:before {\n  content: \"\\E212\"; }\n\n.glyphicon-pawn:before {\n  content: \"\\E213\"; }\n\n.glyphicon-bishop:before {\n  content: \"\\E214\"; }\n\n.glyphicon-knight:before {\n  content: \"\\E215\"; }\n\n.glyphicon-baby-formula:before {\n  content: \"\\E216\"; }\n\n.glyphicon-tent:before {\n  content: \"\\26FA\"; }\n\n.glyphicon-blackboard:before {\n  content: \"\\E218\"; }\n\n.glyphicon-bed:before {\n  content: \"\\E219\"; }\n\n.glyphicon-apple:before {\n  content: \"\\F8FF\"; }\n\n.glyphicon-erase:before {\n  content: \"\\E221\"; }\n\n.glyphicon-hourglass:before {\n  content: \"\\231B\"; }\n\n.glyphicon-lamp:before {\n  content: \"\\E223\"; }\n\n.glyphicon-duplicate:before {\n  content: \"\\E224\"; }\n\n.glyphicon-piggy-bank:before {\n  content: \"\\E225\"; }\n\n.glyphicon-scissors:before {\n  content: \"\\E226\"; }\n\n.glyphicon-bitcoin:before {\n  content: \"\\E227\"; }\n\n.glyphicon-btc:before {\n  content: \"\\E227\"; }\n\n.glyphicon-xbt:before {\n  content: \"\\E227\"; }\n\n.glyphicon-yen:before {\n  content: \"\\A5\"; }\n\n.glyphicon-jpy:before {\n  content: \"\\A5\"; }\n\n.glyphicon-ruble:before {\n  content: \"\\20BD\"; }\n\n.glyphicon-rub:before {\n  content: \"\\20BD\"; }\n\n.glyphicon-scale:before {\n  content: \"\\E230\"; }\n\n.glyphicon-ice-lolly:before {\n  content: \"\\E231\"; }\n\n.glyphicon-ice-lolly-tasted:before {\n  content: \"\\E232\"; }\n\n.glyphicon-education:before {\n  content: \"\\E233\"; }\n\n.glyphicon-option-horizontal:before {\n  content: \"\\E234\"; }\n\n.glyphicon-option-vertical:before {\n  content: \"\\E235\"; }\n\n.glyphicon-menu-hamburger:before {\n  content: \"\\E236\"; }\n\n.glyphicon-modal-window:before {\n  content: \"\\E237\"; }\n\n.glyphicon-oil:before {\n  content: \"\\E238\"; }\n\n.glyphicon-grain:before {\n  content: \"\\E239\"; }\n\n.glyphicon-sunglasses:before {\n  content: \"\\E240\"; }\n\n.glyphicon-text-size:before {\n  content: \"\\E241\"; }\n\n.glyphicon-text-color:before {\n  content: \"\\E242\"; }\n\n.glyphicon-text-background:before {\n  content: \"\\E243\"; }\n\n.glyphicon-object-align-top:before {\n  content: \"\\E244\"; }\n\n.glyphicon-object-align-bottom:before {\n  content: \"\\E245\"; }\n\n.glyphicon-object-align-horizontal:before {\n  content: \"\\E246\"; }\n\n.glyphicon-object-align-left:before {\n  content: \"\\E247\"; }\n\n.glyphicon-object-align-vertical:before {\n  content: \"\\E248\"; }\n\n.glyphicon-object-align-right:before {\n  content: \"\\E249\"; }\n\n.glyphicon-triangle-right:before {\n  content: \"\\E250\"; }\n\n.glyphicon-triangle-left:before {\n  content: \"\\E251\"; }\n\n.glyphicon-triangle-bottom:before {\n  content: \"\\E252\"; }\n\n.glyphicon-triangle-top:before {\n  content: \"\\E253\"; }\n\n.glyphicon-console:before {\n  content: \"\\E254\"; }\n\n.glyphicon-superscript:before {\n  content: \"\\E255\"; }\n\n.glyphicon-subscript:before {\n  content: \"\\E256\"; }\n\n.glyphicon-menu-left:before {\n  content: \"\\E257\"; }\n\n.glyphicon-menu-right:before {\n  content: \"\\E258\"; }\n\n.glyphicon-menu-down:before {\n  content: \"\\E259\"; }\n\n.glyphicon-menu-up:before {\n  content: \"\\E260\"; }\n\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n:after, :before {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nhtml {\n  font-size: 10px;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n\nbody {\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #333;\n  background-color: #fff; }\n\nbutton, input, select, textarea {\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit; }\n\na {\n  color: #337ab7;\n  text-decoration: none; }\n\na:focus, a:hover {\n  color: #23527c;\n  text-decoration: underline; }\n\na:focus {\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\nfigure {\n  margin: 0; }\n\nimg {\n  vertical-align: middle; }\n\n.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {\n  display: block;\n  max-width: 100%;\n  height: auto; }\n\n.img-rounded {\n  border-radius: 6px; }\n\n.img-thumbnail {\n  display: inline-block;\n  max-width: 100%;\n  height: auto;\n  padding: 4px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: all .2s ease-in-out;\n  -o-transition: all .2s ease-in-out;\n  transition: all .2s ease-in-out; }\n\n.img-circle {\n  border-radius: 50%; }\n\nhr {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  border: 0;\n  border-top: 1px solid #eee; }\n\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto; }\n\n[role=button] {\n  cursor: pointer; }\n\n.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.1;\n  color: inherit; }\n\n.h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, .h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {\n  font-weight: 400;\n  line-height: 1;\n  color: #777; }\n\n.h1, .h2, .h3, h1, h2, h3 {\n  margin-top: 20px;\n  margin-bottom: 10px; }\n\n.h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small {\n  font-size: 65%; }\n\n.h4, .h5, .h6, h4, h5, h6 {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {\n  font-size: 75%; }\n\n.h1, h1 {\n  font-size: 36px; }\n\n.h2, h2 {\n  font-size: 30px; }\n\n.h3, h3 {\n  font-size: 24px; }\n\n.h4, h4 {\n  font-size: 18px; }\n\n.h5, h5 {\n  font-size: 14px; }\n\n.h6, h6 {\n  font-size: 12px; }\n\np {\n  margin: 0 0 10px; }\n\n.lead {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 300;\n  line-height: 1.4; }\n\n@media (min-width: 768px) {\n  .lead {\n    font-size: 21px; } }\n\n.small, small {\n  font-size: 85%; }\n\n.mark, mark {\n  padding: .2em;\n  background-color: #fcf8e3; }\n\n.text-left {\n  text-align: left; }\n\n.text-right {\n  text-align: right; }\n\n.text-center {\n  text-align: center; }\n\n.text-justify {\n  text-align: justify; }\n\n.text-nowrap {\n  white-space: nowrap; }\n\n.text-lowercase {\n  text-transform: lowercase; }\n\n.text-uppercase {\n  text-transform: uppercase; }\n\n.text-capitalize {\n  text-transform: capitalize; }\n\n.text-muted {\n  color: #777; }\n\n.text-primary {\n  color: #337ab7; }\n\na.text-primary:focus, a.text-primary:hover {\n  color: #286090; }\n\n.text-success {\n  color: #3c763d; }\n\na.text-success:focus, a.text-success:hover {\n  color: #2b542c; }\n\n.text-info {\n  color: #31708f; }\n\na.text-info:focus, a.text-info:hover {\n  color: #245269; }\n\n.text-warning {\n  color: #8a6d3b; }\n\na.text-warning:focus, a.text-warning:hover {\n  color: #66512c; }\n\n.text-danger {\n  color: #a94442; }\n\na.text-danger:focus, a.text-danger:hover {\n  color: #843534; }\n\n.bg-primary {\n  color: #fff;\n  background-color: #337ab7; }\n\na.bg-primary:focus, a.bg-primary:hover {\n  background-color: #286090; }\n\n.bg-success {\n  background-color: #dff0d8; }\n\na.bg-success:focus, a.bg-success:hover {\n  background-color: #c1e2b3; }\n\n.bg-info {\n  background-color: #d9edf7; }\n\na.bg-info:focus, a.bg-info:hover {\n  background-color: #afd9ee; }\n\n.bg-warning {\n  background-color: #fcf8e3; }\n\na.bg-warning:focus, a.bg-warning:hover {\n  background-color: #f7ecb5; }\n\n.bg-danger {\n  background-color: #f2dede; }\n\na.bg-danger:focus, a.bg-danger:hover {\n  background-color: #e4b9b9; }\n\n.page-header {\n  padding-bottom: 9px;\n  margin: 40px 0 20px;\n  border-bottom: 1px solid #eee; }\n\nol, ul {\n  margin-top: 0;\n  margin-bottom: 10px; }\n\nol ol, ol ul, ul ol, ul ul {\n  margin-bottom: 0; }\n\n.list-unstyled {\n  padding-left: 0;\n  list-style: none; }\n\n.list-inline {\n  padding-left: 0;\n  margin-left: -5px;\n  list-style: none; }\n\n.list-inline > li {\n  display: inline-block;\n  padding-right: 5px;\n  padding-left: 5px; }\n\ndl {\n  margin-top: 0;\n  margin-bottom: 20px; }\n\ndd, dt {\n  line-height: 1.42857143; }\n\ndt {\n  font-weight: 700; }\n\ndd {\n  margin-left: 0; }\n\n@media (min-width: 768px) {\n  .dl-horizontal dt {\n    float: left;\n    width: 160px;\n    overflow: hidden;\n    clear: left;\n    text-align: right;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n  .dl-horizontal dd {\n    margin-left: 180px; } }\n\nabbr[data-original-title], abbr[title] {\n  cursor: help;\n  border-bottom: 1px dotted #777; }\n\n.initialism {\n  font-size: 90%;\n  text-transform: uppercase; }\n\nblockquote {\n  padding: 10px 20px;\n  margin: 0 0 20px;\n  font-size: 17.5px;\n  border-left: 5px solid #eee; }\n\nblockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {\n  margin-bottom: 0; }\n\nblockquote .small, blockquote footer, blockquote small {\n  display: block;\n  font-size: 80%;\n  line-height: 1.42857143;\n  color: #777; }\n\nblockquote .small:before, blockquote footer:before, blockquote small:before {\n  content: '\\2014   \\A0'; }\n\n.blockquote-reverse, blockquote.pull-right {\n  padding-right: 15px;\n  padding-left: 0;\n  text-align: right;\n  border-right: 5px solid #eee;\n  border-left: 0; }\n\n.blockquote-reverse .small:before, .blockquote-reverse footer:before, .blockquote-reverse small:before, blockquote.pull-right .small:before, blockquote.pull-right footer:before, blockquote.pull-right small:before {\n  content: ''; }\n\n.blockquote-reverse .small:after, .blockquote-reverse footer:after, .blockquote-reverse small:after, blockquote.pull-right .small:after, blockquote.pull-right footer:after, blockquote.pull-right small:after {\n  content: '\\A0   \\2014'; }\n\naddress {\n  margin-bottom: 20px;\n  font-style: normal;\n  line-height: 1.42857143; }\n\ncode, kbd, pre, samp {\n  font-family: Menlo,Monaco,Consolas,\"Courier New\",monospace; }\n\ncode {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px; }\n\nkbd {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #fff;\n  background-color: #333;\n  border-radius: 3px;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25); }\n\nkbd kbd {\n  padding: 0;\n  font-size: 100%;\n  font-weight: 700;\n  -webkit-box-shadow: none;\n  box-shadow: none; }\n\npre {\n  display: block;\n  padding: 9.5px;\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 1.42857143;\n  color: #333;\n  word-break: break-all;\n  word-wrap: break-word;\n  background-color: #f5f5f5;\n  border: 1px solid #ccc;\n  border-radius: 4px; }\n\npre code {\n  padding: 0;\n  font-size: inherit;\n  color: inherit;\n  white-space: pre-wrap;\n  background-color: transparent;\n  border-radius: 0; }\n\n.pre-scrollable {\n  max-height: 340px;\n  overflow-y: scroll; }\n\n.container {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto; }\n\n@media (min-width: 768px) {\n  .container {\n    width: 750px; } }\n\n@media (min-width: 992px) {\n  .container {\n    width: 970px; } }\n\n@media (min-width: 1200px) {\n  .container {\n    width: 1170px; } }\n\n.container-fluid {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto; }\n\n.row {\n  margin-right: -15px;\n  margin-left: -15px; }\n\n.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {\n  position: relative;\n  min-height: 1px;\n  padding-right: 15px;\n  padding-left: 15px; }\n\n.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {\n  float: left; }\n\n.col-xs-12 {\n  width: 100%; }\n\n.col-xs-11 {\n  width: 91.66666667%; }\n\n.col-xs-10 {\n  width: 83.33333333%; }\n\n.col-xs-9 {\n  width: 75%; }\n\n.col-xs-8 {\n  width: 66.66666667%; }\n\n.col-xs-7 {\n  width: 58.33333333%; }\n\n.col-xs-6 {\n  width: 50%; }\n\n.col-xs-5 {\n  width: 41.66666667%; }\n\n.col-xs-4 {\n  width: 33.33333333%; }\n\n.col-xs-3 {\n  width: 25%; }\n\n.col-xs-2 {\n  width: 16.66666667%; }\n\n.col-xs-1 {\n  width: 8.33333333%; }\n\n.col-xs-pull-12 {\n  right: 100%; }\n\n.col-xs-pull-11 {\n  right: 91.66666667%; }\n\n.col-xs-pull-10 {\n  right: 83.33333333%; }\n\n.col-xs-pull-9 {\n  right: 75%; }\n\n.col-xs-pull-8 {\n  right: 66.66666667%; }\n\n.col-xs-pull-7 {\n  right: 58.33333333%; }\n\n.col-xs-pull-6 {\n  right: 50%; }\n\n.col-xs-pull-5 {\n  right: 41.66666667%; }\n\n.col-xs-pull-4 {\n  right: 33.33333333%; }\n\n.col-xs-pull-3 {\n  right: 25%; }\n\n.col-xs-pull-2 {\n  right: 16.66666667%; }\n\n.col-xs-pull-1 {\n  right: 8.33333333%; }\n\n.col-xs-pull-0 {\n  right: auto; }\n\n.col-xs-push-12 {\n  left: 100%; }\n\n.col-xs-push-11 {\n  left: 91.66666667%; }\n\n.col-xs-push-10 {\n  left: 83.33333333%; }\n\n.col-xs-push-9 {\n  left: 75%; }\n\n.col-xs-push-8 {\n  left: 66.66666667%; }\n\n.col-xs-push-7 {\n  left: 58.33333333%; }\n\n.col-xs-push-6 {\n  left: 50%; }\n\n.col-xs-push-5 {\n  left: 41.66666667%; }\n\n.col-xs-push-4 {\n  left: 33.33333333%; }\n\n.col-xs-push-3 {\n  left: 25%; }\n\n.col-xs-push-2 {\n  left: 16.66666667%; }\n\n.col-xs-push-1 {\n  left: 8.33333333%; }\n\n.col-xs-push-0 {\n  left: auto; }\n\n.col-xs-offset-12 {\n  margin-left: 100%; }\n\n.col-xs-offset-11 {\n  margin-left: 91.66666667%; }\n\n.col-xs-offset-10 {\n  margin-left: 83.33333333%; }\n\n.col-xs-offset-9 {\n  margin-left: 75%; }\n\n.col-xs-offset-8 {\n  margin-left: 66.66666667%; }\n\n.col-xs-offset-7 {\n  margin-left: 58.33333333%; }\n\n.col-xs-offset-6 {\n  margin-left: 50%; }\n\n.col-xs-offset-5 {\n  margin-left: 41.66666667%; }\n\n.col-xs-offset-4 {\n  margin-left: 33.33333333%; }\n\n.col-xs-offset-3 {\n  margin-left: 25%; }\n\n.col-xs-offset-2 {\n  margin-left: 16.66666667%; }\n\n.col-xs-offset-1 {\n  margin-left: 8.33333333%; }\n\n.col-xs-offset-0 {\n  margin-left: 0; }\n\n@media (min-width: 768px) {\n  .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {\n    float: left; }\n  .col-sm-12 {\n    width: 100%; }\n  .col-sm-11 {\n    width: 91.66666667%; }\n  .col-sm-10 {\n    width: 83.33333333%; }\n  .col-sm-9 {\n    width: 75%; }\n  .col-sm-8 {\n    width: 66.66666667%; }\n  .col-sm-7 {\n    width: 58.33333333%; }\n  .col-sm-6 {\n    width: 50%; }\n  .col-sm-5 {\n    width: 41.66666667%; }\n  .col-sm-4 {\n    width: 33.33333333%; }\n  .col-sm-3 {\n    width: 25%; }\n  .col-sm-2 {\n    width: 16.66666667%; }\n  .col-sm-1 {\n    width: 8.33333333%; }\n  .col-sm-pull-12 {\n    right: 100%; }\n  .col-sm-pull-11 {\n    right: 91.66666667%; }\n  .col-sm-pull-10 {\n    right: 83.33333333%; }\n  .col-sm-pull-9 {\n    right: 75%; }\n  .col-sm-pull-8 {\n    right: 66.66666667%; }\n  .col-sm-pull-7 {\n    right: 58.33333333%; }\n  .col-sm-pull-6 {\n    right: 50%; }\n  .col-sm-pull-5 {\n    right: 41.66666667%; }\n  .col-sm-pull-4 {\n    right: 33.33333333%; }\n  .col-sm-pull-3 {\n    right: 25%; }\n  .col-sm-pull-2 {\n    right: 16.66666667%; }\n  .col-sm-pull-1 {\n    right: 8.33333333%; }\n  .col-sm-pull-0 {\n    right: auto; }\n  .col-sm-push-12 {\n    left: 100%; }\n  .col-sm-push-11 {\n    left: 91.66666667%; }\n  .col-sm-push-10 {\n    left: 83.33333333%; }\n  .col-sm-push-9 {\n    left: 75%; }\n  .col-sm-push-8 {\n    left: 66.66666667%; }\n  .col-sm-push-7 {\n    left: 58.33333333%; }\n  .col-sm-push-6 {\n    left: 50%; }\n  .col-sm-push-5 {\n    left: 41.66666667%; }\n  .col-sm-push-4 {\n    left: 33.33333333%; }\n  .col-sm-push-3 {\n    left: 25%; }\n  .col-sm-push-2 {\n    left: 16.66666667%; }\n  .col-sm-push-1 {\n    left: 8.33333333%; }\n  .col-sm-push-0 {\n    left: auto; }\n  .col-sm-offset-12 {\n    margin-left: 100%; }\n  .col-sm-offset-11 {\n    margin-left: 91.66666667%; }\n  .col-sm-offset-10 {\n    margin-left: 83.33333333%; }\n  .col-sm-offset-9 {\n    margin-left: 75%; }\n  .col-sm-offset-8 {\n    margin-left: 66.66666667%; }\n  .col-sm-offset-7 {\n    margin-left: 58.33333333%; }\n  .col-sm-offset-6 {\n    margin-left: 50%; }\n  .col-sm-offset-5 {\n    margin-left: 41.66666667%; }\n  .col-sm-offset-4 {\n    margin-left: 33.33333333%; }\n  .col-sm-offset-3 {\n    margin-left: 25%; }\n  .col-sm-offset-2 {\n    margin-left: 16.66666667%; }\n  .col-sm-offset-1 {\n    margin-left: 8.33333333%; }\n  .col-sm-offset-0 {\n    margin-left: 0; } }\n\n@media (min-width: 992px) {\n  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {\n    float: left; }\n  .col-md-12 {\n    width: 100%; }\n  .col-md-11 {\n    width: 91.66666667%; }\n  .col-md-10 {\n    width: 83.33333333%; }\n  .col-md-9 {\n    width: 75%; }\n  .col-md-8 {\n    width: 66.66666667%; }\n  .col-md-7 {\n    width: 58.33333333%; }\n  .col-md-6 {\n    width: 50%; }\n  .col-md-5 {\n    width: 41.66666667%; }\n  .col-md-4 {\n    width: 33.33333333%; }\n  .col-md-3 {\n    width: 25%; }\n  .col-md-2 {\n    width: 16.66666667%; }\n  .col-md-1 {\n    width: 8.33333333%; }\n  .col-md-pull-12 {\n    right: 100%; }\n  .col-md-pull-11 {\n    right: 91.66666667%; }\n  .col-md-pull-10 {\n    right: 83.33333333%; }\n  .col-md-pull-9 {\n    right: 75%; }\n  .col-md-pull-8 {\n    right: 66.66666667%; }\n  .col-md-pull-7 {\n    right: 58.33333333%; }\n  .col-md-pull-6 {\n    right: 50%; }\n  .col-md-pull-5 {\n    right: 41.66666667%; }\n  .col-md-pull-4 {\n    right: 33.33333333%; }\n  .col-md-pull-3 {\n    right: 25%; }\n  .col-md-pull-2 {\n    right: 16.66666667%; }\n  .col-md-pull-1 {\n    right: 8.33333333%; }\n  .col-md-pull-0 {\n    right: auto; }\n  .col-md-push-12 {\n    left: 100%; }\n  .col-md-push-11 {\n    left: 91.66666667%; }\n  .col-md-push-10 {\n    left: 83.33333333%; }\n  .col-md-push-9 {\n    left: 75%; }\n  .col-md-push-8 {\n    left: 66.66666667%; }\n  .col-md-push-7 {\n    left: 58.33333333%; }\n  .col-md-push-6 {\n    left: 50%; }\n  .col-md-push-5 {\n    left: 41.66666667%; }\n  .col-md-push-4 {\n    left: 33.33333333%; }\n  .col-md-push-3 {\n    left: 25%; }\n  .col-md-push-2 {\n    left: 16.66666667%; }\n  .col-md-push-1 {\n    left: 8.33333333%; }\n  .col-md-push-0 {\n    left: auto; }\n  .col-md-offset-12 {\n    margin-left: 100%; }\n  .col-md-offset-11 {\n    margin-left: 91.66666667%; }\n  .col-md-offset-10 {\n    margin-left: 83.33333333%; }\n  .col-md-offset-9 {\n    margin-left: 75%; }\n  .col-md-offset-8 {\n    margin-left: 66.66666667%; }\n  .col-md-offset-7 {\n    margin-left: 58.33333333%; }\n  .col-md-offset-6 {\n    margin-left: 50%; }\n  .col-md-offset-5 {\n    margin-left: 41.66666667%; }\n  .col-md-offset-4 {\n    margin-left: 33.33333333%; }\n  .col-md-offset-3 {\n    margin-left: 25%; }\n  .col-md-offset-2 {\n    margin-left: 16.66666667%; }\n  .col-md-offset-1 {\n    margin-left: 8.33333333%; }\n  .col-md-offset-0 {\n    margin-left: 0; } }\n\n@media (min-width: 1200px) {\n  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {\n    float: left; }\n  .col-lg-12 {\n    width: 100%; }\n  .col-lg-11 {\n    width: 91.66666667%; }\n  .col-lg-10 {\n    width: 83.33333333%; }\n  .col-lg-9 {\n    width: 75%; }\n  .col-lg-8 {\n    width: 66.66666667%; }\n  .col-lg-7 {\n    width: 58.33333333%; }\n  .col-lg-6 {\n    width: 50%; }\n  .col-lg-5 {\n    width: 41.66666667%; }\n  .col-lg-4 {\n    width: 33.33333333%; }\n  .col-lg-3 {\n    width: 25%; }\n  .col-lg-2 {\n    width: 16.66666667%; }\n  .col-lg-1 {\n    width: 8.33333333%; }\n  .col-lg-pull-12 {\n    right: 100%; }\n  .col-lg-pull-11 {\n    right: 91.66666667%; }\n  .col-lg-pull-10 {\n    right: 83.33333333%; }\n  .col-lg-pull-9 {\n    right: 75%; }\n  .col-lg-pull-8 {\n    right: 66.66666667%; }\n  .col-lg-pull-7 {\n    right: 58.33333333%; }\n  .col-lg-pull-6 {\n    right: 50%; }\n  .col-lg-pull-5 {\n    right: 41.66666667%; }\n  .col-lg-pull-4 {\n    right: 33.33333333%; }\n  .col-lg-pull-3 {\n    right: 25%; }\n  .col-lg-pull-2 {\n    right: 16.66666667%; }\n  .col-lg-pull-1 {\n    right: 8.33333333%; }\n  .col-lg-pull-0 {\n    right: auto; }\n  .col-lg-push-12 {\n    left: 100%; }\n  .col-lg-push-11 {\n    left: 91.66666667%; }\n  .col-lg-push-10 {\n    left: 83.33333333%; }\n  .col-lg-push-9 {\n    left: 75%; }\n  .col-lg-push-8 {\n    left: 66.66666667%; }\n  .col-lg-push-7 {\n    left: 58.33333333%; }\n  .col-lg-push-6 {\n    left: 50%; }\n  .col-lg-push-5 {\n    left: 41.66666667%; }\n  .col-lg-push-4 {\n    left: 33.33333333%; }\n  .col-lg-push-3 {\n    left: 25%; }\n  .col-lg-push-2 {\n    left: 16.66666667%; }\n  .col-lg-push-1 {\n    left: 8.33333333%; }\n  .col-lg-push-0 {\n    left: auto; }\n  .col-lg-offset-12 {\n    margin-left: 100%; }\n  .col-lg-offset-11 {\n    margin-left: 91.66666667%; }\n  .col-lg-offset-10 {\n    margin-left: 83.33333333%; }\n  .col-lg-offset-9 {\n    margin-left: 75%; }\n  .col-lg-offset-8 {\n    margin-left: 66.66666667%; }\n  .col-lg-offset-7 {\n    margin-left: 58.33333333%; }\n  .col-lg-offset-6 {\n    margin-left: 50%; }\n  .col-lg-offset-5 {\n    margin-left: 41.66666667%; }\n  .col-lg-offset-4 {\n    margin-left: 33.33333333%; }\n  .col-lg-offset-3 {\n    margin-left: 25%; }\n  .col-lg-offset-2 {\n    margin-left: 16.66666667%; }\n  .col-lg-offset-1 {\n    margin-left: 8.33333333%; }\n  .col-lg-offset-0 {\n    margin-left: 0; } }\n\ntable {\n  background-color: transparent; }\n\ncaption {\n  padding-top: 8px;\n  padding-bottom: 8px;\n  color: #777;\n  text-align: left; }\n\nth {\n  text-align: left; }\n\n.table {\n  width: 100%;\n  max-width: 100%;\n  margin-bottom: 20px; }\n\n.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {\n  padding: 8px;\n  line-height: 1.42857143;\n  vertical-align: top;\n  border-top: 1px solid #ddd; }\n\n.table > thead > tr > th {\n  vertical-align: bottom;\n  border-bottom: 2px solid #ddd; }\n\n.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {\n  border-top: 0; }\n\n.table > tbody + tbody {\n  border-top: 2px solid #ddd; }\n\n.table .table {\n  background-color: #fff; }\n\n.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {\n  padding: 5px; }\n\n.table-bordered {\n  border: 1px solid #ddd; }\n\n.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {\n  border: 1px solid #ddd; }\n\n.table-bordered > thead > tr > td, .table-bordered > thead > tr > th {\n  border-bottom-width: 2px; }\n\n.table-striped > tbody > tr:nth-of-type(odd) {\n  background-color: #f9f9f9; }\n\n.table-hover > tbody > tr:hover {\n  background-color: #f5f5f5; }\n\ntable col[class*=col-] {\n  position: static;\n  display: table-column;\n  float: none; }\n\ntable td[class*=col-], table th[class*=col-] {\n  position: static;\n  display: table-cell;\n  float: none; }\n\n.table > tbody > tr.active > td, .table > tbody > tr.active > th, .table > tbody > tr > td.active, .table > tbody > tr > th.active, .table > tfoot > tr.active > td, .table > tfoot > tr.active > th, .table > tfoot > tr > td.active, .table > tfoot > tr > th.active, .table > thead > tr.active > td, .table > thead > tr.active > th, .table > thead > tr > td.active, .table > thead > tr > th.active {\n  background-color: #f5f5f5; }\n\n.table-hover > tbody > tr.active:hover > td, .table-hover > tbody > tr.active:hover > th, .table-hover > tbody > tr:hover > .active, .table-hover > tbody > tr > td.active:hover, .table-hover > tbody > tr > th.active:hover {\n  background-color: #e8e8e8; }\n\n.table > tbody > tr.success > td, .table > tbody > tr.success > th, .table > tbody > tr > td.success, .table > tbody > tr > th.success, .table > tfoot > tr.success > td, .table > tfoot > tr.success > th, .table > tfoot > tr > td.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > thead > tr.success > th, .table > thead > tr > td.success, .table > thead > tr > th.success {\n  background-color: #dff0d8; }\n\n.table-hover > tbody > tr.success:hover > td, .table-hover > tbody > tr.success:hover > th, .table-hover > tbody > tr:hover > .success, .table-hover > tbody > tr > td.success:hover, .table-hover > tbody > tr > th.success:hover {\n  background-color: #d0e9c6; }\n\n.table > tbody > tr.info > td, .table > tbody > tr.info > th, .table > tbody > tr > td.info, .table > tbody > tr > th.info, .table > tfoot > tr.info > td, .table > tfoot > tr.info > th, .table > tfoot > tr > td.info, .table > tfoot > tr > th.info, .table > thead > tr.info > td, .table > thead > tr.info > th, .table > thead > tr > td.info, .table > thead > tr > th.info {\n  background-color: #d9edf7; }\n\n.table-hover > tbody > tr.info:hover > td, .table-hover > tbody > tr.info:hover > th, .table-hover > tbody > tr:hover > .info, .table-hover > tbody > tr > td.info:hover, .table-hover > tbody > tr > th.info:hover {\n  background-color: #c4e3f3; }\n\n.table > tbody > tr.warning > td, .table > tbody > tr.warning > th, .table > tbody > tr > td.warning, .table > tbody > tr > th.warning, .table > tfoot > tr.warning > td, .table > tfoot > tr.warning > th, .table > tfoot > tr > td.warning, .table > tfoot > tr > th.warning, .table > thead > tr.warning > td, .table > thead > tr.warning > th, .table > thead > tr > td.warning, .table > thead > tr > th.warning {\n  background-color: #fcf8e3; }\n\n.table-hover > tbody > tr.warning:hover > td, .table-hover > tbody > tr.warning:hover > th, .table-hover > tbody > tr:hover > .warning, .table-hover > tbody > tr > td.warning:hover, .table-hover > tbody > tr > th.warning:hover {\n  background-color: #faf2cc; }\n\n.table > tbody > tr.danger > td, .table > tbody > tr.danger > th, .table > tbody > tr > td.danger, .table > tbody > tr > th.danger, .table > tfoot > tr.danger > td, .table > tfoot > tr.danger > th, .table > tfoot > tr > td.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > thead > tr.danger > th, .table > thead > tr > td.danger, .table > thead > tr > th.danger {\n  background-color: #f2dede; }\n\n.table-hover > tbody > tr.danger:hover > td, .table-hover > tbody > tr.danger:hover > th, .table-hover > tbody > tr:hover > .danger, .table-hover > tbody > tr > td.danger:hover, .table-hover > tbody > tr > th.danger:hover {\n  background-color: #ebcccc; }\n\n.table-responsive {\n  min-height: .01%;\n  overflow-x: auto; }\n\n@media screen and (max-width: 767px) {\n  .table-responsive {\n    width: 100%;\n    margin-bottom: 15px;\n    overflow-y: hidden;\n    -ms-overflow-style: -ms-autohiding-scrollbar;\n    border: 1px solid #ddd; }\n  .table-responsive > .table {\n    margin-bottom: 0; }\n  .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tfoot > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > thead > tr > th {\n    white-space: nowrap; }\n  .table-responsive > .table-bordered {\n    border: 0; }\n  .table-responsive > .table-bordered > tbody > tr > td:first-child, .table-responsive > .table-bordered > tbody > tr > th:first-child, .table-responsive > .table-bordered > tfoot > tr > td:first-child, .table-responsive > .table-bordered > tfoot > tr > th:first-child, .table-responsive > .table-bordered > thead > tr > td:first-child, .table-responsive > .table-bordered > thead > tr > th:first-child {\n    border-left: 0; }\n  .table-responsive > .table-bordered > tbody > tr > td:last-child, .table-responsive > .table-bordered > tbody > tr > th:last-child, .table-responsive > .table-bordered > tfoot > tr > td:last-child, .table-responsive > .table-bordered > tfoot > tr > th:last-child, .table-responsive > .table-bordered > thead > tr > td:last-child, .table-responsive > .table-bordered > thead > tr > th:last-child {\n    border-right: 0; }\n  .table-responsive > .table-bordered > tbody > tr:last-child > td, .table-responsive > .table-bordered > tbody > tr:last-child > th, .table-responsive > .table-bordered > tfoot > tr:last-child > td, .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n    border-bottom: 0; } }\n\nfieldset {\n  min-width: 0;\n  padding: 0;\n  margin: 0;\n  border: 0; }\n\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 20px;\n  font-size: 21px;\n  line-height: inherit;\n  color: #333;\n  border: 0;\n  border-bottom: 1px solid #e5e5e5; }\n\nlabel {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 5px;\n  font-weight: 700; }\n\ninput[type=search] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\ninput[type=checkbox], input[type=radio] {\n  margin: 4px 0 0;\n  margin-top: 1px\\9;\n  line-height: normal; }\n\ninput[type=file] {\n  display: block; }\n\ninput[type=range] {\n  display: block;\n  width: 100%; }\n\nselect[multiple], select[size] {\n  height: auto; }\n\ninput[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus {\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\noutput {\n  display: block;\n  padding-top: 7px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555; }\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: 34px;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }\n\n.form-control:focus {\n  border-color: #66afe9;\n  outline: 0;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }\n\n.form-control::-moz-placeholder {\n  color: #999;\n  opacity: 1; }\n\n.form-control:-ms-input-placeholder {\n  color: #999; }\n\n.form-control::-webkit-input-placeholder {\n  color: #999; }\n\n.form-control::-ms-expand {\n  background-color: transparent;\n  border: 0; }\n\n.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {\n  background-color: #eee;\n  opacity: 1; }\n\n.form-control[disabled], fieldset[disabled] .form-control {\n  cursor: not-allowed; }\n\ntextarea.form-control {\n  height: auto; }\n\ninput[type=search] {\n  -webkit-appearance: none; }\n\n@media screen and (-webkit-min-device-pixel-ratio: 0) {\n  input[type=date].form-control, input[type=time].form-control, input[type=datetime-local].form-control, input[type=month].form-control {\n    line-height: 34px; }\n  .input-group-sm input[type=date], .input-group-sm input[type=time], .input-group-sm input[type=datetime-local], .input-group-sm input[type=month], input[type=date].input-sm, input[type=time].input-sm, input[type=datetime-local].input-sm, input[type=month].input-sm {\n    line-height: 30px; }\n  .input-group-lg input[type=date], .input-group-lg input[type=time], .input-group-lg input[type=datetime-local], .input-group-lg input[type=month], input[type=date].input-lg, input[type=time].input-lg, input[type=datetime-local].input-lg, input[type=month].input-lg {\n    line-height: 46px; } }\n\n.form-group {\n  margin-bottom: 15px; }\n\n.checkbox, .radio {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.checkbox label, .radio label {\n  min-height: 20px;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: 400;\n  cursor: pointer; }\n\n.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {\n  position: absolute;\n  margin-top: 4px\\9;\n  margin-left: -20px; }\n\n.checkbox + .checkbox, .radio + .radio {\n  margin-top: -5px; }\n\n.checkbox-inline, .radio-inline {\n  position: relative;\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: 400;\n  vertical-align: middle;\n  cursor: pointer; }\n\n.checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {\n  margin-top: 0;\n  margin-left: 10px; }\n\nfieldset[disabled] input[type=checkbox], fieldset[disabled] input[type=radio], input[type=checkbox].disabled, input[type=checkbox][disabled], input[type=radio].disabled, input[type=radio][disabled] {\n  cursor: not-allowed; }\n\n.checkbox-inline.disabled, .radio-inline.disabled, fieldset[disabled] .checkbox-inline, fieldset[disabled] .radio-inline {\n  cursor: not-allowed; }\n\n.checkbox.disabled label, .radio.disabled label, fieldset[disabled] .checkbox label, fieldset[disabled] .radio label {\n  cursor: not-allowed; }\n\n.form-control-static {\n  min-height: 34px;\n  padding-top: 7px;\n  padding-bottom: 7px;\n  margin-bottom: 0; }\n\n.form-control-static.input-lg, .form-control-static.input-sm {\n  padding-right: 0;\n  padding-left: 0; }\n\n.input-sm {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\nselect.input-sm {\n  height: 30px;\n  line-height: 30px; }\n\nselect[multiple].input-sm, textarea.input-sm {\n  height: auto; }\n\n.form-group-sm .form-control {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\n.form-group-sm select.form-control {\n  height: 30px;\n  line-height: 30px; }\n\n.form-group-sm select[multiple].form-control, .form-group-sm textarea.form-control {\n  height: auto; }\n\n.form-group-sm .form-control-static {\n  height: 30px;\n  min-height: 32px;\n  padding: 6px 10px;\n  font-size: 12px;\n  line-height: 1.5; }\n\n.input-lg {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\nselect.input-lg {\n  height: 46px;\n  line-height: 46px; }\n\nselect[multiple].input-lg, textarea.input-lg {\n  height: auto; }\n\n.form-group-lg .form-control {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\n.form-group-lg select.form-control {\n  height: 46px;\n  line-height: 46px; }\n\n.form-group-lg select[multiple].form-control, .form-group-lg textarea.form-control {\n  height: auto; }\n\n.form-group-lg .form-control-static {\n  height: 46px;\n  min-height: 38px;\n  padding: 11px 16px;\n  font-size: 18px;\n  line-height: 1.3333333; }\n\n.has-feedback {\n  position: relative; }\n\n.has-feedback .form-control {\n  padding-right: 42.5px; }\n\n.form-control-feedback {\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 2;\n  display: block;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  text-align: center;\n  pointer-events: none; }\n\n.form-group-lg .form-control + .form-control-feedback, .input-group-lg + .form-control-feedback, .input-lg + .form-control-feedback {\n  width: 46px;\n  height: 46px;\n  line-height: 46px; }\n\n.form-group-sm .form-control + .form-control-feedback, .input-group-sm + .form-control-feedback, .input-sm + .form-control-feedback {\n  width: 30px;\n  height: 30px;\n  line-height: 30px; }\n\n.has-success .checkbox, .has-success .checkbox-inline, .has-success .control-label, .has-success .help-block, .has-success .radio, .has-success .radio-inline, .has-success.checkbox label, .has-success.checkbox-inline label, .has-success.radio label, .has-success.radio-inline label {\n  color: #3c763d; }\n\n.has-success .form-control {\n  border-color: #3c763d;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }\n\n.has-success .form-control:focus {\n  border-color: #2b542c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168; }\n\n.has-success .input-group-addon {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #3c763d; }\n\n.has-success .form-control-feedback {\n  color: #3c763d; }\n\n.has-warning .checkbox, .has-warning .checkbox-inline, .has-warning .control-label, .has-warning .help-block, .has-warning .radio, .has-warning .radio-inline, .has-warning.checkbox label, .has-warning.checkbox-inline label, .has-warning.radio label, .has-warning.radio-inline label {\n  color: #8a6d3b; }\n\n.has-warning .form-control {\n  border-color: #8a6d3b;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }\n\n.has-warning .form-control:focus {\n  border-color: #66512c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }\n\n.has-warning .input-group-addon {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #8a6d3b; }\n\n.has-warning .form-control-feedback {\n  color: #8a6d3b; }\n\n.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {\n  color: #a94442; }\n\n.has-error .form-control {\n  border-color: #a94442;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }\n\n.has-error .form-control:focus {\n  border-color: #843534;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483; }\n\n.has-error .input-group-addon {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #a94442; }\n\n.has-error .form-control-feedback {\n  color: #a94442; }\n\n.has-feedback label ~ .form-control-feedback {\n  top: 25px; }\n\n.has-feedback label.sr-only ~ .form-control-feedback {\n  top: 0; }\n\n.help-block {\n  display: block;\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #737373; }\n\n@media (min-width: 768px) {\n  .form-inline .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .form-inline .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle; }\n  .form-inline .form-control-static {\n    display: inline-block; }\n  .form-inline .input-group {\n    display: inline-table;\n    vertical-align: middle; }\n  .form-inline .input-group .form-control, .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn {\n    width: auto; }\n  .form-inline .input-group > .form-control {\n    width: 100%; }\n  .form-inline .control-label {\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .form-inline .checkbox, .form-inline .radio {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .form-inline .checkbox label, .form-inline .radio label {\n    padding-left: 0; }\n  .form-inline .checkbox input[type=checkbox], .form-inline .radio input[type=radio] {\n    position: relative;\n    margin-left: 0; }\n  .form-inline .has-feedback .form-control-feedback {\n    top: 0; } }\n\n.form-horizontal .checkbox, .form-horizontal .checkbox-inline, .form-horizontal .radio, .form-horizontal .radio-inline {\n  padding-top: 7px;\n  margin-top: 0;\n  margin-bottom: 0; }\n\n.form-horizontal .checkbox, .form-horizontal .radio {\n  min-height: 27px; }\n\n.form-horizontal .form-group {\n  margin-right: -15px;\n  margin-left: -15px; }\n\n@media (min-width: 768px) {\n  .form-horizontal .control-label {\n    padding-top: 7px;\n    margin-bottom: 0;\n    text-align: right; } }\n\n.form-horizontal .has-feedback .form-control-feedback {\n  right: 15px; }\n\n@media (min-width: 768px) {\n  .form-horizontal .form-group-lg .control-label {\n    padding-top: 11px;\n    font-size: 18px; } }\n\n@media (min-width: 768px) {\n  .form-horizontal .form-group-sm .control-label {\n    padding-top: 6px;\n    font-size: 12px; } }\n\n.btn {\n  display: inline-block;\n  padding: 6px 12px;\n  margin-bottom: 0;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px; }\n\n.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\n.btn.focus, .btn:focus, .btn:hover {\n  color: #333;\n  text-decoration: none; }\n\n.btn.active, .btn:active {\n  background-image: none;\n  outline: 0;\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }\n\n.btn.disabled, .btn[disabled], fieldset[disabled] .btn {\n  cursor: not-allowed;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  opacity: .65; }\n\na.btn.disabled, fieldset[disabled] a.btn {\n  pointer-events: none; }\n\n.btn-default {\n  color: #333;\n  background-color: #fff;\n  border-color: #ccc; }\n\n.btn-default.focus, .btn-default:focus {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #8c8c8c; }\n\n.btn-default:hover {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #adadad; }\n\n.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #adadad; }\n\n.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {\n  color: #333;\n  background-color: #d4d4d4;\n  border-color: #8c8c8c; }\n\n.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {\n  background-image: none; }\n\n.btn-default.disabled.focus, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default[disabled].focus, .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover {\n  background-color: #fff;\n  border-color: #ccc; }\n\n.btn-default .badge {\n  color: #fff;\n  background-color: #333; }\n\n.btn-primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4; }\n\n.btn-primary.focus, .btn-primary:focus {\n  color: #fff;\n  background-color: #286090;\n  border-color: #122b40; }\n\n.btn-primary:hover {\n  color: #fff;\n  background-color: #286090;\n  border-color: #204d74; }\n\n.btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary {\n  color: #fff;\n  background-color: #286090;\n  border-color: #204d74; }\n\n.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open > .dropdown-toggle.btn-primary.focus, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {\n  color: #fff;\n  background-color: #204d74;\n  border-color: #122b40; }\n\n.btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary {\n  background-image: none; }\n\n.btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled].focus, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {\n  background-color: #337ab7;\n  border-color: #2e6da4; }\n\n.btn-primary .badge {\n  color: #337ab7;\n  background-color: #fff; }\n\n.btn-success {\n  color: #fff;\n  background-color: #5cb85c;\n  border-color: #4cae4c; }\n\n.btn-success.focus, .btn-success:focus {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #255625; }\n\n.btn-success:hover {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #398439; }\n\n.btn-success.active, .btn-success:active, .open > .dropdown-toggle.btn-success {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #398439; }\n\n.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open > .dropdown-toggle.btn-success.focus, .open > .dropdown-toggle.btn-success:focus, .open > .dropdown-toggle.btn-success:hover {\n  color: #fff;\n  background-color: #398439;\n  border-color: #255625; }\n\n.btn-success.active, .btn-success:active, .open > .dropdown-toggle.btn-success {\n  background-image: none; }\n\n.btn-success.disabled.focus, .btn-success.disabled:focus, .btn-success.disabled:hover, .btn-success[disabled].focus, .btn-success[disabled]:focus, .btn-success[disabled]:hover, fieldset[disabled] .btn-success.focus, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:hover {\n  background-color: #5cb85c;\n  border-color: #4cae4c; }\n\n.btn-success .badge {\n  color: #5cb85c;\n  background-color: #fff; }\n\n.btn-info {\n  color: #fff;\n  background-color: #5bc0de;\n  border-color: #46b8da; }\n\n.btn-info.focus, .btn-info:focus {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #1b6d85; }\n\n.btn-info:hover {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #269abc; }\n\n.btn-info.active, .btn-info:active, .open > .dropdown-toggle.btn-info {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #269abc; }\n\n.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open > .dropdown-toggle.btn-info.focus, .open > .dropdown-toggle.btn-info:focus, .open > .dropdown-toggle.btn-info:hover {\n  color: #fff;\n  background-color: #269abc;\n  border-color: #1b6d85; }\n\n.btn-info.active, .btn-info:active, .open > .dropdown-toggle.btn-info {\n  background-image: none; }\n\n.btn-info.disabled.focus, .btn-info.disabled:focus, .btn-info.disabled:hover, .btn-info[disabled].focus, .btn-info[disabled]:focus, .btn-info[disabled]:hover, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:hover {\n  background-color: #5bc0de;\n  border-color: #46b8da; }\n\n.btn-info .badge {\n  color: #5bc0de;\n  background-color: #fff; }\n\n.btn-warning {\n  color: #fff;\n  background-color: #f0ad4e;\n  border-color: #eea236; }\n\n.btn-warning.focus, .btn-warning:focus {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #985f0d; }\n\n.btn-warning:hover {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #d58512; }\n\n.btn-warning.active, .btn-warning:active, .open > .dropdown-toggle.btn-warning {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #d58512; }\n\n.btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning:active.focus, .btn-warning:active:focus, .btn-warning:active:hover, .open > .dropdown-toggle.btn-warning.focus, .open > .dropdown-toggle.btn-warning:focus, .open > .dropdown-toggle.btn-warning:hover {\n  color: #fff;\n  background-color: #d58512;\n  border-color: #985f0d; }\n\n.btn-warning.active, .btn-warning:active, .open > .dropdown-toggle.btn-warning {\n  background-image: none; }\n\n.btn-warning.disabled.focus, .btn-warning.disabled:focus, .btn-warning.disabled:hover, .btn-warning[disabled].focus, .btn-warning[disabled]:focus, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning.focus, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning:hover {\n  background-color: #f0ad4e;\n  border-color: #eea236; }\n\n.btn-warning .badge {\n  color: #f0ad4e;\n  background-color: #fff; }\n\n.btn-danger {\n  color: #fff;\n  background-color: #d9534f;\n  border-color: #d43f3a; }\n\n.btn-danger.focus, .btn-danger:focus {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #761c19; }\n\n.btn-danger:hover {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #ac2925; }\n\n.btn-danger.active, .btn-danger:active, .open > .dropdown-toggle.btn-danger {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #ac2925; }\n\n.btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger:active.focus, .btn-danger:active:focus, .btn-danger:active:hover, .open > .dropdown-toggle.btn-danger.focus, .open > .dropdown-toggle.btn-danger:focus, .open > .dropdown-toggle.btn-danger:hover {\n  color: #fff;\n  background-color: #ac2925;\n  border-color: #761c19; }\n\n.btn-danger.active, .btn-danger:active, .open > .dropdown-toggle.btn-danger {\n  background-image: none; }\n\n.btn-danger.disabled.focus, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled].focus, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {\n  background-color: #d9534f;\n  border-color: #d43f3a; }\n\n.btn-danger .badge {\n  color: #d9534f;\n  background-color: #fff; }\n\n.btn-link {\n  font-weight: 400;\n  color: #337ab7;\n  border-radius: 0; }\n\n.btn-link, .btn-link.active, .btn-link:active, .btn-link[disabled], fieldset[disabled] .btn-link {\n  background-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none; }\n\n.btn-link, .btn-link:active, .btn-link:focus, .btn-link:hover {\n  border-color: transparent; }\n\n.btn-link:focus, .btn-link:hover {\n  color: #23527c;\n  text-decoration: underline;\n  background-color: transparent; }\n\n.btn-link[disabled]:focus, .btn-link[disabled]:hover, fieldset[disabled] .btn-link:focus, fieldset[disabled] .btn-link:hover {\n  color: #777;\n  text-decoration: none; }\n\n.btn-group-lg > .btn, .btn-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\n.btn-group-sm > .btn, .btn-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\n.btn-group-xs > .btn, .btn-xs {\n  padding: 1px 5px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\n.btn-block {\n  display: block;\n  width: 100%; }\n\n.btn-block + .btn-block {\n  margin-top: 5px; }\n\ninput[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {\n  width: 100%; }\n\n.fade {\n  opacity: 0;\n  -webkit-transition: opacity .15s linear;\n  -o-transition: opacity .15s linear;\n  transition: opacity .15s linear; }\n\n.fade.in {\n  opacity: 1; }\n\n.collapse {\n  display: none; }\n\n.collapse.in {\n  display: block; }\n\ntr.collapse.in {\n  display: table-row; }\n\ntbody.collapse.in {\n  display: table-row-group; }\n\n.collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-timing-function: ease;\n  -o-transition-timing-function: ease;\n  transition-timing-function: ease;\n  -webkit-transition-duration: .35s;\n  -o-transition-duration: .35s;\n  transition-duration: .35s;\n  -webkit-transition-property: height,visibility;\n  -o-transition-property: height,visibility;\n  transition-property: height,visibility; }\n\n.caret {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: 2px;\n  vertical-align: middle;\n  border-top: 4px dashed;\n  border-top: 4px solid\\9;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent; }\n\n.dropdown, .dropup {\n  position: relative; }\n\n.dropdown-toggle:focus {\n  outline: 0; }\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  text-align: left;\n  list-style: none;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n  background-clip: padding-box;\n  border: 1px solid #ccc;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }\n\n.dropdown-menu.pull-right {\n  right: 0;\n  left: auto; }\n\n.dropdown-menu .divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5; }\n\n.dropdown-menu > li > a {\n  display: block;\n  padding: 3px 20px;\n  clear: both;\n  font-weight: 400;\n  line-height: 1.42857143;\n  color: #333;\n  white-space: nowrap; }\n\n.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {\n  color: #262626;\n  text-decoration: none;\n  background-color: #f5f5f5; }\n\n.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {\n  color: #fff;\n  text-decoration: none;\n  background-color: #337ab7;\n  outline: 0; }\n\n.dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {\n  color: #777; }\n\n.dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {\n  text-decoration: none;\n  cursor: not-allowed;\n  background-color: transparent;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }\n\n.open > .dropdown-menu {\n  display: block; }\n\n.open > a {\n  outline: 0; }\n\n.dropdown-menu-right {\n  right: 0;\n  left: auto; }\n\n.dropdown-menu-left {\n  right: auto;\n  left: 0; }\n\n.dropdown-header {\n  display: block;\n  padding: 3px 20px;\n  font-size: 12px;\n  line-height: 1.42857143;\n  color: #777;\n  white-space: nowrap; }\n\n.dropdown-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 990; }\n\n.pull-right > .dropdown-menu {\n  right: 0;\n  left: auto; }\n\n.dropup .caret, .navbar-fixed-bottom .dropdown .caret {\n  content: \"\";\n  border-top: 0;\n  border-bottom: 4px dashed;\n  border-bottom: 4px solid\\9; }\n\n.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {\n  top: auto;\n  bottom: 100%;\n  margin-bottom: 2px; }\n\n@media (min-width: 768px) {\n  .navbar-right .dropdown-menu {\n    right: 0;\n    left: auto; }\n  .navbar-right .dropdown-menu-left {\n    right: auto;\n    left: 0; } }\n\n.btn-group, .btn-group-vertical {\n  position: relative;\n  display: inline-block;\n  vertical-align: middle; }\n\n.btn-group-vertical > .btn, .btn-group > .btn {\n  position: relative;\n  float: left; }\n\n.btn-group-vertical > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover, .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {\n  z-index: 2; }\n\n.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {\n  margin-left: -1px; }\n\n.btn-toolbar {\n  margin-left: -5px; }\n\n.btn-toolbar .btn, .btn-toolbar .btn-group, .btn-toolbar .input-group {\n  float: left; }\n\n.btn-toolbar > .btn, .btn-toolbar > .btn-group, .btn-toolbar > .input-group {\n  margin-left: 5px; }\n\n.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n  border-radius: 0; }\n\n.btn-group > .btn:first-child {\n  margin-left: 0; }\n\n.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group > .btn-group {\n  float: left; }\n\n.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0; }\n\n.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle {\n  outline: 0; }\n\n.btn-group > .btn + .dropdown-toggle {\n  padding-right: 8px;\n  padding-left: 8px; }\n\n.btn-group > .btn-lg + .dropdown-toggle {\n  padding-right: 12px;\n  padding-left: 12px; }\n\n.btn-group.open .dropdown-toggle {\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }\n\n.btn-group.open .dropdown-toggle.btn-link {\n  -webkit-box-shadow: none;\n  box-shadow: none; }\n\n.btn .caret {\n  margin-left: 0; }\n\n.btn-lg .caret {\n  border-width: 5px 5px 0;\n  border-bottom-width: 0; }\n\n.dropup .btn-lg .caret {\n  border-width: 0 5px 5px; }\n\n.btn-group-vertical > .btn, .btn-group-vertical > .btn-group, .btn-group-vertical > .btn-group > .btn {\n  display: block;\n  float: none;\n  width: 100%;\n  max-width: 100%; }\n\n.btn-group-vertical > .btn-group > .btn {\n  float: none; }\n\n.btn-group-vertical > .btn + .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {\n  margin-top: -1px;\n  margin-left: 0; }\n\n.btn-group-vertical > .btn:not(:first-child):not(:last-child) {\n  border-radius: 0; }\n\n.btn-group-vertical > .btn:first-child:not(:last-child) {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group-vertical > .btn:last-child:not(:first-child) {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0; }\n\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.btn-group-justified {\n  display: table;\n  width: 100%;\n  table-layout: fixed;\n  border-collapse: separate; }\n\n.btn-group-justified > .btn, .btn-group-justified > .btn-group {\n  display: table-cell;\n  float: none;\n  width: 1%; }\n\n.btn-group-justified > .btn-group .btn {\n  width: 100%; }\n\n.btn-group-justified > .btn-group .dropdown-menu {\n  left: auto; }\n\n[data-toggle=buttons] > .btn input[type=checkbox], [data-toggle=buttons] > .btn input[type=radio], [data-toggle=buttons] > .btn-group > .btn input[type=checkbox], [data-toggle=buttons] > .btn-group > .btn input[type=radio] {\n  position: absolute;\n  clip: rect(0, 0, 0, 0);\n  pointer-events: none; }\n\n.input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate; }\n\n.input-group[class*=col-] {\n  float: none;\n  padding-right: 0;\n  padding-left: 0; }\n\n.input-group .form-control {\n  position: relative;\n  z-index: 2;\n  float: left;\n  width: 100%;\n  margin-bottom: 0; }\n\n.input-group .form-control:focus {\n  z-index: 3; }\n\n.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\nselect.input-group-lg > .form-control, select.input-group-lg > .input-group-addon, select.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  line-height: 46px; }\n\nselect[multiple].input-group-lg > .form-control, select[multiple].input-group-lg > .input-group-addon, select[multiple].input-group-lg > .input-group-btn > .btn, textarea.input-group-lg > .form-control, textarea.input-group-lg > .input-group-addon, textarea.input-group-lg > .input-group-btn > .btn {\n  height: auto; }\n\n.input-group-sm > .form-control, .input-group-sm > .input-group-addon, .input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\nselect.input-group-sm > .form-control, select.input-group-sm > .input-group-addon, select.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  line-height: 30px; }\n\nselect[multiple].input-group-sm > .form-control, select[multiple].input-group-sm > .input-group-addon, select[multiple].input-group-sm > .input-group-btn > .btn, textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-addon, textarea.input-group-sm > .input-group-btn > .btn {\n  height: auto; }\n\n.input-group .form-control, .input-group-addon, .input-group-btn {\n  display: table-cell; }\n\n.input-group .form-control:not(:first-child):not(:last-child), .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child) {\n  border-radius: 0; }\n\n.input-group-addon, .input-group-btn {\n  width: 1%;\n  white-space: nowrap;\n  vertical-align: middle; }\n\n.input-group-addon {\n  padding: 6px 12px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 1;\n  color: #555;\n  text-align: center;\n  background-color: #eee;\n  border: 1px solid #ccc;\n  border-radius: 4px; }\n\n.input-group-addon.input-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  border-radius: 3px; }\n\n.input-group-addon.input-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  border-radius: 6px; }\n\n.input-group-addon input[type=checkbox], .input-group-addon input[type=radio] {\n  margin-top: 0; }\n\n.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group > .btn, .input-group-btn:first-child > .dropdown-toggle, .input-group-btn:last-child > .btn-group:not(:last-child) > .btn, .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n.input-group-addon:first-child {\n  border-right: 0; }\n\n.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .dropdown-toggle {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.input-group-addon:last-child {\n  border-left: 0; }\n\n.input-group-btn {\n  position: relative;\n  font-size: 0;\n  white-space: nowrap; }\n\n.input-group-btn > .btn {\n  position: relative; }\n\n.input-group-btn > .btn + .btn {\n  margin-left: -1px; }\n\n.input-group-btn > .btn:active, .input-group-btn > .btn:focus, .input-group-btn > .btn:hover {\n  z-index: 2; }\n\n.input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group {\n  margin-right: -1px; }\n\n.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {\n  z-index: 2;\n  margin-left: -1px; }\n\n.nav {\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none; }\n\n.nav > li {\n  position: relative;\n  display: block; }\n\n.nav > li > a {\n  position: relative;\n  display: block;\n  padding: 10px 15px; }\n\n.nav > li > a:focus, .nav > li > a:hover {\n  text-decoration: none;\n  background-color: #eee; }\n\n.nav > li.disabled > a {\n  color: #777; }\n\n.nav > li.disabled > a:focus, .nav > li.disabled > a:hover {\n  color: #777;\n  text-decoration: none;\n  cursor: not-allowed;\n  background-color: transparent; }\n\n.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {\n  background-color: #eee;\n  border-color: #337ab7; }\n\n.nav .nav-divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5; }\n\n.nav > li > a > img {\n  max-width: none; }\n\n.nav-tabs {\n  border-bottom: 1px solid #ddd; }\n\n.nav-tabs > li {\n  float: left;\n  margin-bottom: -1px; }\n\n.nav-tabs > li > a {\n  margin-right: 2px;\n  line-height: 1.42857143;\n  border: 1px solid transparent;\n  border-radius: 4px 4px 0 0; }\n\n.nav-tabs > li > a:hover {\n  border-color: #eee #eee #ddd; }\n\n.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {\n  color: #555;\n  cursor: default;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-bottom-color: transparent; }\n\n.nav-tabs.nav-justified {\n  width: 100%;\n  border-bottom: 0; }\n\n.nav-tabs.nav-justified > li {\n  float: none; }\n\n.nav-tabs.nav-justified > li > a {\n  margin-bottom: 5px;\n  text-align: center; }\n\n.nav-tabs.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto; }\n\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li {\n    display: table-cell;\n    width: 1%; }\n  .nav-tabs.nav-justified > li > a {\n    margin-bottom: 0; } }\n\n.nav-tabs.nav-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px; }\n\n.nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:hover {\n  border: 1px solid #ddd; }\n\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li > a {\n    border-bottom: 1px solid #ddd;\n    border-radius: 4px 4px 0 0; }\n  .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:hover {\n    border-bottom-color: #fff; } }\n\n.nav-pills > li {\n  float: left; }\n\n.nav-pills > li > a {\n  border-radius: 4px; }\n\n.nav-pills > li + li {\n  margin-left: 2px; }\n\n.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {\n  color: #fff;\n  background-color: #337ab7; }\n\n.nav-stacked > li {\n  float: none; }\n\n.nav-stacked > li + li {\n  margin-top: 2px;\n  margin-left: 0; }\n\n.nav-justified {\n  width: 100%; }\n\n.nav-justified > li {\n  float: none; }\n\n.nav-justified > li > a {\n  margin-bottom: 5px;\n  text-align: center; }\n\n.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto; }\n\n@media (min-width: 768px) {\n  .nav-justified > li {\n    display: table-cell;\n    width: 1%; }\n  .nav-justified > li > a {\n    margin-bottom: 0; } }\n\n.nav-tabs-justified {\n  border-bottom: 0; }\n\n.nav-tabs-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px; }\n\n.nav-tabs-justified > .active > a, .nav-tabs-justified > .active > a:focus, .nav-tabs-justified > .active > a:hover {\n  border: 1px solid #ddd; }\n\n@media (min-width: 768px) {\n  .nav-tabs-justified > li > a {\n    border-bottom: 1px solid #ddd;\n    border-radius: 4px 4px 0 0; }\n  .nav-tabs-justified > .active > a, .nav-tabs-justified > .active > a:focus, .nav-tabs-justified > .active > a:hover {\n    border-bottom-color: #fff; } }\n\n.tab-content > .tab-pane {\n  display: none; }\n\n.tab-content > .active {\n  display: block; }\n\n.nav-tabs .dropdown-menu {\n  margin-top: -1px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.navbar {\n  position: relative;\n  min-height: 50px;\n  margin-bottom: 20px;\n  border: 1px solid transparent; }\n\n@media (min-width: 768px) {\n  .navbar {\n    border-radius: 4px; } }\n\n@media (min-width: 768px) {\n  .navbar-header {\n    float: left; } }\n\n.navbar-collapse {\n  padding-right: 15px;\n  padding-left: 15px;\n  overflow-x: visible;\n  -webkit-overflow-scrolling: touch;\n  border-top: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); }\n\n.navbar-collapse.in {\n  overflow-y: auto; }\n\n@media (min-width: 768px) {\n  .navbar-collapse {\n    width: auto;\n    border-top: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none; }\n  .navbar-collapse.collapse {\n    display: block !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important; }\n  .navbar-collapse.in {\n    overflow-y: visible; }\n  .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse {\n    padding-right: 0;\n    padding-left: 0; } }\n\n.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {\n  max-height: 340px; }\n\n@media (max-device-width: 480px) and (orientation: landscape) {\n  .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {\n    max-height: 200px; } }\n\n.container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {\n  margin-right: -15px;\n  margin-left: -15px; }\n\n@media (min-width: 768px) {\n  .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {\n    margin-right: 0;\n    margin-left: 0; } }\n\n.navbar-static-top {\n  z-index: 1000;\n  border-width: 0 0 1px; }\n\n@media (min-width: 768px) {\n  .navbar-static-top {\n    border-radius: 0; } }\n\n.navbar-fixed-bottom, .navbar-fixed-top {\n  position: fixed;\n  right: 0;\n  left: 0;\n  z-index: 1030; }\n\n@media (min-width: 768px) {\n  .navbar-fixed-bottom, .navbar-fixed-top {\n    border-radius: 0; } }\n\n.navbar-fixed-top {\n  top: 0;\n  border-width: 0 0 1px; }\n\n.navbar-fixed-bottom {\n  bottom: 0;\n  margin-bottom: 0;\n  border-width: 1px 0 0; }\n\n.navbar-brand {\n  float: left;\n  height: 50px;\n  padding: 15px 15px;\n  font-size: 18px;\n  line-height: 20px; }\n\n.navbar-brand:focus, .navbar-brand:hover {\n  text-decoration: none; }\n\n.navbar-brand > img {\n  display: block; }\n\n@media (min-width: 768px) {\n  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {\n    margin-left: -15px; } }\n\n.navbar-toggle {\n  position: relative;\n  float: right;\n  padding: 9px 10px;\n  margin-top: 8px;\n  margin-right: 15px;\n  margin-bottom: 8px;\n  background-color: transparent;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px; }\n\n.navbar-toggle:focus {\n  outline: 0; }\n\n.navbar-toggle .icon-bar {\n  display: block;\n  width: 22px;\n  height: 2px;\n  border-radius: 1px; }\n\n.navbar-toggle .icon-bar + .icon-bar {\n  margin-top: 4px; }\n\n@media (min-width: 768px) {\n  .navbar-toggle {\n    display: none; } }\n\n.navbar-nav {\n  margin: 7.5px -15px; }\n\n.navbar-nav > li > a {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  line-height: 20px; }\n\n@media (max-width: 767px) {\n  .navbar-nav .open .dropdown-menu {\n    position: static;\n    float: none;\n    width: auto;\n    margin-top: 0;\n    background-color: transparent;\n    border: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none; }\n  .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu > li > a {\n    padding: 5px 15px 5px 25px; }\n  .navbar-nav .open .dropdown-menu > li > a {\n    line-height: 20px; }\n  .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-nav .open .dropdown-menu > li > a:hover {\n    background-image: none; } }\n\n@media (min-width: 768px) {\n  .navbar-nav {\n    float: left;\n    margin: 0; }\n  .navbar-nav > li {\n    float: left; }\n  .navbar-nav > li > a {\n    padding-top: 15px;\n    padding-bottom: 15px; } }\n\n.navbar-form {\n  padding: 10px 15px;\n  margin-top: 8px;\n  margin-right: -15px;\n  margin-bottom: 8px;\n  margin-left: -15px;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1); }\n\n@media (min-width: 768px) {\n  .navbar-form .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .navbar-form .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle; }\n  .navbar-form .form-control-static {\n    display: inline-block; }\n  .navbar-form .input-group {\n    display: inline-table;\n    vertical-align: middle; }\n  .navbar-form .input-group .form-control, .navbar-form .input-group .input-group-addon, .navbar-form .input-group .input-group-btn {\n    width: auto; }\n  .navbar-form .input-group > .form-control {\n    width: 100%; }\n  .navbar-form .control-label {\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .navbar-form .checkbox, .navbar-form .radio {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .navbar-form .checkbox label, .navbar-form .radio label {\n    padding-left: 0; }\n  .navbar-form .checkbox input[type=checkbox], .navbar-form .radio input[type=radio] {\n    position: relative;\n    margin-left: 0; }\n  .navbar-form .has-feedback .form-control-feedback {\n    top: 0; } }\n\n@media (max-width: 767px) {\n  .navbar-form .form-group {\n    margin-bottom: 5px; }\n  .navbar-form .form-group:last-child {\n    margin-bottom: 0; } }\n\n@media (min-width: 768px) {\n  .navbar-form {\n    width: auto;\n    padding-top: 0;\n    padding-bottom: 0;\n    margin-right: 0;\n    margin-left: 0;\n    border: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none; } }\n\n.navbar-nav > li > .dropdown-menu {\n  margin-top: 0;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {\n  margin-bottom: 0;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.navbar-btn {\n  margin-top: 8px;\n  margin-bottom: 8px; }\n\n.navbar-btn.btn-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.navbar-btn.btn-xs {\n  margin-top: 14px;\n  margin-bottom: 14px; }\n\n.navbar-text {\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n@media (min-width: 768px) {\n  .navbar-text {\n    float: left;\n    margin-right: 15px;\n    margin-left: 15px; } }\n\n@media (min-width: 768px) {\n  .navbar-left {\n    float: left !important; }\n  .navbar-right {\n    float: right !important;\n    margin-right: -15px; }\n  .navbar-right ~ .navbar-right {\n    margin-right: 0; } }\n\n.navbar-default {\n  background-color: #f8f8f8;\n  border-color: #e7e7e7; }\n\n.navbar-default .navbar-brand {\n  color: #777; }\n\n.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {\n  color: #5e5e5e;\n  background-color: transparent; }\n\n.navbar-default .navbar-text {\n  color: #777; }\n\n.navbar-default .navbar-nav > li > a {\n  color: #777; }\n\n.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {\n  color: #333;\n  background-color: transparent; }\n\n.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {\n  color: #555;\n  background-color: #e7e7e7; }\n\n.navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:focus, .navbar-default .navbar-nav > .disabled > a:hover {\n  color: #ccc;\n  background-color: transparent; }\n\n.navbar-default .navbar-toggle {\n  border-color: #ddd; }\n\n.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {\n  background-color: #ddd; }\n\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #888; }\n\n.navbar-default .navbar-collapse, .navbar-default .navbar-form {\n  border-color: #e7e7e7; }\n\n.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {\n  color: #555;\n  background-color: #e7e7e7; }\n\n@media (max-width: 767px) {\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a {\n    color: #777; }\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {\n    color: #333;\n    background-color: transparent; }\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {\n    color: #555;\n    background-color: #e7e7e7; }\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover {\n    color: #ccc;\n    background-color: transparent; } }\n\n.navbar-default .navbar-link {\n  color: #777; }\n\n.navbar-default .navbar-link:hover {\n  color: #333; }\n\n.navbar-default .btn-link {\n  color: #777; }\n\n.navbar-default .btn-link:focus, .navbar-default .btn-link:hover {\n  color: #333; }\n\n.navbar-default .btn-link[disabled]:focus, .navbar-default .btn-link[disabled]:hover, fieldset[disabled] .navbar-default .btn-link:focus, fieldset[disabled] .navbar-default .btn-link:hover {\n  color: #ccc; }\n\n.navbar-inverse {\n  background-color: #222;\n  border-color: #080808; }\n\n.navbar-inverse .navbar-brand {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {\n  color: #fff;\n  background-color: transparent; }\n\n.navbar-inverse .navbar-text {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-nav > li > a {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {\n  color: #fff;\n  background-color: transparent; }\n\n.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {\n  color: #fff;\n  background-color: #080808; }\n\n.navbar-inverse .navbar-nav > .disabled > a, .navbar-inverse .navbar-nav > .disabled > a:focus, .navbar-inverse .navbar-nav > .disabled > a:hover {\n  color: #444;\n  background-color: transparent; }\n\n.navbar-inverse .navbar-toggle {\n  border-color: #333; }\n\n.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {\n  background-color: #333; }\n\n.navbar-inverse .navbar-toggle .icon-bar {\n  background-color: #fff; }\n\n.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {\n  border-color: #101010; }\n\n.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {\n  color: #fff;\n  background-color: #080808; }\n\n@media (max-width: 767px) {\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {\n    border-color: #080808; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {\n    background-color: #080808; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {\n    color: #9d9d9d; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {\n    color: #fff;\n    background-color: transparent; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover {\n    color: #fff;\n    background-color: #080808; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover {\n    color: #444;\n    background-color: transparent; } }\n\n.navbar-inverse .navbar-link {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-link:hover {\n  color: #fff; }\n\n.navbar-inverse .btn-link {\n  color: #9d9d9d; }\n\n.navbar-inverse .btn-link:focus, .navbar-inverse .btn-link:hover {\n  color: #fff; }\n\n.navbar-inverse .btn-link[disabled]:focus, .navbar-inverse .btn-link[disabled]:hover, fieldset[disabled] .navbar-inverse .btn-link:focus, fieldset[disabled] .navbar-inverse .btn-link:hover {\n  color: #444; }\n\n.breadcrumb {\n  padding: 8px 15px;\n  margin-bottom: 20px;\n  list-style: none;\n  background-color: #f5f5f5;\n  border-radius: 4px; }\n\n.breadcrumb > li {\n  display: inline-block; }\n\n.breadcrumb > li + li:before {\n  padding: 0 5px;\n  color: #ccc;\n  content: \"/\\A0\"; }\n\n.breadcrumb > .active {\n  color: #777; }\n\n.pagination {\n  display: inline-block;\n  padding-left: 0;\n  margin: 20px 0;\n  border-radius: 4px; }\n\n.pagination > li {\n  display: inline; }\n\n.pagination > li > a, .pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  margin-left: -1px;\n  line-height: 1.42857143;\n  color: #337ab7;\n  text-decoration: none;\n  background-color: #fff;\n  border: 1px solid #ddd; }\n\n.pagination > li:first-child > a, .pagination > li:first-child > span {\n  margin-left: 0;\n  border-top-left-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.pagination > li:last-child > a, .pagination > li:last-child > span {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 4px; }\n\n.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {\n  z-index: 2;\n  color: #23527c;\n  background-color: #eee;\n  border-color: #ddd; }\n\n.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {\n  z-index: 3;\n  color: #fff;\n  cursor: default;\n  background-color: #337ab7;\n  border-color: #337ab7; }\n\n.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #fff;\n  border-color: #ddd; }\n\n.pagination-lg > li > a, .pagination-lg > li > span {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333; }\n\n.pagination-lg > li:first-child > a, .pagination-lg > li:first-child > span {\n  border-top-left-radius: 6px;\n  border-bottom-left-radius: 6px; }\n\n.pagination-lg > li:last-child > a, .pagination-lg > li:last-child > span {\n  border-top-right-radius: 6px;\n  border-bottom-right-radius: 6px; }\n\n.pagination-sm > li > a, .pagination-sm > li > span {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5; }\n\n.pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span {\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.pagination-sm > li:last-child > a, .pagination-sm > li:last-child > span {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.pager {\n  padding-left: 0;\n  margin: 20px 0;\n  text-align: center;\n  list-style: none; }\n\n.pager li {\n  display: inline; }\n\n.pager li > a, .pager li > span {\n  display: inline-block;\n  padding: 5px 14px;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 15px; }\n\n.pager li > a:focus, .pager li > a:hover {\n  text-decoration: none;\n  background-color: #eee; }\n\n.pager .next > a, .pager .next > span {\n  float: right; }\n\n.pager .previous > a, .pager .previous > span {\n  float: left; }\n\n.pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover, .pager .disabled > span {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #fff; }\n\n.label {\n  display: inline;\n  padding: .2em .6em .3em;\n  font-size: 75%;\n  font-weight: 700;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em; }\n\na.label:focus, a.label:hover {\n  color: #fff;\n  text-decoration: none;\n  cursor: pointer; }\n\n.label:empty {\n  display: none; }\n\n.btn .label {\n  position: relative;\n  top: -1px; }\n\n.label-default {\n  background-color: #777; }\n\n.label-default[href]:focus, .label-default[href]:hover {\n  background-color: #5e5e5e; }\n\n.label-primary {\n  background-color: #337ab7; }\n\n.label-primary[href]:focus, .label-primary[href]:hover {\n  background-color: #286090; }\n\n.label-success {\n  background-color: #5cb85c; }\n\n.label-success[href]:focus, .label-success[href]:hover {\n  background-color: #449d44; }\n\n.label-info {\n  background-color: #5bc0de; }\n\n.label-info[href]:focus, .label-info[href]:hover {\n  background-color: #31b0d5; }\n\n.label-warning {\n  background-color: #f0ad4e; }\n\n.label-warning[href]:focus, .label-warning[href]:hover {\n  background-color: #ec971f; }\n\n.label-danger {\n  background-color: #d9534f; }\n\n.label-danger[href]:focus, .label-danger[href]:hover {\n  background-color: #c9302c; }\n\n.badge {\n  display: inline-block;\n  min-width: 10px;\n  padding: 3px 7px;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  background-color: #777;\n  border-radius: 10px; }\n\n.badge:empty {\n  display: none; }\n\n.btn .badge {\n  position: relative;\n  top: -1px; }\n\n.btn-group-xs > .btn .badge, .btn-xs .badge {\n  top: 0;\n  padding: 1px 5px; }\n\na.badge:focus, a.badge:hover {\n  color: #fff;\n  text-decoration: none;\n  cursor: pointer; }\n\n.list-group-item.active > .badge, .nav-pills > .active > a > .badge {\n  color: #337ab7;\n  background-color: #fff; }\n\n.list-group-item > .badge {\n  float: right; }\n\n.list-group-item > .badge + .badge {\n  margin-right: 5px; }\n\n.nav-pills > li > a > .badge {\n  margin-left: 3px; }\n\n.jumbotron {\n  padding-top: 30px;\n  padding-bottom: 30px;\n  margin-bottom: 30px;\n  color: inherit;\n  background-color: #eee; }\n\n.jumbotron .h1, .jumbotron h1 {\n  color: inherit; }\n\n.jumbotron p {\n  margin-bottom: 15px;\n  font-size: 21px;\n  font-weight: 200; }\n\n.jumbotron > hr {\n  border-top-color: #d5d5d5; }\n\n.container .jumbotron, .container-fluid .jumbotron {\n  padding-right: 15px;\n  padding-left: 15px;\n  border-radius: 6px; }\n\n.jumbotron .container {\n  max-width: 100%; }\n\n@media screen and (min-width: 768px) {\n  .jumbotron {\n    padding-top: 48px;\n    padding-bottom: 48px; }\n  .container .jumbotron, .container-fluid .jumbotron {\n    padding-right: 60px;\n    padding-left: 60px; }\n  .jumbotron .h1, .jumbotron h1 {\n    font-size: 63px; } }\n\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: border .2s ease-in-out;\n  -o-transition: border .2s ease-in-out;\n  transition: border .2s ease-in-out; }\n\n.thumbnail a > img, .thumbnail > img {\n  margin-right: auto;\n  margin-left: auto; }\n\na.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {\n  border-color: #337ab7; }\n\n.thumbnail .caption {\n  padding: 9px;\n  color: #333; }\n\n.alert {\n  padding: 15px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n  border-radius: 4px; }\n\n.alert h4 {\n  margin-top: 0;\n  color: inherit; }\n\n.alert .alert-link {\n  font-weight: 700; }\n\n.alert > p, .alert > ul {\n  margin-bottom: 0; }\n\n.alert > p + p {\n  margin-top: 5px; }\n\n.alert-dismissable, .alert-dismissible {\n  padding-right: 35px; }\n\n.alert-dismissable .close, .alert-dismissible .close {\n  position: relative;\n  top: -2px;\n  right: -21px;\n  color: inherit; }\n\n.alert-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6; }\n\n.alert-success hr {\n  border-top-color: #c9e2b3; }\n\n.alert-success .alert-link {\n  color: #2b542c; }\n\n.alert-info {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1; }\n\n.alert-info hr {\n  border-top-color: #a6e1ec; }\n\n.alert-info .alert-link {\n  color: #245269; }\n\n.alert-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc; }\n\n.alert-warning hr {\n  border-top-color: #f7e1b5; }\n\n.alert-warning .alert-link {\n  color: #66512c; }\n\n.alert-danger {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1; }\n\n.alert-danger hr {\n  border-top-color: #e4b9c0; }\n\n.alert-danger .alert-link {\n  color: #843534; }\n\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0; }\n  to {\n    background-position: 0 0; } }\n\n@-o-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0; }\n  to {\n    background-position: 0 0; } }\n\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0; }\n  to {\n    background-position: 0 0; } }\n\n.progress {\n  height: 20px;\n  margin-bottom: 20px;\n  overflow: hidden;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }\n\n.progress-bar {\n  float: left;\n  width: 0;\n  height: 100%;\n  font-size: 12px;\n  line-height: 20px;\n  color: #fff;\n  text-align: center;\n  background-color: #337ab7;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  -webkit-transition: width .6s ease;\n  -o-transition: width .6s ease;\n  transition: width .6s ease; }\n\n.progress-bar-striped, .progress-striped .progress-bar {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  -webkit-background-size: 40px 40px;\n  background-size: 40px 40px; }\n\n.progress-bar.active, .progress.active .progress-bar {\n  -webkit-animation: progress-bar-stripes 2s linear infinite;\n  -o-animation: progress-bar-stripes 2s linear infinite;\n  animation: progress-bar-stripes 2s linear infinite; }\n\n.progress-bar-success {\n  background-color: #5cb85c; }\n\n.progress-striped .progress-bar-success {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.progress-bar-info {\n  background-color: #5bc0de; }\n\n.progress-striped .progress-bar-info {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.progress-bar-warning {\n  background-color: #f0ad4e; }\n\n.progress-striped .progress-bar-warning {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.progress-bar-danger {\n  background-color: #d9534f; }\n\n.progress-striped .progress-bar-danger {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.media {\n  margin-top: 15px; }\n\n.media:first-child {\n  margin-top: 0; }\n\n.media, .media-body {\n  overflow: hidden;\n  zoom: 1; }\n\n.media-body {\n  width: 10000px; }\n\n.media-object {\n  display: block; }\n\n.media-object.img-thumbnail {\n  max-width: none; }\n\n.media-right, .media > .pull-right {\n  padding-left: 10px; }\n\n.media-left, .media > .pull-left {\n  padding-right: 10px; }\n\n.media-body, .media-left, .media-right {\n  display: table-cell;\n  vertical-align: top; }\n\n.media-middle {\n  vertical-align: middle; }\n\n.media-bottom {\n  vertical-align: bottom; }\n\n.media-heading {\n  margin-top: 0;\n  margin-bottom: 5px; }\n\n.media-list {\n  padding-left: 0;\n  list-style: none; }\n\n.list-group {\n  padding-left: 0;\n  margin-bottom: 20px; }\n\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #fff;\n  border: 1px solid #ddd; }\n\n.list-group-item:first-child {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px; }\n\n.list-group-item:last-child {\n  margin-bottom: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\na.list-group-item, button.list-group-item {\n  color: #555; }\n\na.list-group-item .list-group-item-heading, button.list-group-item .list-group-item-heading {\n  color: #333; }\n\na.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, button.list-group-item:hover {\n  color: #555;\n  text-decoration: none;\n  background-color: #f5f5f5; }\n\nbutton.list-group-item {\n  width: 100%;\n  text-align: left; }\n\n.list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #eee; }\n\n.list-group-item.disabled .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading {\n  color: inherit; }\n\n.list-group-item.disabled .list-group-item-text, .list-group-item.disabled:focus .list-group-item-text, .list-group-item.disabled:hover .list-group-item-text {\n  color: #777; }\n\n.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {\n  z-index: 2;\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #337ab7; }\n\n.list-group-item.active .list-group-item-heading, .list-group-item.active .list-group-item-heading > .small, .list-group-item.active .list-group-item-heading > small, .list-group-item.active:focus .list-group-item-heading, .list-group-item.active:focus .list-group-item-heading > .small, .list-group-item.active:focus .list-group-item-heading > small, .list-group-item.active:hover .list-group-item-heading, .list-group-item.active:hover .list-group-item-heading > .small, .list-group-item.active:hover .list-group-item-heading > small {\n  color: inherit; }\n\n.list-group-item.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text {\n  color: #c7ddef; }\n\n.list-group-item-success {\n  color: #3c763d;\n  background-color: #dff0d8; }\n\na.list-group-item-success, button.list-group-item-success {\n  color: #3c763d; }\n\na.list-group-item-success .list-group-item-heading, button.list-group-item-success .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-success:focus, a.list-group-item-success:hover, button.list-group-item-success:focus, button.list-group-item-success:hover {\n  color: #3c763d;\n  background-color: #d0e9c6; }\n\na.list-group-item-success.active, a.list-group-item-success.active:focus, a.list-group-item-success.active:hover, button.list-group-item-success.active, button.list-group-item-success.active:focus, button.list-group-item-success.active:hover {\n  color: #fff;\n  background-color: #3c763d;\n  border-color: #3c763d; }\n\n.list-group-item-info {\n  color: #31708f;\n  background-color: #d9edf7; }\n\na.list-group-item-info, button.list-group-item-info {\n  color: #31708f; }\n\na.list-group-item-info .list-group-item-heading, button.list-group-item-info .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-info:focus, a.list-group-item-info:hover, button.list-group-item-info:focus, button.list-group-item-info:hover {\n  color: #31708f;\n  background-color: #c4e3f3; }\n\na.list-group-item-info.active, a.list-group-item-info.active:focus, a.list-group-item-info.active:hover, button.list-group-item-info.active, button.list-group-item-info.active:focus, button.list-group-item-info.active:hover {\n  color: #fff;\n  background-color: #31708f;\n  border-color: #31708f; }\n\n.list-group-item-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3; }\n\na.list-group-item-warning, button.list-group-item-warning {\n  color: #8a6d3b; }\n\na.list-group-item-warning .list-group-item-heading, button.list-group-item-warning .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-warning:focus, a.list-group-item-warning:hover, button.list-group-item-warning:focus, button.list-group-item-warning:hover {\n  color: #8a6d3b;\n  background-color: #faf2cc; }\n\na.list-group-item-warning.active, a.list-group-item-warning.active:focus, a.list-group-item-warning.active:hover, button.list-group-item-warning.active, button.list-group-item-warning.active:focus, button.list-group-item-warning.active:hover {\n  color: #fff;\n  background-color: #8a6d3b;\n  border-color: #8a6d3b; }\n\n.list-group-item-danger {\n  color: #a94442;\n  background-color: #f2dede; }\n\na.list-group-item-danger, button.list-group-item-danger {\n  color: #a94442; }\n\na.list-group-item-danger .list-group-item-heading, button.list-group-item-danger .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-danger:focus, a.list-group-item-danger:hover, button.list-group-item-danger:focus, button.list-group-item-danger:hover {\n  color: #a94442;\n  background-color: #ebcccc; }\n\na.list-group-item-danger.active, a.list-group-item-danger.active:focus, a.list-group-item-danger.active:hover, button.list-group-item-danger.active, button.list-group-item-danger.active:focus, button.list-group-item-danger.active:hover {\n  color: #fff;\n  background-color: #a94442;\n  border-color: #a94442; }\n\n.list-group-item-heading {\n  margin-top: 0;\n  margin-bottom: 5px; }\n\n.list-group-item-text {\n  margin-bottom: 0;\n  line-height: 1.3; }\n\n.panel {\n  margin-bottom: 20px;\n  background-color: #fff;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }\n\n.panel-body {\n  padding: 15px; }\n\n.panel-heading {\n  padding: 10px 15px;\n  border-bottom: 1px solid transparent;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel-heading > .dropdown .dropdown-toggle {\n  color: inherit; }\n\n.panel-title {\n  margin-top: 0;\n  margin-bottom: 0;\n  font-size: 16px;\n  color: inherit; }\n\n.panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {\n  color: inherit; }\n\n.panel-footer {\n  padding: 10px 15px;\n  background-color: #f5f5f5;\n  border-top: 1px solid #ddd;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .list-group, .panel > .panel-collapse > .list-group {\n  margin-bottom: 0; }\n\n.panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item {\n  border-width: 1px 0;\n  border-radius: 0; }\n\n.panel > .list-group:first-child .list-group-item:first-child, .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {\n  border-top: 0;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel > .list-group:last-child .list-group-item:last-child, .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {\n  border-bottom: 0;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.panel-heading + .list-group .list-group-item:first-child {\n  border-top-width: 0; }\n\n.list-group + .panel-footer {\n  border-top-width: 0; }\n\n.panel > .panel-collapse > .table, .panel > .table, .panel > .table-responsive > .table {\n  margin-bottom: 0; }\n\n.panel > .panel-collapse > .table caption, .panel > .table caption, .panel > .table-responsive > .table caption {\n  padding-right: 15px;\n  padding-left: 15px; }\n\n.panel > .table-responsive:first-child > .table:first-child, .panel > .table:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child, .panel > .table:first-child > thead:first-child > tr:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child td:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child, .panel > .table:first-child > thead:first-child > tr:first-child td:first-child, .panel > .table:first-child > thead:first-child > tr:first-child th:first-child {\n  border-top-left-radius: 3px; }\n\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child, .panel > .table:first-child > tbody:first-child > tr:first-child td:last-child, .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child, .panel > .table:first-child > thead:first-child > tr:first-child td:last-child, .panel > .table:first-child > thead:first-child > tr:first-child th:last-child {\n  border-top-right-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child, .panel > .table:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child, .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child, .panel > .table:last-child > tbody:last-child > tr:last-child th:first-child, .panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child, .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child {\n  border-bottom-left-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child th:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child {\n  border-bottom-right-radius: 3px; }\n\n.panel > .panel-body + .table, .panel > .panel-body + .table-responsive, .panel > .table + .panel-body, .panel > .table-responsive + .panel-body {\n  border-top: 1px solid #ddd; }\n\n.panel > .table > tbody:first-child > tr:first-child td, .panel > .table > tbody:first-child > tr:first-child th {\n  border-top: 0; }\n\n.panel > .table-bordered, .panel > .table-responsive > .table-bordered {\n  border: 0; }\n\n.panel > .table-bordered > tbody > tr > td:first-child, .panel > .table-bordered > tbody > tr > th:first-child, .panel > .table-bordered > tfoot > tr > td:first-child, .panel > .table-bordered > tfoot > tr > th:first-child, .panel > .table-bordered > thead > tr > td:first-child, .panel > .table-bordered > thead > tr > th:first-child, .panel > .table-responsive > .table-bordered > tbody > tr > td:first-child, .panel > .table-responsive > .table-bordered > tbody > tr > th:first-child, .panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child, .panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child, .panel > .table-responsive > .table-bordered > thead > tr > td:first-child, .panel > .table-responsive > .table-bordered > thead > tr > th:first-child {\n  border-left: 0; }\n\n.panel > .table-bordered > tbody > tr > td:last-child, .panel > .table-bordered > tbody > tr > th:last-child, .panel > .table-bordered > tfoot > tr > td:last-child, .panel > .table-bordered > tfoot > tr > th:last-child, .panel > .table-bordered > thead > tr > td:last-child, .panel > .table-bordered > thead > tr > th:last-child, .panel > .table-responsive > .table-bordered > tbody > tr > td:last-child, .panel > .table-responsive > .table-bordered > tbody > tr > th:last-child, .panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child, .panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child, .panel > .table-responsive > .table-bordered > thead > tr > td:last-child, .panel > .table-responsive > .table-bordered > thead > tr > th:last-child {\n  border-right: 0; }\n\n.panel > .table-bordered > tbody > tr:first-child > td, .panel > .table-bordered > tbody > tr:first-child > th, .panel > .table-bordered > thead > tr:first-child > td, .panel > .table-bordered > thead > tr:first-child > th, .panel > .table-responsive > .table-bordered > tbody > tr:first-child > td, .panel > .table-responsive > .table-bordered > tbody > tr:first-child > th, .panel > .table-responsive > .table-bordered > thead > tr:first-child > td, .panel > .table-responsive > .table-bordered > thead > tr:first-child > th {\n  border-bottom: 0; }\n\n.panel > .table-bordered > tbody > tr:last-child > td, .panel > .table-bordered > tbody > tr:last-child > th, .panel > .table-bordered > tfoot > tr:last-child > td, .panel > .table-bordered > tfoot > tr:last-child > th, .panel > .table-responsive > .table-bordered > tbody > tr:last-child > td, .panel > .table-responsive > .table-bordered > tbody > tr:last-child > th, .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td, .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n  border-bottom: 0; }\n\n.panel > .table-responsive {\n  margin-bottom: 0;\n  border: 0; }\n\n.panel-group {\n  margin-bottom: 20px; }\n\n.panel-group .panel {\n  margin-bottom: 0;\n  border-radius: 4px; }\n\n.panel-group .panel + .panel {\n  margin-top: 5px; }\n\n.panel-group .panel-heading {\n  border-bottom: 0; }\n\n.panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body {\n  border-top: 1px solid #ddd; }\n\n.panel-group .panel-footer {\n  border-top: 0; }\n\n.panel-group .panel-footer + .panel-collapse .panel-body {\n  border-bottom: 1px solid #ddd; }\n\n.panel-default {\n  border-color: #ddd; }\n\n.panel-default > .panel-heading {\n  color: #333;\n  background-color: #f5f5f5;\n  border-color: #ddd; }\n\n.panel-default > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ddd; }\n\n.panel-default > .panel-heading .badge {\n  color: #f5f5f5;\n  background-color: #333; }\n\n.panel-default > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ddd; }\n\n.panel-primary {\n  border-color: #337ab7; }\n\n.panel-primary > .panel-heading {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #337ab7; }\n\n.panel-primary > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #337ab7; }\n\n.panel-primary > .panel-heading .badge {\n  color: #337ab7;\n  background-color: #fff; }\n\n.panel-primary > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #337ab7; }\n\n.panel-success {\n  border-color: #d6e9c6; }\n\n.panel-success > .panel-heading {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6; }\n\n.panel-success > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #d6e9c6; }\n\n.panel-success > .panel-heading .badge {\n  color: #dff0d8;\n  background-color: #3c763d; }\n\n.panel-success > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #d6e9c6; }\n\n.panel-info {\n  border-color: #bce8f1; }\n\n.panel-info > .panel-heading {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1; }\n\n.panel-info > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #bce8f1; }\n\n.panel-info > .panel-heading .badge {\n  color: #d9edf7;\n  background-color: #31708f; }\n\n.panel-info > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #bce8f1; }\n\n.panel-warning {\n  border-color: #faebcc; }\n\n.panel-warning > .panel-heading {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc; }\n\n.panel-warning > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #faebcc; }\n\n.panel-warning > .panel-heading .badge {\n  color: #fcf8e3;\n  background-color: #8a6d3b; }\n\n.panel-warning > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #faebcc; }\n\n.panel-danger {\n  border-color: #ebccd1; }\n\n.panel-danger > .panel-heading {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1; }\n\n.panel-danger > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ebccd1; }\n\n.panel-danger > .panel-heading .badge {\n  color: #f2dede;\n  background-color: #a94442; }\n\n.panel-danger > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ebccd1; }\n\n.embed-responsive {\n  position: relative;\n  display: block;\n  height: 0;\n  padding: 0;\n  overflow: hidden; }\n\n.embed-responsive .embed-responsive-item, .embed-responsive embed, .embed-responsive iframe, .embed-responsive object, .embed-responsive video {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border: 0; }\n\n.embed-responsive-16by9 {\n  padding-bottom: 56.25%; }\n\n.embed-responsive-4by3 {\n  padding-bottom: 75%; }\n\n.well {\n  min-height: 20px;\n  padding: 19px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }\n\n.well blockquote {\n  border-color: #ddd;\n  border-color: rgba(0, 0, 0, 0.15); }\n\n.well-lg {\n  padding: 24px;\n  border-radius: 6px; }\n\n.well-sm {\n  padding: 9px;\n  border-radius: 3px; }\n\n.close {\n  float: right;\n  font-size: 21px;\n  font-weight: 700;\n  line-height: 1;\n  color: #000;\n  text-shadow: 0 1px 0 #fff;\n  filter: alpha(opacity=20);\n  opacity: .2; }\n\n.close:focus, .close:hover {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n  filter: alpha(opacity=50);\n  opacity: .5; }\n\nbutton.close {\n  -webkit-appearance: none;\n  padding: 0;\n  cursor: pointer;\n  background: 0 0;\n  border: 0; }\n\n.modal-open {\n  overflow: hidden; }\n\n.modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1050;\n  display: none;\n  overflow: hidden;\n  -webkit-overflow-scrolling: touch;\n  outline: 0; }\n\n.modal.fade .modal-dialog {\n  -webkit-transition: -webkit-transform .3s ease-out;\n  -o-transition: -o-transform .3s ease-out;\n  transition: transform .3s ease-out;\n  -webkit-transform: translate(0, -25%);\n  -ms-transform: translate(0, -25%);\n  -o-transform: translate(0, -25%);\n  transform: translate(0, -25%); }\n\n.modal.in .modal-dialog {\n  -webkit-transform: translate(0, 0);\n  -ms-transform: translate(0, 0);\n  -o-transform: translate(0, 0);\n  transform: translate(0, 0); }\n\n.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto; }\n\n.modal-dialog {\n  position: relative;\n  width: auto;\n  margin: 10px; }\n\n.modal-content {\n  position: relative;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n  background-clip: padding-box;\n  border: 1px solid #999;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  outline: 0;\n  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); }\n\n.modal-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #000; }\n\n.modal-backdrop.fade {\n  filter: alpha(opacity=0);\n  opacity: 0; }\n\n.modal-backdrop.in {\n  filter: alpha(opacity=50);\n  opacity: .5; }\n\n.modal-header {\n  padding: 15px;\n  border-bottom: 1px solid #e5e5e5; }\n\n.modal-header .close {\n  margin-top: -2px; }\n\n.modal-title {\n  margin: 0;\n  line-height: 1.42857143; }\n\n.modal-body {\n  position: relative;\n  padding: 15px; }\n\n.modal-footer {\n  padding: 15px;\n  text-align: right;\n  border-top: 1px solid #e5e5e5; }\n\n.modal-footer .btn + .btn {\n  margin-bottom: 0;\n  margin-left: 5px; }\n\n.modal-footer .btn-group .btn + .btn {\n  margin-left: -1px; }\n\n.modal-footer .btn-block + .btn-block {\n  margin-left: 0; }\n\n.modal-scrollbar-measure {\n  position: absolute;\n  top: -9999px;\n  width: 50px;\n  height: 50px;\n  overflow: scroll; }\n\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto; }\n  .modal-content {\n    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }\n  .modal-sm {\n    width: 300px; } }\n\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px; } }\n\n.tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n  font-size: 12px;\n  font-style: normal;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: left;\n  text-align: start;\n  text-decoration: none;\n  text-shadow: none;\n  text-transform: none;\n  letter-spacing: normal;\n  word-break: normal;\n  word-spacing: normal;\n  word-wrap: normal;\n  white-space: normal;\n  filter: alpha(opacity=0);\n  opacity: 0;\n  line-break: auto; }\n\n.tooltip.in {\n  filter: alpha(opacity=90);\n  opacity: .9; }\n\n.tooltip.top {\n  padding: 5px 0;\n  margin-top: -3px; }\n\n.tooltip.right {\n  padding: 0 5px;\n  margin-left: 3px; }\n\n.tooltip.bottom {\n  padding: 5px 0;\n  margin-top: 3px; }\n\n.tooltip.left {\n  padding: 0 5px;\n  margin-left: -3px; }\n\n.tooltip-inner {\n  max-width: 200px;\n  padding: 3px 8px;\n  color: #fff;\n  text-align: center;\n  background-color: #000;\n  border-radius: 4px; }\n\n.tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid; }\n\n.tooltip.top .tooltip-arrow {\n  bottom: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000; }\n\n.tooltip.top-left .tooltip-arrow {\n  right: 5px;\n  bottom: 0;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000; }\n\n.tooltip.top-right .tooltip-arrow {\n  bottom: 0;\n  left: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000; }\n\n.tooltip.right .tooltip-arrow {\n  top: 50%;\n  left: 0;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #000; }\n\n.tooltip.left .tooltip-arrow {\n  top: 50%;\n  right: 0;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #000; }\n\n.tooltip.bottom .tooltip-arrow {\n  top: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000; }\n\n.tooltip.bottom-left .tooltip-arrow {\n  top: 0;\n  right: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000; }\n\n.tooltip.bottom-right .tooltip-arrow {\n  top: 0;\n  left: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000; }\n\n.popover {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1060;\n  display: none;\n  max-width: 276px;\n  padding: 1px;\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n  font-size: 14px;\n  font-style: normal;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: left;\n  text-align: start;\n  text-decoration: none;\n  text-shadow: none;\n  text-transform: none;\n  letter-spacing: normal;\n  word-break: normal;\n  word-spacing: normal;\n  word-wrap: normal;\n  white-space: normal;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n  background-clip: padding-box;\n  border: 1px solid #ccc;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  line-break: auto; }\n\n.popover.top {\n  margin-top: -10px; }\n\n.popover.right {\n  margin-left: 10px; }\n\n.popover.bottom {\n  margin-top: 10px; }\n\n.popover.left {\n  margin-left: -10px; }\n\n.popover-title {\n  padding: 8px 14px;\n  margin: 0;\n  font-size: 14px;\n  background-color: #f7f7f7;\n  border-bottom: 1px solid #ebebeb;\n  border-radius: 5px 5px 0 0; }\n\n.popover-content {\n  padding: 9px 14px; }\n\n.popover > .arrow, .popover > .arrow:after {\n  position: absolute;\n  display: block;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid; }\n\n.popover > .arrow {\n  border-width: 11px; }\n\n.popover > .arrow:after {\n  content: \"\";\n  border-width: 10px; }\n\n.popover.top > .arrow {\n  bottom: -11px;\n  left: 50%;\n  margin-left: -11px;\n  border-top-color: #999;\n  border-top-color: rgba(0, 0, 0, 0.25);\n  border-bottom-width: 0; }\n\n.popover.top > .arrow:after {\n  bottom: 1px;\n  margin-left: -10px;\n  content: \" \";\n  border-top-color: #fff;\n  border-bottom-width: 0; }\n\n.popover.right > .arrow {\n  top: 50%;\n  left: -11px;\n  margin-top: -11px;\n  border-right-color: #999;\n  border-right-color: rgba(0, 0, 0, 0.25);\n  border-left-width: 0; }\n\n.popover.right > .arrow:after {\n  bottom: -10px;\n  left: 1px;\n  content: \" \";\n  border-right-color: #fff;\n  border-left-width: 0; }\n\n.popover.bottom > .arrow {\n  top: -11px;\n  left: 50%;\n  margin-left: -11px;\n  border-top-width: 0;\n  border-bottom-color: #999;\n  border-bottom-color: rgba(0, 0, 0, 0.25); }\n\n.popover.bottom > .arrow:after {\n  top: 1px;\n  margin-left: -10px;\n  content: \" \";\n  border-top-width: 0;\n  border-bottom-color: #fff; }\n\n.popover.left > .arrow {\n  top: 50%;\n  right: -11px;\n  margin-top: -11px;\n  border-right-width: 0;\n  border-left-color: #999;\n  border-left-color: rgba(0, 0, 0, 0.25); }\n\n.popover.left > .arrow:after {\n  right: 1px;\n  bottom: -10px;\n  content: \" \";\n  border-right-width: 0;\n  border-left-color: #fff; }\n\n.carousel {\n  position: relative; }\n\n.carousel-inner {\n  position: relative;\n  width: 100%;\n  overflow: hidden; }\n\n.carousel-inner > .item {\n  position: relative;\n  display: none;\n  -webkit-transition: .6s ease-in-out left;\n  -o-transition: .6s ease-in-out left;\n  transition: .6s ease-in-out left; }\n\n.carousel-inner > .item > a > img, .carousel-inner > .item > img {\n  line-height: 1; }\n\n@media all and (transform-3d), (-webkit-transform-3d) {\n  .carousel-inner > .item {\n    -webkit-transition: -webkit-transform .6s ease-in-out;\n    -o-transition: -o-transform .6s ease-in-out;\n    transition: transform .6s ease-in-out;\n    -webkit-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-perspective: 1000px;\n    perspective: 1000px; }\n  .carousel-inner > .item.active.right, .carousel-inner > .item.next {\n    left: 0;\n    -webkit-transform: translate3d(100%, 0, 0);\n    transform: translate3d(100%, 0, 0); }\n  .carousel-inner > .item.active.left, .carousel-inner > .item.prev {\n    left: 0;\n    -webkit-transform: translate3d(-100%, 0, 0);\n    transform: translate3d(-100%, 0, 0); }\n  .carousel-inner > .item.active, .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right {\n    left: 0;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); } }\n\n.carousel-inner > .active, .carousel-inner > .next, .carousel-inner > .prev {\n  display: block; }\n\n.carousel-inner > .active {\n  left: 0; }\n\n.carousel-inner > .next, .carousel-inner > .prev {\n  position: absolute;\n  top: 0;\n  width: 100%; }\n\n.carousel-inner > .next {\n  left: 100%; }\n\n.carousel-inner > .prev {\n  left: -100%; }\n\n.carousel-inner > .next.left, .carousel-inner > .prev.right {\n  left: 0; }\n\n.carousel-inner > .active.left {\n  left: -100%; }\n\n.carousel-inner > .active.right {\n  left: 100%; }\n\n.carousel-control {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 15%;\n  font-size: 20px;\n  color: #fff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n  background-color: rgba(0, 0, 0, 0);\n  filter: alpha(opacity=50);\n  opacity: .5; }\n\n.carousel-control.left {\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);\n  background-repeat: repeat-x; }\n\n.carousel-control.right {\n  right: 0;\n  left: auto;\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);\n  background-repeat: repeat-x; }\n\n.carousel-control:focus, .carousel-control:hover {\n  color: #fff;\n  text-decoration: none;\n  filter: alpha(opacity=90);\n  outline: 0;\n  opacity: .9; }\n\n.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {\n  position: absolute;\n  top: 50%;\n  z-index: 5;\n  display: inline-block;\n  margin-top: -10px; }\n\n.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {\n  left: 50%;\n  margin-left: -10px; }\n\n.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {\n  right: 50%;\n  margin-right: -10px; }\n\n.carousel-control .icon-next, .carousel-control .icon-prev {\n  width: 20px;\n  height: 20px;\n  font-family: serif;\n  line-height: 1; }\n\n.carousel-control .icon-prev:before {\n  content: '\\2039'; }\n\n.carousel-control .icon-next:before {\n  content: '\\203A'; }\n\n.carousel-indicators {\n  position: absolute;\n  bottom: 10px;\n  left: 50%;\n  z-index: 15;\n  width: 60%;\n  padding-left: 0;\n  margin-left: -30%;\n  text-align: center;\n  list-style: none; }\n\n.carousel-indicators li {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n  text-indent: -999px;\n  cursor: pointer;\n  background-color: #000\\9;\n  background-color: rgba(0, 0, 0, 0);\n  border: 1px solid #fff;\n  border-radius: 10px; }\n\n.carousel-indicators .active {\n  width: 12px;\n  height: 12px;\n  margin: 0;\n  background-color: #fff; }\n\n.carousel-caption {\n  position: absolute;\n  right: 15%;\n  bottom: 20px;\n  left: 15%;\n  z-index: 10;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  color: #fff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }\n\n.carousel-caption .btn {\n  text-shadow: none; }\n\n@media screen and (min-width: 768px) {\n  .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {\n    width: 30px;\n    height: 30px;\n    margin-top: -10px;\n    font-size: 30px; }\n  .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {\n    margin-left: -10px; }\n  .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {\n    margin-right: -10px; }\n  .carousel-caption {\n    right: 20%;\n    left: 20%;\n    padding-bottom: 30px; }\n  .carousel-indicators {\n    bottom: 20px; } }\n\n.btn-group-vertical > .btn-group:after, .btn-group-vertical > .btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {\n  display: table;\n  content: \" \"; }\n\n.btn-group-vertical > .btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .modal-header:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after {\n  clear: both; }\n\n.center-block {\n  display: block;\n  margin-right: auto;\n  margin-left: auto; }\n\n.pull-right {\n  float: right !important; }\n\n.pull-left {\n  float: left !important; }\n\n.hide {\n  display: none !important; }\n\n.show {\n  display: block !important; }\n\n.invisible {\n  visibility: hidden; }\n\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0; }\n\n.hidden {\n  display: none !important; }\n\n.affix {\n  position: fixed; }\n\n@-ms-viewport {\n  width: device-width; }\n\n.visible-lg, .visible-md, .visible-sm, .visible-xs {\n  display: none !important; }\n\n.visible-lg-block, .visible-lg-inline, .visible-lg-inline-block, .visible-md-block, .visible-md-inline, .visible-md-inline-block, .visible-sm-block, .visible-sm-inline, .visible-sm-inline-block, .visible-xs-block, .visible-xs-inline, .visible-xs-inline-block {\n  display: none !important; }\n\n@media (max-width: 767px) {\n  .visible-xs {\n    display: block !important; }\n  table.visible-xs {\n    display: table !important; }\n  tr.visible-xs {\n    display: table-row !important; }\n  td.visible-xs, th.visible-xs {\n    display: table-cell !important; } }\n\n@media (max-width: 767px) {\n  .visible-xs-block {\n    display: block !important; } }\n\n@media (max-width: 767px) {\n  .visible-xs-inline {\n    display: inline !important; } }\n\n@media (max-width: 767px) {\n  .visible-xs-inline-block {\n    display: inline-block !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm {\n    display: block !important; }\n  table.visible-sm {\n    display: table !important; }\n  tr.visible-sm {\n    display: table-row !important; }\n  td.visible-sm, th.visible-sm {\n    display: table-cell !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-block {\n    display: block !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline {\n    display: inline !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline-block {\n    display: inline-block !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md {\n    display: block !important; }\n  table.visible-md {\n    display: table !important; }\n  tr.visible-md {\n    display: table-row !important; }\n  td.visible-md, th.visible-md {\n    display: table-cell !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-block {\n    display: block !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline {\n    display: inline !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline-block {\n    display: inline-block !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg {\n    display: block !important; }\n  table.visible-lg {\n    display: table !important; }\n  tr.visible-lg {\n    display: table-row !important; }\n  td.visible-lg, th.visible-lg {\n    display: table-cell !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg-block {\n    display: block !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg-inline {\n    display: inline !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg-inline-block {\n    display: inline-block !important; } }\n\n@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important; } }\n\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important; } }\n\n.visible-print {\n  display: none !important; }\n\n@media print {\n  .visible-print {\n    display: block !important; }\n  table.visible-print {\n    display: table !important; }\n  tr.visible-print {\n    display: table-row !important; }\n  td.visible-print, th.visible-print {\n    display: table-cell !important; } }\n\n.visible-print-block {\n  display: none !important; }\n\n@media print {\n  .visible-print-block {\n    display: block !important; } }\n\n.visible-print-inline {\n  display: none !important; }\n\n@media print {\n  .visible-print-inline {\n    display: inline !important; } }\n\n.visible-print-inline-block {\n  display: none !important; }\n\n@media print {\n  .visible-print-inline-block {\n    display: inline-block !important; } }\n\n@media print {\n  .hidden-print {\n    display: none !important; } }\n", ""]);
+exports.push([module.i, "/*!\n * Bootstrap v3.3.7 (http://getbootstrap.com)\n * Copyright 2011-2016 Twitter, Inc.\n * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\nhtml {\n  font-family: sans-serif;\n  -webkit-text-size-adjust: 100%;\n  -ms-text-size-adjust: 100%; }\n\nbody {\n  margin: 0; }\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block; }\n\naudio, canvas, progress, video {\n  display: inline-block;\n  vertical-align: baseline; }\n\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n[hidden], template {\n  display: none; }\n\na {\n  background-color: transparent; }\n\na:active, a:hover {\n  outline: 0; }\n\nabbr[title] {\n  border-bottom: 1px dotted; }\n\nb, strong {\n  font-weight: 700; }\n\ndfn {\n  font-style: italic; }\n\nh1 {\n  margin: .67em 0;\n  font-size: 2em; }\n\nmark {\n  color: #000;\n  background: #ff0; }\n\nsmall {\n  font-size: 80%; }\n\nsub, sup {\n  position: relative;\n  font-size: 75%;\n  line-height: 0;\n  vertical-align: baseline; }\n\nsup {\n  top: -.5em; }\n\nsub {\n  bottom: -.25em; }\n\nimg {\n  border: 0; }\n\nsvg:not(:root) {\n  overflow: hidden; }\n\nfigure {\n  margin: 1em 40px; }\n\nhr {\n  height: 0;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box; }\n\npre {\n  overflow: auto; }\n\ncode, kbd, pre, samp {\n  font-family: monospace,monospace;\n  font-size: 1em; }\n\nbutton, input, optgroup, select, textarea {\n  margin: 0;\n  font: inherit;\n  color: inherit; }\n\nbutton {\n  overflow: visible; }\n\nbutton, select {\n  text-transform: none; }\n\nbutton, html input[type=button], input[type=reset], input[type=submit] {\n  -webkit-appearance: button;\n  cursor: pointer; }\n\nbutton[disabled], html input[disabled] {\n  cursor: default; }\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  padding: 0;\n  border: 0; }\n\ninput {\n  line-height: normal; }\n\ninput[type=checkbox], input[type=radio] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  padding: 0; }\n\ninput[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {\n  height: auto; }\n\ninput[type=search] {\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  -webkit-appearance: textfield; }\n\ninput[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\nfieldset {\n  padding: .35em .625em .75em;\n  margin: 0 2px;\n  border: 1px solid silver; }\n\nlegend {\n  padding: 0;\n  border: 0; }\n\ntextarea {\n  overflow: auto; }\n\noptgroup {\n  font-weight: 700; }\n\ntable {\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntd, th {\n  padding: 0; }\n\n/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */\n@media print {\n  *, :after, :before {\n    color: #000 !important;\n    text-shadow: none !important;\n    background: 0 0 !important;\n    -webkit-box-shadow: none !important;\n    box-shadow: none !important; }\n  a, a:visited {\n    text-decoration: underline; }\n  a[href]:after {\n    content: \" (\" attr(href) \")\"; }\n  abbr[title]:after {\n    content: \" (\" attr(title) \")\"; }\n  a[href^=\"javascript:\"]:after, a[href^=\"#\"]:after {\n    content: \"\"; }\n  blockquote, pre {\n    border: 1px solid #999;\n    page-break-inside: avoid; }\n  thead {\n    display: table-header-group; }\n  img, tr {\n    page-break-inside: avoid; }\n  img {\n    max-width: 100% !important; }\n  h2, h3, p {\n    orphans: 3;\n    widows: 3; }\n  h2, h3 {\n    page-break-after: avoid; }\n  .navbar {\n    display: none; }\n  .btn > .caret, .dropup > .btn > .caret {\n    border-top-color: #000 !important; }\n  .label {\n    border: 1px solid #000; }\n  .table {\n    border-collapse: collapse !important; }\n  .table td, .table th {\n    background-color: #fff !important; }\n  .table-bordered td, .table-bordered th {\n    border: 1px solid #ddd !important; } }\n\n@font-face {\n  font-family: 'Glyphicons Halflings';\n  src: url(" + __webpack_require__(216) + ");\n  src: url(" + __webpack_require__(216) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(355) + ") format(\"woff2\"), url(" + __webpack_require__(356) + ") format(\"woff\"), url(" + __webpack_require__(357) + ") format(\"truetype\"), url(" + __webpack_require__(358) + "#glyphicons_halflingsregular) format(\"svg\"); }\n\n.glyphicon {\n  position: relative;\n  top: 1px;\n  display: inline-block;\n  font-family: 'Glyphicons Halflings';\n  font-style: normal;\n  font-weight: 400;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.glyphicon-asterisk:before {\n  content: \"*\"; }\n\n.glyphicon-plus:before {\n  content: \"+\"; }\n\n.glyphicon-eur:before, .glyphicon-euro:before {\n  content: \"\\20AC\"; }\n\n.glyphicon-minus:before {\n  content: \"\\2212\"; }\n\n.glyphicon-cloud:before {\n  content: \"\\2601\"; }\n\n.glyphicon-envelope:before {\n  content: \"\\2709\"; }\n\n.glyphicon-pencil:before {\n  content: \"\\270F\"; }\n\n.glyphicon-glass:before {\n  content: \"\\E001\"; }\n\n.glyphicon-music:before {\n  content: \"\\E002\"; }\n\n.glyphicon-search:before {\n  content: \"\\E003\"; }\n\n.glyphicon-heart:before {\n  content: \"\\E005\"; }\n\n.glyphicon-star:before {\n  content: \"\\E006\"; }\n\n.glyphicon-star-empty:before {\n  content: \"\\E007\"; }\n\n.glyphicon-user:before {\n  content: \"\\E008\"; }\n\n.glyphicon-film:before {\n  content: \"\\E009\"; }\n\n.glyphicon-th-large:before {\n  content: \"\\E010\"; }\n\n.glyphicon-th:before {\n  content: \"\\E011\"; }\n\n.glyphicon-th-list:before {\n  content: \"\\E012\"; }\n\n.glyphicon-ok:before {\n  content: \"\\E013\"; }\n\n.glyphicon-remove:before {\n  content: \"\\E014\"; }\n\n.glyphicon-zoom-in:before {\n  content: \"\\E015\"; }\n\n.glyphicon-zoom-out:before {\n  content: \"\\E016\"; }\n\n.glyphicon-off:before {\n  content: \"\\E017\"; }\n\n.glyphicon-signal:before {\n  content: \"\\E018\"; }\n\n.glyphicon-cog:before {\n  content: \"\\E019\"; }\n\n.glyphicon-trash:before {\n  content: \"\\E020\"; }\n\n.glyphicon-home:before {\n  content: \"\\E021\"; }\n\n.glyphicon-file:before {\n  content: \"\\E022\"; }\n\n.glyphicon-time:before {\n  content: \"\\E023\"; }\n\n.glyphicon-road:before {\n  content: \"\\E024\"; }\n\n.glyphicon-download-alt:before {\n  content: \"\\E025\"; }\n\n.glyphicon-download:before {\n  content: \"\\E026\"; }\n\n.glyphicon-upload:before {\n  content: \"\\E027\"; }\n\n.glyphicon-inbox:before {\n  content: \"\\E028\"; }\n\n.glyphicon-play-circle:before {\n  content: \"\\E029\"; }\n\n.glyphicon-repeat:before {\n  content: \"\\E030\"; }\n\n.glyphicon-refresh:before {\n  content: \"\\E031\"; }\n\n.glyphicon-list-alt:before {\n  content: \"\\E032\"; }\n\n.glyphicon-lock:before {\n  content: \"\\E033\"; }\n\n.glyphicon-flag:before {\n  content: \"\\E034\"; }\n\n.glyphicon-headphones:before {\n  content: \"\\E035\"; }\n\n.glyphicon-volume-off:before {\n  content: \"\\E036\"; }\n\n.glyphicon-volume-down:before {\n  content: \"\\E037\"; }\n\n.glyphicon-volume-up:before {\n  content: \"\\E038\"; }\n\n.glyphicon-qrcode:before {\n  content: \"\\E039\"; }\n\n.glyphicon-barcode:before {\n  content: \"\\E040\"; }\n\n.glyphicon-tag:before {\n  content: \"\\E041\"; }\n\n.glyphicon-tags:before {\n  content: \"\\E042\"; }\n\n.glyphicon-book:before {\n  content: \"\\E043\"; }\n\n.glyphicon-bookmark:before {\n  content: \"\\E044\"; }\n\n.glyphicon-print:before {\n  content: \"\\E045\"; }\n\n.glyphicon-camera:before {\n  content: \"\\E046\"; }\n\n.glyphicon-font:before {\n  content: \"\\E047\"; }\n\n.glyphicon-bold:before {\n  content: \"\\E048\"; }\n\n.glyphicon-italic:before {\n  content: \"\\E049\"; }\n\n.glyphicon-text-height:before {\n  content: \"\\E050\"; }\n\n.glyphicon-text-width:before {\n  content: \"\\E051\"; }\n\n.glyphicon-align-left:before {\n  content: \"\\E052\"; }\n\n.glyphicon-align-center:before {\n  content: \"\\E053\"; }\n\n.glyphicon-align-right:before {\n  content: \"\\E054\"; }\n\n.glyphicon-align-justify:before {\n  content: \"\\E055\"; }\n\n.glyphicon-list:before {\n  content: \"\\E056\"; }\n\n.glyphicon-indent-left:before {\n  content: \"\\E057\"; }\n\n.glyphicon-indent-right:before {\n  content: \"\\E058\"; }\n\n.glyphicon-facetime-video:before {\n  content: \"\\E059\"; }\n\n.glyphicon-picture:before {\n  content: \"\\E060\"; }\n\n.glyphicon-map-marker:before {\n  content: \"\\E062\"; }\n\n.glyphicon-adjust:before {\n  content: \"\\E063\"; }\n\n.glyphicon-tint:before {\n  content: \"\\E064\"; }\n\n.glyphicon-edit:before {\n  content: \"\\E065\"; }\n\n.glyphicon-share:before {\n  content: \"\\E066\"; }\n\n.glyphicon-check:before {\n  content: \"\\E067\"; }\n\n.glyphicon-move:before {\n  content: \"\\E068\"; }\n\n.glyphicon-step-backward:before {\n  content: \"\\E069\"; }\n\n.glyphicon-fast-backward:before {\n  content: \"\\E070\"; }\n\n.glyphicon-backward:before {\n  content: \"\\E071\"; }\n\n.glyphicon-play:before {\n  content: \"\\E072\"; }\n\n.glyphicon-pause:before {\n  content: \"\\E073\"; }\n\n.glyphicon-stop:before {\n  content: \"\\E074\"; }\n\n.glyphicon-forward:before {\n  content: \"\\E075\"; }\n\n.glyphicon-fast-forward:before {\n  content: \"\\E076\"; }\n\n.glyphicon-step-forward:before {\n  content: \"\\E077\"; }\n\n.glyphicon-eject:before {\n  content: \"\\E078\"; }\n\n.glyphicon-chevron-left:before {\n  content: \"\\E079\"; }\n\n.glyphicon-chevron-right:before {\n  content: \"\\E080\"; }\n\n.glyphicon-plus-sign:before {\n  content: \"\\E081\"; }\n\n.glyphicon-minus-sign:before {\n  content: \"\\E082\"; }\n\n.glyphicon-remove-sign:before {\n  content: \"\\E083\"; }\n\n.glyphicon-ok-sign:before {\n  content: \"\\E084\"; }\n\n.glyphicon-question-sign:before {\n  content: \"\\E085\"; }\n\n.glyphicon-info-sign:before {\n  content: \"\\E086\"; }\n\n.glyphicon-screenshot:before {\n  content: \"\\E087\"; }\n\n.glyphicon-remove-circle:before {\n  content: \"\\E088\"; }\n\n.glyphicon-ok-circle:before {\n  content: \"\\E089\"; }\n\n.glyphicon-ban-circle:before {\n  content: \"\\E090\"; }\n\n.glyphicon-arrow-left:before {\n  content: \"\\E091\"; }\n\n.glyphicon-arrow-right:before {\n  content: \"\\E092\"; }\n\n.glyphicon-arrow-up:before {\n  content: \"\\E093\"; }\n\n.glyphicon-arrow-down:before {\n  content: \"\\E094\"; }\n\n.glyphicon-share-alt:before {\n  content: \"\\E095\"; }\n\n.glyphicon-resize-full:before {\n  content: \"\\E096\"; }\n\n.glyphicon-resize-small:before {\n  content: \"\\E097\"; }\n\n.glyphicon-exclamation-sign:before {\n  content: \"\\E101\"; }\n\n.glyphicon-gift:before {\n  content: \"\\E102\"; }\n\n.glyphicon-leaf:before {\n  content: \"\\E103\"; }\n\n.glyphicon-fire:before {\n  content: \"\\E104\"; }\n\n.glyphicon-eye-open:before {\n  content: \"\\E105\"; }\n\n.glyphicon-eye-close:before {\n  content: \"\\E106\"; }\n\n.glyphicon-warning-sign:before {\n  content: \"\\E107\"; }\n\n.glyphicon-plane:before {\n  content: \"\\E108\"; }\n\n.glyphicon-calendar:before {\n  content: \"\\E109\"; }\n\n.glyphicon-random:before {\n  content: \"\\E110\"; }\n\n.glyphicon-comment:before {\n  content: \"\\E111\"; }\n\n.glyphicon-magnet:before {\n  content: \"\\E112\"; }\n\n.glyphicon-chevron-up:before {\n  content: \"\\E113\"; }\n\n.glyphicon-chevron-down:before {\n  content: \"\\E114\"; }\n\n.glyphicon-retweet:before {\n  content: \"\\E115\"; }\n\n.glyphicon-shopping-cart:before {\n  content: \"\\E116\"; }\n\n.glyphicon-folder-close:before {\n  content: \"\\E117\"; }\n\n.glyphicon-folder-open:before {\n  content: \"\\E118\"; }\n\n.glyphicon-resize-vertical:before {\n  content: \"\\E119\"; }\n\n.glyphicon-resize-horizontal:before {\n  content: \"\\E120\"; }\n\n.glyphicon-hdd:before {\n  content: \"\\E121\"; }\n\n.glyphicon-bullhorn:before {\n  content: \"\\E122\"; }\n\n.glyphicon-bell:before {\n  content: \"\\E123\"; }\n\n.glyphicon-certificate:before {\n  content: \"\\E124\"; }\n\n.glyphicon-thumbs-up:before {\n  content: \"\\E125\"; }\n\n.glyphicon-thumbs-down:before {\n  content: \"\\E126\"; }\n\n.glyphicon-hand-right:before {\n  content: \"\\E127\"; }\n\n.glyphicon-hand-left:before {\n  content: \"\\E128\"; }\n\n.glyphicon-hand-up:before {\n  content: \"\\E129\"; }\n\n.glyphicon-hand-down:before {\n  content: \"\\E130\"; }\n\n.glyphicon-circle-arrow-right:before {\n  content: \"\\E131\"; }\n\n.glyphicon-circle-arrow-left:before {\n  content: \"\\E132\"; }\n\n.glyphicon-circle-arrow-up:before {\n  content: \"\\E133\"; }\n\n.glyphicon-circle-arrow-down:before {\n  content: \"\\E134\"; }\n\n.glyphicon-globe:before {\n  content: \"\\E135\"; }\n\n.glyphicon-wrench:before {\n  content: \"\\E136\"; }\n\n.glyphicon-tasks:before {\n  content: \"\\E137\"; }\n\n.glyphicon-filter:before {\n  content: \"\\E138\"; }\n\n.glyphicon-briefcase:before {\n  content: \"\\E139\"; }\n\n.glyphicon-fullscreen:before {\n  content: \"\\E140\"; }\n\n.glyphicon-dashboard:before {\n  content: \"\\E141\"; }\n\n.glyphicon-paperclip:before {\n  content: \"\\E142\"; }\n\n.glyphicon-heart-empty:before {\n  content: \"\\E143\"; }\n\n.glyphicon-link:before {\n  content: \"\\E144\"; }\n\n.glyphicon-phone:before {\n  content: \"\\E145\"; }\n\n.glyphicon-pushpin:before {\n  content: \"\\E146\"; }\n\n.glyphicon-usd:before {\n  content: \"\\E148\"; }\n\n.glyphicon-gbp:before {\n  content: \"\\E149\"; }\n\n.glyphicon-sort:before {\n  content: \"\\E150\"; }\n\n.glyphicon-sort-by-alphabet:before {\n  content: \"\\E151\"; }\n\n.glyphicon-sort-by-alphabet-alt:before {\n  content: \"\\E152\"; }\n\n.glyphicon-sort-by-order:before {\n  content: \"\\E153\"; }\n\n.glyphicon-sort-by-order-alt:before {\n  content: \"\\E154\"; }\n\n.glyphicon-sort-by-attributes:before {\n  content: \"\\E155\"; }\n\n.glyphicon-sort-by-attributes-alt:before {\n  content: \"\\E156\"; }\n\n.glyphicon-unchecked:before {\n  content: \"\\E157\"; }\n\n.glyphicon-expand:before {\n  content: \"\\E158\"; }\n\n.glyphicon-collapse-down:before {\n  content: \"\\E159\"; }\n\n.glyphicon-collapse-up:before {\n  content: \"\\E160\"; }\n\n.glyphicon-log-in:before {\n  content: \"\\E161\"; }\n\n.glyphicon-flash:before {\n  content: \"\\E162\"; }\n\n.glyphicon-log-out:before {\n  content: \"\\E163\"; }\n\n.glyphicon-new-window:before {\n  content: \"\\E164\"; }\n\n.glyphicon-record:before {\n  content: \"\\E165\"; }\n\n.glyphicon-save:before {\n  content: \"\\E166\"; }\n\n.glyphicon-open:before {\n  content: \"\\E167\"; }\n\n.glyphicon-saved:before {\n  content: \"\\E168\"; }\n\n.glyphicon-import:before {\n  content: \"\\E169\"; }\n\n.glyphicon-export:before {\n  content: \"\\E170\"; }\n\n.glyphicon-send:before {\n  content: \"\\E171\"; }\n\n.glyphicon-floppy-disk:before {\n  content: \"\\E172\"; }\n\n.glyphicon-floppy-saved:before {\n  content: \"\\E173\"; }\n\n.glyphicon-floppy-remove:before {\n  content: \"\\E174\"; }\n\n.glyphicon-floppy-save:before {\n  content: \"\\E175\"; }\n\n.glyphicon-floppy-open:before {\n  content: \"\\E176\"; }\n\n.glyphicon-credit-card:before {\n  content: \"\\E177\"; }\n\n.glyphicon-transfer:before {\n  content: \"\\E178\"; }\n\n.glyphicon-cutlery:before {\n  content: \"\\E179\"; }\n\n.glyphicon-header:before {\n  content: \"\\E180\"; }\n\n.glyphicon-compressed:before {\n  content: \"\\E181\"; }\n\n.glyphicon-earphone:before {\n  content: \"\\E182\"; }\n\n.glyphicon-phone-alt:before {\n  content: \"\\E183\"; }\n\n.glyphicon-tower:before {\n  content: \"\\E184\"; }\n\n.glyphicon-stats:before {\n  content: \"\\E185\"; }\n\n.glyphicon-sd-video:before {\n  content: \"\\E186\"; }\n\n.glyphicon-hd-video:before {\n  content: \"\\E187\"; }\n\n.glyphicon-subtitles:before {\n  content: \"\\E188\"; }\n\n.glyphicon-sound-stereo:before {\n  content: \"\\E189\"; }\n\n.glyphicon-sound-dolby:before {\n  content: \"\\E190\"; }\n\n.glyphicon-sound-5-1:before {\n  content: \"\\E191\"; }\n\n.glyphicon-sound-6-1:before {\n  content: \"\\E192\"; }\n\n.glyphicon-sound-7-1:before {\n  content: \"\\E193\"; }\n\n.glyphicon-copyright-mark:before {\n  content: \"\\E194\"; }\n\n.glyphicon-registration-mark:before {\n  content: \"\\E195\"; }\n\n.glyphicon-cloud-download:before {\n  content: \"\\E197\"; }\n\n.glyphicon-cloud-upload:before {\n  content: \"\\E198\"; }\n\n.glyphicon-tree-conifer:before {\n  content: \"\\E199\"; }\n\n.glyphicon-tree-deciduous:before {\n  content: \"\\E200\"; }\n\n.glyphicon-cd:before {\n  content: \"\\E201\"; }\n\n.glyphicon-save-file:before {\n  content: \"\\E202\"; }\n\n.glyphicon-open-file:before {\n  content: \"\\E203\"; }\n\n.glyphicon-level-up:before {\n  content: \"\\E204\"; }\n\n.glyphicon-copy:before {\n  content: \"\\E205\"; }\n\n.glyphicon-paste:before {\n  content: \"\\E206\"; }\n\n.glyphicon-alert:before {\n  content: \"\\E209\"; }\n\n.glyphicon-equalizer:before {\n  content: \"\\E210\"; }\n\n.glyphicon-king:before {\n  content: \"\\E211\"; }\n\n.glyphicon-queen:before {\n  content: \"\\E212\"; }\n\n.glyphicon-pawn:before {\n  content: \"\\E213\"; }\n\n.glyphicon-bishop:before {\n  content: \"\\E214\"; }\n\n.glyphicon-knight:before {\n  content: \"\\E215\"; }\n\n.glyphicon-baby-formula:before {\n  content: \"\\E216\"; }\n\n.glyphicon-tent:before {\n  content: \"\\26FA\"; }\n\n.glyphicon-blackboard:before {\n  content: \"\\E218\"; }\n\n.glyphicon-bed:before {\n  content: \"\\E219\"; }\n\n.glyphicon-apple:before {\n  content: \"\\F8FF\"; }\n\n.glyphicon-erase:before {\n  content: \"\\E221\"; }\n\n.glyphicon-hourglass:before {\n  content: \"\\231B\"; }\n\n.glyphicon-lamp:before {\n  content: \"\\E223\"; }\n\n.glyphicon-duplicate:before {\n  content: \"\\E224\"; }\n\n.glyphicon-piggy-bank:before {\n  content: \"\\E225\"; }\n\n.glyphicon-scissors:before {\n  content: \"\\E226\"; }\n\n.glyphicon-bitcoin:before {\n  content: \"\\E227\"; }\n\n.glyphicon-btc:before {\n  content: \"\\E227\"; }\n\n.glyphicon-xbt:before {\n  content: \"\\E227\"; }\n\n.glyphicon-yen:before {\n  content: \"\\A5\"; }\n\n.glyphicon-jpy:before {\n  content: \"\\A5\"; }\n\n.glyphicon-ruble:before {\n  content: \"\\20BD\"; }\n\n.glyphicon-rub:before {\n  content: \"\\20BD\"; }\n\n.glyphicon-scale:before {\n  content: \"\\E230\"; }\n\n.glyphicon-ice-lolly:before {\n  content: \"\\E231\"; }\n\n.glyphicon-ice-lolly-tasted:before {\n  content: \"\\E232\"; }\n\n.glyphicon-education:before {\n  content: \"\\E233\"; }\n\n.glyphicon-option-horizontal:before {\n  content: \"\\E234\"; }\n\n.glyphicon-option-vertical:before {\n  content: \"\\E235\"; }\n\n.glyphicon-menu-hamburger:before {\n  content: \"\\E236\"; }\n\n.glyphicon-modal-window:before {\n  content: \"\\E237\"; }\n\n.glyphicon-oil:before {\n  content: \"\\E238\"; }\n\n.glyphicon-grain:before {\n  content: \"\\E239\"; }\n\n.glyphicon-sunglasses:before {\n  content: \"\\E240\"; }\n\n.glyphicon-text-size:before {\n  content: \"\\E241\"; }\n\n.glyphicon-text-color:before {\n  content: \"\\E242\"; }\n\n.glyphicon-text-background:before {\n  content: \"\\E243\"; }\n\n.glyphicon-object-align-top:before {\n  content: \"\\E244\"; }\n\n.glyphicon-object-align-bottom:before {\n  content: \"\\E245\"; }\n\n.glyphicon-object-align-horizontal:before {\n  content: \"\\E246\"; }\n\n.glyphicon-object-align-left:before {\n  content: \"\\E247\"; }\n\n.glyphicon-object-align-vertical:before {\n  content: \"\\E248\"; }\n\n.glyphicon-object-align-right:before {\n  content: \"\\E249\"; }\n\n.glyphicon-triangle-right:before {\n  content: \"\\E250\"; }\n\n.glyphicon-triangle-left:before {\n  content: \"\\E251\"; }\n\n.glyphicon-triangle-bottom:before {\n  content: \"\\E252\"; }\n\n.glyphicon-triangle-top:before {\n  content: \"\\E253\"; }\n\n.glyphicon-console:before {\n  content: \"\\E254\"; }\n\n.glyphicon-superscript:before {\n  content: \"\\E255\"; }\n\n.glyphicon-subscript:before {\n  content: \"\\E256\"; }\n\n.glyphicon-menu-left:before {\n  content: \"\\E257\"; }\n\n.glyphicon-menu-right:before {\n  content: \"\\E258\"; }\n\n.glyphicon-menu-down:before {\n  content: \"\\E259\"; }\n\n.glyphicon-menu-up:before {\n  content: \"\\E260\"; }\n\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n:after, :before {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nhtml {\n  font-size: 10px;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n\nbody {\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #333;\n  background-color: #fff; }\n\nbutton, input, select, textarea {\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit; }\n\na {\n  color: #337ab7;\n  text-decoration: none; }\n\na:focus, a:hover {\n  color: #23527c;\n  text-decoration: underline; }\n\na:focus {\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\nfigure {\n  margin: 0; }\n\nimg {\n  vertical-align: middle; }\n\n.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {\n  display: block;\n  max-width: 100%;\n  height: auto; }\n\n.img-rounded {\n  border-radius: 6px; }\n\n.img-thumbnail {\n  display: inline-block;\n  max-width: 100%;\n  height: auto;\n  padding: 4px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: all .2s ease-in-out;\n  -o-transition: all .2s ease-in-out;\n  transition: all .2s ease-in-out; }\n\n.img-circle {\n  border-radius: 50%; }\n\nhr {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  border: 0;\n  border-top: 1px solid #eee; }\n\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto; }\n\n[role=button] {\n  cursor: pointer; }\n\n.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.1;\n  color: inherit; }\n\n.h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, .h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {\n  font-weight: 400;\n  line-height: 1;\n  color: #777; }\n\n.h1, .h2, .h3, h1, h2, h3 {\n  margin-top: 20px;\n  margin-bottom: 10px; }\n\n.h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small {\n  font-size: 65%; }\n\n.h4, .h5, .h6, h4, h5, h6 {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {\n  font-size: 75%; }\n\n.h1, h1 {\n  font-size: 36px; }\n\n.h2, h2 {\n  font-size: 30px; }\n\n.h3, h3 {\n  font-size: 24px; }\n\n.h4, h4 {\n  font-size: 18px; }\n\n.h5, h5 {\n  font-size: 14px; }\n\n.h6, h6 {\n  font-size: 12px; }\n\np {\n  margin: 0 0 10px; }\n\n.lead {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 300;\n  line-height: 1.4; }\n\n@media (min-width: 768px) {\n  .lead {\n    font-size: 21px; } }\n\n.small, small {\n  font-size: 85%; }\n\n.mark, mark {\n  padding: .2em;\n  background-color: #fcf8e3; }\n\n.text-left {\n  text-align: left; }\n\n.text-right {\n  text-align: right; }\n\n.text-center {\n  text-align: center; }\n\n.text-justify {\n  text-align: justify; }\n\n.text-nowrap {\n  white-space: nowrap; }\n\n.text-lowercase {\n  text-transform: lowercase; }\n\n.text-uppercase {\n  text-transform: uppercase; }\n\n.text-capitalize {\n  text-transform: capitalize; }\n\n.text-muted {\n  color: #777; }\n\n.text-primary {\n  color: #337ab7; }\n\na.text-primary:focus, a.text-primary:hover {\n  color: #286090; }\n\n.text-success {\n  color: #3c763d; }\n\na.text-success:focus, a.text-success:hover {\n  color: #2b542c; }\n\n.text-info {\n  color: #31708f; }\n\na.text-info:focus, a.text-info:hover {\n  color: #245269; }\n\n.text-warning {\n  color: #8a6d3b; }\n\na.text-warning:focus, a.text-warning:hover {\n  color: #66512c; }\n\n.text-danger {\n  color: #a94442; }\n\na.text-danger:focus, a.text-danger:hover {\n  color: #843534; }\n\n.bg-primary {\n  color: #fff;\n  background-color: #337ab7; }\n\na.bg-primary:focus, a.bg-primary:hover {\n  background-color: #286090; }\n\n.bg-success {\n  background-color: #dff0d8; }\n\na.bg-success:focus, a.bg-success:hover {\n  background-color: #c1e2b3; }\n\n.bg-info {\n  background-color: #d9edf7; }\n\na.bg-info:focus, a.bg-info:hover {\n  background-color: #afd9ee; }\n\n.bg-warning {\n  background-color: #fcf8e3; }\n\na.bg-warning:focus, a.bg-warning:hover {\n  background-color: #f7ecb5; }\n\n.bg-danger {\n  background-color: #f2dede; }\n\na.bg-danger:focus, a.bg-danger:hover {\n  background-color: #e4b9b9; }\n\n.page-header {\n  padding-bottom: 9px;\n  margin: 40px 0 20px;\n  border-bottom: 1px solid #eee; }\n\nol, ul {\n  margin-top: 0;\n  margin-bottom: 10px; }\n\nol ol, ol ul, ul ol, ul ul {\n  margin-bottom: 0; }\n\n.list-unstyled {\n  padding-left: 0;\n  list-style: none; }\n\n.list-inline {\n  padding-left: 0;\n  margin-left: -5px;\n  list-style: none; }\n\n.list-inline > li {\n  display: inline-block;\n  padding-right: 5px;\n  padding-left: 5px; }\n\ndl {\n  margin-top: 0;\n  margin-bottom: 20px; }\n\ndd, dt {\n  line-height: 1.42857143; }\n\ndt {\n  font-weight: 700; }\n\ndd {\n  margin-left: 0; }\n\n@media (min-width: 768px) {\n  .dl-horizontal dt {\n    float: left;\n    width: 160px;\n    overflow: hidden;\n    clear: left;\n    text-align: right;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n  .dl-horizontal dd {\n    margin-left: 180px; } }\n\nabbr[data-original-title], abbr[title] {\n  cursor: help;\n  border-bottom: 1px dotted #777; }\n\n.initialism {\n  font-size: 90%;\n  text-transform: uppercase; }\n\nblockquote {\n  padding: 10px 20px;\n  margin: 0 0 20px;\n  font-size: 17.5px;\n  border-left: 5px solid #eee; }\n\nblockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {\n  margin-bottom: 0; }\n\nblockquote .small, blockquote footer, blockquote small {\n  display: block;\n  font-size: 80%;\n  line-height: 1.42857143;\n  color: #777; }\n\nblockquote .small:before, blockquote footer:before, blockquote small:before {\n  content: '\\2014   \\A0'; }\n\n.blockquote-reverse, blockquote.pull-right {\n  padding-right: 15px;\n  padding-left: 0;\n  text-align: right;\n  border-right: 5px solid #eee;\n  border-left: 0; }\n\n.blockquote-reverse .small:before, .blockquote-reverse footer:before, .blockquote-reverse small:before, blockquote.pull-right .small:before, blockquote.pull-right footer:before, blockquote.pull-right small:before {\n  content: ''; }\n\n.blockquote-reverse .small:after, .blockquote-reverse footer:after, .blockquote-reverse small:after, blockquote.pull-right .small:after, blockquote.pull-right footer:after, blockquote.pull-right small:after {\n  content: '\\A0   \\2014'; }\n\naddress {\n  margin-bottom: 20px;\n  font-style: normal;\n  line-height: 1.42857143; }\n\ncode, kbd, pre, samp {\n  font-family: Menlo,Monaco,Consolas,\"Courier New\",monospace; }\n\ncode {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px; }\n\nkbd {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #fff;\n  background-color: #333;\n  border-radius: 3px;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25); }\n\nkbd kbd {\n  padding: 0;\n  font-size: 100%;\n  font-weight: 700;\n  -webkit-box-shadow: none;\n  box-shadow: none; }\n\npre {\n  display: block;\n  padding: 9.5px;\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 1.42857143;\n  color: #333;\n  word-break: break-all;\n  word-wrap: break-word;\n  background-color: #f5f5f5;\n  border: 1px solid #ccc;\n  border-radius: 4px; }\n\npre code {\n  padding: 0;\n  font-size: inherit;\n  color: inherit;\n  white-space: pre-wrap;\n  background-color: transparent;\n  border-radius: 0; }\n\n.pre-scrollable {\n  max-height: 340px;\n  overflow-y: scroll; }\n\n.container {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto; }\n\n@media (min-width: 768px) {\n  .container {\n    width: 750px; } }\n\n@media (min-width: 992px) {\n  .container {\n    width: 970px; } }\n\n@media (min-width: 1200px) {\n  .container {\n    width: 1170px; } }\n\n.container-fluid {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto; }\n\n.row {\n  margin-right: -15px;\n  margin-left: -15px; }\n\n.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {\n  position: relative;\n  min-height: 1px;\n  padding-right: 15px;\n  padding-left: 15px; }\n\n.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {\n  float: left; }\n\n.col-xs-12 {\n  width: 100%; }\n\n.col-xs-11 {\n  width: 91.66666667%; }\n\n.col-xs-10 {\n  width: 83.33333333%; }\n\n.col-xs-9 {\n  width: 75%; }\n\n.col-xs-8 {\n  width: 66.66666667%; }\n\n.col-xs-7 {\n  width: 58.33333333%; }\n\n.col-xs-6 {\n  width: 50%; }\n\n.col-xs-5 {\n  width: 41.66666667%; }\n\n.col-xs-4 {\n  width: 33.33333333%; }\n\n.col-xs-3 {\n  width: 25%; }\n\n.col-xs-2 {\n  width: 16.66666667%; }\n\n.col-xs-1 {\n  width: 8.33333333%; }\n\n.col-xs-pull-12 {\n  right: 100%; }\n\n.col-xs-pull-11 {\n  right: 91.66666667%; }\n\n.col-xs-pull-10 {\n  right: 83.33333333%; }\n\n.col-xs-pull-9 {\n  right: 75%; }\n\n.col-xs-pull-8 {\n  right: 66.66666667%; }\n\n.col-xs-pull-7 {\n  right: 58.33333333%; }\n\n.col-xs-pull-6 {\n  right: 50%; }\n\n.col-xs-pull-5 {\n  right: 41.66666667%; }\n\n.col-xs-pull-4 {\n  right: 33.33333333%; }\n\n.col-xs-pull-3 {\n  right: 25%; }\n\n.col-xs-pull-2 {\n  right: 16.66666667%; }\n\n.col-xs-pull-1 {\n  right: 8.33333333%; }\n\n.col-xs-pull-0 {\n  right: auto; }\n\n.col-xs-push-12 {\n  left: 100%; }\n\n.col-xs-push-11 {\n  left: 91.66666667%; }\n\n.col-xs-push-10 {\n  left: 83.33333333%; }\n\n.col-xs-push-9 {\n  left: 75%; }\n\n.col-xs-push-8 {\n  left: 66.66666667%; }\n\n.col-xs-push-7 {\n  left: 58.33333333%; }\n\n.col-xs-push-6 {\n  left: 50%; }\n\n.col-xs-push-5 {\n  left: 41.66666667%; }\n\n.col-xs-push-4 {\n  left: 33.33333333%; }\n\n.col-xs-push-3 {\n  left: 25%; }\n\n.col-xs-push-2 {\n  left: 16.66666667%; }\n\n.col-xs-push-1 {\n  left: 8.33333333%; }\n\n.col-xs-push-0 {\n  left: auto; }\n\n.col-xs-offset-12 {\n  margin-left: 100%; }\n\n.col-xs-offset-11 {\n  margin-left: 91.66666667%; }\n\n.col-xs-offset-10 {\n  margin-left: 83.33333333%; }\n\n.col-xs-offset-9 {\n  margin-left: 75%; }\n\n.col-xs-offset-8 {\n  margin-left: 66.66666667%; }\n\n.col-xs-offset-7 {\n  margin-left: 58.33333333%; }\n\n.col-xs-offset-6 {\n  margin-left: 50%; }\n\n.col-xs-offset-5 {\n  margin-left: 41.66666667%; }\n\n.col-xs-offset-4 {\n  margin-left: 33.33333333%; }\n\n.col-xs-offset-3 {\n  margin-left: 25%; }\n\n.col-xs-offset-2 {\n  margin-left: 16.66666667%; }\n\n.col-xs-offset-1 {\n  margin-left: 8.33333333%; }\n\n.col-xs-offset-0 {\n  margin-left: 0; }\n\n@media (min-width: 768px) {\n  .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {\n    float: left; }\n  .col-sm-12 {\n    width: 100%; }\n  .col-sm-11 {\n    width: 91.66666667%; }\n  .col-sm-10 {\n    width: 83.33333333%; }\n  .col-sm-9 {\n    width: 75%; }\n  .col-sm-8 {\n    width: 66.66666667%; }\n  .col-sm-7 {\n    width: 58.33333333%; }\n  .col-sm-6 {\n    width: 50%; }\n  .col-sm-5 {\n    width: 41.66666667%; }\n  .col-sm-4 {\n    width: 33.33333333%; }\n  .col-sm-3 {\n    width: 25%; }\n  .col-sm-2 {\n    width: 16.66666667%; }\n  .col-sm-1 {\n    width: 8.33333333%; }\n  .col-sm-pull-12 {\n    right: 100%; }\n  .col-sm-pull-11 {\n    right: 91.66666667%; }\n  .col-sm-pull-10 {\n    right: 83.33333333%; }\n  .col-sm-pull-9 {\n    right: 75%; }\n  .col-sm-pull-8 {\n    right: 66.66666667%; }\n  .col-sm-pull-7 {\n    right: 58.33333333%; }\n  .col-sm-pull-6 {\n    right: 50%; }\n  .col-sm-pull-5 {\n    right: 41.66666667%; }\n  .col-sm-pull-4 {\n    right: 33.33333333%; }\n  .col-sm-pull-3 {\n    right: 25%; }\n  .col-sm-pull-2 {\n    right: 16.66666667%; }\n  .col-sm-pull-1 {\n    right: 8.33333333%; }\n  .col-sm-pull-0 {\n    right: auto; }\n  .col-sm-push-12 {\n    left: 100%; }\n  .col-sm-push-11 {\n    left: 91.66666667%; }\n  .col-sm-push-10 {\n    left: 83.33333333%; }\n  .col-sm-push-9 {\n    left: 75%; }\n  .col-sm-push-8 {\n    left: 66.66666667%; }\n  .col-sm-push-7 {\n    left: 58.33333333%; }\n  .col-sm-push-6 {\n    left: 50%; }\n  .col-sm-push-5 {\n    left: 41.66666667%; }\n  .col-sm-push-4 {\n    left: 33.33333333%; }\n  .col-sm-push-3 {\n    left: 25%; }\n  .col-sm-push-2 {\n    left: 16.66666667%; }\n  .col-sm-push-1 {\n    left: 8.33333333%; }\n  .col-sm-push-0 {\n    left: auto; }\n  .col-sm-offset-12 {\n    margin-left: 100%; }\n  .col-sm-offset-11 {\n    margin-left: 91.66666667%; }\n  .col-sm-offset-10 {\n    margin-left: 83.33333333%; }\n  .col-sm-offset-9 {\n    margin-left: 75%; }\n  .col-sm-offset-8 {\n    margin-left: 66.66666667%; }\n  .col-sm-offset-7 {\n    margin-left: 58.33333333%; }\n  .col-sm-offset-6 {\n    margin-left: 50%; }\n  .col-sm-offset-5 {\n    margin-left: 41.66666667%; }\n  .col-sm-offset-4 {\n    margin-left: 33.33333333%; }\n  .col-sm-offset-3 {\n    margin-left: 25%; }\n  .col-sm-offset-2 {\n    margin-left: 16.66666667%; }\n  .col-sm-offset-1 {\n    margin-left: 8.33333333%; }\n  .col-sm-offset-0 {\n    margin-left: 0; } }\n\n@media (min-width: 992px) {\n  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {\n    float: left; }\n  .col-md-12 {\n    width: 100%; }\n  .col-md-11 {\n    width: 91.66666667%; }\n  .col-md-10 {\n    width: 83.33333333%; }\n  .col-md-9 {\n    width: 75%; }\n  .col-md-8 {\n    width: 66.66666667%; }\n  .col-md-7 {\n    width: 58.33333333%; }\n  .col-md-6 {\n    width: 50%; }\n  .col-md-5 {\n    width: 41.66666667%; }\n  .col-md-4 {\n    width: 33.33333333%; }\n  .col-md-3 {\n    width: 25%; }\n  .col-md-2 {\n    width: 16.66666667%; }\n  .col-md-1 {\n    width: 8.33333333%; }\n  .col-md-pull-12 {\n    right: 100%; }\n  .col-md-pull-11 {\n    right: 91.66666667%; }\n  .col-md-pull-10 {\n    right: 83.33333333%; }\n  .col-md-pull-9 {\n    right: 75%; }\n  .col-md-pull-8 {\n    right: 66.66666667%; }\n  .col-md-pull-7 {\n    right: 58.33333333%; }\n  .col-md-pull-6 {\n    right: 50%; }\n  .col-md-pull-5 {\n    right: 41.66666667%; }\n  .col-md-pull-4 {\n    right: 33.33333333%; }\n  .col-md-pull-3 {\n    right: 25%; }\n  .col-md-pull-2 {\n    right: 16.66666667%; }\n  .col-md-pull-1 {\n    right: 8.33333333%; }\n  .col-md-pull-0 {\n    right: auto; }\n  .col-md-push-12 {\n    left: 100%; }\n  .col-md-push-11 {\n    left: 91.66666667%; }\n  .col-md-push-10 {\n    left: 83.33333333%; }\n  .col-md-push-9 {\n    left: 75%; }\n  .col-md-push-8 {\n    left: 66.66666667%; }\n  .col-md-push-7 {\n    left: 58.33333333%; }\n  .col-md-push-6 {\n    left: 50%; }\n  .col-md-push-5 {\n    left: 41.66666667%; }\n  .col-md-push-4 {\n    left: 33.33333333%; }\n  .col-md-push-3 {\n    left: 25%; }\n  .col-md-push-2 {\n    left: 16.66666667%; }\n  .col-md-push-1 {\n    left: 8.33333333%; }\n  .col-md-push-0 {\n    left: auto; }\n  .col-md-offset-12 {\n    margin-left: 100%; }\n  .col-md-offset-11 {\n    margin-left: 91.66666667%; }\n  .col-md-offset-10 {\n    margin-left: 83.33333333%; }\n  .col-md-offset-9 {\n    margin-left: 75%; }\n  .col-md-offset-8 {\n    margin-left: 66.66666667%; }\n  .col-md-offset-7 {\n    margin-left: 58.33333333%; }\n  .col-md-offset-6 {\n    margin-left: 50%; }\n  .col-md-offset-5 {\n    margin-left: 41.66666667%; }\n  .col-md-offset-4 {\n    margin-left: 33.33333333%; }\n  .col-md-offset-3 {\n    margin-left: 25%; }\n  .col-md-offset-2 {\n    margin-left: 16.66666667%; }\n  .col-md-offset-1 {\n    margin-left: 8.33333333%; }\n  .col-md-offset-0 {\n    margin-left: 0; } }\n\n@media (min-width: 1200px) {\n  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {\n    float: left; }\n  .col-lg-12 {\n    width: 100%; }\n  .col-lg-11 {\n    width: 91.66666667%; }\n  .col-lg-10 {\n    width: 83.33333333%; }\n  .col-lg-9 {\n    width: 75%; }\n  .col-lg-8 {\n    width: 66.66666667%; }\n  .col-lg-7 {\n    width: 58.33333333%; }\n  .col-lg-6 {\n    width: 50%; }\n  .col-lg-5 {\n    width: 41.66666667%; }\n  .col-lg-4 {\n    width: 33.33333333%; }\n  .col-lg-3 {\n    width: 25%; }\n  .col-lg-2 {\n    width: 16.66666667%; }\n  .col-lg-1 {\n    width: 8.33333333%; }\n  .col-lg-pull-12 {\n    right: 100%; }\n  .col-lg-pull-11 {\n    right: 91.66666667%; }\n  .col-lg-pull-10 {\n    right: 83.33333333%; }\n  .col-lg-pull-9 {\n    right: 75%; }\n  .col-lg-pull-8 {\n    right: 66.66666667%; }\n  .col-lg-pull-7 {\n    right: 58.33333333%; }\n  .col-lg-pull-6 {\n    right: 50%; }\n  .col-lg-pull-5 {\n    right: 41.66666667%; }\n  .col-lg-pull-4 {\n    right: 33.33333333%; }\n  .col-lg-pull-3 {\n    right: 25%; }\n  .col-lg-pull-2 {\n    right: 16.66666667%; }\n  .col-lg-pull-1 {\n    right: 8.33333333%; }\n  .col-lg-pull-0 {\n    right: auto; }\n  .col-lg-push-12 {\n    left: 100%; }\n  .col-lg-push-11 {\n    left: 91.66666667%; }\n  .col-lg-push-10 {\n    left: 83.33333333%; }\n  .col-lg-push-9 {\n    left: 75%; }\n  .col-lg-push-8 {\n    left: 66.66666667%; }\n  .col-lg-push-7 {\n    left: 58.33333333%; }\n  .col-lg-push-6 {\n    left: 50%; }\n  .col-lg-push-5 {\n    left: 41.66666667%; }\n  .col-lg-push-4 {\n    left: 33.33333333%; }\n  .col-lg-push-3 {\n    left: 25%; }\n  .col-lg-push-2 {\n    left: 16.66666667%; }\n  .col-lg-push-1 {\n    left: 8.33333333%; }\n  .col-lg-push-0 {\n    left: auto; }\n  .col-lg-offset-12 {\n    margin-left: 100%; }\n  .col-lg-offset-11 {\n    margin-left: 91.66666667%; }\n  .col-lg-offset-10 {\n    margin-left: 83.33333333%; }\n  .col-lg-offset-9 {\n    margin-left: 75%; }\n  .col-lg-offset-8 {\n    margin-left: 66.66666667%; }\n  .col-lg-offset-7 {\n    margin-left: 58.33333333%; }\n  .col-lg-offset-6 {\n    margin-left: 50%; }\n  .col-lg-offset-5 {\n    margin-left: 41.66666667%; }\n  .col-lg-offset-4 {\n    margin-left: 33.33333333%; }\n  .col-lg-offset-3 {\n    margin-left: 25%; }\n  .col-lg-offset-2 {\n    margin-left: 16.66666667%; }\n  .col-lg-offset-1 {\n    margin-left: 8.33333333%; }\n  .col-lg-offset-0 {\n    margin-left: 0; } }\n\ntable {\n  background-color: transparent; }\n\ncaption {\n  padding-top: 8px;\n  padding-bottom: 8px;\n  color: #777;\n  text-align: left; }\n\nth {\n  text-align: left; }\n\n.table {\n  width: 100%;\n  max-width: 100%;\n  margin-bottom: 20px; }\n\n.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {\n  padding: 8px;\n  line-height: 1.42857143;\n  vertical-align: top;\n  border-top: 1px solid #ddd; }\n\n.table > thead > tr > th {\n  vertical-align: bottom;\n  border-bottom: 2px solid #ddd; }\n\n.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {\n  border-top: 0; }\n\n.table > tbody + tbody {\n  border-top: 2px solid #ddd; }\n\n.table .table {\n  background-color: #fff; }\n\n.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {\n  padding: 5px; }\n\n.table-bordered {\n  border: 1px solid #ddd; }\n\n.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {\n  border: 1px solid #ddd; }\n\n.table-bordered > thead > tr > td, .table-bordered > thead > tr > th {\n  border-bottom-width: 2px; }\n\n.table-striped > tbody > tr:nth-of-type(odd) {\n  background-color: #f9f9f9; }\n\n.table-hover > tbody > tr:hover {\n  background-color: #f5f5f5; }\n\ntable col[class*=col-] {\n  position: static;\n  display: table-column;\n  float: none; }\n\ntable td[class*=col-], table th[class*=col-] {\n  position: static;\n  display: table-cell;\n  float: none; }\n\n.table > tbody > tr.active > td, .table > tbody > tr.active > th, .table > tbody > tr > td.active, .table > tbody > tr > th.active, .table > tfoot > tr.active > td, .table > tfoot > tr.active > th, .table > tfoot > tr > td.active, .table > tfoot > tr > th.active, .table > thead > tr.active > td, .table > thead > tr.active > th, .table > thead > tr > td.active, .table > thead > tr > th.active {\n  background-color: #f5f5f5; }\n\n.table-hover > tbody > tr.active:hover > td, .table-hover > tbody > tr.active:hover > th, .table-hover > tbody > tr:hover > .active, .table-hover > tbody > tr > td.active:hover, .table-hover > tbody > tr > th.active:hover {\n  background-color: #e8e8e8; }\n\n.table > tbody > tr.success > td, .table > tbody > tr.success > th, .table > tbody > tr > td.success, .table > tbody > tr > th.success, .table > tfoot > tr.success > td, .table > tfoot > tr.success > th, .table > tfoot > tr > td.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > thead > tr.success > th, .table > thead > tr > td.success, .table > thead > tr > th.success {\n  background-color: #dff0d8; }\n\n.table-hover > tbody > tr.success:hover > td, .table-hover > tbody > tr.success:hover > th, .table-hover > tbody > tr:hover > .success, .table-hover > tbody > tr > td.success:hover, .table-hover > tbody > tr > th.success:hover {\n  background-color: #d0e9c6; }\n\n.table > tbody > tr.info > td, .table > tbody > tr.info > th, .table > tbody > tr > td.info, .table > tbody > tr > th.info, .table > tfoot > tr.info > td, .table > tfoot > tr.info > th, .table > tfoot > tr > td.info, .table > tfoot > tr > th.info, .table > thead > tr.info > td, .table > thead > tr.info > th, .table > thead > tr > td.info, .table > thead > tr > th.info {\n  background-color: #d9edf7; }\n\n.table-hover > tbody > tr.info:hover > td, .table-hover > tbody > tr.info:hover > th, .table-hover > tbody > tr:hover > .info, .table-hover > tbody > tr > td.info:hover, .table-hover > tbody > tr > th.info:hover {\n  background-color: #c4e3f3; }\n\n.table > tbody > tr.warning > td, .table > tbody > tr.warning > th, .table > tbody > tr > td.warning, .table > tbody > tr > th.warning, .table > tfoot > tr.warning > td, .table > tfoot > tr.warning > th, .table > tfoot > tr > td.warning, .table > tfoot > tr > th.warning, .table > thead > tr.warning > td, .table > thead > tr.warning > th, .table > thead > tr > td.warning, .table > thead > tr > th.warning {\n  background-color: #fcf8e3; }\n\n.table-hover > tbody > tr.warning:hover > td, .table-hover > tbody > tr.warning:hover > th, .table-hover > tbody > tr:hover > .warning, .table-hover > tbody > tr > td.warning:hover, .table-hover > tbody > tr > th.warning:hover {\n  background-color: #faf2cc; }\n\n.table > tbody > tr.danger > td, .table > tbody > tr.danger > th, .table > tbody > tr > td.danger, .table > tbody > tr > th.danger, .table > tfoot > tr.danger > td, .table > tfoot > tr.danger > th, .table > tfoot > tr > td.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > thead > tr.danger > th, .table > thead > tr > td.danger, .table > thead > tr > th.danger {\n  background-color: #f2dede; }\n\n.table-hover > tbody > tr.danger:hover > td, .table-hover > tbody > tr.danger:hover > th, .table-hover > tbody > tr:hover > .danger, .table-hover > tbody > tr > td.danger:hover, .table-hover > tbody > tr > th.danger:hover {\n  background-color: #ebcccc; }\n\n.table-responsive {\n  min-height: .01%;\n  overflow-x: auto; }\n\n@media screen and (max-width: 767px) {\n  .table-responsive {\n    width: 100%;\n    margin-bottom: 15px;\n    overflow-y: hidden;\n    -ms-overflow-style: -ms-autohiding-scrollbar;\n    border: 1px solid #ddd; }\n  .table-responsive > .table {\n    margin-bottom: 0; }\n  .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tfoot > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > thead > tr > th {\n    white-space: nowrap; }\n  .table-responsive > .table-bordered {\n    border: 0; }\n  .table-responsive > .table-bordered > tbody > tr > td:first-child, .table-responsive > .table-bordered > tbody > tr > th:first-child, .table-responsive > .table-bordered > tfoot > tr > td:first-child, .table-responsive > .table-bordered > tfoot > tr > th:first-child, .table-responsive > .table-bordered > thead > tr > td:first-child, .table-responsive > .table-bordered > thead > tr > th:first-child {\n    border-left: 0; }\n  .table-responsive > .table-bordered > tbody > tr > td:last-child, .table-responsive > .table-bordered > tbody > tr > th:last-child, .table-responsive > .table-bordered > tfoot > tr > td:last-child, .table-responsive > .table-bordered > tfoot > tr > th:last-child, .table-responsive > .table-bordered > thead > tr > td:last-child, .table-responsive > .table-bordered > thead > tr > th:last-child {\n    border-right: 0; }\n  .table-responsive > .table-bordered > tbody > tr:last-child > td, .table-responsive > .table-bordered > tbody > tr:last-child > th, .table-responsive > .table-bordered > tfoot > tr:last-child > td, .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n    border-bottom: 0; } }\n\nfieldset {\n  min-width: 0;\n  padding: 0;\n  margin: 0;\n  border: 0; }\n\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 20px;\n  font-size: 21px;\n  line-height: inherit;\n  color: #333;\n  border: 0;\n  border-bottom: 1px solid #e5e5e5; }\n\nlabel {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 5px;\n  font-weight: 700; }\n\ninput[type=search] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\ninput[type=checkbox], input[type=radio] {\n  margin: 4px 0 0;\n  margin-top: 1px\\9;\n  line-height: normal; }\n\ninput[type=file] {\n  display: block; }\n\ninput[type=range] {\n  display: block;\n  width: 100%; }\n\nselect[multiple], select[size] {\n  height: auto; }\n\ninput[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus {\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\noutput {\n  display: block;\n  padding-top: 7px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555; }\n\n.form-control {\n  display: block;\n  width: 100%;\n  height: 34px;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }\n\n.form-control:focus {\n  border-color: #66afe9;\n  outline: 0;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }\n\n.form-control::-moz-placeholder {\n  color: #999;\n  opacity: 1; }\n\n.form-control:-ms-input-placeholder {\n  color: #999; }\n\n.form-control::-webkit-input-placeholder {\n  color: #999; }\n\n.form-control::-ms-expand {\n  background-color: transparent;\n  border: 0; }\n\n.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {\n  background-color: #eee;\n  opacity: 1; }\n\n.form-control[disabled], fieldset[disabled] .form-control {\n  cursor: not-allowed; }\n\ntextarea.form-control {\n  height: auto; }\n\ninput[type=search] {\n  -webkit-appearance: none; }\n\n@media screen and (-webkit-min-device-pixel-ratio: 0) {\n  input[type=date].form-control, input[type=time].form-control, input[type=datetime-local].form-control, input[type=month].form-control {\n    line-height: 34px; }\n  .input-group-sm input[type=date], .input-group-sm input[type=time], .input-group-sm input[type=datetime-local], .input-group-sm input[type=month], input[type=date].input-sm, input[type=time].input-sm, input[type=datetime-local].input-sm, input[type=month].input-sm {\n    line-height: 30px; }\n  .input-group-lg input[type=date], .input-group-lg input[type=time], .input-group-lg input[type=datetime-local], .input-group-lg input[type=month], input[type=date].input-lg, input[type=time].input-lg, input[type=datetime-local].input-lg, input[type=month].input-lg {\n    line-height: 46px; } }\n\n.form-group {\n  margin-bottom: 15px; }\n\n.checkbox, .radio {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.checkbox label, .radio label {\n  min-height: 20px;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: 400;\n  cursor: pointer; }\n\n.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {\n  position: absolute;\n  margin-top: 4px\\9;\n  margin-left: -20px; }\n\n.checkbox + .checkbox, .radio + .radio {\n  margin-top: -5px; }\n\n.checkbox-inline, .radio-inline {\n  position: relative;\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: 400;\n  vertical-align: middle;\n  cursor: pointer; }\n\n.checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {\n  margin-top: 0;\n  margin-left: 10px; }\n\nfieldset[disabled] input[type=checkbox], fieldset[disabled] input[type=radio], input[type=checkbox].disabled, input[type=checkbox][disabled], input[type=radio].disabled, input[type=radio][disabled] {\n  cursor: not-allowed; }\n\n.checkbox-inline.disabled, .radio-inline.disabled, fieldset[disabled] .checkbox-inline, fieldset[disabled] .radio-inline {\n  cursor: not-allowed; }\n\n.checkbox.disabled label, .radio.disabled label, fieldset[disabled] .checkbox label, fieldset[disabled] .radio label {\n  cursor: not-allowed; }\n\n.form-control-static {\n  min-height: 34px;\n  padding-top: 7px;\n  padding-bottom: 7px;\n  margin-bottom: 0; }\n\n.form-control-static.input-lg, .form-control-static.input-sm {\n  padding-right: 0;\n  padding-left: 0; }\n\n.input-sm {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\nselect.input-sm {\n  height: 30px;\n  line-height: 30px; }\n\nselect[multiple].input-sm, textarea.input-sm {\n  height: auto; }\n\n.form-group-sm .form-control {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\n.form-group-sm select.form-control {\n  height: 30px;\n  line-height: 30px; }\n\n.form-group-sm select[multiple].form-control, .form-group-sm textarea.form-control {\n  height: auto; }\n\n.form-group-sm .form-control-static {\n  height: 30px;\n  min-height: 32px;\n  padding: 6px 10px;\n  font-size: 12px;\n  line-height: 1.5; }\n\n.input-lg {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\nselect.input-lg {\n  height: 46px;\n  line-height: 46px; }\n\nselect[multiple].input-lg, textarea.input-lg {\n  height: auto; }\n\n.form-group-lg .form-control {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\n.form-group-lg select.form-control {\n  height: 46px;\n  line-height: 46px; }\n\n.form-group-lg select[multiple].form-control, .form-group-lg textarea.form-control {\n  height: auto; }\n\n.form-group-lg .form-control-static {\n  height: 46px;\n  min-height: 38px;\n  padding: 11px 16px;\n  font-size: 18px;\n  line-height: 1.3333333; }\n\n.has-feedback {\n  position: relative; }\n\n.has-feedback .form-control {\n  padding-right: 42.5px; }\n\n.form-control-feedback {\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 2;\n  display: block;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  text-align: center;\n  pointer-events: none; }\n\n.form-group-lg .form-control + .form-control-feedback, .input-group-lg + .form-control-feedback, .input-lg + .form-control-feedback {\n  width: 46px;\n  height: 46px;\n  line-height: 46px; }\n\n.form-group-sm .form-control + .form-control-feedback, .input-group-sm + .form-control-feedback, .input-sm + .form-control-feedback {\n  width: 30px;\n  height: 30px;\n  line-height: 30px; }\n\n.has-success .checkbox, .has-success .checkbox-inline, .has-success .control-label, .has-success .help-block, .has-success .radio, .has-success .radio-inline, .has-success.checkbox label, .has-success.checkbox-inline label, .has-success.radio label, .has-success.radio-inline label {\n  color: #3c763d; }\n\n.has-success .form-control {\n  border-color: #3c763d;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }\n\n.has-success .form-control:focus {\n  border-color: #2b542c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168; }\n\n.has-success .input-group-addon {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #3c763d; }\n\n.has-success .form-control-feedback {\n  color: #3c763d; }\n\n.has-warning .checkbox, .has-warning .checkbox-inline, .has-warning .control-label, .has-warning .help-block, .has-warning .radio, .has-warning .radio-inline, .has-warning.checkbox label, .has-warning.checkbox-inline label, .has-warning.radio label, .has-warning.radio-inline label {\n  color: #8a6d3b; }\n\n.has-warning .form-control {\n  border-color: #8a6d3b;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }\n\n.has-warning .form-control:focus {\n  border-color: #66512c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }\n\n.has-warning .input-group-addon {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #8a6d3b; }\n\n.has-warning .form-control-feedback {\n  color: #8a6d3b; }\n\n.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {\n  color: #a94442; }\n\n.has-error .form-control {\n  border-color: #a94442;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }\n\n.has-error .form-control:focus {\n  border-color: #843534;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483; }\n\n.has-error .input-group-addon {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #a94442; }\n\n.has-error .form-control-feedback {\n  color: #a94442; }\n\n.has-feedback label ~ .form-control-feedback {\n  top: 25px; }\n\n.has-feedback label.sr-only ~ .form-control-feedback {\n  top: 0; }\n\n.help-block {\n  display: block;\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #737373; }\n\n@media (min-width: 768px) {\n  .form-inline .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .form-inline .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle; }\n  .form-inline .form-control-static {\n    display: inline-block; }\n  .form-inline .input-group {\n    display: inline-table;\n    vertical-align: middle; }\n  .form-inline .input-group .form-control, .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn {\n    width: auto; }\n  .form-inline .input-group > .form-control {\n    width: 100%; }\n  .form-inline .control-label {\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .form-inline .checkbox, .form-inline .radio {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .form-inline .checkbox label, .form-inline .radio label {\n    padding-left: 0; }\n  .form-inline .checkbox input[type=checkbox], .form-inline .radio input[type=radio] {\n    position: relative;\n    margin-left: 0; }\n  .form-inline .has-feedback .form-control-feedback {\n    top: 0; } }\n\n.form-horizontal .checkbox, .form-horizontal .checkbox-inline, .form-horizontal .radio, .form-horizontal .radio-inline {\n  padding-top: 7px;\n  margin-top: 0;\n  margin-bottom: 0; }\n\n.form-horizontal .checkbox, .form-horizontal .radio {\n  min-height: 27px; }\n\n.form-horizontal .form-group {\n  margin-right: -15px;\n  margin-left: -15px; }\n\n@media (min-width: 768px) {\n  .form-horizontal .control-label {\n    padding-top: 7px;\n    margin-bottom: 0;\n    text-align: right; } }\n\n.form-horizontal .has-feedback .form-control-feedback {\n  right: 15px; }\n\n@media (min-width: 768px) {\n  .form-horizontal .form-group-lg .control-label {\n    padding-top: 11px;\n    font-size: 18px; } }\n\n@media (min-width: 768px) {\n  .form-horizontal .form-group-sm .control-label {\n    padding-top: 6px;\n    font-size: 12px; } }\n\n.btn {\n  display: inline-block;\n  padding: 6px 12px;\n  margin-bottom: 0;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px; }\n\n.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\n.btn.focus, .btn:focus, .btn:hover {\n  color: #333;\n  text-decoration: none; }\n\n.btn.active, .btn:active {\n  background-image: none;\n  outline: 0;\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }\n\n.btn.disabled, .btn[disabled], fieldset[disabled] .btn {\n  cursor: not-allowed;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  opacity: .65; }\n\na.btn.disabled, fieldset[disabled] a.btn {\n  pointer-events: none; }\n\n.btn-default {\n  color: #333;\n  background-color: #fff;\n  border-color: #ccc; }\n\n.btn-default.focus, .btn-default:focus {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #8c8c8c; }\n\n.btn-default:hover {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #adadad; }\n\n.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #adadad; }\n\n.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {\n  color: #333;\n  background-color: #d4d4d4;\n  border-color: #8c8c8c; }\n\n.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {\n  background-image: none; }\n\n.btn-default.disabled.focus, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default[disabled].focus, .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover {\n  background-color: #fff;\n  border-color: #ccc; }\n\n.btn-default .badge {\n  color: #fff;\n  background-color: #333; }\n\n.btn-primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4; }\n\n.btn-primary.focus, .btn-primary:focus {\n  color: #fff;\n  background-color: #286090;\n  border-color: #122b40; }\n\n.btn-primary:hover {\n  color: #fff;\n  background-color: #286090;\n  border-color: #204d74; }\n\n.btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary {\n  color: #fff;\n  background-color: #286090;\n  border-color: #204d74; }\n\n.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open > .dropdown-toggle.btn-primary.focus, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {\n  color: #fff;\n  background-color: #204d74;\n  border-color: #122b40; }\n\n.btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary {\n  background-image: none; }\n\n.btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled].focus, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {\n  background-color: #337ab7;\n  border-color: #2e6da4; }\n\n.btn-primary .badge {\n  color: #337ab7;\n  background-color: #fff; }\n\n.btn-success {\n  color: #fff;\n  background-color: #5cb85c;\n  border-color: #4cae4c; }\n\n.btn-success.focus, .btn-success:focus {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #255625; }\n\n.btn-success:hover {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #398439; }\n\n.btn-success.active, .btn-success:active, .open > .dropdown-toggle.btn-success {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #398439; }\n\n.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open > .dropdown-toggle.btn-success.focus, .open > .dropdown-toggle.btn-success:focus, .open > .dropdown-toggle.btn-success:hover {\n  color: #fff;\n  background-color: #398439;\n  border-color: #255625; }\n\n.btn-success.active, .btn-success:active, .open > .dropdown-toggle.btn-success {\n  background-image: none; }\n\n.btn-success.disabled.focus, .btn-success.disabled:focus, .btn-success.disabled:hover, .btn-success[disabled].focus, .btn-success[disabled]:focus, .btn-success[disabled]:hover, fieldset[disabled] .btn-success.focus, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:hover {\n  background-color: #5cb85c;\n  border-color: #4cae4c; }\n\n.btn-success .badge {\n  color: #5cb85c;\n  background-color: #fff; }\n\n.btn-info {\n  color: #fff;\n  background-color: #5bc0de;\n  border-color: #46b8da; }\n\n.btn-info.focus, .btn-info:focus {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #1b6d85; }\n\n.btn-info:hover {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #269abc; }\n\n.btn-info.active, .btn-info:active, .open > .dropdown-toggle.btn-info {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #269abc; }\n\n.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open > .dropdown-toggle.btn-info.focus, .open > .dropdown-toggle.btn-info:focus, .open > .dropdown-toggle.btn-info:hover {\n  color: #fff;\n  background-color: #269abc;\n  border-color: #1b6d85; }\n\n.btn-info.active, .btn-info:active, .open > .dropdown-toggle.btn-info {\n  background-image: none; }\n\n.btn-info.disabled.focus, .btn-info.disabled:focus, .btn-info.disabled:hover, .btn-info[disabled].focus, .btn-info[disabled]:focus, .btn-info[disabled]:hover, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:hover {\n  background-color: #5bc0de;\n  border-color: #46b8da; }\n\n.btn-info .badge {\n  color: #5bc0de;\n  background-color: #fff; }\n\n.btn-warning {\n  color: #fff;\n  background-color: #f0ad4e;\n  border-color: #eea236; }\n\n.btn-warning.focus, .btn-warning:focus {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #985f0d; }\n\n.btn-warning:hover {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #d58512; }\n\n.btn-warning.active, .btn-warning:active, .open > .dropdown-toggle.btn-warning {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #d58512; }\n\n.btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning:active.focus, .btn-warning:active:focus, .btn-warning:active:hover, .open > .dropdown-toggle.btn-warning.focus, .open > .dropdown-toggle.btn-warning:focus, .open > .dropdown-toggle.btn-warning:hover {\n  color: #fff;\n  background-color: #d58512;\n  border-color: #985f0d; }\n\n.btn-warning.active, .btn-warning:active, .open > .dropdown-toggle.btn-warning {\n  background-image: none; }\n\n.btn-warning.disabled.focus, .btn-warning.disabled:focus, .btn-warning.disabled:hover, .btn-warning[disabled].focus, .btn-warning[disabled]:focus, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning.focus, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning:hover {\n  background-color: #f0ad4e;\n  border-color: #eea236; }\n\n.btn-warning .badge {\n  color: #f0ad4e;\n  background-color: #fff; }\n\n.btn-danger {\n  color: #fff;\n  background-color: #d9534f;\n  border-color: #d43f3a; }\n\n.btn-danger.focus, .btn-danger:focus {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #761c19; }\n\n.btn-danger:hover {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #ac2925; }\n\n.btn-danger.active, .btn-danger:active, .open > .dropdown-toggle.btn-danger {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #ac2925; }\n\n.btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger:active.focus, .btn-danger:active:focus, .btn-danger:active:hover, .open > .dropdown-toggle.btn-danger.focus, .open > .dropdown-toggle.btn-danger:focus, .open > .dropdown-toggle.btn-danger:hover {\n  color: #fff;\n  background-color: #ac2925;\n  border-color: #761c19; }\n\n.btn-danger.active, .btn-danger:active, .open > .dropdown-toggle.btn-danger {\n  background-image: none; }\n\n.btn-danger.disabled.focus, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled].focus, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {\n  background-color: #d9534f;\n  border-color: #d43f3a; }\n\n.btn-danger .badge {\n  color: #d9534f;\n  background-color: #fff; }\n\n.btn-link {\n  font-weight: 400;\n  color: #337ab7;\n  border-radius: 0; }\n\n.btn-link, .btn-link.active, .btn-link:active, .btn-link[disabled], fieldset[disabled] .btn-link {\n  background-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none; }\n\n.btn-link, .btn-link:active, .btn-link:focus, .btn-link:hover {\n  border-color: transparent; }\n\n.btn-link:focus, .btn-link:hover {\n  color: #23527c;\n  text-decoration: underline;\n  background-color: transparent; }\n\n.btn-link[disabled]:focus, .btn-link[disabled]:hover, fieldset[disabled] .btn-link:focus, fieldset[disabled] .btn-link:hover {\n  color: #777;\n  text-decoration: none; }\n\n.btn-group-lg > .btn, .btn-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\n.btn-group-sm > .btn, .btn-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\n.btn-group-xs > .btn, .btn-xs {\n  padding: 1px 5px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\n.btn-block {\n  display: block;\n  width: 100%; }\n\n.btn-block + .btn-block {\n  margin-top: 5px; }\n\ninput[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {\n  width: 100%; }\n\n.fade {\n  opacity: 0;\n  -webkit-transition: opacity .15s linear;\n  -o-transition: opacity .15s linear;\n  transition: opacity .15s linear; }\n\n.fade.in {\n  opacity: 1; }\n\n.collapse {\n  display: none; }\n\n.collapse.in {\n  display: block; }\n\ntr.collapse.in {\n  display: table-row; }\n\ntbody.collapse.in {\n  display: table-row-group; }\n\n.collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-timing-function: ease;\n  -o-transition-timing-function: ease;\n  transition-timing-function: ease;\n  -webkit-transition-duration: .35s;\n  -o-transition-duration: .35s;\n  transition-duration: .35s;\n  -webkit-transition-property: height,visibility;\n  -o-transition-property: height,visibility;\n  transition-property: height,visibility; }\n\n.caret {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: 2px;\n  vertical-align: middle;\n  border-top: 4px dashed;\n  border-top: 4px solid\\9;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent; }\n\n.dropdown, .dropup {\n  position: relative; }\n\n.dropdown-toggle:focus {\n  outline: 0; }\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  text-align: left;\n  list-style: none;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n  background-clip: padding-box;\n  border: 1px solid #ccc;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }\n\n.dropdown-menu.pull-right {\n  right: 0;\n  left: auto; }\n\n.dropdown-menu .divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5; }\n\n.dropdown-menu > li > a {\n  display: block;\n  padding: 3px 20px;\n  clear: both;\n  font-weight: 400;\n  line-height: 1.42857143;\n  color: #333;\n  white-space: nowrap; }\n\n.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {\n  color: #262626;\n  text-decoration: none;\n  background-color: #f5f5f5; }\n\n.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {\n  color: #fff;\n  text-decoration: none;\n  background-color: #337ab7;\n  outline: 0; }\n\n.dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {\n  color: #777; }\n\n.dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {\n  text-decoration: none;\n  cursor: not-allowed;\n  background-color: transparent;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }\n\n.open > .dropdown-menu {\n  display: block; }\n\n.open > a {\n  outline: 0; }\n\n.dropdown-menu-right {\n  right: 0;\n  left: auto; }\n\n.dropdown-menu-left {\n  right: auto;\n  left: 0; }\n\n.dropdown-header {\n  display: block;\n  padding: 3px 20px;\n  font-size: 12px;\n  line-height: 1.42857143;\n  color: #777;\n  white-space: nowrap; }\n\n.dropdown-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 990; }\n\n.pull-right > .dropdown-menu {\n  right: 0;\n  left: auto; }\n\n.dropup .caret, .navbar-fixed-bottom .dropdown .caret {\n  content: \"\";\n  border-top: 0;\n  border-bottom: 4px dashed;\n  border-bottom: 4px solid\\9; }\n\n.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {\n  top: auto;\n  bottom: 100%;\n  margin-bottom: 2px; }\n\n@media (min-width: 768px) {\n  .navbar-right .dropdown-menu {\n    right: 0;\n    left: auto; }\n  .navbar-right .dropdown-menu-left {\n    right: auto;\n    left: 0; } }\n\n.btn-group, .btn-group-vertical {\n  position: relative;\n  display: inline-block;\n  vertical-align: middle; }\n\n.btn-group-vertical > .btn, .btn-group > .btn {\n  position: relative;\n  float: left; }\n\n.btn-group-vertical > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover, .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {\n  z-index: 2; }\n\n.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {\n  margin-left: -1px; }\n\n.btn-toolbar {\n  margin-left: -5px; }\n\n.btn-toolbar .btn, .btn-toolbar .btn-group, .btn-toolbar .input-group {\n  float: left; }\n\n.btn-toolbar > .btn, .btn-toolbar > .btn-group, .btn-toolbar > .input-group {\n  margin-left: 5px; }\n\n.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n  border-radius: 0; }\n\n.btn-group > .btn:first-child {\n  margin-left: 0; }\n\n.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group > .btn-group {\n  float: left; }\n\n.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0; }\n\n.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle {\n  outline: 0; }\n\n.btn-group > .btn + .dropdown-toggle {\n  padding-right: 8px;\n  padding-left: 8px; }\n\n.btn-group > .btn-lg + .dropdown-toggle {\n  padding-right: 12px;\n  padding-left: 12px; }\n\n.btn-group.open .dropdown-toggle {\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }\n\n.btn-group.open .dropdown-toggle.btn-link {\n  -webkit-box-shadow: none;\n  box-shadow: none; }\n\n.btn .caret {\n  margin-left: 0; }\n\n.btn-lg .caret {\n  border-width: 5px 5px 0;\n  border-bottom-width: 0; }\n\n.dropup .btn-lg .caret {\n  border-width: 0 5px 5px; }\n\n.btn-group-vertical > .btn, .btn-group-vertical > .btn-group, .btn-group-vertical > .btn-group > .btn {\n  display: block;\n  float: none;\n  width: 100%;\n  max-width: 100%; }\n\n.btn-group-vertical > .btn-group > .btn {\n  float: none; }\n\n.btn-group-vertical > .btn + .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {\n  margin-top: -1px;\n  margin-left: 0; }\n\n.btn-group-vertical > .btn:not(:first-child):not(:last-child) {\n  border-radius: 0; }\n\n.btn-group-vertical > .btn:first-child:not(:last-child) {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group-vertical > .btn:last-child:not(:first-child) {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0; }\n\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.btn-group-justified {\n  display: table;\n  width: 100%;\n  table-layout: fixed;\n  border-collapse: separate; }\n\n.btn-group-justified > .btn, .btn-group-justified > .btn-group {\n  display: table-cell;\n  float: none;\n  width: 1%; }\n\n.btn-group-justified > .btn-group .btn {\n  width: 100%; }\n\n.btn-group-justified > .btn-group .dropdown-menu {\n  left: auto; }\n\n[data-toggle=buttons] > .btn input[type=checkbox], [data-toggle=buttons] > .btn input[type=radio], [data-toggle=buttons] > .btn-group > .btn input[type=checkbox], [data-toggle=buttons] > .btn-group > .btn input[type=radio] {\n  position: absolute;\n  clip: rect(0, 0, 0, 0);\n  pointer-events: none; }\n\n.input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate; }\n\n.input-group[class*=col-] {\n  float: none;\n  padding-right: 0;\n  padding-left: 0; }\n\n.input-group .form-control {\n  position: relative;\n  z-index: 2;\n  float: left;\n  width: 100%;\n  margin-bottom: 0; }\n\n.input-group .form-control:focus {\n  z-index: 3; }\n\n.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px; }\n\nselect.input-group-lg > .form-control, select.input-group-lg > .input-group-addon, select.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  line-height: 46px; }\n\nselect[multiple].input-group-lg > .form-control, select[multiple].input-group-lg > .input-group-addon, select[multiple].input-group-lg > .input-group-btn > .btn, textarea.input-group-lg > .form-control, textarea.input-group-lg > .input-group-addon, textarea.input-group-lg > .input-group-btn > .btn {\n  height: auto; }\n\n.input-group-sm > .form-control, .input-group-sm > .input-group-addon, .input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px; }\n\nselect.input-group-sm > .form-control, select.input-group-sm > .input-group-addon, select.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  line-height: 30px; }\n\nselect[multiple].input-group-sm > .form-control, select[multiple].input-group-sm > .input-group-addon, select[multiple].input-group-sm > .input-group-btn > .btn, textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-addon, textarea.input-group-sm > .input-group-btn > .btn {\n  height: auto; }\n\n.input-group .form-control, .input-group-addon, .input-group-btn {\n  display: table-cell; }\n\n.input-group .form-control:not(:first-child):not(:last-child), .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child) {\n  border-radius: 0; }\n\n.input-group-addon, .input-group-btn {\n  width: 1%;\n  white-space: nowrap;\n  vertical-align: middle; }\n\n.input-group-addon {\n  padding: 6px 12px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 1;\n  color: #555;\n  text-align: center;\n  background-color: #eee;\n  border: 1px solid #ccc;\n  border-radius: 4px; }\n\n.input-group-addon.input-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  border-radius: 3px; }\n\n.input-group-addon.input-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  border-radius: 6px; }\n\n.input-group-addon input[type=checkbox], .input-group-addon input[type=radio] {\n  margin-top: 0; }\n\n.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group > .btn, .input-group-btn:first-child > .dropdown-toggle, .input-group-btn:last-child > .btn-group:not(:last-child) > .btn, .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n.input-group-addon:first-child {\n  border-right: 0; }\n\n.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .dropdown-toggle {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.input-group-addon:last-child {\n  border-left: 0; }\n\n.input-group-btn {\n  position: relative;\n  font-size: 0;\n  white-space: nowrap; }\n\n.input-group-btn > .btn {\n  position: relative; }\n\n.input-group-btn > .btn + .btn {\n  margin-left: -1px; }\n\n.input-group-btn > .btn:active, .input-group-btn > .btn:focus, .input-group-btn > .btn:hover {\n  z-index: 2; }\n\n.input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group {\n  margin-right: -1px; }\n\n.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {\n  z-index: 2;\n  margin-left: -1px; }\n\n.nav {\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none; }\n\n.nav > li {\n  position: relative;\n  display: block; }\n\n.nav > li > a {\n  position: relative;\n  display: block;\n  padding: 10px 15px; }\n\n.nav > li > a:focus, .nav > li > a:hover {\n  text-decoration: none;\n  background-color: #eee; }\n\n.nav > li.disabled > a {\n  color: #777; }\n\n.nav > li.disabled > a:focus, .nav > li.disabled > a:hover {\n  color: #777;\n  text-decoration: none;\n  cursor: not-allowed;\n  background-color: transparent; }\n\n.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {\n  background-color: #eee;\n  border-color: #337ab7; }\n\n.nav .nav-divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5; }\n\n.nav > li > a > img {\n  max-width: none; }\n\n.nav-tabs {\n  border-bottom: 1px solid #ddd; }\n\n.nav-tabs > li {\n  float: left;\n  margin-bottom: -1px; }\n\n.nav-tabs > li > a {\n  margin-right: 2px;\n  line-height: 1.42857143;\n  border: 1px solid transparent;\n  border-radius: 4px 4px 0 0; }\n\n.nav-tabs > li > a:hover {\n  border-color: #eee #eee #ddd; }\n\n.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {\n  color: #555;\n  cursor: default;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-bottom-color: transparent; }\n\n.nav-tabs.nav-justified {\n  width: 100%;\n  border-bottom: 0; }\n\n.nav-tabs.nav-justified > li {\n  float: none; }\n\n.nav-tabs.nav-justified > li > a {\n  margin-bottom: 5px;\n  text-align: center; }\n\n.nav-tabs.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto; }\n\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li {\n    display: table-cell;\n    width: 1%; }\n  .nav-tabs.nav-justified > li > a {\n    margin-bottom: 0; } }\n\n.nav-tabs.nav-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px; }\n\n.nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:hover {\n  border: 1px solid #ddd; }\n\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li > a {\n    border-bottom: 1px solid #ddd;\n    border-radius: 4px 4px 0 0; }\n  .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:hover {\n    border-bottom-color: #fff; } }\n\n.nav-pills > li {\n  float: left; }\n\n.nav-pills > li > a {\n  border-radius: 4px; }\n\n.nav-pills > li + li {\n  margin-left: 2px; }\n\n.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {\n  color: #fff;\n  background-color: #337ab7; }\n\n.nav-stacked > li {\n  float: none; }\n\n.nav-stacked > li + li {\n  margin-top: 2px;\n  margin-left: 0; }\n\n.nav-justified {\n  width: 100%; }\n\n.nav-justified > li {\n  float: none; }\n\n.nav-justified > li > a {\n  margin-bottom: 5px;\n  text-align: center; }\n\n.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto; }\n\n@media (min-width: 768px) {\n  .nav-justified > li {\n    display: table-cell;\n    width: 1%; }\n  .nav-justified > li > a {\n    margin-bottom: 0; } }\n\n.nav-tabs-justified {\n  border-bottom: 0; }\n\n.nav-tabs-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px; }\n\n.nav-tabs-justified > .active > a, .nav-tabs-justified > .active > a:focus, .nav-tabs-justified > .active > a:hover {\n  border: 1px solid #ddd; }\n\n@media (min-width: 768px) {\n  .nav-tabs-justified > li > a {\n    border-bottom: 1px solid #ddd;\n    border-radius: 4px 4px 0 0; }\n  .nav-tabs-justified > .active > a, .nav-tabs-justified > .active > a:focus, .nav-tabs-justified > .active > a:hover {\n    border-bottom-color: #fff; } }\n\n.tab-content > .tab-pane {\n  display: none; }\n\n.tab-content > .active {\n  display: block; }\n\n.nav-tabs .dropdown-menu {\n  margin-top: -1px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.navbar {\n  position: relative;\n  min-height: 50px;\n  margin-bottom: 20px;\n  border: 1px solid transparent; }\n\n@media (min-width: 768px) {\n  .navbar {\n    border-radius: 4px; } }\n\n@media (min-width: 768px) {\n  .navbar-header {\n    float: left; } }\n\n.navbar-collapse {\n  padding-right: 15px;\n  padding-left: 15px;\n  overflow-x: visible;\n  -webkit-overflow-scrolling: touch;\n  border-top: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); }\n\n.navbar-collapse.in {\n  overflow-y: auto; }\n\n@media (min-width: 768px) {\n  .navbar-collapse {\n    width: auto;\n    border-top: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none; }\n  .navbar-collapse.collapse {\n    display: block !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important; }\n  .navbar-collapse.in {\n    overflow-y: visible; }\n  .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse {\n    padding-right: 0;\n    padding-left: 0; } }\n\n.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {\n  max-height: 340px; }\n\n@media (max-device-width: 480px) and (orientation: landscape) {\n  .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {\n    max-height: 200px; } }\n\n.container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {\n  margin-right: -15px;\n  margin-left: -15px; }\n\n@media (min-width: 768px) {\n  .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {\n    margin-right: 0;\n    margin-left: 0; } }\n\n.navbar-static-top {\n  z-index: 1000;\n  border-width: 0 0 1px; }\n\n@media (min-width: 768px) {\n  .navbar-static-top {\n    border-radius: 0; } }\n\n.navbar-fixed-bottom, .navbar-fixed-top {\n  position: fixed;\n  right: 0;\n  left: 0;\n  z-index: 1030; }\n\n@media (min-width: 768px) {\n  .navbar-fixed-bottom, .navbar-fixed-top {\n    border-radius: 0; } }\n\n.navbar-fixed-top {\n  top: 0;\n  border-width: 0 0 1px; }\n\n.navbar-fixed-bottom {\n  bottom: 0;\n  margin-bottom: 0;\n  border-width: 1px 0 0; }\n\n.navbar-brand {\n  float: left;\n  height: 50px;\n  padding: 15px 15px;\n  font-size: 18px;\n  line-height: 20px; }\n\n.navbar-brand:focus, .navbar-brand:hover {\n  text-decoration: none; }\n\n.navbar-brand > img {\n  display: block; }\n\n@media (min-width: 768px) {\n  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {\n    margin-left: -15px; } }\n\n.navbar-toggle {\n  position: relative;\n  float: right;\n  padding: 9px 10px;\n  margin-top: 8px;\n  margin-right: 15px;\n  margin-bottom: 8px;\n  background-color: transparent;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px; }\n\n.navbar-toggle:focus {\n  outline: 0; }\n\n.navbar-toggle .icon-bar {\n  display: block;\n  width: 22px;\n  height: 2px;\n  border-radius: 1px; }\n\n.navbar-toggle .icon-bar + .icon-bar {\n  margin-top: 4px; }\n\n@media (min-width: 768px) {\n  .navbar-toggle {\n    display: none; } }\n\n.navbar-nav {\n  margin: 7.5px -15px; }\n\n.navbar-nav > li > a {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  line-height: 20px; }\n\n@media (max-width: 767px) {\n  .navbar-nav .open .dropdown-menu {\n    position: static;\n    float: none;\n    width: auto;\n    margin-top: 0;\n    background-color: transparent;\n    border: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none; }\n  .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu > li > a {\n    padding: 5px 15px 5px 25px; }\n  .navbar-nav .open .dropdown-menu > li > a {\n    line-height: 20px; }\n  .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-nav .open .dropdown-menu > li > a:hover {\n    background-image: none; } }\n\n@media (min-width: 768px) {\n  .navbar-nav {\n    float: left;\n    margin: 0; }\n  .navbar-nav > li {\n    float: left; }\n  .navbar-nav > li > a {\n    padding-top: 15px;\n    padding-bottom: 15px; } }\n\n.navbar-form {\n  padding: 10px 15px;\n  margin-top: 8px;\n  margin-right: -15px;\n  margin-bottom: 8px;\n  margin-left: -15px;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1); }\n\n@media (min-width: 768px) {\n  .navbar-form .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .navbar-form .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle; }\n  .navbar-form .form-control-static {\n    display: inline-block; }\n  .navbar-form .input-group {\n    display: inline-table;\n    vertical-align: middle; }\n  .navbar-form .input-group .form-control, .navbar-form .input-group .input-group-addon, .navbar-form .input-group .input-group-btn {\n    width: auto; }\n  .navbar-form .input-group > .form-control {\n    width: 100%; }\n  .navbar-form .control-label {\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .navbar-form .checkbox, .navbar-form .radio {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .navbar-form .checkbox label, .navbar-form .radio label {\n    padding-left: 0; }\n  .navbar-form .checkbox input[type=checkbox], .navbar-form .radio input[type=radio] {\n    position: relative;\n    margin-left: 0; }\n  .navbar-form .has-feedback .form-control-feedback {\n    top: 0; } }\n\n@media (max-width: 767px) {\n  .navbar-form .form-group {\n    margin-bottom: 5px; }\n  .navbar-form .form-group:last-child {\n    margin-bottom: 0; } }\n\n@media (min-width: 768px) {\n  .navbar-form {\n    width: auto;\n    padding-top: 0;\n    padding-bottom: 0;\n    margin-right: 0;\n    margin-left: 0;\n    border: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none; } }\n\n.navbar-nav > li > .dropdown-menu {\n  margin-top: 0;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {\n  margin-bottom: 0;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.navbar-btn {\n  margin-top: 8px;\n  margin-bottom: 8px; }\n\n.navbar-btn.btn-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.navbar-btn.btn-xs {\n  margin-top: 14px;\n  margin-bottom: 14px; }\n\n.navbar-text {\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n@media (min-width: 768px) {\n  .navbar-text {\n    float: left;\n    margin-right: 15px;\n    margin-left: 15px; } }\n\n@media (min-width: 768px) {\n  .navbar-left {\n    float: left !important; }\n  .navbar-right {\n    float: right !important;\n    margin-right: -15px; }\n  .navbar-right ~ .navbar-right {\n    margin-right: 0; } }\n\n.navbar-default {\n  background-color: #f8f8f8;\n  border-color: #e7e7e7; }\n\n.navbar-default .navbar-brand {\n  color: #777; }\n\n.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {\n  color: #5e5e5e;\n  background-color: transparent; }\n\n.navbar-default .navbar-text {\n  color: #777; }\n\n.navbar-default .navbar-nav > li > a {\n  color: #777; }\n\n.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {\n  color: #333;\n  background-color: transparent; }\n\n.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {\n  color: #555;\n  background-color: #e7e7e7; }\n\n.navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:focus, .navbar-default .navbar-nav > .disabled > a:hover {\n  color: #ccc;\n  background-color: transparent; }\n\n.navbar-default .navbar-toggle {\n  border-color: #ddd; }\n\n.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {\n  background-color: #ddd; }\n\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #888; }\n\n.navbar-default .navbar-collapse, .navbar-default .navbar-form {\n  border-color: #e7e7e7; }\n\n.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {\n  color: #555;\n  background-color: #e7e7e7; }\n\n@media (max-width: 767px) {\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a {\n    color: #777; }\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {\n    color: #333;\n    background-color: transparent; }\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {\n    color: #555;\n    background-color: #e7e7e7; }\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover {\n    color: #ccc;\n    background-color: transparent; } }\n\n.navbar-default .navbar-link {\n  color: #777; }\n\n.navbar-default .navbar-link:hover {\n  color: #333; }\n\n.navbar-default .btn-link {\n  color: #777; }\n\n.navbar-default .btn-link:focus, .navbar-default .btn-link:hover {\n  color: #333; }\n\n.navbar-default .btn-link[disabled]:focus, .navbar-default .btn-link[disabled]:hover, fieldset[disabled] .navbar-default .btn-link:focus, fieldset[disabled] .navbar-default .btn-link:hover {\n  color: #ccc; }\n\n.navbar-inverse {\n  background-color: #222;\n  border-color: #080808; }\n\n.navbar-inverse .navbar-brand {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {\n  color: #fff;\n  background-color: transparent; }\n\n.navbar-inverse .navbar-text {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-nav > li > a {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {\n  color: #fff;\n  background-color: transparent; }\n\n.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {\n  color: #fff;\n  background-color: #080808; }\n\n.navbar-inverse .navbar-nav > .disabled > a, .navbar-inverse .navbar-nav > .disabled > a:focus, .navbar-inverse .navbar-nav > .disabled > a:hover {\n  color: #444;\n  background-color: transparent; }\n\n.navbar-inverse .navbar-toggle {\n  border-color: #333; }\n\n.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {\n  background-color: #333; }\n\n.navbar-inverse .navbar-toggle .icon-bar {\n  background-color: #fff; }\n\n.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {\n  border-color: #101010; }\n\n.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {\n  color: #fff;\n  background-color: #080808; }\n\n@media (max-width: 767px) {\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {\n    border-color: #080808; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {\n    background-color: #080808; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {\n    color: #9d9d9d; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {\n    color: #fff;\n    background-color: transparent; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover {\n    color: #fff;\n    background-color: #080808; }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover {\n    color: #444;\n    background-color: transparent; } }\n\n.navbar-inverse .navbar-link {\n  color: #9d9d9d; }\n\n.navbar-inverse .navbar-link:hover {\n  color: #fff; }\n\n.navbar-inverse .btn-link {\n  color: #9d9d9d; }\n\n.navbar-inverse .btn-link:focus, .navbar-inverse .btn-link:hover {\n  color: #fff; }\n\n.navbar-inverse .btn-link[disabled]:focus, .navbar-inverse .btn-link[disabled]:hover, fieldset[disabled] .navbar-inverse .btn-link:focus, fieldset[disabled] .navbar-inverse .btn-link:hover {\n  color: #444; }\n\n.breadcrumb {\n  padding: 8px 15px;\n  margin-bottom: 20px;\n  list-style: none;\n  background-color: #f5f5f5;\n  border-radius: 4px; }\n\n.breadcrumb > li {\n  display: inline-block; }\n\n.breadcrumb > li + li:before {\n  padding: 0 5px;\n  color: #ccc;\n  content: \"/\\A0\"; }\n\n.breadcrumb > .active {\n  color: #777; }\n\n.pagination {\n  display: inline-block;\n  padding-left: 0;\n  margin: 20px 0;\n  border-radius: 4px; }\n\n.pagination > li {\n  display: inline; }\n\n.pagination > li > a, .pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  margin-left: -1px;\n  line-height: 1.42857143;\n  color: #337ab7;\n  text-decoration: none;\n  background-color: #fff;\n  border: 1px solid #ddd; }\n\n.pagination > li:first-child > a, .pagination > li:first-child > span {\n  margin-left: 0;\n  border-top-left-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.pagination > li:last-child > a, .pagination > li:last-child > span {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 4px; }\n\n.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {\n  z-index: 2;\n  color: #23527c;\n  background-color: #eee;\n  border-color: #ddd; }\n\n.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {\n  z-index: 3;\n  color: #fff;\n  cursor: default;\n  background-color: #337ab7;\n  border-color: #337ab7; }\n\n.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #fff;\n  border-color: #ddd; }\n\n.pagination-lg > li > a, .pagination-lg > li > span {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333; }\n\n.pagination-lg > li:first-child > a, .pagination-lg > li:first-child > span {\n  border-top-left-radius: 6px;\n  border-bottom-left-radius: 6px; }\n\n.pagination-lg > li:last-child > a, .pagination-lg > li:last-child > span {\n  border-top-right-radius: 6px;\n  border-bottom-right-radius: 6px; }\n\n.pagination-sm > li > a, .pagination-sm > li > span {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5; }\n\n.pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span {\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.pagination-sm > li:last-child > a, .pagination-sm > li:last-child > span {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.pager {\n  padding-left: 0;\n  margin: 20px 0;\n  text-align: center;\n  list-style: none; }\n\n.pager li {\n  display: inline; }\n\n.pager li > a, .pager li > span {\n  display: inline-block;\n  padding: 5px 14px;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 15px; }\n\n.pager li > a:focus, .pager li > a:hover {\n  text-decoration: none;\n  background-color: #eee; }\n\n.pager .next > a, .pager .next > span {\n  float: right; }\n\n.pager .previous > a, .pager .previous > span {\n  float: left; }\n\n.pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover, .pager .disabled > span {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #fff; }\n\n.label {\n  display: inline;\n  padding: .2em .6em .3em;\n  font-size: 75%;\n  font-weight: 700;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em; }\n\na.label:focus, a.label:hover {\n  color: #fff;\n  text-decoration: none;\n  cursor: pointer; }\n\n.label:empty {\n  display: none; }\n\n.btn .label {\n  position: relative;\n  top: -1px; }\n\n.label-default {\n  background-color: #777; }\n\n.label-default[href]:focus, .label-default[href]:hover {\n  background-color: #5e5e5e; }\n\n.label-primary {\n  background-color: #337ab7; }\n\n.label-primary[href]:focus, .label-primary[href]:hover {\n  background-color: #286090; }\n\n.label-success {\n  background-color: #5cb85c; }\n\n.label-success[href]:focus, .label-success[href]:hover {\n  background-color: #449d44; }\n\n.label-info {\n  background-color: #5bc0de; }\n\n.label-info[href]:focus, .label-info[href]:hover {\n  background-color: #31b0d5; }\n\n.label-warning {\n  background-color: #f0ad4e; }\n\n.label-warning[href]:focus, .label-warning[href]:hover {\n  background-color: #ec971f; }\n\n.label-danger {\n  background-color: #d9534f; }\n\n.label-danger[href]:focus, .label-danger[href]:hover {\n  background-color: #c9302c; }\n\n.badge {\n  display: inline-block;\n  min-width: 10px;\n  padding: 3px 7px;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  background-color: #777;\n  border-radius: 10px; }\n\n.badge:empty {\n  display: none; }\n\n.btn .badge {\n  position: relative;\n  top: -1px; }\n\n.btn-group-xs > .btn .badge, .btn-xs .badge {\n  top: 0;\n  padding: 1px 5px; }\n\na.badge:focus, a.badge:hover {\n  color: #fff;\n  text-decoration: none;\n  cursor: pointer; }\n\n.list-group-item.active > .badge, .nav-pills > .active > a > .badge {\n  color: #337ab7;\n  background-color: #fff; }\n\n.list-group-item > .badge {\n  float: right; }\n\n.list-group-item > .badge + .badge {\n  margin-right: 5px; }\n\n.nav-pills > li > a > .badge {\n  margin-left: 3px; }\n\n.jumbotron {\n  padding-top: 30px;\n  padding-bottom: 30px;\n  margin-bottom: 30px;\n  color: inherit;\n  background-color: #eee; }\n\n.jumbotron .h1, .jumbotron h1 {\n  color: inherit; }\n\n.jumbotron p {\n  margin-bottom: 15px;\n  font-size: 21px;\n  font-weight: 200; }\n\n.jumbotron > hr {\n  border-top-color: #d5d5d5; }\n\n.container .jumbotron, .container-fluid .jumbotron {\n  padding-right: 15px;\n  padding-left: 15px;\n  border-radius: 6px; }\n\n.jumbotron .container {\n  max-width: 100%; }\n\n@media screen and (min-width: 768px) {\n  .jumbotron {\n    padding-top: 48px;\n    padding-bottom: 48px; }\n  .container .jumbotron, .container-fluid .jumbotron {\n    padding-right: 60px;\n    padding-left: 60px; }\n  .jumbotron .h1, .jumbotron h1 {\n    font-size: 63px; } }\n\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: border .2s ease-in-out;\n  -o-transition: border .2s ease-in-out;\n  transition: border .2s ease-in-out; }\n\n.thumbnail a > img, .thumbnail > img {\n  margin-right: auto;\n  margin-left: auto; }\n\na.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {\n  border-color: #337ab7; }\n\n.thumbnail .caption {\n  padding: 9px;\n  color: #333; }\n\n.alert {\n  padding: 15px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n  border-radius: 4px; }\n\n.alert h4 {\n  margin-top: 0;\n  color: inherit; }\n\n.alert .alert-link {\n  font-weight: 700; }\n\n.alert > p, .alert > ul {\n  margin-bottom: 0; }\n\n.alert > p + p {\n  margin-top: 5px; }\n\n.alert-dismissable, .alert-dismissible {\n  padding-right: 35px; }\n\n.alert-dismissable .close, .alert-dismissible .close {\n  position: relative;\n  top: -2px;\n  right: -21px;\n  color: inherit; }\n\n.alert-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6; }\n\n.alert-success hr {\n  border-top-color: #c9e2b3; }\n\n.alert-success .alert-link {\n  color: #2b542c; }\n\n.alert-info {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1; }\n\n.alert-info hr {\n  border-top-color: #a6e1ec; }\n\n.alert-info .alert-link {\n  color: #245269; }\n\n.alert-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc; }\n\n.alert-warning hr {\n  border-top-color: #f7e1b5; }\n\n.alert-warning .alert-link {\n  color: #66512c; }\n\n.alert-danger {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1; }\n\n.alert-danger hr {\n  border-top-color: #e4b9c0; }\n\n.alert-danger .alert-link {\n  color: #843534; }\n\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0; }\n  to {\n    background-position: 0 0; } }\n\n@-o-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0; }\n  to {\n    background-position: 0 0; } }\n\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0; }\n  to {\n    background-position: 0 0; } }\n\n.progress {\n  height: 20px;\n  margin-bottom: 20px;\n  overflow: hidden;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }\n\n.progress-bar {\n  float: left;\n  width: 0;\n  height: 100%;\n  font-size: 12px;\n  line-height: 20px;\n  color: #fff;\n  text-align: center;\n  background-color: #337ab7;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  -webkit-transition: width .6s ease;\n  -o-transition: width .6s ease;\n  transition: width .6s ease; }\n\n.progress-bar-striped, .progress-striped .progress-bar {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  -webkit-background-size: 40px 40px;\n  background-size: 40px 40px; }\n\n.progress-bar.active, .progress.active .progress-bar {\n  -webkit-animation: progress-bar-stripes 2s linear infinite;\n  -o-animation: progress-bar-stripes 2s linear infinite;\n  animation: progress-bar-stripes 2s linear infinite; }\n\n.progress-bar-success {\n  background-color: #5cb85c; }\n\n.progress-striped .progress-bar-success {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.progress-bar-info {\n  background-color: #5bc0de; }\n\n.progress-striped .progress-bar-info {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.progress-bar-warning {\n  background-color: #f0ad4e; }\n\n.progress-striped .progress-bar-warning {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.progress-bar-danger {\n  background-color: #d9534f; }\n\n.progress-striped .progress-bar-danger {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }\n\n.media {\n  margin-top: 15px; }\n\n.media:first-child {\n  margin-top: 0; }\n\n.media, .media-body {\n  overflow: hidden;\n  zoom: 1; }\n\n.media-body {\n  width: 10000px; }\n\n.media-object {\n  display: block; }\n\n.media-object.img-thumbnail {\n  max-width: none; }\n\n.media-right, .media > .pull-right {\n  padding-left: 10px; }\n\n.media-left, .media > .pull-left {\n  padding-right: 10px; }\n\n.media-body, .media-left, .media-right {\n  display: table-cell;\n  vertical-align: top; }\n\n.media-middle {\n  vertical-align: middle; }\n\n.media-bottom {\n  vertical-align: bottom; }\n\n.media-heading {\n  margin-top: 0;\n  margin-bottom: 5px; }\n\n.media-list {\n  padding-left: 0;\n  list-style: none; }\n\n.list-group {\n  padding-left: 0;\n  margin-bottom: 20px; }\n\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #fff;\n  border: 1px solid #ddd; }\n\n.list-group-item:first-child {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px; }\n\n.list-group-item:last-child {\n  margin-bottom: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\na.list-group-item, button.list-group-item {\n  color: #555; }\n\na.list-group-item .list-group-item-heading, button.list-group-item .list-group-item-heading {\n  color: #333; }\n\na.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, button.list-group-item:hover {\n  color: #555;\n  text-decoration: none;\n  background-color: #f5f5f5; }\n\nbutton.list-group-item {\n  width: 100%;\n  text-align: left; }\n\n.list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #eee; }\n\n.list-group-item.disabled .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading {\n  color: inherit; }\n\n.list-group-item.disabled .list-group-item-text, .list-group-item.disabled:focus .list-group-item-text, .list-group-item.disabled:hover .list-group-item-text {\n  color: #777; }\n\n.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {\n  z-index: 2;\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #337ab7; }\n\n.list-group-item.active .list-group-item-heading, .list-group-item.active .list-group-item-heading > .small, .list-group-item.active .list-group-item-heading > small, .list-group-item.active:focus .list-group-item-heading, .list-group-item.active:focus .list-group-item-heading > .small, .list-group-item.active:focus .list-group-item-heading > small, .list-group-item.active:hover .list-group-item-heading, .list-group-item.active:hover .list-group-item-heading > .small, .list-group-item.active:hover .list-group-item-heading > small {\n  color: inherit; }\n\n.list-group-item.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text {\n  color: #c7ddef; }\n\n.list-group-item-success {\n  color: #3c763d;\n  background-color: #dff0d8; }\n\na.list-group-item-success, button.list-group-item-success {\n  color: #3c763d; }\n\na.list-group-item-success .list-group-item-heading, button.list-group-item-success .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-success:focus, a.list-group-item-success:hover, button.list-group-item-success:focus, button.list-group-item-success:hover {\n  color: #3c763d;\n  background-color: #d0e9c6; }\n\na.list-group-item-success.active, a.list-group-item-success.active:focus, a.list-group-item-success.active:hover, button.list-group-item-success.active, button.list-group-item-success.active:focus, button.list-group-item-success.active:hover {\n  color: #fff;\n  background-color: #3c763d;\n  border-color: #3c763d; }\n\n.list-group-item-info {\n  color: #31708f;\n  background-color: #d9edf7; }\n\na.list-group-item-info, button.list-group-item-info {\n  color: #31708f; }\n\na.list-group-item-info .list-group-item-heading, button.list-group-item-info .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-info:focus, a.list-group-item-info:hover, button.list-group-item-info:focus, button.list-group-item-info:hover {\n  color: #31708f;\n  background-color: #c4e3f3; }\n\na.list-group-item-info.active, a.list-group-item-info.active:focus, a.list-group-item-info.active:hover, button.list-group-item-info.active, button.list-group-item-info.active:focus, button.list-group-item-info.active:hover {\n  color: #fff;\n  background-color: #31708f;\n  border-color: #31708f; }\n\n.list-group-item-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3; }\n\na.list-group-item-warning, button.list-group-item-warning {\n  color: #8a6d3b; }\n\na.list-group-item-warning .list-group-item-heading, button.list-group-item-warning .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-warning:focus, a.list-group-item-warning:hover, button.list-group-item-warning:focus, button.list-group-item-warning:hover {\n  color: #8a6d3b;\n  background-color: #faf2cc; }\n\na.list-group-item-warning.active, a.list-group-item-warning.active:focus, a.list-group-item-warning.active:hover, button.list-group-item-warning.active, button.list-group-item-warning.active:focus, button.list-group-item-warning.active:hover {\n  color: #fff;\n  background-color: #8a6d3b;\n  border-color: #8a6d3b; }\n\n.list-group-item-danger {\n  color: #a94442;\n  background-color: #f2dede; }\n\na.list-group-item-danger, button.list-group-item-danger {\n  color: #a94442; }\n\na.list-group-item-danger .list-group-item-heading, button.list-group-item-danger .list-group-item-heading {\n  color: inherit; }\n\na.list-group-item-danger:focus, a.list-group-item-danger:hover, button.list-group-item-danger:focus, button.list-group-item-danger:hover {\n  color: #a94442;\n  background-color: #ebcccc; }\n\na.list-group-item-danger.active, a.list-group-item-danger.active:focus, a.list-group-item-danger.active:hover, button.list-group-item-danger.active, button.list-group-item-danger.active:focus, button.list-group-item-danger.active:hover {\n  color: #fff;\n  background-color: #a94442;\n  border-color: #a94442; }\n\n.list-group-item-heading {\n  margin-top: 0;\n  margin-bottom: 5px; }\n\n.list-group-item-text {\n  margin-bottom: 0;\n  line-height: 1.3; }\n\n.panel {\n  margin-bottom: 20px;\n  background-color: #fff;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }\n\n.panel-body {\n  padding: 15px; }\n\n.panel-heading {\n  padding: 10px 15px;\n  border-bottom: 1px solid transparent;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel-heading > .dropdown .dropdown-toggle {\n  color: inherit; }\n\n.panel-title {\n  margin-top: 0;\n  margin-bottom: 0;\n  font-size: 16px;\n  color: inherit; }\n\n.panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {\n  color: inherit; }\n\n.panel-footer {\n  padding: 10px 15px;\n  background-color: #f5f5f5;\n  border-top: 1px solid #ddd;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .list-group, .panel > .panel-collapse > .list-group {\n  margin-bottom: 0; }\n\n.panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item {\n  border-width: 1px 0;\n  border-radius: 0; }\n\n.panel > .list-group:first-child .list-group-item:first-child, .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {\n  border-top: 0;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel > .list-group:last-child .list-group-item:last-child, .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {\n  border-bottom: 0;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.panel-heading + .list-group .list-group-item:first-child {\n  border-top-width: 0; }\n\n.list-group + .panel-footer {\n  border-top-width: 0; }\n\n.panel > .panel-collapse > .table, .panel > .table, .panel > .table-responsive > .table {\n  margin-bottom: 0; }\n\n.panel > .panel-collapse > .table caption, .panel > .table caption, .panel > .table-responsive > .table caption {\n  padding-right: 15px;\n  padding-left: 15px; }\n\n.panel > .table-responsive:first-child > .table:first-child, .panel > .table:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child, .panel > .table:first-child > thead:first-child > tr:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px; }\n\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child td:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child, .panel > .table:first-child > thead:first-child > tr:first-child td:first-child, .panel > .table:first-child > thead:first-child > tr:first-child th:first-child {\n  border-top-left-radius: 3px; }\n\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child, .panel > .table:first-child > tbody:first-child > tr:first-child td:last-child, .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child, .panel > .table:first-child > thead:first-child > tr:first-child td:last-child, .panel > .table:first-child > thead:first-child > tr:first-child th:last-child {\n  border-top-right-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child, .panel > .table:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child, .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child, .panel > .table:last-child > tbody:last-child > tr:last-child th:first-child, .panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child, .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child {\n  border-bottom-left-radius: 3px; }\n\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child th:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child {\n  border-bottom-right-radius: 3px; }\n\n.panel > .panel-body + .table, .panel > .panel-body + .table-responsive, .panel > .table + .panel-body, .panel > .table-responsive + .panel-body {\n  border-top: 1px solid #ddd; }\n\n.panel > .table > tbody:first-child > tr:first-child td, .panel > .table > tbody:first-child > tr:first-child th {\n  border-top: 0; }\n\n.panel > .table-bordered, .panel > .table-responsive > .table-bordered {\n  border: 0; }\n\n.panel > .table-bordered > tbody > tr > td:first-child, .panel > .table-bordered > tbody > tr > th:first-child, .panel > .table-bordered > tfoot > tr > td:first-child, .panel > .table-bordered > tfoot > tr > th:first-child, .panel > .table-bordered > thead > tr > td:first-child, .panel > .table-bordered > thead > tr > th:first-child, .panel > .table-responsive > .table-bordered > tbody > tr > td:first-child, .panel > .table-responsive > .table-bordered > tbody > tr > th:first-child, .panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child, .panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child, .panel > .table-responsive > .table-bordered > thead > tr > td:first-child, .panel > .table-responsive > .table-bordered > thead > tr > th:first-child {\n  border-left: 0; }\n\n.panel > .table-bordered > tbody > tr > td:last-child, .panel > .table-bordered > tbody > tr > th:last-child, .panel > .table-bordered > tfoot > tr > td:last-child, .panel > .table-bordered > tfoot > tr > th:last-child, .panel > .table-bordered > thead > tr > td:last-child, .panel > .table-bordered > thead > tr > th:last-child, .panel > .table-responsive > .table-bordered > tbody > tr > td:last-child, .panel > .table-responsive > .table-bordered > tbody > tr > th:last-child, .panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child, .panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child, .panel > .table-responsive > .table-bordered > thead > tr > td:last-child, .panel > .table-responsive > .table-bordered > thead > tr > th:last-child {\n  border-right: 0; }\n\n.panel > .table-bordered > tbody > tr:first-child > td, .panel > .table-bordered > tbody > tr:first-child > th, .panel > .table-bordered > thead > tr:first-child > td, .panel > .table-bordered > thead > tr:first-child > th, .panel > .table-responsive > .table-bordered > tbody > tr:first-child > td, .panel > .table-responsive > .table-bordered > tbody > tr:first-child > th, .panel > .table-responsive > .table-bordered > thead > tr:first-child > td, .panel > .table-responsive > .table-bordered > thead > tr:first-child > th {\n  border-bottom: 0; }\n\n.panel > .table-bordered > tbody > tr:last-child > td, .panel > .table-bordered > tbody > tr:last-child > th, .panel > .table-bordered > tfoot > tr:last-child > td, .panel > .table-bordered > tfoot > tr:last-child > th, .panel > .table-responsive > .table-bordered > tbody > tr:last-child > td, .panel > .table-responsive > .table-bordered > tbody > tr:last-child > th, .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td, .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n  border-bottom: 0; }\n\n.panel > .table-responsive {\n  margin-bottom: 0;\n  border: 0; }\n\n.panel-group {\n  margin-bottom: 20px; }\n\n.panel-group .panel {\n  margin-bottom: 0;\n  border-radius: 4px; }\n\n.panel-group .panel + .panel {\n  margin-top: 5px; }\n\n.panel-group .panel-heading {\n  border-bottom: 0; }\n\n.panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body {\n  border-top: 1px solid #ddd; }\n\n.panel-group .panel-footer {\n  border-top: 0; }\n\n.panel-group .panel-footer + .panel-collapse .panel-body {\n  border-bottom: 1px solid #ddd; }\n\n.panel-default {\n  border-color: #ddd; }\n\n.panel-default > .panel-heading {\n  color: #333;\n  background-color: #f5f5f5;\n  border-color: #ddd; }\n\n.panel-default > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ddd; }\n\n.panel-default > .panel-heading .badge {\n  color: #f5f5f5;\n  background-color: #333; }\n\n.panel-default > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ddd; }\n\n.panel-primary {\n  border-color: #337ab7; }\n\n.panel-primary > .panel-heading {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #337ab7; }\n\n.panel-primary > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #337ab7; }\n\n.panel-primary > .panel-heading .badge {\n  color: #337ab7;\n  background-color: #fff; }\n\n.panel-primary > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #337ab7; }\n\n.panel-success {\n  border-color: #d6e9c6; }\n\n.panel-success > .panel-heading {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6; }\n\n.panel-success > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #d6e9c6; }\n\n.panel-success > .panel-heading .badge {\n  color: #dff0d8;\n  background-color: #3c763d; }\n\n.panel-success > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #d6e9c6; }\n\n.panel-info {\n  border-color: #bce8f1; }\n\n.panel-info > .panel-heading {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1; }\n\n.panel-info > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #bce8f1; }\n\n.panel-info > .panel-heading .badge {\n  color: #d9edf7;\n  background-color: #31708f; }\n\n.panel-info > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #bce8f1; }\n\n.panel-warning {\n  border-color: #faebcc; }\n\n.panel-warning > .panel-heading {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc; }\n\n.panel-warning > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #faebcc; }\n\n.panel-warning > .panel-heading .badge {\n  color: #fcf8e3;\n  background-color: #8a6d3b; }\n\n.panel-warning > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #faebcc; }\n\n.panel-danger {\n  border-color: #ebccd1; }\n\n.panel-danger > .panel-heading {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1; }\n\n.panel-danger > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ebccd1; }\n\n.panel-danger > .panel-heading .badge {\n  color: #f2dede;\n  background-color: #a94442; }\n\n.panel-danger > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ebccd1; }\n\n.embed-responsive {\n  position: relative;\n  display: block;\n  height: 0;\n  padding: 0;\n  overflow: hidden; }\n\n.embed-responsive .embed-responsive-item, .embed-responsive embed, .embed-responsive iframe, .embed-responsive object, .embed-responsive video {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border: 0; }\n\n.embed-responsive-16by9 {\n  padding-bottom: 56.25%; }\n\n.embed-responsive-4by3 {\n  padding-bottom: 75%; }\n\n.well {\n  min-height: 20px;\n  padding: 19px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }\n\n.well blockquote {\n  border-color: #ddd;\n  border-color: rgba(0, 0, 0, 0.15); }\n\n.well-lg {\n  padding: 24px;\n  border-radius: 6px; }\n\n.well-sm {\n  padding: 9px;\n  border-radius: 3px; }\n\n.close {\n  float: right;\n  font-size: 21px;\n  font-weight: 700;\n  line-height: 1;\n  color: #000;\n  text-shadow: 0 1px 0 #fff;\n  filter: alpha(opacity=20);\n  opacity: .2; }\n\n.close:focus, .close:hover {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n  filter: alpha(opacity=50);\n  opacity: .5; }\n\nbutton.close {\n  -webkit-appearance: none;\n  padding: 0;\n  cursor: pointer;\n  background: 0 0;\n  border: 0; }\n\n.modal-open {\n  overflow: hidden; }\n\n.modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1050;\n  display: none;\n  overflow: hidden;\n  -webkit-overflow-scrolling: touch;\n  outline: 0; }\n\n.modal.fade .modal-dialog {\n  -webkit-transition: -webkit-transform .3s ease-out;\n  -o-transition: -o-transform .3s ease-out;\n  transition: transform .3s ease-out;\n  -webkit-transform: translate(0, -25%);\n  -ms-transform: translate(0, -25%);\n  -o-transform: translate(0, -25%);\n  transform: translate(0, -25%); }\n\n.modal.in .modal-dialog {\n  -webkit-transform: translate(0, 0);\n  -ms-transform: translate(0, 0);\n  -o-transform: translate(0, 0);\n  transform: translate(0, 0); }\n\n.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto; }\n\n.modal-dialog {\n  position: relative;\n  width: auto;\n  margin: 10px; }\n\n.modal-content {\n  position: relative;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n  background-clip: padding-box;\n  border: 1px solid #999;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  outline: 0;\n  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); }\n\n.modal-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #000; }\n\n.modal-backdrop.fade {\n  filter: alpha(opacity=0);\n  opacity: 0; }\n\n.modal-backdrop.in {\n  filter: alpha(opacity=50);\n  opacity: .5; }\n\n.modal-header {\n  padding: 15px;\n  border-bottom: 1px solid #e5e5e5; }\n\n.modal-header .close {\n  margin-top: -2px; }\n\n.modal-title {\n  margin: 0;\n  line-height: 1.42857143; }\n\n.modal-body {\n  position: relative;\n  padding: 15px; }\n\n.modal-footer {\n  padding: 15px;\n  text-align: right;\n  border-top: 1px solid #e5e5e5; }\n\n.modal-footer .btn + .btn {\n  margin-bottom: 0;\n  margin-left: 5px; }\n\n.modal-footer .btn-group .btn + .btn {\n  margin-left: -1px; }\n\n.modal-footer .btn-block + .btn-block {\n  margin-left: 0; }\n\n.modal-scrollbar-measure {\n  position: absolute;\n  top: -9999px;\n  width: 50px;\n  height: 50px;\n  overflow: scroll; }\n\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto; }\n  .modal-content {\n    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }\n  .modal-sm {\n    width: 300px; } }\n\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px; } }\n\n.tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n  font-size: 12px;\n  font-style: normal;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: left;\n  text-align: start;\n  text-decoration: none;\n  text-shadow: none;\n  text-transform: none;\n  letter-spacing: normal;\n  word-break: normal;\n  word-spacing: normal;\n  word-wrap: normal;\n  white-space: normal;\n  filter: alpha(opacity=0);\n  opacity: 0;\n  line-break: auto; }\n\n.tooltip.in {\n  filter: alpha(opacity=90);\n  opacity: .9; }\n\n.tooltip.top {\n  padding: 5px 0;\n  margin-top: -3px; }\n\n.tooltip.right {\n  padding: 0 5px;\n  margin-left: 3px; }\n\n.tooltip.bottom {\n  padding: 5px 0;\n  margin-top: 3px; }\n\n.tooltip.left {\n  padding: 0 5px;\n  margin-left: -3px; }\n\n.tooltip-inner {\n  max-width: 200px;\n  padding: 3px 8px;\n  color: #fff;\n  text-align: center;\n  background-color: #000;\n  border-radius: 4px; }\n\n.tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid; }\n\n.tooltip.top .tooltip-arrow {\n  bottom: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000; }\n\n.tooltip.top-left .tooltip-arrow {\n  right: 5px;\n  bottom: 0;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000; }\n\n.tooltip.top-right .tooltip-arrow {\n  bottom: 0;\n  left: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000; }\n\n.tooltip.right .tooltip-arrow {\n  top: 50%;\n  left: 0;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #000; }\n\n.tooltip.left .tooltip-arrow {\n  top: 50%;\n  right: 0;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #000; }\n\n.tooltip.bottom .tooltip-arrow {\n  top: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000; }\n\n.tooltip.bottom-left .tooltip-arrow {\n  top: 0;\n  right: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000; }\n\n.tooltip.bottom-right .tooltip-arrow {\n  top: 0;\n  left: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000; }\n\n.popover {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1060;\n  display: none;\n  max-width: 276px;\n  padding: 1px;\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n  font-size: 14px;\n  font-style: normal;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: left;\n  text-align: start;\n  text-decoration: none;\n  text-shadow: none;\n  text-transform: none;\n  letter-spacing: normal;\n  word-break: normal;\n  word-spacing: normal;\n  word-wrap: normal;\n  white-space: normal;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n  background-clip: padding-box;\n  border: 1px solid #ccc;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  line-break: auto; }\n\n.popover.top {\n  margin-top: -10px; }\n\n.popover.right {\n  margin-left: 10px; }\n\n.popover.bottom {\n  margin-top: 10px; }\n\n.popover.left {\n  margin-left: -10px; }\n\n.popover-title {\n  padding: 8px 14px;\n  margin: 0;\n  font-size: 14px;\n  background-color: #f7f7f7;\n  border-bottom: 1px solid #ebebeb;\n  border-radius: 5px 5px 0 0; }\n\n.popover-content {\n  padding: 9px 14px; }\n\n.popover > .arrow, .popover > .arrow:after {\n  position: absolute;\n  display: block;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid; }\n\n.popover > .arrow {\n  border-width: 11px; }\n\n.popover > .arrow:after {\n  content: \"\";\n  border-width: 10px; }\n\n.popover.top > .arrow {\n  bottom: -11px;\n  left: 50%;\n  margin-left: -11px;\n  border-top-color: #999;\n  border-top-color: rgba(0, 0, 0, 0.25);\n  border-bottom-width: 0; }\n\n.popover.top > .arrow:after {\n  bottom: 1px;\n  margin-left: -10px;\n  content: \" \";\n  border-top-color: #fff;\n  border-bottom-width: 0; }\n\n.popover.right > .arrow {\n  top: 50%;\n  left: -11px;\n  margin-top: -11px;\n  border-right-color: #999;\n  border-right-color: rgba(0, 0, 0, 0.25);\n  border-left-width: 0; }\n\n.popover.right > .arrow:after {\n  bottom: -10px;\n  left: 1px;\n  content: \" \";\n  border-right-color: #fff;\n  border-left-width: 0; }\n\n.popover.bottom > .arrow {\n  top: -11px;\n  left: 50%;\n  margin-left: -11px;\n  border-top-width: 0;\n  border-bottom-color: #999;\n  border-bottom-color: rgba(0, 0, 0, 0.25); }\n\n.popover.bottom > .arrow:after {\n  top: 1px;\n  margin-left: -10px;\n  content: \" \";\n  border-top-width: 0;\n  border-bottom-color: #fff; }\n\n.popover.left > .arrow {\n  top: 50%;\n  right: -11px;\n  margin-top: -11px;\n  border-right-width: 0;\n  border-left-color: #999;\n  border-left-color: rgba(0, 0, 0, 0.25); }\n\n.popover.left > .arrow:after {\n  right: 1px;\n  bottom: -10px;\n  content: \" \";\n  border-right-width: 0;\n  border-left-color: #fff; }\n\n.carousel {\n  position: relative; }\n\n.carousel-inner {\n  position: relative;\n  width: 100%;\n  overflow: hidden; }\n\n.carousel-inner > .item {\n  position: relative;\n  display: none;\n  -webkit-transition: .6s ease-in-out left;\n  -o-transition: .6s ease-in-out left;\n  transition: .6s ease-in-out left; }\n\n.carousel-inner > .item > a > img, .carousel-inner > .item > img {\n  line-height: 1; }\n\n@media all and (transform-3d), (-webkit-transform-3d) {\n  .carousel-inner > .item {\n    -webkit-transition: -webkit-transform .6s ease-in-out;\n    -o-transition: -o-transform .6s ease-in-out;\n    transition: transform .6s ease-in-out;\n    -webkit-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-perspective: 1000px;\n    perspective: 1000px; }\n  .carousel-inner > .item.active.right, .carousel-inner > .item.next {\n    left: 0;\n    -webkit-transform: translate3d(100%, 0, 0);\n    transform: translate3d(100%, 0, 0); }\n  .carousel-inner > .item.active.left, .carousel-inner > .item.prev {\n    left: 0;\n    -webkit-transform: translate3d(-100%, 0, 0);\n    transform: translate3d(-100%, 0, 0); }\n  .carousel-inner > .item.active, .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right {\n    left: 0;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); } }\n\n.carousel-inner > .active, .carousel-inner > .next, .carousel-inner > .prev {\n  display: block; }\n\n.carousel-inner > .active {\n  left: 0; }\n\n.carousel-inner > .next, .carousel-inner > .prev {\n  position: absolute;\n  top: 0;\n  width: 100%; }\n\n.carousel-inner > .next {\n  left: 100%; }\n\n.carousel-inner > .prev {\n  left: -100%; }\n\n.carousel-inner > .next.left, .carousel-inner > .prev.right {\n  left: 0; }\n\n.carousel-inner > .active.left {\n  left: -100%; }\n\n.carousel-inner > .active.right {\n  left: 100%; }\n\n.carousel-control {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 15%;\n  font-size: 20px;\n  color: #fff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n  background-color: rgba(0, 0, 0, 0);\n  filter: alpha(opacity=50);\n  opacity: .5; }\n\n.carousel-control.left {\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);\n  background-repeat: repeat-x; }\n\n.carousel-control.right {\n  right: 0;\n  left: auto;\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);\n  background-repeat: repeat-x; }\n\n.carousel-control:focus, .carousel-control:hover {\n  color: #fff;\n  text-decoration: none;\n  filter: alpha(opacity=90);\n  outline: 0;\n  opacity: .9; }\n\n.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {\n  position: absolute;\n  top: 50%;\n  z-index: 5;\n  display: inline-block;\n  margin-top: -10px; }\n\n.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {\n  left: 50%;\n  margin-left: -10px; }\n\n.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {\n  right: 50%;\n  margin-right: -10px; }\n\n.carousel-control .icon-next, .carousel-control .icon-prev {\n  width: 20px;\n  height: 20px;\n  font-family: serif;\n  line-height: 1; }\n\n.carousel-control .icon-prev:before {\n  content: '\\2039'; }\n\n.carousel-control .icon-next:before {\n  content: '\\203A'; }\n\n.carousel-indicators {\n  position: absolute;\n  bottom: 10px;\n  left: 50%;\n  z-index: 15;\n  width: 60%;\n  padding-left: 0;\n  margin-left: -30%;\n  text-align: center;\n  list-style: none; }\n\n.carousel-indicators li {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n  text-indent: -999px;\n  cursor: pointer;\n  background-color: #000\\9;\n  background-color: rgba(0, 0, 0, 0);\n  border: 1px solid #fff;\n  border-radius: 10px; }\n\n.carousel-indicators .active {\n  width: 12px;\n  height: 12px;\n  margin: 0;\n  background-color: #fff; }\n\n.carousel-caption {\n  position: absolute;\n  right: 15%;\n  bottom: 20px;\n  left: 15%;\n  z-index: 10;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  color: #fff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }\n\n.carousel-caption .btn {\n  text-shadow: none; }\n\n@media screen and (min-width: 768px) {\n  .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {\n    width: 30px;\n    height: 30px;\n    margin-top: -10px;\n    font-size: 30px; }\n  .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {\n    margin-left: -10px; }\n  .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {\n    margin-right: -10px; }\n  .carousel-caption {\n    right: 20%;\n    left: 20%;\n    padding-bottom: 30px; }\n  .carousel-indicators {\n    bottom: 20px; } }\n\n.btn-group-vertical > .btn-group:after, .btn-group-vertical > .btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {\n  display: table;\n  content: \" \"; }\n\n.btn-group-vertical > .btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .modal-header:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after {\n  clear: both; }\n\n.center-block {\n  display: block;\n  margin-right: auto;\n  margin-left: auto; }\n\n.pull-right {\n  float: right !important; }\n\n.pull-left {\n  float: left !important; }\n\n.hide {\n  display: none !important; }\n\n.show {\n  display: block !important; }\n\n.invisible {\n  visibility: hidden; }\n\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0; }\n\n.hidden {\n  display: none !important; }\n\n.affix {\n  position: fixed; }\n\n@-ms-viewport {\n  width: device-width; }\n\n.visible-lg, .visible-md, .visible-sm, .visible-xs {\n  display: none !important; }\n\n.visible-lg-block, .visible-lg-inline, .visible-lg-inline-block, .visible-md-block, .visible-md-inline, .visible-md-inline-block, .visible-sm-block, .visible-sm-inline, .visible-sm-inline-block, .visible-xs-block, .visible-xs-inline, .visible-xs-inline-block {\n  display: none !important; }\n\n@media (max-width: 767px) {\n  .visible-xs {\n    display: block !important; }\n  table.visible-xs {\n    display: table !important; }\n  tr.visible-xs {\n    display: table-row !important; }\n  td.visible-xs, th.visible-xs {\n    display: table-cell !important; } }\n\n@media (max-width: 767px) {\n  .visible-xs-block {\n    display: block !important; } }\n\n@media (max-width: 767px) {\n  .visible-xs-inline {\n    display: inline !important; } }\n\n@media (max-width: 767px) {\n  .visible-xs-inline-block {\n    display: inline-block !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm {\n    display: block !important; }\n  table.visible-sm {\n    display: table !important; }\n  tr.visible-sm {\n    display: table-row !important; }\n  td.visible-sm, th.visible-sm {\n    display: table-cell !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-block {\n    display: block !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline {\n    display: inline !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline-block {\n    display: inline-block !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md {\n    display: block !important; }\n  table.visible-md {\n    display: table !important; }\n  tr.visible-md {\n    display: table-row !important; }\n  td.visible-md, th.visible-md {\n    display: table-cell !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-block {\n    display: block !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline {\n    display: inline !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline-block {\n    display: inline-block !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg {\n    display: block !important; }\n  table.visible-lg {\n    display: table !important; }\n  tr.visible-lg {\n    display: table-row !important; }\n  td.visible-lg, th.visible-lg {\n    display: table-cell !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg-block {\n    display: block !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg-inline {\n    display: inline !important; } }\n\n@media (min-width: 1200px) {\n  .visible-lg-inline-block {\n    display: inline-block !important; } }\n\n@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important; } }\n\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important; } }\n\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important; } }\n\n.visible-print {\n  display: none !important; }\n\n@media print {\n  .visible-print {\n    display: block !important; }\n  table.visible-print {\n    display: table !important; }\n  tr.visible-print {\n    display: table-row !important; }\n  td.visible-print, th.visible-print {\n    display: table-cell !important; } }\n\n.visible-print-block {\n  display: none !important; }\n\n@media print {\n  .visible-print-block {\n    display: block !important; } }\n\n.visible-print-inline {\n  display: none !important; }\n\n@media print {\n  .visible-print-inline {\n    display: inline !important; } }\n\n.visible-print-inline-block {\n  display: none !important; }\n\n@media print {\n  .visible-print-inline-block {\n    display: inline-block !important; } }\n\n@media print {\n  .hidden-print {\n    display: none !important; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "448c34a56d699c29117adc64c43affeb.woff2";
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fa2772327f55d8198301fdb8bcfc8158.woff";
 
 /***/ }),
-/* 356 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "e18bbf611f2a2e43afc071aa2f4e1512.ttf";
 
 /***/ }),
-/* 357 */
+/* 358 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/svg+xml;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICI4OTg4OTY4ODE0N2JkNzU3NWQ2MzI3MTYwZDY0ZTc2MC5zdmciOw=="
 
 /***/ }),
-/* 358 */
+/* 359 */
 /***/ (function(module, exports) {
 
 
@@ -36270,13 +36735,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 359 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(360);
+var content = __webpack_require__(361);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36301,7 +36766,7 @@ if(false) {
 }
 
 /***/ }),
-/* 360 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -36315,13 +36780,13 @@ exports.push([module.i, "/*! normalize.css v7.0.0 | MIT License | github.com/nec
 
 
 /***/ }),
-/* 361 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(362);
+var content = __webpack_require__(363);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36346,12 +36811,11 @@ if(false) {
 }
 
 /***/ }),
-/* 362 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
 // imports
-exports.i(__webpack_require__(363), "");
 exports.i(__webpack_require__(364), "");
 exports.i(__webpack_require__(365), "");
 exports.i(__webpack_require__(366), "");
@@ -36370,23 +36834,10 @@ exports.i(__webpack_require__(378), "");
 exports.i(__webpack_require__(379), "");
 exports.i(__webpack_require__(380), "");
 exports.i(__webpack_require__(381), "");
+exports.i(__webpack_require__(382), "");
 
 // module
 exports.push([module.i, "html {\n  font-size: 62.5%; }\n\nbody {\n  background-color: #ffffff;\n  font-family: Helvetica, Arial, sans-serif;\n  font-size: 1.6rem; }\n\nbutton {\n  cursor: pointer; }\n\nbutton:disabled {\n  cursor: default; }\n\n.is-active {\n  font-weight: bold; }\n\n.med-size {\n  font-size: 2.9rem; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n\nol,\nul {\n  list-style: none;\n}\n\na {\n  text-decoration: none;\n}\n\nbutton,\nselect {\n  border: none;\n  outline: none;\n  background: none;\n  font-family: inherit;\n}\n\n.back__black{\n  background-color: black;\n}\n\na,\nbutton,\ninput,\nselect,\ntextarea {\n  -webkit-tap-highlight-color: transparent;\n}\n\n:root {\n  overflow-x: hidden;\n  height: 100%;\n}\n\nbody {\n  background: #fff;\n  min-height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  font-weight: 400;\n  font-style: normal;\n  -webkit-text-size-adjust: 100%;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-rendering: optimizeLegibility;\n  font-feature-settings: \"pnum\";\n  font-variant-numeric: proportional-nums;\n}\n\n.globalContent {\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n}\n\n@font-face {\n  font-family: StripeIcons;\n  src: url(data:application/octet-stream;base64,d09GRk9UVE8AAAZUAAoAAAAAB6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAADKAAAAx8AAAOKkWuAp0dTVUIAAAZIAAAACgAAAAoAAQAAT1MvMgAAAXAAAABJAAAAYGcdjVZjbWFwAAACvAAAAFYAAACUKEhKfWhlYWQAAAD8AAAAMAAAADYJAklYaGhlYQAAAVAAAAAgAAAAJAYoAa5obXR4AAABLAAAACQAAAAoEOAAWW1heHAAAAD0AAAABgAAAAYAClAAbmFtZQAAAbwAAAD%2FAAABuXejDuxwb3N0AAADFAAAABMAAAAg%2F7gAMgAAUAAACgAAeNpjYGRgYABifeaSpHh%2Bm68MzMwHgCIMl08yqyDo%2F95Mkcy8QC4zAxNIFAD8tAiweNpjfMAQyfiAgYEpgoGBcQmQlmFgYPgAZOtAcQZEDgCHaQVGeNpjYGRgYD7z34eBgSmCgeH%2Ff6ZIBqAICuACAHpYBNp42mNgZtzAOIGBlYGDqYDJgYGBwQNCMwYwGDEcA%2FKBUthBqHe4H4MDg4L6Imae%2Fz4MB5jPMGwBCjOC5Bi9mKYAKQUGBgAFHgteAAAAeNplkMFqwkAURU9itBVKF6XLLrLsxiGKMYH0B4IgoqjdRokajAmNUfolhX5Df7IvZhBt5zHMeffduQwDPPCFQbWM81mzyZ3uocEz95qtK0%2BTN140t2jzLk7DaotiEmk2eWSlucErH5otnvjW3OSTH82tSg8n8eaYRkVXOY4TzIaLURB2tDaPi0OSZ3Y9G09tx6lxm5erPDtVA%2BX7wT7axXm5Vmmy7ClXDfqe515CCJkQs%2BFIKk8t6KJwzhUwY8iCkVBI54%2FvvzKXruBAQk6GfZM0ZipKxdfqVpylfErlP11uKHypgL2k7iSz8qxFTSV5SU%2FIlT2gjyfl%2FgKN9EDsAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAHEEACj8QNOBhYGOyDNAYRMQFpBcZL6ov%2F%2Foaw5%2F%2F%2F%2Ff3kvH8iD2McCxExAO1kYWIE2cjCwAwAgUQwvAAB42mNgZgCD%2F1sZjBiwAAAswgHqAHjaNVFbbxNHGN2JMmtlNnIoZFFx1F2nDoTWgJLIhRQqWlRowyXiUkqE1IZLVW0dJzHYjpAhxnbYi8HXdWxsEKCIi0DdqjxVyhOKkBBS%2FdAX%2FkJfmiCe0Gz4orbjLNFo5uj79B19Z85BXGsLhxAiB7ef%2BFmZGj8XaVb9dgdn%2B5Dd02J%2F2JqFIXtpeQ5Lc6h1YzKbXcN2F%2F2qg373wZ3ly%2Bs5gpCwfpO3d8dnXwyfOheJhC9FgsovsanJ4MCuzw84sN%2BBb1Zh34ADfU7za6fq%2Fyl8Ib7K9E4Eo9HgpHLQu6aL45CB8ug6yqAbKIeyqMAhjjD1nM49596hbqQgHf2B%2Fm5xt3S8sqXlORFe%2FHuSvuD3vesUQ4eVxjgEfm08PWK5%2FoF14lBjDAJvXI0xMRS0%2BMVjbGLIbzV%2BP2y5aOC46IfAb7TzT5cFbSJwEKCc9eXifGgqtOBahN3vWy7aOS76f1zkrVNiaNw1NIpfhyBg8X%2FN428t3v2KJl6KtVqxWpXpCD2Bq5XZW3XPrWv1dMVHEmZy9pr8dhsGdQuhKt%2FTh9Mz6nTCE34Yeyy56byfUHMzqaWrEpRpHldmrpqJrosXPyV0N%2BzAsMJYKzwMwjacTmtXGe9%2B7InkrtPz3aRoaIWPSUEtGjL1wUcYFnoJXeChG7qwpmfUHkI30XsvRdMsmKZMs9TwEsjR67ik6%2Fk14hk4jVcGe4k9yMMojGDNyKiqRy1opi5phUrG7HLDnkfdxOHktZIu072wB9jFhpHReoj3UXNF3lmReb%2FC0eaMx%2BESO1NY1w2myfuMuXW7VKvJ9CQ9im9Wy3XmllpLVX0kWUzNpmW6E%2FrY8ePkjLaV%2FPCMWVTeTJidTYtyuJpuWhSOMYsuwBhMgNK0dCtxS3O7%2Fmtvy7YL9lKn7RfvbODaEerw%2BXfuPfT92WDkiopLpaJZ9pQNUy9JAlNdyjVVH6PDTDV7saB2TadSCVWQYIQeZ2F8QgTVM30zdZtFlcOVSmU1WYFXolFFeRB9Kgt8PJmMx2vJu7IwvZoOS9XRFwsLsXCylKjMyGxXrV5kXxb%2BBxsddR0AAAEAAAAAAAAAAAAA)\n    format(\"woff\");\n}\n\n\n.container-lg,\n.container-wide,\n.container-xl {\n  margin: 0 auto;\n  padding: 0 20px;\n  width: 100%;\n}\n\n\n.container-lg {\n  max-width: 1040px;\n}\n\n.container-wide,\n.container-xl {\n  max-width: 1160px;\n}\n\n.common-SuperTitle {\n  font-weight: 300;\n  font-size: 45px;\n  line-height: 60px;\n  color: #32325d;\n  letter-spacing: -.01em;\n}\n\n@media (min-width: 670px) {\n  .common-SuperTitle {\n    font-size: 50px;\n    line-height: 70px;\n  }\n}\n\n.common-IntroText {\n  font-weight: 400;\n  font-size: 21px;\n  line-height: 31px;\n  color: #525f7f;\n}\n\n@media (min-width: 670px) {\n  .common-IntroText {\n    font-size: 24px;\n    line-height: 36px;\n  }\n}\n\n.common-BodyText {\n  font-weight: 400;\n  font-size: 17px;\n  line-height: 26px;\n  color: #6b7c93;\n}\n\n.common-Link {\n  color: #6772e5;\n  font-weight: 500;\n  transition: color 0.1s ease;\n  cursor: pointer;\n}\n\n.common-Link:hover {\n  color: #32325d;\n}\n\n.common-Link:active {\n  color: #000;\n}\n\n.common-Link--arrow:after {\n  font: normal 16px StripeIcons;\n  content: \"\\2192\";\n  padding-left: 5px;\n}\n\n.common-Button {\n  white-space: nowrap;\n  display: inline-block;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 14px;\n  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);\n  background: #fff;\n  border-radius: 4px;\n  font-size: 15px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.025em;\n  color: #6772e5;\n  text-decoration: none;\n  transition: all 0.15s ease;\n}\n\n.common-Button:hover {\n  color: #7795f8;\n  transform: translateY(-1px);\n  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);\n}\n\n.common-Button:active {\n  color: #555abf;\n  background-color: #f6f9fc;\n  transform: translateY(1px);\n  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);\n}\n\n.common-Button--default {\n  color: #fff;\n  background: #6772e5;\n}\n\n.common-Button--default:hover {\n  color: #fff;\n  background-color: #7795f8;\n}\n\n.common-Button--default:active {\n  color: #e6ebf1;\n  background-color: #555abf;\n}\n\n.common-Button--dark {\n  color: #fff;\n  background: #32325d;\n}\n\n.common-Button--dark:hover {\n  color: #fff;\n  background-color: #43458b;\n}\n\n.common-Button--dark:active {\n  color: #e6ebf1;\n  background-color: #32325d;\n}\n\n.common-Button--disabled {\n  color: #fff;\n  background: #aab7c4;\n  pointer-events: none;\n}\n\n.common-ButtonIcon {\n  display: inline;\n  margin: 0 5px 0 0;\n  position: relative;\n}\n\n.common-ButtonGroup {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  margin: -10px;\n}\n\n.common-ButtonGroup .common-Button {\n  -ms-flex-negative: 0;\n  flex-shrink: 0;\n  margin: 10px;\n}\n\n/** Page-specific styles */\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(1turn);\n  }\n}\n\n@keyframes void-animation-out {\n  0%,\n  to {\n    opacity: 1;\n  }\n}\n\nbody {\n  overflow-x: hidden;\n  background-color: #f6f9fc;\n}\n\nmain {\n  position: relative;\n  display: block;\n  z-index: 1;\n}\n\n.stripes {\n  position: absolute;\n  width: 100%;\n  transform: skewY(-12deg);\n  height: 950px;\n  top: -350px;\n  background: linear-gradient(180deg, #e6ebf1 350px, rgba(230, 235, 241, 0));\n}\n\n.stripes .stripe {\n  position: absolute;\n  height: 190px;\n}\n\n.stripes .s1 {\n  height: 380px;\n  top: 0;\n  left: 0;\n  width: 24%;\n  background: linear-gradient(90deg, #e6ebf1, rgba(230, 235, 241, 0));\n}\n\n.stripes .s2 {\n  top: 380px;\n  left: 4%;\n  width: 35%;\n  background: linear-gradient(\n    90deg,\n    hsla(0, 0%, 100%, 0.65),\n    hsla(0, 0%, 100%, 0)\n  );\n}\n\n.stripes .s3 {\n  top: 380px;\n  right: 0;\n  width: 38%;\n  background: linear-gradient(90deg, #e4e9f0, rgba(228, 233, 240, 0));\n}\n\nmain > .container-lg {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  position: relative;\n  max-width: 750px;\n  padding: 0px 20px 0px;\n}\n\nmain > .container-lg .cell {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-flex-pack: center;\n  justify-content: center;\n  position: relative;\n  -ms-flex: auto;\n  flex: auto;\n  min-width: 100%;\n  min-height: 500px;\n  padding: 0 40px;\n}\n\nmain > .container-lg .cell + .cell {\n  margin-top: 70px;\n}\n\nmain > .container-lg .cell.intro {\n  padding: 0;\n}\n\n@media (min-width: 670px) {\n  main > .container-lg .cell.intro {\n    -ms-flex-align: center;\n    align-items: center;\n    text-align: center;\n  }\n\n  .optionList {\n    margin-left: 13px;\n  }\n}\n\nmain > .container-lg .cell.intro > * {\n  width: 100%;\n  max-width: 700px;\n}\n\nmain > .container-lg .cell.intro .common-IntroText {\n  margin-top: 10px;\n}\n\nmain > .container-lg .cell.intro .common-BodyText {\n  margin-top: 15px;\n}\n\nmain > .container-lg .cell.intro .common-ButtonGroup {\n  width: auto;\n  margin-top: 20px;\n}\n\nmain > .container-lg .example {\n  -ms-flex-align: center;\n  align-items: center;\n  border-radius: 4px;\n  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);\n  padding: 80px 0px;\n  margin-left: -20px;\n  margin-right: -20px;\n}\n\n@media (min-width: 670px) {\n  main > .container-lg .example {\n    padding: 40px;\n  }\n}\n\nmain > .container-lg .example.submitted form,\nmain > .container-lg .example.submitting form {\n  opacity: 0;\n  transform: scale(0.9);\n  pointer-events: none;\n}\n\nmain > .container-lg .example.submitted .success,\nmain > .container-lg .example.submitting .success {\n  pointer-events: all;\n}\n\nmain > .container-lg .example.submitting .success .icon {\n  opacity: 1;\n}\n\nmain > .container-lg .example.submitted .success > * {\n  opacity: 1;\n  transform: none !important;\n}\n\nmain > .container-lg .example.submitted .success > :nth-child(2) {\n  transition-delay: 0.1s;\n}\n\nmain > .container-lg .example.submitted .success > :nth-child(3) {\n  transition-delay: 0.2s;\n}\n\nmain > .container-lg .example.submitted .success > :nth-child(4) {\n  transition-delay: 0.3s;\n}\n\nmain > .container-lg .example.submitted .success .icon .border,\nmain > .container-lg .example.submitted .success .icon .checkmark {\n  opacity: 1;\n  stroke-dashoffset: 0 !important;\n}\n\nmain > .container-lg .example * {\n  margin: 0;\n  padding: 0;\n}\n\nmain > .container-lg .example .caption {\n  display: flex;\n  justify-content: space-between;\n  position: absolute;\n  width: 100%;\n  top: 100%;\n  left: 0;\n  padding: 15px 10px 0;\n  color: #aab7c4;\n  font-family: Roboto, \"Open Sans\", \"Segoe UI\", sans-serif;\n  font-size: 15px;\n  font-weight: 500;\n}\n\nmain > .container-lg .example .caption * {\n  font-family: inherit;\n  font-size: inherit;\n  font-weight: inherit;\n}\n\nmain > .container-lg .example .caption .no-charge {\n  color: #cfd7df;\n  margin-right: 10px;\n}\n\nmain > .container-lg .example .caption a.source {\n  text-align: right;\n  color: inherit;\n  transition: color 0.1s ease-in-out;\n  margin-left: 10px;\n}\n\nmain > .container-lg .example .caption a.source:hover {\n  color: #6772e5;\n}\n\nmain > .container-lg .example .caption a.source:active {\n  color: #43458b;\n}\n\nmain > .container-lg .example .caption a.source  svg {\n  margin-right: 10px;\n}\n\nmain > .container-lg .example .caption a.source svg path {\n  fill: currentColor;\n}\n\nmain > .container-lg .example form {\n  position: relative;\n  width: 100%;\n  max-width: 500px;\n  transition-property: opacity, transform;\n  transition-duration: 0.35s;\n  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\n}\n\nmain > .container-lg .example form input::-webkit-input-placeholder {\n  opacity: 1;\n}\n\nmain > .container-lg .example form input::-moz-placeholder {\n  opacity: 1;\n}\n\nmain > .container-lg .example form input:-ms-input-placeholder {\n  opacity: 1;\n}\n\nmain > .container-lg .example .error {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n  justify-content: center;\n  position: absolute;\n  width: 100%;\n  top: 100%;\n  margin-top: 20px;\n  left: 0;\n  padding: 0 15px;\n  font-size: 13px !important;\n  opacity: 0;\n  transform: translateY(10px);\n  transition-property: opacity, transform;\n  transition-duration: 0.35s;\n  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\n}\n\nmain > .container-lg .example .error.visible {\n  opacity: 1;\n  transform: none;\n}\n\nmain > .container-lg .example .error .message {\n  font-size: inherit;\n}\n\nmain > .container-lg .example .error svg {\n  -ms-flex-negative: 0;\n  flex-shrink: 0;\n  margin-top: -1px;\n  margin-right: 10px;\n}\n\nmain > .container-lg .example .success {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-flex-align: center;\n  align-items: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  padding: 10px;\n  text-align: center;\n  pointer-events: none;\n  overflow: hidden;\n}\n\n@media (min-width: 670px) {\n  main > .container-lg .example .success {\n    padding: 40px;\n  }\n}\n\nmain > .container-lg .example .success > * {\n  transition-property: opacity, transform;\n  transition-duration: 0.35s;\n  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\n  opacity: 0;\n  transform: translateY(50px);\n}\n\nmain > .container-lg .example .success .icon {\n  margin: 15px 0 30px;\n  transform: translateY(70px) scale(0.75);\n}\n\nmain > .container-lg .example .success .icon svg {\n  will-change: transform;\n}\n\nmain > .container-lg .example .success .icon .border {\n  stroke-dasharray: 251;\n  stroke-dashoffset: 62.75;\n  transform-origin: 50% 50%;\n  transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);\n  animation: spin 1s linear infinite;\n}\n\nmain > .container-lg .example .success .icon .checkmark {\n  stroke-dasharray: 60;\n  stroke-dashoffset: 60;\n  transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s;\n}\n\nmain > .container-lg .example .success .title {\n  font-size: 17px;\n  font-weight: 500;\n  margin-bottom: 8px;\n}\n\nmain > .container-lg .example .success .message {\n  font-size: 14px;\n  font-weight: 400;\n  margin-bottom: 25px;\n  line-height: 1.6em;\n}\n\nmain > .container-lg .example .success .message span {\n  font-size: inherit;\n}\n\nmain > .container-lg .example .success .reset:active {\n  transition-duration: 0.15s;\n  transition-delay: 0s;\n  opacity: 0.65;\n}\n\nmain > .container-lg .example .success .reset svg {\n  will-change: transform;\n}\n\nfooter {\n  position: relative;\n  max-width: 750px;\n  padding: 50px 20px;\n  margin: 0 auto;\n}\n\n.optionList {\n  margin: 6px 0;\n}\n\n.optionList li {\n  display: inline-block;\n  margin-right: 13px;\n}\n\n.optionList a {\n  color: #aab7c4;\n  transition: color 0.1s ease-in-out;\n  cursor: pointer;\n  font-size: 15px;\n  line-height: 26px;\n}\n\n.optionList a.selected {\n  color: #6772e5;\n  font-weight: 600;\n}\n\n.optionList a:hover {\n  color: #32325d;\n}\n\n.optionList a.selected:hover {\n  cursor: default;\n  color: #6772e5;\n}\n", ""]);
 
 // exports
 
@@ -36400,7 +36851,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "@font-face {     \n\tfont-family: 'LuloCleanOneBold';\n\tsrc: url(\"https://beta.edvotech.com/static/fonts/LuloCleanOneBold.ttf\") format(\"opentype\");\n}\n\n@font-face {     \n\tfont-family: 'Pacifico';\n\tsrc: url(\"https://beta.edvotech.com/static/fonts/Pacifico-Regular.ttf\") format(\"opentype\");\n}\n\n@font-face {     \n\tfont-family: 'Montserrat';\n\tsrc: url(\"https://beta.edvotech.com/static/fonts/Montserrat-Regular.ttf\") format(\"opentype\");\n}\n\n\n.title{\n    padding-top: 5%;\n\tpadding-bottom: 5%;\n\tbackground: rgb(7, 23, 77, 0.8);\n\tbackground: rgba(7, 23, 77, 0.8);\n    color: white;\n}\n\n.title >h1{    \n\ttext-align: center;\n\tfont-family: LuloCleanOneBold;\n    font-size: 5vw;\n}\n.subtitle {\n    text-align: center;\n\tfont-size: 1.5vw;\n\tfont-family: Montserrat;\n    color: white;\n}\n\n.subtitle .btn {\n\tposition: relative;\n\tmargin-top: 1%;\n\tbackground-color: #854dff;\n\tcolor: white;\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tpadding: 10px 60px;\n\tborder: 1px solid #854dff;\n\tcursor: pointer;\n\tborder-radius: 30px;\n\tz-index: 2;\n}\n\n.subtitle .btn:hover {\n\tbackground-color: #FFFFFF;\n\tcolor: #854dff;\n\tborder: 1px solid #FFFFFF;\n}\n\n\n\n.parallax-container {\n\tpadding-top: 5%;\n\tpadding-bottom: 5%;\n\ttext-align: center;\n    color: white;\n}\n\n .parallax {\n     background: #FFFFFF;\n     padding: 42px 0;\n     color:#000000;\n}\n .parallax-video{\n     padding-bottom: 50px;\n     padding-top: 50px;\n}\n .parallax-video video{\n     min-width: 100%;\n     position: fixed;\n     top:0;\n     z-index: -9999;\n}\n .parallax-video h3 {\n     color: #fff;\n     font-size: 76px;\n     font-weight: 700;\n     text-align: center;\n     text-transform: uppercase;\n}\n\nimg.resize {\n  max-width:50%;\n  max-height:50%;\n  margin-top: 5%;\n}\n\nimg.resize-persons {\n  max-width:30%;\n  max-height:30%;\n  margin-top: 5%;\n}\n\n.feature-img {\n  max-width:15%;\n  max-height:15%;\n  margin-bottom: 5%;\n}\n body {\n     margin:0;\n     padding:0;\n}\n\n.subtitle>h1 {\n\tfont-size: 4vw;\n\tfont-family: Pacifico;\n\tmargin-bottom: 1%;\n    color: white;\n}\n\n.subtitle>h2 {\n\tfont-family: Montserrat;\n\tmargin-bottom: 1%;  \n    color: white;\n}\n\n.speech-bubble {\n\tposition: relative;\n\tbackground: #854dff;\n\tborder-radius: .4em;\n    padding-top: 20px;\n    padding-bottom: 0;\n}\n\n.speech-bubble:after {\n\tcontent: '';\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\tborder: 1.156em solid transparent;\n\tborder-top-color: #854dff;\n\tborder-bottom: 0;\n\tborder-left: 0;\n\tmargin-left: -2em;\n\tmargin-bottom: -1.156em;\n}\n\n.bar{\n    max-height: 10vh;\n    background-color: #061551;\n}\n.header{\n    background-color: #061551;\n    color:white;\n}\n\n.text-white a{\n    color: white;\n}\n\n.footer{\n    padding: 50px;\n    background-color: #061551;\n}\n\n.logo{\nfont-family: Pacifico;\nposition: relative;\n}\n\n\n.partners-img{\n    width: 200px;\n    align-content: center;\n}\n\n.subtitle>h4 {\n\tfont-family: Montserrat;   \n    color: white;\n}\n\n.title>h4 {\n\tfont-family: Montserrat;\n    \n    color: white;\n}\n\n.features{    \n\tfont-family: Montserrat;\n    padding-top: 1%;\n\tpadding-bottom: 1%;\n\ttext-align: center;\n    color: black;\n}\n\n.material-icons{\n    font-size: 6vw;\n    color: #854dff;\n}\n\n.how{\n    \n\tbackground-color: #F2F7FF;\n}\n\n\n/* Image Parallax Section*/\n .parallax-image {\n    background-attachment: fixed;\n    background-position: 50% 50%;\n    background-repeat: no-repeat;\n    background-size: cover;\n    padding-bottom: 50px;\n}\n\n.contact{\n   background-image: url(\"https://beta.edvotech.com/static/images/touch.jpg\");height: 500px;\n}\n\n.contact-content{\n\tbackground: rgb(7, 23, 77, 0.9);\n\tbackground: rgba(7, 23, 77, 0.9);\n    padding: 150px;\n    \n}\n\n.text-white{\n    color: white;\n}\n\n.font-weight-bold{\n    font-weight: bold;\n}\n\n.contact-btn{\n\tfont-weight: bold;\n    background-color: #854DFF;\n    border: none;\n    color: white;\n    padding: 15px 32px;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 20px;\n    margin: 4px 2px;\n    cursor: pointer;\n    width: 100%;\n\n}\n\n.navbar-nav li{\n    color: white;\n    transition: 0.5s;\n    border-radius: 0;\n}\n\n\n.navbar-nav > li > div{\n    padding-top: 15px;\n    padding-bottom: 15px;\n    line-height: 20px;\n}\n\n.nav > li > div{\n    padding-left: 15px;\n    padding-right: 15px;\n}\n\n.navbar-nav > li > div > a{\n    color: white;\n    text-decoration: none;\n    transition: 0.5s;\n    border-radius: 0;\n}\n\n.navbar-nav li > div:hover a{\n    color: #061551;\n    background-color: white;\n}\n\n\n@media only screen and (max-width: 768px){\n    .navbar-nav li{\n        border-radius: 3rem;\n    }\n\n    .navbar-right{\n        border-top: 4px solid black;\n        padding-top: 0.7rem;\n        margin-left: 1rem;\n        margin-right: 1rem;\n    }\n}\n\n.navbar-nav li:hover{\n    color: #061551;\n    background-color: white;\n}\n\n\n\n.navbar-inverse .navbar-nav > li > a {\n    color: white;\n}\n\n.navbar-inverse .navbar-nav > li > a:hover{\n    color: #061551;\n}\n\n.text-center > .nav li{\n    display: inline-block;\n    list-style-type: none;\n}\n\n.navbar-inverse .navbar-brand:hover{\n    color: #061551;\n}\n\n.footer__space{\n    margin-left: 2rem;\n    margin-right: 2rem;\n}\n\n@media only screen and (max-width: 360px){\n    .footer__space{        \n        margin-left: 1rem;\n        margin-right: 1rem;\n    }\n}", ""]);
+exports.push([module.i, "\n\nol,\nul {\n  list-style: none;\n}\n\na {\n  text-decoration: none;\n}\n\nbutton,\nselect {\n  border: none;\n  outline: none;\n  background: none;\n  font-family: inherit;\n}\n\n.back__black{\n  background-color: black;\n}\n\na,\nbutton,\ninput,\nselect,\ntextarea {\n  -webkit-tap-highlight-color: transparent;\n}\n\n:root {\n  overflow-x: hidden;\n  height: 100%;\n}\n\nbody {\n  background: #fff;\n  min-height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  font-weight: 400;\n  font-style: normal;\n  -webkit-text-size-adjust: 100%;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-rendering: optimizeLegibility;\n  font-feature-settings: \"pnum\";\n  font-variant-numeric: proportional-nums;\n}\n\n.globalContent {\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n}\n\n@font-face {\n  font-family: StripeIcons;\n  src: url(data:application/octet-stream;base64,d09GRk9UVE8AAAZUAAoAAAAAB6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAADKAAAAx8AAAOKkWuAp0dTVUIAAAZIAAAACgAAAAoAAQAAT1MvMgAAAXAAAABJAAAAYGcdjVZjbWFwAAACvAAAAFYAAACUKEhKfWhlYWQAAAD8AAAAMAAAADYJAklYaGhlYQAAAVAAAAAgAAAAJAYoAa5obXR4AAABLAAAACQAAAAoEOAAWW1heHAAAAD0AAAABgAAAAYAClAAbmFtZQAAAbwAAAD%2FAAABuXejDuxwb3N0AAADFAAAABMAAAAg%2F7gAMgAAUAAACgAAeNpjYGRgYABifeaSpHh%2Bm68MzMwHgCIMl08yqyDo%2F95Mkcy8QC4zAxNIFAD8tAiweNpjfMAQyfiAgYEpgoGBcQmQlmFgYPgAZOtAcQZEDgCHaQVGeNpjYGRgYD7z34eBgSmCgeH%2Ff6ZIBqAICuACAHpYBNp42mNgZtzAOIGBlYGDqYDJgYGBwQNCMwYwGDEcA%2FKBUthBqHe4H4MDg4L6Imae%2Fz4MB5jPMGwBCjOC5Bi9mKYAKQUGBgAFHgteAAAAeNplkMFqwkAURU9itBVKF6XLLrLsxiGKMYH0B4IgoqjdRokajAmNUfolhX5Df7IvZhBt5zHMeffduQwDPPCFQbWM81mzyZ3uocEz95qtK0%2BTN140t2jzLk7DaotiEmk2eWSlucErH5otnvjW3OSTH82tSg8n8eaYRkVXOY4TzIaLURB2tDaPi0OSZ3Y9G09tx6lxm5erPDtVA%2BX7wT7axXm5Vmmy7ClXDfqe515CCJkQs%2BFIKk8t6KJwzhUwY8iCkVBI54%2FvvzKXruBAQk6GfZM0ZipKxdfqVpylfErlP11uKHypgL2k7iSz8qxFTSV5SU%2FIlT2gjyfl%2FgKN9EDsAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAHEEACj8QNOBhYGOyDNAYRMQFpBcZL6ov%2F%2Foaw5%2F%2F%2F%2Ff3kvH8iD2McCxExAO1kYWIE2cjCwAwAgUQwvAAB42mNgZgCD%2F1sZjBiwAAAswgHqAHjaNVFbbxNHGN2JMmtlNnIoZFFx1F2nDoTWgJLIhRQqWlRowyXiUkqE1IZLVW0dJzHYjpAhxnbYi8HXdWxsEKCIi0DdqjxVyhOKkBBS%2FdAX%2FkJfmiCe0Gz4orbjLNFo5uj79B19Z85BXGsLhxAiB7ef%2BFmZGj8XaVb9dgdn%2B5Dd02J%2F2JqFIXtpeQ5Lc6h1YzKbXcN2F%2F2qg373wZ3ly%2Bs5gpCwfpO3d8dnXwyfOheJhC9FgsovsanJ4MCuzw84sN%2BBb1Zh34ADfU7za6fq%2Fyl8Ib7K9E4Eo9HgpHLQu6aL45CB8ug6yqAbKIeyqMAhjjD1nM49596hbqQgHf2B%2Fm5xt3S8sqXlORFe%2FHuSvuD3vesUQ4eVxjgEfm08PWK5%2FoF14lBjDAJvXI0xMRS0%2BMVjbGLIbzV%2BP2y5aOC46IfAb7TzT5cFbSJwEKCc9eXifGgqtOBahN3vWy7aOS76f1zkrVNiaNw1NIpfhyBg8X%2FN428t3v2KJl6KtVqxWpXpCD2Bq5XZW3XPrWv1dMVHEmZy9pr8dhsGdQuhKt%2FTh9Mz6nTCE34Yeyy56byfUHMzqaWrEpRpHldmrpqJrosXPyV0N%2BzAsMJYKzwMwjacTmtXGe9%2B7InkrtPz3aRoaIWPSUEtGjL1wUcYFnoJXeChG7qwpmfUHkI30XsvRdMsmKZMs9TwEsjR67ik6%2Fk14hk4jVcGe4k9yMMojGDNyKiqRy1opi5phUrG7HLDnkfdxOHktZIu072wB9jFhpHReoj3UXNF3lmReb%2FC0eaMx%2BESO1NY1w2myfuMuXW7VKvJ9CQ9im9Wy3XmllpLVX0kWUzNpmW6E%2FrY8ePkjLaV%2FPCMWVTeTJidTYtyuJpuWhSOMYsuwBhMgNK0dCtxS3O7%2Fmtvy7YL9lKn7RfvbODaEerw%2BXfuPfT92WDkiopLpaJZ9pQNUy9JAlNdyjVVH6PDTDV7saB2TadSCVWQYIQeZ2F8QgTVM30zdZtFlcOVSmU1WYFXolFFeRB9Kgt8PJmMx2vJu7IwvZoOS9XRFwsLsXCylKjMyGxXrV5kXxb%2BBxsddR0AAAEAAAAAAAAAAAAA)\n    format(\"woff\");\n}\n\n\n.container-lg,\n.container-wide,\n.container-xl {\n  margin: 0 auto;\n  padding: 0 20px;\n  width: 100%;\n}\n\n\n.container-lg {\n  max-width: 1040px;\n}\n\n.container-wide,\n.container-xl {\n  max-width: 1160px;\n}\n\n.common-SuperTitle {\n  font-weight: 300;\n  font-size: 45px;\n  line-height: 60px;\n  color: #32325d;\n  letter-spacing: -.01em;\n}\n\n@media (min-width: 670px) {\n  .common-SuperTitle {\n    font-size: 50px;\n    line-height: 70px;\n  }\n}\n\n.common-IntroText {\n  font-weight: 400;\n  font-size: 21px;\n  line-height: 31px;\n  color: #525f7f;\n}\n\n@media (min-width: 670px) {\n  .common-IntroText {\n    font-size: 24px;\n    line-height: 36px;\n  }\n}\n\n.common-BodyText {\n  font-weight: 400;\n  font-size: 17px;\n  line-height: 26px;\n  color: #6b7c93;\n}\n\n.common-Link {\n  color: #6772e5;\n  font-weight: 500;\n  transition: color 0.1s ease;\n  cursor: pointer;\n}\n\n.common-Link:hover {\n  color: #32325d;\n}\n\n.common-Link:active {\n  color: #000;\n}\n\n.common-Link--arrow:after {\n  font: normal 16px StripeIcons;\n  content: \"\\2192\";\n  padding-left: 5px;\n}\n\n.common-Button {\n  white-space: nowrap;\n  display: inline-block;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 14px;\n  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);\n  background: #fff;\n  border-radius: 4px;\n  font-size: 15px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.025em;\n  color: #6772e5;\n  text-decoration: none;\n  transition: all 0.15s ease;\n}\n\n.common-Button:hover {\n  color: #7795f8;\n  transform: translateY(-1px);\n  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);\n}\n\n.common-Button:active {\n  color: #555abf;\n  background-color: #f6f9fc;\n  transform: translateY(1px);\n  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);\n}\n\n.common-Button--default {\n  color: #fff;\n  background: #6772e5;\n}\n\n.common-Button--default:hover {\n  color: #fff;\n  background-color: #7795f8;\n}\n\n.common-Button--default:active {\n  color: #e6ebf1;\n  background-color: #555abf;\n}\n\n.common-Button--dark {\n  color: #fff;\n  background: #32325d;\n}\n\n.common-Button--dark:hover {\n  color: #fff;\n  background-color: #43458b;\n}\n\n.common-Button--dark:active {\n  color: #e6ebf1;\n  background-color: #32325d;\n}\n\n.common-Button--disabled {\n  color: #fff;\n  background: #aab7c4;\n  pointer-events: none;\n}\n\n.common-ButtonIcon {\n  display: inline;\n  margin: 0 5px 0 0;\n  position: relative;\n}\n\n.common-ButtonGroup {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  margin: -10px;\n}\n\n.common-ButtonGroup .common-Button {\n  -ms-flex-negative: 0;\n  flex-shrink: 0;\n  margin: 10px;\n}\n\n/** Page-specific styles */\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(1turn);\n  }\n}\n\n@keyframes void-animation-out {\n  0%,\n  to {\n    opacity: 1;\n  }\n}\n\nbody {\n  overflow-x: hidden;\n  background-color: #f6f9fc;\n}\n\nmain {\n  position: relative;\n  display: block;\n  z-index: 1;\n}\n\n.stripes {\n  position: absolute;\n  width: 100%;\n  transform: skewY(-12deg);\n  height: 950px;\n  top: -350px;\n  background: linear-gradient(180deg, #e6ebf1 350px, rgba(230, 235, 241, 0));\n}\n\n.stripes .stripe {\n  position: absolute;\n  height: 190px;\n}\n\n.stripes .s1 {\n  height: 380px;\n  top: 0;\n  left: 0;\n  width: 24%;\n  background: linear-gradient(90deg, #e6ebf1, rgba(230, 235, 241, 0));\n}\n\n.stripes .s2 {\n  top: 380px;\n  left: 4%;\n  width: 35%;\n  background: linear-gradient(\n    90deg,\n    hsla(0, 0%, 100%, 0.65),\n    hsla(0, 0%, 100%, 0)\n  );\n}\n\n.stripes .s3 {\n  top: 380px;\n  right: 0;\n  width: 38%;\n  background: linear-gradient(90deg, #e4e9f0, rgba(228, 233, 240, 0));\n}\n\nmain > .container-lg {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  position: relative;\n  max-width: 750px;\n  padding: 0px 20px 0px;\n}\n\nmain > .container-lg .cell {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-flex-pack: center;\n  justify-content: center;\n  position: relative;\n  -ms-flex: auto;\n  flex: auto;\n  min-width: 100%;\n  min-height: 500px;\n  padding: 0 40px;\n}\n\nmain > .container-lg .cell + .cell {\n  margin-top: 70px;\n}\n\nmain > .container-lg .cell.intro {\n  padding: 0;\n}\n\n@media (min-width: 670px) {\n  main > .container-lg .cell.intro {\n    -ms-flex-align: center;\n    align-items: center;\n    text-align: center;\n  }\n\n  .optionList {\n    margin-left: 13px;\n  }\n}\n\nmain > .container-lg .cell.intro > * {\n  width: 100%;\n  max-width: 700px;\n}\n\nmain > .container-lg .cell.intro .common-IntroText {\n  margin-top: 10px;\n}\n\nmain > .container-lg .cell.intro .common-BodyText {\n  margin-top: 15px;\n}\n\nmain > .container-lg .cell.intro .common-ButtonGroup {\n  width: auto;\n  margin-top: 20px;\n}\n\nmain > .container-lg .example {\n  -ms-flex-align: center;\n  align-items: center;\n  border-radius: 4px;\n  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);\n  padding: 80px 0px;\n  margin-left: -20px;\n  margin-right: -20px;\n}\n\n@media (min-width: 670px) {\n  main > .container-lg .example {\n    padding: 40px;\n  }\n}\n\nmain > .container-lg .example.submitted form,\nmain > .container-lg .example.submitting form {\n  opacity: 0;\n  transform: scale(0.9);\n  pointer-events: none;\n}\n\nmain > .container-lg .example.submitted .success,\nmain > .container-lg .example.submitting .success {\n  pointer-events: all;\n}\n\nmain > .container-lg .example.submitting .success .icon {\n  opacity: 1;\n}\n\nmain > .container-lg .example.submitted .success > * {\n  opacity: 1;\n  transform: none !important;\n}\n\nmain > .container-lg .example.submitted .success > :nth-child(2) {\n  transition-delay: 0.1s;\n}\n\nmain > .container-lg .example.submitted .success > :nth-child(3) {\n  transition-delay: 0.2s;\n}\n\nmain > .container-lg .example.submitted .success > :nth-child(4) {\n  transition-delay: 0.3s;\n}\n\nmain > .container-lg .example.submitted .success .icon .border,\nmain > .container-lg .example.submitted .success .icon .checkmark {\n  opacity: 1;\n  stroke-dashoffset: 0 !important;\n}\n\nmain > .container-lg .example * {\n  margin: 0;\n  padding: 0;\n}\n\nmain > .container-lg .example .caption {\n  display: flex;\n  justify-content: space-between;\n  position: absolute;\n  width: 100%;\n  top: 100%;\n  left: 0;\n  padding: 15px 10px 0;\n  color: #aab7c4;\n  font-family: Roboto, \"Open Sans\", \"Segoe UI\", sans-serif;\n  font-size: 15px;\n  font-weight: 500;\n}\n\nmain > .container-lg .example .caption * {\n  font-family: inherit;\n  font-size: inherit;\n  font-weight: inherit;\n}\n\nmain > .container-lg .example .caption .no-charge {\n  color: #cfd7df;\n  margin-right: 10px;\n}\n\nmain > .container-lg .example .caption a.source {\n  text-align: right;\n  color: inherit;\n  transition: color 0.1s ease-in-out;\n  margin-left: 10px;\n}\n\nmain > .container-lg .example .caption a.source:hover {\n  color: #6772e5;\n}\n\nmain > .container-lg .example .caption a.source:active {\n  color: #43458b;\n}\n\nmain > .container-lg .example .caption a.source  svg {\n  margin-right: 10px;\n}\n\nmain > .container-lg .example .caption a.source svg path {\n  fill: currentColor;\n}\n\nmain > .container-lg .example form {\n  position: relative;\n  width: 100%;\n  max-width: 500px;\n  transition-property: opacity, transform;\n  transition-duration: 0.35s;\n  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\n}\n\nmain > .container-lg .example form input::-webkit-input-placeholder {\n  opacity: 1;\n}\n\nmain > .container-lg .example form input::-moz-placeholder {\n  opacity: 1;\n}\n\nmain > .container-lg .example form input:-ms-input-placeholder {\n  opacity: 1;\n}\n\nmain > .container-lg .example .error {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n  justify-content: center;\n  position: absolute;\n  width: 100%;\n  top: 100%;\n  margin-top: 20px;\n  left: 0;\n  padding: 0 15px;\n  font-size: 13px !important;\n  opacity: 0;\n  transform: translateY(10px);\n  transition-property: opacity, transform;\n  transition-duration: 0.35s;\n  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\n}\n\nmain > .container-lg .example .error.visible {\n  opacity: 1;\n  transform: none;\n}\n\nmain > .container-lg .example .error .message {\n  font-size: inherit;\n}\n\nmain > .container-lg .example .error svg {\n  -ms-flex-negative: 0;\n  flex-shrink: 0;\n  margin-top: -1px;\n  margin-right: 10px;\n}\n\nmain > .container-lg .example .success {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-flex-align: center;\n  align-items: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  padding: 10px;\n  text-align: center;\n  pointer-events: none;\n  overflow: hidden;\n}\n\n@media (min-width: 670px) {\n  main > .container-lg .example .success {\n    padding: 40px;\n  }\n}\n\nmain > .container-lg .example .success > * {\n  transition-property: opacity, transform;\n  transition-duration: 0.35s;\n  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\n  opacity: 0;\n  transform: translateY(50px);\n}\n\nmain > .container-lg .example .success .icon {\n  margin: 15px 0 30px;\n  transform: translateY(70px) scale(0.75);\n}\n\nmain > .container-lg .example .success .icon svg {\n  will-change: transform;\n}\n\nmain > .container-lg .example .success .icon .border {\n  stroke-dasharray: 251;\n  stroke-dashoffset: 62.75;\n  transform-origin: 50% 50%;\n  transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);\n  animation: spin 1s linear infinite;\n}\n\nmain > .container-lg .example .success .icon .checkmark {\n  stroke-dasharray: 60;\n  stroke-dashoffset: 60;\n  transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s;\n}\n\nmain > .container-lg .example .success .title {\n  font-size: 17px;\n  font-weight: 500;\n  margin-bottom: 8px;\n}\n\nmain > .container-lg .example .success .message {\n  font-size: 14px;\n  font-weight: 400;\n  margin-bottom: 25px;\n  line-height: 1.6em;\n}\n\nmain > .container-lg .example .success .message span {\n  font-size: inherit;\n}\n\nmain > .container-lg .example .success .reset:active {\n  transition-duration: 0.15s;\n  transition-delay: 0s;\n  opacity: 0.65;\n}\n\nmain > .container-lg .example .success .reset svg {\n  will-change: transform;\n}\n\nfooter {\n  position: relative;\n  max-width: 750px;\n  padding: 50px 20px;\n  margin: 0 auto;\n}\n\n.optionList {\n  margin: 6px 0;\n}\n\n.optionList li {\n  display: inline-block;\n  margin-right: 13px;\n}\n\n.optionList a {\n  color: #aab7c4;\n  transition: color 0.1s ease-in-out;\n  cursor: pointer;\n  font-size: 15px;\n  line-height: 26px;\n}\n\n.optionList a.selected {\n  color: #6772e5;\n  font-weight: 600;\n}\n\n.optionList a:hover {\n  color: #32325d;\n}\n\n.optionList a.selected:hover {\n  cursor: default;\n  color: #6772e5;\n}\n", ""]);
 
 // exports
 
@@ -36414,7 +36865,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".about__title{\n    color: white;\n    background-color:#854dff;\n    padding-top: 5rem;\n    padding-bottom: 3rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: 550;\n    font-size: 4.5rem;\n}\n\n.far{\n    font-size: 30%;\n}\n\n.about__body{\n    background-color: white;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-size: 1.8rem;\n}\n\n.about__subtitle{\n    color: #5933AA;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n}\n\n.about__subtitle__2{\n    color: #5933AA;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: 400;\n    font-size: 150%;\n}\n\n.row__margin{\n    margin-top: 4rem;\n    margin-bottom: 9rem;\n}\n\n.mid__row__margin{\n    margin-bottom: 8rem;\n}\n\n.about__low{\n    background-color: rgba(199, 219, 247, 0.337);\n    color: white;\n    font-size: 150%;\n    font-weight: 550;\n    padding-top: 3rem;\n    padding-bottom: 7rem;\n}\n\n.about__others__say{\n    padding-top: 2rem;\n    padding-bottom: 1rem;\n}\n\n.about__low__options{\n    background-color: rgba(199, 219, 247, 0.337);\n    padding-bottom: 50px;\n}\n\n.about__sub__text{\n    font-weight: 100;\n    color: black;\n}\n\n\n.about__sub__text__bold{\n    font-weight: 700;\n}\n\n.Feature-Img__pre18 {\n    max-width: 400px;\n    max-height: 200px;\n    overflow: hidden;\n    margin-bottom: 2rem;\n    background-color: black;\n    border: 1px solid white;\n    padding-bottom: 1px;\n}\n\n.Feature-Img__endi{\n    max-width: 400px;\n    max-height: 200px;\n    padding-bottom: 32px;\n}\n\n.Feature-Img__her__campus{\n    max-width: 400px;\n    max-height: 200px;\n    padding-bottom: 2rem;\n}\n\n.Feature-Img__mc{\n    max-width: 400px;\n    max-height: 140px;\n    margin-bottom: 11px;\n}\n\n.break{\n\twidth:5%;\n    background-color: white;\n    font-weight: bold;\n}", ""]);
+exports.push([module.i, "@font-face {     \n\tfont-family: 'LuloCleanOneBold';\n\tsrc: url(\"https://beta.edvotech.com/static/fonts/LuloCleanOneBold.ttf\") format(\"opentype\");\n}\n\n@font-face {     \n\tfont-family: 'Pacifico';\n\tsrc: url(\"https://beta.edvotech.com/static/fonts/Pacifico-Regular.ttf\") format(\"opentype\");\n}\n\n@font-face {     \n\tfont-family: 'Montserrat';\n\tsrc: url(\"https://beta.edvotech.com/static/fonts/Montserrat-Regular.ttf\") format(\"opentype\");\n}\n\n\n.title{\n    padding-top: 5%;\n\tpadding-bottom: 5%;\n\tbackground: rgb(7, 23, 77, 0.8);\n\tbackground: rgba(7, 23, 77, 0.8);\n    color: white;\n}\n\n.title >h1{    \n\ttext-align: center;\n\tfont-family: LuloCleanOneBold;\n    font-size: 5vw;\n}\n.subtitle {\n    text-align: center;\n\tfont-size: 1.5vw;\n\tfont-family: Montserrat;\n    color: white;\n}\n\n.subtitle .btn {\n\tposition: relative;\n\tmargin-top: 1%;\n\tbackground-color: #854dff;\n\tcolor: white;\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tpadding: 10px 60px;\n\tborder: 1px solid #854dff;\n\tcursor: pointer;\n\tborder-radius: 30px;\n\tz-index: 2;\n}\n\n.subtitle .btn:hover {\n\tbackground-color: #FFFFFF;\n\tcolor: #854dff;\n\tborder: 1px solid #FFFFFF;\n}\n\n\n\n.parallax-container {\n\tpadding-top: 5%;\n\tpadding-bottom: 5%;\n\ttext-align: center;\n    color: white;\n}\n\n .parallax {\n     background: #FFFFFF;\n     padding: 42px 0;\n     color:#000000;\n}\n .parallax-video{\n     padding-bottom: 50px;\n     padding-top: 50px;\n}\n .parallax-video video{\n     min-width: 100%;\n     position: fixed;\n     top:0;\n     z-index: -9999;\n}\n .parallax-video h3 {\n     color: #fff;\n     font-size: 76px;\n     font-weight: 700;\n     text-align: center;\n     text-transform: uppercase;\n}\n\nimg.resize {\n  max-width:50%;\n  max-height:50%;\n  margin-top: 5%;\n}\n\nimg.resize-persons {\n  max-width:30%;\n  max-height:30%;\n  margin-top: 5%;\n}\n\n.feature-img {\n  max-width:15%;\n  max-height:15%;\n  margin-bottom: 5%;\n}\n body {\n     margin:0;\n     padding:0;\n}\n\n.subtitle>h1 {\n\tfont-size: 4vw;\n\tfont-family: Pacifico;\n\tmargin-bottom: 1%;\n    color: white;\n}\n\n.subtitle>h2 {\n\tfont-family: Montserrat;\n\tmargin-bottom: 1%;  \n    color: white;\n}\n\n.speech-bubble {\n\tposition: relative;\n\tbackground: #854dff;\n\tborder-radius: .4em;\n    padding-top: 20px;\n    padding-bottom: 0;\n}\n\n.speech-bubble:after {\n\tcontent: '';\n\tposition: absolute;\n\tbottom: 0;\n\tleft: 50%;\n\tborder: 1.156em solid transparent;\n\tborder-top-color: #854dff;\n\tborder-bottom: 0;\n\tborder-left: 0;\n\tmargin-left: -2em;\n\tmargin-bottom: -1.156em;\n}\n\n.bar{\n    max-height: 10vh;\n    background-color: #061551;\n}\n.header{\n    background-color: #061551;\n    color:white;\n}\n\n.text-white a{\n    color: white;\n}\n\n.footer{\n    padding: 50px;\n    background-color: #061551;\n}\n\n.logo{\nfont-family: Pacifico;\nposition: relative;\n}\n\n\n.partners-img{\n    width: 200px;\n    align-content: center;\n}\n\n.subtitle>h4 {\n\tfont-family: Montserrat;   \n    color: white;\n}\n\n.title>h4 {\n\tfont-family: Montserrat;\n    \n    color: white;\n}\n\n.features{    \n\tfont-family: Montserrat;\n    padding-top: 1%;\n\tpadding-bottom: 1%;\n\ttext-align: center;\n    color: black;\n}\n\n.material-icons{\n    font-size: 6vw;\n    color: #854dff;\n}\n\n.how{\n    \n\tbackground-color: #F2F7FF;\n}\n\n\n/* Image Parallax Section*/\n .parallax-image {\n    background-attachment: fixed;\n    background-position: 50% 50%;\n    background-repeat: no-repeat;\n    background-size: cover;\n    padding-bottom: 50px;\n}\n\n.contact{\n   background-image: url(\"https://beta.edvotech.com/static/images/touch.jpg\");height: 500px;\n}\n\n.contact-content{\n\tbackground: rgb(7, 23, 77, 0.9);\n\tbackground: rgba(7, 23, 77, 0.9);\n    padding: 150px;\n    \n}\n\n.text-white{\n    color: white;\n}\n\n.font-weight-bold{\n    font-weight: bold;\n}\n\n.contact-btn{\n\tfont-weight: bold;\n    background-color: #854DFF;\n    border: none;\n    color: white;\n    padding: 15px 32px;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 20px;\n    margin: 4px 2px;\n    cursor: pointer;\n    width: 100%;\n\n}\n\n.navbar-nav li{\n    color: white;\n    transition: 0.5s;\n    border-radius: 0;\n}\n\n\n.navbar-nav > li > div{\n    padding-top: 15px;\n    padding-bottom: 15px;\n    line-height: 20px;\n}\n\n.nav > li > div{\n    padding-left: 15px;\n    padding-right: 15px;\n}\n\n.navbar-nav > li > div > a{\n    color: white;\n    text-decoration: none;\n    transition: 0.5s;\n    border-radius: 0;\n}\n\n.navbar-nav li > div:hover a{\n    color: #061551;\n    background-color: white;\n}\n\n\n@media only screen and (max-width: 768px){\n    .navbar-nav li{\n        border-radius: 3rem;\n    }\n\n    .navbar-right{\n        border-top: 4px solid black;\n        padding-top: 0.7rem;\n        margin-left: 1rem;\n        margin-right: 1rem;\n    }\n}\n\n.navbar-nav li:hover{\n    color: #061551;\n    background-color: white;\n}\n\n\n\n.navbar-inverse .navbar-nav > li > a {\n    color: white;\n}\n\n.navbar-inverse .navbar-nav > li > a:hover{\n    color: #061551;\n}\n\n.text-center > .nav li{\n    display: inline-block;\n    list-style-type: none;\n}\n\n.navbar-inverse .navbar-brand:hover{\n    color: #061551;\n}\n\n.footer__space{\n    margin-left: 2rem;\n    margin-right: 2rem;\n}\n\n@media only screen and (max-width: 360px){\n    .footer__space{        \n        margin-left: 1rem;\n        margin-right: 1rem;\n    }\n}", ""]);
 
 // exports
 
@@ -36428,7 +36879,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".clickable {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, ".about__title{\n    color: white;\n    background-color:#854dff;\n    padding-top: 5rem;\n    padding-bottom: 3rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: 550;\n    font-size: 4.5rem;\n}\n\n.far{\n    font-size: 30%;\n}\n\n.about__body{\n    background-color: white;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-size: 1.8rem;\n}\n\n.about__subtitle{\n    color: #5933AA;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n}\n\n.about__subtitle__2{\n    color: #5933AA;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: 400;\n    font-size: 150%;\n}\n\n.row__margin{\n    margin-top: 4rem;\n    margin-bottom: 9rem;\n}\n\n.mid__row__margin{\n    margin-bottom: 8rem;\n}\n\n.about__low{\n    background-color: rgba(199, 219, 247, 0.337);\n    color: white;\n    font-size: 150%;\n    font-weight: 550;\n    padding-top: 3rem;\n    padding-bottom: 7rem;\n}\n\n.about__others__say{\n    padding-top: 2rem;\n    padding-bottom: 1rem;\n}\n\n.about__low__options{\n    background-color: rgba(199, 219, 247, 0.337);\n    padding-bottom: 50px;\n}\n\n.about__sub__text{\n    font-weight: 100;\n    color: black;\n}\n\n\n.about__sub__text__bold{\n    font-weight: 700;\n}\n\n.Feature-Img__pre18 {\n    max-width: 400px;\n    max-height: 200px;\n    overflow: hidden;\n    margin-bottom: 2rem;\n    background-color: black;\n    border: 1px solid white;\n    padding-bottom: 1px;\n}\n\n.Feature-Img__endi{\n    max-width: 400px;\n    max-height: 200px;\n    padding-bottom: 32px;\n}\n\n.Feature-Img__her__campus{\n    max-width: 400px;\n    max-height: 200px;\n    padding-bottom: 2rem;\n}\n\n.Feature-Img__mc{\n    max-width: 400px;\n    max-height: 140px;\n    margin-bottom: 11px;\n}\n\n.break{\n\twidth:5%;\n    background-color: white;\n    font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -36442,7 +36893,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".navbar__logo {\n    color: white;\n    text-decoration: none;\n}\n\n.navbar__text p{\n    margin-bottom: 0rem;\n}\n\n.send_button{\n    margin-top: 2rem;\n}\n\n.view__home__button{\n    margin-top: 2rem;\n}\n\n.num{\n    font-size: 5rem;\n    font-weight: 400;\n}\n\n.home__title{\n    color: white;\n    background-color:#5933AA;\n    padding-top: 3rem;\n    padding-bottom: 1rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    width: 50%;\n    font-size: 4.0rem;\n    border: 0.8rem outset #5933AA;\n    border-radius: 3rem;\n    margin: 2.7rem auto;\n}\n\n@media only screen and (max-width: 360px){\n    .home__title{\n        font-size: 2.4rem;\n    }\n}\n\n\n", ""]);
+exports.push([module.i, ".clickable {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -36456,7 +36907,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n}\n\n.list-group-item{\n    transition: 0.2s;\n}\n\n.list-group-item:hover{\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.loading-card{\n    margin: 1rem 1rem;\n    padding-top: 18rem;\n    padding-bottom: 18rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n}\n\n@media only screen and (max-width: 1200px){\n    .loading-card{\n        padding-top: 10rem;\n        padding-bottom: 10rem;\n    }\n}\n\n.card-title{\n    font-weight: normal;\n    font-size: 1.7rem;\n    color: #5933AA;\n    margin-bottom: 1rem;\n    overflow: hidden;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n\n}\n\n.big-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    margin-top: 2.7rem;\n    margin-bottom: 2.7rem;\n    padding: 2.7rem;\n    border-radius: 0.5rem;\n    \n}\n\n.big-card-link:hover{\n    background-color: lightgray;\n}\n\n\n.item-card {\n    /* Add shadows to create the \"card\" effect */\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 8rem;\n    margin: 1.5rem 0;\n    padding: 1.5rem 1.5rem;\n    text-overflow: ellipsis;\n}\n\n.quiz-item-card{\n    /* Add shadows to create the \"card\" effect */\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 8rem;\n    min-width: 40rem;\n    padding: 1.5rem;\n    padding-left: 2rem;\n    margin: 1.5rem 0;\n}\n\n.quiz-item-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n@media only screen and (max-width: 1200px){\n    .quiz-item-card{\n        min-width: 30rem;\n    }\n}\n\n@media only screen and (max-width: 993px){\n    .quiz-item-card{\n        min-width: 25rem;\n    }\n}\n\n\n@media only screen and (max-width: 360px){\n    .quiz-item-card{\n        min-width: 20rem;\n    }\n}\n\nbutton{\n    padding-left: 0;\n}\n\n.btn-item{\n    background-color: #5933AA;\n    color: white;\n    font-weight: normal;\n    font-size: 105%;\n    margin-top: 1rem;\n}\n\n@media only screen and (max-width: 420px){\n    .btn-item{\n        font-size: 95%;\n    }\n}\n\n.btn-item-margin{\n    margin-top: '2rem';\n}\n\n.btn-item:enabled{\n    background-color: #5933AA;\n    color: white;\n    font-weight: normal;\n}\n\n.btn-item:hover{\n    color: white;\n    background-color: #472988;\n    font-weight: normal;\n    border: 1px solid #5933AA;\n}\n\nbutton:disabled > .btn-item{\n    background-color: #cdc2e6;\n    border: 1px solid #cdc2e6;\n}\n\n.item-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.card {\n    /* Add shadows to create the \"card\" effect */\n    margin: 1rem 1rem;\n    padding: 0 1rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n    padding-bottom: 1rem; \n    min-height: 18rem;\n}\n\n/* On mouse-over, add a deeper shadow */\n.card:hover {\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n@media only screen and (max-width: 768px){\n    .card_left_margin{\n        margin-left: 0;\n    }\n}\n\n.withMargins{\n    margin: 15px 15px;\n}\n\n/* Add some padding inside the card container */\n.container {\n    padding: 2px 16px;\n}\n\n.big-card-school-home{\n    background-color: white;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border: 1.2px solid #5933aa;\n    border-radius: 0.5rem;\n    margin-top: 1.5rem;\n    margin-bottom: 2.7rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    font-weight: bold;\n    min-height: 21rem;\n}\n\n.big-card-school-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.big-card-teacher-home{\n    background-color: white;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border: 1.2px solid #5933aa;\n    border-radius: 0.5rem;\n    margin-top: 2.7rem;\n    margin-bottom: 2.7rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    font-weight: bold;\n    min-height: 18rem;\n}\n\n.big-card-teacher-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.big-card-admin-home{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    margin-top: 8rem;\n    margin-bottom: 8rem;\n    padding-top: 5rem;\n    padding-bottom: 5rem;\n    font-weight: bold;\n}\n\n.big__admin__text{\n    font-size: 3rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big__teacher__home__text{\n    font-size: 5rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big-card-admin-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.big-card-mentor-home{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    margin-top: 8rem;\n    margin-bottom: 8rem;\n    padding-top: 3.7rem;\n    padding-bottom: 3.7rem;\n    font-weight: bold;\n}\n\n.big__mentor__text{\n    font-size: 3rem;\n    text-align: center;\n    margin: 0.5rem;\n}\n\n.big-card-mentor-home:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    background-color: rgba(0, 0, 0, 0.096);\n}\n\n.front-card{\n    z-index: 9999;\n}\n\n.top_targets{\n    font-weight: normal;\n    text-align: center;\n}\n\n.home__card__title{\n    font-size: 2.5rem;\n}\n\n@media only screen and (max-width: 1200px){\n    .big__admin__text{\n        font-size: 2rem;\n    }\n}\n\n@media only screen and (max-width: 1200px){\n    .big__mentor__text{\n        font-size: 2rem;\n    }\n}\n\n@media only screen and (max-width: 768px){\n    .big-card-admin-home{\n        max-height: 17.5rem;\n        padding-top: 1rem;\n        padding-bottom: 2rem;\n        padding-left: 0;\n        padding-right: 0;\n        margin-top: 2rem;\n        margin-bottom: 2rem\n    }\n}\n\n@media only screen and (max-width: 1200px){\n    .big-card-mentor-home{\n        max-height: 17.5rem;\n        padding-top: 1rem;\n        padding-bottom: 2rem;\n        padding-left: 0;\n        padding-right: 0;\n    }\n}\n\n@media only screen and (max-width: 768px){\n    .big-card-mentor-home{\n        margin-top: 2rem;\n        margin-bottom: 2rem;\n        margin-top: 2rem;\n        margin-bottom: 2rem\n    }\n}\n\n", ""]);
+exports.push([module.i, ".navbar__logo {\r\n    color: white;\r\n    text-decoration: none;\r\n}\r\n\r\n.navbar__text p{\r\n    margin-bottom: 0rem;\r\n}\r\n\r\n.send_button{\r\n    margin-top: 2rem;\r\n}\r\n\r\n.view__home__button{\r\n    margin-top: 2rem;\r\n}\r\n\r\n.num{\r\n    font-size: 5rem;\r\n    font-weight: 400;\r\n}\r\n\r\n.home__title{\r\n    color: white;\r\n    background-color:#5933AA;\r\n    padding-top: 3rem;\r\n    padding-bottom: 1rem;\r\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n    font-weight: bold;\r\n    width: 50%;\r\n    font-size: 4.0rem;\r\n    border: 0.2rem outset #5933AA;\r\n    border-radius: 1rem;\r\n    margin: 2.7rem auto;\r\n}\r\n\r\n@media only screen and (max-width: 360px){\r\n    .home__title{\r\n        font-size: 2.4rem;\r\n    }\r\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -36470,7 +36921,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".item__body{\n    text-overflow: ellipsis;\n    \n}\n\n.pending__title{\n    color: white;\n    background-color:#854dff;\n    padding-top: 5rem;\n    padding-bottom: 3rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    font-size: 4.0rem;\n    border: 1rem hidden #854dff;\n    border-radius: 3rem;\n    margin: 2.7rem auto;\n}\n\n.pending__title__2{\n    color: white;\n    background-color:#5933AA;\n    padding-top: 3rem;\n    padding-bottom: 1rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    width: 90%;\n    font-size: 4.0rem;\n    border: 0.8rem outset #5933AA;\n    border-radius: 3rem;\n    margin: 2.7rem auto;\n}\n\n.spec__mobile__font{\n\n}\n\n\n@media only screen and (max-width: 1020px){\n    .pending__title__2{\n        font-size: 3rem;\n    }\n}\n\n@media only screen and (max-width: 570px){\n    .spec__mobile__font{\n        font-size: 2.5rem;\n    }\n}\n\n@media only screen and (max-width: 360px){\n    .pending__title__2{\n        font-size: 2.3rem;\n    }\n}\n", ""]);
+exports.push([module.i, "html, body {\r\n    height: 100%;\r\n    width: 100%;\r\n    margin: 0;\r\n}\r\n\r\n.list-group-item{\r\n    transition: 0.2s;\r\n}\r\n\r\n.list-group-item:hover{\r\n    background-color: rgba(0, 0, 0, 0.096);\r\n}\r\n\r\n.loading-card{\r\n    margin: 1rem 1rem;\r\n    padding-top: 18rem;\r\n    padding-bottom: 18rem;\r\n    background-color: white;\r\n    border: 1.2px solid #5933aa;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    transition: 0.3s;\r\n    border-radius: 0.5rem;\r\n}\r\n\r\n@media only screen and (max-width: 1200px){\r\n    .loading-card{\r\n        padding-top: 10rem;\r\n        padding-bottom: 10rem;\r\n    }\r\n}\r\n\r\n.card-title{\r\n    font-weight: normal;\r\n    font-size: 1.7rem;\r\n    color: #5933AA;\r\n    margin-bottom: 1rem;\r\n    display: inline-block;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    display: -webkit-box;\r\n    -webkit-line-clamp: 2;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.card-text{\r\n    display: inline-block;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    display: -webkit-box;\r\n    -webkit-line-clamp: 2;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.big-card{\r\n    background-color: white;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    border-style: solid;\r\n    border-color: rgba(0, 0, 0, 0.137);\r\n    margin-top: 2.7rem;\r\n    margin-bottom: 2.7rem;\r\n    padding: 2.7rem;\r\n    border-radius: 0.5rem;\r\n    \r\n}\r\n\r\n.big-card-link:hover{\r\n    background-color: lightgray;\r\n}\r\n\r\n\r\n.item-card {\r\n    /* Add shadows to create the \"card\" effect */\r\n    background-color: white;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    transition: 0.3s;\r\n    border-style: solid;\r\n    border-color: rgba(0, 0, 0, 0.137);\r\n    border-radius: 0.5rem;\r\n    min-height: 8rem;\r\n    margin: 1.5rem 0;\r\n    padding: 1.5rem 1.5rem;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.quiz-item-card{\r\n    /* Add shadows to create the \"card\" effect */\r\n    background-color: white;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    transition: 0.3s;\r\n    border-style: solid;\r\n    border-color: rgba(0, 0, 0, 0.137);\r\n    border-radius: 0.5rem;\r\n    min-height: 8rem;\r\n    min-width: 40rem;\r\n    padding: 1.5rem;\r\n    padding-left: 2rem;\r\n    margin: 1.5rem 0;\r\n}\r\n\r\n.quiz-item-card:hover{\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n@media only screen and (max-width: 1200px){\r\n    .quiz-item-card{\r\n        min-width: 30rem;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 993px){\r\n    .quiz-item-card{\r\n        min-width: 25rem;\r\n    }\r\n}\r\n\r\n\r\n@media only screen and (max-width: 360px){\r\n    .quiz-item-card{\r\n        min-width: 20rem;\r\n    }\r\n}\r\n\r\nbutton{\r\n    padding-left: 0;\r\n}\r\n\r\n.btn-item{\r\n    background-color: #5933AA;\r\n    color: white;\r\n    font-weight: normal;\r\n    font-size: 105%;\r\n    margin-top: 1rem;\r\n}\r\n\r\n@media only screen and (max-width: 420px){\r\n    .btn-item{\r\n        font-size: 95%;\r\n    }\r\n}\r\n\r\n.btn-item-margin{\r\n    margin-top: '2rem';\r\n}\r\n\r\n.btn-item:enabled{\r\n    background-color: #5933AA;\r\n    color: white;\r\n    font-weight: normal;\r\n}\r\n\r\n.btn-item:hover{\r\n    color: white;\r\n    background-color: #472988;\r\n    font-weight: normal;\r\n    border: 1px solid #5933AA;\r\n}\r\n\r\nbutton:disabled > .btn-item{\r\n    background-color: #cdc2e6;\r\n    border: 1px solid #cdc2e6;\r\n}\r\n\r\n.item-card:hover{\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.card {\r\n    /* Add shadows to create the \"card\" effect */\r\n    margin: 1rem 1rem;\r\n    padding: 0 1rem;\r\n    background-color: white;\r\n    border: 1.2px solid #5933aa;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    transition: 0.3s;\r\n    border-radius: 0.5rem;\r\n    padding-bottom: 1rem; \r\n    min-height: 18rem;\r\n}\r\n\r\n/* On mouse-over, add a deeper shadow */\r\n.card:hover {\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n@media only screen and (max-width: 768px){\r\n    .card_left_margin{\r\n        margin-left: 0;\r\n    }\r\n}\r\n\r\n.withMargins{\r\n    margin: 15px 15px;\r\n}\r\n\r\n/* Add some padding inside the card container */\r\n.container {\r\n    padding: 2px 16px;\r\n}\r\n\r\n.big-card-school-home{\r\n    background-color: white;\r\n    transition: 0.3s;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    border: 1.2px solid #5933aa;\r\n    border-radius: 0.5rem;\r\n    margin-top: 1.5rem;\r\n    margin-bottom: 2.7rem;\r\n    padding-top: 3.7rem;\r\n    padding-bottom: 3.7rem;\r\n    padding-left: 2rem;\r\n    padding-right: 2rem;\r\n    font-weight: bold;\r\n    min-height: 21rem;\r\n}\r\n\r\n.big-card-school-home:hover{\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.big-card-teacher-home{\r\n    background-color: white;\r\n    transition: 0.3s;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    border: 1.2px solid #5933aa;\r\n    border-radius: 0.5rem;\r\n    margin-top: 2.7rem;\r\n    margin-bottom: 2.7rem;\r\n    padding-top: 3.7rem;\r\n    padding-bottom: 3.7rem;\r\n    font-weight: bold;\r\n    min-height: 18rem;\r\n}\r\n\r\n.big-card-teacher-home:hover{\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.big-card-admin-home{\r\n    background-color: white;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    border-style: solid;\r\n    border-color: rgba(0, 0, 0, 0.137);\r\n    border-radius: 0.5rem;\r\n    margin-top: 8rem;\r\n    margin-bottom: 8rem;\r\n    padding-top: 5rem;\r\n    padding-bottom: 5rem;\r\n    font-weight: bold;\r\n}\r\n\r\n.big__admin__text{\r\n    font-size: 3rem;\r\n    text-align: center;\r\n    margin: 0.5rem;\r\n}\r\n\r\n.big__teacher__home__text{\r\n    font-size: 5rem;\r\n    text-align: center;\r\n    margin: 0.5rem;\r\n}\r\n\r\n.big-card-admin-home:hover{\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n    background-color: rgba(0, 0, 0, 0.096);\r\n}\r\n\r\n.big-card-mentor-home{\r\n    background-color: white;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n    border-style: solid;\r\n    border-color: rgba(0, 0, 0, 0.137);\r\n    border-radius: 0.5rem;\r\n    margin-top: 8rem;\r\n    margin-bottom: 8rem;\r\n    padding-top: 3.7rem;\r\n    padding-bottom: 3.7rem;\r\n    font-weight: bold;\r\n}\r\n\r\n.big__mentor__text{\r\n    font-size: 3rem;\r\n    text-align: center;\r\n    margin: 0.5rem;\r\n}\r\n\r\n.big-card-mentor-home:hover{\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n    background-color: rgba(0, 0, 0, 0.096);\r\n}\r\n\r\n.front-card{\r\n    z-index: 9999;\r\n}\r\n\r\n.top_targets{\r\n    font-weight: normal;\r\n    text-align: center;\r\n}\r\n\r\n.home__card__title{\r\n    font-size: 2.5rem;\r\n}\r\n\r\n@media only screen and (max-width: 1200px){\r\n    .big__admin__text{\r\n        font-size: 2rem;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1200px){\r\n    .big__mentor__text{\r\n        font-size: 2rem;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 768px){\r\n    .big-card-admin-home{\r\n        max-height: 17.5rem;\r\n        padding-top: 1rem;\r\n        padding-bottom: 2rem;\r\n        padding-left: 0;\r\n        padding-right: 0;\r\n        margin-top: 2rem;\r\n        margin-bottom: 2rem\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1200px){\r\n    .big-card-mentor-home{\r\n        max-height: 17.5rem;\r\n        padding-top: 1rem;\r\n        padding-bottom: 2rem;\r\n        padding-left: 0;\r\n        padding-right: 0;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 768px){\r\n    .big-card-mentor-home{\r\n        margin-top: 2rem;\r\n        margin-bottom: 2rem;\r\n        margin-top: 2rem;\r\n        margin-bottom: 2rem\r\n    }\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -36484,7 +36935,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "textarea{\n    resize: none;\n    margin-bottom: 1rem;\n}\n\nform p{\n    margin-bottom: 0;\n}\n\ninput{\n    margin-bottom: 1rem;\n}\n\n.left-input-margin{\n    margin-left: 1.5rem;\n}\n\n", ""]);
+exports.push([module.i, ".item__body{\r\n    text-overflow: ellipsis;\r\n    \r\n}\r\n\r\n.pending__title{\r\n    color: white;\r\n    background-color:#854dff;\r\n    padding-top: 5rem;\r\n    padding-bottom: 3rem;\r\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n    font-weight: bold;\r\n    font-size: 4.0rem;\r\n    border: 1rem hidden #854dff;\r\n    border-radius: 3rem;\r\n    margin: 2.7rem auto;\r\n}\r\n\r\n.pending__title__2{\r\n    color: white;\r\n    background-color:#5933AA;\r\n    padding-top: 3rem;\r\n    padding-bottom: 2.3rem;\r\n\r\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n    font-weight: bold;\r\n    width: 90%;\r\n    font-size: 4.0rem;\r\n    border-radius: 1rem;\r\n    margin: 2.7rem auto;\r\n}\r\n\r\n.spec__mobile__font{\r\n\r\n}\r\n\r\n\r\n@media only screen and (max-width: 1020px){\r\n    .pending__title__2{\r\n        font-size: 3rem;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 570px){\r\n    .spec__mobile__font{\r\n        font-size: 2.5rem;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 360px){\r\n    .pending__title__2{\r\n        font-size: 2.3rem;\r\n    }\r\n}\r\n", ""]);
 
 // exports
 
@@ -36498,7 +36949,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".background-home {\n    background-color: rgba(199, 219, 247, 0.337);\n    padding-top: 3rem;\n    padding-bottom: 3rem;\n}\n\n\n.badge{\n    font-size: 1.4rem;\n    background-color: #5933aa;\n}\n\n.empty-message-card{\n/* Add shadows to create the \"card\" effect */\n    text-align: center;\n    font-weight: bold;\n    font-size: 1.8rem;\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 1rem;\n    padding: 2rem;\n    padding-bottom: 1.5rem;\n    margin: 0;\n    position: relative;\n    bottom: 30px;\n    color: #5933aa;\n}\n\n.close-empty-message-card{\n    /* Add shadows to create the \"card\" effect */\n    text-align: center;\n    font-weight: bold;\n    font-size: 1.8rem;\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 1rem;\n    padding: 2rem;\n    padding-bottom: 1.5rem;\n    margin: 1rem;\n    color: #5933aa;\n}", ""]);
+exports.push([module.i, "textarea{\n    resize: none;\n    margin-bottom: 1rem;\n}\n\nform p{\n    margin-bottom: 0;\n}\n\ninput{\n    margin-bottom: 1rem;\n}\n\n.left-input-margin{\n    margin-left: 1.5rem;\n}\n\n", ""]);
 
 // exports
 
@@ -36512,7 +36963,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".nav__button{\n    min-width: 10rem;\n    min-height: 7rem;\n    color: #5933AA;\n    background-color: white;\n    text-decoration: none;\n    border: 1px solid #5933AA;\n    border-radius: 1rem;\n    padding: 1rem;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n}\n\n.nav__button__text{ \n    float:none;\n    display:inline-block;\n    vertical-align: middle;\n    margin-top: 1.1rem;\n}\n\n.nav__button:hover{\n    color: #5933AA;\n    border: 1px solid white;\n    text-decoration: none;\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.well{\n    margin: 2.7rem auto;\n    min-width: 15rem;\n    background-color: rgba(199, 219, 247, 0.603);\n    padding-top: 0;\n    padding-bottom: 30px;\n\n}\n\n@media only screen and (max-width: 769px){\n    .well{\n        position: relative;\n        margin-bottom: 0;\n        margin-top: 2rem;\n        size: 50%;\n    }\n\n    .nav__button{\n        min-width: 4rem;\n        min-height: 2rem;\n        padding: 0.2rem;\n    }\n}", ""]);
+exports.push([module.i, ".background-home {\n    background-color: rgba(199, 219, 247, 0.337);\n    padding-top: 3rem;\n    padding-bottom: 3rem;\n}\n\n\n.badge{\n    font-size: 1.4rem;\n    background-color: #5933aa;\n}\n\n.empty-message-card{\n/* Add shadows to create the \"card\" effect */\n    text-align: center;\n    font-weight: bold;\n    font-size: 1.8rem;\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 1rem;\n    padding: 2rem;\n    padding-bottom: 1.5rem;\n    margin: 0;\n    position: relative;\n    bottom: 30px;\n    color: #5933aa;\n}\n\n.close-empty-message-card{\n    /* Add shadows to create the \"card\" effect */\n    text-align: center;\n    font-weight: bold;\n    font-size: 1.8rem;\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 1rem;\n    padding: 2rem;\n    padding-bottom: 1.5rem;\n    margin: 1rem;\n    color: #5933aa;\n}", ""]);
 
 // exports
 
@@ -36526,7 +36977,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".btn-filter{\n    background-color:white;\n    border: 1px solid #ccc;\n}\n\n.btn-filter:disabled{\n    cursor: default;\n}\n\n.btn-filter:hover{\n    cursor: default;\n}\n\n.dropdown-pad{\n    padding: 0.6rem;\n}\n\n@media only screen and (max-width: 360px){\n    .btn-default{\n        font-size: 80%;\n    }\n    .btn-filter{\n        font-size: 80%;\n    }\n}\n\n@media only screen and (max-width: 320px){\n    .btn-default{\n        font-size: 70%;\n    }\n    .btn-filter{\n        font-size: 70%;\n    }\n}", ""]);
+exports.push([module.i, ".nav__button{\n    min-width: 10rem;\n    min-height: 7rem;\n    color: #5933AA;\n    background-color: white;\n    text-decoration: none;\n    border: 1px solid #5933AA;\n    border-radius: 1rem;\n    padding: 1rem;\n    transition: 0.3s;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n}\n\n.nav__button__text{ \n    float:none;\n    display:inline-block;\n    vertical-align: middle;\n    margin-top: 1.1rem;\n}\n\n.nav__button:hover{\n    color: #5933AA;\n    border: 1px solid white;\n    text-decoration: none;\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.well{\n    margin: 2.7rem auto;\n    min-width: 15rem;\n    background-color: rgba(199, 219, 247, 0.603);\n    padding-top: 0;\n    padding-bottom: 30px;\n\n}\n\n@media only screen and (max-width: 769px){\n    .well{\n        position: relative;\n        margin-bottom: 0;\n        margin-top: 2rem;\n        size: 50%;\n    }\n\n    .nav__button{\n        min-width: 4rem;\n        min-height: 2rem;\n        padding: 0.2rem;\n    }\n}", ""]);
 
 // exports
 
@@ -36540,7 +36991,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".radio__text{\n    font-weight: normal;\n    margin-bottom: 0;\n    padding-bottom: 0;\n}\n\n.btn-primary{\n    background-color: #5933AA;\n}\n\n.form__title{\n    text-align: center;\n    font-size: 3rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    color: #5933AA;\n}\n\n.req{\n    color: red;\n}\n\n.btn-pad{\n    margin-bottom: 2rem;\n    margin-left: 0;\n}\n\n@media only screen and (max-width: 992px){\n    .btn-pad{\n        margin-bottom: 2rem;\n        margin-left: 0;\n    }\n}\n\n\n", ""]);
+exports.push([module.i, ".btn-filter{\n    background-color:white;\n    border: 1px solid #ccc;\n}\n\n.btn-filter:disabled{\n    cursor: default;\n}\n\n.btn-filter:hover{\n    cursor: default;\n}\n\n.dropdown-pad{\n    padding: 0.6rem;\n}\n\n@media only screen and (max-width: 360px){\n    .btn-default{\n        font-size: 80%;\n    }\n    .btn-filter{\n        font-size: 80%;\n    }\n}\n\n@media only screen and (max-width: 320px){\n    .btn-default{\n        font-size: 70%;\n    }\n    .btn-filter{\n        font-size: 70%;\n    }\n}", ""]);
 
 // exports
 
@@ -36554,7 +37005,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".linktext{\n    color: white;\n}\n\n.linktext:hover{\n    color: #5933AA;\n}", ""]);
+exports.push([module.i, ".radio__text{\n    font-weight: normal;\n    margin-bottom: 0;\n    padding-bottom: 0;\n}\n\n.btn-primary{\n    background-color: #5933AA;\n}\n\n.form__title{\n    text-align: center;\n    font-size: 3rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    color: #5933AA;\n}\n\n.req{\n    color: red;\n}\n\n.btn-pad{\n    margin-bottom: 2rem;\n    margin-left: 0;\n}\n\n@media only screen and (max-width: 992px){\n    .btn-pad{\n        margin-bottom: 2rem;\n        margin-left: 0;\n    }\n}\n\n\n", ""]);
 
 // exports
 
@@ -36568,7 +37019,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".ReactModalPortal > div{\n    opacity: 0;\n}\n\n.ReactModalPortal .ReactModal__Overlay{\n    transition: opacity 200ms ease-in-out;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    z-index: 2;\n}\n\n.ReactModalPortal .ReactModal__Overlay--after-open{\n    opacity: 1;\n}\n\n.ReactModalPortal .ReactModal__Overlay--before-close{\n    opacity: 0;\n}\n\n.modal {\n    background: #464b5e;\n    max-width: 30rem;\n    outline: none;\n    padding: 3.2rem;\n    text-align: center;\n}\n\n.modal-card{\n    background-color: #5933AA;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    padding: 0 0;\n    outline: none;\n    z-index: 5;\n}\n\n.loading-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    padding: 0 0;\n    outline: none;\n}\n\n.home-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    outline: none;\n    max-width: 100rem;\n    padding: 1rem;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n\n.user-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    outline: none;\n    max-width: 100rem;\n    padding: 3rem;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n\n.assign-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    outline: none;\n    max-width: 100rem;\n    padding: 3rem;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n\n.modal-title{\n    color: white;\n    background-color:#5933AA;\n    padding-top: 3rem;\n    padding-bottom: 1rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    width: 90%;\n    font-size: 4.0rem;\n    border: 0.8rem solid #464b5e;\n    border-radius: 3rem;\n    margin: 2.7rem auto;\n}\n\n.modal-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    \n}\n\n.modal__title{\n    margin: 0 0 2.7rem 0;\n}\n\n.modal__body {\n    margin: 0 0 3.2rem 0;\n    font-size: 2rem;\n    font-weight: 300;\n    word-break: break-all;\n}\n\n.modal__checkmark{\n    font-size: 7rem;\n    color: white;\n}\n\n.btn-modal{\n    background-color: white;\n    color: #5933AA;\n    font-weight: normal;\n}\n\n\n.btn-modal:hover{\n    color: white;\n    background-color: #5933AA;\n    font-weight: normal;\n    border: 1px solid white;\n}\n\n.teacher-modal-body{\n    margin-right: 2rem;\n    margin-left: 2rem;\n}\n\n.text-left > span {\n    position: relative;\n    bottom: 10px;\n    font-size: 1.8rem;\n\n}", ""]);
+exports.push([module.i, ".linktext{\n    color: white;\n}\n\n.linktext:hover{\n    color: #5933AA;\n}", ""]);
 
 // exports
 
@@ -36582,7 +37033,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".pagination > .active > .undefined,\n.pagination > .active > .undefined:focus\n.pagination > .active > .undefined:active\n.pagination > .active > .undefined:hover{\n    z-index: 0;\n    color: white;\n    background-color: #5933AA;\n    border-color: #5933AA;\n}\n\n.pagination > .active > a,\n.pagination > .active > a:focus,\n.pagination > .active > a:hover,\n.pagination > .active > span,\n.pagination > .active > span:focus,\n.pagination > .active > span:hover{\n    z-index: 0;\n    color: #fff;\n    cursor: default;\n    background-color: #5933AA;\n    border-color: #5933AA;\n\n}", ""]);
+exports.push([module.i, ".ReactModalPortal > div{\n    opacity: 0;\n}\n\n.ReactModalPortal .ReactModal__Overlay{\n    transition: opacity 200ms ease-in-out;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    z-index: 2;\n}\n\n.ReactModalPortal .ReactModal__Overlay--after-open{\n    opacity: 1;\n}\n\n.ReactModalPortal .ReactModal__Overlay--before-close{\n    opacity: 0;\n}\n\n.modal {\n    background: #464b5e;\n    max-width: 30rem;\n    outline: none;\n    padding: 3.2rem;\n    text-align: center;\n}\n\n.modal-card{\n    background-color: #5933AA;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    padding: 0 0;\n    outline: none;\n    z-index: 5;\n}\n\n.loading-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    padding: 0 0;\n    outline: none;\n}\n\n.home-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    outline: none;\n    max-width: 100rem;\n    padding: 1rem;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n\n.user-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    outline: none;\n    max-width: 100rem;\n    padding: 3rem;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n\n.assign-modal-card{\n    background-color: white;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    border-style: solid;\n    border-color: rgba(0, 0, 0, 0.137);\n    border-radius: 0.5rem;\n    min-height: 14rem;\n    outline: none;\n    max-width: 100rem;\n    padding: 3rem;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n\n.modal-title{\n    color: white;\n    background-color:#5933AA;\n    padding-top: 3rem;\n    padding-bottom: 1rem;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-weight: bold;\n    width: 90%;\n    font-size: 4.0rem;\n    border: 0.8rem solid #464b5e;\n    border-radius: 3rem;\n    margin: 2.7rem auto;\n}\n\n.modal-card:hover{\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    \n}\n\n.modal__title{\n    margin: 0 0 2.7rem 0;\n}\n\n.modal__body {\n    margin: 0 0 3.2rem 0;\n    font-size: 2rem;\n    font-weight: 300;\n    word-break: break-all;\n}\n\n.modal__checkmark{\n    font-size: 7rem;\n    color: white;\n}\n\n.btn-modal{\n    background-color: white;\n    color: #5933AA;\n    font-weight: normal;\n}\n\n\n.btn-modal:hover{\n    color: white;\n    background-color: #5933AA;\n    font-weight: normal;\n    border: 1px solid white;\n}\n\n.teacher-modal-body{\n    margin-right: 2rem;\n    margin-left: 2rem;\n}\n\n.text-left > span {\n    position: relative;\n    bottom: 10px;\n    font-size: 1.8rem;\n\n}", ""]);
 
 // exports
 
@@ -36596,7 +37047,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "/* For desktop: */\n.col-1 {width: 8.33%;}\n.col-2 {width: 16.66%;}\n.col-3 {width: 25%;}\n.col-4 {width: 33.33%;}\n.col-5 {width: 41.66%;}\n.col-6 {width: 50%;}\n.col-7 {width: 58.33%;}\n.col-8 {width: 66.66%;}\n.col-9 {width: 75%;}\n.col-10 {width: 83.33%;}\n.col-11 {width: 91.66%;}\n.col-12 {width: 100%;}\n\n\n@media only screen and (max-width: 768px) {\n    /* For mobile phones: */\n    [class*=\"col-\"] {\n        width: 100%;\n    }\n}", ""]);
+exports.push([module.i, ".pagination > .active > .undefined,\n.pagination > .active > .undefined:focus\n.pagination > .active > .undefined:active\n.pagination > .active > .undefined:hover{\n    z-index: 0;\n    color: white;\n    background-color: #5933AA;\n    border-color: #5933AA;\n}\n\n.pagination > .active > a,\n.pagination > .active > a:focus,\n.pagination > .active > a:hover,\n.pagination > .active > span,\n.pagination > .active > span:focus,\n.pagination > .active > span:hover{\n    z-index: 0;\n    color: #fff;\n    cursor: default;\n    background-color: #5933AA;\n    border-color: #5933AA;\n\n}", ""]);
 
 // exports
 
@@ -36610,7 +37061,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".not_found_btn{\n    \n}\n\n.not_found_card{\n    /* Add shadows to create the \"card\" effect */\n    margin: 1rem 1rem;\n    padding: 10rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n}\n\n@media only screen and (max-width: 580px){\n    .not_found_btn{\n        font-size: 2rem; \n    }\n\n    .not_found_card{\n        padding-left: 1rem;\n        padding-right: 1rem;\n    }\n}", ""]);
+exports.push([module.i, "/* For desktop: */\n.col-1 {width: 8.33%;}\n.col-2 {width: 16.66%;}\n.col-3 {width: 25%;}\n.col-4 {width: 33.33%;}\n.col-5 {width: 41.66%;}\n.col-6 {width: 50%;}\n.col-7 {width: 58.33%;}\n.col-8 {width: 66.66%;}\n.col-9 {width: 75%;}\n.col-10 {width: 83.33%;}\n.col-11 {width: 91.66%;}\n.col-12 {width: 100%;}\n\n\n@media only screen and (max-width: 768px) {\n    /* For mobile phones: */\n    [class*=\"col-\"] {\n        width: 100%;\n    }\n}", ""]);
 
 // exports
 
@@ -36624,7 +37075,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".rdw-editor-main{\n    border: 1px solid #ccc;\n    border-radius: 5px;\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n    padding-left: 1rem;\n    padding-right: 1rem;\n}\n", ""]);
+exports.push([module.i, ".not_found_btn{\n    \n}\n\n.not_found_card{\n    /* Add shadows to create the \"card\" effect */\n    margin: 1rem 1rem;\n    padding: 10rem;\n    background-color: white;\n    border: 1.2px solid #5933aa;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\n    transition: 0.3s;\n    border-radius: 0.5rem;\n}\n\n@media only screen and (max-width: 580px){\n    .not_found_btn{\n        font-size: 2rem; \n    }\n\n    .not_found_card{\n        padding-left: 1rem;\n        padding-right: 1rem;\n    }\n}", ""]);
 
 // exports
 
@@ -36638,13 +37089,27 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, ".quiz_button{\n    padding: 3rem;\n    float:none;\n    transition: 0.3s;\n    display:inline-block;\n    vertical-align: middle;\n    background-color: #5933aa;\n    border-radius: 20px;\n    color: white;\n    font-size: 3rem;\n    margin-bottom: 3rem;\n}\n\n.quiz_button:hover{\n    color: white;\n    background-color: #472988;\n}", ""]);
+exports.push([module.i, ".rdw-editor-main{\n    border: 1px solid #ccc;\n    border-radius: 5px;\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n    padding-left: 1rem;\n    padding-right: 1rem;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\r\n\r\n\r\nbutton > div.quiz_button{\r\n    padding: 3rem;\r\n    float:none;\r\n    transition: 0.3s;\r\n    display:inline-block;\r\n    vertical-align: middle;\r\n    background-color: #5933aa;\r\n    border-radius: 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    border: 5px outset #5933AA;\r\n    margin-bottom: 3rem;\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.137);\r\n}\r\n\r\n\r\nbutton > div.quiz_button:hover{\r\n    color: white;\r\n    background-color: #472988;\r\n    border: 7px outset #5933AA;\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36675,7 +37140,7 @@ __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:K,assign:k
 
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36691,7 +37156,7 @@ __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:K,assign:k
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),n=__webpack_require__(27),ba=__webpack_require__(384);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(0),n=__webpack_require__(27),ba=__webpack_require__(385);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function t(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ca(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:t("227");function da(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}
 var ea=!1,fa=null,ha=!1,ia=null,ja={onError:function(a){ea=!0;fa=a}};function ka(a,b,c,d,e,f,g,h,k){ea=!1;fa=null;da.apply(ja,arguments)}function la(a,b,c,d,e,f,g,h,k){ka.apply(this,arguments);if(ea){if(ea){var l=fa;ea=!1;fa=null}else t("198"),l=void 0;ha||(ha=!0,ia=l)}}var ma=null,na={};
 function oa(){if(ma)for(var a in na){var b=na[a],c=ma.indexOf(a);-1<c?void 0:t("96",a);if(!pa[c]){b.extractEvents?void 0:t("97",a);pa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;qa.hasOwnProperty(h)?t("99",h):void 0;qa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ra(k[e],g,h);e=!0}else f.registrationName?(ra(f.registrationName,g,h),e=!0):e=!1;e?void 0:t("98",d,a)}}}}
@@ -36931,21 +37396,21 @@ var ei={default:bi},fi=ei&&bi||ei;module.exports=fi.default||fi;
 
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(385);
+  module.exports = __webpack_require__(386);
 } else {
   module.exports = require('./cjs/scheduler.development.js');
 }
 
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36973,7 +37438,7 @@ exports.unstable_shouldYield=function(){return!f&&(null!==d&&d.expirationTime<l|
 
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37059,7 +37524,7 @@ function createProvider() {
 /* harmony default export */ __webpack_exports__["b"] = (createProvider());
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37072,7 +37537,7 @@ function createProvider() {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(388);
+var ReactPropTypesSecret = __webpack_require__(389);
 
 function emptyFunction() {}
 
@@ -37125,7 +37590,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37144,7 +37609,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37201,7 +37666,7 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37297,17 +37762,17 @@ var Subscription = function () {
 
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export createConnect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(408);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mergeProps__ = __webpack_require__(409);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selectorFactory__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(409);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mergeProps__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selectorFactory__ = __webpack_require__(411);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -37413,7 +37878,7 @@ function createConnect() {
 /* harmony default export */ __webpack_exports__["a"] = (createConnect());
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37450,7 +37915,7 @@ function shallowEqual(objA, objB) {
 }
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37481,13 +37946,13 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject]);
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(399);
 
 
 
@@ -37519,11 +37984,11 @@ function baseGetTag(value) {
 
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(397);
 
 
 /** Detect free variable `self`. */
@@ -37536,7 +38001,7 @@ var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || fr
 
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37548,7 +38013,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37602,7 +38067,7 @@ function getRawTag(value) {
 
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37631,11 +38096,11 @@ function objectToString(value) {
 
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(401);
 
 
 /** Built-in value references. */
@@ -37645,7 +38110,7 @@ var getPrototype = __WEBPACK_IMPORTED_MODULE_0__overArg_js__["a" /* default */](
 
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37667,7 +38132,7 @@ function overArg(func, transform) {
 
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37703,11 +38168,11 @@ function isObjectLike(value) {
 
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ponyfill_js__ = __webpack_require__(404);
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ponyfill_js__ = __webpack_require__(405);
 /* global window */
 
 
@@ -37728,10 +38193,10 @@ if (typeof self !== 'undefined') {
 var result = __WEBPACK_IMPORTED_MODULE_0__ponyfill_js__["a" /* default */](root);
 /* harmony default export */ __webpack_exports__["a"] = (result);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24), __webpack_require__(403)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24), __webpack_require__(404)(module)))
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports) {
 
 module.exports = function(originalModule) {
@@ -37761,7 +38226,7 @@ module.exports = function(originalModule) {
 
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37786,7 +38251,7 @@ function symbolObservablePonyfill(root) {
 
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37926,7 +38391,7 @@ function combineReducers(reducers) {
 }
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37980,7 +38445,7 @@ function bindActionCreators(actionCreators, dispatch) {
 }
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38036,7 +38501,7 @@ function applyMiddleware() {
 }
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38058,7 +38523,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing]);
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38114,14 +38579,14 @@ function whenMergePropsIsOmitted(mergeProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMergePropsIsFunction, whenMergePropsIsOmitted]);
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export impureFinalPropsSelectorFactory */
 /* unused harmony export pureFinalPropsSelectorFactory */
 /* harmony export (immutable) */ __webpack_exports__["a"] = finalPropsSelectorFactory;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verifySubselectors__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verifySubselectors__ = __webpack_require__(412);
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 
@@ -38226,7 +38691,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 }
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38251,7 +38716,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 }
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38271,55 +38736,55 @@ var _reactRedux = __webpack_require__(2);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _Header = __webpack_require__(431);
+var _Header = __webpack_require__(432);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = __webpack_require__(452);
+var _Footer = __webpack_require__(453);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
-var _Main = __webpack_require__(453);
+var _Main = __webpack_require__(454);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-var _About = __webpack_require__(457);
+var _About = __webpack_require__(458);
 
 var _About2 = _interopRequireDefault(_About);
 
-var _Login = __webpack_require__(458);
+var _Login = __webpack_require__(459);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _Plans = __webpack_require__(464);
+var _Plans = __webpack_require__(465);
 
 var _Plans2 = _interopRequireDefault(_Plans);
 
-var _NotFound = __webpack_require__(468);
+var _NotFound = __webpack_require__(469);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _SecuredRoute = __webpack_require__(469);
+var _SecuredRoute = __webpack_require__(470);
 
 var _SecuredRoute2 = _interopRequireDefault(_SecuredRoute);
 
-var _Callback = __webpack_require__(470);
+var _Callback = __webpack_require__(471);
 
 var _Callback2 = _interopRequireDefault(_Callback);
 
-var _Registration = __webpack_require__(672);
+var _Registration = __webpack_require__(673);
 
 var _Registration2 = _interopRequireDefault(_Registration);
 
-var _Classes = __webpack_require__(726);
+var _Classes = __webpack_require__(727);
 
 var _Classes2 = _interopRequireDefault(_Classes);
 
-var _Plan = __webpack_require__(729);
+var _Plan = __webpack_require__(730);
 
 var _Plan2 = _interopRequireDefault(_Plan);
 
-var _TeacherHome = __webpack_require__(730);
+var _TeacherHome = __webpack_require__(731);
 
 var _TeacherHome2 = _interopRequireDefault(_TeacherHome);
 
@@ -38409,7 +38874,7 @@ var _QuestionModal = __webpack_require__(893);
 
 var _QuestionModal2 = _interopRequireDefault(_QuestionModal);
 
-var _teacherQuestions = __webpack_require__(98);
+var _teacherQuestions = __webpack_require__(77);
 
 var _ManageQuizzes = __webpack_require__(894);
 
@@ -38439,13 +38904,13 @@ var _UserModal = __webpack_require__(909);
 
 var _UserModal2 = _interopRequireDefault(_UserModal);
 
-var _userModal = __webpack_require__(309);
+var _userModal = __webpack_require__(310);
 
 var _AssignmentRecommendationModal = __webpack_require__(910);
 
 var _AssignmentRecommendationModal2 = _interopRequireDefault(_AssignmentRecommendationModal);
 
-var _assignmentRecommendationModal = __webpack_require__(310);
+var _assignmentRecommendationModal = __webpack_require__(311);
 
 var _CreateCouponForm = __webpack_require__(911);
 
@@ -38565,7 +39030,7 @@ var AppRouter = function (_React$Component) {
 exports.default = (0, _reactRedux.connect)()(AppRouter);
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38575,7 +39040,7 @@ exports.default = (0, _reactRedux.connect)()(AppRouter);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(153);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38631,7 +39096,7 @@ BrowserRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (BrowserRouter);
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38935,7 +39400,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createBrowserHistory);
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39011,7 +39476,7 @@ function resolvePathname(to) {
 /* harmony default export */ __webpack_exports__["a"] = (resolvePathname);
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39055,7 +39520,7 @@ function valueEqual(a, b) {
 /* harmony default export */ __webpack_exports__["a"] = (valueEqual);
 
 /***/ }),
-/* 417 */
+/* 418 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39376,7 +39841,7 @@ var createHashHistory = function createHashHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createHashHistory);
 
 /***/ }),
-/* 418 */
+/* 419 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39544,7 +40009,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createMemoryHistory);
 
 /***/ }),
-/* 419 */
+/* 420 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39554,7 +40019,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(153);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -39609,7 +40074,7 @@ HashRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (HashRouter);
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39620,7 +40085,7 @@ HashRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39706,7 +40171,7 @@ NavLink.defaultProps = {
 /* harmony default export */ __webpack_exports__["a"] = (NavLink);
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, exports) {
 
 module.exports = Array.isArray || function (arr) {
@@ -39715,7 +40180,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39726,7 +40191,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39737,7 +40202,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39748,7 +40213,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__["a" /* default */]);
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39759,7 +40224,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__["a" /* default */]);
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39770,7 +40235,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_generatePath__["a" /* default */]);
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39781,7 +40246,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__["a" /* default */]);
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39792,7 +40257,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__["a" /* default */]);
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39867,7 +40332,7 @@ module.exports = hoistNonReactStatics;
 
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39887,7 +40352,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _language = __webpack_require__(432);
+var _language = __webpack_require__(433);
 
 var _credentials = __webpack_require__(237);
 
@@ -39999,41 +40464,6 @@ var Header = function (_React$Component) {
                                         'Blog'
                                     )
                                 )
-                            ),
-                            !this.props.isAuthenticated ? _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    _reactRouterDom.NavLink,
-                                    { className: 'inactive', activeClassName: 'active', to: '/login' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        _react2.default.createElement(
-                                            'p',
-                                            null,
-                                            this.props.lang === 'English' ? 'Login' : 'Entrar'
-                                        ),
-                                        ' '
-                                    )
-                                )
-                            ) : _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    _reactRouterDom.NavLink,
-                                    { className: 'inactive', activeClassName: 'active', to: '/login' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        _react2.default.createElement(
-                                            'p',
-                                            null,
-                                            this.props.lang === 'English' ? 'Log Out' : 'Salir'
-                                        ),
-                                        ' '
-                                    )
-                                )
                             )
                         ),
                         _react2.default.createElement(
@@ -40143,6 +40573,41 @@ var Header = function (_React$Component) {
                                     )
                                 )
                             ),
+                            !this.props.isAuthenticated ? _react2.default.createElement(
+                                'li',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.NavLink,
+                                    { className: 'inactive', activeClassName: 'active', to: '/login' },
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            this.props.lang === 'English' ? 'Login' : 'Entrar'
+                                        ),
+                                        ' '
+                                    )
+                                )
+                            ) : _react2.default.createElement(
+                                'li',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.NavLink,
+                                    { className: 'inactive', activeClassName: 'active', to: '/login' },
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            this.props.lang === 'English' ? 'Log Out' : 'Salir'
+                                        ),
+                                        ' '
+                                    )
+                                )
+                            ),
                             _react2.default.createElement(
                                 'li',
                                 null,
@@ -40196,7 +40661,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40219,7 +40684,7 @@ var swapLanguage = exports.swapLanguage = function swapLanguage() {
 };
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40241,7 +40706,7 @@ var commonjsGlobal="undefined"!=typeof window?window:"undefined"!=typeof global?
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40249,7 +40714,7 @@ var commonjsGlobal="undefined"!=typeof window?window:"undefined"!=typeof global?
 
 var utils = __webpack_require__(34);
 var bind = __webpack_require__(238);
-var Axios = __webpack_require__(436);
+var Axios = __webpack_require__(437);
 var defaults = __webpack_require__(156);
 
 /**
@@ -40284,14 +40749,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(243);
-axios.CancelToken = __webpack_require__(450);
+axios.CancelToken = __webpack_require__(451);
 axios.isCancel = __webpack_require__(242);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(451);
+axios.spread = __webpack_require__(452);
 
 module.exports = axios;
 
@@ -40300,7 +40765,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports) {
 
 /*!
@@ -40327,7 +40792,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40335,8 +40800,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(156);
 var utils = __webpack_require__(34);
-var InterceptorManager = __webpack_require__(445);
-var dispatchRequest = __webpack_require__(446);
+var InterceptorManager = __webpack_require__(446);
+var dispatchRequest = __webpack_require__(447);
 
 /**
  * Create a new instance of Axios
@@ -40413,7 +40878,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40432,7 +40897,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40465,7 +40930,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40493,7 +40958,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40566,7 +41031,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 441 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40626,7 +41091,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 442 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40701,7 +41166,7 @@ module.exports = (
 
 
 /***/ }),
-/* 443 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40744,7 +41209,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 444 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40804,7 +41269,7 @@ module.exports = (
 
 
 /***/ }),
-/* 445 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40863,18 +41328,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 446 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(34);
-var transformData = __webpack_require__(447);
+var transformData = __webpack_require__(448);
 var isCancel = __webpack_require__(242);
 var defaults = __webpack_require__(156);
-var isAbsoluteURL = __webpack_require__(448);
-var combineURLs = __webpack_require__(449);
+var isAbsoluteURL = __webpack_require__(449);
+var combineURLs = __webpack_require__(450);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -40956,7 +41421,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 447 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40983,7 +41448,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 448 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41004,7 +41469,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 449 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41025,7 +41490,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 450 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41089,7 +41554,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 451 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41123,7 +41588,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 452 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41205,7 +41670,7 @@ var Footer = function Footer() {
 exports.default = Footer;
 
 /***/ }),
-/* 453 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41221,7 +41686,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _MainPageDisplay = __webpack_require__(454);
+var _MainPageDisplay = __webpack_require__(455);
 
 var _MainPageDisplay2 = _interopRequireDefault(_MainPageDisplay);
 
@@ -41253,7 +41718,7 @@ var MainPage = function MainPage(props) {
 exports.default = (0, _reactRedux.connect)()(MainPage);
 
 /***/ }),
-/* 454 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41271,7 +41736,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _ThreeImageList = __webpack_require__(455);
+var _ThreeImageList = __webpack_require__(456);
 
 var _ThreeImageList2 = _interopRequireDefault(_ThreeImageList);
 
@@ -41768,7 +42233,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(MainPageDisplay);
 
 /***/ }),
-/* 455 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41812,7 +42277,7 @@ var ThreeImageList = function ThreeImageList() {
 exports.default = ThreeImageList;
 
 /***/ }),
-/* 456 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -41826,7 +42291,7 @@ exports.push([module.i, "@font-face {\n  font-family: LuloCleanOneBold;\n  src: 
 
 
 /***/ }),
-/* 457 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42130,7 +42595,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutPage);
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42150,7 +42615,7 @@ var _ContactForm = __webpack_require__(101);
 
 var _ContactForm2 = _interopRequireDefault(_ContactForm);
 
-var _LoginForm = __webpack_require__(459);
+var _LoginForm = __webpack_require__(460);
 
 var _LoginForm2 = _interopRequireDefault(_LoginForm);
 
@@ -42158,7 +42623,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _contact = __webpack_require__(116);
 
-var _login = __webpack_require__(460);
+var _login = __webpack_require__(461);
 
 var _reactRouterDom = __webpack_require__(4);
 
@@ -42170,11 +42635,11 @@ var _axios = __webpack_require__(5);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-__webpack_require__(461);
+__webpack_require__(462);
 
 var _immutable = __webpack_require__(8);
 
-var _loginPage = __webpack_require__(463);
+var _loginPage = __webpack_require__(464);
 
 var _loadingModal = __webpack_require__(19);
 
@@ -42316,29 +42781,29 @@ var LoginPage = function (_React$Component) {
                                             ),
                                             !_Auth2.default.isAuthenticated() && _react2.default.createElement(
                                                 'div',
-                                                null,
+                                                { style: { marginBottom: '1rem' } },
                                                 _react2.default.createElement(
                                                     'button',
-                                                    { onClick: _Auth2.default.signIn },
+                                                    { className: 'btn btn-item', onClick: _Auth2.default.signIn, style: { marginRight: '1rem' } },
                                                     _react2.default.createElement(
                                                         'div',
-                                                        { className: 'btn btn-item' },
+                                                        null,
                                                         this.props.lang === 'English' ? 'Sign In' : 'Entrar'
                                                     )
                                                 ),
                                                 _react2.default.createElement(
                                                     'button',
-                                                    { onClick: _Auth2.default.signUp, style: { marginBottom: '1rem' } },
+                                                    { className: 'btn btn-item' },
                                                     _react2.default.createElement(
                                                         'div',
-                                                        { className: 'btn btn-item' },
+                                                        null,
                                                         this.props.lang === 'English' ? 'Register' : 'Registrarse'
                                                     )
                                                 )
                                             ),
                                             _Auth2.default.isAuthenticated() && _react2.default.createElement(
                                                 'div',
-                                                null,
+                                                { style: { marginBottom: '1rem' } },
                                                 _react2.default.createElement(
                                                     'div',
                                                     null,
@@ -42428,7 +42893,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(LoginPage);
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42581,7 +43046,7 @@ var LoginForm = function (_React$Component) {
 exports.default = LoginForm;
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42613,13 +43078,13 @@ var sendLogin = exports.sendLogin = function sendLogin() {
 };
 
 /***/ }),
-/* 461 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(462);
+var content = __webpack_require__(463);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -42644,7 +43109,7 @@ if(false) {
 }
 
 /***/ }),
-/* 462 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -42658,7 +43123,7 @@ exports.push([module.i, ".Login-Title {\n  font-family: \"Helvetica Neue\", Helv
 
 
 /***/ }),
-/* 463 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42700,7 +43165,7 @@ var logSubscriptionStatus = exports.logSubscriptionStatus = function logSubscrip
 };
 
 /***/ }),
-/* 464 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42732,7 +43197,7 @@ var _Auth = __webpack_require__(3);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
-__webpack_require__(466);
+__webpack_require__(467);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43230,7 +43695,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(PlansPage);
 
 /***/ }),
-/* 465 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43257,13 +43722,13 @@ var rules = {
 exports.default = rules;
 
 /***/ }),
-/* 466 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(467);
+var content = __webpack_require__(468);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43288,7 +43753,7 @@ if(false) {
 }
 
 /***/ }),
-/* 467 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -43302,7 +43767,7 @@ exports.push([module.i, ".No-Border-Top {\n  border-top: 0; }\n\n.Absolute-Packa
 
 
 /***/ }),
-/* 468 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43379,7 +43844,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(NotFoundPage);
 
 /***/ }),
-/* 469 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43426,7 +43891,7 @@ function SecuredRoute(props) {
 exports.default = SecuredRoute;
 
 /***/ }),
-/* 470 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43593,11 +44058,10 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Callback));
 
 /***/ }),
-/* 471 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(472);
-__webpack_require__(474);
+__webpack_require__(473);
 __webpack_require__(475);
 __webpack_require__(476);
 __webpack_require__(477);
@@ -43612,7 +44076,7 @@ __webpack_require__(485);
 __webpack_require__(486);
 __webpack_require__(487);
 __webpack_require__(488);
-__webpack_require__(490);
+__webpack_require__(489);
 __webpack_require__(491);
 __webpack_require__(492);
 __webpack_require__(493);
@@ -43673,16 +44137,16 @@ __webpack_require__(547);
 __webpack_require__(548);
 __webpack_require__(549);
 __webpack_require__(550);
-__webpack_require__(552);
+__webpack_require__(551);
 __webpack_require__(553);
-__webpack_require__(555);
+__webpack_require__(554);
 __webpack_require__(556);
 __webpack_require__(557);
 __webpack_require__(558);
 __webpack_require__(559);
 __webpack_require__(560);
 __webpack_require__(561);
-__webpack_require__(563);
+__webpack_require__(562);
 __webpack_require__(564);
 __webpack_require__(565);
 __webpack_require__(566);
@@ -43695,19 +44159,19 @@ __webpack_require__(572);
 __webpack_require__(573);
 __webpack_require__(574);
 __webpack_require__(575);
-__webpack_require__(178);
 __webpack_require__(576);
+__webpack_require__(178);
 __webpack_require__(577);
-__webpack_require__(264);
 __webpack_require__(578);
+__webpack_require__(264);
 __webpack_require__(579);
 __webpack_require__(580);
 __webpack_require__(581);
 __webpack_require__(582);
+__webpack_require__(583);
 __webpack_require__(267);
 __webpack_require__(269);
 __webpack_require__(270);
-__webpack_require__(583);
 __webpack_require__(584);
 __webpack_require__(585);
 __webpack_require__(586);
@@ -43792,11 +44256,12 @@ __webpack_require__(664);
 __webpack_require__(665);
 __webpack_require__(666);
 __webpack_require__(667);
+__webpack_require__(668);
 module.exports = __webpack_require__(40);
 
 
 /***/ }),
-/* 472 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43810,12 +44275,12 @@ var redefine = __webpack_require__(30);
 var META = __webpack_require__(58).KEY;
 var $fails = __webpack_require__(9);
 var shared = __webpack_require__(117);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(83);
 var uid = __webpack_require__(66);
 var wks = __webpack_require__(16);
 var wksExt = __webpack_require__(247);
 var wksDefine = __webpack_require__(158);
-var enumKeys = __webpack_require__(473);
+var enumKeys = __webpack_require__(474);
 var isArray = __webpack_require__(120);
 var anObject = __webpack_require__(6);
 var isObject = __webpack_require__(10);
@@ -44037,7 +44502,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 
 /***/ }),
-/* 473 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -44058,7 +44523,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 474 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44067,7 +44532,7 @@ $export($export.S, 'Object', { create: __webpack_require__(69) });
 
 
 /***/ }),
-/* 475 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44076,7 +44541,7 @@ $export($export.S + $export.F * !__webpack_require__(20), 'Object', { defineProp
 
 
 /***/ }),
-/* 476 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44085,7 +44550,7 @@ $export($export.S + $export.F * !__webpack_require__(20), 'Object', { defineProp
 
 
 /***/ }),
-/* 477 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
@@ -44100,7 +44565,7 @@ __webpack_require__(50)('getOwnPropertyDescriptor', function () {
 
 
 /***/ }),
-/* 478 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -44115,7 +44580,7 @@ __webpack_require__(50)('getPrototypeOf', function () {
 
 
 /***/ }),
-/* 479 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -44130,7 +44595,7 @@ __webpack_require__(50)('keys', function () {
 
 
 /***/ }),
-/* 480 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
@@ -44140,7 +44605,7 @@ __webpack_require__(50)('getOwnPropertyNames', function () {
 
 
 /***/ }),
-/* 481 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
@@ -44155,7 +44620,7 @@ __webpack_require__(50)('freeze', function ($freeze) {
 
 
 /***/ }),
-/* 482 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.17 Object.seal(O)
@@ -44170,7 +44635,7 @@ __webpack_require__(50)('seal', function ($seal) {
 
 
 /***/ }),
-/* 483 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.15 Object.preventExtensions(O)
@@ -44185,7 +44650,7 @@ __webpack_require__(50)('preventExtensions', function ($preventExtensions) {
 
 
 /***/ }),
-/* 484 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.12 Object.isFrozen(O)
@@ -44199,7 +44664,7 @@ __webpack_require__(50)('isFrozen', function ($isFrozen) {
 
 
 /***/ }),
-/* 485 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.13 Object.isSealed(O)
@@ -44213,7 +44678,7 @@ __webpack_require__(50)('isSealed', function ($isSealed) {
 
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.11 Object.isExtensible(O)
@@ -44227,7 +44692,7 @@ __webpack_require__(50)('isExtensible', function ($isExtensible) {
 
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
@@ -44237,16 +44702,16 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(251) });
 
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
 var $export = __webpack_require__(1);
-$export($export.S, 'Object', { is: __webpack_require__(489) });
+$export($export.S, 'Object', { is: __webpack_require__(490) });
 
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports) {
 
 // 7.2.9 SameValue(x, y)
@@ -44257,7 +44722,7 @@ module.exports = Object.is || function is(x, y) {
 
 
 /***/ }),
-/* 490 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
@@ -44266,7 +44731,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(162).set });
 
 
 /***/ }),
-/* 491 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44283,7 +44748,7 @@ if (test + '' != '[object z]') {
 
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
@@ -44293,7 +44758,7 @@ $export($export.P, 'Function', { bind: __webpack_require__(252) });
 
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(21).f;
@@ -44315,7 +44780,7 @@ NAME in FProto || __webpack_require__(20) && dP(FProto, NAME, {
 
 
 /***/ }),
-/* 494 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44335,7 +44800,7 @@ if (!(HAS_INSTANCE in FunctionProto)) __webpack_require__(21).f(FunctionProto, H
 
 
 /***/ }),
-/* 495 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44345,7 +44810,7 @@ $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt }
 
 
 /***/ }),
-/* 496 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44355,7 +44820,7 @@ $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $pars
 
 
 /***/ }),
-/* 497 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44369,7 +44834,7 @@ var fails = __webpack_require__(9);
 var gOPN = __webpack_require__(70).f;
 var gOPD = __webpack_require__(37).f;
 var dP = __webpack_require__(21).f;
-var $trim = __webpack_require__(83).trim;
+var $trim = __webpack_require__(84).trim;
 var NUMBER = 'Number';
 var $Number = global[NUMBER];
 var Base = $Number;
@@ -44431,7 +44896,7 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 
 
 /***/ }),
-/* 498 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44552,7 +45017,7 @@ $export($export.P + $export.F * (!!$toFixed && (
 
 
 /***/ }),
-/* 499 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44577,7 +45042,7 @@ $export($export.P + $export.F * ($fails(function () {
 
 
 /***/ }),
-/* 500 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.1 Number.EPSILON
@@ -44587,7 +45052,7 @@ $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
 
 
 /***/ }),
-/* 501 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.2 Number.isFinite(number)
@@ -44602,7 +45067,7 @@ $export($export.S, 'Number', {
 
 
 /***/ }),
-/* 502 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
@@ -44612,7 +45077,7 @@ $export($export.S, 'Number', { isInteger: __webpack_require__(257) });
 
 
 /***/ }),
-/* 503 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.4 Number.isNaN(number)
@@ -44627,7 +45092,7 @@ $export($export.S, 'Number', {
 
 
 /***/ }),
-/* 504 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.5 Number.isSafeInteger(number)
@@ -44643,7 +45108,7 @@ $export($export.S, 'Number', {
 
 
 /***/ }),
-/* 505 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -44653,7 +45118,7 @@ $export($export.S, 'Number', { MAX_SAFE_INTEGER: 0x1fffffffffffff });
 
 
 /***/ }),
-/* 506 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -44663,7 +45128,7 @@ $export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
 
 
 /***/ }),
-/* 507 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44673,7 +45138,7 @@ $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { 
 
 
 /***/ }),
-/* 508 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44683,7 +45148,7 @@ $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { pars
 
 
 /***/ }),
-/* 509 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.3 Math.acosh(x)
@@ -44707,7 +45172,7 @@ $export($export.S + $export.F * !($acosh
 
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.5 Math.asinh(x)
@@ -44723,7 +45188,7 @@ $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', { asinh:
 
 
 /***/ }),
-/* 511 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.7 Math.atanh(x)
@@ -44739,7 +45204,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 
 
 /***/ }),
-/* 512 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.9 Math.cbrt(x)
@@ -44754,7 +45219,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 513 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.11 Math.clz32(x)
@@ -44768,7 +45233,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 514 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.12 Math.cosh(x)
@@ -44783,7 +45248,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 515 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -44794,7 +45259,7 @@ $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 
 
 
 /***/ }),
-/* 516 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
@@ -44804,7 +45269,7 @@ $export($export.S, 'Math', { fround: __webpack_require__(259) });
 
 
 /***/ }),
-/* 517 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -44835,7 +45300,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 518 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.18 Math.imul(x, y)
@@ -44858,7 +45323,7 @@ $export($export.S + $export.F * __webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 519 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.21 Math.log10(x)
@@ -44872,7 +45337,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 520 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.20 Math.log1p(x)
@@ -44882,7 +45347,7 @@ $export($export.S, 'Math', { log1p: __webpack_require__(258) });
 
 
 /***/ }),
-/* 521 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.22 Math.log2(x)
@@ -44896,7 +45361,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 522 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.28 Math.sign(x)
@@ -44906,7 +45371,7 @@ $export($export.S, 'Math', { sign: __webpack_require__(166) });
 
 
 /***/ }),
-/* 523 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.30 Math.sinh(x)
@@ -44927,7 +45392,7 @@ $export($export.S + $export.F * __webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 524 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.33 Math.tanh(x)
@@ -44945,7 +45410,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 525 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.34 Math.trunc(x)
@@ -44959,7 +45424,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 526 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -44988,7 +45453,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 
 
 /***/ }),
-/* 527 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -45012,13 +45477,13 @@ $export($export.S, 'String', {
 
 
 /***/ }),
-/* 528 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 21.1.3.25 String.prototype.trim()
-__webpack_require__(83)('trim', function ($trim) {
+__webpack_require__(84)('trim', function ($trim) {
   return function trim() {
     return $trim(this, 3);
   };
@@ -45026,7 +45491,7 @@ __webpack_require__(83)('trim', function ($trim) {
 
 
 /***/ }),
-/* 529 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45050,7 +45515,7 @@ __webpack_require__(169)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 530 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45066,7 +45531,7 @@ $export($export.P, 'String', {
 
 
 /***/ }),
-/* 531 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45093,7 +45558,7 @@ $export($export.P + $export.F * __webpack_require__(172)(ENDS_WITH), 'String', {
 
 
 /***/ }),
-/* 532 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45112,7 +45577,7 @@ $export($export.P + $export.F * __webpack_require__(172)(INCLUDES), 'String', {
 
 
 /***/ }),
-/* 533 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -45124,7 +45589,7 @@ $export($export.P, 'String', {
 
 
 /***/ }),
-/* 534 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45149,7 +45614,7 @@ $export($export.P + $export.F * __webpack_require__(172)(STARTS_WITH), 'String',
 
 
 /***/ }),
-/* 535 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45163,7 +45628,7 @@ __webpack_require__(31)('anchor', function (createHTML) {
 
 
 /***/ }),
-/* 536 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45177,7 +45642,7 @@ __webpack_require__(31)('big', function (createHTML) {
 
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45191,7 +45656,7 @@ __webpack_require__(31)('blink', function (createHTML) {
 
 
 /***/ }),
-/* 538 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45205,7 +45670,7 @@ __webpack_require__(31)('bold', function (createHTML) {
 
 
 /***/ }),
-/* 539 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45219,7 +45684,7 @@ __webpack_require__(31)('fixed', function (createHTML) {
 
 
 /***/ }),
-/* 540 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45233,7 +45698,7 @@ __webpack_require__(31)('fontcolor', function (createHTML) {
 
 
 /***/ }),
-/* 541 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45247,7 +45712,7 @@ __webpack_require__(31)('fontsize', function (createHTML) {
 
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45261,7 +45726,7 @@ __webpack_require__(31)('italics', function (createHTML) {
 
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45275,7 +45740,7 @@ __webpack_require__(31)('link', function (createHTML) {
 
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45289,7 +45754,7 @@ __webpack_require__(31)('small', function (createHTML) {
 
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45303,7 +45768,7 @@ __webpack_require__(31)('strike', function (createHTML) {
 
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45317,7 +45782,7 @@ __webpack_require__(31)('sub', function (createHTML) {
 
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45331,7 +45796,7 @@ __webpack_require__(31)('sup', function (createHTML) {
 
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.3.1 / 15.9.4.4 Date.now()
@@ -45341,7 +45806,7 @@ $export($export.S, 'Date', { now: function () { return new Date().getTime(); } }
 
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45364,12 +45829,12 @@ $export($export.P + $export.F * __webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
 var $export = __webpack_require__(1);
-var toISOString = __webpack_require__(551);
+var toISOString = __webpack_require__(552);
 
 // PhantomJS / old WebKit has a broken implementations
 $export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'Date', {
@@ -45378,7 +45843,7 @@ $export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'D
 
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45411,7 +45876,7 @@ module.exports = (fails(function () {
 
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DateProto = Date.prototype;
@@ -45429,17 +45894,17 @@ if (new Date(NaN) + '' != INVALID_DATE) {
 
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_PRIMITIVE = __webpack_require__(16)('toPrimitive');
 var proto = Date.prototype;
 
-if (!(TO_PRIMITIVE in proto)) __webpack_require__(29)(proto, TO_PRIMITIVE, __webpack_require__(554));
+if (!(TO_PRIMITIVE in proto)) __webpack_require__(29)(proto, TO_PRIMITIVE, __webpack_require__(555));
 
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45455,7 +45920,7 @@ module.exports = function (hint) {
 
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
@@ -45465,7 +45930,7 @@ $export($export.S, 'Array', { isArray: __webpack_require__(120) });
 
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45509,7 +45974,7 @@ $export($export.S + $export.F * !__webpack_require__(122)(function (iter) { Arra
 
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45535,7 +46000,7 @@ $export($export.S + $export.F * __webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45554,7 +46019,7 @@ $export($export.P + $export.F * (__webpack_require__(102) != Object || !__webpac
 
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45589,7 +46054,7 @@ $export($export.P + $export.F * __webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45619,7 +46084,7 @@ $export($export.P + $export.F * (fails(function () {
 
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45637,7 +46102,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(10);
@@ -45659,7 +46124,7 @@ module.exports = function (original) {
 
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45676,7 +46141,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].map, true), 'Array',
 
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45693,7 +46158,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].filter, true), 'Arra
 
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45710,7 +46175,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].some, true), 'Array'
 
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45727,7 +46192,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].every, true), 'Array
 
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45744,7 +46209,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].reduce, true), 'Arra
 
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45761,7 +46226,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].reduceRight, true), 
 
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45783,7 +46248,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(43)($nati
 
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45812,7 +46277,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(43)($nati
 
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
@@ -45824,7 +46289,7 @@ __webpack_require__(60)('copyWithin');
 
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
@@ -45836,7 +46301,7 @@ __webpack_require__(60)('fill');
 
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45857,7 +46322,7 @@ __webpack_require__(60)(KEY);
 
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45878,14 +46343,14 @@ __webpack_require__(60)(KEY);
 
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(71)('Array');
 
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(7);
@@ -45934,7 +46399,7 @@ __webpack_require__(71)('RegExp');
 
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45966,7 +46431,7 @@ if (__webpack_require__(9)(function () { return $toString.call({ source: 'a', fl
 
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@match logic
@@ -45982,7 +46447,7 @@ __webpack_require__(124)('match', 1, function (defined, MATCH, $match) {
 
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@replace logic
@@ -46000,7 +46465,7 @@ __webpack_require__(124)('replace', 2, function (defined, REPLACE, $replace) {
 
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@search logic
@@ -46016,7 +46481,7 @@ __webpack_require__(124)('search', 1, function (defined, SEARCH, $search) {
 
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@split logic
@@ -46093,7 +46558,7 @@ __webpack_require__(124)('split', 2, function (defined, SPLIT, $split) {
 
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46319,7 +46784,7 @@ if (!USE_NATIVE) {
 }
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__(82)($Promise, PROMISE);
+__webpack_require__(83)($Promise, PROMISE);
 __webpack_require__(71)(PROMISE);
 Wrapper = __webpack_require__(40)[PROMISE];
 
@@ -46386,13 +46851,13 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(122)(functio
 
 
 /***/ }),
-/* 583 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var weak = __webpack_require__(271);
-var validate = __webpack_require__(85);
+var validate = __webpack_require__(86);
 var WEAK_SET = 'WeakSet';
 
 // 23.4 WeakSet Objects
@@ -46407,7 +46872,7 @@ __webpack_require__(127)(WEAK_SET, function (get) {
 
 
 /***/ }),
-/* 584 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46460,7 +46925,7 @@ __webpack_require__(71)(ARRAY_BUFFER);
 
 
 /***/ }),
-/* 585 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -46470,7 +46935,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(128).ABV, {
 
 
 /***/ }),
-/* 586 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Int8', 1, function (init) {
@@ -46481,7 +46946,7 @@ __webpack_require__(54)('Int8', 1, function (init) {
 
 
 /***/ }),
-/* 587 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint8', 1, function (init) {
@@ -46492,7 +46957,7 @@ __webpack_require__(54)('Uint8', 1, function (init) {
 
 
 /***/ }),
-/* 588 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint8', 1, function (init) {
@@ -46503,7 +46968,7 @@ __webpack_require__(54)('Uint8', 1, function (init) {
 
 
 /***/ }),
-/* 589 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Int16', 2, function (init) {
@@ -46514,7 +46979,7 @@ __webpack_require__(54)('Int16', 2, function (init) {
 
 
 /***/ }),
-/* 590 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint16', 2, function (init) {
@@ -46525,7 +46990,7 @@ __webpack_require__(54)('Uint16', 2, function (init) {
 
 
 /***/ }),
-/* 591 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Int32', 4, function (init) {
@@ -46536,7 +47001,7 @@ __webpack_require__(54)('Int32', 4, function (init) {
 
 
 /***/ }),
-/* 592 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint32', 4, function (init) {
@@ -46547,7 +47012,7 @@ __webpack_require__(54)('Uint32', 4, function (init) {
 
 
 /***/ }),
-/* 593 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Float32', 4, function (init) {
@@ -46558,7 +47023,7 @@ __webpack_require__(54)('Float32', 4, function (init) {
 
 
 /***/ }),
-/* 594 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Float64', 8, function (init) {
@@ -46569,7 +47034,7 @@ __webpack_require__(54)('Float64', 8, function (init) {
 
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
@@ -46591,7 +47056,7 @@ $export($export.S + $export.F * !__webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
@@ -46644,7 +47109,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
@@ -46673,7 +47138,7 @@ $export($export.S + $export.F * __webpack_require__(9)(function () {
 
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -46690,7 +47155,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46723,7 +47188,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
@@ -46750,7 +47215,7 @@ $export($export.S, 'Reflect', { get: get });
 
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -46766,7 +47231,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.8 Reflect.getPrototypeOf(target)
@@ -46782,7 +47247,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.9 Reflect.has(target, propertyKey)
@@ -46796,7 +47261,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.10 Reflect.isExtensible(target)
@@ -46813,7 +47278,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.11 Reflect.ownKeys(target)
@@ -46823,7 +47288,7 @@ $export($export.S, 'Reflect', { ownKeys: __webpack_require__(273) });
 
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.12 Reflect.preventExtensions(target)
@@ -46845,7 +47310,7 @@ $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
@@ -46884,7 +47349,7 @@ $export($export.S, 'Reflect', { set: set });
 
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
@@ -46905,7 +47370,7 @@ if (setProto) $export($export.S, 'Reflect', {
 
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46924,7 +47389,7 @@ __webpack_require__(60)('includes');
 
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46953,7 +47418,7 @@ __webpack_require__(60)('flatMap');
 
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46981,7 +47446,7 @@ __webpack_require__(60)('flatten');
 
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46998,7 +47463,7 @@ $export($export.P, 'String', {
 
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47017,7 +47482,7 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47036,13 +47501,13 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-__webpack_require__(83)('trimLeft', function ($trim) {
+__webpack_require__(84)('trimLeft', function ($trim) {
   return function trimLeft() {
     return $trim(this, 1);
   };
@@ -47050,13 +47515,13 @@ __webpack_require__(83)('trimLeft', function ($trim) {
 
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-__webpack_require__(83)('trimRight', function ($trim) {
+__webpack_require__(84)('trimRight', function ($trim) {
   return function trimRight() {
     return $trim(this, 2);
   };
@@ -47064,7 +47529,7 @@ __webpack_require__(83)('trimRight', function ($trim) {
 
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47101,21 +47566,21 @@ $export($export.P, 'String', {
 
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(158)('asyncIterator');
 
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(158)('observable');
 
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
@@ -47143,7 +47608,7 @@ $export($export.S, 'Object', {
 
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -47158,7 +47623,7 @@ $export($export.S, 'Object', {
 
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -47173,7 +47638,7 @@ $export($export.S, 'Object', {
 
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47192,7 +47657,7 @@ __webpack_require__(20) && $export($export.P + __webpack_require__(129), 'Object
 
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47211,7 +47676,7 @@ __webpack_require__(20) && $export($export.P + __webpack_require__(129), 'Object
 
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47236,7 +47701,7 @@ __webpack_require__(20) && $export($export.P + __webpack_require__(129), 'Object
 
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47261,7 +47726,7 @@ __webpack_require__(20) && $export($export.P + __webpack_require__(129), 'Object
 
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -47271,7 +47736,7 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(277)('Map') 
 
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -47281,7 +47746,7 @@ $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(277)('Set') 
 
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
@@ -47289,7 +47754,7 @@ __webpack_require__(130)('Map');
 
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
@@ -47297,7 +47762,7 @@ __webpack_require__(130)('Set');
 
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.of
@@ -47305,7 +47770,7 @@ __webpack_require__(130)('WeakMap');
 
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.of
@@ -47313,7 +47778,7 @@ __webpack_require__(130)('WeakSet');
 
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
@@ -47321,7 +47786,7 @@ __webpack_require__(131)('Map');
 
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
@@ -47329,7 +47794,7 @@ __webpack_require__(131)('Set');
 
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.from
@@ -47337,21 +47802,11 @@ __webpack_require__(131)('WeakMap');
 
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.from
 __webpack_require__(131)('WeakSet');
-
-
-/***/ }),
-/* 637 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// https://github.com/tc39/proposal-global
-var $export = __webpack_require__(1);
-
-$export($export.G, { global: __webpack_require__(7) });
 
 
 /***/ }),
@@ -47361,11 +47816,21 @@ $export($export.G, { global: __webpack_require__(7) });
 // https://github.com/tc39/proposal-global
 var $export = __webpack_require__(1);
 
-$export($export.S, 'System', { global: __webpack_require__(7) });
+$export($export.G, { global: __webpack_require__(7) });
 
 
 /***/ }),
 /* 639 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// https://github.com/tc39/proposal-global
+var $export = __webpack_require__(1);
+
+$export($export.S, 'System', { global: __webpack_require__(7) });
+
+
+/***/ }),
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-is-error
@@ -47380,7 +47845,7 @@ $export($export.S, 'Error', {
 
 
 /***/ }),
-/* 640 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47394,7 +47859,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 641 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47404,7 +47869,7 @@ $export($export.S, 'Math', { DEG_PER_RAD: Math.PI / 180 });
 
 
 /***/ }),
-/* 642 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47419,7 +47884,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 643 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47435,7 +47900,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 644 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -47452,7 +47917,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 645 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -47469,7 +47934,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 646 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -47491,7 +47956,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 647 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47501,7 +47966,7 @@ $export($export.S, 'Math', { RAD_PER_DEG: 180 / Math.PI });
 
 
 /***/ }),
-/* 648 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47516,7 +47981,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 649 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -47526,7 +47991,7 @@ $export($export.S, 'Math', { scale: __webpack_require__(279) });
 
 
 /***/ }),
-/* 650 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -47548,7 +48013,7 @@ $export($export.S, 'Math', {
 
 
 /***/ }),
-/* 651 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // http://jfbastien.github.io/papers/Math.signbit.html
@@ -47561,7 +48026,7 @@ $export($export.S, 'Math', { signbit: function signbit(x) {
 
 
 /***/ }),
-/* 652 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47588,7 +48053,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 
 /***/ }),
-/* 653 */
+/* 654 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47607,7 +48072,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 654 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47621,7 +48086,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 
 
 /***/ }),
-/* 655 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47642,7 +48107,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 
 
 /***/ }),
-/* 656 */
+/* 657 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47665,7 +48130,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 
 
 /***/ }),
-/* 657 */
+/* 658 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Set = __webpack_require__(269);
@@ -47690,7 +48155,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
 
 
 /***/ }),
-/* 658 */
+/* 659 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47705,7 +48170,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
 
 
 /***/ }),
-/* 659 */
+/* 660 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47719,7 +48184,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 
 
 /***/ }),
-/* 660 */
+/* 661 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47741,7 +48206,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 
 
 /***/ }),
-/* 661 */
+/* 662 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(55);
@@ -47756,7 +48221,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 
 
 /***/ }),
-/* 662 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $metadata = __webpack_require__(55);
@@ -47777,7 +48242,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
 
 
 /***/ }),
-/* 663 */
+/* 664 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
@@ -47795,7 +48260,7 @@ $export($export.G, {
 
 
 /***/ }),
-/* 664 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48001,7 +48466,7 @@ __webpack_require__(71)('Observable');
 
 
 /***/ }),
-/* 665 */
+/* 666 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
@@ -48027,7 +48492,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
 
 
 /***/ }),
-/* 666 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -48039,7 +48504,7 @@ $export($export.G + $export.B, {
 
 
 /***/ }),
-/* 667 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $iterators = __webpack_require__(178);
@@ -48047,7 +48512,7 @@ var getKeys = __webpack_require__(67);
 var redefine = __webpack_require__(30);
 var global = __webpack_require__(7);
 var hide = __webpack_require__(29);
-var Iterators = __webpack_require__(84);
+var Iterators = __webpack_require__(85);
 var wks = __webpack_require__(16);
 var ITERATOR = wks('iterator');
 var TO_STRING_TAG = wks('toStringTag');
@@ -48103,7 +48568,7 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 
 
 /***/ }),
-/* 668 */
+/* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -48846,26 +49311,26 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 669 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(670);
+__webpack_require__(671);
 module.exports = __webpack_require__(40).RegExp.escape;
 
 
 /***/ }),
-/* 670 */
+/* 671 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/benjamingr/RexExp.escape
 var $export = __webpack_require__(1);
-var $re = __webpack_require__(671)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+var $re = __webpack_require__(672)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', { escape: function escape(it) { return $re(it); } });
 
 
 /***/ }),
-/* 671 */
+/* 672 */
 /***/ (function(module, exports) {
 
 module.exports = function (regExp, replace) {
@@ -48879,7 +49344,7 @@ module.exports = function (regExp, replace) {
 
 
 /***/ }),
-/* 672 */
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48893,7 +49358,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _RegistrationForm = __webpack_require__(673);
+var _RegistrationForm = __webpack_require__(674);
 
 var _RegistrationForm2 = _interopRequireDefault(_RegistrationForm);
 
@@ -48941,7 +49406,7 @@ var Registration = function Registration(props) {
 exports.default = Registration;
 
 /***/ }),
-/* 673 */
+/* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48979,7 +49444,7 @@ var _Auth2 = _interopRequireDefault(_Auth);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _rcProgress = __webpack_require__(723);
+var _rcProgress = __webpack_require__(724);
 
 var _successModal = __webpack_require__(25);
 
@@ -51008,7 +51473,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(RegistrationForm));
 
 /***/ }),
-/* 674 */
+/* 675 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -51036,7 +51501,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 675 */
+/* 676 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -51067,10 +51532,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 675;
+webpackContext.id = 676;
 
 /***/ }),
-/* 676 */
+/* 677 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51429,13 +51894,13 @@ function onClickOutsideHOC(WrappedComponent, config) {
 
 
 /***/ }),
-/* 677 */
+/* 678 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Popper__ = __webpack_require__(678);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Popper__ = __webpack_require__(679);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Manager__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Reference__ = __webpack_require__(721);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Reference__ = __webpack_require__(722);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__Popper__["a"]; });
 /* unused harmony reexport placements */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__Manager__["b"]; });
@@ -51451,7 +51916,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
 // Public types
 
 /***/ }),
-/* 678 */
+/* 679 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51460,15 +51925,15 @@ function onClickOutsideHOC(WrappedComponent, config) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = Popper;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_popper_js__ = __webpack_require__(716);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_popper_js__ = __webpack_require__(717);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Manager__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils__ = __webpack_require__(298);
 
@@ -51633,31 +52098,31 @@ function Popper(props) {
 }
 
 /***/ }),
-/* 679 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(680), __esModule: true };
-
-/***/ }),
 /* 680 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(681);
-module.exports = __webpack_require__(75).Object.assign;
-
+module.exports = { "default": __webpack_require__(681), __esModule: true };
 
 /***/ }),
 /* 681 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(106);
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(683) });
+__webpack_require__(682);
+module.exports = __webpack_require__(75).Object.assign;
 
 
 /***/ }),
 /* 682 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(106);
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(684) });
+
+
+/***/ }),
+/* 683 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -51667,7 +52132,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 683 */
+/* 684 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51708,14 +52173,14 @@ module.exports = !$assign || __webpack_require__(108)(function () {
 
 
 /***/ }),
-/* 684 */
+/* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(90);
-var toLength = __webpack_require__(685);
-var toAbsoluteIndex = __webpack_require__(686);
+var toIObject = __webpack_require__(91);
+var toLength = __webpack_require__(686);
+var toAbsoluteIndex = __webpack_require__(687);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -51737,7 +52202,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 685 */
+/* 686 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
@@ -51749,7 +52214,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 686 */
+/* 687 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(186);
@@ -51762,27 +52227,27 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 687 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(688), __esModule: true };
-
-/***/ }),
 /* 688 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(689);
-__webpack_require__(695);
-module.exports = __webpack_require__(194).f('iterator');
-
+module.exports = { "default": __webpack_require__(689), __esModule: true };
 
 /***/ }),
 /* 689 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(690);
+__webpack_require__(696);
+module.exports = __webpack_require__(194).f('iterator');
+
+
+/***/ }),
+/* 690 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
-var $at = __webpack_require__(690)(true);
+var $at = __webpack_require__(691)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(294)(String, 'String', function (iterated) {
@@ -51801,7 +52266,7 @@ __webpack_require__(294)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 690 */
+/* 691 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(186);
@@ -51824,7 +52289,7 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 691 */
+/* 692 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51835,7 +52300,7 @@ var setToStringTag = __webpack_require__(193);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(86)(IteratorPrototype, __webpack_require__(93)('iterator'), function () { return this; });
+__webpack_require__(87)(IteratorPrototype, __webpack_require__(94)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -51844,14 +52309,14 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 692 */
+/* 693 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(87);
+var dP = __webpack_require__(88);
 var anObject = __webpack_require__(107);
 var getKeys = __webpack_require__(134);
 
-module.exports = __webpack_require__(89) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(90) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -51863,7 +52328,7 @@ module.exports = __webpack_require__(89) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 693 */
+/* 694 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var document = __webpack_require__(61).document;
@@ -51871,7 +52336,7 @@ module.exports = document && document.documentElement;
 
 
 /***/ }),
-/* 694 */
+/* 695 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
@@ -51890,14 +52355,14 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 695 */
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(696);
+__webpack_require__(697);
 var global = __webpack_require__(61);
-var hide = __webpack_require__(86);
+var hide = __webpack_require__(87);
 var Iterators = __webpack_require__(191);
-var TO_STRING_TAG = __webpack_require__(93)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(94)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
   'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
@@ -51915,15 +52380,15 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 
 /***/ }),
-/* 696 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(697);
-var step = __webpack_require__(698);
+var addToUnscopables = __webpack_require__(698);
+var step = __webpack_require__(699);
 var Iterators = __webpack_require__(191);
-var toIObject = __webpack_require__(90);
+var toIObject = __webpack_require__(91);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
@@ -51956,14 +52421,14 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 697 */
+/* 698 */
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
 
 
 /***/ }),
-/* 698 */
+/* 699 */
 /***/ (function(module, exports) {
 
 module.exports = function (done, value) {
@@ -51972,24 +52437,24 @@ module.exports = function (done, value) {
 
 
 /***/ }),
-/* 699 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(700), __esModule: true };
-
-/***/ }),
 /* 700 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(701);
-__webpack_require__(706);
+module.exports = { "default": __webpack_require__(701), __esModule: true };
+
+/***/ }),
+/* 701 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(702);
 __webpack_require__(707);
 __webpack_require__(708);
+__webpack_require__(709);
 module.exports = __webpack_require__(75).Symbol;
 
 
 /***/ }),
-/* 701 */
+/* 702 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51997,28 +52462,28 @@ module.exports = __webpack_require__(75).Symbol;
 // ECMAScript 6 symbols shim
 var global = __webpack_require__(61);
 var has = __webpack_require__(76);
-var DESCRIPTORS = __webpack_require__(89);
+var DESCRIPTORS = __webpack_require__(90);
 var $export = __webpack_require__(106);
 var redefine = __webpack_require__(295);
-var META = __webpack_require__(702).KEY;
+var META = __webpack_require__(703).KEY;
 var $fails = __webpack_require__(108);
 var shared = __webpack_require__(188);
 var setToStringTag = __webpack_require__(193);
 var uid = __webpack_require__(136);
-var wks = __webpack_require__(93);
+var wks = __webpack_require__(94);
 var wksExt = __webpack_require__(194);
 var wksDefine = __webpack_require__(195);
-var enumKeys = __webpack_require__(703);
-var isArray = __webpack_require__(704);
+var enumKeys = __webpack_require__(704);
+var isArray = __webpack_require__(705);
 var anObject = __webpack_require__(107);
-var isObject = __webpack_require__(88);
-var toIObject = __webpack_require__(90);
+var isObject = __webpack_require__(89);
+var toIObject = __webpack_require__(91);
 var toPrimitive = __webpack_require__(184);
 var createDesc = __webpack_require__(133);
 var _create = __webpack_require__(192);
-var gOPNExt = __webpack_require__(705);
+var gOPNExt = __webpack_require__(706);
 var $GOPD = __webpack_require__(297);
-var $DP = __webpack_require__(87);
+var $DP = __webpack_require__(88);
 var $keys = __webpack_require__(134);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -52220,7 +52685,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(86)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(87)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -52230,13 +52695,13 @@ setToStringTag(global.JSON, 'JSON', true);
 
 
 /***/ }),
-/* 702 */
+/* 703 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var META = __webpack_require__(136)('meta');
-var isObject = __webpack_require__(88);
+var isObject = __webpack_require__(89);
 var has = __webpack_require__(76);
-var setDesc = __webpack_require__(87).f;
+var setDesc = __webpack_require__(88).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
@@ -52289,7 +52754,7 @@ var meta = module.exports = {
 
 
 /***/ }),
-/* 703 */
+/* 704 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -52310,7 +52775,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 704 */
+/* 705 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -52321,11 +52786,11 @@ module.exports = Array.isArray || function isArray(arg) {
 
 
 /***/ }),
-/* 705 */
+/* 706 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(90);
+var toIObject = __webpack_require__(91);
 var gOPN = __webpack_require__(296).f;
 var toString = {}.toString;
 
@@ -52346,55 +52811,55 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 
 /***/ }),
-/* 706 */
+/* 707 */
 /***/ (function(module, exports) {
 
-
-
-/***/ }),
-/* 707 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(195)('asyncIterator');
 
 
 /***/ }),
 /* 708 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(195)('observable');
+__webpack_require__(195)('asyncIterator');
 
 
 /***/ }),
 /* 709 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(710), __esModule: true };
+__webpack_require__(195)('observable');
+
 
 /***/ }),
 /* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(711);
-module.exports = __webpack_require__(75).Object.setPrototypeOf;
-
+module.exports = { "default": __webpack_require__(711), __esModule: true };
 
 /***/ }),
 /* 711 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(106);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(712).set });
+__webpack_require__(712);
+module.exports = __webpack_require__(75).Object.setPrototypeOf;
 
 
 /***/ }),
 /* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(106);
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(713).set });
+
+
+/***/ }),
+/* 713 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(88);
+var isObject = __webpack_require__(89);
 var anObject = __webpack_require__(107);
 var check = function (O, proto) {
   anObject(O);
@@ -52420,16 +52885,16 @@ module.exports = {
 
 
 /***/ }),
-/* 713 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(714), __esModule: true };
-
-/***/ }),
 /* 714 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(715);
+module.exports = { "default": __webpack_require__(715), __esModule: true };
+
+/***/ }),
+/* 715 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(716);
 var $Object = __webpack_require__(75).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
@@ -52437,7 +52902,7 @@ module.exports = function create(P, D) {
 
 
 /***/ }),
-/* 715 */
+/* 716 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(106);
@@ -52446,7 +52911,7 @@ $export($export.S, 'Object', { create: __webpack_require__(192) });
 
 
 /***/ }),
-/* 716 */
+/* 717 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54988,7 +55453,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
 
 /***/ }),
-/* 717 */
+/* 718 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55000,7 +55465,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _implementation = __webpack_require__(718);
+var _implementation = __webpack_require__(719);
 
 var _implementation2 = _interopRequireDefault(_implementation);
 
@@ -55010,7 +55475,7 @@ exports.default = _react2.default.createContext || _implementation2.default;
 module.exports = exports['default'];
 
 /***/ }),
-/* 718 */
+/* 719 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55026,11 +55491,11 @@ var _propTypes = __webpack_require__(14);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _gud = __webpack_require__(719);
+var _gud = __webpack_require__(720);
 
 var _gud2 = _interopRequireDefault(_gud);
 
-var _warning = __webpack_require__(720);
+var _warning = __webpack_require__(721);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -55212,7 +55677,7 @@ exports.default = createReactContext;
 module.exports = exports['default'];
 
 /***/ }),
-/* 719 */
+/* 720 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55228,7 +55693,7 @@ module.exports = function() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 720 */
+/* 721 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55296,18 +55761,18 @@ if (false) {
 module.exports = warning;
 
 /***/ }),
-/* 721 */
+/* 722 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = Reference;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
@@ -55362,7 +55827,7 @@ function Reference(props) {
 }
 
 /***/ }),
-/* 722 */
+/* 723 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -55376,13 +55841,13 @@ exports.push([module.i, ".react-datepicker-popper[data-placement^=\"bottom\"] .r
 
 
 /***/ }),
-/* 723 */
+/* 724 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Line__ = __webpack_require__(724);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Circle__ = __webpack_require__(725);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Line__ = __webpack_require__(725);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Circle__ = __webpack_require__(726);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return __WEBPACK_IMPORTED_MODULE_0__Line__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Circle", function() { return __WEBPACK_IMPORTED_MODULE_1__Circle__["a"]; });
 
@@ -55396,7 +55861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 724 */
+/* 725 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55404,11 +55869,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
@@ -55501,7 +55966,7 @@ Line.defaultProps = __WEBPACK_IMPORTED_MODULE_7__types__["a" /* defaultProps */]
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_6__enhancer__["a" /* default */](Line));
 
 /***/ }),
-/* 725 */
+/* 726 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55509,11 +55974,11 @@ Line.defaultProps = __WEBPACK_IMPORTED_MODULE_7__types__["a" /* defaultProps */]
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
@@ -55656,7 +56121,7 @@ Circle.defaultProps = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends_
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_7__enhancer__["a" /* default */](Circle));
 
 /***/ }),
-/* 726 */
+/* 727 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55674,7 +56139,7 @@ var _TeacherButtonList = __webpack_require__(198);
 
 var _TeacherButtonList2 = _interopRequireDefault(_TeacherButtonList);
 
-var _ClassList = __webpack_require__(727);
+var _ClassList = __webpack_require__(728);
 
 var _ClassList2 = _interopRequireDefault(_ClassList);
 
@@ -55740,7 +56205,7 @@ var Classes = function Classes(props) {
 exports.default = Classes;
 
 /***/ }),
-/* 727 */
+/* 728 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55758,7 +56223,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _ClassListItem = __webpack_require__(728);
+var _ClassListItem = __webpack_require__(729);
 
 var _ClassListItem2 = _interopRequireDefault(_ClassListItem);
 
@@ -55866,7 +56331,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(ClassList);
 
 /***/ }),
-/* 728 */
+/* 729 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56020,8 +56485,8 @@ var ClassListItem = function (_React$Component) {
                     _react2.default.createElement('br', null)
                 ),
                 _react2.default.createElement(
-                    'ol',
-                    null,
+                    'ul',
+                    { style: { listStyleType: 'circle' } },
                     this.props.classes.topicA !== '' && _react2.default.createElement(
                         'li',
                         null,
@@ -56074,7 +56539,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(ClassListItem);
 */
 
 /***/ }),
-/* 729 */
+/* 730 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56410,7 +56875,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Plan);
 
 /***/ }),
-/* 730 */
+/* 731 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56430,15 +56895,15 @@ var _reactRedux = __webpack_require__(2);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _TopRecommendationsList = __webpack_require__(731);
+var _TopRecommendationsList = __webpack_require__(732);
 
 var _TopRecommendationsList2 = _interopRequireDefault(_TopRecommendationsList);
 
-var _RecentRecommendationsList = __webpack_require__(732);
+var _RecentRecommendationsList = __webpack_require__(733);
 
 var _RecentRecommendationsList2 = _interopRequireDefault(_RecentRecommendationsList);
 
-var _AskQuestionForm = __webpack_require__(733);
+var _AskQuestionForm = __webpack_require__(304);
 
 var _AskQuestionForm2 = _interopRequireDefault(_AskQuestionForm);
 
@@ -56779,6 +57244,7 @@ var TeacherHome = function (_React$Component) {
                                                 )
                                             ),
                                             _react2.default.createElement(_AskQuestionForm2.default, {
+                                                isInQuestionsPage: false,
                                                 onSubmit: function onSubmit(question) {
                                                     props.dispatch((0, _askQuestion.sendAskedQuestion)(question));
                                                 } })
@@ -56814,7 +57280,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(TeacherHome);
 
 /***/ }),
-/* 731 */
+/* 732 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56885,7 +57351,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(TopRecommendationsList);
 
 /***/ }),
-/* 732 */
+/* 733 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56954,446 +57420,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
 //Connect the component to the controller. 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(RecentRecommendationsList);
-
-/***/ }),
-/* 733 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(2);
-
-var _axios = __webpack_require__(5);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _Auth = __webpack_require__(3);
-
-var _Auth2 = _interopRequireDefault(_Auth);
-
-var _successModal = __webpack_require__(25);
-
-var _loadingModal = __webpack_require__(19);
-
-var _failureModal = __webpack_require__(13);
-
-var _teacherMetrics = __webpack_require__(139);
-
-var _teacherRecommendations = __webpack_require__(62);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Form available in the Teacher Home page which allows teachers to send questions to the Edvo Tech staff. 
- * Each question requires a subject and a question body. 
- */
-var AskQuestionForm = function (_React$Component) {
-    _inherits(AskQuestionForm, _React$Component);
-
-    function AskQuestionForm(props) {
-        _classCallCheck(this, AskQuestionForm);
-
-        //Each question must contain a subject and a question body. 
-        var _this = _possibleConstructorReturn(this, (AskQuestionForm.__proto__ || Object.getPrototypeOf(AskQuestionForm)).call(this, props));
-
-        _this.onSubjectChange = function (e) {
-            var subject = e.target.value;
-            _this.setState(function () {
-                return { subject: subject };
-            });
-        };
-
-        _this.onBodyChange = function (e) {
-            var body = e.target.value;
-            _this.setState(function () {
-                return { body: body };
-            });
-        };
-
-        _this.onSubmit = function (e) {
-            //Prevent page refresh
-            e.preventDefault();
-            //Enable error message if there is a missing form field. 
-            if (!_this.state.subject || !_this.state.body) {
-                _this.setState(function () {
-                    return { askQuestionError: true, success: false };
-                });
-            } else if (_this.state.subjectError || _this.state.subjectError) {
-                _this.setState(function () {
-                    return { askQuestionError: true };
-                });
-            } else {
-
-                _axios2.default.post('https://beta.edvotech.com/api/teacher/questions/ask', {
-                    subject: _this.state.subject,
-                    question: _this.state.body
-                }, {
-                    headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken() }
-                }).catch(function (error) {
-                    if (error.response.status == 401) {
-                        _this.setState(function () {
-                            return { askInvalidInputs: true };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionError: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionPlan: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionAllowed: false };
-                        });
-                    } else if (error.response.status == 402) {
-                        _this.setState(function () {
-                            return { askQuestionPlan: true };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionAllowed: false };
-                        });
-                        _this.setState(function () {
-                            return { askInvalidInputs: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionError: false };
-                        });
-                    } else if (error.response.status == 403) {
-                        _this.setState(function () {
-                            return { askQuestionAllowed: true };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionError: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionPlan: false };
-                        });
-                        _this.setState(function () {
-                            return { askInvalidInputs: false };
-                        });
-                    }
-                }).then(function (response) {
-                    if (response.status == 201) {
-                        _this.setState(function () {
-                            return { success: true, subject: '', body: '' };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionPlan: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionError: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionPlan: false };
-                        });
-                        _this.setState(function () {
-                            return { askQuestionAllowed: false };
-                        });
-                        _this.setState(function () {
-                            return { askInvalidInputs: false };
-                        });
-                        _this.props.dispatch((0, _successModal.setSuccessModal)());
-
-                        //Requerying Home
-                        _this.props.dispatch((0, _teacherMetrics.reset)());
-                        _this.props.dispatch((0, _teacherRecommendations.unloadTeacherRecommendations)());
-                        _this.props.dispatch((0, _loadingModal.setLoadingModal)());
-
-                        _axios2.default.get('https://beta.edvotech.com/api/teacher/home', {
-                            headers: { 'Authorization': 'Bearer ' + _Auth2.default.getIdToken() }
-                        }).then(function (response) {
-                            _this.props.dispatch((0, _teacherMetrics.loadTeacherDaysInPlatform)({ daysInPlatform: response.data.daysInPlatforms }));
-                            _this.props.dispatch((0, _teacherMetrics.loadTeacherQuestionsAsked)({ questionsAsked: response.data.questionsasked }));
-                            _this.props.dispatch((0, _teacherMetrics.loadTeacherRecommendationsRead)({ recommendationsRead: response.data.recommendationsRead }));
-
-                            response.data.recentRecommendations.forEach(function (element) {
-                                _this.props.dispatch((0, _teacherMetrics.loadTeacherRecentRecommendation)({ recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read }));
-                                _this.props.dispatch((0, _teacherRecommendations.loadTeacherRecommendation)({ read: element.read, recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate }));
-                            });
-                            response.data.topRecommendations.forEach(function (element) {
-                                _this.props.dispatch((0, _teacherMetrics.loadTeacherTopRecommendation)({ recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read }));
-                            });
-                            _this.props.dispatch((0, _loadingModal.setLoadingModal)());
-                        }).catch(function (error) {
-                            _this.props.dispatch((0, _loadingModal.setLoadingModal)());
-                            _this.props.dispatch((0, _failureModal.setFailureModal)());
-                        });
-                    }
-                });
-            }
-        };
-
-        _this.state = {
-            subject: '',
-            subjectError: '',
-
-            body: '',
-            success: false,
-            bodyError: '',
-            askQuestionError: false,
-            askQuestionPlan: false,
-            askInvalidInputs: false,
-            askQuestionAllowed: false
-        };
-        return _this;
-    }
-
-    //Changes subject in local state
-
-
-    //Changes question body in local state
-
-
-    _createClass(AskQuestionForm, [{
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate(prevProps, prevState) {
-            if (prevProps !== this.props) {
-                //Change rendered error message if the language changes. 
-                if (this.props.lang === 'English') {
-                    if (this.state.subjectError) {
-                        this.setState(function () {
-                            return { subjectError: 'The subject field must contain text.' };
-                        });
-                    }
-                    if (this.state.bodyError) {
-                        this.setState(function () {
-                            return { bodyError: 'The question field must contain text.' };
-                        });
-                    }
-                } else {
-                    if (this.state.subjectError) {
-                        this.setState(function () {
-                            return { subjectError: 'El campo del tema debe contener texto.' };
-                        });
-                    }
-                    if (this.state.bodyError) {
-                        this.setState(function () {
-                            return { bodyError: 'El campo de la pregunta debe contener texto.' };
-                        });
-                    }
-                }
-            }
-        }
-
-        //Submits question information. 
-
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'form',
-                    { onSubmit: this.onSubmit },
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        this.props.lang === 'English' ? 'Subject' : 'Tema',
-                        ': '
-                    ),
-                    _react2.default.createElement('input', {
-                        className: 'form-control',
-                        type: 'text',
-                        placeholder: this.props.lang === 'English' ? 'Subject' : 'Tema',
-                        value: this.state.subject,
-                        maxLength: '100',
-                        onChange: this.onSubjectChange, onBlur: function onBlur() {
-                            _this2.setState(function () {
-                                return { subject: _this2.state.subject.trim() };
-                            });
-                            if (_this2.state.subject && _this2.state.subject.match(/^\s+$/)) {
-                                if (_this2.props.lang === 'English') {
-                                    _this2.setState(function () {
-                                        return { subjectError: 'The subject field must contain text.' };
-                                    });
-                                } else {
-                                    _this2.setState(function () {
-                                        return { subjectError: 'El campo del tema debe contener texto.' };
-                                    });
-                                }
-                            } else {
-                                _this2.setState(function () {
-                                    return { subjectError: '' };
-                                });
-                            }
-                        } }),
-                    this.state.subjectError && _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'span',
-                            { className: 'text-danger' },
-                            this.state.subjectError
-                        ),
-                        _react2.default.createElement('br', null)
-                    ),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        this.props.lang === 'English' ? 'Question' : 'Pregunta',
-                        ': '
-                    ),
-                    _react2.default.createElement(
-                        'span',
-                        { style: { color: 'gray', fontSize: '1.2rem' } },
-                        this.props.lang === 'English' ? 'Length' : 'Largo',
-                        ': ',
-                        this.state.body.length,
-                        '/5000'
-                    ),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement('textarea', {
-                        className: 'form-control',
-                        type: 'text',
-                        placeholder: this.props.lang === 'English' ? 'Write your question here.' : 'Escriba su pregunta en este espacio.',
-                        cols: '41',
-                        rows: '6',
-                        maxLength: '5000',
-                        value: this.state.body,
-                        onChange: this.onBodyChange,
-                        onBlur: function onBlur() {
-                            _this2.setState(function () {
-                                return { body: _this2.state.body.trim() };
-                            });
-                            if (_this2.state.body && _this2.state.body.match(/^\s+$/)) {
-                                if (_this2.props.lang === 'English') {
-                                    _this2.setState(function () {
-                                        return { bodyError: 'The question field must contain text.' };
-                                    });
-                                } else {
-                                    _this2.setState(function () {
-                                        return { bodyError: 'El campo de la pregunta debe contener texto.' };
-                                    });
-                                }
-                            } else {
-                                _this2.setState(function () {
-                                    return { bodyError: '' };
-                                });
-                            }
-                        }
-                    }),
-                    this.state.bodyError && _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'span',
-                            { className: 'text-danger' },
-                            this.state.bodyError
-                        ),
-                        _react2.default.createElement('br', null)
-                    ),
-                    _react2.default.createElement('br', null),
-                    this.state.askQuestionPlan === true && _react2.default.createElement(
-                        'div',
-                        { className: 'text-danger text-center' },
-                        this.props.lang === 'English' ? _react2.default.createElement(
-                            'p',
-                            null,
-                            'You do not have an active subscription.'
-                        ) : _react2.default.createElement(
-                            'p',
-                            null,
-                            'Usted no tiene una suscripci\xF3n activa.'
-                        )
-                    ),
-                    this.state.askInvalidInputs === true && _react2.default.createElement(
-                        'div',
-                        { className: 'text-danger text-center' },
-                        this.props.lang === 'English' ? _react2.default.createElement(
-                            'p',
-                            null,
-                            'Invalid user or data.'
-                        ) : _react2.default.createElement(
-                            'p',
-                            null,
-                            'Usuario o datos no validos.'
-                        )
-                    ),
-                    this.state.askQuestionAllowed === true && _react2.default.createElement(
-                        'div',
-                        { className: 'text-danger text-center' },
-                        this.props.lang === 'English' ? _react2.default.createElement(
-                            'p',
-                            null,
-                            'You are not allowed to perform this action'
-                        ) : _react2.default.createElement(
-                            'p',
-                            null,
-                            'No tiene los permisos necesarios para realizar esta operacion.'
-                        )
-                    ),
-                    this.state.askQuestionError === true && _react2.default.createElement(
-                        'div',
-                        { className: 'text-danger text-center' },
-                        this.props.lang === 'English' ? _react2.default.createElement(
-                            'p',
-                            null,
-                            'Please fill all fields with valid information.'
-                        ) : _react2.default.createElement(
-                            'p',
-                            null,
-                            'Por favor, llene todos los campos con informaci\xF3n v\xE1lida.'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'container-fluid' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'row text-center' },
-                            _react2.default.createElement(
-                                'div',
-                                null,
-                                _react2.default.createElement(
-                                    'button',
-                                    { className: 'btn btn-item send_button', onClick: this.onSubmit },
-                                    _react2.default.createElement(
-                                        'p',
-                                        null,
-                                        this.props.lang === 'English' ? 'Ask' : 'Enviar'
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return AskQuestionForm;
-}(_react2.default.Component);
-
-//Map current language state to component properties. 
-
-
-var mapStateToProps = function mapStateToProps(state) {
-    return {
-        lang: state.language.lang
-    };
-};
-
-//Connect component to controller
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(AskQuestionForm);
 
 /***/ }),
 /* 734 */
@@ -58084,8 +58110,8 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(SchoolHome);
 /* 740 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(305);
-var bytesToUuid = __webpack_require__(306);
+var rng = __webpack_require__(306);
+var bytesToUuid = __webpack_require__(307);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -58190,8 +58216,8 @@ module.exports = v1;
 /* 741 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(305);
-var bytesToUuid = __webpack_require__(306);
+var rng = __webpack_require__(306);
+var bytesToUuid = __webpack_require__(307);
 
 function v4(options, buf, offset) {
   var i = buf && offset || 0;
@@ -58521,7 +58547,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AdminButtonList = __webpack_require__(95);
+var _AdminButtonList = __webpack_require__(96);
 
 var _AdminButtonList2 = _interopRequireDefault(_AdminButtonList);
 
@@ -58531,7 +58557,7 @@ var _UserList2 = _interopRequireDefault(_UserList);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _UserFilters = __webpack_require__(308);
+var _UserFilters = __webpack_require__(309);
 
 var _UserFilters2 = _interopRequireDefault(_UserFilters);
 
@@ -58677,7 +58703,7 @@ var _uuid = __webpack_require__(32);
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
-var _users = __webpack_require__(307);
+var _users = __webpack_require__(308);
 
 var _users2 = _interopRequireDefault(_users);
 
@@ -59207,7 +59233,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AdminButtonList = __webpack_require__(95);
+var _AdminButtonList = __webpack_require__(96);
 
 var _AdminButtonList2 = _interopRequireDefault(_AdminButtonList);
 
@@ -59895,7 +59921,7 @@ var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
 __webpack_require__(197);
 
-var _AdminButtonList = __webpack_require__(95);
+var _AdminButtonList = __webpack_require__(96);
 
 var _AdminButtonList2 = _interopRequireDefault(_AdminButtonList);
 
@@ -60742,10 +60768,10 @@ var CreateUserForm = function (_React$Component) {
                                         ),
                                         _react2.default.createElement(
                                             'button',
-                                            { onClick: this.onSubmit },
+                                            { className: 'btn btn-item', onClick: this.onSubmit },
                                             _react2.default.createElement(
                                                 'div',
-                                                { className: 'btn btn-item' },
+                                                null,
                                                 this.props.lang === 'English' ? 'Create' : 'Crear'
                                             )
                                         )
@@ -60792,7 +60818,7 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(758);
 
-var _AdminButtonList = __webpack_require__(95);
+var _AdminButtonList = __webpack_require__(96);
 
 var _AdminButtonList2 = _interopRequireDefault(_AdminButtonList);
 
@@ -61289,10 +61315,10 @@ var CreateInstitutionForm = function (_React$Component) {
                                                 ),
                                                 _react2.default.createElement(
                                                     'button',
-                                                    { onClick: _this2.onSubmit },
+                                                    { className: 'btn btn-item', onClick: _this2.onSubmit },
                                                     _react2.default.createElement(
                                                         'div',
-                                                        { className: 'btn btn-item' },
+                                                        null,
                                                         _this2.props.lang === 'English' ? 'Create' : 'Crear'
                                                     )
                                                 )
@@ -61386,7 +61412,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AdminButtonList = __webpack_require__(95);
+var _AdminButtonList = __webpack_require__(96);
 
 var _AdminButtonList2 = _interopRequireDefault(_AdminButtonList);
 
@@ -61542,11 +61568,11 @@ var _assignRecommendations = __webpack_require__(201);
 
 var _reactRedux = __webpack_require__(2);
 
-var _UserFilters = __webpack_require__(308);
+var _UserFilters = __webpack_require__(309);
 
 var _UserFilters2 = _interopRequireDefault(_UserFilters);
 
-var _RecommendationsFilters = __webpack_require__(312);
+var _RecommendationsFilters = __webpack_require__(313);
 
 var _RecommendationsFilters2 = _interopRequireDefault(_RecommendationsFilters);
 
@@ -61753,7 +61779,7 @@ var _reactJsPagination = __webpack_require__(52);
 
 var _reactJsPagination2 = _interopRequireDefault(_reactJsPagination);
 
-var _users = __webpack_require__(307);
+var _users = __webpack_require__(308);
 
 var _users2 = _interopRequireDefault(_users);
 
@@ -61997,7 +62023,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _assignRecommendations = __webpack_require__(201);
 
-var _userModal = __webpack_require__(309);
+var _userModal = __webpack_require__(310);
 
 var _axios = __webpack_require__(5);
 
@@ -62013,7 +62039,7 @@ var _successModal = __webpack_require__(25);
 
 var _failureModal = __webpack_require__(13);
 
-var _recommendations = __webpack_require__(77);
+var _recommendations = __webpack_require__(78);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62029,7 +62055,7 @@ var RecommendationsUserListItem = function RecommendationsUserListItem(props) {
                 { className: 'col-sm-10 card-title' },
                 _react2.default.createElement(
                     'p',
-                    null,
+                    { className: 'card-title' },
                     props.user.name + ' ' + props.user.lastName
                 )
             ),
@@ -62049,7 +62075,7 @@ var RecommendationsUserListItem = function RecommendationsUserListItem(props) {
         ),
         _react2.default.createElement(
             'p',
-            null,
+            { className: 'card-text' },
             'Email: ',
             props.user.email
         ),
@@ -62187,11 +62213,11 @@ var _reactJsPagination2 = _interopRequireDefault(_reactJsPagination);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _recommendations = __webpack_require__(311);
+var _recommendations = __webpack_require__(312);
 
 var _recommendations2 = _interopRequireDefault(_recommendations);
 
-var _recommendations3 = __webpack_require__(77);
+var _recommendations3 = __webpack_require__(78);
 
 var _axios = __webpack_require__(5);
 
@@ -62412,7 +62438,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _assignRecommendations = __webpack_require__(201);
 
-var _assignmentRecommendationModal = __webpack_require__(310);
+var _assignmentRecommendationModal = __webpack_require__(311);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62471,7 +62497,7 @@ var RecommendationListItem = function RecommendationListItem(props) {
                 { className: 'col-sm-10 card-title' },
                 _react2.default.createElement(
                     'p',
-                    null,
+                    { className: 'card-title' },
                     props.reco.title
                 )
             ),
@@ -62495,9 +62521,9 @@ var RecommendationListItem = function RecommendationListItem(props) {
         ),
         _react2.default.createElement(
             'div',
-            { className: 'item__body' },
+            { className: 'item__body card-text' },
             _react2.default.createElement(
-                'h5',
+                'p',
                 null,
                 props.reco.header
             )
@@ -62598,11 +62624,11 @@ var _RecommendationButtonList = __webpack_require__(143);
 
 var _RecommendationButtonList2 = _interopRequireDefault(_RecommendationButtonList);
 
-var _CreateRecommendationForm = __webpack_require__(313);
+var _CreateRecommendationForm = __webpack_require__(314);
 
 var _CreateRecommendationForm2 = _interopRequireDefault(_CreateRecommendationForm);
 
-var _recommendations = __webpack_require__(77);
+var _recommendations = __webpack_require__(78);
 
 var _reactRedux = __webpack_require__(2);
 
@@ -62695,13 +62721,13 @@ var _extends = _assign || function (target) { for (var i = 1; i < arguments.leng
 
 var BlockMapBuilder = __webpack_require__(109);
 var CharacterMetadata = __webpack_require__(33);
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentBlockNode = __webpack_require__(39);
 var DraftFeatureFlags = __webpack_require__(63);
 var DraftModifier = __webpack_require__(28);
 var EditorState = __webpack_require__(15);
 var Immutable = __webpack_require__(8);
-var SelectionState = __webpack_require__(96);
+var SelectionState = __webpack_require__(97);
 
 var generateRandomKey = __webpack_require__(56);
 var moveBlockInContentState = __webpack_require__(784);
@@ -63289,9 +63315,9 @@ var BlockMapBuilder = __webpack_require__(109);
 var ContentBlockNode = __webpack_require__(39);
 var Immutable = __webpack_require__(8);
 
-var insertIntoList = __webpack_require__(316);
+var insertIntoList = __webpack_require__(317);
 var invariant = __webpack_require__(11);
-var randomizeBlockMapKeys = __webpack_require__(314);
+var randomizeBlockMapKeys = __webpack_require__(315);
 
 var List = Immutable.List;
 
@@ -63544,7 +63570,7 @@ module.exports = insertFragmentIntoContentState;
 
 var Immutable = __webpack_require__(8);
 
-var insertIntoList = __webpack_require__(316);
+var insertIntoList = __webpack_require__(317);
 var invariant = __webpack_require__(11);
 
 var Repeat = Immutable.Repeat;
@@ -63649,7 +63675,7 @@ module.exports = modifyBlockForContentState;
 var ContentBlockNode = __webpack_require__(39);
 var Immutable = __webpack_require__(8);
 
-var getNextDelimiterBlockKey = __webpack_require__(317);
+var getNextDelimiterBlockKey = __webpack_require__(318);
 
 var List = Immutable.List,
     Map = Immutable.Map;
@@ -64178,7 +64204,7 @@ module.exports = EditorBidiService;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var UnicodeBidi = __webpack_require__(320);
+var UnicodeBidi = __webpack_require__(321);
 var UnicodeBidiDirection = __webpack_require__(205);
 
 var invariant = __webpack_require__(11);
@@ -64256,7 +64282,7 @@ module.exports = UnicodeBidiService;
 var ContentBlockNode = __webpack_require__(39);
 var Immutable = __webpack_require__(8);
 
-var getNextDelimiterBlockKey = __webpack_require__(317);
+var getNextDelimiterBlockKey = __webpack_require__(318);
 var invariant = __webpack_require__(11);
 
 var OrderedMap = Immutable.OrderedMap,
@@ -64584,7 +64610,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var DefaultDraftBlockRenderMap = __webpack_require__(206);
-var DefaultDraftInlineStyle = __webpack_require__(321);
+var DefaultDraftInlineStyle = __webpack_require__(322);
 var DraftEditorCompositionHandler = __webpack_require__(787);
 var DraftEditorContents = __webpack_require__(788);
 var DraftEditorDragHandler = __webpack_require__(811);
@@ -64593,14 +64619,14 @@ var DraftEditorPlaceholder = __webpack_require__(847);
 var EditorState = __webpack_require__(15);
 var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(57);
-var Scroll = __webpack_require__(325);
+var Scroll = __webpack_require__(326);
 var Style = __webpack_require__(210);
 var UserAgent = __webpack_require__(53);
 
-var cx = __webpack_require__(97);
+var cx = __webpack_require__(98);
 var emptyFunction = __webpack_require__(138);
 var generateRandomKey = __webpack_require__(56);
-var getDefaultKeyBinding = __webpack_require__(338);
+var getDefaultKeyBinding = __webpack_require__(339);
 var getScrollPosition = __webpack_require__(211);
 var invariant = __webpack_require__(11);
 var nullthrows = __webpack_require__(44);
@@ -65057,7 +65083,7 @@ var Keys = __webpack_require__(207);
 
 var getEntityKeyForSelection = __webpack_require__(208);
 var isEventHandled = __webpack_require__(111);
-var isSelectionAtLeafStart = __webpack_require__(322);
+var isSelectionAtLeafStart = __webpack_require__(323);
 
 /**
  * Millisecond delay to allow `compositionstart` to fire again upon
@@ -65265,12 +65291,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DraftEditorBlock = __webpack_require__(323);
+var DraftEditorBlock = __webpack_require__(324);
 var DraftOffsetKey = __webpack_require__(146);
 var EditorState = __webpack_require__(15);
 var React = __webpack_require__(0);
 
-var cx = __webpack_require__(97);
+var cx = __webpack_require__(98);
 var joinClasses = __webpack_require__(810);
 var nullthrows = __webpack_require__(44);
 
@@ -67494,7 +67520,7 @@ module.exports = memoizeStringOnly;
 var DraftJsDebugLogging = __webpack_require__(799);
 
 var containsNode = __webpack_require__(209);
-var getActiveElement = __webpack_require__(324);
+var getActiveElement = __webpack_require__(325);
 var invariant = __webpack_require__(11);
 
 function getAnonymizedDOM(node, getNodeLabels) {
@@ -68227,13 +68253,13 @@ module.exports = joinClasses;
 
 
 
-var DataTransfer = __webpack_require__(326);
+var DataTransfer = __webpack_require__(327);
 var DraftModifier = __webpack_require__(28);
 var EditorState = __webpack_require__(15);
 
 var findAncestorOffsetKey = __webpack_require__(212);
-var getTextContentFromFiles = __webpack_require__(328);
-var getUpdatedSelectionState = __webpack_require__(329);
+var getTextContentFromFiles = __webpack_require__(329);
+var getUpdatedSelectionState = __webpack_require__(330);
 var isEventHandled = __webpack_require__(111);
 var nullthrows = __webpack_require__(44);
 
@@ -68559,14 +68585,14 @@ module.exports = DraftEditorEditHandler;
 
 
 
-var BlockTree = __webpack_require__(318);
+var BlockTree = __webpack_require__(319);
 var DraftModifier = __webpack_require__(28);
 var EditorState = __webpack_require__(15);
 var UserAgent = __webpack_require__(53);
 
 var getEntityKeyForSelection = __webpack_require__(208);
 var isEventHandled = __webpack_require__(111);
-var isSelectionAtLeafStart = __webpack_require__(322);
+var isSelectionAtLeafStart = __webpack_require__(323);
 var nullthrows = __webpack_require__(44);
 var setImmediate = __webpack_require__(816);
 
@@ -68954,7 +68980,7 @@ module.exports = global.setImmediate;
 var EditorState = __webpack_require__(15);
 
 var containsNode = __webpack_require__(209);
-var getActiveElement = __webpack_require__(324);
+var getActiveElement = __webpack_require__(325);
 
 function editOnBlur(editor, e) {
   // In a contentEditable element, when you select a range and then click
@@ -69042,7 +69068,7 @@ module.exports = editOnCompositionStart;
 
 
 
-var getFragmentFromSelection = __webpack_require__(330);
+var getFragmentFromSelection = __webpack_require__(331);
 
 /**
  * If we have a selection, create a ContentState fragment and store
@@ -69088,7 +69114,7 @@ var DraftModifier = __webpack_require__(28);
 var EditorState = __webpack_require__(15);
 var Style = __webpack_require__(210);
 
-var getFragmentFromSelection = __webpack_require__(330);
+var getFragmentFromSelection = __webpack_require__(331);
 var getScrollPosition = __webpack_require__(211);
 
 /**
@@ -69690,7 +69716,7 @@ module.exports = SecondaryClipboard;
 var EditorState = __webpack_require__(15);
 
 var expandRangeToStartOfLine = __webpack_require__(829);
-var getDraftEditorSelectionWithNodes = __webpack_require__(332);
+var getDraftEditorSelectionWithNodes = __webpack_require__(333);
 var moveSelectionBackward = __webpack_require__(214);
 var removeTextWithStrategy = __webpack_require__(112);
 
@@ -69738,9 +69764,9 @@ module.exports = keyCommandBackspaceToStartOfLine;
  * 
  */
 
-var UnicodeUtils = __webpack_require__(79);
+var UnicodeUtils = __webpack_require__(80);
 
-var getRangeClientRects = __webpack_require__(331);
+var getRangeClientRects = __webpack_require__(332);
 var invariant = __webpack_require__(11);
 
 /**
@@ -69936,7 +69962,7 @@ module.exports = expandRangeToStartOfLine;
 
 
 
-var DraftRemovableWord = __webpack_require__(333);
+var DraftRemovableWord = __webpack_require__(334);
 var EditorState = __webpack_require__(15);
 
 var moveSelectionBackward = __webpack_require__(214);
@@ -70031,10 +70057,10 @@ module.exports = {
 
 
 
-var DraftRemovableWord = __webpack_require__(333);
+var DraftRemovableWord = __webpack_require__(334);
 var EditorState = __webpack_require__(15);
 
-var moveSelectionForward = __webpack_require__(334);
+var moveSelectionForward = __webpack_require__(335);
 var removeTextWithStrategy = __webpack_require__(112);
 
 /**
@@ -70202,7 +70228,7 @@ module.exports = keyCommandMoveSelectionToStartOfBlock;
 
 
 var EditorState = __webpack_require__(15);
-var UnicodeUtils = __webpack_require__(79);
+var UnicodeUtils = __webpack_require__(80);
 
 var moveSelectionBackward = __webpack_require__(214);
 var removeTextWithStrategy = __webpack_require__(112);
@@ -70253,9 +70279,9 @@ module.exports = keyCommandPlainBackspace;
 
 
 var EditorState = __webpack_require__(15);
-var UnicodeUtils = __webpack_require__(79);
+var UnicodeUtils = __webpack_require__(80);
 
-var moveSelectionForward = __webpack_require__(334);
+var moveSelectionForward = __webpack_require__(335);
 var removeTextWithStrategy = __webpack_require__(112);
 
 /**
@@ -70446,14 +70472,14 @@ module.exports = keyCommandUndo;
 
 var BlockMapBuilder = __webpack_require__(109);
 var CharacterMetadata = __webpack_require__(33);
-var DataTransfer = __webpack_require__(326);
+var DataTransfer = __webpack_require__(327);
 var DraftModifier = __webpack_require__(28);
 var DraftPasteProcessor = __webpack_require__(841);
 var EditorState = __webpack_require__(15);
-var RichTextEditorUtil = __webpack_require__(337);
+var RichTextEditorUtil = __webpack_require__(338);
 
 var getEntityKeyForSelection = __webpack_require__(208);
-var getTextContentFromFiles = __webpack_require__(328);
+var getTextContentFromFiles = __webpack_require__(329);
 var isEventHandled = __webpack_require__(111);
 var splitTextIntoTextBlocks = __webpack_require__(844);
 
@@ -70620,14 +70646,14 @@ var _assign = __webpack_require__(27);
 var _extends = _assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CharacterMetadata = __webpack_require__(33);
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentBlockNode = __webpack_require__(39);
 var DraftFeatureFlags = __webpack_require__(63);
 var Immutable = __webpack_require__(8);
 
-var convertFromHTMLtoContentBlocks = __webpack_require__(335);
+var convertFromHTMLtoContentBlocks = __webpack_require__(336);
 var generateRandomKey = __webpack_require__(56);
-var getSafeBodyFromHTML = __webpack_require__(336);
+var getSafeBodyFromHTML = __webpack_require__(337);
 var sanitizeDraftText = __webpack_require__(204);
 
 var List = Immutable.List,
@@ -70851,7 +70877,7 @@ module.exports = editOnSelect;
 
 
 
-var getDraftEditorSelectionWithNodes = __webpack_require__(332);
+var getDraftEditorSelectionWithNodes = __webpack_require__(333);
 
 /**
  * Convert the current selection range to an anchor/focus pair of offset keys
@@ -70902,7 +70928,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = __webpack_require__(0);
 
-var cx = __webpack_require__(97);
+var cx = __webpack_require__(98);
 
 /**
  * This component is responsible for rendering placeholder text for the
@@ -70978,9 +71004,9 @@ var _assign = __webpack_require__(27);
 
 var _extends = _assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentBlockNode = __webpack_require__(39);
-var DraftStringKey = __webpack_require__(339);
+var DraftStringKey = __webpack_require__(340);
 
 var encodeEntityRanges = __webpack_require__(849);
 var encodeInlineStyleRanges = __webpack_require__(850);
@@ -71120,8 +71146,8 @@ module.exports = convertFromDraftStateToRaw;
 
 
 
-var DraftStringKey = __webpack_require__(339);
-var UnicodeUtils = __webpack_require__(79);
+var DraftStringKey = __webpack_require__(340);
+var UnicodeUtils = __webpack_require__(80);
 
 var strlen = UnicodeUtils.strlen;
 
@@ -71168,7 +71194,7 @@ module.exports = encodeEntityRanges;
 
 
 
-var UnicodeUtils = __webpack_require__(79);
+var UnicodeUtils = __webpack_require__(80);
 
 var findRangesImmutable = __webpack_require__(110);
 
@@ -71247,14 +71273,14 @@ var _assign = __webpack_require__(27);
 
 var _extends = _assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var ContentBlock = __webpack_require__(78);
+var ContentBlock = __webpack_require__(79);
 var ContentBlockNode = __webpack_require__(39);
 var ContentState = __webpack_require__(203);
 var DraftEntity = __webpack_require__(145);
 var DraftFeatureFlags = __webpack_require__(63);
 var DraftTreeAdapter = __webpack_require__(852);
 var Immutable = __webpack_require__(8);
-var SelectionState = __webpack_require__(96);
+var SelectionState = __webpack_require__(97);
 
 var createCharacterList = __webpack_require__(853);
 var decodeEntityRanges = __webpack_require__(854);
@@ -71662,7 +71688,7 @@ module.exports = createCharacterList;
 
 
 
-var UnicodeUtils = __webpack_require__(79);
+var UnicodeUtils = __webpack_require__(80);
 
 var substr = UnicodeUtils.substr;
 
@@ -71711,7 +71737,7 @@ module.exports = decodeEntityRanges;
 var _require = __webpack_require__(8),
     OrderedSet = _require.OrderedSet;
 
-var UnicodeUtils = __webpack_require__(79);
+var UnicodeUtils = __webpack_require__(80);
 
 var substr = UnicodeUtils.substr;
 
@@ -71811,7 +71837,7 @@ module.exports = getVisibleSelectionRect;
 
 
 
-var getRangeClientRects = __webpack_require__(331);
+var getRangeClientRects = __webpack_require__(332);
 
 /**
  * Like range.getBoundingClientRect() but normalizes for browser bugs.
@@ -72574,7 +72600,7 @@ var _RecommendationButtonList = __webpack_require__(143);
 
 var _RecommendationButtonList2 = _interopRequireDefault(_RecommendationButtonList);
 
-var _RecommendationsFilters = __webpack_require__(312);
+var _RecommendationsFilters = __webpack_require__(313);
 
 var _RecommendationsFilters2 = _interopRequireDefault(_RecommendationsFilters);
 
@@ -72683,7 +72709,7 @@ var _reactJsPagination2 = _interopRequireDefault(_reactJsPagination);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _recommendations = __webpack_require__(311);
+var _recommendations = __webpack_require__(312);
 
 var _recommendations2 = _interopRequireDefault(_recommendations);
 
@@ -72695,7 +72721,7 @@ var _Auth = __webpack_require__(3);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
-var _recommendations3 = __webpack_require__(77);
+var _recommendations3 = __webpack_require__(78);
 
 var _loadingModal = __webpack_require__(19);
 
@@ -72944,7 +72970,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _recommendations = __webpack_require__(77);
+var _recommendations = __webpack_require__(78);
 
 var _reactRouterDom = __webpack_require__(4);
 
@@ -73045,7 +73071,7 @@ var ManageRecommendationsListItem = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'p',
-                    { className: 'item__body' },
+                    { className: 'item__body card-text' },
                     this.props.reco.header
                 ),
                 _react2.default.createElement(
@@ -73166,11 +73192,11 @@ var _RecommendationButtonList = __webpack_require__(143);
 
 var _RecommendationButtonList2 = _interopRequireDefault(_RecommendationButtonList);
 
-var _CreateRecommendationForm = __webpack_require__(313);
+var _CreateRecommendationForm = __webpack_require__(314);
 
 var _CreateRecommendationForm2 = _interopRequireDefault(_CreateRecommendationForm);
 
-var _recommendations = __webpack_require__(77);
+var _recommendations = __webpack_require__(78);
 
 var _reactRedux = __webpack_require__(2);
 
@@ -73273,7 +73299,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _QuestionButtonList = __webpack_require__(340);
+var _QuestionButtonList = __webpack_require__(341);
 
 var _QuestionButtonList2 = _interopRequireDefault(_QuestionButtonList);
 
@@ -73317,17 +73343,7 @@ var ManageQuestions = function ManageQuestions(props) {
                         { className: 'row' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'col-sm-2' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'text-center well' },
-                                _react2.default.createElement(_QuestionButtonList2.default, null)
-                            )
-                        ),
-                        _react2.default.createElement('div', { className: 'col-sm-1' }),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'col-sm-9' },
+                            { className: 'col-sm-12' },
                             _react2.default.createElement(
                                 'div',
                                 { className: 'text-center pending__title__2' },
@@ -73655,7 +73671,7 @@ var PendingQuestionsListItem = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'p',
-                    { className: 'item__body' },
+                    { className: 'item__body card-text' },
                     this.props.question.question
                 ),
                 _react2.default.createElement(
@@ -73904,11 +73920,11 @@ var _reactRedux = __webpack_require__(2);
 
 var _question = __webpack_require__(147);
 
-var _QuestionButtonList = __webpack_require__(340);
+var _QuestionButtonList = __webpack_require__(341);
 
 var _QuestionButtonList2 = _interopRequireDefault(_QuestionButtonList);
 
-var _teacherQuestions = __webpack_require__(98);
+var _teacherQuestions = __webpack_require__(77);
 
 var _moment = __webpack_require__(18);
 
@@ -74086,10 +74102,10 @@ var AnswerQuestionForm = function (_React$Component) {
                                             _react2.default.createElement(
                                                 'span',
                                                 { style: { color: 'gray', fontSize: '1.2rem' } },
-                                                _this3.props.lang === 'English' ? 'Length' : 'Largo',
-                                                ': ',
+                                                _this3.props.lang === 'English' ? 'Characters' : 'Caracteres',
+                                                ' ',
                                                 _this3.state.answer.length,
-                                                '/5000'
+                                                '/5000 '
                                             ),
                                             _react2.default.createElement('br', null),
                                             _react2.default.createElement('textarea', { type: 'text', rows: '10', className: 'form-control', maxLength: '5000', value: _this3.state.answer, placeholder: _this3.props.lang === 'English' ? 'Write your answer here!' : 'Escriba su respuesta aquí!', onChange: _this3.onAnswerChange, onBlur: function onBlur() {
@@ -74227,8 +74243,7 @@ var TeacherRecommendations = function TeacherRecommendations(props) {
                                     'p',
                                     null,
                                     props.lang === 'English' ? 'Favorites' : 'Favoritas'
-                                ),
-                                _react2.default.createElement('hr', { className: 'break' })
+                                )
                             ),
                             _react2.default.createElement(_FavoriteRecommendationsList2.default, null),
                             _react2.default.createElement(
@@ -74240,15 +74255,15 @@ var TeacherRecommendations = function TeacherRecommendations(props) {
                                     props.lang === 'English' ? 'View Quizzes' : 'Ver Pruebas'
                                 ),
                                 _react2.default.createElement(
-                                    _reactRouterDom.Link,
+                                    _reactRouterDom.NavLink,
                                     { to: '/teacher/quizzes' },
                                     _react2.default.createElement(
                                         'button',
-                                        null,
+                                        { className: 'btn btn-item' },
                                         _react2.default.createElement(
                                             'div',
                                             { className: 'btn quiz_button' },
-                                            _react2.default.createElement('i', { className: 'fa fa-question-circle fa-5x', 'aria-hidden': 'true' })
+                                            _react2.default.createElement('i', { className: 'fa fa-question-circle fa-3x', 'aria-hidden': 'true' })
                                         )
                                     )
                                 )
@@ -74265,8 +74280,7 @@ var TeacherRecommendations = function TeacherRecommendations(props) {
                                     'p',
                                     null,
                                     props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'
-                                ),
-                                _react2.default.createElement('hr', { className: 'break' })
+                                )
                             ),
                             _react2.default.createElement(_TeacherRecommendationsFilters2.default, null),
                             _react2.default.createElement(_TeacherRecommendationsList2.default, null)
@@ -74314,7 +74328,7 @@ var _reactJsPagination = __webpack_require__(52);
 
 var _reactJsPagination2 = _interopRequireDefault(_reactJsPagination);
 
-var _TeacherRecommendationsListItem = __webpack_require__(341);
+var _TeacherRecommendationsListItem = __webpack_require__(342);
 
 var _TeacherRecommendationsListItem2 = _interopRequireDefault(_TeacherRecommendationsListItem);
 
@@ -74591,7 +74605,7 @@ var _reactJsPagination = __webpack_require__(52);
 
 var _reactJsPagination2 = _interopRequireDefault(_reactJsPagination);
 
-var _TeacherRecommendationsListItem = __webpack_require__(341);
+var _TeacherRecommendationsListItem = __webpack_require__(342);
 
 var _TeacherRecommendationsListItem2 = _interopRequireDefault(_TeacherRecommendationsListItem);
 
@@ -74954,6 +74968,10 @@ var _Auth = __webpack_require__(3);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
+var _AskQuestionForm = __webpack_require__(304);
+
+var _AskQuestionForm2 = _interopRequireDefault(_AskQuestionForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -74984,10 +75002,39 @@ var TeacherQuestions = function TeacherQuestions(props) {
                                     'p',
                                     null,
                                     props.lang === 'English' ? 'Favorites' : 'Favoritas'
-                                ),
-                                _react2.default.createElement('hr', { className: 'break' })
+                                )
                             ),
-                            _react2.default.createElement(_FavoriteTeacherQuestionsList2.default, null)
+                            _react2.default.createElement(_FavoriteTeacherQuestionsList2.default, null),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'item-card' },
+                                _react2.default.createElement(
+                                    'div',
+                                    null,
+                                    props.lang === 'English' ? _react2.default.createElement(
+                                        'div',
+                                        { className: 'text-center home_card_title' },
+                                        _react2.default.createElement(
+                                            'p',
+                                            { style: { marginBottom: '3.1rem', marginTop: '3rem' } },
+                                            'Ask a Question'
+                                        )
+                                    ) : _react2.default.createElement(
+                                        'div',
+                                        { className: 'text-center home_card_title' },
+                                        _react2.default.createElement(
+                                            'p',
+                                            { style: { marginBottom: '3.1rem', marginTop: '3rem' } },
+                                            'Env\xEDe una Pregunta'
+                                        )
+                                    ),
+                                    _react2.default.createElement(_AskQuestionForm2.default, {
+                                        isInQuestionsPage: true,
+                                        onSubmit: function onSubmit(question) {
+                                            props.dispatch(sendAskedQuestion(question));
+                                        } })
+                                )
+                            )
                         ),
                         _react2.default.createElement('div', { className: 'col-sm-1' }),
                         _react2.default.createElement(
@@ -75000,8 +75047,7 @@ var TeacherQuestions = function TeacherQuestions(props) {
                                     'p',
                                     null,
                                     props.lang === 'English' ? 'Questions' : 'Preguntas'
-                                ),
-                                _react2.default.createElement('hr', { className: 'break', style: { borderColor: '#5933AA' } })
+                                )
                             ),
                             _react2.default.createElement(_TeacherQuestionFilters2.default, null),
                             _react2.default.createElement(_TeacherQuestionsList2.default, null)
@@ -75053,7 +75099,7 @@ var _uuid = __webpack_require__(32);
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
-var _TeacherQuestionListItem = __webpack_require__(342);
+var _TeacherQuestionListItem = __webpack_require__(343);
 
 var _TeacherQuestionListItem2 = _interopRequireDefault(_TeacherQuestionListItem);
 
@@ -75061,7 +75107,7 @@ var _teacherQuestions = __webpack_require__(882);
 
 var _teacherQuestions2 = _interopRequireDefault(_teacherQuestions);
 
-var _teacherQuestions3 = __webpack_require__(98);
+var _teacherQuestions3 = __webpack_require__(77);
 
 var _loadingModal = __webpack_require__(19);
 
@@ -75236,6 +75282,7 @@ var TeacherQuestionsList = function (_React$Component) {
 
 
 var mapStateToProps = function mapStateToProps(state) {
+    console.log((0, _teacherQuestions2.default)(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters));
     return {
         allQuestions: state.teacherQuestions.teacherQuestions,
         question: (0, _teacherQuestions2.default)(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters),
@@ -75319,7 +75366,7 @@ var _uuid = __webpack_require__(32);
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
-var _TeacherQuestionListItem = __webpack_require__(342);
+var _TeacherQuestionListItem = __webpack_require__(343);
 
 var _TeacherQuestionListItem2 = _interopRequireDefault(_TeacherQuestionListItem);
 
@@ -75666,7 +75713,7 @@ var _reactModal2 = _interopRequireDefault(_reactModal);
 
 var _reactRedux = __webpack_require__(2);
 
-var _reactStarRatingComponent = __webpack_require__(347);
+var _reactStarRatingComponent = __webpack_require__(348);
 
 var _reactStarRatingComponent2 = _interopRequireDefault(_reactStarRatingComponent);
 
@@ -75920,11 +75967,11 @@ var _ModalPortal = __webpack_require__(888);
 
 var _ModalPortal2 = _interopRequireDefault(_ModalPortal);
 
-var _ariaAppHider = __webpack_require__(344);
+var _ariaAppHider = __webpack_require__(345);
 
 var ariaAppHider = _interopRequireWildcard(_ariaAppHider);
 
-var _safeHTMLElement = __webpack_require__(346);
+var _safeHTMLElement = __webpack_require__(347);
 
 var _safeHTMLElement2 = _interopRequireDefault(_safeHTMLElement);
 
@@ -76143,11 +76190,11 @@ var _scopeTab = __webpack_require__(890);
 
 var _scopeTab2 = _interopRequireDefault(_scopeTab);
 
-var _ariaAppHider = __webpack_require__(344);
+var _ariaAppHider = __webpack_require__(345);
 
 var ariaAppHider = _interopRequireWildcard(_ariaAppHider);
 
-var _refCount = __webpack_require__(345);
+var _refCount = __webpack_require__(346);
 
 var refCount = _interopRequireWildcard(_refCount);
 
@@ -76155,7 +76202,7 @@ var _bodyClassList = __webpack_require__(891);
 
 var bodyClassList = _interopRequireWildcard(_bodyClassList);
 
-var _safeHTMLElement = __webpack_require__(346);
+var _safeHTMLElement = __webpack_require__(347);
 
 var _safeHTMLElement2 = _interopRequireDefault(_safeHTMLElement);
 
@@ -76488,7 +76535,7 @@ exports.returnFocus = returnFocus;
 exports.setupScopedFocus = setupScopedFocus;
 exports.teardownScopedFocus = teardownScopedFocus;
 
-var _tabbable = __webpack_require__(343);
+var _tabbable = __webpack_require__(344);
 
 var _tabbable2 = _interopRequireDefault(_tabbable);
 
@@ -76576,7 +76623,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = scopeTab;
 
-var _tabbable = __webpack_require__(343);
+var _tabbable = __webpack_require__(344);
 
 var _tabbable2 = _interopRequireDefault(_tabbable);
 
@@ -76611,7 +76658,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.add = add;
 exports.remove = remove;
 
-var _refCount = __webpack_require__(345);
+var _refCount = __webpack_require__(346);
 
 var refCount = _interopRequireWildcard(_refCount);
 
@@ -76702,9 +76749,9 @@ var _reactModal2 = _interopRequireDefault(_reactModal);
 
 var _reactRedux = __webpack_require__(2);
 
-var _teacherQuestions = __webpack_require__(98);
+var _teacherQuestions = __webpack_require__(77);
 
-var _reactStarRatingComponent = __webpack_require__(347);
+var _reactStarRatingComponent = __webpack_require__(348);
 
 var _reactStarRatingComponent2 = _interopRequireDefault(_reactStarRatingComponent);
 
@@ -77339,7 +77386,7 @@ var _quiz = __webpack_require__(148);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _QuizButtonList = __webpack_require__(348);
+var _QuizButtonList = __webpack_require__(349);
 
 var _QuizButtonList2 = _interopRequireDefault(_QuizButtonList);
 
@@ -77598,7 +77645,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _quiz = __webpack_require__(148);
 
-var _QuizButtonList = __webpack_require__(348);
+var _QuizButtonList = __webpack_require__(349);
 
 var _QuizButtonList2 = _interopRequireDefault(_QuizButtonList);
 
@@ -77813,7 +77860,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactStripeElements = __webpack_require__(349);
+var _reactStripeElements = __webpack_require__(350);
 
 var _CheckoutForm = __webpack_require__(904);
 
@@ -77881,7 +77928,7 @@ var Stripe = function (_Component) {
                     { className: 'big-card' },
                     _react2.default.createElement(
                       _reactStripeElements.StripeProvider,
-                      { apiKey: 'pk_live_LQ8GBkPBQ2oBasw3NDDOAtVz' },
+                      { apiKey: 'pk_test_ZI69x9fLi6Webd9ERw5RXE8Y' },
                       _react2.default.createElement(
                         'div',
                         null,
@@ -78158,7 +78205,7 @@ var _propTypes = __webpack_require__(14);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _shallowEqual = __webpack_require__(350);
+var _shallowEqual = __webpack_require__(351);
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
@@ -78325,7 +78372,7 @@ var _propTypes = __webpack_require__(14);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _shallowEqual = __webpack_require__(350);
+var _shallowEqual = __webpack_require__(351);
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
@@ -78471,7 +78518,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactStripeElements = __webpack_require__(349);
+var _reactStripeElements = __webpack_require__(350);
 
 var _axios = __webpack_require__(5);
 
@@ -79201,11 +79248,11 @@ var UserModal = function (_React$Component) {
                         'div',
                         { style: { textAlign: 'center' } },
                         _react2.default.createElement(
-                            'div',
-                            { className: 'btn btn-item' },
+                            'button',
+                            { className: 'btn btn-item', onClick: this.props.clearSelectedUser },
                             _react2.default.createElement(
-                                'button',
-                                { onClick: this.props.clearSelectedUser },
+                                'div',
+                                null,
                                 this.props.lang === 'English' ? 'Close' : 'Cerrar'
                             )
                         )
@@ -79427,11 +79474,11 @@ var AssignmentRecommendationModal = function (_React$Component) {
                         'div',
                         { style: { textAlign: 'center' } },
                         _react2.default.createElement(
-                            'div',
-                            { className: 'btn btn-item' },
+                            'button',
+                            { className: 'btn btn-item', onClick: this.props.clearSelectedRecommendation },
                             _react2.default.createElement(
-                                'button',
-                                { onClick: this.props.clearSelectedRecommendation },
+                                'div',
+                                null,
                                 this.props.lang === 'English' ? 'Close' : 'Cerrar'
                             )
                         )
@@ -79477,7 +79524,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _AdminButtonList = __webpack_require__(95);
+var _AdminButtonList = __webpack_require__(96);
 
 var _AdminButtonList2 = _interopRequireDefault(_AdminButtonList);
 
@@ -79957,10 +80004,10 @@ var CreateCouponForm = function (_React$Component) {
                                         ),
                                         _react2.default.createElement(
                                             'button',
-                                            { onClick: this.onSubmit },
+                                            { className: 'btn btn-item', onClick: this.onSubmit },
                                             _react2.default.createElement(
                                                 'div',
-                                                { className: 'btn btn-item' },
+                                                null,
                                                 this.props.lang === 'English' ? 'Submit' : 'Enviar'
                                             )
                                         )
@@ -80063,12 +80110,12 @@ var FailureModal = function FailureModal(props) {
                 { className: 'text-center', style: { backgroundColor: 'white', marginTop: '0', padding: '1rem', paddingBottom: '2rem' } },
                 _react2.default.createElement(
                     'button',
-                    { onClick: function onClick() {
+                    { className: 'btn btn-item', onClick: function onClick() {
                             props.dispatch((0, _failureModal.setFailureModal)());
                         } },
                     _react2.default.createElement(
-                        'p',
-                        { className: 'btn btn-item' },
+                        'div',
+                        null,
                         props.lang === 'English' ? 'Close' : 'Cerrar'
                     )
                 )
