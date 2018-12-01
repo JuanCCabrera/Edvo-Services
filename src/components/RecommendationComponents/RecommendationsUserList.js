@@ -48,6 +48,7 @@ class RecommendationsUserList extends React.Component{
                     name: element.name,
                     email: element.email, 
                     lastName: element.lastname, 
+                    subject: element.subject,
                     weeklyReco: element.weeklyReco, 
                     categories: categories,
 
