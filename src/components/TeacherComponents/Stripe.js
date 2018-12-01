@@ -14,6 +14,17 @@ class Stripe extends Component {
     
   }
 
+  componentWillMount() {
+    axios.get('https://beta.edvotech.com/api/user', {
+      headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+    }).then(response => {
+      if (response.data.subscription) {
+        this.props.history.replace('/teacher/settings/plans');
+      }
+
+    })
+  }
+
   render() {
     return (
       <Can

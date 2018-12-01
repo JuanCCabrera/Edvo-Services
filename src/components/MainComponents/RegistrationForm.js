@@ -119,16 +119,16 @@ class RegistrationForm extends React.Component{
                     this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
                 }
                 if(this.state.dateOfBirthError){
-                    this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                    this.setState(() => ({dateOfBirthError: 'You must be 18 or older to create an account.'}));
                 }
                 if(this.state.timeEmployedError){
-                    this.setState(() => ({timeEmployedError: 'Enter a valid date of employment.'}));
+                    this.setState(() => ({timeEmployedError: 'You must have been 18 or older when being employed.'}));
                 }
                 if(this.state.topicError){
-                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                    this.setState(() => ({topicError: 'Topics must contain text.'}));
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'Enter a valid address'}));
+                    this.setState(() => ({locationError: 'The address must contain text.'}));
                 }
                 if(this.state.subjectError){
                     this.setState(() => ({subjectError: 'The subject field must contain text.'}));
@@ -150,16 +150,16 @@ class RegistrationForm extends React.Component{
                     this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'}))
                 }
                 if(this.state.dateOfBirthError){
-                    this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento válida.'}));
+                    this.setState(() => ({dateOfBirthError: 'Usted debe tener 18 años o más para crear una cuenta.'}));
                 }
                 if(this.state.timeEmployedError){
-                    this.setState(() => ({timeEmployedError: 'Escriba una fecha de empleo válida.'}));
+                    this.setState(() => ({timeEmployedError: 'Usted debe haber tenido 18 años o más al ser empleado por primera vez.'}));
                 }
                 if(this.state.topicError){
-                    this.setState(() => ({topicError: 'Escriba temas válidos.'}))
+                    this.setState(() => ({topicError: 'Los temas deben contener texto.'}))
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
+                    this.setState(() => ({locationError: 'La dirección física debe contener texto.'}));
                 }
                 if(this.state.subjectError){
                     this.setState(() => ({subjectError: 'La materia del curso debe contener texto.'}));
@@ -176,6 +176,17 @@ class RegistrationForm extends React.Component{
             }
         }
     }
+
+    componentWillMount() {
+        axios.get('https://beta.edvotech.com/api/user', {
+          headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        }).then(response => {
+          if (response.status == 201) {
+            this.props.history.replace('/'+auth0Client.getRole()+'/home');
+          }
+    
+        })
+      }
 
     //Change name in local state
     onNameChange = (e) => {
@@ -204,9 +215,9 @@ class RegistrationForm extends React.Component{
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Enter a valid date of birth.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'You must be 18 or older to create an account.'}));
             }else{
-                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Usted debe tener 18 años o más para crear una cuenta.'}));
             }
         }
     };
@@ -281,9 +292,9 @@ class RegistrationForm extends React.Component{
             for(j = 0; j < this.state.topicsTaught.length; j++){
                 if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
                     if(this.props.lang === 'English'){
-                        this.setState(() => ({topicError: 'Enter valid topics. '}));
+                        this.setState(() => ({topicError: 'Topics must contain text.'}));
                     }else{
-                        this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                        this.setState(() => ({topicError: 'Los temas deben contener texto.'})); 
                     }
                     errorCheck = true;
                     break;
@@ -421,9 +432,9 @@ class RegistrationForm extends React.Component{
             this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'Enter a valid date of employment.'}));
+                this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'You must have been 18 or older when being employed.'}));
             }else{
-                this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'Escriba una fecha de empleo válida.'}));
+                this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'Usted debe haber tenido 18 años o más al ser empleado por primera vez.'}));
             }
         }
     };
@@ -511,7 +522,7 @@ class RegistrationForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         //Display specific message if terms of use or privacy policy is not accepted.
-        if(!this.state.termsOfUse || !this.state.privacyPolicy){
+        if(!this.state.termsOfUse){
             this.setState(() => ({secError: true, globalError: false}));
         }
         //Display default error message if there are required fields left blank. 
@@ -996,9 +1007,9 @@ class RegistrationForm extends React.Component{
                                 for(j = 0; j < this.state.topicsTaught.length; j++){
                                     if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({topicError: 'Enter valid topics. '}));
+                                            this.setState(() => ({topicError: 'Topics must contain text.'}));
                                         }else{
-                                            this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                                            this.setState(() => ({topicError: 'Los temas deben contener texto.'})); 
                                         }
                                         errorCheck = true;
                                         break;
@@ -1016,7 +1027,7 @@ class RegistrationForm extends React.Component{
                             }
                             {this.state.topicsTaught.length > 1 && <div style={{display: 'inline'}}>
                             <button onClick={this.deleteTopic(index)}>
-                                <span style={{color: '#b33a3a'}} title={this.props.lang === 'English' ? 'Delete topic' : 'Remover tema'}>
+                                <span className="hoverColors" style={{color: '#9f0000'}} title={this.props.lang === 'English' ? 'Delete topic' : 'Remover tema'}>
                                     <i className="fa fa-window-close fa-lg"></i>
                                 </span>
                             </button>
@@ -1367,15 +1378,19 @@ class RegistrationForm extends React.Component{
 
                     <span className="req">*</span>
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="https://beta.edvotech.com/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> 
+                    <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="https://beta.edvotech.com/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> {this.props.lang === 'English' ? 'and the' : 'y la' } <a href="https://beta.edvotech.com/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a>
                     </label>
                     <br/>
+                {
+                    /*
                     <span className="req">*</span>
                     <label className="clickable radio__text">
                     <input type="checkbox" name="privacyPolicy" checked={this.state.privacyPolicy === true} onChange={this.onPrivacyChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto la '} <a href="https://beta.edvotech.com/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a>
                     </label>
                     <br/>
                     <br/>
+                */
+                }
                     {
                         //Error message is displayed if the Terms of Use or Privacy Policy is not accepted when trying to submit the form. 
                     }
@@ -1385,7 +1400,7 @@ class RegistrationForm extends React.Component{
                     </div>}
                     {this.state.registerInvalidInputs === true && 
                     <div className="text-danger">
-                        {this.props.lang === 'English' ? <p>Provided input was not valid</p> : <p>Algunos datos provistos no son invalidos.</p>}
+                        {this.props.lang === 'English' ? <p>Provided input was not valid.</p> : <p>Algunos datos provistos no son válidos.</p>}
                     </div>}
                     {
                         //Error message is displayed if required fields are left blank. 
@@ -1406,7 +1421,7 @@ class RegistrationForm extends React.Component{
                         </button>
                     </a>
 
-                    <button disabled={!((this.state.english || this.state.spanish) && (this.state.teachingStrategies || this.state.technologyIntegration || this.state.updatedMaterial || this.state.instructionAlignment || this.state.timeManagement) && this.state.termsOfUse && this.state.privacyPolicy) || (this.state.timeEmployedError)} onClick={this.onSubmit}>
+                    <button disabled={!((this.state.english || this.state.spanish) && (this.state.teachingStrategies || this.state.technologyIntegration || this.state.updatedMaterial || this.state.instructionAlignment || this.state.timeManagement) && this.state.termsOfUse) || (this.state.timeEmployedError)} onClick={this.onSubmit}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Submit' : 'Enviar'}
                         </div>

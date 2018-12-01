@@ -133,8 +133,33 @@ button{
     margin-top: 1rem;
 }
 
+.btn-item:hover{
+    color: white;
+    background-color: #472988;
+    font-weight: normal;
+    border: 1px solid #5933AA;
+}
+
+.btn-item-red{
+    background-color: #9F0000;
+    color: white;
+    font-weight: normal;
+    font-size: 105%;
+    margin-top: 1rem;
+}
+
+.btn-item-red:hover{
+    color: white;
+    background-color: #6f0000;
+    font-weight: normal;
+}
+
 @media only screen and (max-width: 420px){
     .btn-item{
+        font-size: 95%;
+    }
+
+    .btn-item-red{
         font-size: 95%;
     }
 }
@@ -147,13 +172,6 @@ button{
     background-color: #5933AA;
     color: white;
     font-weight: normal;
-}
-
-.btn-item:hover{
-    color: white;
-    background-color: #472988;
-    font-weight: normal;
-    border: 1px solid #5933AA;
 }
 
 button:disabled > .btn-item{
@@ -244,15 +262,13 @@ button:disabled > .btn-item{
     border-radius: 0.5rem;
     margin-top: 8rem;
     margin-bottom: 8rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
     font-weight: bold;
 }
 
 .big__admin__text{
     font-size: 3rem;
     text-align: center;
-    margin: 0.5rem;
+    padding: 5rem;
 }
 
 .big__teacher__home__text{
@@ -282,7 +298,7 @@ button:disabled > .btn-item{
 .big__mentor__text{
     font-size: 3rem;
     text-align: center;
-    margin: 0.5rem;
+    padding: 5rem;  
 }
 
 .big-card-mentor-home:hover{
@@ -306,12 +322,14 @@ button:disabled > .btn-item{
 @media only screen and (max-width: 1200px){
     .big__admin__text{
         font-size: 2rem;
+        padding: 0;
     }
 }
 
 @media only screen and (max-width: 1200px){
     .big__mentor__text{
         font-size: 2rem;
+        padding: 0;
     }
 }
 

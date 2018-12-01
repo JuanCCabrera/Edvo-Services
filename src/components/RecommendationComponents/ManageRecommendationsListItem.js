@@ -72,16 +72,7 @@ class ManageRecommendationsListItem extends React.Component{
             }
                 <p className="item__body card-text" >{this.props.reco.header}</p>
             
-            {
-                //Link to edit the recommendation item
-            }
-                <Link to={`/recommendations/edit/${this.props.reco.id}`}>
-                    <button>
-                        <div className="btn btn-item">
-                            {this.props.lang === 'English' ? 'Edit' : 'Modificar'}
-                        </div>
-                    </button>
-                </Link>
+            
             {
                 //Button to remove recommendation
             }
@@ -89,7 +80,6 @@ class ManageRecommendationsListItem extends React.Component{
                 {this.state.toggleButton ? 
             
                     <div>
-                        <br/>
                         <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
                             {this.props.lang === 'English' ? 'Are you sure you would like to remove this recommendation?' : '¿Estás seguro de que quieres remover esta recomendación?'}
                         </div>
@@ -113,7 +103,7 @@ class ManageRecommendationsListItem extends React.Component{
                             })
                              
                         }}>
-                        <div className="btn btn-item" style={{marginTop: '10px'}}>
+                        <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                                 {this.props.lang === 'English' ? 'Yes' : 'Si'}
                         </div>
                         </button>
@@ -128,6 +118,17 @@ class ManageRecommendationsListItem extends React.Component{
                     </div>
                     :
                     <div style={{display: 'inline-block'}}>
+                    {
+                        //Link to edit the recommendation item
+                    }
+                        <Link to={`/recommendations/edit/${this.props.reco.id}`}>
+                            <button>
+                                <div className="btn btn-item">
+                                    {this.props.lang === 'English' ? 'Edit' : 'Modificar'}
+                                </div>
+                            </button>
+                        </Link>
+
                     <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Remove' : 'Remover'}
