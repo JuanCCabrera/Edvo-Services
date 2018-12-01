@@ -12,13 +12,14 @@ class InstitutionFilters extends React.Component{
     
     render() {
         return (
-            <div className="form-group">
+            <div>
                 {
                     //Filter text input field
                 }
-                <input className="form-control" type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
+                <input className="form-control"  style={{position: 'relative', top: '11px'}} type="text" placeholder={this.props.lang === 'English' ? 'Search' : 'Buscar'} value ={this.props.filter.text} onChange={(e) => {
                     this.props.dispatch(setSchoolsTextFilter(e.target.value));
                 }}/>
+                <br/>
             </div>
         );
     }
