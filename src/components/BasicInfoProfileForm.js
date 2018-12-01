@@ -40,7 +40,6 @@ class BasicInfoProfileForm extends React.Component{
     }
     resetPassword(){
         let message = false;
-        e.preventDefault();
         axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
           client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
           email: auth0Client.getEmail(),

@@ -43,7 +43,7 @@ class UserModal extends React.Component{
                         <div className="panel-body">
                             <ul style={{listStyleType: 'circle'}}>
                                 {this.props.userSpec.moodle && <li>Moodle</li>}
-                                {this.props.userSpec.googleClassroom && <li>Google Classroom</li>}
+                                {this.props.userSpec.googleclassroom && <li>Google Classroom</li>}
                                 {this.props.userSpec.emails && <li>Emails</li>}
                                 {this.props.userSpec.books && <li>{this.props.lang === 'English' ? 'Books' : 'Libros'}</li>}
                                 {this.props.userSpec.applications && <li>{this.props.lang === 'English' ? 'Applications' : 'Aplicaciones'}</li>}

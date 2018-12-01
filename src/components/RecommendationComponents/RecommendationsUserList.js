@@ -33,6 +33,7 @@ class RecommendationsUserList extends React.Component{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             response.data.users.forEach(element => {
+                console.log("RESPONSE: ", element);
                 let categories = []
                 if(element.tech)
                     categories.push("Technology Integration") 
@@ -48,7 +49,7 @@ class RecommendationsUserList extends React.Component{
                     name: element.name,
                     email: element.email, 
                     lastName: element.lastname, 
-                    subject: element.subject,
+                    emails: element.emails,
                     weeklyReco: element.weeklyReco, 
                     categories: categories,
                     subject: element.subject,

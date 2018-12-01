@@ -107,7 +107,16 @@ class RegistrationForm extends React.Component{
         };
     }
 
-    //Change Handlers
+    componentWillMount() {
+        axios.get('https://beta.edvotech.com/api/user', {
+          headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        }).then(response => {
+          if (response.status == 201) {
+            this.props.history.replace('/'+auth0Client.getRole()+'/home');
+          }
+    
+        })
+      }
 
     componentDidUpdate(prevProps, prevState){
         if(prevProps !== this.props){
