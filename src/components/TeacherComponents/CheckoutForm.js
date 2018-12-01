@@ -30,9 +30,9 @@ class CheckoutForm extends Component {
       e.preventDefault();
       const couponCode = e.target.value;
       if(couponCode.length < 8){
-          this.setState(() => ({coupon: couponCode, couponValid: false, couponError: 'Coupon is invalid or does not exists'}));
+          this.setState(() => ({coupon: couponCode, couponValid: false, couponError: 'Coupon is invalid or does not exist.'}));
       }else{
-          this.setState(() => ({coupon: couponCode, couponValid: true, couponError: 'Coupon is invalid or does not exists'}));
+          this.setState(() => ({coupon: couponCode, couponValid: true, couponError: 'Coupon is invalid or does not exist.'}));
       }
   }
 
@@ -42,6 +42,7 @@ class CheckoutForm extends Component {
       this.setState(() => ({couponError: true}));
     }else{
       this.setState(() => ({couponError: false}));
+      this.props.dispatch(setLoadingModal());
     await axios.post('https://beta.edvotech.com/api/plans/',
         {
             token: token.id,
@@ -68,6 +69,7 @@ class CheckoutForm extends Component {
               this.setState({couponError: false});
               this.setState({subscriptionError: true});
             }
+            this.props.dispatch(setLoadingModal());
         })
           .then(response =>{
             if(response.status == 201){
@@ -75,6 +77,7 @@ class CheckoutForm extends Component {
               this.props.dispatch(setSuccessModal());
               this.props.history.replace('/teacher/home')
             }
+            this.props.dispatch(setLoadingModal());
           });
         }
   }

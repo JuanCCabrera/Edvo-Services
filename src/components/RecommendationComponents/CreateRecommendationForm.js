@@ -100,16 +100,16 @@ class CreateRecommendationForm extends React.Component{
                     this.setState(() => ({titleError: 'The title field must contain text.'}));
                 }
                 if(this.state.headerError){
-                    this.setState(() => ({headerError: 'The header field must contain text'}));
+                    this.setState(() => ({headerError: 'The header field must contain text.'}));
                 }
                 if(this.state.descriptionError){
                     this.setState(() => ({descriptionError: 'The content field must contain text.'}));
                 }
                 if(this.state.topicError){
-                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                    this.setState(() => ({topicError: 'Topics must contain text.'}));
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'Enter a valid address'}));
+                    this.setState(() => ({locationError: 'The address must contain text.'}));
                 }
                 if(this.state.subjectError){
                     this.setState(() => ({subjectError: 'The subject field must contain text.'}));
@@ -118,7 +118,7 @@ class CreateRecommendationForm extends React.Component{
                     this.setState(() => ({questionError: 'The question field must contain text.'}));
                 }
                 if(this.state.choiceError){
-                    this.setState(() => ({choiceError: 'Enter valid options.'}));
+                    this.setState(() => ({choiceError: 'Options must contain text.'}));
                 }
             }else{
                 if(this.state.titleError){
@@ -131,16 +131,16 @@ class CreateRecommendationForm extends React.Component{
                     this.setState(() => ({questionError: 'El contenido debe contener texto.'}))
                 }
                 if(this.state.topicError){
-                    this.setState(() => ({topicError: 'Escriba temas válidos.'}))
+                    this.setState(() => ({topicError: 'Los temas deben contener texto.'}))
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}));
+                    this.setState(() => ({locationError: 'La dirección física debe contener texto.'}));
                 }
                 if(this.state.subjectError){
                     this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'}));
                 }
                 if(this.state.choiceError){
-                    this.setState(() => ({choiceError: 'Escriba opciones válidas.'}));
+                    this.setState(() => ({choiceError: 'Las opciones deben contener texto.'}));
                 }
             }
         }
@@ -231,9 +231,9 @@ class CreateRecommendationForm extends React.Component{
         for(j = 0; j < this.state.topics.length; j++){
             if(this.state.topics[j] && this.state.topics[j].match(/^\s+$/)){
                 if(this.props.lang === 'English'){
-                    this.setState(() => ({topicError: 'Enter valid topics. '}));
+                    this.setState(() => ({topicError: 'Topics must contain text.'}));
                 }else{
-                    this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                    this.setState(() => ({topicError: 'Los temas deben contener texto.'})); 
                 }
                 errorCheck = true;
                 break;
@@ -638,9 +638,9 @@ class CreateRecommendationForm extends React.Component{
                         this.setState(() => ({location: this.state.location.trim()}));
                         if(this.state.location.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
-                                this.setState(() => ({locationError: 'Enter a valid address.'}));
+                                this.setState(() => ({locationError: 'The address must contain text.'}));
                             }else{
-                                this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
+                                this.setState(() => ({locationError: 'La dirección física debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({locationError: ''}));
@@ -718,9 +718,9 @@ class CreateRecommendationForm extends React.Component{
                                 for(j = 0; j < this.state.choices.length; j++){
                                     if(this.state.choices[j] && this.state.choices[j].match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({choiceError: 'Enter valid options.'}));
+                                            this.setState(() => ({choiceError: 'Options must contain text.'}));
                                         }else{
-                                            this.setState(() => ({choiceError: 'Escriba opciones válidas.'})); 
+                                            this.setState(() => ({choiceError: 'Las opciones deben contener texto.'})); 
                                         }
                                         errorCheck = true;
                                         break;
@@ -728,9 +728,9 @@ class CreateRecommendationForm extends React.Component{
                                 }
                                 if(!this.state.choices[index]){
                                     if(this.props.lang === 'English'){
-                                        this.setState(() => ({choiceError: 'Enter valid options.'}));
+                                        this.setState(() => ({choiceError: 'Options must contain text.'}));
                                     }else{
-                                        this.setState(() => ({choiceError: 'Escriba opciones válidas.'})); 
+                                        this.setState(() => ({choiceError: 'Las opciones deben contener texto.'})); 
                                     }
                                     errorCheck = true;
                                 }
@@ -1015,9 +1015,9 @@ class CreateRecommendationForm extends React.Component{
                                     for(j = 0; j < this.state.topics.length; j++){
                                         if(this.state.topics[j] && this.state.topics[j].match(/^\s+$/)){
                                             if(this.props.lang === 'English'){
-                                                this.setState(() => ({topicError: 'Enter valid topics. '}));
+                                                this.setState(() => ({topicError: 'Topics must contain text.'}));
                                             }else{
-                                                this.setState(() => ({topicError: 'Escriba temas válidos.'})); 
+                                                this.setState(() => ({topicError: 'Los temas deben contener texto.'})); 
                                             }
                                             errorCheck = true;
                                             break;
@@ -1031,7 +1031,7 @@ class CreateRecommendationForm extends React.Component{
                             />
                             {this.state.topics.length > 1 && <div style={{display: 'inline'}}>
                             <button onClick={this.deleteTopic(index)}>
-                                <span title={this.props.lang === 'English' ? 'Delete topic' : 'Remover tema'} style={{color: '#b33a3a'}}>
+                                <span title={this.props.lang === 'English' ? 'Delete topic' : 'Remover tema'} className="hoverColors" style={{color: '#9f0000'}}>
                                     <i className="fa fa-window-close fa-lg"></i>
                                 </span>
                             </button>

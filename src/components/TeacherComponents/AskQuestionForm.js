@@ -265,12 +265,12 @@ class AskQuestionForm extends React.Component{
                     }
                     {this.state.askQuestionAllowed === true && 
                         <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>You are not allowed to perform this action</p> : <p>No tiene los permisos necesarios para realizar esta operacion.</p>}
+                            {this.props.lang === 'English' ? <p>You are not allowed to perform this action</p> : <p>No tiene los permisos necesarios para realizar esta operación.</p>}
                         </div>
                     }
                     {this.state.askQuestionError === true && 
                         <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>Please fill all fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all fields text.</p> : <p>Por favor, llene todos los campos con texto.</p>}
                         </div>
                     }
                     

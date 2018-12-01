@@ -81,7 +81,7 @@ class SchoolListItem extends React.Component{
                                 this.props.dispatch(setFailureModal());
                         });
                         }}>
-                        <div className="btn btn-item" style={{marginTop: '10px'}}>
+                        <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                                 {this.props.lang === 'English' ? 'Yes' : 'Si'}
                         </div>
                         </button>

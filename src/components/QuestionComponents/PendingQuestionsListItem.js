@@ -39,21 +39,12 @@ class PendingQuestionsListItem  extends React.Component{
                 <p className="item__body card-text">{this.props.question.question}</p>
 
             {
-                //Navigation link to the Answer Question page with a specific question identifier. 
-            }
-                <Link to={`/staff/questions/${this.props.question.askedDate}/${this.props.question.userId}`}>
-                    <button>
-                        <div className="btn btn-item">{this.props.lang === 'English' ? 'Answer' : 'Responder'}</div>
-                    </button>
-                </Link>
-            {
                 //Button to remove a question from the list of Pending Questions.
             }
 
             {this.state.toggleButton ? 
             
                 <div>
-                    <br/>
                     <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
                         {this.props.lang === 'English' ? 'Are you sure you would like to remove this quesiton?' : '¿Estás seguro de que quieres remover esta pregunta?'}
                     </div>
@@ -78,7 +69,7 @@ class PendingQuestionsListItem  extends React.Component{
                             }
                         });    
                     }}>
-                    <div className="btn btn-item" style={{marginTop: '10px'}}>
+                    <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                             {this.props.lang === 'English' ? 'Yes' : 'Si'}
                     </div>
                     </button>
@@ -93,6 +84,16 @@ class PendingQuestionsListItem  extends React.Component{
                 </div>
                 :
                 <div style={{display: 'inline-block'}}>
+
+                {
+                    //Navigation link to the Answer Question page with a specific question identifier. 
+                }
+                <Link to={`/staff/questions/${this.props.question.askedDate}/${this.props.question.userId}`}>
+                    <button>
+                        <div className="btn btn-item">{this.props.lang === 'English' ? 'Answer' : 'Responder'}</div>
+                    </button>
+                </Link>
+
                 <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
                     <div className="btn btn-item">
                         {this.props.lang === 'English' ? 'Remove' : 'Remover'}

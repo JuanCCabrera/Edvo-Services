@@ -72,26 +72,26 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({nameError: 'The name field must contain text.'}));
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'Enter a valid address.'}));
+                    this.setState(() => ({locationError: 'The address must contain text.'}));
                 }
                 if(this.state.institutionIDError){
-                    this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                    this.setState(() => ({institutionIDError: 'The institution ID must consist of alphanumeric characters and cannot have spaces.'}));
                 }
                 if(this.state.numAccountsError){
-                    this.setState(() => ({numAccountsError: 'Enter a valid number.'}));
+                    this.setState(() => ({numAccountsError: 'Enter a number.'}));
                 }
             }else{
                 if(this.state.nameError){
                     this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
                 }
                 if(this.state.locationError){
-                    this.setState(() => ({locationError: 'Escriba una dirección física válida.'}))
+                    this.setState(() => ({locationError: 'La dirección física debe contener texto.'}))
                 }
                 if(this.state.institutionIDError){
-                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución válida.'}));
+                    this.setState(() => ({institutionIDError: 'La identificación de la institución debe consistir de caracteres alfanumericos y no puede contener espacios.'}));
                 }
                 if(this.state.numAccountsError){
-                    this.setState(() => ({numAccountsError: 'Escriba un numero valido.'}));
+                    this.setState(() => ({numAccountsError: 'Escriba un número.'}));
                 }
             }
         }
@@ -215,9 +215,9 @@ class CreateInstitutionForm extends React.Component{
                                     this.setState(() => ({location: this.state.location.trim()}));
                                     if(this.state.location.match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({locationError: 'Enter a valid address'}));
+                                            this.setState(() => ({locationError: 'The address must contain text.'}));
                                         }else{
-                                            this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
+                                            this.setState(() => ({locationError: 'La dirección física debe contener texto.'})); 
                                         }
                                     }else{
                                         this.setState(() => ({locationError: ''}));
@@ -275,9 +275,9 @@ class CreateInstitutionForm extends React.Component{
                                     this.setState(() => ({numAccounts: this.state.numAccounts.trim()}));
                                     if(!this.state.numAccounts.match(/^[1-9\|]*$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({numAccountsError: 'Numero invalido'}));
+                                            this.setState(() => ({numAccountsError: 'Enter a number.'}));
                                         }else{
-                                            this.setState(() => ({numAccountsError: 'Invalid number'})); 
+                                            this.setState(() => ({numAccountsError: 'Escriba un número.'})); 
                                         }
                                     }else{
                                         this.setState(() => ({numAccountsError: ''}));
@@ -309,9 +309,9 @@ class CreateInstitutionForm extends React.Component{
                                     this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                                     if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                                            this.setState(() => ({institutionIDError: 'The institution ID must consist of alphanumeric characters and cannot have spaces.'}));
                                         }else{
-                                            this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'})); 
+                                            this.setState(() => ({institutionIDError: 'La identificación de la institución debe consistir de caracteres alfanumericos y no puede contener espacios.'})); 
                                         }
                                     }else{
                                         this.setState(() => ({institutionIDError: ''}));

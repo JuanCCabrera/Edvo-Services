@@ -19,34 +19,32 @@ const MentorHome = (props) => (
                 {
                     //Navigation link to the Assign Recommendations page. 
                 }
-                <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                    
+                
                     <div className="col-sm-6">
-                        <div className="big-card-mentor-home">
-                            {props.lang === 'English' ? 
-                                <div className="big__mentor__text">
-                                    <p>Manage</p>
-                                    <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
-                                    <p>Recommendations</p>
-                                </div>
-                                : 
-                                <div className="big__mentor__text">
-                                    <p>Manejar</p>
-                                    <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
-                                    <p>Recomendaciones</p>
-                                </div>
-                            }
+                        <div className="big-card-admin-home">
+                            <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>                
+                                {props.lang === 'English' ? 
+                                    <div className="big__mentor__text">
+                                        <p>Manage</p>
+                                        <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                                        <p>Recommendations</p>
+                                    </div>
+                                    : 
+                                    <div className="big__mentor__text">
+                                        <p>Manejar</p>
+                                        <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
+                                        <p>Recomendaciones</p>
+                                    </div>}
+                            </NavLink>
                         </div>
                     </div>
-                    
-                </NavLink>
 
                 {
                     //Navigation link to the Pending Questions page. 
                 }
-                <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
-                    <div className="col-sm-6">
-                        <div className="big-card-mentor-home">
+                <div className="col-sm-6">
+                    <div className="big-card-admin-home">
+                        <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
                             {props.lang === 'English' ? 
                                 <div className="big__mentor__text">
                                     <p>Answer</p>
@@ -58,11 +56,10 @@ const MentorHome = (props) => (
                                     <p>Contestar</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
                                     <p>Preguntas</p>
-                                </div>
-                            }
-                        </div>
-                    </div>   
-                </NavLink>
+                                </div>}                
+                        </NavLink>
+                    </div>
+                </div>   
             </div>
         </div>
     </div>

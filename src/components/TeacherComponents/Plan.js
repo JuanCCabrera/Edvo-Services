@@ -126,18 +126,18 @@ class Plan extends React.Component{
                 }
                 {this.props.lang === 'English' ? 
                  <div>
-                    <span>Plan: </span>{this.props.plan.status =="active" ? <h4>Standard Package</h4> : <h4> You are not currently subscribed. </h4>}
+                    {this.props.plan.status =="active" ? <div><h4>Standard Package</h4></div> : <h4> You are not currently subscribed. </h4>}
                 </div>
                  :
                  <div>
-                    <span>Plan: </span>{this.props.plan.status =="active" ? <h4>Paquete Estandar</h4> : <h4> Usted no tiene un suscripción activa. </h4>}
+                    {this.props.plan.status =="active" ? <div><h4>Paquete Estandar</h4></div> : <h4> Usted no tiene un suscripción activa. </h4>}
                 </div>
                 }
                 
 
                 {this.state.cardError === true && 
                     <div className="text-danger text-center">
-                        {this.props.lang === 'English' ? <p>Card used is no longer valid.</p> : <p>Tarjeta usada no es válida.</p>}
+                        {this.props.lang === 'English' ? <p>The card used is no longer valid.</p> : <p>L tarjeta usada no es válida.</p>}
                     
                             <br/>
                   </div>

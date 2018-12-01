@@ -75,13 +75,6 @@ class BasicInfoProfileForm extends React.Component{
         });
     }
 
-    onResetClick = (e) => {
-        e.preventDefault();
-        const name = e.target.value;
-        this.setState({resetPasswordMessage: true});
-        this.resetPassword();
-    }
-
     //Change name in local state
     onNameChange = (e) => {
         const name = e.target.value;
@@ -109,9 +102,9 @@ class BasicInfoProfileForm extends React.Component{
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                this.setState(() => ({dateOfBirthError: 'You must be 18 or older.'}));
             }else{
-                this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                this.setState(() => ({dateOfBirthError: 'Usted debe tener 18 años o más.'}));
             }
         }
     };
@@ -132,7 +125,7 @@ class BasicInfoProfileForm extends React.Component{
                     this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
                 }
                 if(this.state.dateOfBirthError){
-                    this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                    this.setState(() => ({dateOfBirthError: 'You must be 18 or older.'}));
                 }
             }else{
                 if(this.state.nameError){
@@ -142,10 +135,16 @@ class BasicInfoProfileForm extends React.Component{
                     this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'}))
                 }
                 if(this.state.dateOfBirthError){
-                    this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                    this.setState(() => ({dateOfBirthError: 'Usted debe tener 18 años o más.'}));
                 }
             }
         }
+    }
+
+    onResetClick = (e) => {
+        e.preventDefault();
+        this.setState({resetPasswordMessage: true});
+        this.resetPassword();
     }
 
     //Submit new user information
@@ -353,7 +352,7 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //Submit button
                         }
-                        <button className="btn btn-item" onClick={this.onSubmit} style={{marginRight: '1rem'}}>
+                        <button className="btn btn-item" onClick={this.onSubmit}>
                             <div>
                                 {this.props.lang === 'English' ? 'Save' : 'Guardar'}
                             </div>
@@ -362,6 +361,7 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //Change password button
                         }
+                        <span> </span>
                         <button className="btn btn-item" onClick={this.onResetClick}>
                             <div>
                                 {this.props.lang === 'English' ? 'Change Password' : 'Modificar Contraseña'} 

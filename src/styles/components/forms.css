@@ -25,6 +25,14 @@
     margin-left: 0;
 }
 
+.hoverColors{
+
+}
+
+.hoverColors > i:hover{
+    color: #6f0000;
+}
+
 @media only screen and (max-width: 992px){
     .btn-pad{
         margin-bottom: 2rem;

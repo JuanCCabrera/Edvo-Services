@@ -94,9 +94,9 @@ class CreateUserForm extends React.Component{
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth.'}));
+                this.setState(() => ({dateOfBirthError: 'Users must be 18 years or older.'}));
             }else{
-                this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                this.setState(() => ({dateOfBirthError: 'Los usuarios deben tener 18 años o más.'}));
             }
         }
     };
@@ -144,17 +144,17 @@ class CreateUserForm extends React.Component{
                     this.setState(() => ({lastNameError: 'The last name field must contain text.'}));
                 }
                 if(this.state.dateOfBirthError){
-                    this.setState(() => ({dateOfBirthError: 'Enter a valid date of birth'}));
+                    this.setState(() => ({dateOfBirthError: 'Users must be 18 years or older.'}));
                 }
                 if(this.state.institutionIDError){
-                    this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                    this.setState(() => ({institutionIDError: 'The institution ID must consist of alphanumeric characters and cannot have spaces.'}));
                 }                
                 if(this.state.requestError){
                     this.setState(() => ({requestError: 'The user already exists'}));
                 }
             }else{
                 if(this.state.emailError){
-                    this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'}))
+                    this.setState(() => ({emailError: 'Escriba una dirección electrónica válida.'}))
                 }
                 if(this.state.nameError){
                     this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
@@ -163,16 +163,16 @@ class CreateUserForm extends React.Component{
                     this.setState(() => ({lastNameError: 'El campo del apellido debe contener texto.'}))
                 }
                 if(this.state.passwordError){
-                    this.setState(() => ({passwordError: 'Escriba una contraseña valida.'}));
+                    this.setState(() => ({passwordError: 'Escriba una contraseña válida.'}));
                 }
                 if(this.state.confirmPasswordError){
                     this.setState(() => ({confirmPasswordError: 'Contraseña incorrecta. Trate otra vez.'}));
                 }
                 if(this.state.dateOfBirthError){
-                    this.setState(() => ({dateOfBirthError: 'Escriba una fecha de nacimiento valida.'}));
+                    this.setState(() => ({dateOfBirthError: 'Los usuarios deben tener 18 años o más.'}));
                 }
                 if(this.state.institutionIDError){
-                    this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'}));
+                    this.setState(() => ({institutionIDError: 'La identificación de la institución debe consistir de caracteres alfanumericos y no puede contener espacios.'}));
                 }
                 if(this.state.requestError){
                     this.setState(() => ({requestError: 'El usuario ya existe'}));
@@ -336,7 +336,7 @@ class CreateUserForm extends React.Component{
                                             if(this.props.lang === 'English'){
                                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
                                             }else{
-                                                this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'})); 
+                                                this.setState(() => ({emailError: 'Escriba una dirección electrónica válida.'})); 
                                             }
                                         }else{
                                             this.setState(() => ({emailError: ''}));
@@ -372,7 +372,7 @@ class CreateUserForm extends React.Component{
                                                     if(this.props.lang === 'English'){
                                                         this.setState(() => ({passwordError: 'Enter a valid password.'}));
                                                     }else{
-                                                        this.setState(() => ({passwordError: 'Escriba una contraseña valida.'})); 
+                                                        this.setState(() => ({passwordError: 'Escriba una contraseña válida.'})); 
                                                     }
                                                 }else{
                                                     this.setState(() => ({passwordError: ''}));
@@ -570,9 +570,9 @@ class CreateUserForm extends React.Component{
                                         this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                                         if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                             if(this.props.lang === 'English'){
-                                                this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
+                                                this.setState(() => ({institutionIDError: 'The institution ID must consist of alphanumeric characters and cannot have spaces.'}));
                                             }else{
-                                                this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'})); 
+                                                this.setState(() => ({institutionIDError: 'La identificación de la institución debe consistir de caracteres alfanumericos y no puede contener espacios.'})); 
                                             }
                                         }else{
                                             this.setState(() => ({institutionIDError: ''}));

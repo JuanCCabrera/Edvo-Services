@@ -61,7 +61,7 @@ class ContactForm extends React.Component{
                     this.setState(() => ({nameError: 'El campo del nombre debe contener texto.'}))
                 }
                 if(this.state.emailError){
-                    this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'}))
+                    this.setState(() => ({emailError: 'Escriba una dirección electrónica válida.'}))
                 }
                 if(this.state.messageError){
                     this.setState(() => ({messageError: 'El campo del mensaje debe contener texto.'}))
@@ -165,7 +165,7 @@ class ContactForm extends React.Component{
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({emailError: 'Enter a valid email address.'}));
                             }else{
-                                this.setState(() => ({emailError: 'Escriba una dirección electrónica valida.'})); 
+                                this.setState(() => ({emailError: 'Escriba una dirección electrónica válida.'})); 
                             }
                         }else{
                             this.setState(() => ({emailError: ''}));
