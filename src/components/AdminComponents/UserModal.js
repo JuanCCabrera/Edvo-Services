@@ -91,6 +91,7 @@ class UserModal extends React.Component{
                                 {this.props.userSpec.emails && <li>Emails</li>}
                                 {this.props.userSpec.books && <li>{this.props.lang === 'English' ? 'Books' : 'Libros'}</li>}
                                 {this.props.userSpec.applications && <li>{this.props.lang === 'English' ? 'Applications' : 'Aplicaciones'}</li>}
+                                {this.props.userSpec.socialmedia && <li>{this.props.lang === 'English' ? 'Social Media' : 'Redes Sociales'}</li>}
                                 {this.props.userSpec.projector && <li>{this.props.lang === 'English' ? 'Projector' : 'Proyector'}</li>}
                                 {this.props.userSpec.computer && <li>{this.props.lang === 'English' ? 'Computer' : 'Computadora'}</li>}
                                 {this.props.userSpec.tablet && <li>{this.props.lang === 'English' ? 'Tablet Computer' : 'Tableta (Computadora)'}</li>}

@@ -100,6 +100,12 @@ class AnswerQuestionForm extends React.Component {
                             <div className="col-sm-1"/>
                             <div className="col-sm-9">
                                 <div className=" big-card item__body">
+                                {
+                                        //Subject
+                                    }
+                                    <div className="form__title">
+                                        <p>{this.props.question ? this.props.question.subject : ''}</p>
+                                    </div>
                                     {
                                         //Question
                                     }

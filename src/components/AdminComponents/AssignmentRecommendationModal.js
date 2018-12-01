@@ -22,7 +22,7 @@ class AssignmentRecommendationModal extends React.Component{
                 <div>
                     <h1 className="form__title">{this.props.recoSpec.title}</h1>
                     <h4>{this.props.recoSpec.header}</h4>
-                    <p>{this.props.recoSpec.description}</p>
+                    <div dangerouslySetInnerHTML={{ __html: this.props.recoSpec.description}} />
                     <hr/>
                     <h3 className="text-center" style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Materia'}: {this.props.recoSpec.subject}</p>

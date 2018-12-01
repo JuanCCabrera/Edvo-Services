@@ -55,7 +55,8 @@ class RecommendationsUserList extends React.Component{
 
                     moodle: element.moodle,
                     googleclassroom: element.googleclassroom,
-                    emailResource: element.emails,
+                    emails: element.emails,
+                    applications: element.applications,
                     books: element.books,
                     socialmedia: element.socialmedia,
                     projector: element.projector,
