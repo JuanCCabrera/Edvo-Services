@@ -40,6 +40,7 @@ const RecommendationsUserListItem = (props) => (
         })}
         </p>
             <button onClick={() => {
+                props.dispatch(setLoadingModal());
                 props.dispatch(unloadRecommendations());
                 axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/user/recommendations',{
 
@@ -50,7 +51,6 @@ const RecommendationsUserListItem = (props) => (
                 }
                 })
                 .then(response => {
-
                 props.dispatch(selectUser({userID: props.user.id}));
                 response.data.recommendations.forEach(element => {
                     props.dispatch(loadRecommendation({
@@ -91,8 +91,10 @@ const RecommendationsUserListItem = (props) => (
                     }));
 
                 })
+                props.dispatch(setLoadingModal());
                 }).catch(error =>{
                     if(error.response.status > 300){
+                        props.dispatch(setLoadingModal());
                         props.dispatch(setFailureModal());
                     }
                 });

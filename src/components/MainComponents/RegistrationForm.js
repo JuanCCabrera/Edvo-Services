@@ -1083,7 +1083,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'}:</label>
-                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'} value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
+                    <input type="text" className="form-control" maxLength="100" placeholder= {this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'} value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces.
                         this.setState(() => ({schoolName: this.state.schoolName.trim()})); 
                         if(this.state.schoolName.match(/^\s+$/)){
@@ -1111,7 +1111,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'}:</label>
-                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'} value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
+                    <input type="text" className="form-control" maxLength="150" placeholder= {this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'} value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces. 
                         this.setState(() => ({schoolLocation: this.state.schoolLocation.trim()}));
                         if(this.state.schoolLocation.match(/^\s+$/)){

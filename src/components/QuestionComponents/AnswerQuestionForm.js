@@ -115,6 +115,8 @@ class AnswerQuestionForm extends React.Component {
                                         this.setState(() => ({answer: this.state.answer.trim()}));
                                         if(this.state.answer && this.state.answer.match(/^\s+$/)){
                                             this.setState(() => ({answerError: true}));
+                                        }else{
+                                            this.setState(() => ({answerError: false}));
                                         }
                                     }}/>
                                     {

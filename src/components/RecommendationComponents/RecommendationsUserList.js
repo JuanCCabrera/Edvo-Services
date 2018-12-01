@@ -50,6 +50,7 @@ class RecommendationsUserList extends React.Component{
                     lastName: element.lastname, 
                     weeklyReco: element.weeklyReco, 
                     categories: categories,
+                    subject: element.subject,
 
                     moodle: element.moodle,
                     googleclassroom: element.googleclassroom,
