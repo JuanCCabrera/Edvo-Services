@@ -24,7 +24,7 @@ class ClassList extends React.Component{
             response.data.classes.forEach(element => {
             this.props.dispatch(loadClass({userId: element.classinfoid, subject: element.subject, 
             format: element.format, language: element.language, level: element.level, 
-            groupSize: element.groupsize, topicA: element.topica, topicB: element.topicb, topicC: element.topic}));
+            groupSize: element.groupsize, topicA: element.topica, topicB: element.topicb, topicC: element.topicc}));
         });
         this.props.dispatch(setLoadingModal());
         })

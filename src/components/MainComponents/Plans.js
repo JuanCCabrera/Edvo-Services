@@ -34,7 +34,7 @@ const PlansPage = (props) => (
                 <p>{props.lang === 'English' ? 'PACKAGE' : 'SUPREMO'} </p>
                 <p>$59*</p>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
-                <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
+                <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
              </th>
 
             <th scope="col" className="text-center AbsolutePackage">
@@ -42,11 +42,11 @@ const PlansPage = (props) => (
                 {
                     //<p className="text-center">{props.lang === 'English' ? 'LIMITED SPACE AVAILABLE' : 'ESPACIOS LIMITADOS'}</p>
                 }
-                    <p>{props.lang === 'English' ? 'ALL-ACCESS' : 'PAQUETE'} </p>
-                    <p>{props.lang === 'English' ? 'PACKAGE' : 'ABSOLUTO'} </p>
+                    <p>{props.lang === 'English' ? '' : ''} </p>
+                    <p>{props.lang === 'English' ? 'ALL-ACCESS PACKAGE' : 'PAQUETE ABSOLUTO'} </p>
                     <p>$249**</p>
                     <p>{props.lang === 'English' ? 'per 6 months' : 'cada 6 meses'}</p>
-                    <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
+                    <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
                     {
                         //<p>{props.lang === 'English' ? 'per educator + 6 months of platform usage' : 'por educador + 6 meses de uso en la plataforma'} </p>
                     }

@@ -106,7 +106,7 @@ class LoginPage extends React.Component{
                                                         </button>
 
                                                         <Link to={'/register'}>
-                                                            <button className="btn btn-item">
+                                                            <button className="btn btn-item" onClick={auth0Client.signUp} >
                                                                 <div>
                                                                     {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
                                                                 </div>
