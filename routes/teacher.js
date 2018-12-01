@@ -837,7 +837,7 @@ router.post('/settings/classes/add', checkJwt, (req,res,next)=> {
         if (resultsexist.length === 1){ // user exists and is of type teacher
         
           //SQL Query > insert data
-          client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, data.subject.toLowerCase(), data.format, data.language, data.level, data.groupsize, data.topica.toLowerCase(), data.topicb, data.topicc,]); 
+          client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, data.subject, data.format, data.language, data.level, data.groupsize, data.topica, data.topicb, data.topicc,]); 
           //SQL Query > select data
           const query = client.query('SELECT * FROM class_info WHERE userid = $1', [data.userid,]);
           //stream results back one row at a time

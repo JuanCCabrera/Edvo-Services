@@ -114,7 +114,7 @@ router.post('/', checkJwt, (req,res,next)=> {
         client.query('insert into school_info(userid, name, location, schooltype, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)', [data.userid, data.schoolname, data.location, data.schooltype, data.moodle, data.googleclassroom, data.emails, data.books, data.applications, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers]);
         
         //SQL Query > insert class_info table data
-        client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, classesjson.subject.toLowerCase(), classesjson.format, classesjson.language, classesjson.level, classesjson.groupsize, classesjson.topica.toLowerCase(), classesjson.topicb, classesjson.topicc]);
+        client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, classesjson.subject, classesjson.format, classesjson.language, classesjson.level, classesjson.groupsize, classesjson.topica, classesjson.topicb, classesjson.topicc]);
         
         
         //SQL Query > select data of a single user
