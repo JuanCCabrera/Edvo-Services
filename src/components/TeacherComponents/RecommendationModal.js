@@ -101,7 +101,7 @@ class RecommendationModal extends React.Component{
                                 {
                                     //Location
                                 }
-                                    {this.props.recommendation.location && <h4>Location: {this.props.recommendation.location}</h4>}
+                                    {this.props.recommendation.location && <h4>{this.props.lang === 'English' ? 'Location' : 'Localización'}: {this.props.recommendation.location}</h4>}
 
                                 {
                                     //Date of assignment
