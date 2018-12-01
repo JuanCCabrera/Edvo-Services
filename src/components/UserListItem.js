@@ -44,7 +44,13 @@ class UserListItem extends React.Component{
             <span className="item__body">{this.props.lang === 'English' ? 'Categories' : 'Categorías'}: 
             <br/>
             {this.props.user.categories.map((category) => {
-                return (<span key={uuid()} className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{category + ' '}</span>)
+                return (<span key={uuid()}>
+                    {category == "Teaching Strategies" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{this.props.lang === 'English' ? "Teaching Strategies" : "Estrategias de Enseñanza"}</span>}
+                    {category == "Updated Material" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{this.props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'}</span>}
+                    {category == "Time Management" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{this.props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}</span>}
+                    {category == "Technology Integration" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{this.props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'}</span>}
+                    {category == "Instructional Alignment" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{this.props.lang === 'English' ? 'Instructional Alignment' : 'Alineación Curricular'}</span>}
+                </span>)
             })}
             </span>
             <br/>

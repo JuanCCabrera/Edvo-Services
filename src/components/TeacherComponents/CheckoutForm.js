@@ -119,7 +119,7 @@ class CheckoutForm extends Component {
            </button>
         </div>
         <br/>
-           <p style={{marginTop: '2rem'}}>{this.props.lang === 'English' ? <p>*If you have an institutional coupon, the subcription fee will not be billed to your card.</p> : <p>*Si posee un cupón institucional, no se le cobrará el costo de subscripcion a su tarjeta.</p>}</p>
+           <p style={{marginTop: '2rem'}}>{this.props.lang === 'English' ? <p>*If you have an institutional coupon, the subcription fee will not be billed to your card.</p> : <p>*Si posee un cupón institucional, no se le cobrará el costo de suscripción a su tarjeta.</p>}</p>
        
       </div>
         )}

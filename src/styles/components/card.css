@@ -125,21 +125,6 @@ button{
     padding-left: 0;
 }
 
-.btn-item{
-    background-color: #5933AA;
-    color: white;
-    font-weight: normal;
-    font-size: 105%;
-    margin-top: 1rem;
-}
-
-.btn-item:hover{
-    color: white;
-    background-color: #472988;
-    font-weight: normal;
-    border: 1px solid #5933AA;
-}
-
 .btn-item-red{
     background-color: #9F0000;
     color: white;
@@ -164,6 +149,7 @@ button{
     }
 }
 
+
 .btn-item-margin{
     margin-top: '2rem';
 }
@@ -172,6 +158,22 @@ button{
     background-color: #5933AA;
     color: white;
     font-weight: normal;
+}
+
+
+.btn-item{
+    background-color: #5933AA;
+    color: white;
+    font-weight: normal;
+    font-size: 105%;
+    margin-top: 1rem;
+}
+
+.btn-item:hover{
+    color: white;
+    background-color: #472988;
+    font-weight: normal;
+    border: 1px solid #5933AA;
 }
 
 button:disabled > .btn-item{

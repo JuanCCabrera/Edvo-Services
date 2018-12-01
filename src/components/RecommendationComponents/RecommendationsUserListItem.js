@@ -34,7 +34,13 @@ const RecommendationsUserListItem = (props) => (
         {props.user.categories.map((category) => {
             return (
                 <div key={uuid()}>
-                <span className="badge" style={{backgroundColor: '#5933AA', marginBottom: '0.2rem', marginTop: '0.2rem'}}>{category + ' '}</span>
+                <span key={uuid()}>
+                    {category == "Teaching Strategies" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{props.lang === 'English' ? "Teaching Strategies" : "Estrategias de Enseñanza"}</span>}
+                    {category == "Updated Material" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{props.lang === 'English' ? 'Updated Material' : 'Material Actualizado'}</span>}
+                    {category == "Time Management" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{props.lang === 'English' ? 'Time Management' : 'Manejo del Tiempo'}</span>}
+                    {category == "Technology Integration" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{props.lang === 'English' ? 'Technology Integration' : 'Integración de Tecnologia'}</span>}
+                    {category == "Instructional Alignment" && <span className="badge" style={{margin: '0.5rem', backgroundColor: '#5933AA'}}>{props.lang === 'English' ? 'Instructional Alignment' : 'Alineación Curricular'}</span>}
+                </span>
                 <br/>
                 </div>)
         })}
@@ -108,7 +114,7 @@ const RecommendationsUserListItem = (props) => (
                 props.dispatch(selectUserToDisplay(props.user));
             }}>
                 <p className="btn btn-item">
-                    {props.lang === 'English' ? 'View User Information' : 'Ver Más Información'}
+                    {props.lang === 'English' ? 'View More Information' : 'Ver Más Información'}
                 </p>
             </button>
     </div>

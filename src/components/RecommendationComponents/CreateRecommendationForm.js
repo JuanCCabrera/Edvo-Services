@@ -671,7 +671,7 @@ class CreateRecommendationForm extends React.Component{
                     <input type="text" maxLength="700" disabled={this.props.isEdit} className="form-control" placeholder = {this.props.lang === 'English' ? 'Question' : 'Pregunta'} value = {this.state.question} onChange={this.onQuestionChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
                         this.setState(() => ({question: this.state.question.trim()}));
-                        if(this.state.question.match(/^\s+$/)){
+                        if(this.state.question.match(/^\s+$/) || this.state.question.trim().match(/^[\¿|\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s]*$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({questionError: 'The question field must contain text.'}));
                             }else{
@@ -708,6 +708,13 @@ class CreateRecommendationForm extends React.Component{
                             disabled={this.props.isEdit}
                             maxLength="400"
                             onChange={this.onChoiceChange(index)}
+                            onKeyDown={(event) => {
+                                if (event.which == 13 || event.keyCode == 13) {
+                                    //code to execute here
+                                    event.preventDefault();
+                                }
+                            }
+                            }
                             onBlur={() => {
                                 let choices = [...this.state.choices]
                                 choices[index] = this.state.choices[index].trim();
@@ -860,15 +867,15 @@ class CreateRecommendationForm extends React.Component{
                     }
                     
                     <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Subject' : 'Tema'} :</label>
-                    <input type="text" maxLength="100" placeholder={this.props.lang === 'English' ? 'Subject' : 'Tema'} className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
+                    <label>{this.props.lang === 'English' ? 'Subject' : 'Materia'} :</label>
+                    <input type="text" maxLength="100" placeholder={this.props.lang === 'English' ? 'Subject' : 'Materia'} className="form-control" style={{width: '50%'}} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
                         //Check to see if description is only composed of spaces. 
                         this.setState(() => ({subject: this.state.subject.trim()}));
                         if(this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
                             }else{
-                                this.setState(() => ({subjectError: 'El tema del curso debe contener texto.'})); 
+                                this.setState(() => ({subjectError: 'La materia del curso debe contener texto.'})); 
                             }
                         }else{
                             this.setState(() => ({subjectError: ''}));
@@ -1005,6 +1012,13 @@ class CreateRecommendationForm extends React.Component{
                             value={topic}
                             maxLength="50"
                             onChange={this.onTopicChange(index)}
+                            onKeyDown={(event) => {
+                                if (event.which == 13 || event.keyCode == 13) {
+                                    //code to execute here
+                                    event.preventDefault();
+                                }
+                            }
+                            }
                             onBlur={() => {
                                     let topics = [...this.state.topics]
                                     topics[index] = this.state.topics[index].trim();

@@ -21,20 +21,32 @@ const PlansPage = (props) => (
         <tr className="text-center">
             <th scope="col" className="No-Border-Top text-center"></th>
             <th scope="col" className="No-Border-Top Subscribe-2 text-center">
+                <div className="offer_button_spacing_bottom">
                 <p>{props.lang === 'English' ? 'STANDARD' : 'PAQUETE'}</p>
-                <p>{props.lang === 'English' ? 'PACKAGE' : 'ESTANDAR'}</p>
+                <p>{props.lang === 'English' ? 'PACKAGE' : 'ESTÁNDAR'}</p>
                 <p>$39</p>
+                </div>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
                 <NavLink to={auth0.getSubscribed()} activeclass="is-active" exact={true}>
+                    <div className="offer_button_spacing_top">
                         <button className="Subscribe">{props.lang === 'English' ? 'Subscribe' : 'Suscribirse'}</button>
+                    </div>
                 </NavLink>
             </th>
             <th scope="col" className="No-Border-Top text-center">
+                <div className="offer_button_spacing_bottom">
                 <p>{props.lang === 'English' ? 'PREMIUM' : 'PAQUETE'} </p>
                 <p>{props.lang === 'English' ? 'PACKAGE' : 'SUPREMO'} </p>
                 <p>$59*</p>
+                </div>
                 <p>{props.lang === 'English' ? 'per month' : 'al mes'}</p>
-                <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
+                <div className="offer_button_spacing_top">
+                    <a href="#bottom">
+                        <button className="Contact_Offer">
+                                {props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}
+                        </button>
+                    </a>
+                </div>
              </th>
 
             <th scope="col" className="text-center AbsolutePackage">
@@ -42,11 +54,27 @@ const PlansPage = (props) => (
                 {
                     //<p className="text-center">{props.lang === 'English' ? 'LIMITED SPACE AVAILABLE' : 'ESPACIOS LIMITADOS'}</p>
                 }
-                    <p>{props.lang === 'English' ? 'ALL-ACCESS' : 'PAQUETE'} </p>
-                    <p>{props.lang === 'English' ? 'PACKAGE' : 'ABSOLUTO'} </p>
-                    <p>$249**</p>
-                    <p>{props.lang === 'English' ? 'per 6 months' : 'cada 6 meses'}</p>
-                    <button className="Subscribe">{props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}</button>
+                    <p>{props.lang === 'English' ? <div className="offer_button_spacing_bottom">ALL-ACCESS</div> : 'PAQUETE'} </p>
+                    <p>{props.lang === 'English' ? <div className="offer_button_spacing_bottom">PACKAGE</div> : 'ABSOLUTO'} </p>
+                    {props.lang === 'English' ? <p className="offer_button_spacing_bottom">$249**</p> : <p>$249**</p>}
+                    {props.lang === 'English' ? <p className="offer_button_spacing_bottom">per 6 months</p>: <p>cada 6 meses</p>}
+                    {props.lang === 'English' ? 
+                    <div className="absolute_button_spacing_bottom english_spacing_bottom">
+                        <a href="#bottom">
+                            <button className="Contact_Offer">
+                                    {props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}
+                            </button>
+                        </a>
+                    </div>
+                    :
+                    <div className="absolute_button_spacing_bottom">
+                        <a href="#bottom">
+                            <button className="Contact_Offer">
+                                    {props.lang === 'English' ? 'Contact Us' : 'Contáctenos'}
+                            </button>
+                        </a>
+                    </div>
+                    }
                     {
                         //<p>{props.lang === 'English' ? 'per educator + 6 months of platform usage' : 'por educador + 6 meses de uso en la plataforma'} </p>
                     }
