@@ -105,11 +105,13 @@ class LoginPage extends React.Component{
                                                             </div>
                                                         </button>
 
-                                                        <button className="btn btn-item">
-                                                            <div>
-                                                            {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
-                                                            </div>
-                                                        </button>
+                                                        <Link to={'/register'}>
+                                                            <button className="btn btn-item">
+                                                                <div>
+                                                                    {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
+                                                                </div>
+                                                            </button>
+                                                        </Link>
                                                     </div>
                                                 }
                         

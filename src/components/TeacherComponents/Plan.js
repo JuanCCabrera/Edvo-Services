@@ -69,6 +69,7 @@ class Plan extends React.Component{
 
     modifyPlan = (e) => {
         e.preventDefault();
+        this.props.dispatch(setLoadingModal());
         axios.post('https://beta.edvotech.com/api/teacher/settings/plans',{
             action: this.state.status
         },
@@ -80,8 +81,10 @@ class Plan extends React.Component{
             this.props.dispatch(loadPlan({status: stateStatus}));
             this.setState({status: stateStatus});
         }
+        this.props.dispatch(setLoadingModal());
     })
     .catch(error => {
+        this.props.dispatch(setLoadingModal());
         if(error.response.status == 402 || error.response.status == 403)
             this.setState({cardError: true});
         else{
@@ -130,67 +133,65 @@ class Plan extends React.Component{
                     <span>Plan: </span>{this.props.plan.status =="active" ? <h4>Paquete Estandar</h4> : <h4> Usted no tiene un suscripción activa. </h4>}
                 </div>
                 }
+                
+
+                {this.state.cardError === true && 
+                    <div className="text-danger text-center">
+                        {this.props.lang === 'English' ? <p>Card used is no longer valid.</p> : <p>Tarjeta usada no es válida.</p>}
+                    
+                            <br/>
+                  </div>
+                }
+                {this.state.status === 'suspended' && 
+                    <div className="text-danger">
+                        <br/>
+                        {this.props.lang === 'English' ? <p>*If you are having problems with resubscribing please contact us at info@edvotech.com</p> : 
+                        <p>*Si se enfrenta con problemas al momento de resuscribirse porfavor contactenos a info@edvotech.com</p>}
+                    </div>
+                }
+                
                 {
                     //Link to Plans page to allow teacher to view the benefits of his or her subscription plan.
                 }
                 
-                {this.state.status !== 'active' && <Link to='/plans' style={{color:'white', textDecoration: 'none'}}>
-                        <div className="btn btn-item linktext">
+                <Link to='/plans' style={{color:'white', textDecoration: 'none', marginRight: '1rem'}}>
+                        <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'View Perks' : 'Ver Beneficios'}
                         </div>
-                    </Link>
-                }
+                </Link>
+
                 {
                     //Cancel plan button
                 }
-                {this.state.status === 'active' && this.props.lang === 'English' && <button onClick={this.modifyPlan}>
-                    <div className="btn btn-item">
+                {this.state.status === 'active' && this.props.lang === 'English' && <button onClick={this.modifyPlan} className="btn btn-item">
+                    <div>
                         Cancel Plan
                     </div>
                 </button>}
                 {
                     //Cancel Plan button (translation)
                 }
-                {this.state.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.modifyPlan}>
-                    <div className="btn btn-item">
+                {this.state.status === 'active' && this.props.lang === 'Spanish' && <button onClick={this.modifyPlan} className="btn btn-item">
+                    <div>
                         Cancelar Plan
                     </div>
                 </button>}
                 {
                     //Resubscribe button
                 }
-                <div>
-                {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.modifyPlan}>
-                <div className="btn btn-item">
+                {this.state.status === 'suspended' && this.props.lang === 'English' && <button onClick={this.modifyPlan} className="btn btn-item">
+                    <div>
                         Resubscribe
                     </div>
                 </button>}
-                </div>
-                <div>
                 {
                     //Resubscribe button (translation)
                 }
-                {this.state.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.modifyPlan}>
-                <div className="btn btn-item">
+                {this.state.status === 'suspended' && this.props.lang === 'Spanish' && <button onClick={this.modifyPlan} className="btn btn-item">
+                    <div>
                         Resuscribirse
                     </div>
                 </button>}
-                
-                </div>
-                {this.state.cardError === true && 
-                        <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>Card used is no longer valid.</p> : <p>Tarjeta usada no es válida.</p>}
-                        </div>
-                    }
-                    <br/>
-                {this.state.status === 'suspended' && 
-                        <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>*If you are having problems with resubscribing please contact us at info@edvotech.com</p> : 
-                            <p>*Si se enfrenta con problemas al momento de resuscribirse porfavor contactenos a info@edvotech.com</p>}
-                        </div>
-                    }
-                <br/>
-                
                 </div>
                 </div>
                 </div>

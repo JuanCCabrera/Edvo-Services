@@ -31,8 +31,8 @@ const TeacherRecommendations = (props) => (
                     <div className="text-center">
                         <h1 className="form__title">{props.lang === 'English' ? 'View Quizzes' : 'Ver Pruebas'}</h1>
                         <NavLink to={'/teacher/quizzes'}>
-                            <button className="btn btn-item">
-                                <div className="btn quiz_button">
+                            <button className="btn btn-item quiz_button">
+                                <div>
                                     <i className="fa fa-question-circle fa-3x" aria-hidden="true"></i>
                                 </div>
                             </button>

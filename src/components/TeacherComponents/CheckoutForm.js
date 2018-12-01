@@ -4,6 +4,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import Can from '../../Can';
 import {Redirect} from 'react-router-dom';
+import {setLoadingModal} from '../../actions/loadingModal';
 import {setSuccessModal} from '../../actions/successModal';
 
 class CheckoutForm extends Component {
@@ -37,7 +38,10 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
-    console.log("TOKEN: ", token);
+    if(!token){
+      this.setState(() => ({couponError: true}));
+    }else{
+      this.setState(() => ({couponError: false}));
     await axios.post('https://beta.edvotech.com/api/plans/',
         {
             token: token.id,
@@ -72,6 +76,7 @@ class CheckoutForm extends Component {
               this.props.history.replace('/teacher/home')
             }
           });
+        }
   }
 
   render() {
@@ -81,11 +86,11 @@ class CheckoutForm extends Component {
       perform="teacher:settings"
       yes={() => (
       <div className="checkout">
-        <h4>{this.props.lang === 'English' ? <h4>Would you like to complete the purchase?<span style={{color: 'red'}}>*</span></h4> : <h4>¿Desea completar la compra?<span style={{color: 'red'}}>*</span></h4>}</h4>
+        <h4>{this.props.lang === 'English' ? <h4><span style={{color: 'red'}}>*</span>Would you like to complete the purchase?</h4> : <h4><span style={{color: 'red'}}>*</span>¿Desea completar la compra?</h4>}</h4>
         
         <CardElement />
         <br/>
-        {this.props.lang === 'English' ? <h4>Do you have a coupon?</h4> : <h4>¿Posee un cupón?</h4>}
+        {this.props.lang === 'English' ? <h4>Insert a coupon code if you have one:</h4> : <h4>Introduzca un código de cupón si tiene alguno:</h4>}
         <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="10" value={this.state.coupon} placeholder={this.props.lang === 'English' ? 'Insert coupon code here' : 'Introduzca su cupón aqui'} onChange={this.onCouponChange} />
         
                     {this.state.userError === true && 
@@ -103,12 +108,15 @@ class CheckoutForm extends Component {
                             {this.props.lang === 'English' ? <p>You are already subscribed</p> : <p>Ya esta suscrito.</p>}
                         </div>
                     }
+        <div>
         <button onClick={this.submit}>
           <div className="btn btn-item">
           {this.props.lang === 'English' ? 'Pay' : 'Pagar'}
           </div>
            </button>
-           <p style={{marginTop: '2rem', color: 'red'}}>{this.props.lang === 'English' ? <p>*If you have an institution coupon, the subcription fee will not be billed to your card.</p> : <p>*Si posee un cupón institucional, no se le cobrará el costo de subscripcion a su tarjeta.</p>}</p>
+        </div>
+        <br/>
+           <p style={{marginTop: '2rem'}}>{this.props.lang === 'English' ? <p>*If you have an institutional coupon, the subcription fee will not be billed to your card.</p> : <p>*Si posee un cupón institucional, no se le cobrará el costo de subscripcion a su tarjeta.</p>}</p>
        
       </div>
         )}

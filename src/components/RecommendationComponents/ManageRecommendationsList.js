@@ -49,7 +49,7 @@ class ManageRecommendationsList extends React.Component{
                         instructionAlignment: element.instructions,
                         applications: element.applications,
                         moodle: element.moodle,
-                        googleclassroom: element.googleclassroom,
+                        googleClassroom: element.googleclassroom,
                         emailResource: element.emails,
                         books: element.books,
                         socialMedia: element.socialmedia,
@@ -61,7 +61,6 @@ class ManageRecommendationsList extends React.Component{
                         smartboard:element.smartboard,
                         smartpencil:element.smartpencil,
                         speakers: element.speakers,
-                        
                         topics: [element.topica, element.topicb, element.topicc],
                         location: element.location,
                         subject: element.subject,

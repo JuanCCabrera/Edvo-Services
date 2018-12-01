@@ -1,7 +1,4 @@
-
-
-
-button > div.quiz_button{
+.quiz_button{
     padding: 3rem;
     float:none;
     transition: 0.3s;
@@ -17,9 +14,9 @@ button > div.quiz_button{
 }
 
 
-button > div.quiz_button:hover{
+.quiz_button:hover{
     color: white;
     background-color: #472988;
-    border: 7px outset #5933AA;
+    border: 5px outset #5933AA;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
