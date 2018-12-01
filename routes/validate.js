@@ -1,4 +1,4 @@
-//validate string with accents no space
+﻿//validate string with accents no space
 function validateNoSpace( toValidate ) {
   var str = toValidate;
   var patt = new RegExp(/^[a-zA-ZÀ-ÿ]*$/);

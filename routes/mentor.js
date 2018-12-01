@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const path = require('path');
 const jwt = require('express-jwt');
+const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
+const axios = require('axios');
+const moment = require('moment');
 const val= require('./validate'); //validate inputs
+var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
 
@@ -191,7 +196,7 @@ router.post('/recommendations/create', checkJwt, (req,res,next)=> {
       googleclassroom : req.body.google,
       emails : req.body.emails,
       books : req.body.books,
-      apps : false,
+      apps : req.body.applications,
       socialmedia : req.body.socialmedia,
       projector : req.body.projector,
       computer : req.body.computer,
@@ -216,19 +221,17 @@ router.post('/recommendations/create', checkJwt, (req,res,next)=> {
       question : req.body.question,
       choices : req.body.choices
     };
-console.log("DATA: ", data);
-console.log("CHOICES: ", !Array.isArray(data.choices));
   //verify no input is empty
-  if(val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
+  if(val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
   || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
   || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.topica)
     || val.validateLongText(data.subject) || val.validateStrings(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateLongText(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
-    || val.validateLongText(data.question) || !Array.isArray(data.choices)){
+    || val.validateLongText(data.question) || val.validateLongText(data.choices) || !Array.isArray(data.choices) ){
     return res.status(403).json({statusCode: 403,
       message: 'Inputs were not received as expected.',
       isBase64Encoded: false,});
   }
-  console.log("PASSED 1");
+  
   var choicejson = data.choices;
   var length = choicejson.length;
   
@@ -236,11 +239,10 @@ console.log("CHOICES: ", !Array.isArray(data.choices));
   for(var i=0; i<length ; i++){
     if(val.validateLongText(choicejson[i].choice) || val.validateBool(choicejson[i].correctanswer)){
       return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected.',
+          message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
   }
-  console.log("PASSED 2");
   
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
@@ -276,7 +278,7 @@ console.log("CHOICES: ", !Array.isArray(data.choices));
           //SQL query > insert into recommendation_body
           client.query('INSERT  into recommendation_body (recomid, title, multimedia, header, description) values ($1, $2, $3, $4, $5)', [recomid, data.title, data.multimedia, data.header, data.description]);
           //SQL query > insert into recommendation_req
-          client.query('INSERT  into recommendation_req(recomid, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)', [recomid, data.moodle, data.google, data.emails, data.books, data.apps, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers,]);
+          client.query('INSERT  into recommendation_req(recomid, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)', [recomid, data.moodle, data.googleclassroom, data.emails, data.books, data.apps, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers,]);
           //SQL query > insert into quiz_question
           const query2 = client.query('INSERT into quiz_question (question, recomid) values ($1, $2) RETURNING quizquestionid;', [data.question, recomid,]);
           //stream results back one row at a time
@@ -309,6 +311,7 @@ router.post('/recommendations/modify', checkJwt, (req,res,next)=> {
   //grab data from http request
   const data = {
       userid: req.user.sub,
+      recomid: req.body.recomid,
       title : req.body.title,
       multimedia : req.body.multimedia,
       header : req.body.header,
@@ -344,7 +347,7 @@ router.post('/recommendations/modify', checkJwt, (req,res,next)=> {
       format : req.body.format,
       groupsize : req.body.size,
       level : req.body.level,
-      active : req.body.active
+      active : true
     };
   //verify no input is empty
   if(val.validateInt(data.recomid) || val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
@@ -390,7 +393,7 @@ router.post('/recommendations/modify', checkJwt, (req,res,next)=> {
             //SQL query > UPDATE into recommendation_body
             client.query('UPDATE recommendation_body SET title= $1, multimedia = $2, header= $3, description = $4 WHERE recomid =$5', [data.title, data.multimedia, data.header, data.description, data.recomid,]); 
             //SQL query > UPDATE into recommendation_req
-            client.query('UPDATE recommendation_req SET moodle = $1, googleclassroom= $2, emails = $3, books=$4, applications=$5, socialmedia=$6, projector=$7, computer=$8, tablet=$9, stylus= $10, internet= $11, smartboard= $12, smartpencil= $13, speakers=$14 WHERE recomid=$15', [data.moodle, data.google, data.emails, data.books, data.apps, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers, data.recomid,]);
+            client.query('UPDATE recommendation_req SET moodle = $1, googleclassroom= $2, emails = $3, books=$4, applications=$5, socialmedia=$6, projector=$7, computer=$8, tablet=$9, stylus= $10, internet= $11, smartboard= $12, smartpencil= $13, speakers=$14 WHERE recomid=$15', [data.moodle, data.googleclassroom, data.emails, data.books, data.apps, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers, data.recomid,]);
             
             return res.status(201).json({statusCode: 201});
           }else{
@@ -595,8 +598,8 @@ router.get('/recommendations/users', checkJwt, (req,res,next)=> {
     query.on('end', () => {
       done();
       if (results.length === 1){ // user exists and is of type mentor
-        //SQL Query > select users with no recommendation in last 7 days
-        const query1 = client.query('with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, email, er.recomid, date, rate, favorite, read  FROM edu_recommendations er RIGHT JOIN users ON er.userid = users.userid WHERE usertype = $1), newlist as (SELECT userlist.userid, institutionid, usertype, name, lastname, email, userlist.recomid, date, rate, favorite, read, status FROM userlist NATURAL INNER JOIN subscription WHERE status = $2), needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, user_info.userid, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM user_info natural inner join school_info) SELECT userid, institutionid, usertype, name, lastname, email, classinfoid, subject, format, language, level, groupsize, topica, topicb, topicc, strategies, tech, instructions, timemanagement, material, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM newlist NATURAL INNER JOIN needsOfUser natural inner join class_info WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL \'7 DAYS\' ))', ['teacher','active',]);
+        //SQL Query > select users with no recommendation in last 7 days and active subscription
+        const query1 = client.query('with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, email FROM users WHERE usertype = $1), newlist as (SELECT userlist.userid, institutionid, usertype, name, lastname, email, status FROM userlist NATURAL INNER JOIN subscription WHERE status = $2), needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, user_info.userid, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM user_info natural inner join school_info) SELECT userid, institutionid, usertype, name, lastname, email, classinfoid, subject, format, language, level, groupsize, topica, topicb, topicc, strategies, tech, instructions, timemanagement, material, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM newlist NATURAL INNER JOIN needsOfUser natural inner join class_info WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL \'7 DAYS\' ))', ['teacher','active',]);
         //stream results back one row at a time
         query1.on('row', (row) => {
           users.push(row);
@@ -683,11 +686,6 @@ router.get('/user/recommendations', checkJwt, (req, res, next) => {
     });
   });
 
-
-
-//----- questions new stuff
-
-
 /* ANSWER question */
 router.post('/questions/answer', checkJwt, (req, res, next) => {
   const results = [];
@@ -744,7 +742,6 @@ router.post('/questions/answer', checkJwt, (req, res, next) => {
         });
       } else// user doesn't exist in record or isnt of type mentor, send error statuscode
       {
-        console.log("ELSE EN ASK");
         return res.status(401).json({
           statusCode: 401,
           message: 'User doesn\'t exist in records or is not mentor type. Inputs were not received as expected.',
@@ -766,7 +763,6 @@ router.delete('/questions/remove', checkJwt, (req, res, next) => {
     askeddate: moment(req.body.askeddate).format("YYYY-MM-DD HH:mm:ss")
   };
 
-  console.log("BEFORE DATA: ", data);
   //verify inputs
   if (val.validateUserID(data.userid) || val.validateUserID(data.usermentor) || val.validateTime(data.askeddate)) {
     return res.status(403).json({
@@ -877,5 +873,4 @@ router.get('/staff/questions', checkJwt, (req, res, next) => {
     });
   });
 });
-
 module.exports = router;

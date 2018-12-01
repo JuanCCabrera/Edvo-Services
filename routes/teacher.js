@@ -6,6 +6,7 @@ const jwt = require('express-jwt');
 const cors = require('cors');
 const val= require('./validate'); //validate inputs 
 const jwksRsa = require('jwks-rsa');
+const moment = require('moment');
 var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -281,7 +282,6 @@ router.post('/questions/ask', checkJwt, (req,res,next)=> {
                   const todaysDateForQuery = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
                 client.query('INSERT into questions (askeddate, userid, subject, question, read, favorite) values ($1, $2, $3, $4, $5, $6);', [todaysDateForQuery, data.userid, data.subject, data.question, false, false,]);
                 //SQL Query > select data
-                  console.log("THE DATE BEFORE INSERT: ", todaysDateForQuery);
                 const query = client.query('SELECT * FROM questions WHERE userid = $1 and askeddate = $2', [data.userid, todaysDateForQuery]);
                 //stream results back one row at a time
                 query.on('row', (row) => {
@@ -379,7 +379,7 @@ router.post('/questions/read',checkJwt,  (req,res,next)=> {
   //grab data from http request
   const data = {
       userid: req.user.sub,
-      askeddate: req.body.askeddate,
+      askeddate: moment(req.body.askeddate).format("YYYY-MM-DD HH:mm:ss"),
     };
 
   //verify inputs
@@ -453,7 +453,7 @@ router.post('/questions/rate', checkJwt, (req,res,next)=> {
   //grab data from http request
   const data = {
       userid: req.user.sub,
-      askeddate: req.body.askeddate,
+      askeddate: moment(req.body.askeddate).format("YYYY-MM-DD HH:mm:ss"),
       rate: req.body.rate
     };
 console.log(data);
@@ -520,7 +520,7 @@ console.log(data);
   });
 });
 
- 
+
 /* Mark read recommendation*/  
 router.post('/recommendations/read', checkJwt, (req,res,next)=> {
     const resultsexist = [];
@@ -594,7 +594,7 @@ router.post('/recommendations/read', checkJwt, (req,res,next)=> {
                 }else{//there isn't a quiz with available space
                   //create quiz
                   //SQL Query > create quiz data
-                  const query3 = client.query('INSERT INTO quiz(userid, count, created) values($1, $2, $4) returning quizid',[data.userid, 1, todaysDate,]);
+                  const query3 = client.query('INSERT INTO quiz(userid, count, created) values($1, $2, $3) returning quizid',[data.userid, 1, todaysDate,]);
                   //stream results back one row at a time
                   query3.on('row', (row) => {
                     quizid.push(row);
@@ -753,10 +753,9 @@ router.post('/questions/favorite', checkJwt, (req,res,next)=> {
   //grab data from http request
   const data = {
       userid: req.user.sub,
-      askeddate: req.body.askeddate,
+      askeddate: moment(req.body.askeddate).format("YYYY-MM-DD HH:mm:ss"),
       favorite: req.body.favorite
     };
-console.log("QUESTION: ", data);
   //verify inputs
   if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateBool(data.favorite)){
     return res.status(403).json({statusCode: 403,
@@ -1105,7 +1104,6 @@ router.post('/settings/plans', checkJwt, (req, res, next) => {
       isBase64Encoded: false,
     });
   }
-    console.log("ACTION: ", data.action);
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     //handle connection error
@@ -1161,7 +1159,6 @@ router.post('/settings/plans', checkJwt, (req, res, next) => {
             if (err) {
               return res.status(402).json({ statusCode: 402, message: 'Update failed.' });
             }
-             console.log("SUBSCRIPTION ID", response.id);
             const query1 = client.query('UPDATE subscription SET status = $1, token = $2 WHERE userid = $3 returning *', ['active', response.id, data.userid]);
             //stream results back one row at a time
             query1.on('row', (row) => {
@@ -1170,7 +1167,6 @@ router.post('/settings/plans', checkJwt, (req, res, next) => {
             query1.on('end', () => {
               done();
               if (subscription.length == 1){
-                  console.log("SUBSCRIPTION DB: ", subscription);
                 return res.status(201).json({ statusCode: 201, subscription });
               }
               else {
@@ -1181,7 +1177,6 @@ router.post('/settings/plans', checkJwt, (req, res, next) => {
         });
         }
         else {
-            console.log("THE ACTION INSIDE IS: ",data.action);
           return res.status(401).json({
             statusCode: 401,
             message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',

@@ -68,27 +68,16 @@ router.post('/', checkJwt, (req,res,next)=> {
       speakers: req.body.speakers,
       class: req.body.class
     };
-    console.log("DATA: ", data);
-console.log("1: ", val.validateUserID(data.userid));
-console.log("2: ", val.validateLongText(data.name));
-console.log("3: ", val.validateLongText(data.lastname));
-console.log("4: ", val.validateNoSpace(data.gender));
-console.log("5: ", val.validateEmail(data.email));
-console.log("6: ", val.validateDate(data.dob));
-console.log("7: ", val.validateBool(data.policies));
-console.log("8: ", val.validateDate(data.teachersince));
-console.log("9: ", val.validateEd(data.education));
-console.log("10: ", val.validateBool(data.spanish));
     if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) 
       || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies) || val.validateDate(data.teachersince)
       || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
       || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.applications) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
-      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.class) || val.validateLongText(data.schoolname) || val.validateLongText(data.location)){
+      || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.class) || val.validateLongText(data.schoolname) 
+      || val.validateLongText(data.location) || !Array.isArray(data.class) ){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
           isBase64Encoded: false,});
     }
-    console.log("FIRST");
     var classesjson = data.class
     if(val.validateLongText(classesjson.subject) || val.validateLongText(classesjson.format) || val.validateNoSpace(classesjson.language) 
       || val.validateLevel(classesjson.level) || val.validateGroup(classesjson.groupsize) || val.validateLongText(classesjson.topica)){
@@ -96,9 +85,7 @@ console.log("10: ", val.validateBool(data.spanish));
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
-    console.log("SECOND");
-    
-console.log("classesjson: ", classesjson);
+
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error

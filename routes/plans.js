@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
+const path = require('path');
 const jwt = require('express-jwt');
+const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
+const axios = require('axios');
 const val= require('./validate'); //validate inputs
 var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
@@ -43,6 +46,15 @@ router.post('/', checkJwt, (req, res, next) => {
       isBase64Encoded: false,
     });
   }
+  if(data.couponid != null){
+    if(val.validatecoupon(data.couponid)){
+      return res.status(403).json({
+        statusCode: 403,
+        message: 'Inputs were not received as expected.',
+        isBase64Encoded: false,
+      });
+    }
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     //handle connection error
@@ -70,9 +82,6 @@ router.post('/', checkJwt, (req, res, next) => {
           if (resultsexist.length === 0) { //if userid doesn't have subscription cancelled, suspended or active
             //verify there is a coupon being used
             if (data.couponid != '') {
-                
-              console.log("I ALREADY HAVE SUBSCRIPTION 111", resultsexist);
-
               //SQL Query > select data of institutions
               const query = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.couponid,]);
               //stream results back one row at a time
@@ -114,7 +123,6 @@ router.post('/', checkJwt, (req, res, next) => {
                             });
                           }
                           else {
-                            console.log("COUPON I: ", data.couponid);
                             data.token = subscription.id;//SQL Query > insert user subscription into subscription table with active status
                             client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
                             //SQL Query > insert into coupon table
@@ -175,7 +183,6 @@ router.post('/', checkJwt, (req, res, next) => {
                           });
                         }
                         else {
-                            console.log("COUPON II: ", data.couponid);
                           //SQL Query > insert user subscription into subscription table with active status
                           data.token = subscription.id;
                           //SQL Query > insert user subscription into subscription table with active status
@@ -238,7 +245,6 @@ router.post('/', checkJwt, (req, res, next) => {
           }
           else// user has a subscription send error statuscode
           {
-              console.log("I ALREADY HAVE SUBSCRIPTION");
             return res.status(403).json({
               statusCode: 403,
               message: 'Userid already has a subscription.',

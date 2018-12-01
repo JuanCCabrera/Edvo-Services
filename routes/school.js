@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
 const path = require('path');
+const val= require('./validate'); //validate inputs
 const jwt = require('express-jwt');
 const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
@@ -156,7 +157,7 @@ router.get('/home', checkJwt, (req,res,next)=> {
       done();
       if (validuser.length === 1){ // user exists and is school type
         //SQL Query > get number of days teachers have logged in to platform
-        const query1 = client.query('SELECT count(distinct date) as teachersdays FROM log_record WHERE userid in (SELECT userid FROM users WHERE institutionid = $1)', [validuser[0].institutionid,]);
+        const query1 = client.query('SELECT count(distinct date) as teachersdays FROM log_record WHERE userid in (SELECT userid FROM users WHERE institutionid = $1 AND usertype = $2)', [validuser[0].institutionid, 'teacher']);
         //stream results back one row at a time
         query1.on('row', (row) => {
           teachersdays.push(row);
