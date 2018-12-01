@@ -87,7 +87,7 @@ const RecommendationListItem = (props) => (
             props.dispatch(selectAssignmentRecommendationToDisplay(props.reco));
         }}>
             <div className="btn btn-item">
-                {props.lang === 'English' ? 'View Recommendation Informacion' : 'Ver Más Información'}
+                {props.lang === 'English' ? 'View More Information' : 'Ver Más Información'}
             </div>
         </button>
     </div>

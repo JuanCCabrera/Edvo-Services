@@ -74,21 +74,46 @@ class LoginPage extends React.Component{
                             <div className="col-sm-3"/>
                             <div className="text-center col-sm-6">
                                 <div className="Register">
-                                <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/materials.png" />
-                                    {this.props.lang === 'English' ? 
-                                    <div>
-                                        <p>Join the community of schools
-                                            who will evolve education!</p>
-                                        <p>Don't miss out the opportunity of
-                                        having personalized recommendations
-                                        on teaching and learning.</p>
-                                    </div> : <div>
-                                        <p>¡Únete a la comunidad de instituciones
-                                        que revolucionarán la educación!</p>
-                                        <p>No pierda la oportunidad de
-                                        tener sugerencias personalizadas
-                                        sobre enseñanza y aprendizaje.</p>
-                                    </div>
+                                    { !(auth0Client.isAuthenticated() && (this.props.loginPage.hasPaidSubscription ||  (auth0Client.getRole() != "teacher" && auth0Client.getRole() != null))) &&
+                                        <div>
+                                            <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/materials.png" />
+                                                {this.props.lang === 'English' ? 
+                                                <div>
+                                                    <p>Join the community of schools
+                                                        that will evolve education!</p>
+                                                    <p>Don't miss out the opportunity to
+                                                    have personalized recommendations
+                                                    about teaching and learning.</p>
+                                                </div> : <div>
+                                                    <p>¡Únete a la comunidad de instituciones
+                                                    que revolucionarán la educación!</p>
+                                                    <p>No pierda la oportunidad de
+                                                    tener sugerencias personalizadas
+                                                    sobre enseñanza y aprendizaje.</p>
+                                                </div>
+                                                }
+                                        </div>
+                                    }
+
+                                    { (auth0Client.isAuthenticated() && (this.props.loginPage.hasPaidSubscription || (auth0Client.getRole() != "teacher" && auth0Client.getRole() != null))) && 
+                                        <div style={{marginTop: '3rem'}}>
+                                            <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/comebacksoonWHITEBG-min.png" />
+                                                {this.props.lang === 'English' ? 
+                                                <div>
+                                                    <p>Thank you for contributing to the community of schools
+                                                        that will evolve education!</p>
+                                                    <p>Take advantage of the opportunity to
+                                                    have personalized recommendations
+                                                    about teaching and learning.</p>
+                                                </div> : <div>
+                                                    <p>¡Gracias por su contribución a la comunidad de instituciones
+                                                    que revolucionarán la educación!</p>
+                                                    <p>Aproveche la oportunidad de
+                                                    tener sugerencias personalizadas
+                                                    sobre enseñanza y aprendizaje.</p>
+                                                </div>
+                                                }
+                                        </div>
                                     }
 
                                         <div className="row">
@@ -99,19 +124,17 @@ class LoginPage extends React.Component{
                                                 {
                                                     !auth0Client.isAuthenticated() &&
                                                     <div style={{marginBottom: '1rem'}}>
-                                                        <button className="btn btn-item" onClick={auth0Client.signIn} style={{marginRight: '1rem'}}>
+                                                        <button className="btn btn-item" onClick={auth0Client.signIn}>
                                                             <div>
                                                                 {this.props.lang === 'English' ? 'Sign In' : 'Entrar'}
                                                             </div>
                                                         </button>
-
-                                                        <Link to={'/register'}>
-                                                            <button className="btn btn-item" onClick={auth0Client.signUp} >
-                                                                <div>
-                                                                    {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
-                                                                </div>
-                                                            </button>
-                                                        </Link>
+                                                    <span> </span>
+                                                        <button className="btn btn-item" onClick={auth0Client.signUp}>
+                                                            <div>
+                                                                {this.props.lang === 'English' ? 'Register' : 'Registrarse'}
+                                                            </div>
+                                                        </button>
                                                     </div>
                                                 }
                         

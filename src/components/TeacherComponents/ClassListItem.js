@@ -62,6 +62,7 @@ class ClassListItem extends React.Component{
             {this.props.classes.level == "4th - 6th grade" && <p>Nivel: 4to - 6to grado</p>}
             {this.props.classes.level == "7th - 8th grade" && <p>Nivel: 7mo - 8vo grado</p>}
             {this.props.classes.level == "9th - 12th grade" && <p>Nivel: 9no - 12mo grado</p>}
+            {this.props.classes.level == "University / College" && <p>Nivel: Universidad/Colegio</p>}
         </div>
         
         }

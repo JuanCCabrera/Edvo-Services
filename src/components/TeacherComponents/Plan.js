@@ -126,11 +126,38 @@ class Plan extends React.Component{
                 }
                 {this.props.lang === 'English' ? 
                  <div>
-                    {this.props.plan.status =="active" ? <div><h4>Standard Package</h4></div> : <h4> You are not currently subscribed. </h4>}
+                    {this.props.plan.status =="active" ? 
+                    <div>
+                        <h4>Standard Package</h4>
+                        <p>Benefits: </p>
+                        <ul style={{listStyleType: 'square'}}>
+                            <li>Weekly recommendations</li>
+                            <li>Q&A with experts</li>
+                            <li>User metrics</li>
+                        </ul>
+                        <br/>
+                        <p>Monthly fee: $39.00</p>
+                        <p>*This fee may be lower depending on the coupon code used during your subscription payment.</p>
+                        
+
+                    </div> : <h4> You are not currently subscribed. </h4>}
                 </div>
                  :
                  <div>
-                    {this.props.plan.status =="active" ? <div><h4>Paquete Estandar</h4></div> : <h4> Usted no tiene un suscripción activa. </h4>}
+                    {this.props.plan.status =="active" ? 
+                        <div>
+                        <h4>Paquete Estándar</h4>
+                        <p>Beneficios: </p>
+                        <ul style={{listStyleType: 'square'}}>
+                            <li>Recomendaciones semanales</li>
+                            <li>Preguntas y respuestas con expertos</li>
+                            <li>Métricas de usuario</li>
+                        </ul>
+                        <br/>
+                        <p>Cuota mensual: $39.00</p>
+                        <p>*Esta cuota puede ser menor dependiendo del código del cupón utilizado durante el pago de su suscripción.</p>
+                        
+                        </div> : <h4> Usted no tiene un suscripción activa. </h4>}
                 </div>
                 }
                 
@@ -156,7 +183,7 @@ class Plan extends React.Component{
                 
                 <Link to='/plans' style={{color:'white', textDecoration: 'none', marginRight: '1rem'}}>
                         <div className="btn btn-item">
-                            {this.props.lang === 'English' ? 'View Perks' : 'Ver Beneficios'}
+                            {this.props.lang === 'English' ? 'View All Offers' : 'Ver Ofertas'}
                         </div>
                 </Link>
 
