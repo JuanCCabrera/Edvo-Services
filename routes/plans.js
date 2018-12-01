@@ -1,12 +1,11 @@
 const express = require('express');
-const router = express.Router(); 
+const router = express.Router();
 const pg = require('pg');
-const path = require('path');
 const jwt = require('express-jwt');
 const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
 const axios = require('axios');
-const val= require('./validate'); //validate inputs
+const val = require('./validate'); //validate inputs
 var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -31,6 +30,7 @@ router.post('/', checkJwt, (req, res, next) => {
   const results = [];
   const resultsexist = [];
   const userexist = [];
+  const coupon = [];
   //grab data from http request
   const data = {
     userid: req.user.sub,
@@ -46,8 +46,8 @@ router.post('/', checkJwt, (req, res, next) => {
       isBase64Encoded: false,
     });
   }
-  if(data.couponid != null){
-    if(val.validatecoupon(data.couponid)){
+  if (data.couponid != null) {
+    if (val.validatecoupon(data.couponid)) {
       return res.status(403).json({
         statusCode: 403,
         message: 'Inputs were not received as expected.',
@@ -101,7 +101,7 @@ router.post('/', checkJwt, (req, res, next) => {
                         if (err) {
                           return res.status(403).json({
                             statusCode: 403,
-                              message: 'Invalid card',
+                            message: 'Invalid card',
                             isBase64Encoded: false,
                           });
                         }
@@ -117,8 +117,8 @@ router.post('/', checkJwt, (req, res, next) => {
                         }, function (err, subscription) {
                           if (err) {
                             return res.status(402).json({
-                              statusCode: 402, 
-                                message: 'Could not subscribe, card or data might be incomplete',
+                              statusCode: 402,
+                              message: 'Could not subscribe, card or data might be incomplete',
                               isBase64Encoded: false,
                             });
                           }
@@ -131,7 +131,7 @@ router.post('/', checkJwt, (req, res, next) => {
                             client.query('UPDATE users SET institutionid = $1 WHERE userid = $2', [data.couponid, data.userid,]);
                             //SQL Query > update accounts used
                             client.query('UPDATE institution SET accountsused = $1 WHERE institutionid = $2', [accountsupdated, data.couponid,]);
-                            return res.status(201).json({ statusCode: 201});
+                            return res.status(201).json({ statusCode: 201 });
                           }
                         })
                       });
@@ -139,7 +139,7 @@ router.post('/', checkJwt, (req, res, next) => {
                     } catch (err) {
                       return res.status(403).json({
                         statusCode: 403,
-                          message: 'Userid already has a subscription.',
+                        message: 'Userid already has a subscription.',
                         isBase64Encoded: false,
                       });
                     }
@@ -147,62 +147,78 @@ router.post('/', checkJwt, (req, res, next) => {
                   } else { //no accounts avilable for that institution
                     return res.status(402).json({
                       statusCode: 402,
-                        message: 'No account available for that institution',
+                      message: 'No account available for that institution',
                       isBase64Encoded: false,
                     });
                   }
                 }
                 else {
-                  try {
-                    stripe.customers.create({
-                      source: data.token,
-                      description: data.userid
-                    }, function (err, response) {
-                      if (err) {
-                        return res.status(402).json({
-                          statusCode: 402,
-                            message: 'Invalid card',
-                          isBase64Encoded: false,
+                  //SQL Query > select data of coupon
+                  const query3 = client.query('SELECT * FROM coupons WHERE couponid = $1', [data.couponid,]);
+                  //stream results back one row at a time
+                  query3.on('row', (row) => {
+                    coupon.push(row);
+                  });
+                  query3.on('end', () => {
+                    done();
+                    if (coupon.length === 1) {//if coupon exist
+
+                      try {
+                        stripe.customers.create({
+                          source: data.token,
+                          description: data.userid
+                        }, function (err, response) {
+                          if (err) {
+                            return res.status(402).json({
+                              statusCode: 402,
+                              message: 'Invalid card',
+                              isBase64Encoded: false,
+                            });
+                          }
+                          stripe.subscriptions.create({
+                            customer: response.id,
+                            billing: 'charge_automatically',
+                            items: [
+                              {
+                                plan: "plan_D7HTWmx4J01DoB",
+                              },
+                            ],
+                            coupon: data.couponid
+                          }, function (err, subscription) {
+                            if (err) {
+                              return res.status(402).json({
+                                statusCode: 402,
+                                message: 'Could not subscribe, card or data might be incomplete',
+                                isBase64Encoded: false,
+                              });
+                            }
+                            else {
+                              //SQL Query > insert user subscription into subscription table with active status
+                              data.token = subscription.id;
+                              //SQL Query > insert user subscription into subscription table with active status
+                              client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
+
+                              //SQL Query > insert into coupon table
+                              client.query('insert into coupons_used (couponid, userid, dateused) values ($1, $2, $3)', [data.couponid, data.userid, todaysDate,]);
+                              return res.status(201).json({ statusCode: 201 });
+                            }
+                          })
                         });
+
+                      } catch (err) {
+                        if (err)
+                          return res.status(403).json({ statusCode: 403, message: 'Userid already has a subscription.', isBase64Encoded: false, });
                       }
-                      stripe.subscriptions.create({
-                        customer: response.id,
-                        billing: 'charge_automatically',
-                        items: [
-                          {
-                            plan: "plan_D7HTWmx4J01DoB",
-                          },
-                        ],
-                        coupon: data.couponid
-                      }, function (err, subscription) {
-                        if (err) {
-                          return res.status(402).json({
-                            statusCode: 402,
-                              message: 'Could not subscribe, card or data might be incomplete',
-                            isBase64Encoded: false,
-                          });
-                        }
-                        else {
-                          //SQL Query > insert user subscription into subscription table with active status
-                          data.token = subscription.id;
-                          //SQL Query > insert user subscription into subscription table with active status
-                          client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
+                    } else {
+                      return res.status(402).json({ statusCode: 402, message: 'Invalid couponID.', isBase64Encoded: false, });
+                    }
+                  });
 
-                          //SQL Query > insert into coupon table
-                          client.query('insert into coupons_used (couponid, userid, dateused) values ($1, $2, $3)', [data.couponid, data.userid, todaysDate,]);
-                          return res.status(201).json({ statusCode: 201});
-                        }
-                      })
-                    });
 
-                  } catch (err) {
-                    if(err)
-                      return res.status(403).json({statusCode: 403, message: 'Userid already has a subscription.',isBase64Encoded: false,});
-                  }
                 }
               });
-            } 
-              else { //no coupon is used
+            }
+            else { //no coupon is used
               try {
                 stripe.customers.create({
                   source: data.token,
@@ -211,7 +227,7 @@ router.post('/', checkJwt, (req, res, next) => {
                   if (err) {
                     return res.status(402).json({
                       statusCode: 402,
-                        message: 'Invalid card',
+                      message: 'Invalid card',
                       isBase64Encoded: false,
                     });
                   }
@@ -225,21 +241,22 @@ router.post('/', checkJwt, (req, res, next) => {
                     ]
                   }, function (err, subscription) {
                     if (err) {
-                      return res.status(402).json({statusCode: 402, message: 'Could not subscribe, card or data might be incomplete',isBase64Encoded: false,});
+                      return res.status(402).json({ statusCode: 402, message: 'Could not subscribe, card or data might be incomplete', isBase64Encoded: false, });
                     }
                     //SQL Query > insert user subscription into subscription table with active status
                     else {
                       data.token = subscription.id;
                       client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
-                      return res.status(201).json({ statusCode: 201});
+                      return res.status(201).json({ statusCode: 201 });
                     }
                   })
                 });
 
               } catch (err) {
-                if(err)
-                return res.status(403).json({statusCode: 403, message: 'Userid already has a subscription.',isBase64Encoded: false,
-                });
+                if (err)
+                  return res.status(403).json({
+                    statusCode: 403, message: 'Userid already has a subscription.', isBase64Encoded: false,
+                  });
               }
             }
           }

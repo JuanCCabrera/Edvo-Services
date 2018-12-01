@@ -55,11 +55,15 @@ router.get('/user', checkJwt, (req, res, next) => {
                     return res.status(402).json({ statusCode: 402 });
                   }
                   else {
-                    if (subscriptionStatus.status != 'active') {
+                    if (subscriptionStatus.status === 'active'){
+                      return res.status(201).json({ statusCode: 201, subscription: 'active', user: user });
+                    }
+                    else if (subscriptionStatus.status !== 'active' && subscription[0].status !== 'cancelled') {
+                      client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', data.userid]);
                       return res.status(201).json({ statusCode: 201, subscription: 'suspended', user: user });
                     }
-                    else {
-                      return res.status(201).json({ statusCode: 201, subscription: 'active', user: user });
+                    else{
+                      return res.status(201).json({ statusCode: 201, subscription: 'cancelled', user: user });                        
                     }
                   }
                 }

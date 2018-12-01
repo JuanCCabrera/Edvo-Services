@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const path = require('path');
 const jwt = require('express-jwt');
 const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
