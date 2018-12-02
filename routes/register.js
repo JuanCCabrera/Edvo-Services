@@ -73,7 +73,7 @@ router.post('/', checkJwt, (req,res,next)=> {
       || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
       || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.applications) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
       || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.class) || val.validateLongText(data.schoolname) 
-      || val.validateLongText(data.location) || !Array.isArray(data.class) ){
+      || val.validateLongText(data.location)){
       return res.status(403).json({statusCode: 403,
           message: 'Inputs were not received as expected.',
           isBase64Encoded: false,});
