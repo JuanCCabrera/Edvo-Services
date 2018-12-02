@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import AdminButtonList from './AdminButtonList';
 import {setSuccessModal} from '../../actions/successModal';
 import {setFailureModal} from '../../actions/failureModal';
+import {setLoadingModal} from '../../actions/loadingModal';
 import axios from 'axios';
 import auth0Client from '../../Auth';
 
@@ -85,7 +86,7 @@ class CreateCouponForm extends React.Component{
         }else if(this.state.couponIDError || this.state.couponNameError || this.state.percentageError){
             this.setState(() => ({couponCreationError: true}));
         }else{
-            
+            this.props.dispatch(setLoadingModal());
             axios.post('https://beta.edvotech.com/api/admin/settings/coupon/add',{
                             couponid: this.state.couponID,
                             name: this.state.couponName,
@@ -101,11 +102,14 @@ class CreateCouponForm extends React.Component{
                         this.setState(() => ({percentage: ''}));
                         this.setState(() => ({couponRequestError: false, couponCreationError: false}));              
                     }
+                    this.props.dispatch(setLoadingModal());
                     })
                     .catch(error => {
-                        if(error.response.status != null)
+                        if(error.response.status != null){
                             this.setState({couponRequestError: true});
                             this.props.dispatch(setFailureModal());
+                        }
+                        this.props.dispatch(setLoadingModal());
                     })    
                 }
     }

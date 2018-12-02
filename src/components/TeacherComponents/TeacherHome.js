@@ -13,6 +13,8 @@ import axios from 'axios';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
 import {withRouter} from 'react-router-dom';
+import {setRole, setAuthentication} from '../../actions/credentials';
+
 /**
  * The Teacher Home page contains a value indicating the number of days the Teacher has spent on the platform, the number of recommendations
  * the teacher has read, the number of questions the teacher has asked, a list of the teacher's top rated recommendations, a list of the teacher's
@@ -59,6 +61,8 @@ class TeacherHome extends React.Component {
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
         })
+        this.props.dispatch(setAuthentication({isAuthenticated: true}));
+        this.props.dispatch(setRole({role: "teacher"}));
     }
         render(){
             return(
@@ -237,6 +241,8 @@ class TeacherHome extends React.Component {
 //Map teacher metrics, teacher recommendations, teacher questions, and current language state to component properties. 
 const mapStateToProps = (state) => {
     return {
+        role: state.credentials.role,
+        isAuthenticated: state.credentials.isAuthenticated,
         teacherMetrics: state.teacherMetrics,
         teacherRecommendations: state.teacherRecommendations.recommendations,
         teacherQuestions: state.teacherQuestions.teacherQuestions,

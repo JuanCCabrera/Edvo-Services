@@ -8,6 +8,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import { setSuccessModal } from '../../actions/successModal';
 import { setFailureModal } from '../../actions/failureModal';
+import { setLoadingModal } from '../../actions/loadingModal';
 
 /**
  * Form to create a new user and upload his or her information to the database
@@ -191,7 +192,8 @@ class CreateUserForm extends React.Component{
         }else if(this.state.emailError || this.state.nameError || this.state.lastNameError || this.state.passwordError || this.state.confirmPasswordError || this.state.dateOfBirthError || this.state.institutionIDError){
             this.setState(() => ({creationError: true}));
         }else{
-            this.setState(() => ({creationError: false}));
+            this.setState(() => ({creationError: false}));            
+            this.props.dispatch(setLoadingModal());
             axios.post('https://beta.edvotech.com/api/admin/settings/users/add', {
             email: this.state.email,
             password: this.state.password, 
@@ -209,13 +211,22 @@ class CreateUserForm extends React.Component{
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then((response)=>{
-        if(response.status == 201)
+        if(response.status == 201){
             this.props.dispatch(setSuccessModal());
             this.props.history.push('/admin/settings/users');
+        }        
+        this.props.dispatch(setLoadingModal());
     })
     .catch(error => {
-        if(error.response.status == 401 || error.response.status == 403)     
-            this.setState({requestError: error.response.data.message});
+        if(error.response.status == 401 || error.response.status == 403){
+            if(this.props.lang === 'English'){
+                this.setState(() => ({requestError: 'The user already exists'}));            
+            }
+            else{                
+                this.setState(() => ({requestError: 'El usuario ya existe'}));
+            }
+        }        
+        this.props.dispatch(setLoadingModal());     
     });
         }
         
