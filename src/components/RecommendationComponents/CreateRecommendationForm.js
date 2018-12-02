@@ -443,6 +443,8 @@ class CreateRecommendationForm extends React.Component{
             //If a regex check fails...
         }else if(this.state.titleError || this.state.headerError || this.state.descriptionError || this.state.locationError || this.state.topicError || this.state.subjectError || this.state.questionError || this.state.choiceError){
             this.setState(() => ({creationError: true}));
+        }else if(this.state.correctOption == -1){
+            this.setState(() => ({creationError: true}));
         }else{
             this.setState(() => ({creationError: false}));
             let choicesWithAnswer = []
@@ -1173,7 +1175,7 @@ class CreateRecommendationForm extends React.Component{
                     }
                     {this.state.creationError === true && 
                         <div className="text-danger">
-                            {this.props.lang === 'English' ? <p>Please fill all required fields before saving the recommendation.</p> : <p>Por favor, llene todos los campos requeridos antes de guardar la recomendación.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all required fields and choose a correct quiz answer before saving the recommendation.</p> : <p>Por favor, llene todos los campos requeridos y escoja la contestación correcta de la prueba antes de guardar la recomendación.</p>}
                         </div>}
                     
                     <br/>

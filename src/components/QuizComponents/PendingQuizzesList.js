@@ -28,6 +28,7 @@ class PendingQuizzesList extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
+            console.log("RESPONSE IN  QUIZZES LIST : ", response);
             this.props.dispatch(reset());
             response.data.quizzes.forEach(element => {
                 let correctChoices = {}

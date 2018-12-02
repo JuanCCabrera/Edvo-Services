@@ -47,7 +47,7 @@ class CheckoutForm extends Component {
         {
             token: token.id,
             plan: 'edvo_basic_capstone',
-            couponid: this.state.coupon
+            couponid: this.state.coupon == '' ? null : this.state.coupon
         },
         {
           headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})

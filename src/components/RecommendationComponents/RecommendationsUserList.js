@@ -8,6 +8,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
+import { clearSelection } from '../../actions/assignRecommendations';
 
 /**
  * List of users which appears in the Assign Recommendations list. 
@@ -28,6 +29,7 @@ class RecommendationsUserList extends React.Component{
     //Configure state when component is being mounted. This includes determing the initial list to display on the Assign Recommendations page. 
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
+        this.props.dispatch(clearSelection());
         this.props.dispatch(unloadUsers());
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})

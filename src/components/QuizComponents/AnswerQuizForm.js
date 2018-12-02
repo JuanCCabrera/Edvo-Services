@@ -8,6 +8,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import {setLoadingModal} from '../../actions/loadingModal';
 import {setFailureModal} from '../../actions/failureModal';
+import {setSuccessModal} from '../../actions/successModal';
 import {reset, createQuiz} from '../../actions/quiz';
 
 class AnswerQuizForm extends React.Component {
@@ -85,7 +86,8 @@ class AnswerQuizForm extends React.Component {
             answers.push({quizquestionid: questionid, 
             choiceid: this.state.answers[questionid], 
             correctanswer: this.props.quiz.correctChoices[questionid] == this.state.answers[questionid] ? true : false})
-        })     
+        });
+        this.props.dispatch(setLoadingModal()); 
         axios.post('https://beta.edvotech.com/api/teacher/quizzes/take',{
             quizid: this.props.quiz.quizID,
             answers: answers
@@ -95,9 +97,12 @@ class AnswerQuizForm extends React.Component {
         })
         .then(response => {
             if(response.data.statusCode == 201){
+                this.props.dispatch(setSuccessModal()); 
                 this.props.history.push('/teacher/quizzes');
             }
+            this.props.dispatch(setLoadingModal()); 
         }).catch(error => {
+            this.props.dispatch(setLoadingModal()); 
             this.setState(() => ({show: true}));
         });
     }

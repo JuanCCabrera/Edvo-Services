@@ -11,6 +11,7 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import {setSuccessModal} from '../../actions/successModal';
 import {setFailureModal} from '../../actions/failureModal';
+import {setLoadingModal} from '../../actions/loadingModal';
 import {removeUser} from '../../actions/user';
 /**
  * Assign Recommendations page layout. 
@@ -43,6 +44,7 @@ import {removeUser} from '../../actions/user';
             }
             <div>
                 <button disabled={!(props.assigned.userID && props.assigned.recoID)} onClick={() => {
+                    props.dispatch(setLoadingModal());
                     props.dispatch(assignRecommendation());
                     axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/assign', {
                         recomid: props.assigned.recoID,
@@ -52,11 +54,15 @@ import {removeUser} from '../../actions/user';
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` 
                     }})
                         .then(response=>{
-                            if(response.status == 201)
+                            if(response.status == 201){
                                 props.dispatch(setSuccessModal());
                                 props.dispatch(removeUser({id: props.assigned.userID}));
+                            }
+
+                    props.dispatch(setLoadingModal());
                     })
                     .catch(error=>{
+                        props.dispatch(setLoadingModal());
                         if(error)
                             props.dispatch(setFailureModal()); 
                     });
