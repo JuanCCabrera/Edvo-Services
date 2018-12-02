@@ -102,9 +102,9 @@ class BasicInfoProfileForm extends React.Component{
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({dateOfBirthError: 'You must be 18 or older.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'You must be 18 or older.'}));
             }else{
-                this.setState(() => ({dateOfBirthError: 'Usted debe tener 18 años o más.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Usted debe tener 18 años o más.'}));
             }
         }
     };

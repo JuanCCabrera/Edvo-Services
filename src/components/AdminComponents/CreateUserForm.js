@@ -59,6 +59,7 @@ class CreateUserForm extends React.Component{
     onPasswordChange = (e) => {
         const password = e.target.value;
         this.setState(() => ({password}));
+        this.setState(()=> ({confirmPassword: ''}));
     }
 
     //Change confirmPassword in local state
@@ -94,9 +95,9 @@ class CreateUserForm extends React.Component{
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
         }else{
             if(this.props.lang === 'English'){
-                this.setState(() => ({dateOfBirthError: 'Users must be 18 years or older.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Users must be 18 years or older.'}));
             }else{
-                this.setState(() => ({dateOfBirthError: 'Los usuarios deben tener 18 años o más.'}));
+                this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Los usuarios deben tener 18 años o más.'}));
             }
         }
     };

@@ -97,7 +97,9 @@ class LoginPage extends React.Component{
 
                                     { (auth0Client.isAuthenticated() && (this.props.loginPage.hasPaidSubscription || (auth0Client.getRole() != "teacher" && auth0Client.getRole() != null))) && 
                                         <div style={{marginTop: '3rem'}}>
-                                            <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/comebacksoonWHITEBG-min.png" />
+                                            {this.props.lang === 'English' ? <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/comebacksoonWHITEBG-min.png" />
+                                            : <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/vuelvapronto.png" />}
+                                            
                                                 {this.props.lang === 'English' ? 
                                                 <div>
                                                     <p>Thank you for contributing to the community of schools
