@@ -78,7 +78,7 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({institutionIDError: 'The institution ID must consist of alphanumeric characters and cannot have spaces.'}));
                 }
                 if(this.state.numAccountsError){
-                    this.setState(() => ({numAccountsError: 'Enter a number.'}));
+                    this.setState(() => ({numAccountsError: 'Enter a number greater than 0.'}));
                 }
             }else{
                 if(this.state.nameError){
@@ -91,7 +91,7 @@ class CreateInstitutionForm extends React.Component{
                     this.setState(() => ({institutionIDError: 'La identificación de la institución debe consistir de caracteres alfanumericos y no puede contener espacios.'}));
                 }
                 if(this.state.numAccountsError){
-                    this.setState(() => ({numAccountsError: 'Escriba un número.'}));
+                    this.setState(() => ({numAccountsError: 'Escriba un número mayor que 0.'}));
                 }
             }
         }
@@ -273,11 +273,11 @@ class CreateInstitutionForm extends React.Component{
                                 <input type="text" style={{width: '50%'}} maxLength="5" className="form-control" placeholder = {this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'} onBlur={() => {
                                     //Check if institution ID field matches expected format. 
                                     this.setState(() => ({numAccounts: this.state.numAccounts.trim()}));
-                                    if(!this.state.numAccounts.match(/^[1-9\|]*$/)){
+                                    if(!this.state.numAccounts.match(/^[1-9]{1}[0-9]*$/)){
                                         if(this.props.lang === 'English'){
-                                            this.setState(() => ({numAccountsError: 'Enter a number.'}));
+                                            this.setState(() => ({numAccountsError: 'Enter a number greater than 0.'}));
                                         }else{
-                                            this.setState(() => ({numAccountsError: 'Escriba un número.'})); 
+                                            this.setState(() => ({numAccountsError: 'Escriba un número mayor que 0.'})); 
                                         }
                                     }else{
                                         this.setState(() => ({numAccountsError: ''}));
