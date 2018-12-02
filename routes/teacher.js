@@ -796,7 +796,7 @@ router.post('/questions/favorite', checkJwt, (req,res,next)=> {
 });
 
 
-/* add classes */
+/* add classes */ //(UNUSED)
 router.post('/settings/classes/add', checkJwt, (req,res,next)=> {
     const classes = [];
     const resultsexist = [];
@@ -858,7 +858,7 @@ router.post('/settings/classes/add', checkJwt, (req,res,next)=> {
     });
 });
 
-/* Remove classes*/ 
+/* Remove classes*/  //unused
 router.delete('/settings/classes/remove', checkJwt, (req,res,next)=> {
   const classes = [];
   const resultsexist = [];
@@ -918,7 +918,7 @@ router.delete('/settings/classes/remove', checkJwt, (req,res,next)=> {
   });
 });
 
-/* GET classes to modify */
+/* GET classes to modify */ //unused
 router.get('/settings/classes', checkJwt, (req,res,next)=> {
   const classes = [];
   const resultsexist = [];

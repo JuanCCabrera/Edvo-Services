@@ -24,7 +24,7 @@ const checkJwt = jwt({
   issuer: `https://edvo-test.auth0.com/`,
   algorithms: ['RS256']
 });
-
+ //HTTP REQUEST NO ESTA NI COMMENTARIOS DE CODIGO
 router.get('/user', checkJwt, (req, res, next) => {
   user = [];
   subscription = [];
