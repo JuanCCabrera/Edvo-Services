@@ -9,6 +9,7 @@ import auth0Client from '../../Auth';
 import { loadRecommendation, unloadRecommendations } from '../../actions/recommendations';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
+import {setRecommendationsTextFilter} from '../../actions/filterActions/RecommendationsFilters';
 
 /**
  * List of recommendations which can be edited or removed from the system. 
@@ -25,6 +26,12 @@ class ManageRecommendationsList extends React.Component{
             displayedRecommendations: []
         }
     }
+
+    componentWillUnmount(){
+        this.props.dispatch(setRecommendationsTextFilter(''));
+        this.props.dispatch(unloadRecommendations());
+ }
+
     //Configure initial state if component will be mounted. 
     //Determine the recommendations to display on the first page. 
     componentWillMount(){

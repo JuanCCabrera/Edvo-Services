@@ -1110,7 +1110,7 @@ class CreateRecommendationForm extends React.Component{
                     <br/>
 
                     <label className="clickable radio__text">
-                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Medios Sociales'} 
+                    <input type="checkbox" name="resource" checked={this.state.socialMedia === true} onChange={this.onSocialMediaChange}/> {this.props.lang === 'English' ? 'Social Media' : 'Redes Sociales'} 
                     </label>
                     <br/>
 

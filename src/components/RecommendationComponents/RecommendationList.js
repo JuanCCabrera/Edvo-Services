@@ -9,6 +9,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
+import {setRecommendationsTextFilter} from '../../actions/filterActions/RecommendationsFilters';
 
 /**
  * List of recommendations displayed in the Assign Recommendations page. 
@@ -37,6 +38,7 @@ class RecommendationsList extends React.Component{
     }
 
     componentWillUnmount(){
+        this.props.dispatch(setRecommendationsTextFilter(''));
         this.props.dispatch(unloadRecommendations());
     }
     //Update page when the component updates
