@@ -881,7 +881,7 @@ class RegistrationForm extends React.Component{
                     }
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Subject' : 'Materia'}:</label>
-                    <input type="text"  className="form-control" placeholder= {this.props.lang === 'English' ? 'Subject' : 'Materia'} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
+                    <input maxLength="100" type="text"  className="form-control" placeholder= {this.props.lang === 'English' ? 'Subject' : 'Materia'} value={this.state.subject} onChange={this.onSubjectChange} onBlur={() => {
                         //Check to see if the subject is only composed of spaces.
                         this.setState(() => ({subject: this.state.subject.trim()})); 
                         if(this.state.subject.match(/^\s+$/)){

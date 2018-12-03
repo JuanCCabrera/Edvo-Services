@@ -270,7 +270,7 @@ class CreateInstitutionForm extends React.Component{
                                 <span className="req">*</span>
                                 <label>{this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'}:</label>
                                 <br/>
-                                <input type="text" style={{width: '50%'}} maxLength="5" className="form-control" placeholder = {this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'} onBlur={() => {
+                                <input type="text" style={{width: '50%'}} maxLength="4" className="form-control" placeholder = {this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'} onBlur={() => {
                                     //Check if institution ID field matches expected format. 
                                     this.setState(() => ({numAccounts: this.state.numAccounts.trim()}));
                                     if(!this.state.numAccounts.match(/^[1-9]{1}[0-9]*$/)){

@@ -5,6 +5,7 @@ import {setSuccessModal} from '../../actions/successModal';
 import {setFailureModal} from '../../actions/failureModal';
 import {setLoadingModal} from '../../actions/loadingModal';
 import axios from 'axios';
+import Can from '../../Can';
 import auth0Client from '../../Auth';
 
 class CreateCouponForm extends React.Component{
@@ -116,6 +117,10 @@ class CreateCouponForm extends React.Component{
 
     render(){
         return(
+            <Can
+            role={auth0Client.getRole()}
+            perform="admin:settings"
+            yes={() => (   
             <div className="background-home">
                 <div className="container">
                     <div className="row">
@@ -304,6 +309,9 @@ class CreateCouponForm extends React.Component{
                     </div>
                 </div>
             </div>
+                                                         )}
+                                                         no={() => <Redirect to="/login" />}
+                                                       />
         );
     }
 }

@@ -94,7 +94,7 @@ class CheckoutForm extends Component {
         <CardElement />
         <br/>
         {this.props.lang === 'English' ? <h4>Insert a coupon code if you have one:</h4> : <h4>Introduzca un código de cupón si tiene alguno:</h4>}
-        <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="10" value={this.state.coupon} placeholder={this.props.lang === 'English' ? 'Insert coupon code here' : 'Introduzca su cupón aqui'} onChange={this.onCouponChange} />
+        <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="30" value={this.state.coupon} placeholder={this.props.lang === 'English' ? 'Insert coupon code here' : 'Introduzca su cupón aqui'} onChange={this.onCouponChange} />
         
                     {this.state.userError === true && 
                         <div className="text-danger text-center">

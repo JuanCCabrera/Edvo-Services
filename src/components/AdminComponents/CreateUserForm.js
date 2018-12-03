@@ -6,6 +6,7 @@ import AdminButtonList from './AdminButtonList';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import auth0Client from '../../Auth';
+import Can from '../../Can';
 import { setSuccessModal } from '../../actions/successModal';
 import { setFailureModal } from '../../actions/failureModal';
 import { setLoadingModal } from '../../actions/loadingModal';
@@ -233,7 +234,12 @@ class CreateUserForm extends React.Component{
     }
 
     render(){
+        
         return(
+            <Can
+            role={auth0Client.getRole()}
+            perform="admin:settings"
+            yes={() => (   
             <div className="background-home">
                 <div className="container">
                     <div className="row">
@@ -641,6 +647,9 @@ class CreateUserForm extends React.Component{
                 </div>
             </div>
         </div>
+                                             )}
+                                             no={() => <Redirect to="/login" />}
+                                           />
         );
     }
 }

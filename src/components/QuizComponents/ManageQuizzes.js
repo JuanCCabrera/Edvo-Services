@@ -3,6 +3,10 @@ import PendingQuizzesList from './PendingQuizzesList';
 import ReturnButtonList from './ReturnButtonList';
 
 const ManageQuizzes = (props) => (
+    <Can
+    role={auth0Client.getRole()}
+    perform="teacher:quizzes-view"
+    yes={() => (
     <div className="background-home">
         <div className="container">
             <div className="row">
@@ -21,7 +25,9 @@ const ManageQuizzes = (props) => (
                 </div>
             </div>
         </div>
-    </div>
+    </div>     )}
+     no={() => <Redirect to="/login" />}
+   />
 );
 
 export default ManageQuizzes;

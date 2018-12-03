@@ -70,6 +70,10 @@ class ViewAnsweredQuiz extends React.Component {
 
     render(){
         return (
+            <Can
+            role={auth0Client.getRole()}
+            perform="teacher:quizzes-view"
+            yes={() => (
             <div className="background-home">
                 <div className="container">
                     <div className="row">
@@ -114,6 +118,9 @@ class ViewAnsweredQuiz extends React.Component {
                     </div>
                 </div>
             </div>
+            )}
+            no={() => <Redirect to="/login" />}
+          />
         );
     }
 
