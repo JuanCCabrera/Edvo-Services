@@ -7,6 +7,7 @@ import {setLoadingModal} from '../../actions/loadingModal';
 import axios from 'axios';
 import Can from '../../Can';
 import auth0Client from '../../Auth';
+import {Redirect} from 'react-router-dom';
 
 class CreateCouponForm extends React.Component{
     constructor(props){

@@ -10,6 +10,7 @@ import Can from '../../Can';
 import { setSuccessModal } from '../../actions/successModal';
 import { setFailureModal } from '../../actions/failureModal';
 import { setLoadingModal } from '../../actions/loadingModal';
+import {Redirect} from 'react-router-dom';
 
 /**
  * Form to create a new user and upload his or her information to the database

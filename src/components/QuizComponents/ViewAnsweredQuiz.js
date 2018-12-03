@@ -9,6 +9,8 @@ import moment from 'moment';
 import {setLoadingModal} from '../../actions/loadingModal';
 import {setFailureModal} from '../../actions/failureModal';
 import {reset, createQuiz} from '../../actions/quiz';
+import Can from '../../Can';
+import {Redirect} from 'react-router-dom';
 
 class ViewAnsweredQuiz extends React.Component {
     constructor(props){

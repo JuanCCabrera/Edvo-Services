@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { answerQuiz } from '../../actions/quiz';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
 import QuizButtonList from './QuizButtonList';
 import uuid from 'uuid';
 import axios from 'axios';
@@ -10,6 +10,7 @@ import {setLoadingModal} from '../../actions/loadingModal';
 import {setFailureModal} from '../../actions/failureModal';
 import {setSuccessModal} from '../../actions/successModal';
 import {reset, createQuiz} from '../../actions/quiz';
+import Can from '../../Can';
 
 class AnswerQuizForm extends React.Component {
     constructor(props){

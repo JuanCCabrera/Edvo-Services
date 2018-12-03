@@ -1,6 +1,9 @@
 import React from 'react';
 import PendingQuizzesList from './PendingQuizzesList';
 import ReturnButtonList from './ReturnButtonList';
+import Can from '../../Can';
+import auth0Client from '../../Auth';
+import {Redirect} from 'react-router-dom';
 
 const ManageQuizzes = (props) => (
     <Can
