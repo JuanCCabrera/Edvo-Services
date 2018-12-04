@@ -482,7 +482,7 @@ router.post('/settings/users/remove', checkJwt, (req, res, next) => {
                                     if (err)
                                         return res.status(402).json({
                                             statusCode: 402,
-                                            message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
+                                            message: 'Could not remove the subscription represented by the given token.',
                                             isBase64Encoded: false,
                                         });
                                 });
@@ -1377,6 +1377,8 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
             }
           });
         } else {
+            //Sends a POST request to Auth0 for creating a new user given its email and password. If correct it returns a 200 response status
+            //and creates the user in the database. It throws a 401 error otherwise if the inputs were not given as expected
           axios.post('https://edvo-test.auth0.com/dbconnections/signup', {
             client_id: 'jqBhoqhizlsno2lZ5eUNFsbLDdNlxvzJ',
             email: data.email,

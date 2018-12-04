@@ -456,7 +456,6 @@ router.post('/questions/rate', checkJwt, (req,res,next)=> {
       askeddate: moment(req.body.askeddate).format("YYYY-MM-DD HH:mm:ss"),
       rate: req.body.rate
     };
-console.log(data);
   //verify inputs
   if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateRate(data.rate)){
     return res.status(403).json({statusCode: 403,
@@ -1180,7 +1179,7 @@ router.post('/settings/plans', checkJwt, (req, res, next) => {
         else {
           return res.status(401).json({
             statusCode: 401,
-            message: 'User does not exists in records or isn\'t a teacher. Inputs were not received as expected.',
+            message: 'The user has been cancelled. A new subscription cannot be issued.',
             isBase64Encoded: false,
           });
         }

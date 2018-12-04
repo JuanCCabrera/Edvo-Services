@@ -69,10 +69,6 @@ router.post('/', checkJwt, (req,res,next)=> {
       speakers: req.body.speakers,
       class: req.body.class
     };
-    
-    
-    console.log("DATA IN ARRAY: ", !Array.isArray(data.class));
-    console.log("SCHOOL NAME: ", val.validateLongText(data.schoolname));
     if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) 
       || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies) || val.validateDate(data.teachersince)
       || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
