@@ -1,12 +1,12 @@
 const express = require('express');
-const router = express.Router(); 
+const router = express.Router();
 const pg = require('pg');
 const jwt = require('express-jwt');
 const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
 const axios = require('axios');
 const moment = require('moment');
-const val= require('./validate'); //validate inputs
+const val = require('./validate'); //validate inputs
 var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
@@ -26,31 +26,33 @@ const checkJwt = jwt({
 });
 
 /* Create a coupon*///CHECKED
-router.post('/settings/coupon/add', checkJwt, (req,res,next)=> {
+router.post('/settings/coupon/add', checkJwt, (req, res, next) => {
   const results = [];
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.user.sub,
-      name: req.body.name, 
-      couponid: req.body.couponid,
-      duration: req.body.duration,
-      percentage: req.body.percentage
-    };
-  if(val.validateUserID(data.userid) || val.validateInt(data.duration) || 
-     val.validateInt(data.percentage) || val.validateLongText(data.name) || 
-     val.validatecoupon(data.couponid)){
-      return res.status(403).json({statusCode: 403,
-          message: 'Inputs were not received as expected.',
-        isBase64Encoded: false,});
-    }
+    userid: req.user.sub,
+    name: req.body.name,
+    couponid: req.body.couponid,
+    duration: req.body.duration,
+    percentage: req.body.percentage
+  };
+  if (val.validateUserID(data.userid) || val.validateInt(data.duration) ||
+    val.validateInt(data.percentage) || val.validateLongText(data.name) ||
+    val.validatecoupon(data.couponid)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
+  }
   // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
+  pg.connect(connectionString, (err, client, done) => {
     //handle connection error
-    if(err){
+    if (err) {
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, data: err});
+      return res.status(500).json({ statusCode: 500, data: err });
     }
     //verify if user exists in database records and is of type admin
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
@@ -60,7 +62,7 @@ router.post('/settings/coupon/add', checkJwt, (req,res,next)=> {
     });
     query.on('end', () => {
       done();
-      if (results.length === 1){ // user exists and is of type admin
+      if (results.length === 1) { // user exists and is of type admin
         //SQL Query > select coupon
         const query1 = client.query('SELECT * FROM coupons WHERE couponid = $1', [data.couponid,]);
         //stream results back one row at a time
@@ -69,34 +71,38 @@ router.post('/settings/coupon/add', checkJwt, (req,res,next)=> {
         });
         query1.on('end', () => {
           done();
-          if(resultsexist.length == 0){
+          if (resultsexist.length == 0) {
             stripe.coupons.create({
               percent_off: data.percentage,
               duration: 'repeating',
               duration_in_months: data.duration,
               id: data.couponid
-            }, function(err, coupon) {
-                if(err){
-                    return res.status(402).json({statusCode: 402,message: 'Couponid already exist in database.',isBase64Encoded: false,});                    
-                }
-                else{
-                     client.query('INSERT into coupons(couponid, name) values($1, $2)',[coupon.id,data.name,]);
-                    return res.status(200).json({statusCode: 200});
-                }
+            }, function (err, coupon) {
+              if (err) {
+                return res.status(402).json({ statusCode: 402, message: 'Couponid already exist in database.', isBase64Encoded: false, });
+              }
+              else {
+                client.query('INSERT into coupons(couponid, name) values($1, $2)', [coupon.id, data.name,]);
+                return res.status(200).json({ statusCode: 200 });
+              }
               // asynchronously called
             });
-           
-          }else{
-            return res.status(402).json({statusCode: 402,
+
+          } else {
+            return res.status(402).json({
+              statusCode: 402,
               message: 'Couponid already exist in database.',
-              isBase64Encoded: false,});
+              isBase64Encoded: false,
+            });
           }
         });
-      }else// user doesn't exist in record or isnt of type admin, send error statuscode
+      } else// user doesn't exist in record or isnt of type admin, send error statuscode
       {
-        return res.status(401).json({statusCode: 401,
+        return res.status(401).json({
+          statusCode: 401,
           message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
-          isBase64Encoded: false,});
+          isBase64Encoded: false,
+        });
       }
     });
   });
@@ -104,30 +110,32 @@ router.post('/settings/coupon/add', checkJwt, (req,res,next)=> {
 
 
 /* Modify user basic info */
-router.post('/settings/info', checkJwt, (req,res,next)=> {
+router.post('/settings/info', checkJwt, (req, res, next) => {
   const info = [];
   const resultsexist = [];
   //grab data from http request
   const data = {
-      userid: req.user.sub, 
-      name: req.body.name,
-      lastname: req.body.lastname,
-      gender: req.body.gender,
-      dob: req.body.dob
-    };
+    userid: req.user.sub,
+    name: req.body.name,
+    lastname: req.body.lastname,
+    gender: req.body.gender,
+    dob: req.body.dob
+  };
   //verify no input is empty
-  if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)){
-    return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+  if (val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) || val.validateDate(data.dob)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
+  pg.connect(connectionString, (err, client, done) => {
     //handle connection error
-    if(err){
+    if (err) {
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, data: err});
+      return res.status(500).json({ statusCode: 500, data: err });
     }
     //verify if user exists in database records
     const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
@@ -137,50 +145,53 @@ router.post('/settings/info', checkJwt, (req,res,next)=> {
     });
     query1.on('end', () => {
       done();
-      if (resultsexist.length === 1){ // user exists
-      
+      if (resultsexist.length === 1) { // user exists
+
         //SQL Query > update data
-        client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]); 
+        client.query('UPDATE users SET name= $1, lastname= $2, gender= $3,  dob = $4 WHERE userid = $5', [data.name, data.lastname, data.gender, data.dob, data.userid,]);
         //SQL Query > select data
         const query = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
         //stream results back one row at a time
         query.on('row', (row) => {
-        info.push(row);
+          info.push(row);
         });
         query.on('end', () => {
           done();
-          return res.status(201).json({statusCode: 201, info});
+          return res.status(201).json({ statusCode: 201, info });
         });
-      }else
-      {
-        return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records. Inputs were not received as expected.',
-            isBase64Encoded: false,});
+      } else {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User does not exists in records. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
       }
     });
   });
 });
 
 /* Get basic info*/
-router.get('/settings/info', checkJwt,(req,res,next)=> {
+router.get('/settings/info', checkJwt, (req, res, next) => {
   const info = [];
   //grab data from http request
   const data = {
-      userid: req.user.sub
-    };
+    userid: req.user.sub
+  };
   //verify no input is empty
-  if(val.validateUserID(data.userid) ){
-    return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+  if (val.validateUserID(data.userid)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
+  pg.connect(connectionString, (err, client, done) => {
     //handle connection error
-    if(err){
+    if (err) {
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, data: err});
+      return res.status(500).json({ statusCode: 500, data: err });
     }
     //verify if user exists in database records
     const query1 = client.query('SELECT userid, name, lastname, dob, gender, email FROM users WHERE userid = $1', [data.userid,]);
@@ -190,13 +201,14 @@ router.get('/settings/info', checkJwt,(req,res,next)=> {
     });
     query1.on('end', () => {
       done();
-      if (info.length === 1){ // user exists
-        return res.status(200).json({statusCode: 200 , info: info[0]});
-      }else
-      {
-        return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records. Inputs were not received as expected.',
-            isBase64Encoded: false,});
+      if (info.length === 1) { // user exists
+        return res.status(200).json({ statusCode: 200, info: info[0] });
+      } else {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User does not exists in records. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
       }
     });
   });
@@ -204,320 +216,344 @@ router.get('/settings/info', checkJwt,(req,res,next)=> {
 
 /* Add institution *///CHECKED
 router.post('/settings/institutions/add', checkJwt, (req, res, next) => {
-    const institution = [];
-    const resultsexist = [];
-    //grab data from http request
-    const data = {
-        userid: req.user.sub,
-        institutionid: req.body.institutionid,
-        name: req.body.name,
-        location: req.body.location,
-        schooltype: req.body.schooltype,
-        accounts: req.body.accounts
-    };
-    //verify no input is empty
-    if (val.validateUserID(data.userid) || val.validatecoupon(data.institutionid) || val.validateLongText(data.name) || val.validateStringLocation(data.location) || val.validateNoSpace(data.schooltype) || val.validateInt(data.accounts)) {
-        return res.status(403).json({
-            statusCode: 403,
-              message: 'Inputs were not received as expected.',
-            isBase64Encoded: false,
-        });
-    }
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done) => {
-        //handle connection error
-        if (err) {
-            done();
-            console.log(err);
-            return res.status(500).json({statusCode: 500, data: err});
-        }
-        //verify if user exists in database records
-        const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
-        //stream results back one row at a time
-        query1.on('row', (row) => {
-            resultsexist.push(row);
-        });
-        query1.on('end', () => {
-            done();
-            if (resultsexist.length === 1) { // user exists and is of type admin
-                //SQL Query > select data
-                const query = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid, ]);
-                //stream results back one row at a time
-                query.on('row', (row) => {
-                    institution.push(row);
-                });
-                query.on('end', () => {
-                    done();
-                    if (institution.length === 0) {
-                        //Create coupon in Stripe from institutionid
-                        stripe.coupons.create({
-                            percent_off: 100,
-                            duration: 'forever',
-                            name: data.name,
-                            id: data.institutionid
-                        }, function(err, coupon) {
-                            if (err) {
-                                return res.status(406).json({
-                                    statusCode: 406,
-                                    message: 'Stripe could not create the coupon',
-                                    isBase64Encoded: false,
-                                });
-                            }
-                        });
-                        //SQL Query > insert data
-                        client.query('INSERT into institution (institutionid, name, location, schooltype, accounts, accountsused) values ($1, $2, $3, $4, $5, $6)', [data.institutionid, data.name, data.location, data.schooltype, data.accounts, 0]);
-                        //Add Coupon name and id
-                        client.query('INSERT into coupons (couponid, name) values ($1, $2)', [data.institutionid, data.name]);
-                        return res.status(201).json({statusCode: 201});
-                    } else {
-                        return res.status(402).json({
-                            statusCode: 402,
-                            message: 'Institutionid is already in database. Inputs were not received as expected.',
-                            isBase64Encoded: false
-                        });
-                    }
-                });
-            } else {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
-                    isBase64Encoded: false,
-                });
-            }
-        });
+  const institution = [];
+  const resultsexist = [];
+  const coupons = [];
+  //grab data from http request
+  const data = {
+    userid: req.user.sub,
+    institutionid: req.body.institutionid,
+    name: req.body.name,
+    location: req.body.location,
+    schooltype: req.body.schooltype,
+    accounts: req.body.accounts
+  };
+  //verify no input is empty
+  if (val.validateUserID(data.userid) || val.validatecoupon(data.institutionid) || val.validateLongText(data.name) || val.validateStringLocation(data.location) || val.validateNoSpace(data.schooltype) || val.validateInt(data.accounts)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
     });
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    //handle connection error
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ statusCode: 500, data: err });
+    }
+    //verify if user exists in database records
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1) { // user exists and is of type admin
+        //SQL Query > select data to verify coupon id is already in use
+        const query2 = client.query('SELECT * FROM coupons WHERE couponid = $1', [data.institutionid,]);
+        //stream results back one row at a time
+        query2.on('row', (row) => {
+          coupons.push(row);
+        });
+        query2.on('end', () => {
+          done();
+          if (coupons.length === 0) {//coupon doesnt exist
+
+            //SQL Query > select data to verify institution id is already in use
+            const query = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid,]);
+            //stream results back one row at a time
+            query.on('row', (row) => {
+              institution.push(row);
+            });
+            query.on('end', () => {
+              done();
+              if (institution.length === 0) {
+                //Create coupon in Stripe from institutionid
+                stripe.coupons.create({
+                  percent_off: 100,
+                  duration: 'forever',
+                  name: data.name,
+                  id: data.institutionid
+                }, function (err, coupon) {
+                  if (err) {
+                    return res.status(406).json({
+                      statusCode: 406,
+                      message: 'Stripe could not create the coupon',
+                      isBase64Encoded: false,
+                    });
+                  }
+                });
+                //SQL Query > insert data
+                client.query('INSERT into institution (institutionid, name, location, schooltype, accounts, accountsused) values ($1, $2, $3, $4, $5, $6)', [data.institutionid, data.name, data.location, data.schooltype, data.accounts, 0]);
+                //Add Coupon name and id
+                client.query('INSERT into coupons (couponid, name) values ($1, $2)', [data.institutionid, data.name]);
+                return res.status(201).json({ statusCode: 201 });
+              } else {
+                return res.status(402).json({
+                  statusCode: 402,
+                  message: 'Institutionid is already in database. Inputs were not received as expected.',
+                  isBase64Encoded: false
+                });
+              }
+            });
+          } else {
+            return res.status(402).json({
+              statusCode: 402,
+              message: 'Couponid is already in database. Inputs were not received as expected.',
+              isBase64Encoded: false
+            });
+          }
+        });
+
+      } else {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
+      }
+    });
+  });
 });
 
 
 /* Remove institution *///CHECKED
 router.delete('/settings/institutions/remove', checkJwt, (req, res, next) => {
-    const institution = [];
-    const users = [];
-    const resultsexist = [];
-    const tokensforstripe = [];
-    //grab data from http request
-    const data = {
-        userid: req.user.sub,
-        institutionid: req.body.institutionid,
-    };
-    //verify no input is empty
-    if (val.validateUserID(data.userid) || val.validatecoupon(data.institutionid)) {
-        return res.status(403).json({
-            statusCode: 403,
-            message: 'Inputs were not received as expected.',
-            isBase64Encoded: false,
-        });
-    }
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done) => {
-        //handle connection error
-        if (err) {
-            done();
-            console.log(err);
-            return res.status(500).json({
-                statusCode: 500,
-                data: err
-            });
-        }
-        //verify if user exists in database records and type admin
-        const query = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
-        //stream results back one row at a time
-        query.on('row', (row) => {
-            resultsexist.push(row);
-        });
-        query.on('end', () => {
-            done();
-            if (resultsexist.length === 1) { // user exists and is of type admin
-                //SQL Query > select data
-                const query1 = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid, ]);
-                //stream results back one row at a time
-                query1.on('row', (row) => {
-                    institution.push(row);
-                });
-                query1.on('end', () => {
-                    done();
-                    if (institution.length === 1) { //institutionid exists
-			                  //remove institutionid from school type user        
-			                  client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 AND usertype = $2', [data.institutionid, 'school']);
-                        //SQL QUERY > get tokens for subscriptions to be suspended
-                        const query2 = client.query('SELECT token FROM subscription WHERE userid IN (select userid from users where institutionid= $1)', [data.institutionid, ]);
-                        //crear lista de token para delete
-                        //stream results back one row at a time
-                        query2.on('row', (row) => {
-                            tokensforstripe.push(row);
-                        });
-                        query2.on('end', () => {
-                            done();
-                            if(tokensforstripe.length > 0)
-                            stripe.subscriptions.del(tokensforstripe[0].token,
-                                function(err, response) {
-                                    if (err) {
-                                        return res.status(402).json({
-                                            statusCode: 402,
-                                            message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
-                                            isBase64Encoded: false,
-                                        });
-                                    } else {
-                                        //SQL Query > update institutionid in users
-                                        const query3 = client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 returning *', [data.institutionid, ]);
-                                        //stream results back one row at a time
-                                        query3.on('row', (row) => {
-                                            users.push(row);
-                                        });
-                                        query3.on('end', () => {
-                                            done();
-                                            for (var i = 0; i < users.length; i++) {
-                                                //SQL QUERY > update subscriptions
-                                                client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', users[i].userid, ]);
-                                            }
-                                            //SQL Query > delete data
-                                            client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid, ]);
-                                            return res.status(201).json({statusCode: 201});
-                                        });
-
-                                    }
-                                });
-                            else{
-                                client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid, ]);
-                                return res.status(201).json({statusCode: 201});
-                                }
-                        });
-                    } else {
-                        return res.status(402).json({
-                            statusCode: 402,
-                            message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
-                            isBase64Encoded: false,
-                        });
-                    }
-                });
-            } else {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
-                    isBase64Encoded: false,
-                });
-            }
-        });
+  const institution = [];
+  const users = [];
+  const resultsexist = [];
+  const tokensforstripe = [];
+  //grab data from http request
+  const data = {
+    userid: req.user.sub,
+    institutionid: req.body.institutionid,
+  };
+  //verify no input is empty
+  if (val.validateUserID(data.userid) || val.validatecoupon(data.institutionid)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
     });
-});
-   
-/* Remove user *///CHECKED
-router.post('/settings/users/remove', checkJwt, (req, res, next) => {
-    const user = [];
-    const resultsexist = [];
-    const tokenstripe = [];
-    //grab data from http request
-    const data = {
-        userid: req.user.sub,
-        removeid: req.body.userIDToRemove
-    };
-    //verify no input is empty
-    if (val.validateUserID(data.userid) || val.validateUserID(data.removeid)) {
-        return res.status(403).json({
-            statusCode: 403,
-            message: 'Inputs were not received as expected.',
-            isBase64Encoded: false,
-        });
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    //handle connection error
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({
+        statusCode: 500,
+        data: err
+      });
     }
-    
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done) => {
-        //handle connection error
-        if (err) {
-            done();
-            console.log(err);
-            return res.status(500).json({
-                statusCode: 500,
-                data: err
-            });
-        }
-        //verify if user exists in database records and is admin
-        const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+    //verify if user exists in database records and type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (resultsexist.length === 1) { // user exists and is of type admin
+        //SQL Query > select institution if it exists
+        const query1 = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid,]);
         //stream results back one row at a time
         query1.on('row', (row) => {
-            resultsexist.push(row);
+          institution.push(row);
         });
         query1.on('end', () => {
-            done();
-            if (resultsexist.length === 1) { // user exists and is of type admin
-
-                //SQL Query > select data
-                const query = client.query('SELECT * FROM users WHERE userid = $1', [data.removeid, ]);
-                //stream results back one row at a time
-                query.on('row', (row) => {
-                    user.push(row);
-                });
-                query.on('end', () => {
-                    done();
-                    if (user.length === 1) {
-                        //SQL Query > update data
-                        const query2 = client.query('UPDATE subscription SET status = $1 WHERE userid= $2 returning token', ['cancelled', data.removeid, ]);
-                        //stream results back one row at a time
-                        query2.on('row', (row) => {
-                            tokenstripe.push(row);
-                        });
-                        query2.on('end', () => {
-                            done();
-                            stripe.subscriptions.del(tokenstripe[0].token,
-                                function(err, response) {
-                                    if (err)
-                                        return res.status(402).json({
-                                            statusCode: 402,
-                                            message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
-                                            isBase64Encoded: false,
-                                        });
-                                });
-                            return res.status(201).json({statusCode: 201});
-                        });
+          done();
+          if (institution.length === 1) { //institutionid exists
+            //remove institutionid from school type user        
+            client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 AND usertype = $2', [data.institutionid, 'school']);
+            //SQL QUERY > get tokens for subscriptions to be suspended
+            const query2 = client.query('SELECT token FROM subscription WHERE userid IN (select userid from users where institutionid= $1)', [data.institutionid,]);
+            //crear lista de token para delete
+            //stream results back one row at a time
+            query2.on('row', (row) => {
+              tokensforstripe.push(row);
+            });
+            query2.on('end', () => {
+              done();
+              if (tokensforstripe.length > 0) {
+                stripe.subscriptions.del(tokensforstripe[0].token,
+                  function (err, response) {
+                    if (err) {
+                      return res.status(402).json({
+                        statusCode: 402,
+                        message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
+                        isBase64Encoded: false,
+                      });
                     } else {
-                        return res.status(402).json({
-                            statusCode: 402,
-                            message: 'The user to be deleted doesn\'t exist in database. Inputs were not received as expected.',
-                            isBase64Encoded: false,
-                        });
+                      //SQL Query > update institutionid in users
+                      const query3 = client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 returning *', [data.institutionid,]);
+                      //stream results back one row at a time
+                      query3.on('row', (row) => {
+                        users.push(row);
+                      });
+                      query3.on('end', () => {
+                        done();
+                        for (var i = 0; i < users.length; i++) {
+                          //SQL QUERY > update subscriptions
+                          client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', users[i].userid,]);
+                        }
+                        //SQL Query > delete data
+                        client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid,]);
+                        return res.status(201).json({ statusCode: 201 });
+                      });
+
                     }
-                });
-            } else {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
-                    isBase64Encoded: false,
-                });
-            }
+                  });
+              } else {
+                client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid,]);
+                return res.status(201).json({ statusCode: 201 });
+              }
+            });
+          } else {
+            return res.status(402).json({
+              statusCode: 402,
+              message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
+              isBase64Encoded: false,
+            });
+          }
         });
+      } else {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
+      }
     });
+  });
+});
+
+/* Remove user *///CHECKED
+router.post('/settings/users/remove', checkJwt, (req, res, next) => {
+  const user = [];
+  const resultsexist = [];
+  const tokenstripe = [];
+  //grab data from http request
+  const data = {
+    userid: req.user.sub,
+    removeid: req.body.userIDToRemove
+  };
+  //verify no input is empty
+  if (val.validateUserID(data.userid) || val.validateUserID(data.removeid)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
+  }
+
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    //handle connection error
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({
+        statusCode: 500,
+        data: err
+      });
+    }
+    //verify if user exists in database records and is admin
+    const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
+    //stream results back one row at a time
+    query1.on('row', (row) => {
+      resultsexist.push(row);
+    });
+    query1.on('end', () => {
+      done();
+      if (resultsexist.length === 1) { // user exists and is of type admin
+
+        //SQL Query > select data
+        const query = client.query('SELECT * FROM users WHERE userid = $1', [data.removeid,]);
+        //stream results back one row at a time
+        query.on('row', (row) => {
+          user.push(row);
+        });
+        query.on('end', () => {
+          done();
+          if (user.length === 1) {
+            //SQL Query > update data
+            const query2 = client.query('UPDATE subscription SET status = $1 WHERE userid= $2 returning token', ['cancelled', data.removeid,]);
+            //stream results back one row at a time
+            query2.on('row', (row) => {
+              tokenstripe.push(row);
+            });
+            query2.on('end', () => {
+              done();
+              stripe.subscriptions.del(tokenstripe[0].token,
+                function (err, response) {
+                  if (err)
+                    return res.status(402).json({
+                      statusCode: 402,
+                      message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
+                      isBase64Encoded: false,
+                    });
+                });
+              return res.status(201).json({ statusCode: 201 });
+            });
+          } else {
+            return res.status(402).json({
+              statusCode: 402,
+              message: 'The user to be deleted doesn\'t exist in database. Inputs were not received as expected.',
+              isBase64Encoded: false,
+            });
+          }
+        });
+      } else {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
+      }
+    });
+  });
 });
 
 /* change user permission*///UNUSED
-router.post('/settings/users/permissions', (req,res,next)=> {
+router.post('/settings/users/permissions', (req, res, next) => {
   const user = [];
   const resultsexist = [];
   const changeduser = [];
   //grab data from http request
   const data = {
-      userid: req.body.userid, 
-      changeid: req.body.userIDToChange,
-      permission: req.body.permissions
-    };
+    userid: req.body.userid,
+    changeid: req.body.userIDToChange,
+    permission: req.body.permissions
+  };
   //verify no input is empty
-  if(val.validateUserID(data.userid) || val.validateNoSpace(data.permission) || val.validateUserID(data.changeid)){
-    return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+  if (val.validateUserID(data.userid) || val.validateNoSpace(data.permission) || val.validateUserID(data.changeid)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
   }
-  if(data.permission != 'admin' || data.permission != 'mentor'){
-    return res.status(403).json({statusCode: 403,
-        message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+  if (data.permission != 'admin' || data.permission != 'mentor') {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
   }
 
   // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
+  pg.connect(connectionString, (err, client, done) => {
     //handle connection error
-    if(err){
+    if (err) {
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, data: err});
+      return res.status(500).json({ statusCode: 500, data: err });
     }
     //verify if user exists in database records and is type admin
     const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.userid, 'admin']);
@@ -527,37 +563,40 @@ router.post('/settings/users/permissions', (req,res,next)=> {
     });
     query1.on('end', () => {
       done();
-      if (resultsexist.length === 1){ // user exists and is of type admin
+      if (resultsexist.length === 1) { // user exists and is of type admin
         //SQL Query > select data
         const query = client.query('SELECT * FROM users WHERE userid = $1', [data.changeid,]); //verify userid to be updated is in database
         //stream results back one row at a time
         query.on('row', (row) => {
-        user.push(row);
+          user.push(row);
         });
         query.on('end', () => {
           done();
-          if(user.length === 1){
+          if (user.length === 1) {
             //SQL Query > update data
             const query2 = client.query('UPDATE users SET usertype= $1 WHERE userid= $2 returning *', [data.permission, data.changeid,]);
-             //stream results back one row at a time
+            //stream results back one row at a time
             query2.on('row', (row) => {
               changeduser.push(row);
-              });
+            });
             query2.on('end', () => {
               done();
-              return res.status(201).json({statusCode: 201, user: changeduser[0]});
+              return res.status(201).json({ statusCode: 201, user: changeduser[0] });
             });
-          }else{
-            return res.status(402).json({statusCode: 402,
+          } else {
+            return res.status(402).json({
+              statusCode: 402,
               message: 'The user to change permissions doesn\'t exist in database. Inputs were not received as expected.',
-              isBase64Encoded: false,});
+              isBase64Encoded: false,
+            });
           }
         });
-      }else
-      {
-        return res.status(401).json({statusCode: 401,
-              message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
-            isBase64Encoded: false,});
+      } else {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User does not exists in records or is not type admin. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
       }
     });
   });
@@ -610,35 +649,38 @@ router.post('/recommendations/create', checkJwt, (req, res, next) => {
     choices: req.body.choices
   };
 
-  if(val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
-  || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
-  || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.topica)
-    || val.validateLongText(data.subject) || val.validateLongText(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateLongText(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
-    || val.validateLongText(data.question) || val.validateLongText(data.choices) || !Array.isArray(data.choices) ){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech)
+    || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector)
+    || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.topica)
+    || val.validateLongText(data.subject) || val.validateLongText(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateLongText(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level)
+    || val.validateLongText(data.question) || val.validateLongText(data.choices) || !Array.isArray(data.choices)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
-  
+
   var choicejson = data.choices;
   var length = choicejson.length;
-  
+
   //verify all choices have both parameters
-  for(var i=0; i<length ; i++){
-    if(val.validateLongText(choicejson[i].choice) || val.validateBool(choicejson[i].correctanswer)){
-      return res.status(403).json({statusCode: 403,
-          message: 'Inputs were not received as expected.',
-        isBase64Encoded: false,});
+  for (var i = 0; i < length; i++) {
+    if (val.validateLongText(choicejson[i].choice) || val.validateBool(choicejson[i].correctanswer)) {
+      return res.status(403).json({
+        statusCode: 403,
+        message: 'Inputs were not received as expected.',
+        isBase64Encoded: false,
+      });
     }
   }
-  
   // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
+  pg.connect(connectionString, (err, client, done) => {
     //handle connection error
-    if(err){
+    if (err) {
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, data: err});
+      return res.status(500).json({ statusCode: 500, data: err });
     }
     //verify if adminid exists in database records and is of type menotr
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
@@ -738,19 +780,21 @@ router.post('/recommendations/modify', checkJwt, (req, res, next) => {
     format: req.body.format,
     groupsize: req.body.size,
     level: req.body.level,
-    active : true
+    active: true
   };
-  
+
   //verify no input is empty
- if(val.validateInt(data.recomid) || val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
- || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector) 
- || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.topica)
- || val.validateLongText(data.subject) || val.validateLongText(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateLongText(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level) 
- || val.validateBool(data.active) ){
-   return res.status(403).json({statusCode: 403,
-     message: 'Inputs were not received as expected.',
-     isBase64Encoded: false,});
- }
+  if (val.validateInt(data.recomid) || val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech)
+    || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector)
+    || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.topica)
+    || val.validateLongText(data.subject) || val.validateLongText(data.type) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateLongText(data.format) || val.validateGroup(data.groupsize) || val.validateLevel(data.level)
+    || val.validateBool(data.active)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     //handle connection error
@@ -782,17 +826,19 @@ router.post('/recommendations/modify', checkJwt, (req, res, next) => {
             //SQL Query > update into recommendation_topics
             client.query('UPDATE recommendation_topics SET topica=$1, topicb= $2, topicc=$3 WHERE recomid =$4', [data.topica, data.topicb, data.topicc, data.recomid,]);
             //SQL QUERY > update into recommendation_target
-            client.query('UPDATE recommendation_target SET strategies= $1, material = $2, timemanagement=$3, tech= $4, instructions= $5 WHERE recomid =$6', [data.strategies, data.material, data.timemanagement, data.tech, data.instructions, data.recomid,]);  
+            client.query('UPDATE recommendation_target SET strategies= $1, material = $2, timemanagement=$3, tech= $4, instructions= $5 WHERE recomid =$6', [data.strategies, data.material, data.timemanagement, data.tech, data.instructions, data.recomid,]);
             //SQL query > UPDATE into recommendation_body
-            client.query('UPDATE recommendation_body SET title= $1, multimedia = $2, header= $3, description = $4 WHERE recomid =$5', [data.title, data.multimedia, data.header, data.description, data.recomid,]); 
+            client.query('UPDATE recommendation_body SET title= $1, multimedia = $2, header= $3, description = $4 WHERE recomid =$5', [data.title, data.multimedia, data.header, data.description, data.recomid,]);
             //SQL query > UPDATE into recommendation_req
             client.query('UPDATE recommendation_req SET moodle = $1, googleclassroom= $2, emails = $3, books=$4, applications=$5, socialmedia=$6, projector=$7, computer=$8, tablet=$9, stylus= $10, internet= $11, smartboard= $12, smartpencil= $13, speakers=$14 WHERE recomid=$15', [data.moodle, data.googleclassroom, data.emails, data.books, data.apps, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers, data.recomid,]);
-            
-            return res.status(201).json({statusCode: 201});
-          }else{
-            return res.status(402).json({statusCode: 402,
+
+            return res.status(201).json({ statusCode: 201 });
+          } else {
+            return res.status(402).json({
+              statusCode: 402,
               message: 'Recommendationid doesn\'t exist in records. Inputs were not received as expected.',
-              isBase64Encoded: false,});
+              isBase64Encoded: false,
+            });
           }
         });
       } else//if user doesn't exist in record or isnt of type admin send error statuscode
@@ -817,10 +863,12 @@ router.post('/recommendations/remove', checkJwt, (req, res, next) => {
     userid: req.user.sub,
     recomid: req.body.recomid
   };
-  if(val.validateUserID(data.userid) || val.validateInt(data.recomid)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid) || val.validateInt(data.recomid)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -985,10 +1033,12 @@ router.post('/questions/answer', checkJwt, (req, res, next) => {
     answer: req.body.answer
   };
   //verify inputs are valid
-  if(val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateUserID(data.teacherid) || val.validateLongText(data.answer)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid) || val.validateTime(data.askeddate) || val.validateUserID(data.teacherid) || val.validateLongText(data.answer)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -1117,10 +1167,12 @@ router.get('/staff/questions', checkJwt, (req, res, next) => {
     userid: req.user.sub, //change to req.query.userid for testing
   };
   //verify inputs are valid
-  if(val.validateUserID(data.userid)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -1171,10 +1223,12 @@ router.get('/recommendations', checkJwt, (req, res, next) => {
     userid: req.user.sub, //change to req.query.userid for testing
   };
   //verify inputs are valid
-  if(val.validateUserID(data.userid)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -1222,21 +1276,23 @@ router.get('/recommendations/users', checkJwt, (req, res, next) => {
   const users = [];
   //grab data from http request
   const data = {
-      userid: req.user.sub, 
-    };
+    userid: req.user.sub,
+  };
   //verify inputs are valid
-  if(val.validateUserID(data.userid)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done)=> {
+  pg.connect(connectionString, (err, client, done) => {
     //handle connection error
-    if(err){
+    if (err) {
       done();
       console.log(err);
-      return res.status(500).json({statusCode: 500, data: err});
+      return res.status(500).json({ statusCode: 500, data: err });
     }
     //verify if user exists in database records and is of type admin
     const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
@@ -1246,22 +1302,24 @@ router.get('/recommendations/users', checkJwt, (req, res, next) => {
     });
     query.on('end', () => {
       done();
-      if (results.length === 1){ // user exists and is of type admin
+      if (results.length === 1) { // user exists and is of type admin
         //SQL Query > select users with no recommendation in last 7 days and active subscription
-        const query1 = client.query('with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, email FROM users WHERE usertype = $1), newlist as (SELECT userlist.userid, institutionid, usertype, name, lastname, email, status FROM userlist NATURAL INNER JOIN subscription WHERE status = $2), needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, user_info.userid, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM user_info natural inner join school_info) SELECT userid, institutionid, usertype, name, lastname, email, classinfoid, subject, format, language, level, groupsize, topica, topicb, topicc, strategies, tech, instructions, timemanagement, material, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM newlist NATURAL INNER JOIN needsOfUser natural inner join class_info WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL \'7 DAYS\' ))', ['teacher','active',]);
+        const query1 = client.query('with userlist as (SELECT users.userid, institutionid, usertype, name, lastname, email FROM users WHERE usertype = $1), newlist as (SELECT userlist.userid, institutionid, usertype, name, lastname, email, status FROM userlist NATURAL INNER JOIN subscription WHERE status = $2), needsOfUser as (SELECT english, spanish, strategies, material, timemanagement, tech, instructions, user_info.userid, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM user_info natural inner join school_info) SELECT userid, institutionid, usertype, name, lastname, email, classinfoid, subject, format, language, level, groupsize, topica, topicb, topicc, strategies, tech, instructions, timemanagement, material, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM newlist NATURAL INNER JOIN needsOfUser natural inner join class_info WHERE userid NOT IN (SELECT userid FROM edu_recommendations WHERE date > (now() - INTERVAL \'7 DAYS\' ))', ['teacher', 'active',]);
         //stream results back one row at a time
         query1.on('row', (row) => {
           users.push(row);
         });
         query1.on('end', () => {
           done();
-          return res.status(200).json({statusCode: 200, users});
+          return res.status(200).json({ statusCode: 200, users });
         });
-      }else// user doesn't exist in record or isnt of type admin, send error statuscode
+      } else// user doesn't exist in record or isnt of type admin, send error statuscode
       {
-        return res.status(401).json({statusCode: 401,
+        return res.status(401).json({
+          statusCode: 401,
           message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
-          isBase64Encoded: false,});
+          isBase64Encoded: false,
+        });
       }
     });
   });
@@ -1286,17 +1344,21 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
     membersince: todaysDate,
     policies: req.body.policies
   };
-  if(val.validateUserID(data.userid) || val.validateNoSpace(data.usertype) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) 
-      || val.validateEmail(data.email) || val.validateLongText(data.password) || val.validateDate(data.dob) || val.validateBool(data.policies)){
-      return res.status(403).json({statusCode: 403,
-          message: 'Inputs were not received as expected.',
-        isBase64Encoded: false,});
-    }
-    if(data.usertype == 'school' && val.validatecoupon(data.institutionid)){
-      return res.status(403).json({statusCode: 403,
-        message: 'Missing institutionid for usertype school Inputs were not received as expected.',
-      isBase64Encoded: false,});
-    }
+  if (val.validateUserID(data.userid) || val.validateNoSpace(data.usertype) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender)
+    || val.validateEmail(data.email) || val.validateLongText(data.password) || val.validateDate(data.dob) || val.validateBool(data.policies)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
+  }
+  if (data.usertype == 'school' && val.validatecoupon(data.institutionid)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Missing institutionid for usertype school Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
+  }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     //handle connection error
@@ -1344,7 +1406,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
                 if (error) {
                   return res.status(401).json({
                     statusCode: 401,
-                      message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
+                    message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
                     isBase64Encoded: false,
                   });
                 }
@@ -1374,7 +1436,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
             if (error) {
               return res.status(401).json({
                 statusCode: 401,
-                  message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
+                message: 'Userid and/or email already exists in records. Inputs were not received as expected.',
                 isBase64Encoded: false,
               });
             }
@@ -1401,10 +1463,12 @@ router.get('/settings/users', checkJwt, (req, res, next) => {
     userid: req.user.sub,
   };
   //verify inputs are valid
-  if(val.validateUserID(data.userid)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -1459,10 +1523,12 @@ router.get('/settings/institutions', checkJwt, (req, res, next) => {
     userid: req.user.sub
   };
   //verify inputs are valid
-  if(val.validateUserID(data.userid)){
-    return res.status(403).json({statusCode: 403,
+  if (val.validateUserID(data.userid)) {
+    return res.status(403).json({
+      statusCode: 403,
       message: 'Inputs were not received as expected.',
-      isBase64Encoded: false,});
+      isBase64Encoded: false,
+    });
   }
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -1503,61 +1569,67 @@ router.get('/user/recommendations', checkJwt, (req, res, next) => {
     userid: req.user.sub, //change to req.query.userid for testing
     userToAssign: req.query.userToAssign
   };
-    //verify inputs are valid
-    if(val.validateUserID(data.userid) || val.validateUserID(data.userToAssign)){
-      return res.status(403).json({statusCode: 403,
-          message: 'Inputs were not received as expected.',
-        isBase64Encoded: false,});
+  //verify inputs are valid
+  if (val.validateUserID(data.userid) || val.validateUserID(data.userToAssign)) {
+    return res.status(403).json({
+      statusCode: 403,
+      message: 'Inputs were not received as expected.',
+      isBase64Encoded: false,
+    });
+  }
+  // get a postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    //handle connection error
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ statusCode: 500, data: err });
     }
-    // get a postgres client from the connection pool
-    pg.connect(connectionString, (err, client, done)=> {
-      //handle connection error
-      if(err){
-        done();
-        console.log(err);
-        return res.status(500).json({statusCode: 500, data: err});
+    //verify if user exists in database records and is of type admin
+    const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
+    //stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    query.on('end', () => {
+      done();
+      if (results.length === 1) { // user exists and is of type admin
+        //SQL Query > verify user to assign recommendation exist and is teacher type
+        const query1 = client.query('SELECT * FROM users WHERE userid=$1 AND usertype = $2', [data.userToAssign, 'teacher',]);
+        //stream results back one row at a time
+        query1.on('row', (row) => {
+          userValid.push(row);
+        });
+        query1.on('end', () => {
+          done();
+          if (userValid.length === 1) { //user to assign to exists and is a teacher
+            //SQL Query > select recommendations not asigned to the user selected and that apply
+            const query2 = client.query('WITH fullunassignedrecomlist as (SELECT * FROM recommendations natural inner join recommendation_topics natural inner join recommendation_target natural inner join recommendation_body natural inner join recommendation_req WHERE active = true AND recomid not in (SELECT recomid FROM edu_recommendations WHERE userid = $1)), userinfo as (with school as (select userid, name as schoolname, location, schooltype, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM school_info) SELECT * FROM users natural inner join user_info natural inner join class_info natural inner join school WHERE userid = $1) SELECT recomid, frec.location, frec.subject, frec.spanish, frec.english, frec.type, frec.schooltype, frec.format, frec.groupsize, frec.level, frec.active, frec.topica, frec.topicb, frec.topicc, frec.strategies, frec.material, frec.timemanagement, frec.tech, frec.instructions, frec.title, frec.multimedia, frec.header, frec.description, frec.moodle, frec.googleclassroom, frec.emails, frec.books, frec.applications, frec.socialmedia, frec.projector, frec.computer, frec.tablet, frec.stylus, frec.internet, frec.smartboard, frec.smartpencil, frec.speakers FROM fullunassignedrecomlist as frec inner join userinfo as ui ON  (frec.moodle = ui.moodle AND frec.googleclassroom= ui.googleclassroom AND frec.emails = ui.emails AND frec.books = ui.books AND frec.applications = ui.applications AND frec.socialmedia = ui.socialmedia AND frec.projector = ui.projector AND frec.computer = ui.computer AND frec.tablet = ui.tablet AND frec.stylus = ui.stylus AND frec.internet = ui.internet AND frec.smartboard = ui.smartboard AND frec.smartpencil = ui.smartpencil AND frec.speakers = ui.speakers) AND ( (frec.strategies = true AND ui.strategies= true) OR (frec.material = true AND ui.material= true) OR (frec.timemanagement = true AND ui.timemanagement=true) OR (frec.tech=true AND ui.tech= true) OR (frec.instructions = true AND ui.instructions=true))', [data.userToAssign,]);
+            //stream results back one row at a time
+            query2.on('row', (row) => {
+              recommendations.push(row);
+            });
+            query2.on('end', () => {
+              done();
+              return res.status(200).json({ statusCode: 200, recommendations });
+            });
+          } else {
+            return res.status(401).json({
+              statusCode: 401,
+              message: 'User to assign recomendation doesn\'t exist in records or is not teacher type. Inputs were not received as expected.',
+              isBase64Encoded: false,
+            });
+          }
+        });
+      } else// user doesn't exist in record or isnt of type admin, send error statuscode
+      {
+        return res.status(401).json({
+          statusCode: 401,
+          message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
+          isBase64Encoded: false,
+        });
       }
-      //verify if user exists in database records and is of type admin
-      const query = client.query('SELECT * FROM users WHERE userid = $1 and usertype= $2', [data.userid, 'admin',]);
-      //stream results back one row at a time
-      query.on('row', (row) => {
-        results.push(row);
-      });
-      query.on('end', () => {
-        done();
-        if (results.length === 1){ // user exists and is of type admin
-          //SQL Query > verify user to assign recommendation exist and is teacher type
-          const query1 = client.query('SELECT * FROM users WHERE userid=$1 AND usertype = $2', [data.userToAssign, 'teacher',]);
-          //stream results back one row at a time
-          query1.on('row', (row) => {
-            userValid.push(row);
-          });
-          query1.on('end', () => {
-            done();
-            if(userValid.length === 1){ //user to assign to exists and is a teacher
-              //SQL Query > select recommendations not asigned to the user selected and that apply
-              const query2 = client.query('WITH fullunassignedrecomlist as (SELECT * FROM recommendations natural inner join recommendation_topics natural inner join recommendation_target natural inner join recommendation_body natural inner join recommendation_req WHERE active = true AND recomid not in (SELECT recomid FROM edu_recommendations WHERE userid = $1)), userinfo as (with school as (select userid, name as schoolname, location, schooltype, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers FROM school_info) SELECT * FROM users natural inner join user_info natural inner join class_info natural inner join school WHERE userid = $1) SELECT recomid, frec.location, frec.subject, frec.spanish, frec.english, frec.type, frec.schooltype, frec.format, frec.groupsize, frec.level, frec.active, frec.topica, frec.topicb, frec.topicc, frec.strategies, frec.material, frec.timemanagement, frec.tech, frec.instructions, frec.title, frec.multimedia, frec.header, frec.description, frec.moodle, frec.googleclassroom, frec.emails, frec.books, frec.applications, frec.socialmedia, frec.projector, frec.computer, frec.tablet, frec.stylus, frec.internet, frec.smartboard, frec.smartpencil, frec.speakers FROM fullunassignedrecomlist as frec inner join userinfo as ui ON  (frec.moodle = ui.moodle AND frec.googleclassroom= ui.googleclassroom AND frec.emails = ui.emails AND frec.books = ui.books AND frec.applications = ui.applications AND frec.socialmedia = ui.socialmedia AND frec.projector = ui.projector AND frec.computer = ui.computer AND frec.tablet = ui.tablet AND frec.stylus = ui.stylus AND frec.internet = ui.internet AND frec.smartboard = ui.smartboard AND frec.smartpencil = ui.smartpencil AND frec.speakers = ui.speakers) AND ( (frec.strategies = true AND ui.strategies= true) OR (frec.material = true AND ui.material= true) OR (frec.timemanagement = true AND ui.timemanagement=true) OR (frec.tech=true AND ui.tech= true) OR (frec.instructions = true AND ui.instructions=true))', [data.userToAssign,]);
-              //stream results back one row at a time
-              query2.on('row', (row) => {
-                recommendations.push(row);
-              });
-              query2.on('end', () => {
-                done();
-                return res.status(200).json({statusCode: 200, recommendations});
-              });
-            }else{
-              return res.status(401).json({statusCode: 401,
-                  message: 'User to assign recomendation doesn\'t exist in records or is not teacher type. Inputs were not received as expected.',
-                isBase64Encoded: false,});
-            }
-          });
-        }else// user doesn't exist in record or isnt of type admin, send error statuscode
-        {
-          return res.status(401).json({statusCode: 401,
-              message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
-            isBase64Encoded: false,});
-        }
-      });
     });
   });
+});
 module.exports = router;
