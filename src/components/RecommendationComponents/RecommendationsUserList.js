@@ -40,7 +40,6 @@ class RecommendationsUserList extends React.Component{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
             response.data.users.forEach(element => {
-                console.log("RESPONSE: ", element);
                 let categories = []
                 if(element.tech)
                     categories.push("Technology Integration") 

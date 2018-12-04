@@ -9,7 +9,8 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
-import {setRecommendationsTextFilter} from '../../actions/filterActions/RecommendationsFilters';
+import {setRecommendationsTextFilter, setRecommendationsCategory} from '../../actions/filterActions/RecommendationsFilters';
+
 
 /**
  * List of recommendations displayed in the Assign Recommendations page. 
@@ -31,6 +32,8 @@ class RecommendationsList extends React.Component{
     //when the component loads. 
     componentWillMount(){
         this.props.dispatch(unloadRecommendations());
+        this.props.dispatch(setRecommendationsCategory('all'));
+        this.props.dispatch(setRecommendationsCategory('all'));
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
@@ -140,7 +143,6 @@ class RecommendationsList extends React.Component{
 
 //Map filtered recommendations, recommendations filters data, recommendaiton assignment data and the current language state to the component's properties. 
 const mapStateToProps = (state) => {
-    console.log('RECOMMENDATIONS', state.recommendations);
     return{
         allRecommendations: state.recommendations,
         recommendation: getVisibleRecommendations(state.recommendations, state.recommendationsFilters),

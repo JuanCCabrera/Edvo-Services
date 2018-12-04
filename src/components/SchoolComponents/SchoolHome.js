@@ -32,7 +32,6 @@ class SchoolHome extends React.Component {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
-            console.log("RESPONSE HOME: ", response);
             this.setState({averageQuestionsRate: !response.data.averageQuestionsRate ? 0 : response.data.averageQuestionsRate});
             this.setState({averageRecommendationsRate: !response.data.averageRecommendationsRate ? 0:response.data.averageRecommendationsRate });
             this.setState({teachersdays: !response.data.teachersdays ? 0 : response.data.teachersdays });

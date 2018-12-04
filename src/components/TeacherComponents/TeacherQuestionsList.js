@@ -10,6 +10,7 @@ import axios from 'axios';
 import auth0Client from '../../Auth';
 import moment from 'moment';
 import { setFailureModal } from '../../actions/failureModal';
+import { setTeacherQuestionsSorting, setTeacherQuestionsReadFilter } from '../../actions/filterActions/teacherQuestionsFilters';
 
 /**
  * List of questions a teacher has asked. This list is available in the Teacher Questions page. 
@@ -31,6 +32,8 @@ class TeacherQuestionsList extends React.Component{
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
+        this.props.dispatch(setTeacherQuestionsSorting('date'));
+        this.props.dispatch(setTeacherQuestionsReadFilter('all'));
         axios.get('https://beta.edvotech.com/api/teacher/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
@@ -142,7 +145,6 @@ class TeacherQuestionsList extends React.Component{
 
 //Map filtered list of questions, filter data and current language state to the component properties. 
 const mapStateToProps = (state) => {
-    console.log(getVisibleTeacherQuestions(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters));
     return{
         allQuestions: state.teacherQuestions.teacherQuestions,
         question: getVisibleTeacherQuestions(state.teacherQuestions.teacherQuestions, state.teacherQuestionsFilters),

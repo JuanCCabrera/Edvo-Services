@@ -9,7 +9,8 @@ import auth0Client from '../../Auth';
 import { loadRecommendation, unloadRecommendations } from '../../actions/recommendations';
 import { setLoadingModal } from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
-import {setRecommendationsTextFilter} from '../../actions/filterActions/RecommendationsFilters';
+import {setRecommendationsTextFilter, setRecommendationsCategory} from '../../actions/filterActions/RecommendationsFilters';
+
 
 /**
  * List of recommendations which can be edited or removed from the system. 
@@ -36,6 +37,7 @@ class ManageRecommendationsList extends React.Component{
     //Determine the recommendations to display on the first page. 
     componentWillMount(){
         this.props.dispatch(setLoadingModal());
+        this.props.dispatch(setRecommendationsCategory('all'));
         this.props.dispatch(unloadRecommendations());
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})

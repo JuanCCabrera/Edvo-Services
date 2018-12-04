@@ -32,7 +32,8 @@ class CreateInstitutionForm extends React.Component{
 
             createInstitutionError: false,
             createInstitutionIncompleteError: false,
-            createInstitutionInvalidInputs: false
+            createInstitutionInvalidInputs: false,
+            createInstitutionAlreadyExists: false
         };
     }
 
@@ -122,11 +123,19 @@ class CreateInstitutionForm extends React.Component{
             if(error.response.status == 403 || error.response.status == 500){
                 this.props.dispatch(setFailureModal());
                 this.setState(() => ({createInstitutionInvalidInputs: false}));
-                this.setState(() => ({createInstitutionError: false}));
+                this.setState(() => ({createInstitutionError: true}));
+                this.setState(() => ({createInstitutionAlreadyExists: false}));
             }
 
                 else if(error.response.status == 401){
                     this.setState(() => ({createInstitutionInvalidInputs: true}));
+                    this.setState(() => ({createInstitutionAlreadyExists: false}));
+                    this.setState(() => ({createInstitutionError: false}));
+                }
+                else if(error.response.status == 402){
+                    this.setState(() => ({createInstitutionAlreadyExists: true}));
+                    this.setState(() => ({createInstitutionInvalidInputs: false}));
+                    this.setState(() => ({createInstitutionError: false}));
                 }
             })
         .then((response)=>{
@@ -338,6 +347,7 @@ class CreateInstitutionForm extends React.Component{
                                         {this.props.lang === 'English' ? <p>Please fill all fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                                     </div>
                                 }
+                                {this.state.createInstitutionAlreadyExists && <div>{this.props.lang === 'English' ? <p className="text-danger">This institution ID is already in use.</p> :  <p className="text-danger">Esta identificación de institución ya está en uso.</p>}</div>}
                                 {
                                     //Submit form button
                                 }
