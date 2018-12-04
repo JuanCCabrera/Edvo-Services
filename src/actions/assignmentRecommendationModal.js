@@ -1,6 +1,7 @@
 /**
  * selectRecommendation - Generates an object indicating to the central controller to select a recommendation and display its information on a Modal. 
- * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, challenge categories, 
+ * @param {*} param0 - Object containing a recommendation's ID, title, header, location, description, challenge categories, topics, location
+ * subject, language, school type, course format, course level, and course group size. 
  */
 export const selectAssignmentRecommendationToDisplay = (
     {
@@ -44,6 +45,9 @@ export const selectAssignmentRecommendationToDisplay = (
         }
 });
 
+/**
+ * Action which is used to unmount the Assignment Recommendation modal. 
+ */
 export const clearAssignmentRecommendationModal = () => ({
     type: 'CLEAR_ASSIGNMENT_RECOMMENDATION_MODAL'
 });

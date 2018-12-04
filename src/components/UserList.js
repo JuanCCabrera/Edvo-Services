@@ -28,14 +28,18 @@ class UserList extends React.Component{
         }
     }
     componentWillUnmount(){
+        //Unload users from the controller
         this.props.dispatch(unloadUsers());
     }
     //Configure state when component is being mounted. 
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Get subscribed users' informations from the database. 
         axios.get('https://beta.edvotech.com/api/admin/settings/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
+            //Format challenge categories from response data
             response.data.users.forEach(element => {
                 let categories = []
                 if(element.tech)
@@ -48,17 +52,22 @@ class UserList extends React.Component{
                     categories.push("Instructional Alignment") 
                 if(element.material)
                     categories.push("Updated Material") 
+                //Load received list of users to the controller. 
                 this.props.dispatch(addUser({id: element.userid, name: element.name,
                     email: element.email, lastName: element.lastname, 
                     weeklyReco: element.recomassigned, 
                     categories: categories}));
             });
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
+            //Set failure modal
             this.props.dispatch(setFailureModal());
         });
 
+        //Determine users to display in paginated component.
         this.pageSlice = Math.ceil(this.props.users.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageUsers = this.props.users.slice(0,this.itemsPerPage);
@@ -101,22 +110,25 @@ class UserList extends React.Component{
         return(
             <div>
                 {
-                    //List of Users
+                    //List of displayed Users
                 }
                 {this.state.displayedUsers.map((user) => {
                     return <UserListItem key={user.id} user={user} 
                     userRemoval={() => {
+                        //Request a removal of the user form the database. 
                         axios.post('https://beta.edvotech.com/api/admin/settings/users/remove',{
                             userIDToRemove: user.id
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                 })
                 .then(response =>{
+                    //Set success modal and remove user from controller when successful. 
                     if(response.status == 201){
                     this.props.dispatch(setSuccessModal())                    
                     this.props.dispatch(removeUser({id: user.id}))}}
                 )
                 .catch(error => {
+                    //Set failure modal
                     if(error.response.status != null)
                         this.props.dispatch(setFailureModal());
                 })

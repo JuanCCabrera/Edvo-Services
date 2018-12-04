@@ -20,6 +20,9 @@ class TeacherQuestionFilters extends React.Component{
                     this.props.dispatch(setTeacherQuestionsTextFilter(e.target.value));
                 }}/>
                 <div className="btn-group">
+                {
+                    //Filter icon
+                }
                     <span className="btn btn-filter" style={{marginBottom: '1rem'}}>
                         <i className="fas fa-filter"></i>
                     </span>

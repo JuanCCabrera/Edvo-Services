@@ -71,9 +71,11 @@ class AskQuestionForm extends React.Component{
         //Enable error message if there is a missing form field. 
         if(!this.state.subject || !this.state.body){
             this.setState(() => ({askQuestionError: true, success: false})); 
+        //Generate error if another error message already exists. 
         }else if(this.state.subjectError || this.state.subjectError){
             this.setState(() => ({askQuestionError: true}))
         }else{
+            //Post information to database. 
             axios.post('https://beta.edvotech.com/api/teacher/questions/ask', {
             subject: this.state.subject,
             question: this.state.body
@@ -81,20 +83,21 @@ class AskQuestionForm extends React.Component{
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             })
             .catch(error => {
+                //Set error of inputs being invalid
                 if(error.response.status == 401){
                     this.setState(() => ({askInvalidInputs: true}))
                     this.setState(() => ({askQuestionError: false}));
                     this.setState(() => ({askQuestionPlan: false}));
                     this.setState(() => ({askQuestionAllowed: false}));
                 }
-                
+                //Set error of unsubscribed user
                 else if(error.response.status == 402){
                     this.setState(() => ({askQuestionPlan: true}))
                     this.setState(() => ({askQuestionAllowed: false}));
                     this.setState(() => ({askInvalidInputs: false}));
                     this.setState(() => ({askQuestionError: false}));
                 }
-
+                //Set error of asking questions not allowed by user
                 else if(error.response.status == 403){
                     this.setState(() => ({askQuestionAllowed: true}))
                     this.setState(() => ({askQuestionError: false}));
@@ -104,18 +107,24 @@ class AskQuestionForm extends React.Component{
             })
             .then((response)=>{
                 if(response.status == 201){
+                    //Clear errors on success
                     this.setState(() => ({success: true, subject: '', body: ''}));
                     this.setState(() => ({askQuestionPlan: false}));
                     this.setState(() => ({askQuestionError: false}));
                     this.setState(() => ({askQuestionPlan: false}));
                     this.setState(() => ({askQuestionAllowed: false}));
                     this.setState(() => ({askInvalidInputs: false}));
+                    //Set success modal
                     if(!this.props.isInQuestionsPage){
                         this.props.dispatch(setSuccessModal());
                     }
+                    //If user is in the teacher questions page...
                     if(this.props.isInQuestionsPage){
+                        //Set loading modal
                         this.props.dispatch(setLoadingModal());
+                        //unload teacher questions
                         this.props.dispatch(unloadTeacherQuestions());
+                        //Get updated list of teacher questions
                         axios.get('https://beta.edvotech.com/api/teacher/questions',
                             {
                                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
@@ -127,11 +136,15 @@ class AskQuestionForm extends React.Component{
                                         this.props.dispatch(addFavoriteQuestion({askedDate: element.askeddate}));
                                     }
                                 });
+                                //Clear loading modal
                                 this.props.dispatch(setLoadingModal());
+                                //Set success modal
                                 this.props.dispatch(setSuccessModal());
                             }).catch(error => {
+                                //Clear loading modal
                                 this.props.dispatch(setLoadingModal());
                                 if(error.response.status >= 500){
+                                    //Set failure modal
                                     this.props.dispatch(setFailureModal());
                                 }
                             });
@@ -139,29 +152,41 @@ class AskQuestionForm extends React.Component{
                     
                     //Requerying Home
                     this.props.dispatch(reset());
+
+                    //Unload recommendations from controller
                     this.props.dispatch(unloadTeacherRecommendations());
+                    //Set loading modal
                     this.props.dispatch(setLoadingModal());
 
+                    //Acquire teacher home information from database. 
                     axios.get('https://beta.edvotech.com/api/teacher/home',
                     {
                         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                     })
                     .then(response => {
+                        //Load days in platform to controller
                         this.props.dispatch(loadTeacherDaysInPlatform({daysInPlatform: response.data.daysInPlatforms}));
+                        //Load number of questions asked to controller
                         this.props.dispatch(loadTeacherQuestionsAsked({questionsAsked: response.data.questionsasked}));
+                        //Load number of recommendations read to controller
                         this.props.dispatch(loadTeacherRecommendationsRead({recommendationsRead: response.data.recommendationsRead}));
                         
+                        //Load list of recent recommendations to controller. 
                         response.data.recentRecommendations.forEach(element => {
                         this.props.dispatch(loadTeacherRecentRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read}));
                         this.props.dispatch(loadTeacherRecommendation({read: element.read, recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate}));
                         });
+                        //Load list of top recommendations to controller. 
                         response.data.topRecommendations.forEach(element => {
                             this.props.dispatch(loadTeacherTopRecommendation({recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read}));
                             });
+                        //Clear loading modal
                         this.props.dispatch(setLoadingModal());
                     })
                     .catch(error =>{
+                        //Clear loading modal
                         this.props.dispatch(setLoadingModal());
+                        //Set failure modal. 
                         this.props.dispatch(setFailureModal());
                     });
                 } 
@@ -186,6 +211,7 @@ class AskQuestionForm extends React.Component{
                     maxLength="100"
                     onChange = {this.onSubjectChange} onBlur={() => {
                         this.setState(() => ({subject: this.state.subject.trim()}));
+                        //Check if subject only contains white spaces. 
                         if(this.state.subject && this.state.subject.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({subjectError: 'The subject field must contain text.'}));
@@ -225,6 +251,7 @@ class AskQuestionForm extends React.Component{
                     onChange = {this.onBodyChange}
                     onBlur={() => {
                         this.setState(() => ({body: this.state.body.trim()}));
+                        //Check if question body only contains white spaces. 
                         if(this.state.body && this.state.body.match(/^\s+$/)){
                             if(this.props.lang === 'English'){
                                 this.setState(() => ({bodyError: 'The question field must contain text.'}));
@@ -251,7 +278,7 @@ class AskQuestionForm extends React.Component{
 
 
                     {
-                        //Message displayed if an attempt is made to submit the form without filling all fields. 
+                        //Error messages
                     }
                     {this.state.askQuestionPlan === true && 
                         <div className="text-danger text-center">
@@ -276,6 +303,9 @@ class AskQuestionForm extends React.Component{
                     
                     <div className="container-fluid">
                         <div className="row text-center">
+                        {
+                            //Button to submit the question
+                        }
                             <div>
                                 <button className="btn btn-item send_button" onClick={this.onSubmit}>
                                     <p>{this.props.lang === 'English' ? 'Ask' : 'Enviar'}</p></button>

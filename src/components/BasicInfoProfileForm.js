@@ -38,8 +38,10 @@ class BasicInfoProfileForm extends React.Component{
             resetPasswordMessage: false
         };
     }
+    //Request a password change
     resetPassword(){
         let message = false;
+        //Request password change to the database and auth0 client. 
         axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
           client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
           email: auth0Client.getEmail(),
@@ -48,29 +50,34 @@ class BasicInfoProfileForm extends React.Component{
         },
         {headers: { 'content-type': 'application/json' }})
         .then(response => {
+            //Display success and instructions message if request is successful. 
             if(response.status == 200){
                 message = true;
             }
         });
       };
       
-
-
+    
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
-        //send this to action
+        //Load user information to display in profile form
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/settings/info',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
         .then(response => {
+            //Load user information to the controller
             const dateCheck = moment(response.data.info.dob).add('4',"hours");
             this.setState({name: response.data.info.name, lastName: response.data.info.lastname,
                  dateOfBirth: moment(response.data.info.dob).add('4',"hours"), gender: response.data.info.gender});
-                
+            
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error=>{
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
+            //Set failure modal
             this.props.dispatch(setFailureModal());
         });
     }
@@ -141,6 +148,7 @@ class BasicInfoProfileForm extends React.Component{
         }
     }
 
+    //Activate password reset process. 
     onResetClick = (e) => {
         e.preventDefault();
         this.setState({resetPasswordMessage: true});
@@ -150,13 +158,17 @@ class BasicInfoProfileForm extends React.Component{
     //Submit new user information
     onSubmit = (e) => {
         e.preventDefault();
-        
+        //Generate error if name or last name fields are empty
         if(this.state.name === '' || this.state.lastName === ''){
             this.setState(() => ({formIncompleteError: true}));
+        //Generate error if required fields are left blank
         }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError){
             this.setState(() => ({formIncompleteError: true}));
+        //Validation successful
         }else{
+            //Clear error message
             this.setState(() => ({formIncompleteError: false}));
+            //Post new user information to the database. 
             axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/settings/info', {
             name: this.state.name,
             lastname: this.state.lastName,
@@ -166,16 +178,19 @@ class BasicInfoProfileForm extends React.Component{
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
                 .catch(error => {
+                    //Set failure modal
                     if(error.response.status == 401){
                         this.props.dispatch(setFailureModal());
                         this.setState(() => ({profileInvalidInputs: false}));
                     }
     
+                    //Warn user of invalid inputs used
                     else if(error.response.status == 403 || error.response.status == 500){
                         this.setState(() => ({profileInvalidInputs: true}));
                     }
                 })
             .then((response)=>{
+                //Load user information to controller and set successful edit modal. 
                 if(response.status == 201){
                     this.props.dispatch(loadProfile({name: this.state.name, lastName: this.state.lastName, dateOfBirth: this.state.dateOfBirth, gender: this.state.gender}));
                     this.props.dispatch(setEditModal());
@@ -184,8 +199,6 @@ class BasicInfoProfileForm extends React.Component{
             });
         }
 
-        //TO-DO Modify user data in database
-        //TO-DO Display existing user data in text fields by default
     }
 
     render(){
@@ -195,6 +208,9 @@ class BasicInfoProfileForm extends React.Component{
                     <form>
                         <div>
                             <div className="form__title">
+                            {
+                                //Page title
+                            }
                             <p> 
                                 {this.props.lang === 'English' ? 'My Profile' : 'Mi Perfil'} 
                             </p>
@@ -282,17 +298,6 @@ class BasicInfoProfileForm extends React.Component{
                         {
                             //Date of birth selector
                         }
-
-                    {/*
-                        <SingleDatePicker
-                        date={this.state.dateOfBirth}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calendarFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths={1}
-                        isOutsideRange={day => (moment().diff(day) < 0)}
-                        />
-                    */}
                         
                     <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
                     <br/>
@@ -302,7 +307,9 @@ class BasicInfoProfileForm extends React.Component{
                         onChange={this.onDateChange}
                         maxDate={moment()}
                         />
-
+                        {
+                            //Date of birth error
+                        }
                         {this.state.dateOfBirthError && 
                             <div>
                                 <span className="text-danger"> 
@@ -369,6 +376,9 @@ class BasicInfoProfileForm extends React.Component{
                         </button>
                         <br/>
                         <br/>
+                        {
+                            //Instructions and disclaimer messages for changing passwords. 
+                        }
                         {this.state.resetPasswordMessage == true && (this.props.lang === 'English' ? 'An email has been sent to '+auth0Client.getEmail()+' with instructions to change your password.' 
                         : 'Un correo electrónico ha sido enviado a '+auth0Client.getEmail()+' con un enlace para cambiar su contraseña.')}
                         

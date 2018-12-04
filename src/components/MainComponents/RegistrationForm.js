@@ -107,6 +107,8 @@ class RegistrationForm extends React.Component{
         };
     }
 
+    //Authorize user to enter the page only if they do not have registered information in the database and if they have
+    //an account. 
     componentWillMount() {
         axios.get('https://beta.edvotech.com/api/user', {
           headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -118,6 +120,7 @@ class RegistrationForm extends React.Component{
         })
       }
 
+    //Modify error messages if language setting changes. 
     componentDidUpdate(prevProps, prevState){
         if(prevProps !== this.props){
             if(this.props.lang === 'English'){
@@ -186,17 +189,6 @@ class RegistrationForm extends React.Component{
         }
     }
 
-    componentWillMount() {
-        axios.get('https://beta.edvotech.com/api/user', {
-          headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-        }).then(response => {
-          if (response.status == 201) {
-            this.props.history.replace('/'+auth0Client.getRole()+'/home');
-          }
-    
-        })
-      }
-
     //Change name in local state
     onNameChange = (e) => {
         const name = e.target.value;
@@ -222,6 +214,7 @@ class RegistrationForm extends React.Component{
         //Check if the selected date of birth falls between 18-90 years ago. 
         if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
+        //Display error if date does not meet the required range. 
         }else{
             if(this.props.lang === 'English'){
                 this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'You must be 18 or older to create an account.'}));
@@ -288,17 +281,22 @@ class RegistrationForm extends React.Component{
     //Delete topic from topics array in local state
     deleteTopic = i => e => {
         e.preventDefault();
+        //If the amount of topics is greater than 1...
         if(this.state.topicsTaught.length > 1){
+            //Slice the array by deleting the selected topic. 
             let topics = [
                 ...this.state.topicsTaught.slice(0,i),
                 ...this.state.topicsTaught.slice(i+1)
             ];
+            //Return sliced array
             this.setState(() => ({topicsTaught: topics}));
         }
         
+        //Validate remaining list of topics
             let j = 0;
             let errorCheck = false;
             for(j = 0; j < this.state.topicsTaught.length; j++){
+                //Check if any of the topics contains only empty spaces.
                 if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
                     if(this.props.lang === 'English'){
                         this.setState(() => ({topicError: 'Topics must contain text.'}));
@@ -309,6 +307,7 @@ class RegistrationForm extends React.Component{
                     break;
                 }
             }
+            //Display error if a topic only contains empty spaces or does not exist. 
             if(!errorCheck){
                 this.setState(() => ({topicError: ''}));
             }
@@ -436,10 +435,14 @@ class RegistrationForm extends React.Component{
         var today=moment();
         var difference = today.diff(timeEmployed, 'years');
         var differenceToBirth = timeEmployed.diff(this.state.dateOfBirth, 'years');
-        //Check if the selected date of birth falls between 18-90 years ago. 
         var differenceInHours = today.diff(timeEmployed, 'hours');
+        //Check if the selected date falls between 0 to 90 years from today.
+        //Check if date exists. 
+        //Check if the difference between the selected date and the date of birth is at least 18 years
+        //Check if the selected date is not from the future.         
         if(timeEmployed && (difference >= 0 && difference < 90) && differenceToBirth >= 18 && differenceInHours >= 0){
             this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: ''}));
+        //Set an error message if any of the checks fail. 
         }else{
             if(this.props.lang === 'English'){
                 this.setState(() => ({timeEmployed: timeEmployed, timeEmployedError: 'You must have been 18 or older when being employed.'}));
@@ -538,16 +541,21 @@ class RegistrationForm extends React.Component{
         //Display default error message if there are required fields left blank. 
         if(!this.state.name || !this.state.lastName || !this.state.subject || !this.state.topicsTaught[0] || !this.state.schoolName || !this.state.schoolLocation || (!this.state.english && !this.state.spanish)){
             this.setState(() => ({globalError: true, secError: false}));
+        //Display error message if required checkboxes are not checked. 
         }else if(!(this.state.teachingStrategies || this.state.updatedMaterial || this.state.timeManagement || this.state.technologyIntegration || this.state.instructionAlignment) || !(this.state.moodle || this.state.googleClassroom || this.state.emailResource || this.state.books || this.state.socialMedia || this.state.projector || this.state.computer || this.state.tablet || this.state.stylus || this.state.internet || this.state.smartboard || this.state.smartpencil || this.state.speakers)){
             this.setState(() => ({globalError: true, secError: false}));
+        //Display error if an attempt was made to submit the form while another error is already exists. 
         }else if(this.state.nameError || this.state.lastNameError || this.state.dateOfBirthError || this.state.subjectError || this.state.topicError || this.state.schoolNameError || this.state.schoolLocationError || this.state.timeEmployedError){
             this.setState(() => ({globalError: true, secError: false}));
+        //Submit on successful validation. 
         }else{
+            //Format topics as empty strings. 
             let topica = "";
             let topicb = "";
             let topicc = "";
             const topicsLength = this.state.topicsTaught.length;
             let i = 0;
+            //Fill topics strings with state topics information. 
             for(i; i < topicsLength; i++){
                 if(i == 0){
                     topica = this.state.topicsTaught[0];
@@ -558,7 +566,9 @@ class RegistrationForm extends React.Component{
                 }
             }
 
+            //Clear errors
             this.setState(() => ({secError: false, globalError: false}));
+            //Post information to database. 
             axios.post('https://beta.edvotech.com/api/register', {
                 name: this.state.name,
                 lastname: this.state.lastName,
@@ -609,15 +619,20 @@ class RegistrationForm extends React.Component{
             },
             {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
             .then(response =>{  
+                //Set role of user to teacher automatically.
                 localStorage.setItem('role','teacher');
+                //Set success modal. 
                 this.props.dispatch(setSuccessModal());
+                //Navigate to Payment page. 
                 this.props.history.replace('/teacher/settings/plans/payment');
             })
             .catch(error =>{
+                //Set failure modal
                 if(error.response.status == 401 || error.response.status == 500){
                     this.props.dispatch(setFailureModal());
                     this.setState(() => ({registerInvalidInputs: false}));
                 }
+                //Set error indicating invalid inputs were received. 
                 else if(error.response.status == 403){
                     this.setState(() => ({registerInvalidInputs: true}));
             }});
@@ -636,26 +651,6 @@ class RegistrationForm extends React.Component{
             <div className="text-center">
             
             <Line percent={this.state.progress} strokeWidth="1.2" strokeColor="#5933AA" style={{marginTop: '0.2rem', width: '90%'}}/>
-            {
-                /* Progress bar numbers
-            
-            <div className="row" style={{marginBottom: '0', paddingBottom: '0', color: '#5933aa'}}>
-                <div className="col-xs-3 col-sm-3">
-                1
-                </div>
-                <div className="col-xs-3 col-sm-3">
-                2
-                </div>
-                <div className="col-xs-3 col-sm-3">
-                3
-                </div>
-                <div className="col-xs-3 col-sm-3">
-                4
-                </div>
-            </div>
-            
-            */
-            }
 
             </div>
             {
@@ -761,18 +756,9 @@ class RegistrationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                         <br/>
-
-                        {/*
-                        <SingleDatePicker
-                        date={this.state.dateOfBirth}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calendarFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths={3}
-                        isOutsideRange={day => (moment().diff(day) < 0)}
-                        />
-                        */}
-
+                        {
+                            //Date picker
+                        }
                         <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
                         <br/>
                         <DatePicker
@@ -782,6 +768,9 @@ class RegistrationForm extends React.Component{
                         maxDate={moment()}
                         />
 
+                        {
+                            //Date of birth error
+                        }
                         {this.state.dateOfBirthError && 
                             <div>
                                 <span className="text-danger"> 
@@ -823,34 +812,7 @@ class RegistrationForm extends React.Component{
                     </label>
                     <br/>
                     <br/>
-                    {
-                        //Location of employment input field
-                        /*
                     
-                    <span className="req">*</span>
-                    <label>{this.props.lang === 'English' ? 'Location of Employment' : 'Localización de Empleo'}:</label>
-                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Location' : 'Localización'} maxLength="150" value={this.state.location} onChange={this.onLocationChange} onBlur={() => {
-                        //Check to see if address is only composed of spaces. 
-                        if(this.state.location.match(/^\s+$/)){
-                            if(this.props.lang === 'English'){
-                                this.setState(() => ({locationError: 'Enter a valid address.'}));
-                            }else{
-                                this.setState(() => ({locationError: 'Escriba una dirección física válida.'})); 
-                            }
-                        }else{
-                            this.setState(() => ({locationError: ''}));
-                        }
-                    }}/>
-                    {this.state.locationError && 
-                        <div>
-                            <span className="text-danger"> 
-                                {this.state.locationError}
-                            </span>
-                            <br/>
-                        </div>}
-                    <br/>
-                        */
-                    }
                 {
                     //Button to change page to page 2
                 }
@@ -894,6 +856,9 @@ class RegistrationForm extends React.Component{
                             this.setState(() => ({subjectError: ''}));
                         }
                     }}/>
+                    {
+                        //Class subject error
+                    }
                     {this.state.subjectError && 
                         <div>
                             <span className="text-danger"> 
@@ -1009,19 +974,23 @@ class RegistrationForm extends React.Component{
                             maxLength="50"
                             onChange={this.onTopicChange(index)}
                             onKeyDown={(event) => {
+                                //Do not allow the use of the ENTER key. 
                                 if (event.which == 13 || event.keyCode == 13) {
-                                    //code to execute here
                                     event.preventDefault();
                                 }
                             }
                             }
+                            //Validate topic whenever focus is removed from topic field. 
                             onBlur={() => {
                                 let topics = [...this.state.topicsTaught]
+                                //Trim topic spaces
                                 topics[index] = this.state.topicsTaught[index].trim();
                                 this.setState(() => ({topicsTaught: topics}));
+                                //Validate all topics
                                 let j = 0;
                                 let errorCheck = false;
                                 for(j = 0; j < this.state.topicsTaught.length; j++){
+                                    //Set error if topic does not exist or if it is filled with white space. 
                                     if(this.state.topicsTaught[j] && this.state.topicsTaught[j].match(/^\s+$/)){
                                         if(this.props.lang === 'English'){
                                             this.setState(() => ({topicError: 'Topics must contain text.'}));
@@ -1032,6 +1001,7 @@ class RegistrationForm extends React.Component{
                                         break;
                                     }
                                 }
+                                //Clear error if validation is successful. 
                                 if(!errorCheck){
                                     this.setState(() => ({topicError: ''}));
                                 }
@@ -1040,7 +1010,7 @@ class RegistrationForm extends React.Component{
                             }
                             />
                             {
-                                //Button to delete the topic (Minimum of 1). 
+                                //Button to delete the topic (Minimum of 1 topic must be present at all times). 
                             }
                             {this.state.topicsTaught.length > 1 && <div style={{display: 'inline'}}>
                             <button onClick={this.deleteTopic(index)}>
@@ -1052,6 +1022,9 @@ class RegistrationForm extends React.Component{
                         </span>
                     ))}
 
+                    {
+                        //Topic error
+                    }
                     {this.state.topicError && 
                         <div>
                             <span className="text-danger"> 
@@ -1112,7 +1085,7 @@ class RegistrationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'}:</label>
                     <input type="text" className="form-control" maxLength="100" placeholder= {this.props.lang === 'English' ? 'School Name' : 'Nombre de Escuela'} value={this.state.schoolName} onChange={this.onSchoolNameChange} onBlur={() => {
-                        //Check to see if the subject is only composed of spaces.
+                        //Check to see if the school name is only composed of spaces or numbers (with or without spaces). 
                         this.setState(() => ({schoolName: this.state.schoolName.trim()})); 
                         if(this.state.schoolName.match(/^\s+$/) || this.state.schoolName.trim().match(/^[0-9 ]*$/)){
                             if(this.props.lang === 'English'){
@@ -1124,6 +1097,10 @@ class RegistrationForm extends React.Component{
                             this.setState(() => ({schoolNameError: ''}));
                         }
                     }}/>
+
+                    {
+                        //School name error
+                    }
                     {this.state.schoolNameError && 
                         <div>
                             <span className="text-danger"> 
@@ -1140,7 +1117,7 @@ class RegistrationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'}:</label>
                     <input type="text" className="form-control" maxLength="150" placeholder= {this.props.lang === 'English' ? 'School Location' : 'Localización de su Escuela'} value={this.state.schoolLocation} onChange={this.onSchoolLocationChange} onBlur={() => {
-                        //Check to see if the subject is only composed of spaces. 
+                        //Check to see if the subject is only composed of spaces or numbers (with or without spaces). 
                         this.setState(() => ({schoolLocation: this.state.schoolLocation.trim()}));
                         if(this.state.schoolLocation.match(/^\s+$/) || this.state.schoolLocation.trim().match(/^[0-9 ]*$/)){
                             if(this.props.lang === 'English'){
@@ -1152,6 +1129,10 @@ class RegistrationForm extends React.Component{
                             this.setState(() => ({schoolLocationError: ''}));
                         }
                     }}/>
+
+                    {
+                        //School location error
+                    }
                     {this.state.schoolLocationError && 
                         <div>
                             <span className="text-danger"> 
@@ -1160,40 +1141,6 @@ class RegistrationForm extends React.Component{
                             <br/>
                         </div>}
                     <br/>
-
-                    {
-                        /*
-                        //Institution ID input field
-                    
-                    <label>{this.props.lang === 'English' ? 'Institution ID (Optional)' : 'Identificación de institución (Opcional)'}:</label>
-                    <input type="text" className="form-control" placeholder= {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} value={this.state.institutionID} onChange={this.onInstitutionIDChange} onBlur={() => {
-                        //Check if institution ID field matches expected format. 
-                        this.setState(() => ({institutionID: this.state.institutionID.trim()}));
-                        if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
-                            if(this.props.lang === 'English'){
-                                this.setState(() => ({institutionIDError: 'Enter a valid institution ID.'}));
-                            }else{
-                                this.setState(() => ({institutionIDError: 'Escriba una identificación de institución valida.'})); 
-                            }
-                        }else{
-                            this.setState(() => ({institutionIDError: ''}));
-                        }
-                    }}
-                    value = {this.state.institutionID} onChange={this.onInstitutionIDChange}/>
-
-                    {
-                        //Institution ID error
-                    }
-                    {this.state.institutionIDError && 
-                        <div>
-                            <span className="text-danger"> 
-                                {this.state.institutionIDError}
-                            </span>
-                            <br/>
-                        </div>}
-                    <br/>
-                    */
-                    }
 
                     {
                         //School system radio selector
@@ -1320,16 +1267,10 @@ class RegistrationForm extends React.Component{
                     <span className="req">*</span>
                     <label>{this.props.lang === 'English' ? 'Teacher Since' : 'Educador Desde'}:</label>
                     <br/>
-                    {/*
-                    <SingleDatePicker
-                        date={this.state.timeEmployed}
-                        onDateChange={this.onEmployedDateChange}
-                        focused={this.state.employedCalendarFocused}
-                        onFocusChange={this.onEmployedFocusChange}
-                        numberOfMonths={1}
-                        isOutsideRange={day => (moment().diff(day) < 0)}
-                        />
-                    */}
+                
+                    {
+                        //Date picker component
+                    }
 
                     <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
                     <br/>
@@ -1340,6 +1281,9 @@ class RegistrationForm extends React.Component{
                     maxDate={moment()}
                     />
 
+                    {
+                        //Time employed error
+                    }
                     {this.state.timeEmployedError && 
                         <div>
                             <span className="text-danger"> 
@@ -1393,21 +1337,15 @@ class RegistrationForm extends React.Component{
                     <br/>
                     <br/>
 
+                    {
+                        //Terms of use and privacy policy checkbox selector
+                    }
                     <span className="req">*</span>
                     <label className="clickable radio__text">
                     <input type="checkbox" name="termsOfUse" checked={this.state.termsOfUse === true} onChange={this.onTermsChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto los '} <a href="https://beta.edvotech.com/static/pages/tos.html"> {this.props.lang === 'English' ? 'Terms of Use' : 'Términos de Uso'}</a> {this.props.lang === 'English' ? 'and the' : 'y la' } <a href="https://beta.edvotech.com/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a>
                     </label>
                     <br/>
-                {
-                    /*
-                    <span className="req">*</span>
-                    <label className="clickable radio__text">
-                    <input type="checkbox" name="privacyPolicy" checked={this.state.privacyPolicy === true} onChange={this.onPrivacyChange}/> {this.props.lang === 'English' ? 'I have read and accept the ' : 'He leído y acepto la '} <a href="https://beta.edvotech.com/static/pages/privacy.html"> {this.props.lang === 'English' ? 'Privacy Policy' : 'Póliza de Privacidad'}</a>
-                    </label>
-                    <br/>
-                    <br/>
-                */
-                }
+                
                     {
                         //Error message is displayed if the Terms of Use or Privacy Policy is not accepted when trying to submit the form. 
                     }
@@ -1419,6 +1357,7 @@ class RegistrationForm extends React.Component{
                     <div className="text-danger">
                         {this.props.lang === 'English' ? <p>Provided input was not valid.</p> : <p>Algunos datos provistos no son válidos.</p>}
                     </div>}
+
                     {
                         //Error message is displayed if required fields are left blank. 
                     }
@@ -1428,7 +1367,7 @@ class RegistrationForm extends React.Component{
                     </div>}
                     
                     {
-                        //Buttons to return to the previous page and to submit the registration form. 
+                        //Button to return to the previous page. 
                     }
                     <a href="#top">
                         <button onClick={this.toPageThree}>
@@ -1437,6 +1376,10 @@ class RegistrationForm extends React.Component{
                             </div>
                         </button>
                     </a>
+
+                    {
+                        //Submit button
+                    }
 
                     <button disabled={!((this.state.english || this.state.spanish) && (this.state.teachingStrategies || this.state.technologyIntegration || this.state.updatedMaterial || this.state.instructionAlignment || this.state.timeManagement) && this.state.termsOfUse) || (this.state.timeEmployedError)} onClick={this.onSubmit}>
                         <div className="btn btn-item">

@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
  * @param {*} props - Default properties
  */
 const ManageRecommendations = (props) => (
+    //Authenticate user information to grant access to the Manage Recommendations page. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:recommendations-manage"
@@ -20,6 +21,9 @@ const ManageRecommendations = (props) => (
         <div className = "container">
             <div className="row">
                 <div className="col-sm-2 ">
+                {
+                    //Recommendations Button List
+                }
                     <div className="text-center well">
                         <RecommendationButtonList/>
                     </div>
@@ -34,6 +38,9 @@ const ManageRecommendations = (props) => (
                             {props.lang === 'English' ? 'Recommendations' : 'Recomendaciones'}
                         </div>
                         <hr className="break"/>
+                        {
+                            //Recommendations list with recommendations filters. 
+                        }
                     </div>
                     <RecommendationsFilters/>
                     <ManageRecommendationsList/>
@@ -42,14 +49,17 @@ const ManageRecommendations = (props) => (
         </div>
     </div>
                              )}
+                             //Redirect user to login page if not authorized. 
                              no={() => <Redirect to="/login" />}
                            />
 );
 
+//Map language settings to component properties. 
 const mapStateToProps = (state) => {
     return{
         lang: state.language.lang
     }
 }
 
+//Connect component to central controller. 
 export default connect(mapStateToProps)(ManageRecommendations);

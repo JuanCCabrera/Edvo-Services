@@ -25,6 +25,8 @@ const schoolReducer = (state = schoolReducerDefaultState, action) => {
 export default schoolReducer;
 
 /*
+School Object Model 
+
 school: {
         id: '',
         name: '',

@@ -13,6 +13,7 @@ const TeacherQuestionListItem = (props) => (
         //Open question modal if the question item is clicked. 
         <div className="clickable list-group-item item-card" onClick={() => {
             if(props.question.read == false){
+                //Mark a question as read in the database when the question list item is clicked. 
             axios.post('https://beta.edvotech.com/api/teacher/questions/read', {
                         askeddate: props.question.askedDate
                     },
@@ -37,12 +38,7 @@ const TeacherQuestionListItem = (props) => (
             }
             
             <h5>{props.lang === 'English' ? 'Date' : 'Fecha'}: {moment(props.question.askedDate).format("YYYY-MM-DD")}</h5>
-            {
-               /* //Question body. 
             
-            <h5>{props.question.question}</h5>
-                */
-            }
         </div>
 );
 

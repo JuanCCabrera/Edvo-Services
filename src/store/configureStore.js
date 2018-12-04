@@ -36,7 +36,9 @@ import loginPageReducer from '../reducers/loginPage';
 //Create central controller based on all reducers located in the /src/reducers folder. 
 
 export default () => {
+    //Create application controller. 
     const store = createStore(
+        //Combine all reducers in the system to handle all dispatchable actions. 
         combineReducers({
             language: languageReducer, 
             contact: contactReducer,

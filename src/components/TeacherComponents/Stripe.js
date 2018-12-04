@@ -9,6 +9,9 @@ import Can from '../../Can';
 import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
+/**
+ * Stripe payment component
+ */
 class Stripe extends Component {
   constructor(props) {
     super(props);
@@ -16,20 +19,11 @@ class Stripe extends Component {
   }
 
   componentWillMount() {
+    //Get user information from database
     axios.get('https://beta.edvotech.com/api/user', {
       headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     }).then(response => {
-      if (response.data.subscription) {
-        this.props.history.replace('/teacher/settings/plans');
-      }
-
-    })
-  }
-
-  componentWillMount() {
-    axios.get('https://beta.edvotech.com/api/user', {
-      headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-    }).then(response => {
+      //If the user already has a subscription, take the user to the Offers page. 
       if (response.data.subscription) {
         this.props.history.replace('/teacher/settings/plans');
       }
@@ -39,6 +33,7 @@ class Stripe extends Component {
 
   render() {
     return (
+      //Authenticate user information to grant access to Stripe component. 
       <Can
         role={auth0Client.getRole()}
         perform="teacher:settings"
@@ -49,12 +44,21 @@ class Stripe extends Component {
                 <div className="col-sm-3" />
                 <div className="col-sm-6">
                   <div className="big-card">
+                  {
+                    //Stripe key
+                  }
                     <StripeProvider apiKey="pk_live_LQ8GBkPBQ2oBasw3NDDOAtVz">
                       <div>
+                      {
+                        //Payment form title
+                      }
                         <div className="form__title">
                           <p>{this.props.lang === 'English' ? 'Subscription Payment' : 'Pago de Suscripción'}</p>
                           <hr className="break" style={{ borderColor: '#5933aa' }} />
                         </div>
+                        {
+                          //Credit card input component
+                        }
                         <Elements locale="es">
                           <CheckoutForm {...this.props} />
                         </Elements>
@@ -67,16 +71,19 @@ class Stripe extends Component {
             </div>
           </div>
         )}
+        //Redirect user to login page if not authorized. 
         no={() => <Redirect to="/login" />}
       />
     );
   }
 }
 
+//Map language settings to component properties. 
 const mapStateToProps = (state) => {
   return {
     lang: state.language.lang
   }
 }
 
+//Connect component to the controller. 
 export default connect(mapStateToProps)(Stripe);

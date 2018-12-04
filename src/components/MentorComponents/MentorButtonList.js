@@ -9,6 +9,9 @@ import {connect} from 'react-redux';
 const MentorButtonList = (props) => (
     <div>
         <br/>
+        {
+            //Link to Mentor Profile page. 
+        }
         <Link to={"/mentor/settings/info"}>{props.lang === 'English' ? 'Account Information' : 'Información de Cuenta'}</Link>
     </div>
 );

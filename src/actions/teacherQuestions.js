@@ -59,6 +59,9 @@ export const selectQuestion = (
         }
 });
 
+/**
+ * unloadTeacherQuestions - Generates an object with a command keyword indicating to the central controller that it must erase local teacher question data. 
+ */
 export const unloadTeacherQuestions = () => {
     return {
         type: 'UNLOAD_TEACHER_QUESTIONS'

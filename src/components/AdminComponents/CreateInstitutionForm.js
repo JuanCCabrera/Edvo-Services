@@ -38,10 +38,13 @@ class CreateInstitutionForm extends React.Component{
     }
 
 
+    //Change numAccounts in local state. 
     onNumberChange = (e) => {
         const numAccounts = e.target.value;
         this.setState(() => ({numAccounts}));
     }
+
+    //Change name in local state. 
     onNameChange = (e) => {
         const name = e.target.value;
         this.setState(() => ({name}));
@@ -65,6 +68,7 @@ class CreateInstitutionForm extends React.Component{
         this.setState(() => ({institutionID}));
     }
 
+    //Run whenever the component updates. 
     componentDidUpdate(prevProps, prevState){
         if(prevProps !== this.props){
             //Update the language of the error messages whenever the language is set to change. 
@@ -97,18 +101,17 @@ class CreateInstitutionForm extends React.Component{
             }
         }
     }
-    //
-    // createInstitutionError: false,
-    //         createInstitutionIncompleteError: false,
-    //         createInstitutionInvalidInputs: false
 
     //Submit Institution information
     onSubmit = (e) => {
-        e.preventDefault();        
+        e.preventDefault();   
+        //Generate error if required text input fields are empty.     
         if(!this.state.name || !this.state.location){
             this.setState(() => ({createInstitutionError : true})); 
+        //Generate error if there are other existing errors in the form input fields. 
         }else if(this.state.nameError || this.state.locationError || this.state.institutionIDError){
             this.setState(() => ({createInstitutionError: true}));
+        //If validation was successful, post data to the database. 
         }else{
             axios.post('https://beta.edvotech.com/api/admin/settings/institutions/add', {
         name: this.state.name,
@@ -120,18 +123,20 @@ class CreateInstitutionForm extends React.Component{
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             })
         .catch(error => {
+            //Generate error if there is an error in the database query implementation
             if(error.response.status == 403 || error.response.status == 500){
                 this.props.dispatch(setFailureModal());
                 this.setState(() => ({createInstitutionInvalidInputs: false}));
                 this.setState(() => ({createInstitutionError: true}));
                 this.setState(() => ({createInstitutionAlreadyExists: false}));
             }
-
+                //Generate error if inputs are not valid
                 else if(error.response.status == 401){
                     this.setState(() => ({createInstitutionInvalidInputs: true}));
                     this.setState(() => ({createInstitutionAlreadyExists: false}));
                     this.setState(() => ({createInstitutionError: false}));
                 }
+                //Generate error if institution already exists
                 else if(error.response.status == 402){
                     this.setState(() => ({createInstitutionAlreadyExists: true}));
                     this.setState(() => ({createInstitutionInvalidInputs: false}));
@@ -139,20 +144,20 @@ class CreateInstitutionForm extends React.Component{
                 }
             })
         .then((response)=>{
+            //Navigate to AppSchools page if successful. 
             if(response.status == 201){              
-                this.setState(() => ({createInstitutionError: false}));
                 this.props.dispatch(setSuccessModal());
                 this.props.history.push('/admin/settings/schools');
 
             }
         });
         }
-        //TO-DO Add new school to database
     }
 
     //Render form
     render(){
         return(
+            //Authenticate user information to grant access to Create Institution Form. 
             <Can
             role={auth0Client.getRole()}
             perform="admin:settings"
@@ -172,9 +177,15 @@ class CreateInstitutionForm extends React.Component{
                             
                     <div className="col-sm-9">
                         <div className="big-card ">
+                        {
+                            //Form (card)
+                        }
                             <form onSubmit={this.onSubmit}>
                             <div>
                                 <div className="form__title">
+                                {
+                                    //Form title
+                                }
                                     <p>
                                         {this.props.lang === 'English' ? 'Create New Institution' : 'Crear Nueva Institución'}
                                     </p>
@@ -280,7 +291,7 @@ class CreateInstitutionForm extends React.Component{
                                 <label>{this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'}:</label>
                                 <br/>
                                 <input type="text" style={{width: '50%'}} maxLength="4" className="form-control" placeholder = {this.props.lang === 'English' ? 'Number of accounts' : 'Cantidad de cuentas'} onBlur={() => {
-                                    //Check if institution ID field matches expected format. 
+                                    //Check if number of accounts field matches the expected format (number greater than 0). 
                                     this.setState(() => ({numAccounts: this.state.numAccounts.trim()}));
                                     if(!this.state.numAccounts.match(/^[1-9]{1}[0-9]*$/)){
                                         if(this.props.lang === 'English'){
@@ -295,7 +306,7 @@ class CreateInstitutionForm extends React.Component{
                                 value = {this.state.numAccounts} onChange={this.onNumberChange}/>
                                 
                                 {
-                                    //Institution ID error
+                                    //Number of accounts error. 
                                 }
                                 {this.state.numAccountsError && 
                                     <div>
@@ -314,7 +325,7 @@ class CreateInstitutionForm extends React.Component{
                                 <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                 <br/>
                                 <input type="text" style={{width: '50%'}} maxLength="30" className="form-control" placeholder = {this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
-                                    //Check if institution ID field matches expected format. 
+                                    //Check if institution ID field matches expected format (alphanumeric input with no spaces).  
                                     this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                                     if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                         if(this.props.lang === 'English'){
@@ -363,6 +374,7 @@ class CreateInstitutionForm extends React.Component{
                 </div>
                 </div>
                 </div>
+    //Redirect user to login page if not authorized. 
      )}
      no={() => <Redirect to="/login" />}
    />);

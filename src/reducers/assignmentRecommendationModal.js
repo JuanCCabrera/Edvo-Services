@@ -1,3 +1,4 @@
+//Reducer default state
 const assignmentRecommendationReducerDefaultState = {
     selectedAssignmentRecommendation:{
         title : '',
@@ -35,7 +36,7 @@ const assignmentRecommendationReducer = (state = assignmentRecommendationReducer
                 selectedAssignmentRecommendation: action.selectedAssignmentRecommendation,
                 assignmentRecommendationFlag: true
             }
-        //Clear modal information
+        //Clear modal information (set to defaults)
         case 'CLEAR_ASSIGNMENT_RECOMMENDATION_MODAL':
             return{
                 selectedAssignmentRecommendation: {

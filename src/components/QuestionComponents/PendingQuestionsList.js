@@ -28,24 +28,34 @@ class PendingQuestionsList extends React.Component {
 
 
     //Configure initial local state values, including the list of questions to display on the first page. 
+    //Unload controller questions and load list of questions pending answers. 
     componentWillMount(){ 
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
-        this.props.dispatch(resetQuestionsList());       
+        //Unload questions in controller. 
+        this.props.dispatch(resetQuestionsList()); 
+        //Request full updated list of questions pending answers.       
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/staff/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
+            //Load questions into controller. 
             response.data.questions.forEach(element => {
                 this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askeddate, 
                 subject: element.subject, userId: element.userid}));
             });
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
+            //Set failure modal
             this.props.dispatch(setFailureModal());
         });    
+        //Calculate pagination element parameters
         this.pageSlice = Math.ceil(this.props.questions.length/this.itemsPerPage);
         this.currentPage = 1;
+        //Slice list of questions to display only those which should be visible on the list. 
         const displayedQuestions = this.props.questions.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedQuestions: displayedQuestions});
     }

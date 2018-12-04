@@ -26,20 +26,28 @@ class AnswerQuestionForm extends React.Component {
         };
     }
 
+    //Unload questions in controller and load the question being answered when component mounts. 
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
-        this.props.dispatch(resetQuestionsList());       
+        //Unload questions
+        this.props.dispatch(resetQuestionsList());    
+        //Request list of questions pending answers   
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/staff/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
+            //Load question being answered into the controller
             response.data.questions.forEach(element => {
                 this.props.dispatch(loadQuestion({question: element.question, askedDate: element.askeddate, 
                 subject: element.subject, userId: element.userid}));
             });
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loding modal
             this.props.dispatch(setLoadingModal());
+            //Set Failure modal if an error occurs. 
             this.props.dispatch(setFailureModal());
         });    
     }
@@ -61,7 +69,9 @@ class AnswerQuestionForm extends React.Component {
         }else if(this.state.answerError){
             this.setState(() => ({answerError: true}));
         }else{
+            //Clear error
             this.setState(() => ({answerError: ''}));
+            //Post answer to database. 
             axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/questions/answer', {
                 askeddate: this.props.question.askedDate,
                 answer: this.state.answer,
@@ -69,21 +79,24 @@ class AnswerQuestionForm extends React.Component {
             },
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }}).then((response)=>{
+                //Load answer to controller, set success modal and navigate to Pending Questions page if successful. 
                 if(response.status == 201){
                     this.props.dispatch(answerQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId, answer: this.state.answer}));
                     this.props.dispatch(setSuccessModal());
                     this.props.history.push('/staff/questions');
                 }
             }).catch(error => {
+                //Set failure modal if unsuccessful
                 this.props.dispatch(setFailureModal());
             });
-            //Move to the Pending Questions page upon completing the submission. 
+            //Clear error
             this.setState(() => ({answerError: false}));
         }
     }
 
     render(){
         return (
+            //Authenticate user information to grant access to Answer Question form. 
             <Can
             role={auth0Client.getRole()}
             perform="admin:questions-answer"
@@ -93,6 +106,9 @@ class AnswerQuestionForm extends React.Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-2">
+                            {
+                                //Navigation list for Questions pages. 
+                            }
                                 <div className="text-center well">
                                    <QuestionButtonList/>
                                 </div>
@@ -119,6 +135,7 @@ class AnswerQuestionForm extends React.Component {
                                     <br/>
                                     <textarea type="text" rows='10' className="form-control" maxLength="5000" value={this.state.answer} placeholder= {this.props.lang === 'English' ? 'Write your answer here!' : 'Escriba su respuesta aquí!'} onChange={this.onAnswerChange} onBlur={() => {
                                         this.setState(() => ({answer: this.state.answer.trim()}));
+                                        //Verify that question answer does not only contain white space.
                                         if(this.state.answer && this.state.answer.match(/^\s+$/)){
                                             this.setState(() => ({answerError: true}));
                                         }else{
@@ -150,6 +167,7 @@ class AnswerQuestionForm extends React.Component {
                 </form>
             </div>
                              )}
+                             //Redirect user to login page if not authorized. 
                              no={() => <Redirect to="/login" />}
                            />
         );

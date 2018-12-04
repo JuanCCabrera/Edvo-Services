@@ -14,8 +14,8 @@ class Header extends React.Component{
     constructor(props){
         super(props);
     }
-    //
-
+    
+    //Determine user authentication (true or false) and role (null, teacher, mentor, admin) while mounting Header. 
     componentWillMount(){
         if(!this.props.creds.isAuthenticated && this.props.creds.role == null){
             if(auth0Client.isAuthenticated()){
@@ -78,10 +78,13 @@ class Header extends React.Component{
                             
     
                             {
-                                //Dashboard
+                                //Dashboard option is conditionally rendered depending on the user's role
                             }
                             {this.props.role == "teacher" && 
                             <li>
+                                {
+                                    //Link to teacher home page
+                                }
                                 <NavLink to="/teacher/home" activeClassName="is-active" exact={true}>
                                     <div>{this.props.lang === 'English' ? 'Dashboard' : 'Tablero'}</div>
                                 </NavLink> 
@@ -89,6 +92,9 @@ class Header extends React.Component{
                             }
                             {this.props.role == "mentor" &&
                                 <li>
+                                    {
+                                        //Link to mentor home page. 
+                                    }
                                     <NavLink to="/mentor/home" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Dashboard' : 'Tablero'}</div>
                                     </NavLink> 
@@ -96,6 +102,9 @@ class Header extends React.Component{
                             }
                             {this.props.role == "admin" &&
                                 <li>
+                                {
+                                    //Link to admin home page. 
+                                }
                                     <NavLink to="/admin/home" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Dashboard' : 'Tablero'}</div>
                                     </NavLink> 
@@ -103,6 +112,9 @@ class Header extends React.Component{
                             }
                             {this.props.role == "school" &&
                                 <li>
+                                {
+                                    //Link to school home page. 
+                                }
                                     <NavLink to="/school/home" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Dashboard' : 'Tablero'}</div>
                                     </NavLink> 
@@ -110,11 +122,14 @@ class Header extends React.Component{
                             }
     
                             {
-                                //Settings and Profile
+                                //Settings and Profile are conditionally rendered depending on the user's role. 
                             }
                             
                             {this.props.role == "teacher" && 
                                 <li>
+                                    {
+                                        //Link to the Teacher Profile page. 
+                                    }
                                     <NavLink to="/teacher/settings/info" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Profile' : 'Perfil'}</div>
                                     </NavLink> 
@@ -122,6 +137,9 @@ class Header extends React.Component{
                             }
                             {this.props.role == "mentor" && 
                                 <li>
+                                    {
+                                        //Link to the Mentor Profile page. 
+                                    }
                                     <NavLink to="/mentor/settings" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Profile' : 'Perfil'}</div>
                                     </NavLink> 
@@ -129,6 +147,9 @@ class Header extends React.Component{
                             }
                             {this.props.role == "admin" && 
                                 <li>
+                                    {
+                                        //Link to the Admin Profile page. 
+                                    }
                                     <NavLink to="/admin/settings/info" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Profile' : 'Perfil'}</div>
                                     </NavLink> 
@@ -136,6 +157,9 @@ class Header extends React.Component{
                             }
                             {this.props.role == "school" && 
                                 <li>
+                                    {
+                                        //Link to the School Profile page. 
+                                    }
                                     <NavLink to="/school/settings" activeClassName="is-active" exact={true}>
                                         <div>{this.props.lang === 'English' ? 'Profile' : 'Perfil'}</div>
                                     </NavLink> 
@@ -148,12 +172,18 @@ class Header extends React.Component{
                             
                             {!this.props.isAuthenticated ?
                                 <li>
+                                    {
+                                        //Render "Login" if user is logged out. 
+                                    }
                                     <NavLink className="inactive" activeClassName="active" to="/login">
                                         <div><p>{this.props.lang === 'English' ? 'Login' : 'Entrar'}</p> </div>
                                     </NavLink>
                                 </li>
                                 :
                                 <li>
+                                    {
+                                        //Render "Log Out" if user is logged in. 
+                                    }
                                     <NavLink className="inactive" activeClassName="active" to="/login">
                                         <div><p>{this.props.lang === 'English' ? 'Log Out' : 'Salir'}</p> </div>
                                     </NavLink>

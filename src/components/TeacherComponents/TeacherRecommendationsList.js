@@ -25,24 +25,30 @@ class TeacherRecommendationsList extends React.Component{
     }
 
     componentWillUnmount(){
+        //Unload recommendations from central controller. 
         this.props.dispatch(unloadTeacherRecommendations());
     }
 
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Reset recommendations categories
         this.props.dispatch(setTeacherRecommendationsReadFilter('all'));
         this.props.dispatch(setTeacherRecommendationsSortingFilter('date'));
+        //Request teacher recommendations information from the database. 
         axios.get('https://beta.edvotech.com/api/teacher/recommendations',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
+            //Load each recommendation received to the controller. 
             response.data.recommendations.forEach(element => {        
                 this.props.dispatch(loadTeacherRecommendation({recoID: element.recomid, title: element.title, 
                 header: element.header, location: element.location, 
                 description: element.description, 
                 multimedia: element.multimedia, date: element.date, read: !!element.read, rate: element.rate}));
+                //Load favorites
                 if(element.favorite == true){
                     this.props.dispatch(addFavoriteRecommendation({recoID: element.recomid, title: element.title, 
                         header: element.header, location: element.location, 
@@ -50,12 +56,16 @@ class TeacherRecommendationsList extends React.Component{
                         multimedia: element.multimedia, date: element.date, read: element.read, rate: element.rate}));
                 }
          });
+         //Clear loading modal
          this.props.dispatch(setLoadingModal());
     }).catch(error => {
+        //Clear loading modal
         this.props.dispatch(setLoadingModal());
+        //Set failure modal
         this.props.dispatch(setFailureModal());
         
     });
+    //Determine pagination elements to display. 
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);

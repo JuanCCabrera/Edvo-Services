@@ -23,6 +23,9 @@ class RecommendationModal extends React.Component{
     render(){
         return (
             <div className="">
+            {
+                //Recommendation Modal
+            }
                 <Modal
                 isOpen = {this.props.recommendation.recoID !== ''}
                 onRequestClose = {this.props.clearSelectedRecommendation}
@@ -30,20 +33,10 @@ class RecommendationModal extends React.Component{
                 className="home-modal-card"
                 >
                     <div>
-                    
 
-                    {
-                        /*
-                        //Favorite status
-                    
-
-                        <span>{this.props.lang === 'English' ? 'Favorite' : 'Favorita'}: </span>
-                        */
-                    }
                     {
                         //Favorite star
                     }
-
                     <div title={this.   props.lang === 'English' ? 'Mark as favorite' : 'Marcar como favorita'} className="text-right" style={{paddingBottom: '0', marginBottom: '0'}}>
                     <StarRatingComponent
                         name="favorite"
@@ -61,12 +54,14 @@ class RecommendationModal extends React.Component{
                             let favorite = false
                             if(prevValue == 0)
                                 favorite = true
+                            //Post favorite status to the database. 
                             axios.post('https://beta.edvotech.com/api/teacher/recommendations/favorite',{
                                 recomid: this.props.recommendation.recoID,
                                 favorite: favorite
                             },{
                                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                             }).then(response =>{
+                            //Dispatch favorite status to the controller. 
                             if(prevValue == 0){
                                 //Add to favorites list 
                                 this.props.dispatch(addFavoriteRecommendation(this.props.recommendation));
@@ -78,6 +73,9 @@ class RecommendationModal extends React.Component{
                     />
                 </div>
                         <div>
+                        {
+                            //Recommendation title
+                        }
                             <div className="text-center form__title">
                                 <h2 className="">{this.props.recommendation.title}</h2>
                             </div>
@@ -135,12 +133,14 @@ class RecommendationModal extends React.Component{
                                         value={this.props.recommendation.rate}
                                         
                                         onStarClick={(nextValue, prevValue, name) => {
+                                            //Post rating to the database. 
                                             axios.post('https://beta.edvotech.com/api/teacher/recommendations/rate',{
                                                 recomid: this.props.recommendation.recoID,
                                                 rate: nextValue
                                             },{
                                                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                                             }).then(response =>{
+                                                //Dispatch rating information to the controller. 
                                                 this.props.dispatch(rateRecommendation({recoID: this.props.recommendation.recoID, rate: nextValue}));
                                                 this.props.dispatch(rateTopAndMostRecent({recoID: this.props.recommendation.recoID, rate: nextValue}));
                                             })}}

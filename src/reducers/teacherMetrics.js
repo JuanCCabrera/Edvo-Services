@@ -15,6 +15,7 @@ const teacherMetricsReducerDefaultState = {
  */
 const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action) => {
     switch(action.type){
+        //Unload all teacher metrics data
         case 'RESET':
         return {
             recommendationsRead: 0,
@@ -32,6 +33,7 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
             }
+        //Log number of questions that teacher has asked to display in the Teacher Home page. 
         case 'LOAD_TEACHER_QUESTIONS_ASKED':
             return {
                 recommendationsRead: state.recommendationsRead,
@@ -40,6 +42,7 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
                 topRecommendations: [...state.topRecommendations],
                 mostRecentrecommendations: [...state.mostRecentrecommendations]
             }
+        //Log number of recommendations user has read to display in the Teacher Home page. 
         case 'LOAD_TEACHER_RECOMMENDATIONS_READ':
             return {
                 recommendationsRead: action.recommendationsRead,
@@ -72,12 +75,14 @@ const teacherMetricsReducer = (state = teacherMetricsReducerDefaultState, action
                 recommendationsRead: state.recommendationsRead,
                 questionsAsked: state.questionsAsked,
                 daysInPlatform: state.daysInPlatform,
+                //Find matching recommendation ID to set the given rating for the recommendation in the Top Recommendations List. 
                 topRecommendations: state.topRecommendations.map((reco) => {
                     if(reco.recoID === action.recoID){
                         reco.rate = action.rate;
                     }
                     return reco;
                 }),
+                //Find matching recommendation ID to set the correct rating for the recommendation in the Recent Recommendations List. 
                 mostRecentrecommendations: state.mostRecentrecommendations.map((reco) => {
                     if(reco.recoID === action.recoID){
                         reco.rate = action.rate;

@@ -2,7 +2,8 @@
 
 /**
  *  logRegistrationStatus - Generates and object containing a user's registration status. 
- * @param {*} param0 - Object containing a user's registration status
+ * @param {*} param0 - Object containing a user's registration status in the form of a "registered" key which expects a boolean 
+ * indicating whether the user is registered (true) or not (false). 
  */
 export const logRegistrationStatus = (
     {
@@ -16,7 +17,8 @@ export const logRegistrationStatus = (
 
 /**
  *  logSubscriptionStatus - Generates and object containing a user's subscription status. 
- * @param {*} param0 - Object containing a user's subscription status
+ * @param {*} param0 - Object containing hasPaidSubscription key which expects a boolean indincating
+ *  whether the user has an active subscription (true) or not (false). 
  */
 export const logSubscriptionStatus = (
     {

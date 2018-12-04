@@ -20,16 +20,6 @@ const signOut = (props) => {
     auth0Client.signOut();
   };
 
-  const reset = () => {
-    axios.post('https://edvo-test.auth0.com/dbconnections/change_password', {
-      client_id: 's4PsDxalDqBv79s7oeOuAehCayeItkjN',
-      email: auth0Client.getEmail(),
-      connection: 'Username-Password-Authentication' ,
-      json: true
-    },
-    {headers: { 'content-type': 'application/json' }});
-  };
-
 /**
  * The Login page contains buttons to login and register to the application through the Auth0 third-party client. 
  * Additionally, it contains static text to motivate users to sign up to the service. 
@@ -41,15 +31,14 @@ class LoginPage extends React.Component{
 
     }
 
+    //Load user registration and subscription status when Login page mounts. 
     componentWillMount(){
-        //TO-DO: Use this.props.dispatch(logRegistrationStatus({registered: bool})) and this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: bool}))
-        //in a request to help determine if the user needs links to the Registration Form or Payment page. 
         this.props.dispatch(setLoadingModal());
         axios.get('https://beta.edvotech.com/api/user',  {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{ 
                 if(response.status == 201){
-                    
+                    //Log registration and subscription status as true. 
                     this.props.dispatch(logRegistrationStatus({registered: true}));
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: response.data.subscription != null ? true : false}));
                 }
@@ -57,6 +46,7 @@ class LoginPage extends React.Component{
             })
             .catch(error => {
                 if(error.response.status == 403){
+                    //Log registration and subscription status as false. 
                     this.props.dispatch(logRegistrationStatus({registered: false}));
                     this.props.dispatch(logSubscriptionStatus({hasPaidSubscription: false}))
                 }
@@ -73,6 +63,9 @@ class LoginPage extends React.Component{
                         <div className="row">
                             <div className="col-sm-3"/>
                             <div className="text-center col-sm-6">
+                            {
+                                //Login page "Join Us" image and message displayed if user is not registered or does not have an active subscription. 
+                            }
                                 <div className="Register">
                                     { !(auth0Client.isAuthenticated() && (this.props.loginPage.hasPaidSubscription ||  (auth0Client.getRole() != "teacher" && auth0Client.getRole() != null))) &&
                                         <div>
@@ -95,6 +88,9 @@ class LoginPage extends React.Component{
                                         </div>
                                     }
 
+                                    {
+                                        //Login page "Come back soon!" image and thank you message displayed if user is logged in and has evar had an active subscription. 
+                                    }
                                     { (auth0Client.isAuthenticated() && (this.props.loginPage.hasPaidSubscription || (auth0Client.getRole() != "teacher" && auth0Client.getRole() != null))) && 
                                         <div style={{marginTop: '3rem'}}>
                                             {this.props.lang === 'English' ? <img className="Materials-Img-S" src="https://beta.edvotech.com/static/images/comebacksoonWHITEBG-min.png" />
@@ -123,7 +119,7 @@ class LoginPage extends React.Component{
                                             <div className="col-sm-6">
                                                 <br/>
                                                 <span className="text-bold text-danger"> {localStorage.getItem('loginError')}</span>
-                                                {
+                                                {//Display Login and Register buttons if user has not been authenticated through login. 
                                                     !auth0Client.isAuthenticated() &&
                                                     <div style={{marginBottom: '1rem'}}>
                                                         <button className="btn btn-item" onClick={auth0Client.signIn}>
@@ -141,6 +137,7 @@ class LoginPage extends React.Component{
                                                 }
                         
                                                 {
+                                                //Display Log Out button if user has been authenticated through login. 
                                                 auth0Client.isAuthenticated() &&
                                                     <div style={{marginBottom: '1rem'}}>
                                                         <div>
@@ -151,6 +148,9 @@ class LoginPage extends React.Component{
                                                             </button>
                                                         </div>
 
+                                                    {
+                                                        //Display Continue Registration button if user is logged in but does not have registered information. 
+                                                    }
                                                     {!this.props.loginPage.registered && 
                                                         <div>
                                                             <Link to={'/register'}>
@@ -161,6 +161,9 @@ class LoginPage extends React.Component{
                                                         </div>
                                                     }
 
+                                                    {
+                                                        //Display Pay Subscription button if user is logged in and registered, but has not owned an active subscription. 
+                                                    }
                                                     {(this.props.loginPage.registered && !this.props.loginPage.hasPaidSubscription && auth0Client.getRole() == "teacher") && 
                                                         <div>
                                                             <Link to={'/teacher/settings/plans/payment'}>
@@ -181,6 +184,9 @@ class LoginPage extends React.Component{
                         </div>
                     </div>
                 </div>
+                {
+                    //Contact Form
+                }
                 <div>
                     <ContactForm
                     onSubmit={(contact) => {
@@ -192,7 +198,7 @@ class LoginPage extends React.Component{
     }
 }
 
-//Map current language state to component properties.
+//Map current language and user login status to component properties.
 const mapStateToProps = (state) => {
     
     return {

@@ -11,6 +11,7 @@ const getVisibleTeacherQuestions = (teacherQuestions, {text, checkType, read}) =
     return teacherQuestions.filter((question) => {
         const questionMatch = question.question.toLowerCase().includes(text.toLowerCase());
         const subjectMatch = question.subject.toLowerCase().includes(text.toLowerCase());
+        //Only filter questions by reading status if the read status filter is not set to 'all'.
         let typeCheck = true;
         if(read !== 'all'){
             if(read === 'read' && !question.read){

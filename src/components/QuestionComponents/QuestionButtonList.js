@@ -9,6 +9,9 @@ import {connect} from 'react-redux';
 const QuestionButtonList = (props) => (
     <div>
         <br/>
+        {
+            //Link to Pending Questions page. 
+        }
         <Link to={"/staff/questions"} style={{textDecoration: 'none'}}>
             <div className="nav__button">
                 <div className="nav__button__text" style={{marginBottom: '1rem'}}>

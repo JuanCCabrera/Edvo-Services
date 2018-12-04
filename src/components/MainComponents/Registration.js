@@ -12,6 +12,9 @@ const Registration = (props) => (
             <div className="container">
                 <div className="row">
                     <div className="col-sm-2"/>
+                    {
+                        //Registration Form
+                    }
                     <div className="col-sm-8">
                         <RegistrationForm/>
                     </div>
@@ -19,6 +22,9 @@ const Registration = (props) => (
                 </div>
             </div>
         </div>
+        {
+            //Contact Form
+        }
         <div>
             <ContactForm/>
         </div>

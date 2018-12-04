@@ -12,6 +12,7 @@ class AssignmentRecommendationModal extends React.Component{
     }
     render(){
         return (
+                //Assignmen Recommendation modal
                 <Modal
                 isOpen = {this.props.recoInfo.assignmentRecommendationFlag}
                 onRequestClose = {this.props.clearSelectedRecommendation}
@@ -20,11 +21,26 @@ class AssignmentRecommendationModal extends React.Component{
                 className="assign-modal-card"
                 >
                 <div>
+                    {
+                        //Modal title
+                    }
                     <h1 className="form__title">{this.props.recoSpec.title}</h1>
+                    {
+                        //Modal header
+                    }
                     <h4>{this.props.recoSpec.header}</h4>
+                    {
+                        //Modal description
+                    }
                     <div dangerouslySetInnerHTML={{ __html: this.props.recoSpec.description}} />
                     <hr/>
+                    {
+                        //"Class Information" title
+                    }
                     <h3 className="text-center" style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
+                    {
+                        //Class subject
+                    }
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Materia'}: {this.props.recoSpec.subject}</p>
                     {
                         //Class format
@@ -73,7 +89,13 @@ class AssignmentRecommendationModal extends React.Component{
                         </div>
                         
                         }
+                    {
+                        //Class group size
+                    }
                     <p>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}: {this.props.recoSpec.size} {this.props.lang === 'English' ? 'students' : 'estudiantes'}</p>
+                    {
+                        //Class topics
+                    }
                     <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}:</p>
                         <ul style={{listStyleType: 'circle'}}>
                             {this.props.recoSpec.topics[0] && <li>{this.props.recoSpec.topics[0]}</li>}
@@ -81,6 +103,10 @@ class AssignmentRecommendationModal extends React.Component{
                             {this.props.recoSpec.topics[2] && <li>{this.props.recoSpec.topics[2]}</li>}
                         </ul>
                     <br/>
+
+                    {
+                        //Challenge categories
+                    }
                     <div className="panel panel-default" style={{maxWidth: '25rem'}}>
                         <div className="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Challenge Categories' : 'Categorías de Retos'}:</h4></div>
                         <div className="panel-body">
@@ -99,13 +125,11 @@ class AssignmentRecommendationModal extends React.Component{
                     {
                         //Button to close modal
                     }
-                    
-                        
-                            <button className="btn btn-item" onClick = {this.props.clearSelectedRecommendation}>
-                                <div>
-                                    {this.props.lang === 'English' ? 'Close' : 'Cerrar'}
-                                </div>
-                            </button>
+                        <button className="btn btn-item" onClick = {this.props.clearSelectedRecommendation}>
+                            <div>
+                                {this.props.lang === 'English' ? 'Close' : 'Cerrar'}
+                            </div>
+                        </button>
                     </div>
                 </div>
                 </Modal>

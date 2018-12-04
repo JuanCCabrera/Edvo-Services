@@ -76,12 +76,17 @@ class ContactForm extends React.Component {
     //Submit contact form
     onSubmit = (e) => {
         e.preventDefault();
-        if (!this.state.name || !this.state.email || !this.state.message) {   //Generate error if there are missing fields
+        //Generate error if there are missing fields
+        if (!this.state.name || !this.state.email || !this.state.message) {   
             this.setState(() => ({ contactError: true }));
+        //Generate error if there are existing errors in form validation. 
         } else if (this.state.nameError || this.state.emailError || this.state.messageError) {
             this.setState(() => ({ contactError: true }))
-        } else {  //Otherwise, submit form information
+        //Otherwise, submit form information
+        } else {  
+            //Clear global form error
             this.setState(() => ({ contactError: false }));
+            //Set loading Modal
             this.props.dispatch(setLoadingModal());
             axios.post('https://beta.edvotech.com/api/contact', {
                 name: this.state.name,
@@ -89,16 +94,21 @@ class ContactForm extends React.Component {
                 message: this.state.message
             })
                 .then((response) => {
+                    //set Success modal
                     this.props.dispatch(setSuccessModal());
+                    //Clear local state
                     this.setState({
                         name: '',
                         email: '',
                         message: ''
                     });
+                    //Clear loading modal
                     this.props.dispatch(setLoadingModal());
                 })
                 .catch(error => {
+                    //Clear loading modal
                     this.props.dispatch(setLoadingModal());
+                    //Set failure modal
                     this.props.dispatch(setFailureModal());
 
                 });
@@ -107,11 +117,17 @@ class ContactForm extends React.Component {
     render() {
         return (
             <div>
+            {
+                //Parallax background image
+            }
                 <div className="Parallax-Image Contact">
                     <div className="Contact-Content" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4 col-md-offset-3">
+                                {
+                                    //Contact Form header
+                                }
                                     <h5 className="Want Contact-Font">
                                         {this.props.lang === 'English' ?
                                             <span>Want to know more?</span>
@@ -119,6 +135,9 @@ class ContactForm extends React.Component {
                                             <span>¿Desea conocer más?</span>
                                         }
                                     </h5>
+                                    {
+                                        //"Contact Us" message
+                                    }
                                     {this.props.lang === 'English' ?
                                         <h5 className="Contact-Font">Contact Us</h5>
                                         :
@@ -126,10 +145,16 @@ class ContactForm extends React.Component {
                                     }
                                 </div>
                             </div>
+                            {
+                                //Form
+                            }
                             <form onSubmit={this.onSubmit}>
                                 <div className="row justify-content-center">
                                     <div className="col-md-offset-3 col-md-3">
                                         <div className="form-group">
+                                        {
+                                            //User name input field
+                                        }
                                             <input
                                                 className="form-control"
                                                 type="text"
@@ -150,6 +175,9 @@ class ContactForm extends React.Component {
                                                 }}
                                                 value={this.state.name}
                                                 onChange={this.onNameChange} />
+                                            {
+                                                //User name error
+                                            }
                                             {this.state.nameError &&
                                                 <div>
                                                     <span style={{ color: 'white' }}>
@@ -162,6 +190,9 @@ class ContactForm extends React.Component {
                                     </div>
                                     <div className="col-md-3">
                                         <div className="form-group">
+                                            {
+                                                //User email input field
+                                            }
                                             <input
                                                 className="form-control"
                                                 type="text"
@@ -201,6 +232,9 @@ class ContactForm extends React.Component {
                                 <div className="row justify-content-center">
                                     <div className="col-md-offset-3 col-md-6">
                                         <div className="form-group">
+                                        {
+                                            //Message input textarea. 
+                                        }
                                             <textarea
                                                 id="form_message" name="message" className="form-control" placeholder={this.props.lang === 'English' ? 'Message' : 'Mensaje'} rows="4"
                                                 maxLength="4000"
@@ -231,12 +265,18 @@ class ContactForm extends React.Component {
                                                     <br />
                                                 </div>}
                                             <br />
+                                            {
+                                                //Error message conditionally displayed if user attempts to submit form with empty input fields. 
+                                            }
                                             {this.state.contactError === true &&
                                                 <div className="text-center" style={{ color: 'white' }}>
                                                     {this.props.lang === 'English' ? <p>Please fill all the fields with valid information.</p> : <p>Por favor, llene todos los campos con información válida.</p>}
                                                 </div>}
                                         </div>
                                     </div>
+                                    {
+                                        //Button to submit form information. 
+                                    }
                                     <div className="col-md-offset-3 container col-md-6">
                                         <button className="Contact-Btn" onClick={this.onSubmit}>{this.props.lang === 'English' ? 'Send' : 'Enviar'}</button>
 

@@ -29,12 +29,13 @@ class SchoolList extends React.Component{
     
     //Configure state when component is about to be mounted. 
     componentWillMount(){
-        //Change UUID for InsitutionID when DB connection is made
-        //send to action
+        //set loading modal
         this.props.dispatch(setLoadingModal());
+        //Get institutions information for the School List
         axios.get('https://beta.edvotech.com/api/admin/settings/institutions',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
+            //Load institution information to controller if successful
             if(response.status == 201 && response.data.institutions){
             response.data.institutions.forEach(element => {
                 this.props.dispatch(addSchool({id: element.institutionid, name: element.name , 
@@ -42,11 +43,15 @@ class SchoolList extends React.Component{
                     numAccounts: element.accounts}));
             });
         }
+        //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
+            //Set failure modal
             this.props.dispatch(setFailureModal());
         });
+        //Determine displayed paginated list information
         this.pageSlice = Math.ceil(this.props.schools.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageUsers = this.props.schools.slice(0,this.itemsPerPage);
@@ -54,6 +59,7 @@ class SchoolList extends React.Component{
     }
 
     componentWillUnmount(){
+        //Unload institutions from controller. 
         this.props.dispatch(unloadInstitutions());
     }
 

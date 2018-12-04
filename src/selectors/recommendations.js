@@ -15,12 +15,14 @@ const getVisibleRecommendations = (recommendations, {text, category}) => {
         const titleMatch = reco.title.toLowerCase().includes(text.toLowerCase());
         const headerMatch = reco.header.toLowerCase().includes(text.toLowerCase());
         const descriptionMatch = reco.description.toLowerCase().includes(text.toLowerCase());
+        //Only try to match by location if the location exists. 
         let locationMatch = false;
         if(reco.location){
             locationMatch = reco.location.toLowerCase().includes(text.toLowerCase());
         }
         const subjectMatch = reco.subject.toLowerCase().includes(text.toLowerCase());
         const schoolTypeMatch = reco.schoolType.toLowerCase().includes(text.toLowerCase());
+        //Only try to match by challenge category if the category is not set to 'all'. 
         let typeCheck = true;
         if(category !== 'all'){
             if(category === 'Technology Integration' && !reco.technologyIntegration){

@@ -31,6 +31,9 @@ export const removeSchool = ({id} = {}) => ({
     id: id
 });
 
+/**
+ * unloadInstitutions - Generates an object with a command keyword indicating to the central controller that it must erase all institution data locally. 
+ */
 export const unloadInstitutions = () => {
     return {
         type: 'UNLOAD_INSTITUTIONS'

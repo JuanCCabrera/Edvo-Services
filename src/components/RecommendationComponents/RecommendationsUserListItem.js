@@ -10,14 +10,23 @@ import {setSuccessModal} from '../../actions/successModal';
 import {setFailureModal} from '../../actions/failureModal';
 import {loadRecommendation, unloadRecommendations} from '../../actions/recommendations';
 
+/**
+ * Single item from the RecommendationsUserList. 
+ */
 const RecommendationsUserListItem = (props) => (
     <div className="list-group-item">
         <div className="row">
             <div className="col-sm-10 card-title">
+            {
+                //User name and last name
+            }
                 <p className="card-title">
                     {props.user.name + ' ' + props.user.lastName} 
                 </p>
             </div>
+            {
+                //Icon displayed if user has been selected to receive a recommendation assignment. 
+            }
             <div className="col-sm-2">
                     {props.user.id === props.selectedUser && 
                     <div>
@@ -25,9 +34,15 @@ const RecommendationsUserListItem = (props) => (
                     </div>}
             </div>
         </div>
+        {
+            //User email
+        }
         <p className="card-text">Email: {props.user.email}</p>
         {
             //<h6>Has weekly recommendation: {props.user.weeklyReco ? 'Yes' : 'No'}</h6>
+        }
+        {
+            //Challenge categories displayed in badges. 
         }
         <p>{props.lang === 'English' ? 'Categories' : 'Categorías'}: 
         <br/>
@@ -45,9 +60,15 @@ const RecommendationsUserListItem = (props) => (
                 </div>)
         })}
         </p>
+        {
+            //Button used to select a user for recommendation assignment. 
+        }
             <button onClick={() => {
+                //Set loading modal
                 props.dispatch(setLoadingModal());
+                //Unload recommendations from central controller. 
                 props.dispatch(unloadRecommendations());
+                //Get recommendation information which can be assigned to the user from the database. 
                 axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/user/recommendations',{
 
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` },
@@ -57,7 +78,9 @@ const RecommendationsUserListItem = (props) => (
                 }
                 })
                 .then(response => {
+                //Dispatch user selection to the central controller. 
                 props.dispatch(selectUser({userID: props.user.id}));
+                //Load recommendations to the central controller. 
                 response.data.recommendations.forEach(element => {
                     props.dispatch(loadRecommendation({
                         id: element.recomid, 
@@ -97,18 +120,27 @@ const RecommendationsUserListItem = (props) => (
                     }));
 
                 })
+                //Clear loading modal
                 props.dispatch(setLoadingModal());
                 }).catch(error =>{
                     if(error.response.status > 300){
+                        //Clear loading modal
                         props.dispatch(setLoadingModal());
+                        //Set failure modal. 
                         props.dispatch(setFailureModal());
                     }
                 });
             }}>
+            {
+                //Button to select the user. 
+            }
                 <p className="btn btn-item">
                     {props.lang === 'English' ? 'Select' : 'Seleccionar'}
                 </p>
             </button>
+            {
+                //Button to display User Modal. 
+            }
 
             <button onClick={() => {
                 props.dispatch(selectUserToDisplay(props.user));
@@ -120,10 +152,12 @@ const RecommendationsUserListItem = (props) => (
     </div>
 );
 
+//Map language settings to the component properties. 
 const mapStateToProps = (state) => {
     return {
         lang: state.language.lang
     }
 }
 
+//Connect component to the central controller. 
 export default connect(mapStateToProps)(RecommendationsUserListItem);

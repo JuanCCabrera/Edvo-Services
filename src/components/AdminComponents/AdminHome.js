@@ -9,6 +9,7 @@ import auth0Client from '../../Auth';
  * @param {*} props - Component properties
  */
 const AdminHome = (props) => (
+    //Authenticate user access to Admin Home page. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:home"
@@ -19,18 +20,19 @@ const AdminHome = (props) => (
                 {
                     //Link to Administrator Settings page
                 }
-                
                 <div className="center-block">
                 <div className="col-sm-4">
                     <div className="big-card-admin-home">
                         <NavLink to="/admin/settings/info" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
                                 {props.lang === 'English' ? 
+                                //English version
                                 <div className="big__admin__text">
                                     <p>Platform</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
                                     <p>Settings</p>
                                 </div>
                                 : 
+                                //Spanish version
                                 <div className="big__admin__text">
                                     <p>Modificar</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-cog"></i></span>
@@ -48,12 +50,14 @@ const AdminHome = (props) => (
                     <div className="big-card-admin-home">
                         <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>                
                             {props.lang === 'English' ? 
+                            //English version
                                 <div className="big__admin__text">
                                     <p>Manage</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
                                     <p>Recommendations</p>
                                 </div>
                                 : 
+                            //Spanish version
                                 <div className="big__admin__text">
                                     <p>Manejar</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
@@ -70,12 +74,14 @@ const AdminHome = (props) => (
                     <div className="big-card-admin-home">
                         <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
                             {props.lang === 'English' ? 
+                            //English version
                                 <div className="big__admin__text">
                                     <p>Answer</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
                                     <p>Questions</p>
                                 </div>
                                 : 
+                            //Spanish version
                                 <div className="big__admin__text">
                                     <p>Contestar</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
@@ -88,6 +94,7 @@ const AdminHome = (props) => (
         </div>
     </div>
                      )}
+                     //Redirect to login if user is unauthorized. 
                      no={() => <Redirect to="/login" />}
                    />
 );

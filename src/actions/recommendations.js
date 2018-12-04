@@ -251,6 +251,10 @@ export const editRecommendation = (id, updates) => ({
     updates: updates
 });
 
+
+/**
+ * unloadRecommendations - Generates an object with a command keyword indicating to the central controller that it must erase local recommendation data. 
+ */
 export const unloadRecommendations = () => {
     return {
         type: 'UNLOAD_RECOMMENDATIONS'

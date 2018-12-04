@@ -12,6 +12,7 @@ import auth0Client from '../../Auth';
  * @param {*} props - Default properties and current language state. 
  */
 const TeacherRecommendations = (props) => (
+    //Authenticate user information to grant access to Teacher Recommendations page. 
     <Can
     role={auth0Client.getRole()}
     perform="teacher:recommendations-view"
@@ -21,13 +22,21 @@ const TeacherRecommendations = (props) => (
             <div className="row">
                 <div className="col-sm-4">
                     {
-                        //Favorite Recommendations list
+                        //Favorite Recommendations list title
                     }
                     <div className="text-center pending__title__2">
                         <p>{props.lang === 'English' ? 'Favorites' : 'Favoritas'}</p>
                         
                     </div> 
+                    
+                    {
+                        //Favorite recommendations list
+                    }
                     <FavoriteRecommendationsList/>
+                    
+                    {
+                        //Link to Teacher Quizzes page. 
+                    }
                     <div className="text-center">
                         <h1 className="form__title">{props.lang === 'English' ? 'View Quizzes' : 'Ver Pruebas'}</h1>
                         <NavLink to={'/teacher/quizzes'}>
@@ -57,6 +66,7 @@ const TeacherRecommendations = (props) => (
         </div>
     </div>
          )}
+         //Redirect user to login page if not authorized. 
          no={() => <Redirect to="/login" />}
        />
 );

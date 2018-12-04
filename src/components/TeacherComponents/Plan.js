@@ -28,22 +28,29 @@ class Plan extends React.Component{
             status: ''
         }
     }
+    
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Get teacher subscription information from the database. 
         axios.get('https://beta.edvotech.com/api/teacher/settings/plans',
         {
         headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
         .catch(error=>{
+            //Clear loading modal.
             this.props.dispatch(setLoadingModal());
             if(error.response.status == 500 || error.response.status == 502)
+            //Set failure modal on error. 
                 this.props.dispatch(setFailureModal());
         })
         .then(response => {
             if(response.status == 200){
+                //Dispatch subscription information to controller
                 this.setState({status: response.data.subscription.status});
                 this.props.dispatch(loadPlan({name: response.data.subscription.type, status: response.data.subscription.status}));
             }
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         });
     }
@@ -62,32 +69,45 @@ class Plan extends React.Component{
         }
     }
 
+    //Navigate to Payment page
     subscribeToPlan = (e) => {
         e.preventDefault();
         this.props.history.replace('/teacher/settings/plans/payment');
     }
 
+    //
     modifyPlan = (e) => {
         e.preventDefault();
+        //Set loading modal.
         this.props.dispatch(setLoadingModal());
+
+        //Post subscription information to the database. 
         axios.post('https://beta.edvotech.com/api/teacher/settings/plans',{
             action: this.state.status
         },
         {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .then((response)=>{
+        //Success
         if(response.status == 201){
+            //Set success modal
             this.props.dispatch(setSuccessModal());
+            //Determine subscription status
             const stateStatus = this.state.status == 'active' ? 'suspended' : 'active';
+            //Load subscription information to controller
             this.props.dispatch(loadPlan({status: stateStatus}));
             this.setState({status: stateStatus});
         }
+        //Clear loading modal
         this.props.dispatch(setLoadingModal());
     })
     .catch(error => {
+        //Clear loading modal
         this.props.dispatch(setLoadingModal());
         if(error.response.status == 402 || error.response.status == 403)
+        //Set error message 
             this.setState({cardError: true});
         else{
+            //Set failure modal
             this.props.dispatch(setFailureModal());
         }
     });
@@ -95,6 +115,7 @@ class Plan extends React.Component{
 
     render(){
         return(
+            //Authenticate user information to grant access to Plan page. 
             <Can
             role={auth0Client.getRole()}
             perform="teacher:settings"
@@ -129,6 +150,9 @@ class Plan extends React.Component{
                     {this.props.plan.status =="active" ? 
                     <div>
                         <h4>Standard Package</h4>
+                        {
+                            //Package benefits
+                        }
                         <p>Benefits: </p>
                         <ul style={{listStyleType: 'square'}}>
                             <li>Weekly recommendations</li>
@@ -146,7 +170,13 @@ class Plan extends React.Component{
                  <div>
                     {this.props.plan.status =="active" ? 
                         <div>
+                        {
+                            //name of package owned (in Spanish)
+                        }
                         <h4>Paquete Estándar</h4>
+                        {
+                            //Benefits of plan (in Spanish)
+                        }
                         <p>Beneficios: </p>
                         <ul style={{listStyleType: 'square'}}>
                             <li>Recomendaciones semanales</li>
@@ -161,13 +191,19 @@ class Plan extends React.Component{
                 </div>
                 }
                 
-
+                {
+                    //Error indicating card is no longer valid
+                }
                 {this.state.cardError === true && 
                     <div className="text-danger text-center">
                         {this.props.lang === 'English' ? <p>The card used is no longer valid.</p> : <p>L tarjeta usada no es válida.</p>}
                     
                             <br/>
                   </div>
+                }
+
+                {
+                    //Resubscription disclaimer
                 }
                 {this.state.status === 'suspended' && 
                     <div className="text-danger">
@@ -226,6 +262,7 @@ class Plan extends React.Component{
         </div>
     </div>
                              )}
+                             //Redirect user to login page if not authorized. 
                              no={() => <Redirect to="/login" />}
                            />
 

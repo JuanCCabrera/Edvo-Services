@@ -13,6 +13,7 @@ import AskQuestionForm from './AskQuestionForm';
  * @param {*} props - Default properties and current language state. 
  */
 const TeacherQuestions = (props) => (
+    //Authenticate user information to grant access to Teacher Questions page. 
     <Can
     role={auth0Client.getRole()}
     perform="teacher:questions-view"
@@ -46,6 +47,9 @@ const TeacherQuestions = (props) => (
                                         </p>
                                     </div>
                                 }
+                                {
+                                    //Form allowing user to send questions to Admins or Mentors (Ask Question Form). 
+                                }
                                 <AskQuestionForm 
                                 isInQuestionsPage={true}
                                 onSubmit={(question) => {
@@ -69,6 +73,7 @@ const TeacherQuestions = (props) => (
         </div>
     </div>
          )}
+         //Redirect users to login page if not authorized. 
          no={() => <Redirect to="/login" />}
        />
 );

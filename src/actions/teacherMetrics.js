@@ -20,6 +20,11 @@ export const loadTeacherDaysInPlatform = ({daysInPlatform = 0} = {}) => {
     }
 }
 
+/**
+ * loadTeacherQuestionsAsked - Generates object which indicates to the controller that it must store the number of questions the user has
+ * asked based on a given input value. 
+ * @param {*} param0 - Object containing the number of questions that have been asked by the user. 
+ */
 export const loadTeacherQuestionsAsked = ({questionsAsked = 0} = {}) => {
     return{
         type: 'LOAD_TEACHER_QUESTIONS_ASKED',
@@ -27,6 +32,11 @@ export const loadTeacherQuestionsAsked = ({questionsAsked = 0} = {}) => {
     }
 }
 
+/**
+ * loadTeacherRecommendationsRead - Generates object which indicates to the controller that it must store the number of recommendations
+ * the user has read based on a given input number value. 
+ * @param {*} param0 - Object containing the number of recommendations that have been read by the user. 
+ */
 export const loadTeacherRecommendationsRead = ({recommendationsRead = 0} = {}) => {
     return{
         type: 'LOAD_TEACHER_RECOMMENDATIONS_READ',

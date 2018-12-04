@@ -150,6 +150,9 @@ export const removeFavoriteRecommendation = (
 });
 
 
+/**
+ * unloadTeacherRecommendations - Generates an object with a command keyword indicating to the central controller that it must erase all local teacher recommendation data. 
+ */
 export const unloadTeacherRecommendations = () => {
     return {
         type: 'UNLOAD_TEACHER_RECOMMENDATIONS'

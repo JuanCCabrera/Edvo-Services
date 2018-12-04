@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
  * @param {*} props - Component default properties
  */
  const AppUsers = (props) => (
+     //Authenticate user access to AppUsers page. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:settings"
@@ -71,14 +72,17 @@ import {connect} from 'react-redux';
             </div>
         </div>
                                      )}
+                                     //Redirect user to login page if not authorized
                                      no={() => <Redirect to="/login" />}
                                    />
  );
 
+ //Map language settings to component properties. 
  const mapStateToProps = (state) => {
      return {
          lang: state.language.lang
      }
  }
 
+ //Connect componene to central controller. 
  export default connect(mapStateToProps)(AppUsers);

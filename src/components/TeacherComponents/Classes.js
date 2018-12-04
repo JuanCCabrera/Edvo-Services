@@ -10,6 +10,7 @@ import {Redirect} from 'react-router-dom';
  * @param {*} props - Default properties
  */
 const Classes = (props) => (
+    //Authorize user information to grant access to Classes page. 
     <Can
     role={auth0Client.getRole()}
     perform="teacher:settings"
@@ -17,6 +18,9 @@ const Classes = (props) => (
         <div className="background-home">
         <div className="container">
             <div className="row">
+            {
+                //Teacher button list (navigation)
+            }
                 <div className="col-sm-2">
                     <div className="text-center well">
                         <TeacherButtonList/>
@@ -24,6 +28,9 @@ const Classes = (props) => (
                 </div>
                 <div className="col-sm-1"/>
                 <div className="col-sm-9">
+                {
+                    //Class information
+                }
                     <div className="big-card">
                         <ClassList/>
                     </div>
@@ -32,6 +39,7 @@ const Classes = (props) => (
         </div>
     </div>
                  )}
+                 //Redirect user to login page if not authorized. 
                  no={() => <Redirect to="/login" />}
                />    
 

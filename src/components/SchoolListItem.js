@@ -64,6 +64,9 @@ class SchoolListItem extends React.Component{
                             {this.props.lang === 'English' ? 'Are you sure you would like to remove this institution?' : '¿Estás seguro de que quieres remover esta institucion?'}
                         </div>
                         <br/>
+                        {
+                            //Button to remove school (low-level)
+                        }
                         <button onClick={() => {
                             axios.delete('https://beta.edvotech.com/api/admin/settings/institutions/remove',{
                 
@@ -71,21 +74,30 @@ class SchoolListItem extends React.Component{
                             data:{institutionid: this.props.school.id}
                     })
                         .then(response => {
+                            //Remove school from controller on successful database removal
                             if(response.status == 201){
                                 this.props.dispatch(removeSchool({id: this.props.school.id}));
+                                //Set success modal
                                 this.props.dispatch(setSuccessModal());            
                             }
                         })
                         .catch(error=>{
                             if(error)
+                            //Set failure modal
                                 this.props.dispatch(setFailureModal());
                         });
                         }}>
+                        {
+                            //"Yes" removal button
+                        }
                         <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                                 {this.props.lang === 'English' ? 'Yes' : 'Si'}
                         </div>
                         </button>
 
+                        {
+                            //"No"removal button
+                        }
                         <button onClick={() => {
                             this.setState(() => ({toggleButton: false}));
                         }}>
@@ -96,6 +108,9 @@ class SchoolListItem extends React.Component{
                     </div>
                     :
                     <div>
+                    {
+                        //"Remove" button
+                    }
                     <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
                         <div className="btn btn-item" style={{marginTop: '10px'}}>
                             {this.props.lang === 'English' ? 'Remove' : 'Remover'}

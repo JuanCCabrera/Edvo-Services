@@ -59,6 +59,9 @@ const RecommendationListItem = (props) => (
                 </div>
                 <div className="col-sm-2">
                     <p>
+                    {
+                        //Icon displayed if recommendation item is selected
+                    }
                         {props.reco.id === props.selectedRecommendation && 
                         <div>
                             <span style={{display: 'inline'}}><i className="fa fa-check-circle fa-lg" style={{color: 'green'}} aria-hidden="true"></i></span>
@@ -83,6 +86,9 @@ const RecommendationListItem = (props) => (
             </div>
         </button>
 
+        {
+            //Button to open Assignment Recommendation modal. 
+        }
         <button onClick={() => {
             props.dispatch(selectAssignmentRecommendationToDisplay(props.reco));
         }}>

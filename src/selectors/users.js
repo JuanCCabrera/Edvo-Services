@@ -11,6 +11,7 @@ const getVisibleUsers = (users, {text,checkType}) => {
         const lastNameMatch = user.lastName.toLowerCase().includes(text.toLowerCase());
         const fullNameMatch = (user.name + ' ' + user.lastName).toLowerCase().includes(text.toLowerCase());
         const emailMatch = user.email.toLowerCase().includes(text.toLowerCase());
+        //Only check if a user has been assigned a recommendation in the current week if the assignment status filter is not set to 'all'. 
         let typeCheck = true;
         if(checkType !== 'all'){
             if(checkType === 'assigned'){

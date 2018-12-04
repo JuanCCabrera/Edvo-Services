@@ -10,6 +10,7 @@ import {Redirect} from 'react-router-dom';
  * @param {*} props - Default properties
  */
  const TeacherProfile = (props) => (
+     //Authenticate user information to grant access to Teacher Profile page. 
     <Can
     role={auth0Client.getRole()}
     perform="teacher:settings"
@@ -17,6 +18,9 @@ import {Redirect} from 'react-router-dom';
         <div className="background-home">
         <div className="container">
             <div className="row">
+            {
+                //Teacher navigation button list
+            }
                 <div className="col-sm-2">
                     <div className="text-center well">
                       <TeacherButtonList/>
@@ -24,6 +28,9 @@ import {Redirect} from 'react-router-dom';
                 </div>
                 <div className="col-sm-1"/>
                 <div className="col-sm-9">
+                {
+                    //Profile form
+                }
                     <div className="big-card">
                         <BasicInfoProfileForm/>
                     </div>
@@ -32,6 +39,7 @@ import {Redirect} from 'react-router-dom';
         </div>
     </div>
                  )}
+                 //Redirect user to login page if not authorized. 
                  no={() => <Redirect to="/login" />}
                />
 

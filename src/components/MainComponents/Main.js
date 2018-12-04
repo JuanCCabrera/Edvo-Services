@@ -14,8 +14,12 @@ const MainPage = (props) => (
             //Main page body
         }
         <MainPageDisplay/>
+        {
+            //Contact Form
+        }
         <ContactForm
         onSubmit={(contact) => {
+            //Action to submit contact form. 
             props.dispatch(sendContactForm(contact));
         }}/>
     </div>

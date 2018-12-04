@@ -13,6 +13,7 @@ import {Redirect} from 'react-router-dom';
  * @param {*} props - Default properties, recommendation which matches the URL user id and the current language state. 
  */
 const EditRecommendation = (props) => (
+    //Authenticate user information to grant access to the Edit Recommendations layout. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:recommendations-modify"
@@ -40,6 +41,7 @@ const EditRecommendation = (props) => (
                 }
                 <CreateRecommendationForm 
                 reco={props.recommendation}
+                //Mark as an editable version
                 isEdit={true}
                 onSubmit={(recommendation) => {
                     props.dispatch(editRecommendation(props.recommendation.id, recommendation));
@@ -49,6 +51,7 @@ const EditRecommendation = (props) => (
         </div>
     </div>
                          )}
+                         //Redirect user to login page if not authorized. 
                          no={() => <Redirect to="/login" />}
                        />
 );

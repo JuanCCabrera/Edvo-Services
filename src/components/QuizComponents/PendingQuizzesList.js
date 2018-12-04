@@ -8,6 +8,9 @@ import { createQuiz, reset } from '../../actions/quiz';
 import {setLoadingModal} from '../../actions/loadingModal';
 import { setFailureModal } from '../../actions/failureModal';
 
+/**
+ * Pending quizzes list displayed in Teacher Quizzes page. 
+ */
 class PendingQuizzesList extends React.Component {
     constructor(props){
         super(props);
@@ -21,14 +24,19 @@ class PendingQuizzesList extends React.Component {
     }
     
 
+    //Load quiz information on component mount. 
     componentWillMount(){  
-        this.props.dispatch(setLoadingModal());      
+        //Set loading modal
+        this.props.dispatch(setLoadingModal());   
+        //Get quiz information from database.    
         axios.get('https://beta.edvotech.com/api/teacher/quizzes',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
+            //Unload quiz information from controller. 
             this.props.dispatch(reset());
+            //Format quiz data for controller. 
             response.data.quizzes.forEach(element => {
                 let correctChoices = {}
                 let questions = []
@@ -42,33 +50,40 @@ class PendingQuizzesList extends React.Component {
                         questionstring: question.question,
                         recommendation: ''
                     }
+                    //Save question ID
                     questionObject.questionid = question.quizquestionid;
+                    //Save related recommendation. 
                     questionObject.recommendation = question.recommendationtitle
+                    //Save choices. 
                     question.choices.forEach(choice => {
                         let choiceObject = {
                             choiceid: choice.choiceid,
                             choice: choice.choice
                         }
+                        //Gnerate array of correct answers. 
                         if(choice.correctanswer)
                             correctChoices[choice.quizquestionid] = choice.choiceid;
                         questionObject.choices.push(choiceObject);
                     })
                     questionsObject.questions.push(questionObject);
                 })
+                //Load quiz information to central controller if 12 questions were received. 
                 if(questionsObject.questions.length == 12)
                     this.props.dispatch(createQuiz({correctChoices: correctChoices, quizID: element.quizid, quizDate: element.created, score: element.score, questions: questionsObject}));
 
                 });
-            
+            //Clear loading modal. 
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal. 
             this.props.dispatch(setLoadingModal());
             if(error.response.status >= 500){
+                //Set failure modal on error. 
                 this.props.dispatch(setFailureModal());
             }
         });
         
-        this.pageSlice = Math.ceil(this.props.quizzes.length/this.itemsPerPage);
+        //Determine quizzes to show in first page of the quiz list. 
         this.currentPage = 1;
         const displayedQuizzes = this.props.quizzes.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedQuizzes: displayedQuizzes});
@@ -105,6 +120,9 @@ class PendingQuizzesList extends React.Component {
     render(){
         return (
             <div>
+            {
+                //Pending Quizzes list items.
+            }
                 
                 {this.state.displayedQuizzes.map((quiz) => {
                     return <PendingQuizzesListItem key={quiz} quiz={quiz}/>
@@ -142,12 +160,15 @@ class PendingQuizzesList extends React.Component {
     }
 };
 
+//Map quiz information and language settings to component properties. 
 const mapStateToProps = (state) => {
     return {
+        lang: state.language.lang,
         quizzes: state.quizzes
     }
 };
 
+//Connect component to central controller. 
 export default connect(mapStateToProps)(PendingQuizzesList);
 
 

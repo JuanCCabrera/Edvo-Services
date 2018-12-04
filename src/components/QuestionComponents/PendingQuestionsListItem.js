@@ -42,14 +42,17 @@ class PendingQuestionsListItem  extends React.Component{
                 //Button to remove a question from the list of Pending Questions.
             }
 
-            {this.state.toggleButton ? 
-            
+            {this.state.toggleButton ?  
                 <div>
                     <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
                         {this.props.lang === 'English' ? 'Are you sure you would like to remove this quesiton?' : '¿Estás seguro de que quieres remover esta pregunta?'}
                     </div>
                     <br/>
-                    <button onClick={() => {    
+                    {
+                        //Button to remove question from the Pending Questions list. 
+                    }
+                    <button onClick={() => {   
+                        //Delete request 
                         axios.delete('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/questions/remove',{
                         data:{askeddate: this.props.question.askedDate,
                         userid: this.props.question.userId
@@ -57,23 +60,31 @@ class PendingQuestionsListItem  extends React.Component{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                         })
                         .then((response)=>{
+                            //Set success modal and remove question from central controller if successful. 
                             if(response.status == 200){
                                 this.props.dispatch(setSuccessModal());
                                 this.props.dispatch(removeQuestion({askedDate: this.props.question.askedDate, userId: this.props.question.userId}));
                             }
                         })
                         .catch(error => {
+                            //set failure modal if unsuccessful. 
                             if(error.response.status == 401 || error.response.status == 403){
                                 
                                 this.props.dispatch(setFailureModal());
                             }
                         });    
                     }}>
+                    {
+                        //"Yes" button (Deletes question)
+                    }
                     <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                             {this.props.lang === 'English' ? 'Yes' : 'Si'}
                     </div>
                     </button>
     
+                    {
+                        //"No" button
+                    }
                     <button onClick={() => {
                         this.setState(() => ({toggleButton: false}));
                     }}>
@@ -94,6 +105,9 @@ class PendingQuestionsListItem  extends React.Component{
                     </button>
                 </Link>
 
+                {
+                    //"Remove" button
+                }
                 <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
                     <div className="btn btn-item">
                         {this.props.lang === 'English' ? 'Remove' : 'Remover'}

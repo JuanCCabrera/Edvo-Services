@@ -1,7 +1,7 @@
 import React from 'react';
 
 {
-    //List of three images. Each image corresponds to an Edvo Tech sponsor. 
+    //List of three images. Each image corresponds to an Edvo Tech sponsor. (Not Used)
 }
 const ThreeImageList = () => (
     <div>

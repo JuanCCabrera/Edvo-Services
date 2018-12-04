@@ -14,6 +14,9 @@ import moment from 'moment';
  */
 const QuestionModal = (props) => (
     <div className="modal">
+    {
+        //Question modal
+    }
     <Modal
     isOpen = {props.question.subject !== ''}
     onRequestClose = {props.clearSelectedQuestion}
@@ -24,6 +27,9 @@ const QuestionModal = (props) => (
     <div>
 
     <div className="text-right" style={{paddingBottom: '0', marginBottom: '0'}}>
+    {
+        //Favorite star
+    }
         <div title={props.lang === 'English' ? 'Mark as favorite' : 'Marcar como favorita'}>
         <StarRatingComponent
             name="favorite"
@@ -39,6 +45,7 @@ const QuestionModal = (props) => (
             }}
             onStarClick={() => {
                 const favoriteQuestion = !props.question.favorite;
+        //Post favorite information to database
         axios.post('https://beta.edvotech.com/api/teacher/questions/favorite',{
                 askeddate: props.question.askedDate,
                 favorite: favoriteQuestion
@@ -46,6 +53,7 @@ const QuestionModal = (props) => (
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then(response =>{
             if(response.data.statusCode == 201){
+                //dispatch favorite status to controller
         if(props.question.favorite == false){
             props.dispatch(addFavoriteQuestion({askedDate: props.question.askedDate}));
         }else{
@@ -117,12 +125,14 @@ const QuestionModal = (props) => (
                 }}
             value={props.question.rate}
             onStarClick={(nextValue, prevValue, name) => {
+                //Post rating information to the database. 
                 axios.post('https://beta.edvotech.com/api/teacher/questions/rate',{
                     askeddate: props.question.askedDate,
                     rate: nextValue
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                 }).then(response =>{
+                //Dispatch rating to the controller
                 props.dispatch(rateQuestion({askedDate: props.question.askedDate, rate: nextValue}))})}
                 }
             />

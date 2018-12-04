@@ -1,3 +1,9 @@
+//Question Action Generators
+
+/**
+ * loadQuestion - Generates an object with question information to store in the central controller. 
+ * @param {*} param0 - Object containing a question item's subject, question body, date in which it was asked and the ID of the user which asked the question. 
+ */
 export const loadQuestion = (
     {
         question = '',
@@ -15,7 +21,7 @@ export const loadQuestion = (
             }
         }
 };
-//Question Action Generators
+
 
 /**
  * createQuestion - Generates an object indicating to the central controller to create a new question. This information is obtained from the Ask Question Form. 
@@ -64,6 +70,9 @@ export const answerQuestion = ({askedDate, userId, answer} = {}) => {
     }
 }
 
+/**
+ * resetQuestionsList - Generates an object with a command keyword indicating to the controller that all question data must be erased locally. 
+ */
 export const resetQuestionsList = () => {
     return{
         type: 'UNLOAD_ADMIN_QUESTIONS'

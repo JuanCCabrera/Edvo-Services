@@ -64,6 +64,9 @@ class UserListItem extends React.Component{
             
             <div>
 
+            {
+                //User removal button
+            }
                 <div className="text-danger" style={{marginTop: '1rem', display: 'inline-block', maginBottom: '0'}}>
                     {this.props.lang === 'English' ? 'Are you sure you would like to remove this user?' : '¿Estás seguro de que quieres remover a este usuario?'}
                 </div>
@@ -72,6 +75,9 @@ class UserListItem extends React.Component{
                     this.props.userRemoval(); 
                     this.setState(() => ({toggleButton: false}));
                 }}>
+                {
+                    //"Yes" button option
+                }
                 <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                         {this.props.lang === 'English' ? 'Yes' : 'Si'}
                 </div>
@@ -80,6 +86,9 @@ class UserListItem extends React.Component{
                 <button onClick={() => {
                     this.setState(() => ({toggleButton: false}));
                 }}>
+                {
+                    //"No" button option
+                }
                 <div className="btn btn-item" style={{marginTop: '10px'}}>
                         {this.props.lang === 'English' ? 'No' : 'No'}
                 </div>
@@ -87,6 +96,9 @@ class UserListItem extends React.Component{
             </div>
             :
             <div>
+            {
+                //"Remove" button
+            }
             <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
                 <div className="btn btn-item" style={{marginTop: '10px'}}>
                     {this.props.lang === 'English' ? 'Remove' : 'Remover'}

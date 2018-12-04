@@ -8,6 +8,7 @@ import setSuccessModal from '../../actions/successModal';
 import setFailureModal from '../../actions/failureModal';
 
 /**
+ * Recommendation Object Model
  * Single item of the Recommendations List
  * @param {*} props - Recommendations list item information following the object model below:
     recommendation: {
@@ -84,6 +85,9 @@ class ManageRecommendationsListItem extends React.Component{
                             {this.props.lang === 'English' ? 'Are you sure you would like to remove this recommendation?' : '¿Estás seguro de que quieres remover esta recomendación?'}
                         </div>
                         <br/>
+                        {
+                            //Button to remove a recommendation from the Recommendations list. 
+                        }
                         <button onClick={() => {
                             axios.post('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/remove',{
                                 recomid: this.props.reco.id
@@ -91,26 +95,35 @@ class ManageRecommendationsListItem extends React.Component{
                                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                             })
                             .catch(error => {
+                                //Set failure modal on error. 
                                 if(error.response.status == 401 || error.response.status == 403){
 
                                 this.props.dispatch(setFailureModal());
                             }
                             })  
                             .then(response=>{
+                                //Remove recommendation from controller if successful. 
                                 if(response.status == 200){
                                     this.props.dispatch(removeRecommendation({id: this.props.reco.id}));
                                     this.setState(() => ({toggleButton: false}));}
                             })
                              
                         }}>
+                        {
+                            //"Yes" button
+                        }
                         <div className="btn btn-item-red" style={{marginTop: '10px'}}>
                                 {this.props.lang === 'English' ? 'Yes' : 'Si'}
                         </div>
                         </button>
         
+                        {
+                            //"No" button
+                        }
                         <button onClick={() => {
                             this.setState(() => ({toggleButton: false}));
                         }}>
+                        
                         <div className="btn btn-item" style={{marginTop: '10px'}}>
                                 {this.props.lang === 'English' ? 'No' : 'No'}
                         </div>
@@ -129,6 +142,9 @@ class ManageRecommendationsListItem extends React.Component{
                             </button>
                         </Link>
 
+                    {
+                        //"Remove" button
+                    }
                     <button onClick={() => {this.setState(() => ({toggleButton: true}))}}>
                         <div className="btn btn-item">
                             {this.props.lang === 'English' ? 'Remove' : 'Remover'}

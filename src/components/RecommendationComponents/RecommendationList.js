@@ -31,17 +31,21 @@ class RecommendationsList extends React.Component{
     //Configure local state when component will mount. This involves selecting which recommendations will be displayed on the first page
     //when the component loads. 
     componentWillMount(){
+        //Unload recommendations
         this.props.dispatch(unloadRecommendations());
-        this.props.dispatch(setRecommendationsCategory('all'));
+        //Set recommendations challenge category to all. 
         this.props.dispatch(setRecommendationsCategory('all'));
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
+        //Determine initial paginated recommendations. 
         const initialPageRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedRecommendations: initialPageRecommendations});
     }
 
     componentWillUnmount(){
+        //Reset text filtering
         this.props.dispatch(setRecommendationsTextFilter(''));
+        //Unload recommendations from controller. 
         this.props.dispatch(unloadRecommendations());
     }
     //Update page when the component updates
@@ -106,10 +110,16 @@ class RecommendationsList extends React.Component{
                 <div className="text-center text-danger">
                     {(this.props.recommendation.length === 0) && (this.props.lang === 'English' ?
                         <div>
+                        {
+                            //Message indicating that no element in the recommendation list matches filtering parameters. 
+                        }
                             {this.props.allRecommendations.length > 0 ? 
                             <p>There are no recommendations which match the given parameters.</p>
                             :
                             <p>There are no available recommendations for assignment. Please create a new recommendation to assign.</p>
+                            }
+                            {
+                                //Link to Create Recommendation page. 
                             }
                             <Link to='/recommendations/create'>
                                 <button>
@@ -121,10 +131,16 @@ class RecommendationsList extends React.Component{
                         </div>
                         :
                         <div>
+                        {
+                            //Message indicating that no recommendation in the list matches filtering parameters (in Spanish)
+                        }
                             {this.props.allRecommendations.length > 0 ? 
                             <p>No hay recomendaciones que cumplen con los parámetros dados.</p>
                             :
                             <p>No hay recomendaciones disponibles para asignarle a este usuario. Si desea asignar una recomendación al usuario seleccionado, debe crear una recomendación nueva.</p>
+                            }
+                            {
+                                //Link to Create Recommendation page (in Spanish). 
                             }
                             <Link to='/recommendations/create'>
                                 <button>

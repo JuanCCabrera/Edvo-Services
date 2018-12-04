@@ -1,4 +1,4 @@
-//Login Action Generators
+//Login Action Generators (Unused)
 
 /**
  * sendLogin - Generates and object containing a user's email and password. 

@@ -22,8 +22,7 @@ const HomeRecommendationsListItem = (props) => (
                         if(response.status == 201){
                         }
                     });
-                    }
-                    else{
+                    }else{
                     }
                     props.dispatch(selectRecommendation(props.reco));
                     }}>

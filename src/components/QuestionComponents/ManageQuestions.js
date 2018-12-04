@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import QuestionButtonList from './QuestionButtonList';
 import PendingQuestionsList from './PendingQuestionsList';
 import QuestionFilters from '../Filters/QuestionFilters';
 import Can from '../../Can';
@@ -12,6 +11,7 @@ import {Redirect} from 'react-router-dom';
  * @param {*} props - Default properties
  */
 const ManageQuestions = (props) => (
+    //Authenticate user information to grant access to ManageQuesitons page. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:questions-manage"
@@ -27,20 +27,30 @@ const ManageQuestions = (props) => (
                     <p>{props.lang === 'English' ? 'Pending Questions' : 'Preguntas \nPendientes'}</p>
                     <hr className="break"/>
                 </div>
+                {
+                    //Question Filters
+                }
                     <QuestionFilters/>
+                {
+                    //Pending Questions list
+                }
                     <PendingQuestionsList/>
                 </div>
             </div>
         </div>
     </div>
         )}
-        no={() => <Redirect to="/login" />}
+        //Redirect user to login page if not authorized. 
+        no={
+        () => <Redirect to="/login" />}
       />
 );
 
+//Map language settings to component properties. 
 const mapStatetoProps = (state) => {
     return{
         lang: state.language.lang
     }
 }
+//Connect component to central controller. 
 export default connect(mapStatetoProps)(ManageQuestions);

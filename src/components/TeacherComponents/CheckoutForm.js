@@ -7,12 +7,16 @@ import {Redirect} from 'react-router-dom';
 import {setLoadingModal} from '../../actions/loadingModal';
 import {setSuccessModal} from '../../actions/successModal';
 
+/**
+ * Payment page. 
+ */
 class CheckoutForm extends Component {
     constructor(props) {
         super(props);
         this.props = props;
         this.state = {complete: false, coupon: ''};
         this.submit = this.submit.bind(this);
+        //Form asks the user for a coupon ID and credit card information. 
         this.state ={
           coupon: '',
           couponValid: false,
@@ -26,6 +30,7 @@ class CheckoutForm extends Component {
         e.preventDefault();
         this.props.history.replace('/teacher/home')
     }
+    //Coupon code validation. 
     onCouponChange = (e) => {
       e.preventDefault();
       const couponCode = e.target.value;
@@ -36,13 +41,18 @@ class CheckoutForm extends Component {
       }
   }
 
+  //Submit payment information
   async submit(ev) {
+    //Create stripe token
     let {token} = await this.props.stripe.createToken({name: auth0Client.getEmail()});
     if(!token){
+      //Mark error if token does not exist. 
       this.setState(() => ({couponError: true}));
     }else{
       this.setState(() => ({couponError: false}));
+      //Set loading modal
       this.props.dispatch(setLoadingModal());
+    //Post information to database. 
     await axios.post('https://beta.edvotech.com/api/plans/',
         {
             token: token.id,
@@ -52,31 +62,37 @@ class CheckoutForm extends Component {
         {
           headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
           .catch(error => {
+            //Set error if user does not exist. 
             if(error.response.status == 401){
               this.setState({userError: true});
               this.setState({couponError: false});
               this.setState({subscriptionError: false});
             }
-            
+            //Set error if coupon is invalid. 
             else if(error.response.status == 402){
               this.setState({userError: false});
               this.setState({couponError: true});
               this.setState({subscriptionError: false});
             }
-
+            //Set error if subscription already exists. 
             else if(error.response.status == 403){
               this.setState({userError: false});
               this.setState({couponError: false});
               this.setState({subscriptionError: true});
             }
+            //Clear loading modal. 
             this.props.dispatch(setLoadingModal());
         })
           .then(response =>{
             if(response.status == 201){
+              //Set redirection in local storage. 
               localStorage.setItem('p-redirect','teacher/settings/plans');
+              //Open success modal
               this.props.dispatch(setSuccessModal());
+              //Redirect user to teacher home page. 
               this.props.history.replace('/teacher/home')
             }
+            //Clear loading modal. 
             this.props.dispatch(setLoadingModal());
           });
         }
@@ -84,18 +100,26 @@ class CheckoutForm extends Component {
 
   render() {
     return (
+      //Authenticate user information to grant access to Payment page. 
       <Can
       role={auth0Client.getRole()}
       perform="teacher:settings"
       yes={() => (
+        //Card information input field and header
       <div className="checkout">
         <h4>{this.props.lang === 'English' ? <h4><span style={{color: 'red'}}>*</span>Would you like to complete the purchase?</h4> : <h4><span style={{color: 'red'}}>*</span>¿Desea completar la compra?</h4>}</h4>
         
+        {
+          //Card information input
+        }
         <CardElement />
         <br/>
         {this.props.lang === 'English' ? <h4>Insert a coupon code if you have one:</h4> : <h4>Introduzca un código de cupón si tiene alguno:</h4>}
         <input className="form-control" style={{width: '50%'}} name="coupon" maxLength="30" value={this.state.coupon} placeholder={this.props.lang === 'English' ? 'Insert coupon code here' : 'Introduzca su cupón aqui'} onChange={this.onCouponChange} />
         
+        {
+          //Error messages
+        }
                     {this.state.userError === true && 
                         <div className="text-danger text-center">
                             {this.props.lang === 'English' ? <p>User is invalid.</p> : <p>El usuario no es valido.</p>}
@@ -112,6 +136,10 @@ class CheckoutForm extends Component {
                         </div>
                     }
         <div>
+
+      {
+        //Pay button
+      }
         <button onClick={this.submit}>
           <div className="btn btn-item">
           {this.props.lang === 'English' ? 'Pay' : 'Pagar'}
@@ -119,14 +147,19 @@ class CheckoutForm extends Component {
            </button>
         </div>
         <br/>
+        {
+          //Institutional coupon disclaimer
+        }
            <p style={{marginTop: '2rem'}}>{this.props.lang === 'English' ? <p>*If you have an institutional coupon, the subcription fee will not be billed to your card.</p> : <p>*Si posee un cupón institucional, no se le cobrará el costo de suscripción a su tarjeta.</p>}</p>
        
       </div>
         )}
+        //Redirect user to login page if not authorized. 
         no={() => <Redirect to="/login" />}
       />
     );
   }
 }
 
+//Connect component to stripe. 
 export default injectStripe(CheckoutForm);

@@ -2,6 +2,12 @@
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 
+/**
+ * sendRegistration - Action which posts user information to the database once registration has been completed. 
+ * @param {*} param0 - Object containing a user's registration data. This includes their email, password, password confirmation, name, last name, gender
+ * date of birth, level of education, location, class subject, class format, class language, class level, class group size, class topics, school name, school location,
+ * school type, a list of boolean school resources, the date of first employment as a teacher, the user's preferred language, and a boolean list of challenge categories applicable to the user. 
+ */
 export const sendRegistration = (
     {
         email = '',

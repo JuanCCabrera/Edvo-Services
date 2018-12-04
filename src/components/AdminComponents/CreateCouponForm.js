@@ -9,11 +9,14 @@ import Can from '../../Can';
 import auth0Client from '../../Auth';
 import {Redirect} from 'react-router-dom';
 
+/**
+ * Form used to create a new coupon. It includes fields to input the coupon's name, ID, discount percentage, and duration in months. 
+ */
 class CreateCouponForm extends React.Component{
     constructor(props){
         super(props);
         this.state= {
-            couponID: '',
+            couponID: '', 
             couponIDError: '',
 
             couponName: '',
@@ -29,6 +32,7 @@ class CreateCouponForm extends React.Component{
         }
     }
 
+    //Changes made whenever component updates.
     componentDidUpdate(prevProps, prevState){
         if(prevProps !== this.props){
             //Change rendered error message if the language changes. 
@@ -56,39 +60,50 @@ class CreateCouponForm extends React.Component{
         }
     }
 
+    //Change couponName field in the local state. 
     onCouponNameChange = (e) => {
         const couponName = e.target.value;
         this.setState(() => ({couponName: couponName}));
     }
 
+    //Change couponID field in the local state. 
     onCouponIDChange = (e) => {
         const couponID = e.target.value;
         this.setState(() => ({couponID: couponID}));
     }
 
+    //Change percentage field in the local state. 
     onPercentageChange = (e) => {
         const percentage = e.target.value;
+        //If percentage is not a number, generate an error. 
         if(!percentage.match(/^[0-9]*$/)){
             if(this.props.lang === 'English'){
                 this.setState(() => ({percentageError: 'The percentage field must contain a number in the range 5-100.'}));
             }else{
                 this.setState(()=> ({percentageError: 'El campo de porcentaje de descuento debe contener un número en el rango de 5-100.'}));
             }
+        //Else, accept the input percentage value. 
         }else{
             this.setState(() => ({percentage: percentage}));
             this.setState(() => ({percentageError: ''}));
         }
     }
 
+    //Submit new coupon information. 
     onSubmit = (e) => {
         e.preventDefault();
 
+        //Generate an error if any form field is empty. 
         if(!this.state.couponID || !this.state.couponName || !this.state.percentage){
             this.setState(() => ({couponCreationError: true}));
+        //Generate an error if any other error is already being displayed in the form. 
         }else if(this.state.couponIDError || this.state.couponNameError || this.state.percentageError){
             this.setState(() => ({couponCreationError: true}));
+        //If the information is validated, post to the database. 
         }else{
+            //Set Loading modal. 
             this.props.dispatch(setLoadingModal());
+            //Post information to database. 
             axios.post('https://beta.edvotech.com/api/admin/settings/coupon/add',{
                             couponid: this.state.couponID,
                             name: this.state.couponName,
@@ -97,6 +112,7 @@ class CreateCouponForm extends React.Component{
                 },{
                     headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
                 }).then(response =>{
+                    //Clear local state data and set Success Modal if successful. 
                         if(response.status == 200){
                         this.props.dispatch(setSuccessModal())
                         this.setState(() => ({couponID: ''}));
@@ -104,13 +120,16 @@ class CreateCouponForm extends React.Component{
                         this.setState(() => ({percentage: ''}));
                         this.setState(() => ({couponRequestError: false, couponCreationError: false}));              
                     }
+                    //Clear loading modal. 
                     this.props.dispatch(setLoadingModal());
                     })
                     .catch(error => {
+                        //Set request error message if not successful. 
                         if(error.response.status != null){
                             this.setState({couponRequestError: true});
                             this.props.dispatch(setFailureModal());
                         }
+                        //Clear loading modal. 
                         this.props.dispatch(setLoadingModal());
                     })    
                 }
@@ -118,6 +137,7 @@ class CreateCouponForm extends React.Component{
 
     render(){
         return(
+            //Authenticate user access to the Create Coupon form page. 
             <Can
             role={auth0Client.getRole()}
             perform="admin:settings"
@@ -127,6 +147,9 @@ class CreateCouponForm extends React.Component{
                     <div className="row">
                         <div className="col-sm-2">
                             <div className="text-center well">
+                            {
+                                //Button list of all navigation items an admin can reach through the Admin Settings page. 
+                            }
                                 <AdminButtonList/>
                             </div>
                         </div>
@@ -248,7 +271,8 @@ class CreateCouponForm extends React.Component{
                                         <span style={{color: 'gray', fontSize: '1.5rem'}}>{this.props.lang === 'English' ? 'Please write a number in the range 5-100.' : 'Por favor escriba un número en el rango de 5-100.'}</span>
                                         <br/>
                                         <input type="text" placeholder={this.props.lang === 'English' ? '(5-100)' : '(5-100)'} style={{width: '20%'}} className="form-control" maxLength="3" onBlur={() => {
-                                            //Check if the coupon name field only consists of spaces. 
+                                            
+                                            //Check if the coupon name field does not only consist of numbers. 
                                             this.setState(() => ({percentage: this.state.percentage.trim()}));
                                             if(this.state.percentage && !this.state.percentage.match(/^[0-9]*$/)){
                                                 if(this.props.lang === 'English'){
@@ -256,6 +280,7 @@ class CreateCouponForm extends React.Component{
                                                 }else{
                                                     this.setState(() => ({percentageError: 'El campo de porcentaje de descuento debe contener un número en el rango de 5-100.'})); 
                                                 }
+                                            //If the input data only consists of numbers, check if it is outside of the valid range of 5-100. 
                                             }else if(this.state.percentage && (Number(this.state.percentage) < 5 || Number(this.state.percentage) > 100)){
                                                 
                                                 if(this.props.lang === 'English'){
@@ -263,6 +288,7 @@ class CreateCouponForm extends React.Component{
                                                 }else{
                                                     this.setState(()=> ({percentageError: 'El campo de porcentaje de descuento debe contener un número en el rango de 5-100.'}));
                                                 }
+                                            //If input is valid, clear or keep cleared the percentage input data error message. 
                                             }else{
                                                 this.setState(() => ({percentageError: ''}));
                                             }
@@ -310,17 +336,20 @@ class CreateCouponForm extends React.Component{
                     </div>
                 </div>
             </div>
-                                                         )}
-                                                         no={() => <Redirect to="/login" />}
-                                                       />
+                        )}
+                        //Redirect user to login page if not authorized. 
+                        no={() => <Redirect to="/login" />}
+                    />
         );
     }
 }
 
+//Map language to local component properties. 
 const mapStateToProps = (state) => {
     return{
         lang: state.language.lang
     }
 }
 
+//Connect component to the central controller. 
 export default connect(mapStateToProps)(CreateCouponForm);

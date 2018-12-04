@@ -12,6 +12,7 @@ class UserModal extends React.Component{
     }
     render(){
         return (
+                //User Modal
                 <Modal
                 isOpen = {this.props.userInfo.userModalFlag}
                 onRequestClose = {this.props.clearSelectedUser}
@@ -20,12 +21,24 @@ class UserModal extends React.Component{
                 className="user-modal-card"
                 >
                 <div>
+                    {
+                        //User name and last name
+                    }
                     <h1 className="form__title" style={{marginBottom: '1.5rem'}}>{this.props.userSpec.name} {this.props.userSpec.lastName}</h1>
+                    {
+                        //User email
+                    }
                     <p style={{textAlign: 'center'}}>Email: {this.props.userSpec.email}</p>
                     <hr/>
 
+                    {
+                        //Class Information title
+                    }
                     <h3 className="text-center" style={{textDecoration: 'underline'}}>{this.props.lang === 'English' ? 'Class Information' : 'Información del Curso'}</h3>
                     <br/>
+                    {
+                        //Class subject
+                    }
                     <p>{this.props.lang === 'English' ? 'Subject' : 'Materia'}: {this.props.userSpec.subject}</p>
                     {
                         //Class format
@@ -74,7 +87,14 @@ class UserModal extends React.Component{
                         </div>
                         
                         }
+                    {
+                        //Class group size
+                    }
                     <p>{this.props.lang === 'English' ? 'Group Size' : 'Tamaño de Grupo'}: {this.props.userSpec.groupsize} {this.props.lang === 'English' ? 'students' : 'estudiantes'}</p>
+                    
+                    {
+                        //Class topics
+                    }
                     <p>{this.props.lang === 'English' ? 'Class Topics' : 'Temas del Curso'}:</p>
                         <ul style={{listStyleType: 'circle'}}>
                             {this.props.userSpec.topica && <li>{this.props.userSpec.topica}</li>}
@@ -82,6 +102,9 @@ class UserModal extends React.Component{
                             {this.props.userSpec.topicc && <li>{this.props.userSpec.topicc}</li>}
                         </ul>
                     <br/>
+                    {
+                        //Available resources
+                    }
                     <div className="panel panel-default" style={{maxWidth: '25rem'}}>
                         <div className="panel-heading"><h4 style={{margin: '0'}}>{this.props.lang === 'English' ? 'Available Resources' : 'Recursos Disponibles'}</h4></div>
                         <div className="panel-body">

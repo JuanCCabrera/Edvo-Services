@@ -1,3 +1,4 @@
+//Reducer default state
 const userModalReducerDefaultState = {
     selectedUser:{
         name: '',
@@ -43,7 +44,7 @@ const userModalReducer = (state = userModalReducerDefaultState, action) => {
                 selectedUser: action.selectedUser,
                 userModalFlag: true
             }
-        //Clear modal information
+        //Clear modal information (Set default values). 
         case 'CLEAR_USER_MODAL':
             return{
                 selectedUser: {

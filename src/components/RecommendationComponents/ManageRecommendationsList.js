@@ -28,6 +28,7 @@ class ManageRecommendationsList extends React.Component{
         }
     }
 
+    //Reset text filter and unload recommendations from controller when component unmounts. 
     componentWillUnmount(){
         this.props.dispatch(setRecommendationsTextFilter(''));
         this.props.dispatch(unloadRecommendations());
@@ -36,9 +37,13 @@ class ManageRecommendationsList extends React.Component{
     //Configure initial state if component will be mounted. 
     //Determine the recommendations to display on the first page. 
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Reset category filtering
         this.props.dispatch(setRecommendationsCategory('all'));
+        //Unload recommendations
         this.props.dispatch(unloadRecommendations());
+        //Get recommendation data from database. 
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
@@ -81,13 +86,17 @@ class ManageRecommendationsList extends React.Component{
                         size: element.groupsize
                     }));
             });
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal and set failure modal
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
         });
+        //Calculate pagination parameters. 
         this.pageSlice = Math.ceil(this.props.recommendation.length/this.itemsPerPage);
         this.currentPage = 1;
+        //Slice information to display in list. 
         const displayedRecommendations = this.props.recommendation.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedRecommendations: displayedRecommendations});
     }
@@ -158,10 +167,16 @@ class ManageRecommendationsList extends React.Component{
                 {(this.props.recommendation.length === 0) &&
                     (this.props.lang === 'English' ?
                     <div className="close-empty-message-card">
+                    {
+                        //Message displayed if filtering parameters do not match any list item. 
+                    }
                         {this.props.allRecommendations.length > 0 ? 
                             <p>There are no recommendations which match the given parameters.</p>
                             :
                             <p>There are no available recommendations to manage.</p>
+                        }
+                        {
+                            //Link to Create Recommendations page. 
                         }
                         <Link to='/recommendations/create'>
                             <button>
@@ -171,11 +186,15 @@ class ManageRecommendationsList extends React.Component{
                             </button>
                         </Link>
                     </div> : 
+                        //Message displayed if filtering parameters do not match any list item (in Spanish). 
                     <div className="close-empty-message-card" >
                         {this.props.allRecommendations.length > 0 ? 
                             <p>No hay recomendaciones que cumplen con los parámetros dados.</p>
                             :
                             <p>No hay recomendaciones disponibles para administrar.</p>
+                        }
+                        {
+                            //Link to Create Recommendations page (in Spanish). 
                         }
                         <Link to='/recommendations/create'>
                             <button>

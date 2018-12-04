@@ -77,6 +77,10 @@ export const removeUser = ({id} = {}) => ({
     id: id
 });
 
+/**
+ * unloadUsers - Generates an object indicating to the central controller that it must erase a locally stored user's data. 
+ * @param {*} param0 - Object containing a user's ID. 
+ */
 export const unloadUsers = ({id} = {}) => ({
     type: 'UNLOAD_USERS',
     id: id

@@ -60,6 +60,10 @@ export const selectUserToDisplay = (
         }
 });
 
+/**
+ * clearUserModal - Generates object indicating to the central controller that it must stop displaying the User Modal in the
+ * Assign Recommendations page. 
+ */
 export const clearUserModal = () => ({
     type: 'CLEAR_USER_MODAL'
 });

@@ -96,6 +96,7 @@ class CreateUserForm extends React.Component{
         //Check if the selected date of birth falls between 18-90 years ago. 
         if(dateOfBirth && (difference >= 18 && difference < 90)){
             this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: ''}));
+        //Set error message if date does not fall into the valid range. 
         }else{
             if(this.props.lang === 'English'){
                 this.setState(() => ({dateOfBirth: dateOfBirth, dateOfBirthError: 'Users must be 18 years or older.'}));
@@ -128,6 +129,7 @@ class CreateUserForm extends React.Component{
         this.setState(() => ({institutionID}));
     }
 
+    //Run whenever component updates. 
     componentDidUpdate(prevProps, prevState){
         if(prevProps !== this.props){
             //Update the language of the error messages whenever the language is set to change. 
@@ -189,13 +191,19 @@ class CreateUserForm extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
 
+        //Generate error message if any required input field is empty. 
         if(!this.state.email || !this.state.password || !this.state.confirmPassword || !this.state.name || !this.state.lastName || (this.state.type === 'school' && !this.state.institutionID)){
             this.setState(() => ({creationError: true}));
+        //Generate error message if input validation error was detected in the form. 
         }else if(this.state.emailError || this.state.nameError || this.state.lastNameError || this.state.passwordError || this.state.confirmPasswordError || this.state.dateOfBirthError || this.state.institutionIDError){
             this.setState(() => ({creationError: true}));
+        //Submit information if all input is valid. 
         }else{
-            this.setState(() => ({creationError: false}));            
+            //Clear form global error. 
+            this.setState(() => ({creationError: false}));          
+            //Set loading modal  
             this.props.dispatch(setLoadingModal());
+            //Post information to database. 
             axios.post('https://beta.edvotech.com/api/admin/settings/users/add', {
             email: this.state.email,
             password: this.state.password, 
@@ -213,13 +221,16 @@ class CreateUserForm extends React.Component{
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             }).then((response)=>{
+        //Set success modal and navigate to the AppUsers page on successful post. 
         if(response.status == 201){
             this.props.dispatch(setSuccessModal());
             this.props.history.push('/admin/settings/users');
-        }        
+        }   
+        //Clear loading modal.      
         this.props.dispatch(setLoadingModal());
     })
     .catch(error => {
+        //Set error message if user already exists. 
         if(error.response.status == 401 || error.response.status == 403){
             if(this.props.lang === 'English'){
                 this.setState(() => ({requestError: 'The user already exists'}));            
@@ -227,7 +238,8 @@ class CreateUserForm extends React.Component{
             else{                
                 this.setState(() => ({requestError: 'El usuario ya existe'}));
             }
-        }        
+        }    
+        //Clear loading modal.     
         this.props.dispatch(setLoadingModal());     
     });
         }
@@ -237,6 +249,7 @@ class CreateUserForm extends React.Component{
     render(){
         
         return(
+            //Authenticate user information to give access to the Create User form. 
             <Can
             role={auth0Client.getRole()}
             perform="admin:settings"
@@ -349,7 +362,7 @@ class CreateUserForm extends React.Component{
                                     <label>Email:</label>
                                     <br/>
                                     <input type="text" className="form-control" maxLength="100" style={{width: '70%'}} placeholder = "Email" onBlur={() => {
-                                        //Check if the email field matches the expected email address format.
+                                        //Check if the email field matches the expected email address format. 
                                         this.setState(() => ({email: this.state.email.trim()})); 
                                         if(this.state.email && !this.state.email.toLowerCase().match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b$/)){
                                             if(this.props.lang === 'English'){
@@ -387,7 +400,7 @@ class CreateUserForm extends React.Component{
                                             <br/>
                                             <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Password' : 'Contraseña'} value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
                                                 //Check if the password field matches the expected password format. 
-                                                if(this.state.password && !this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/)){
+                                                if(this.state.password && !this.state.password.match(/^(?!.* )(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/)){
                                                     if(this.props.lang === 'English'){
                                                         this.setState(() => ({passwordError: 'Enter a valid password.'}));
                                                     }else{
@@ -466,16 +479,6 @@ class CreateUserForm extends React.Component{
                                     <label>{this.props.lang === 'English' ? 'Date of Birth' : 'Fecha de Nacimiento'}:</label>
                                     <br/>
 
-                                    {/*
-                                    <SingleDatePicker
-                                    date={this.state.dateOfBirth}
-                                    onDateChange={this.onDateChange}
-                                    focused={this.state.calendarFocused}
-                                    onFocusChange={this.onFocusChange}
-                                    numberOfMonths={1}
-                                    isOutsideRange={day => (moment().diff(day) < 0)}
-                                    />
-                                    */}
                                     <span style={{color: 'gray', fontSize: '1.2rem'}}>(MM/DD/{this.props.lang === 'English' ? 'YYYY' : 'AAAA'})</span>
                                     <br/>
                                     <DatePicker
@@ -486,6 +489,9 @@ class CreateUserForm extends React.Component{
                                     />
                                     <br/>
 
+                                    {
+                                        //Date of birth error message
+                                    }
                                     {this.state.dateOfBirthError && 
                                         <div>
                                             <span className="text-danger"> 
@@ -511,52 +517,10 @@ class CreateUserForm extends React.Component{
                                     </label>
                                     <br/>
                                     {
-                                        //<input type="radio" name="gender" value= "other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> Other <br/>
+                                        //<input type="radio" name="gender" value="other" checked={this.state.gender === 'other'} onChange = {this.onGenderChange}/> Other <br/>
                                     }
                                     <br/>
-                                    {
-                                        //Level of education radio button selector
-                                    /*
-                                    <label>{this.props.lang === 'English' ? 'Level of Education' : 'Nivel de Educación'}:</label>
-                                    <br/>
-                                    <label className="clickable radio__text">
-                                        <input type="radio" name="levelOfEdu" value= "AS" checked={this.state.levelOfEdu === 'AS'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? ' Associate\'s Degree' : ' Grado Asociado'}
-                                    </label>
-
-                                    <br/>
-
-                                    <label className="clickable radio__text">
-                                        <input type="radio" name="levelOfEdu" value= "BSD" checked={this.state.levelOfEdu === 'BSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? ' Bachellor\'s Degree' : ' Bachillerato'}
-                                    </label>
-
-                                    <br/>
-
-                                    <label className="clickable radio__text">
-                                        <input type="radio" name="levelOfEdu" value= "MSD" checked={this.state.levelOfEdu === 'MSD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? ' Master\'s Degree' : ' Maestría'}
-                                    </label>
-
-                                    <br/>
-
-                                    <label className="clickable radio__text">
-                                        <input type="radio" name="levelOfEdu" value= "PHD" checked={this.state.levelOfEdu === 'PHD'} onChange = {this.onLOEChange}/>{this.props.lang === 'English' ? ' Doctor of Philosophy' : ' Doctor en Filosofía'}
-                                    </label>
-
-                                    <br/>
-
-                                    <label className="clickable radio__text">
-                                        <input type="radio" name="levelOfEdu" value= "EDD" checked={this.state.levelOfEdu === 'EDD'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? ' Doctor of Education' : ' Doctor en Educación'}
-                                    </label>
-
-                                    <br/>
-
-                                    <label className="clickable radio__text">
-                                        <input type="radio" name="levelOfEdu" value= "NA" checked={this.state.levelOfEdu === 'NA'} onChange = {this.onLOEChange}/> {this.props.lang === 'English' ? ' None' : ' Ninguna'}
-                                    </label>
-
-                                    <br/>
-                                    <br/>
-                                    */
-                                    }
+                                    
                                     {
                                         //User type radio button selector
                                     }
@@ -585,7 +549,7 @@ class CreateUserForm extends React.Component{
                                     <label>{this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'}:</label>
                                     <br/>
                                     <input type="text" className="form-control" maxLength="30" style={{width: '40%'}} disabled={this.state.type !== 'school'} placeholder ={this.props.lang === 'English' ? 'Institution ID' : 'Identificación de institución'} onBlur={() => {
-                                        //Check if institution ID field matches expected format. 
+                                        //Check if institution ID field matches expected format (alphanumeric with no spaces). 
                                         this.setState(() => ({institutionID: this.state.institutionID.trim()}));
                                         if(!this.state.institutionID.match(/^[a-zA-Z0-9\|]*$/)){
                                             if(this.props.lang === 'English'){
@@ -649,6 +613,7 @@ class CreateUserForm extends React.Component{
             </div>
         </div>
                                              )}
+                                             //Redirect user to login page if not authorized. 
                                              no={() => <Redirect to="/login" />}
                                            />
         );

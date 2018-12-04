@@ -10,8 +10,13 @@ import './Main.css';
  */
 const MainPageDisplay = (props) => (
     <div className="Main">
+    {
+        //Parallax background
+    }
     <div className="Parallax-Title">
         {props.lang === 'English' ? 
+        
+        //Page title
         <div className="container Title">
             <h1>EDUCATION</h1> 
             <h1>EVOLVED</h1>
@@ -19,12 +24,16 @@ const MainPageDisplay = (props) => (
             <h4>Join the community of educators who are</h4>
             <h4>evolving education</h4>
             <div>
+            {
+                //Link to Login page. (Join Us button)
+            }
             <NavLink to="/login" activeClassName="is-active" exact>
                 <button className="Join btn mb-5 mt-5">{props.lang === 'English' ? 'JOIN' : 'ÚNETE'}</button>
             </NavLink>
             </div>
             </div>
         </div> : 
+        //Page title in Spanish
         <div className="container Title">
             <h1>EDUCACIÓN</h1>
             <h1>EVOLUCIONADA</h1>
@@ -32,6 +41,9 @@ const MainPageDisplay = (props) => (
             <h4>Únete a la comunidad de educadores</h4>
             <h4>que está revolucionando la educación</h4>
             <div>
+            {
+                //Link to Login page. (Join Us button in Spanish). 
+            }
             <NavLink to="/login" activeClassName="is-active Join" exact>
                 <button className="btn mb-5 mt-5">{props.lang === 'English' ? 'JOIN' : 'ÚNETE'}</button>
             </NavLink>
@@ -39,17 +51,19 @@ const MainPageDisplay = (props) => (
             </div>
         </div>
         }
-
-        {
-            //Navigation button to Login page.
-        }
         <div>
         </div>
     </div>
 
         <div className="Mission pt-5 pb-5">
+        {
+            //Edvo Tech logo
+        }
             <p className="logo">edvo</p>            
             <hr className="Break"/>
+            {
+                //"Mission" section of Main page
+            }
             {props.lang === 'English' ? 
             <div className="Mission">
                 <h2>We make the process of teaching easier.</h2>
@@ -63,13 +77,14 @@ const MainPageDisplay = (props) => (
             }
         </div>
 
-        {
-            //Static text description "DESIGN" section
-        }
+        
         <div>
             <div className="container-fluid row text-center Tools">
                 {props.lang === 'English' ? 
                 <div className="col-md-4">
+                {
+                    //Static text description "DESIGN" section
+                }
                 <img src="https://beta.edvotech.com/static/images/flower.png" className="Feature-Img" />
                     <h2>DESIGN</h2>
                     <h5>Collaborating with you</h5>
@@ -83,6 +98,9 @@ const MainPageDisplay = (props) => (
                     <h5>experiencias de aprendizaje.</h5>
                 </div>
                 }
+                {
+                    //Static text description "MANAGEMENT" section
+                }
                 {props.lang === 'English' ? 
                 <div className="col-md-4">
                 <img src="https://beta.edvotech.com/static/images/circle.png" className="Feature-Img" />
@@ -95,6 +113,8 @@ const MainPageDisplay = (props) => (
                     <h5>Ayudandote a manejar</h5> 
                     <h5>tu tiempo eficientemente.</h5>
                 </div>
+                }{
+                    //Static text description "TOOLS" section
                 }
                 {props.lang === 'English' ? 
                 <div className="col-md-4">
@@ -117,6 +137,9 @@ const MainPageDisplay = (props) => (
             
         </div>
             
+        {
+            //Static text description "How does it work?" section
+        }
         <div className="How">
         <div className="How-Title">
             {props.lang === 'English' ? 
@@ -134,6 +157,7 @@ const MainPageDisplay = (props) => (
         <div> 
             <div className="container-fluid row text-center">
                 {props.lang === 'English' ? 
+                //Complete your profile section
                 <div className="col-md-4">
                     <h2>1. Fill your profile</h2>
                     <ul>
@@ -153,7 +177,9 @@ const MainPageDisplay = (props) => (
                    
                 </div>
                 }
+                
                 {props.lang === 'English' ? 
+                //Tell us your challenges section
                 <div className="col-md-4 mt-5">
                     <h2>2. Tell us your challenges</h2>
                     <ul>
@@ -171,6 +197,7 @@ const MainPageDisplay = (props) => (
                 </div>
                 }
                 {props.lang === 'English' ? 
+                //Receive suggestions section
                 <div className="col-md-4 mt-10">
                     <h2>3. Receive suggestions for your classroom</h2>
                         <img src="https://beta.edvotech.com/static/images/results.png" className="How-Img" />
@@ -183,6 +210,9 @@ const MainPageDisplay = (props) => (
         </div>
         </div>
 
+        {
+            //Sponsors
+        }
         <div>
             <div className="container-fluid row">
             <div className="col-md-4 text-center">

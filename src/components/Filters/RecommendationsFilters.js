@@ -27,6 +27,9 @@ class RecommendationsFilters extends React.Component{
                 </div>
 
                 <div className="btn-group">
+                {
+                    //Filter icon
+                }
                     <span className="btn btn-filter" style={{marginBottom: '1rem'}}>
                                 <i className="fas fa-filter"></i>
                     </span>

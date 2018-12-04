@@ -3,8 +3,15 @@ import Modal from 'react-modal';
 import {connect} from 'react-redux';
 import { setSuccessModal } from '../actions/successModal';
 
+/**
+ * Modal displayed when an action has been completed successfully. 
+ * @param {*} props - Default properties and language settings
+ */
 const SuccessModal =(props) => (
     <div className="modal"> 
+    {
+        //Modal
+    }
         <Modal
         isOpen = {props.successModal.successModalFlag === true}
         onRequestClose = {() => {
@@ -15,20 +22,32 @@ const SuccessModal =(props) => (
         className="modal-card" 
         >
         <div className="text-center" style={{padding: '2rem 2rem 1rem 2rem'}}>
+        {
+            //Checkmark icon
+        }
             <span className="modal__checkmark"><i className="fa fa-check-circle" aria-hidden="true"></i></span>
             <br/>
             <div>
                 <div className="text-center">
                     <div className="card-title font-weight-bold" style={{color: 'white'}}>
                         <div style={{fontSize:'4rem'}}>
+                        {
+                            //"Success!" modal title
+                        }
                             {props.lang === 'English' ? 'Success!' : '¡Éxito!'}
                         </div> 
+                        {
+                            //Modal body
+                        }
                         {props.lang === 'English' ? 'The action was completed successfully.' : 'La acción fue completada exitosamente.'}
                     </div>
                     <hr className="break" style={{borderColor: 'white'}}/>
                 </div>
             </div>
         </div>
+        {
+            //Button to close the Success modal
+        }
         <div className="text-center" style={{backgroundColor: 'white', marginTop: '0', padding: '1rem'}}>
                 <button onClick={() => {props.dispatch(setSuccessModal())}}>
                         <p className="btn btn-item">

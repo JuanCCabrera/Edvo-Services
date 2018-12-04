@@ -5,7 +5,7 @@ import React from 'react';
  * Contains links to Edvo Tech's social media pages and a copyright notice. 
  */
 const Footer = () => (
-    <div className="footer" style={{height: '300px'}}>
+    <div className="footer" style={{height: '350px'}}>
         <div className="container">
             <div className="row">
                 <div className="col-sm text-center mb-3" style={{marginBottom: '3rem'}}>

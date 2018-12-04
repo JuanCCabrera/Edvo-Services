@@ -31,26 +31,35 @@ class TeacherQuestionsList extends React.Component{
     }
     //Configure local state when component will be loaded. This sets the initial list displayed on the first page. 
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Reset teacher questions filters. 
         this.props.dispatch(setTeacherQuestionsSorting('date'));
         this.props.dispatch(setTeacherQuestionsReadFilter('all'));
+        //Get teacher questions information from the database. 
         axios.get('https://beta.edvotech.com/api/teacher/questions',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` ,'Content-Type': 'application/json' }})
         .then(response => {
+            //Load each question to the controller. 
             response.data.questions.forEach(element => {
                 this.props.dispatch(loadTeacherQuestion({question: element.question, askedDate: element.askeddate, 
                 subject: element.subject, favorite: element.favorite, userId: element.userid, answer: element.answer, rate: element.rate, read: element.read}));
+                //Load favorites
                 if(element.favorite == true){
                     this.props.dispatch(addFavoriteQuestion({askedDate: element.askeddate}));
                 }
             });
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
             if(error.response.status >= 500)
+            //Set failure modal
                 this.props.dispatch(setFailureModal());
         });
+        //Determine pagination items to display. 
         this.currentPage = 1;
         const initialPageQuestions = this.props.question.slice(0,this.itemsPerPage);
         this.setState({activePage: 1, displayedQuestions: initialPageQuestions});

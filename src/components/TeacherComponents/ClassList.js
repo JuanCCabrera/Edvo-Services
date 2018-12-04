@@ -14,26 +14,34 @@ class ClassList extends React.Component{
     constructor(props){
         super(props);
     }
+    
     componentDidMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Load class information from database.
         axios.get('https://beta.edvotech.com/api/teacher/settings/classes',
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
         })
         .then(response => {
+            //Load class information to the controller
             response.data.classes.forEach(element => {
             this.props.dispatch(loadClass({userId: element.classinfoid, subject: element.subject, 
             format: element.format, language: element.language, level: element.level, 
             groupSize: element.groupsize, topicA: element.topica, topicB: element.topicb, topicC: element.topicc}));
         });
+        //Clear loading modal
         this.props.dispatch(setLoadingModal());
         })
         .catch(error =>{
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
+            //Set failure modal. 
             this.props.dispatch(setFailureModal());
         })
     }
     componentWillUnmount(){
+        //Unload class from controller. 
         this.props.dispatch(unloadClasses());
     }
 

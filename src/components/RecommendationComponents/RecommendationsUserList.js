@@ -32,10 +32,14 @@ class RecommendationsUserList extends React.Component{
     
     //Configure state when component is being mounted. This includes determing the initial list to display on the Assign Recommendations page. 
     componentWillMount(){
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Reset user filters. 
         this.props.dispatch(setWeeklyCheck('all'));
         this.props.dispatch(clearSelection());
+        //Unload users from central controller. 
         this.props.dispatch(unloadUsers());
+        //Get user information from database. 
         axios.get('https://beta.edvotech.com/api/'+auth0Client.getRole()+'/recommendations/users',{
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
         .then(response => {
@@ -83,11 +87,14 @@ class RecommendationsUserList extends React.Component{
                     groupsize: element.groupsize
                 }));
             });
+            //Clear loading modal
             this.props.dispatch(setLoadingModal());
         }).catch(error => {
+            //Clear loading modal and set failure modal on error. 
             this.props.dispatch(setLoadingModal());
             this.props.dispatch(setFailureModal());
         });
+        //Determine initially paginated items. 
         this.pageSlice = Math.ceil(this.props.users.length/this.itemsPerPage);
         this.currentPage = 1;
         const initialPageUsers = this.props.users.slice(0,this.itemsPerPage);
@@ -160,7 +167,9 @@ class RecommendationsUserList extends React.Component{
                 <div className="text-center text-danger">
                     {(this.props.users.length === 0) && (this.props.lang === 'English' ?
                         <div>
-                            
+                            {
+                                //Message displayed if no users to manage. 
+                            }
                             {this.props.allUsers.length > 0 ? 
                             <p>There are no users which match the given parameters.</p>
                             :
@@ -170,6 +179,9 @@ class RecommendationsUserList extends React.Component{
                         :
                         
                         <div>
+                        {
+                            //Message displayed if filtering parameters do not match a user. 
+                        }
                         {this.props.allUsers.length > 0 ? 
                             <p>No hay usuarios que cumplen con los parámetros dados.</p>
                             :

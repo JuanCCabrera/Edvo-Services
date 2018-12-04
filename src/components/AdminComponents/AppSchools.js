@@ -13,6 +13,7 @@ import auth0Client from '../../Auth';
  * @param {*} props - Component properties
  */
 const AppSchools = (props) => (
+    //Authenticate user access to AppSchools page. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:settings"
@@ -71,10 +72,11 @@ const AppSchools = (props) => (
                 </div>
             </div>
         </div>
-    </div>
-                                         )}
-                                         no={() => <Redirect to="/login" />}
-                                       />
+    </div>  
+                    )}
+                    //Redirect user to login if not authorized
+                    no={() => <Redirect to="/login" />}
+                />
 );
 
 //Map current language state to component properties.

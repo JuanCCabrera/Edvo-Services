@@ -8,6 +8,7 @@ import auth0Client from '../../Auth';
  * Layout for Administrator Profile page.  
  */
  const AdminProfile = (props) => (
+     //Authorize user access to Admin Profile page. 
     <Can
     role={auth0Client.getRole()}
     perform="admin:settings"
@@ -18,11 +19,17 @@ import auth0Client from '../../Auth';
                 <div className="row">
                     <div className="col-sm-2">
                         <div className="text-center well">
+                        {
+                            //Admin button list (links to all Admin Settings pages). 
+                        }
                         <AdminButtonList/>
                         </div>
                     </div>
                     <div className="col-sm-1"/>
                     <div className="col-sm-9">
+                    {
+                        //Admin user profile information. 
+                    }
                         <div className="big-card">
                             <BasicInfoProfileForm/>
                         </div>
@@ -31,6 +38,7 @@ import auth0Client from '../../Auth';
             </div>
         </div>
                              )}
+                             //Redirect to login if user is unauthorized. 
                              no={() => <Redirect to="/login" />}
                            />
  );

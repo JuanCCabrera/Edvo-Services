@@ -46,6 +46,10 @@ export const removeClass = ({classInfoId = ''} = {}) => {
     }
 };
 
+/**
+ * unloadClasses - Generates an object with a command that indicates to the controller that class information must be removed from
+ * the controller. 
+ */
 export const unloadClasses = () => {
     return {
         type: 'UNLOAD_CLASSES'

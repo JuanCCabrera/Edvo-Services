@@ -28,6 +28,9 @@ class UserFilters extends React.Component{
                 <div>
                     <div className="btn-group">
                         <div className="dropdown">
+                        {
+                            //Filter Icon
+                        }
                         <span className="btn btn-filter" style={{padding: '0.6rem'}}>
                                 <i className="fas fa-filter"></i>
                         </span>

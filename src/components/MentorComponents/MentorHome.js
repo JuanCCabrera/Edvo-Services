@@ -9,6 +9,7 @@ import auth0Client from '../../Auth';
  * @param {*} props - Default properties and current language state
  */
 const MentorHome = (props) => (
+    //Authenticate user information to give access to Mentor Home page. 
     <Can
     role={auth0Client.getRole()}
     perform="mentor:settings"
@@ -24,6 +25,7 @@ const MentorHome = (props) => (
                         <div className="big-card-admin-home">
                             <NavLink to="/recommendations/assign" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>                
                                 {props.lang === 'English' ? 
+                                //Manage Recommendations card title
                                     <div className="big__mentor__text">
                                         <p>Manage</p>
                                         <span style={{fontSize: '5rem'}}><i className="fas fa-book"></i></span>
@@ -46,6 +48,7 @@ const MentorHome = (props) => (
                     <div className="big-card-admin-home">
                         <NavLink to="/staff/questions" activeClassName="is-active" style={{textDecoration: 'none', color: '#5933AA'}} exact={true}>
                             {props.lang === 'English' ? 
+                            //Answer Questions card title
                                 <div className="big__mentor__text">
                                     <p>Answer</p>
                                     <span style={{fontSize: '5rem'}}><i className="fas fa-question-circle"></i></span>
@@ -64,6 +67,7 @@ const MentorHome = (props) => (
         </div>
     </div>
                                      )}
+                                     //Redirect user to login page if not authorized.   
                                      no={() => <Redirect to="/login" />}
                                    />
 );

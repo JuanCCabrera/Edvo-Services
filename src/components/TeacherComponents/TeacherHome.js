@@ -25,6 +25,8 @@ import { setRole, setAuthentication } from '../../actions/credentials';
 class TeacherHome extends React.Component {
     constructor(props) {
         super(props);
+        //State contains information about how many days a teacher has logged in, the number of recommendations read, 
+        //The number of questions asked by the user, and lists of top rated and most recent recommendations. 
         this.state = {
             daysInPlatform: 0,
             recommendationsRead: 0,
@@ -33,23 +35,31 @@ class TeacherHome extends React.Component {
             mostRecentrecommendations: []
         };
     }
+
     componentWillUnmount() {
+        //Reset teacher home page information when unmounting component. 
         this.props.dispatch(reset());
+        //Unload teacher recommendations when unmounting component. 
         this.props.dispatch(unloadTeacherRecommendations());
     }
     componentWillMount() {
+        //Set loading modal
         this.props.dispatch(setLoadingModal());
+        //Get teacher home page information from the databse. 
         axios.get('https://beta.edvotech.com/api/teacher/home',
             {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
             })
             .then(response => {
+                //Load home page information to the controller. 
                 this.props.dispatch(loadTeacherDaysInPlatform({ daysInPlatform: response.data.daysInPlatforms }));
                 this.props.dispatch(loadTeacherQuestionsAsked({ questionsAsked: response.data.questionsasked }));
                 this.props.dispatch(loadTeacherRecommendationsRead({ recommendationsRead: response.data.recommendationsRead }));
 
+                //Load all Recent Recommendtations to the controller
                 response.data.recentRecommendations.forEach(element => {
                     this.props.dispatch(loadTeacherRecentRecommendation({ recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read }));
+                    //Load favorites
                     if (element.favorite == true) {
                         this.props.dispatch(addFavoriteRecommendation({
                             recoID: element.recomid, title: element.title,
@@ -59,8 +69,10 @@ class TeacherHome extends React.Component {
                         }));
                     }
                 });
+                //Load all Top Rated Recommendations to the controller
                 response.data.topRecommendations.forEach(element => {
                     this.props.dispatch(loadTeacherTopRecommendation({ recoID: element.recomid, title: element.title, header: element.header, location: element.location, description: element.description, multimedia: element.multimedia, date: element.date, rate: element.rate, read: element.read }));
+                    //Load favorites
                     if (element.favorite == true) {
                         this.props.dispatch(addFavoriteRecommendation({
                             recoID: element.recomid, title: element.title,
@@ -70,17 +82,23 @@ class TeacherHome extends React.Component {
                         }));
                     }
                 });
+                //Clear loading modal
                 this.props.dispatch(setLoadingModal());
             })
             .catch(error => {
+                //Clear loading modal
                 this.props.dispatch(setLoadingModal());
+                //Set failure modal
                 this.props.dispatch(setFailureModal());
             })
+        //Set user as logged in
         this.props.dispatch(setAuthentication({ isAuthenticated: true }));
+        //Set user role as teacher. 
         this.props.dispatch(setRole({ role: "teacher" }));
     }
     render() {
         return (
+            //Authenticate user information to grant access to Teacher Home page. 
             <Can
                 role={auth0Client.getRole()}
                 perform="teacher:home"
