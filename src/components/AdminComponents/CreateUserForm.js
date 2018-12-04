@@ -222,10 +222,10 @@ class CreateUserForm extends React.Component{
     .catch(error => {
         if(error.response.status == 401 || error.response.status == 403){
             if(this.props.lang === 'English'){
-                this.setState(() => ({requestError: 'The user already exists'}));            
+                this.setState(() => ({requestError: 'The user already exists or the data input was invalid'}));            
             }
             else{                
-                this.setState(() => ({requestError: 'El usuario ya existe'}));
+                this.setState(() => ({requestError: 'El usuario ya existe o los datos provistos son invalidos'}));
             }
         }        
         this.props.dispatch(setLoadingModal());     
@@ -385,9 +385,9 @@ class CreateUserForm extends React.Component{
                                             <span className="req">*</span>
                                             <label>{this.props.lang === 'English' ? 'Password' : 'Contraseña'}:</label>
                                             <br/>
-                                            <input type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Password' : 'Contraseña'} value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
+                                            <input  type="password" className="form-control" maxLength="100" style={{width: '90%'}} placeholder = {this.props.lang === 'English' ? 'Password' : 'Contraseña'} value = {this.state.password} onChange={this.onPasswordChange} onBlur={() => {
                                                 //Check if the password field matches the expected password format. 
-                                                if(this.state.password && !this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/)){
+                                                if(this.state.password && !this.state.password.match(/^(?!.* )(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/)){
                                                     if(this.props.lang === 'English'){
                                                         this.setState(() => ({passwordError: 'Enter a valid password.'}));
                                                     }else{
@@ -395,6 +395,13 @@ class CreateUserForm extends React.Component{
                                                     }
                                                 }else{
                                                     this.setState(() => ({passwordError: ''}));
+                                                }
+                                            }} 
+                                            onKeyDown={(event) => {
+                                                //Do not allow user to press the SPACE while using this input field. 
+                                                if (event.which == 32 || event.keyCode == 32) {
+                                                    //code to execute here
+                                                    event.preventDefault();
                                                 }
                                             }}/>
                         
@@ -428,6 +435,13 @@ class CreateUserForm extends React.Component{
                                                 }else{
                                                     this.setState(() => ({confirmPasswordError: ''}));
                                                 }
+                                            }} 
+                                            onKeyDown={(event) => {
+                                                //Do not allow user to press the SPACE while using this input field. 
+                                                if (event.which == 32 || event.keyCode == 32) {
+                                                    //code to execute here
+                                                    event.preventDefault();
+                                                }
                                             }}/>
                         
                                             {
@@ -448,6 +462,7 @@ class CreateUserForm extends React.Component{
                                                 <ul style={{fontSize: '1.3rem', paddingLeft: '0'}}>
                                                 <p className="card-title">{this.props.lang === 'English' ? 'Password Requirements' : 'Requisitos de Contraseña'}:</p>
                                                 <li>{this.props.lang === 'English' ? 'Minimum of 8 characters' : 'Mínimo de 8 caracteres'}</li>
+                                                <li>{this.props.lang === 'English' ? 'No puede contener espacios' : 'Cannot contain white space'}</li>
                                                 <li>{this.props.lang === 'English' ? 'At least one character of each of the following' : 'Al menos un caracter de cada uno de los siguientes'}:</li>
                                                 <ul style={{paddingLeft: '0.5rem'}}>
                                                     <li>- {this.props.lang === 'English' ? 'Lowercase letters' : 'Letras minúsculas'} (a-z)</li>

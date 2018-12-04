@@ -144,6 +144,7 @@ class PendingQuizzesList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        lang: state.language.lang,
         quizzes: state.quizzes
     }
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 
 const ReturnButtonList = (props) => (
     <div>
@@ -14,4 +15,10 @@ const ReturnButtonList = (props) => (
     </div>
 );
 
-export default ReturnButtonList;
+const mapStateToProps = (state) => {
+    return{
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(ReturnButtonList);

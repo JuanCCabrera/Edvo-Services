@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import {connect} from 'react-redux'
 const QuizButtonList = (props) => (
     <div>
         <br/>
@@ -14,4 +14,10 @@ const QuizButtonList = (props) => (
     </div>
 );
 
-export default QuizButtonList;
+const mapStateToProps = (state) => {
+    return{
+        lang: state.language.lang
+    }
+}
+
+export default connect(mapStateToProps)(QuizButtonList);

@@ -108,7 +108,7 @@ class CheckoutForm extends Component {
                     }
                     {this.state.subscriptionError === true && 
                         <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>You are already subscribed</p> : <p>Ya esta suscrito.</p>}
+                            {this.props.lang === 'English' ? <p>You are already subscribed or data is invalid</p> : <p>Ya esta suscrito o datos proporcionados son inválidos.</p>}
                         </div>
                     }
         <div>
