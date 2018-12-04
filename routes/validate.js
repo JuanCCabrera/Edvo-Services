@@ -161,6 +161,7 @@ function validateGroup( toValidate ) {
     return !patt.test(str);
   }
 }
+// validate no blank space
 
 function validateLongText( toValidate){
   var str = toValidate;
@@ -184,7 +185,20 @@ function validatecoupon( toValidate ) {
   }
 }
 
+//validate password
+function validatePassword( toValidate ) {
+  var str = toValidate;
+  var patt = new RegExp("^(?!.* )(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  var patt1= new RegExp(/^\s/);
+  if (str === "" || patt1.test(str) ){
+      return true;
+  }else{
+      return !patt.test(str);
+  }
+}
+
 module.exports = {
+  validatePassword:validatePassword,
   validatecoupon:validatecoupon,
   validateUserID:validateUserID,
   validateBool:validateBool,

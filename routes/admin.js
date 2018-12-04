@@ -1337,7 +1337,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
   };
   //validate inputs
   if (val.validateUserID(data.userid) || val.validateNoSpace(data.usertype) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender)
-    || val.validateEmail(data.email) || val.validateLongText(data.password) || val.validateDate(data.dob) || val.validateBool(data.policies)) {
+    || val.validateEmail(data.email) || val.validatePassword(data.password) || val.validateDate(data.dob) || val.validateBool(data.policies)) {
     return res.status(403).json({
       statusCode: 403,
       message: 'Inputs were not received as expected.',
