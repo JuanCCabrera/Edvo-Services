@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pg = require('pg');
 const val = require('./validate'); //validate inputs
-const path = require('path');
 const jwt = require('express-jwt');
 const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
@@ -24,7 +23,19 @@ const checkJwt = jwt({
   issuer: `https://edvo-test.auth0.com/`,
   algorithms: ['RS256']
 });
- //HTTP REQUEST NO ESTA NI COMMENTARIOS DE CODIGO
+
+
+/*
+This route asks for the existence of the user that provided the token.
+It returns the user information such as userid and usertype and its subscription type if any.
+It also verifies with stripe if an account has failed to pay in order to cancel a subscription.
+params:
+userid : req.user.sub
+
+returns:
+user : user id and the user type or role
+subscription: subscription status (active, suspended or cancelled)
+*/
 router.get('/user', checkJwt, (req, res, next) => {
   user = [];
   subscription = [];
@@ -33,6 +44,7 @@ router.get('/user', checkJwt, (req, res, next) => {
   };
 
   pg.connect(connectionString, (err, client, done) => {
+    //Verifies the user exists
     const query1 = client.query('SELECT * FROM users WHERE userid = $1', [data.userid]);
     query1.on('row', (row) => {
       user.push(row);
@@ -40,7 +52,8 @@ router.get('/user', checkJwt, (req, res, next) => {
     query1.on('end', () => {
       done();
       if (user.length) {
-        if (user[0].usertype == 'teacher') { //added this to verify usertype
+        if (user[0].usertype == 'teacher') {
+          //Verifies if the user has a subscription
           const query2 = client.query('SELECT * FROM subscription WHERE userid = $1', [data.userid]);
           query2.on('row', (row) => {
             subscription.push(row);
@@ -48,6 +61,7 @@ router.get('/user', checkJwt, (req, res, next) => {
           query2.on('end', () => {
             done();
             if (subscription.length > 0) {
+              //Since the user has a subscription it queries Stripe to check on the subscription status
               stripe.subscriptions.retrieve(
                 subscription[0].token,
                 function (err, subscriptionStatus) {
@@ -55,15 +69,16 @@ router.get('/user', checkJwt, (req, res, next) => {
                     return res.status(402).json({ statusCode: 402 });
                   }
                   else {
-                    if (subscriptionStatus.status === 'active'){
+                    if (subscriptionStatus.status === 'active') {
                       return res.status(201).json({ statusCode: 201, subscription: 'active', user: user });
                     }
+                    //If Stripe returns that it has not been able to pay the subscription with the card provided it is marked as cancelled on the database
                     else if (subscriptionStatus.status !== 'active' && subscription[0].status !== 'cancelled') {
                       client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', data.userid]);
                       return res.status(201).json({ statusCode: 201, subscription: 'suspended', user: user });
                     }
-                    else{
-                      return res.status(201).json({ statusCode: 201, subscription: 'cancelled', user: user });                        
+                    else {
+                      return res.status(201).json({ statusCode: 201, subscription: 'cancelled', user: user });
                     }
                   }
                 }

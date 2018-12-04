@@ -37,6 +37,7 @@ router.post('/settings/coupon/add', checkJwt, (req, res, next) => {
     duration: req.body.duration,
     percentage: req.body.percentage
   };
+  //validate inputs
   if (val.validateUserID(data.userid) || val.validateInt(data.duration) ||
     val.validateInt(data.percentage) || val.validateLongText(data.name) ||
     val.validatecoupon(data.couponid)) {
@@ -72,6 +73,7 @@ router.post('/settings/coupon/add', checkJwt, (req, res, next) => {
         query1.on('end', () => {
           done();
           if (resultsexist.length == 0) {
+            //Creates a coupon with the given fields of percentage, duration in months and the coupon id
             stripe.coupons.create({
               percent_off: data.percentage,
               duration: 'repeating',
@@ -262,7 +264,6 @@ router.post('/settings/institutions/add', checkJwt, (req, res, next) => {
         query2.on('end', () => {
           done();
           if (coupons.length === 0) {//coupon doesnt exist
-
             //SQL Query > select data to verify institution id is already in use
             const query = client.query('SELECT * FROM institution WHERE institutionid = $1', [data.institutionid,]);
             //stream results back one row at a time
@@ -381,35 +382,31 @@ router.delete('/settings/institutions/remove', checkJwt, (req, res, next) => {
             query2.on('end', () => {
               done();
               if (tokensforstripe.length > 0) {
-                stripe.subscriptions.del(tokensforstripe[0].token,
-                  function (err, response) {
-                    if (err) {
-                      return res.status(402).json({
-                        statusCode: 402,
-                        message: 'Institutionid doesn\'t exist in database. Inputs were not received as expected.',
-                        isBase64Encoded: false,
-                      });
-                    } else {
-                      //SQL Query > update institutionid in users
-                      const query3 = client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 returning *', [data.institutionid,]);
-                      //stream results back one row at a time
-                      query3.on('row', (row) => {
-                        users.push(row);
-                      });
-                      query3.on('end', () => {
-                        done();
-                        for (var i = 0; i < users.length; i++) {
-                          //SQL QUERY > update subscriptions
-                          client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', users[i].userid,]);
-                        }
-                        //SQL Query > delete data
-                        client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid,]);
-                        return res.status(201).json({ statusCode: 201 });
-                      });
+                //SQL Query > update institutionid in users
+                const query3 = client.query('UPDATE users SET institutionid = null WHERE institutionid = $1 returning *', [data.institutionid,]);
+                //stream results back one row at a time
+                query3.on('row', (row) => {
+                  users.push(row);
+                });
+                query3.on('end', () => {
+                  done();
+                  //Sets users belonging to school being removed as suspended and cancels their subscription in Stripe
+                  for (var i = 0; i < users.length; i++) {
+                    stripe.subscriptions.del(tokensforstripe[i].token);
+                    client.query('UPDATE subscription SET status = $1 WHERE userid = $2', ['suspended', users[i].userid,]);
 
-                    }
-                  });
-              } else {
+                  }
+                  //Removes the instution coupon from Stripe
+                  stripe.coupons.del(data.institutionid);
+                  //SQL Query > delete data
+                  client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid,]);
+                  return res.status(201).json({ statusCode: 201 });
+                });
+              }
+              else {
+                //Removes the instution coupon from Stripe
+                stripe.coupons.del(data.institutionid);
+                //SQL Query > delete data
                 client.query('DELETE FROM institution WHERE institutionid = $1', [data.institutionid,]);
                 return res.status(201).json({ statusCode: 201 });
               }
@@ -451,7 +448,6 @@ router.post('/settings/users/remove', checkJwt, (req, res, next) => {
       isBase64Encoded: false,
     });
   }
-
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     //handle connection error
@@ -490,6 +486,7 @@ router.post('/settings/users/remove', checkJwt, (req, res, next) => {
             });
             query2.on('end', () => {
               done();
+               //Cancels the Stripe subscription for a single user
               stripe.subscriptions.del(tokenstripe[0].token,
                 function (err, response) {
                   if (err)
@@ -648,7 +645,7 @@ router.post('/recommendations/create', checkJwt, (req, res, next) => {
     question: req.body.question,
     choices: req.body.choices
   };
-
+  //validate inputs
   if (val.validateUserID(data.userid) || val.validateLongText(data.title) || val.validateLongText(data.header) || val.validateLongText(data.description) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech)
     || val.validateBool(data.instructions) || val.validateBool(data.moodle) || val.validateBool(data.googleclassroom) || val.validateBool(data.emails) || val.validateBool(data.books) || val.validateBool(data.apps) || val.validateBool(data.socialmedia) || val.validateBool(data.projector)
     || val.validateBool(data.computer) || val.validateBool(data.tablet) || val.validateBool(data.stylus) || val.validateBool(data.internet) || val.validateBool(data.smartboard) || val.validateBool(data.smartpencil) || val.validateBool(data.speakers) || val.validateLongText(data.topica)
@@ -979,7 +976,6 @@ router.post('/recommendations/assign', checkJwt, (req, res, next) => {
           done();
           console
           if (uservalid.length === 1) { // user exists and is of type teacher
-
             //SQL Query > select recommendation active
             const query1 = client.query('SELECT * FROM recommendations WHERE recomid = $1 AND active = $2', [data.recomid, true,]);
             //stream results back one row at a time
@@ -1008,9 +1004,7 @@ router.post('/recommendations/assign', checkJwt, (req, res, next) => {
             });
           }
         });
-
-      } else// user doesn't exist in record or isnt of type admin, send error statuscode
-      {
+      } else{// user doesn't exist in record or isnt of type admin, send error statuscode
         return res.status(401).json({
           statusCode: 401,
           message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
@@ -1077,8 +1071,7 @@ router.post('/questions/answer', checkJwt, (req, res, next) => {
             });
           }
         });
-      } else// user doesn't exist in record or isnt of type admin, send error statuscode
-      {
+      } else{// user doesn't exist in record or isnt of type admin, send error statuscode
         return res.status(401).json({
           statusCode: 401,
           message: 'User doesn\'t exist in records or is not admin type. Inputs were not received as expected.',
@@ -1099,7 +1092,6 @@ router.delete('/questions/remove', checkJwt, (req, res, next) => {
     userid: req.body.userid,
     askeddate: moment(req.body.askeddate).format("YYYY-MM-DD HH:mm:ss")
   };
-
   //verify inputs
   if (val.validateUserID(data.userid) || val.validateUserID(data.useradmin) || val.validateTime(data.askeddate)) {
     return res.status(403).json({
@@ -1116,7 +1108,6 @@ router.delete('/questions/remove', checkJwt, (req, res, next) => {
       console.log(err);
       return res.status(500).json({ statusCode: 500, message: err });
     }
-
     //verify if user exists in database records
     const query1 = client.query('SELECT * FROM users WHERE userid = $1 AND usertype = $2', [data.useradmin, 'admin']);
     //stream results back one row at a time
@@ -1344,6 +1335,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
     membersince: todaysDate,
     policies: req.body.policies
   };
+  //validate inputs
   if (val.validateUserID(data.userid) || val.validateNoSpace(data.usertype) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender)
     || val.validateEmail(data.email) || val.validateLongText(data.password) || val.validateDate(data.dob) || val.validateBool(data.policies)) {
     return res.status(403).json({
@@ -1352,6 +1344,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
       isBase64Encoded: false,
     });
   }
+  //validate if usertype is school that an institutionid is attached
   if (data.usertype == 'school' && val.validatecoupon(data.institutionid)) {
     return res.status(403).json({
       statusCode: 403,
@@ -1389,7 +1382,6 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
           query2.on('end', () => {
             done();
             if (inst.length === 1) {
-              //SQL Query > insert user table data
               axios.post('https://edvo-test.auth0.com/dbconnections/signup', {
                 client_id: 'jqBhoqhizlsno2lZ5eUNFsbLDdNlxvzJ',
                 email: data.email,
@@ -1397,6 +1389,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
                 connection: 'Username-Password-Authentication'
               }).then((response) => {
                 if (response.status == 200) {
+                  //SQL Query > insert user table data
                   client.query('insert into users(userid, institutionid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', ['auth0|' + response.data._id, data.institutionid, data.usertype, data.name, data.lastname, data.gender, data.email, null, data.dob, data.membersince, data.policies]);
                   return res.status(201).json({
                     statusCode: 201
@@ -1427,6 +1420,7 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
             connection: 'Username-Password-Authentication'
           }).then((response) => {
             if (response.status == 200) {
+              //SQL Query > insert user table data
               client.query('insert into users(userid, institutionid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', ['auth0|' + response.data._id, null, data.usertype, data.name, data.lastname, data.gender, data.email, null, data.dob, data.membersince, data.policies]);
               return res.status(201).json({
                 statusCode: 201

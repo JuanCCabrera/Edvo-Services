@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pg = require('pg');
 const jwt = require('express-jwt');
-const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
-const axios = require('axios');
 const val = require('./validate'); //validate inputs
 var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
@@ -94,6 +92,7 @@ router.post('/', checkJwt, (req, res, next) => {
                   if (results[0].accountsused < results[0].accounts) {//verify instiution has accounts available
                     var accountsupdated = results[0].accountsused + 1;
                     try {
+                      //Creates a customer with the given userid and email to then apply a subscription to it
                       stripe.customers.create({
                         source: data.token,
                         description: data.userid
@@ -105,6 +104,7 @@ router.post('/', checkJwt, (req, res, next) => {
                             isBase64Encoded: false,
                           });
                         }
+                        //Creates a subscription with the customer previously created
                         stripe.subscriptions.create({
                           customer: response.id,
                           billing: 'charge_automatically',
@@ -164,6 +164,7 @@ router.post('/', checkJwt, (req, res, next) => {
                     if (coupon.length === 1) {//if coupon exist
 
                       try {
+                        //Creates a customer with the given userid and email to then apply a subscription to it
                         stripe.customers.create({
                           source: data.token,
                           description: data.userid
@@ -175,6 +176,7 @@ router.post('/', checkJwt, (req, res, next) => {
                               isBase64Encoded: false,
                             });
                           }
+                           //Creates a subscription with the previously created customer and the given non-instituional id
                           stripe.subscriptions.create({
                             customer: response.id,
                             billing: 'charge_automatically',
@@ -197,14 +199,12 @@ router.post('/', checkJwt, (req, res, next) => {
                               data.token = subscription.id;
                               //SQL Query > insert user subscription into subscription table with active status
                               client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
-
                               //SQL Query > insert into coupon table
                               client.query('insert into coupons_used (couponid, userid, dateused) values ($1, $2, $3)', [data.couponid, data.userid, todaysDate,]);
                               return res.status(201).json({ statusCode: 201 });
                             }
                           })
                         });
-
                       } catch (err) {
                         if (err)
                           return res.status(403).json({ statusCode: 403, message: 'Userid already has a subscription.', isBase64Encoded: false, });
@@ -213,15 +213,15 @@ router.post('/', checkJwt, (req, res, next) => {
                       return res.status(402).json({ statusCode: 402, message: 'Invalid couponID.', isBase64Encoded: false, });
                     }
                   });
-
-
                 }
               });
             }
             else { //no coupon is used
               try {
+                //Creates a customer with the given userid and email to then apply a subscription to it
                 stripe.customers.create({
                   source: data.token,
+                  email: req.user.email,
                   description: data.userid
                 }, function (err, response) {
                   if (err) {
@@ -231,6 +231,7 @@ router.post('/', checkJwt, (req, res, next) => {
                       isBase64Encoded: false,
                     });
                   }
+                  //Creates a subscription with the previously created customer and no coupon
                   stripe.subscriptions.create({
                     customer: response.id,
                     billing: 'charge_automatically',
@@ -243,15 +244,14 @@ router.post('/', checkJwt, (req, res, next) => {
                     if (err) {
                       return res.status(402).json({ statusCode: 402, message: 'Could not subscribe, card or data might be incomplete', isBase64Encoded: false, });
                     }
-                    //SQL Query > insert user subscription into subscription table with active status
                     else {
                       data.token = subscription.id;
+                      //SQL Query > insert user subscription into subscription table with active status
                       client.query('insert into subscription (userid, token, status, type) values ($1, $2, $3, $4)', [data.userid, data.token, 'active', data.plan,]);
                       return res.status(201).json({ statusCode: 201 });
                     }
                   })
                 });
-
               } catch (err) {
                 if (err)
                   return res.status(403).json({

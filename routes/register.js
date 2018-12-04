@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const path = require('path');
 const jwt = require('express-jwt');
-const cors = require('cors');
 const val= require('./validate'); //validate inputs
 const jwksRsa = require('jwks-rsa');
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
@@ -68,6 +66,7 @@ router.post('/', checkJwt, (req,res,next)=> {
       speakers: req.body.speakers,
       class: req.body.class
     };
+    //validate inputs
     if(val.validateUserID(data.userid) || val.validateLongText(data.name) || val.validateLongText(data.lastname) || val.validateNoSpace(data.gender) 
       || val.validateEmail(data.email) || val.validateDate(data.dob) || val.validateBool(data.policies) || val.validateDate(data.teachersince)
       || val.validateEd(data.education) || val.validateBool(data.spanish) || val.validateBool(data.english) || val.validateNoSpace(data.schooltype) || val.validateBool(data.strategies) || val.validateBool(data.material) || val.validateBool(data.timemanagement) || val.validateBool(data.tech) 
@@ -79,13 +78,13 @@ router.post('/', checkJwt, (req,res,next)=> {
           isBase64Encoded: false,});
     }
     var classesjson = data.class
+    //validate class inputs
     if(val.validateLongText(classesjson.subject) || val.validateLongText(classesjson.format) || val.validateNoSpace(classesjson.language) 
       || val.validateLevel(classesjson.level) || val.validateGroup(classesjson.groupsize) || val.validateLongText(classesjson.topica)){
       return res.status(403).json({statusCode: 403,
         message: 'Inputs were not received as expected.',
         isBase64Encoded: false,});
     }
-
   // get a postgres client from the connection pool
   pg.connect(connectionString, (err, client, done)=> {
     //handle connection error
@@ -103,20 +102,14 @@ router.post('/', checkJwt, (req,res,next)=> {
     query2.on('end', () => {
       done();
       if (resultsexist.length  === 0){ //if userid or email doesnt exist proceed to create user
-      
         //SQL Query > insert user table data
         client.query('insert into users(userid, usertype, name, lastname, gender, email, password, dob, membersince, policies) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, 'teacher', data.name, data.lastname, data.gender, data.email, data.password, data.dob, data.membersince, data.policies]);
-        
         //SQL Query > insert user_info table data
         client.query('insert into user_info(userid, teachersince, education, english, spanish, strategies, material, timemanagement, tech, instructions) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [data.userid, data.teachersince, data.education, data.english, data.spanish, data.strategies, data.material, data.timemanagement, data.tech, data.instructions]);
-        
         //SQL Query > insert school_info table data
         client.query('insert into school_info(userid, name, location, schooltype, moodle, googleclassroom, emails, books, applications, socialmedia, projector, computer, tablet, stylus, internet, smartboard, smartpencil, speakers) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)', [data.userid, data.schoolname, data.location, data.schooltype, data.moodle, data.googleclassroom, data.emails, data.books, data.applications, data.socialmedia, data.projector, data.computer, data.tablet, data.stylus, data.internet, data.smartboard, data.smartpencil, data.speakers]);
-        
         //SQL Query > insert class_info table data
         client.query('insert into class_info(userid, subject, format, language, level, groupsize, topica, topicb, topicc) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [data.userid, classesjson.subject, classesjson.format, classesjson.language, classesjson.level, classesjson.groupsize, classesjson.topica, classesjson.topicb, classesjson.topicc]);
-        
-        
         //SQL Query > select data of a single user
         const query =  client.query('SELECT * FROM users WHERE userid = $1', [data.userid,]);
         //stream results back one row at a time

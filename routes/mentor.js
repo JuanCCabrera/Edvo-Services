@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router(); 
 const pg = require('pg');
-const path = require('path');
 const jwt = require('express-jwt');
-const cors = require('cors');
 const jwksRsa = require('jwks-rsa');
-const axios = require('axios');
 const moment = require('moment');
 const val= require('./validate'); //validate inputs
-var stripe = require("stripe")("sk_test_ebcuCvU5u6D6hO2Uj8UEDOnI");
 const connectionString = process.env.DATABASE_URL || 'postgres://root:Edv@tech18@localhost:5432/edvo1';
 const todaysDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''); //today's date format YYYY-MM-DD HH:MM:SS
 
@@ -454,7 +450,6 @@ router.post('/recommendations/remove', checkJwt, (req,res,next)=> {
           if(resultsexist.length === 1){ //recommendation exists
             //SQL Query > UPDATE recommendation into table recommendations
             client.query('UPDATE recommendations SET active = $1 WHERE recomid =$2', [false, data.recomid]);
-            
             return res.status(200).json({statusCode: 200});
           }else{
             return res.status(402).json({statusCode: 402,
@@ -471,8 +466,6 @@ router.post('/recommendations/remove', checkJwt, (req,res,next)=> {
     });
   });
 });
-
-
 
 /* ASSIGN recommendation*/
 router.post('/recommendations/assign', checkJwt, (req,res,next)=> {
