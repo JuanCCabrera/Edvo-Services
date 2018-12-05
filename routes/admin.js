@@ -1405,8 +1405,8 @@ router.post('/settings/users/add', checkJwt, (req, res, next) => {
                 }
               });
             } else {
-              return res.status(401).json({
-                statusCode: 401,
+              return res.status(402).json({
+                statusCode: 402,
                 message: 'Institutionid does not exists in records. Inputs were not received as expected.',
                 isBase64Encoded: false,
               });
