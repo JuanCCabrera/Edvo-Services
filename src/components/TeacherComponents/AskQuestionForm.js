@@ -270,7 +270,7 @@ class AskQuestionForm extends React.Component{
                     }
                     {this.state.askQuestionError === true && 
                         <div className="text-danger text-center">
-                            {this.props.lang === 'English' ? <p>Please fill all fields text.</p> : <p>Por favor, llene todos los campos con texto.</p>}
+                            {this.props.lang === 'English' ? <p>Please fill all text fields.</p> : <p>Por favor, llene todos los campos con texto.</p>}
                         </div>
                     }
                     

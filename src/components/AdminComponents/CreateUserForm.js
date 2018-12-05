@@ -47,6 +47,7 @@ class CreateUserForm extends React.Component{
             institutionID: '',
             institutionIDError: '',
             requestError: '',
+            institutionMissingError: false,
 
             creationError: false
         };
@@ -194,7 +195,9 @@ class CreateUserForm extends React.Component{
         }else if(this.state.emailError || this.state.nameError || this.state.lastNameError || this.state.passwordError || this.state.confirmPasswordError || this.state.dateOfBirthError || this.state.institutionIDError){
             this.setState(() => ({creationError: true}));
         }else{
-            this.setState(() => ({creationError: false}));            
+            this.setState(() => ({requestError: ''}));
+            this.setState(() => ({creationError: false}));   
+            this.setState(() => ({institutionMissingError: false}));           
             this.props.dispatch(setLoadingModal());
             axios.post('https://beta.edvotech.com/api/admin/settings/users/add', {
             email: this.state.email,
@@ -220,14 +223,19 @@ class CreateUserForm extends React.Component{
         this.props.dispatch(setLoadingModal());
     })
     .catch(error => {
-        if(error.response.status == 401 || error.response.status == 403){
+        if(error.response.status == 401 || error.response.status == 403){            
+            this.setState({institutionMissingError: false});
             if(this.props.lang === 'English'){
                 this.setState(() => ({requestError: 'The user already exists or the data input was invalid'}));            
             }
             else{                
                 this.setState(() => ({requestError: 'El usuario ya existe o los datos provistos son invalidos'}));
             }
-        }        
+        } 
+        else if(error.response.status == 402){
+            this.setState({requestError: ''});
+            this.setState({institutionMissingError: true});
+        }       
         this.props.dispatch(setLoadingModal());     
     });
         }
@@ -644,6 +652,13 @@ class CreateUserForm extends React.Component{
                                         <div>
                                              <span className="text-danger"> 
                                                 {this.state.requestError}
+                                            </span>
+                                        </div>
+                                    }
+                                    {this.state.institutionMissingError &&
+                                        <div>
+                                            <span className="text-danger">
+                                                {this.props.lang === 'English' ? 'The institution ID does not match an existing institution.' : 'La identificación de institución no concuerda con una institución existente.'}
                                             </span>
                                         </div>
                                     }
