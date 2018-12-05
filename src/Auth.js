@@ -3,6 +3,9 @@ import React from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
+/*
+  Class  used to handle all authentication functionality, from sign-in and sign-out to register
+*/
 class Auth {
   constructor(props) {
     this.auth0 = new auth0.WebAuth({
@@ -28,25 +31,27 @@ class Auth {
       localStorage.setItem('route', '/');
   }
 
+  //Returns the route, if valid, a user was trying to access before logging-in
   getRedirectRoute(){
     return localStorage.getItem('route');
   }
+  //Returns the role a user has after being retrieved from the database. Roles are: admin, mentor, teacher and school
   getRole(){
     return localStorage.getItem('role');
   }
-
+  //Returns the email address of the current user
   getEmail(){
     return localStorage.getItem('email');
   }
-
+  //Returns the authentication token used to access the API
   getIdToken() {
     return localStorage.getItem('idToken');
   }
-
+  //Returns the route to pay if the user is not currently subscribed
   getSubscribed(){
     return localStorage.getItem('p-redirect');
   }
-
+  //Receives the token from the Callback component and sends it to the setSession function if successful
   handleAuthentication() {
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
@@ -61,11 +66,11 @@ class Auth {
       });
     })
   }
-
+  //Verifies if token hasn't expired
   isAuthenticated() {
     return new Date().getTime() < localStorage.getItem('expiresAt');
   }
-
+  //Receives token token payloads through the authResult parameter
   setSession(authResult, step) {
     localStorage.setItem('idToken',authResult.idToken);
     localStorage.setItem('email',authResult.idTokenPayload.email);
@@ -82,16 +87,19 @@ class Auth {
       });
   }
 
+  //Returns the Auth0 Universal Login
   signIn() {
     this.auth0.authorize();
   }
 
+  //Returns the Auth0 Universal Signup
   signUp() {
     this.auth0.authorize({
       mode: 'signUp'
     });
   }
 
+  //Terminates the current user session
   signOut() {
     this.auth0.logout({
       returnTo: 'https://beta.edvotech.com/login',
@@ -100,6 +108,7 @@ class Auth {
     localStorage.clear();
   }
 
+  //Function app.js uses to verify if there was a current logged-in session, if there was it refreshes the authentication token
   silentAuth() {
     return new Promise((resolve, reject) => {
       this.auth0.checkSession({}, (err, authResult) => {
@@ -111,6 +120,8 @@ class Auth {
   }
 }
 
+//Class instance
 const auth0Client = new Auth();
 
+//Class export
 export default auth0Client;
